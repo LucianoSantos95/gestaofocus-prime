@@ -11,6 +11,13 @@ import {
   Shield,
   TrendingUp
 } from "lucide-react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const HubEmpresarial = () => {
   const features = [
@@ -43,12 +50,29 @@ const HubEmpresarial = () => {
   const benefits = [
     "Visão completa do negócio em um só lugar",
     "Dashboards em tempo real",
-    "Relatórios automáticos",
     "Integração entre todas as áreas", 
-    "Análise preditiva e insights",
     "Controle de permissões por usuário",
     "Backup automático na nuvem",
     "Suporte técnico especializado"
+  ];
+
+  const carouselImages = [
+    {
+      src: "/lovable-uploads/e7cb35d7-2048-4ad6-841f-d0cebc69f29b.png",
+      alt: "Hub Empresarial Dashboard"
+    },
+    {
+      src: "/lovable-uploads/9a534dd9-2fc7-4069-b764-020f532fe69c.png",
+      alt: "Módulo Finanças"
+    },
+    {
+      src: "/lovable-uploads/2f76d4c5-3684-494b-b193-4b8f4a3c15fb.png",
+      alt: "Módulo Projetos"
+    },
+    {
+      src: "/lovable-uploads/b1b84ecc-e932-4297-af10-a6f7bc45041d.png",
+      alt: "Módulo Atividades"
+    }
   ];
 
   const plans = [
@@ -131,18 +155,14 @@ const HubEmpresarial = () => {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 max-w-2xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16 max-w-xl mx-auto">
               <div className="text-center">
-                <div className="text-3xl font-bold text-primary mb-2">4</div>
+                <div className="text-3xl font-bold text-primary mb-2">6</div>
                 <div className="text-sm text-foreground-muted">Módulos integrados</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-primary mb-2">+50</div>
-                <div className="text-sm text-foreground-muted">Relatórios automáticos</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-primary mb-2">24/7</div>
-                <div className="text-sm text-foreground-muted">Monitoramento</div>
+                <div className="text-3xl font-bold text-primary mb-2">+100</div>
+                <div className="text-sm text-foreground-muted">Downloads</div>
               </div>
             </div>
           </div>
@@ -251,60 +271,37 @@ const HubEmpresarial = () => {
         </div>
       </section>
 
-      {/* Pricing Section */}
+      {/* Gallery Section */}
       <section className="section-padding bg-background-secondary">
         <div className="container-focus">
           <div className="text-center mb-20">
             <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
-              Escolha o plano ideal
+              Conheça mais
             </h2>
             <p className="text-xl text-foreground-muted max-w-3xl mx-auto">
-              Planos flexíveis que crescem junto com seu negócio. 
-              Comece hoje e escale conforme sua necessidade.
+              Explore as principais funcionalidades do Hub Empresarial Pro 
+              através das imagens dos módulos em ação.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {plans.map((plan, index) => (
-              <div 
-                key={plan.name} 
-                className={`service-card relative ${
-                  plan.highlighted ? 'ring-2 ring-primary animate-glow' : ''
-                }`}
-              >
-                {plan.highlighted && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-medium">
-                      Mais popular
-                    </span>
-                  </div>
-                )}
-                
-                <div className="text-center mb-6">
-                  <h3 className="text-xl font-bold text-card-foreground mb-2">{plan.name}</h3>
-                  <div className="mb-2">
-                    <span className="text-3xl font-bold text-primary">{plan.price}</span>
-                    {plan.period && <span className="text-foreground-muted">/{plan.period}</span>}
-                  </div>
-                  <p className="text-sm text-foreground-muted">{plan.description}</p>
-                </div>
-
-                <div className="space-y-3 mb-8">
-                  {plan.features.map((feature, featureIndex) => (
-                    <div key={featureIndex} className="flex items-center text-sm text-foreground-muted">
-                      <CheckCircle className="w-4 h-4 text-primary mr-3 flex-shrink-0" />
-                      {feature}
+          <div className="max-w-4xl mx-auto">
+            <Carousel className="w-full">
+              <CarouselContent>
+                {carouselImages.map((image, index) => (
+                  <CarouselItem key={index}>
+                    <div className="service-card p-1">
+                      <img 
+                        src={image.src} 
+                        alt={image.alt}
+                        className="w-full h-auto rounded-lg shadow-lg"
+                      />
                     </div>
-                  ))}
-                </div>
-
-                <Button 
-                  className={plan.highlighted ? "btn-hero w-full" : "btn-secondary w-full"}
-                >
-                  {plan.name === "Enterprise" ? "Falar com vendas" : "Começar agora"}
-                </Button>
-              </div>
-            ))}
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
           </div>
         </div>
       </section>
