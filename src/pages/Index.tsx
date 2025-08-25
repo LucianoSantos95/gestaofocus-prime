@@ -102,13 +102,6 @@ const Index = () => {
         <div className="container-focus">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-              <div className="mb-8">
-                <img 
-                  src="/lovable-uploads/84889f04-d903-46ca-b467-39dd119fdcc4.png" 
-                  alt="Logo Focus" 
-                  className="h-16 mb-6"
-                />
-              </div>
               <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
                 Sobre a Focus
               </h2>

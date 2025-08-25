@@ -37,7 +37,7 @@ const Navigation = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 group">
             <img 
-              src="/lovable-uploads/84889f04-d903-46ca-b467-39dd119fdcc4.png" 
+              src="/lovable-uploads/dbfd8960-5b9b-4e97-aa65-8fded1f82040.png" 
               alt="Focus" 
               className="h-8 group-hover:scale-105 transition-transform duration-200"
             />
