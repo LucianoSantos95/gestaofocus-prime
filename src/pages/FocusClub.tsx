@@ -242,12 +242,12 @@ const FocusClub = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl mx-auto mt-8">
             {plans.map((plan, index) => (
               <div 
                 key={plan.name} 
                 className={`service-card relative ${
-                  plan.highlight ? 'ring-2 ring-primary animate-glow' : ''
+                  plan.highlight ? 'ring-2 ring-primary animate-glow mt-4' : ''
                 }`}
               >
                 {plan.highlight && (
