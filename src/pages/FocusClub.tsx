@@ -248,17 +248,17 @@ const FocusClub = () => {
                 key={plan.name} 
                 className={`service-card relative ${
                   plan.highlight ? 'ring-2 ring-primary animate-glow' : ''
-                } ${plan.highlight ? 'mt-6' : 'mt-2'}`}
+                } mt-8`}
               >
                 {plan.highlight && (
-                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
-                    <span className="bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-medium whitespace-nowrap">
+                  <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 z-10">
+                    <span className="bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap shadow-lg">
                       Melhor valor
                     </span>
                   </div>
                 )}
                 
-                <div className={`text-center mb-6 ${plan.highlight ? 'pt-4' : 'pt-2'}`}>
+                <div className={`text-center mb-6 ${plan.highlight ? 'pt-6' : 'pt-4'}`}>
                   <h3 className="text-2xl font-bold text-card-foreground mb-3">{plan.name}</h3>
                   <div className="mb-3">
                     {plan.originalPrice && (
