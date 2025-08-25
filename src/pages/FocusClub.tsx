@@ -242,16 +242,16 @@ const FocusClub = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto mt-16">
             {plans.map((plan, index) => (
               <div 
                 key={plan.name} 
                 className={`service-card relative ${
                   plan.highlight ? 'ring-2 ring-primary animate-glow' : ''
-                } mt-8`}
+                } ${plan.highlight ? 'mt-8' : 'mt-2'}`}
               >
                 {plan.highlight && (
-                  <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 z-10">
+                  <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 z-10">
                     <span className="bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap shadow-lg">
                       Melhor valor
                     </span>
