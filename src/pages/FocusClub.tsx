@@ -242,42 +242,44 @@ const FocusClub = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl mx-auto mt-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {plans.map((plan, index) => (
               <div 
                 key={plan.name} 
                 className={`service-card relative ${
-                  plan.highlight ? 'ring-2 ring-primary animate-glow mt-4' : ''
-                }`}
+                  plan.highlight ? 'ring-2 ring-primary animate-glow' : ''
+                } ${plan.highlight ? 'mt-6' : 'mt-2'}`}
               >
                 {plan.highlight && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-medium">
+                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
+                    <span className="bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-medium whitespace-nowrap">
                       Melhor valor
                     </span>
                   </div>
                 )}
                 
-                <div className="text-center mb-6">
-                  <h3 className="text-2xl font-bold text-card-foreground mb-2">{plan.name}</h3>
-                  <div className="mb-2">
+                <div className={`text-center mb-6 ${plan.highlight ? 'pt-4' : 'pt-2'}`}>
+                  <h3 className="text-2xl font-bold text-card-foreground mb-3">{plan.name}</h3>
+                  <div className="mb-3">
                     {plan.originalPrice && (
-                      <span className="text-lg text-foreground-muted line-through mr-2">{plan.originalPrice}</span>
+                      <div className="text-base text-foreground-muted line-through mb-1">{plan.originalPrice}</div>
                     )}
-                    <span className="text-4xl font-bold text-primary">{plan.price}</span>
-                    <span className="text-foreground-muted">/{plan.period}</span>
+                    <div className="flex items-baseline justify-center gap-1">
+                      <span className="text-3xl lg:text-4xl font-bold text-primary">{plan.price}</span>
+                      <span className="text-foreground-muted text-base">/{plan.period}</span>
+                    </div>
                   </div>
                   {plan.savings && (
-                    <div className="text-sm text-primary font-medium">{plan.savings}</div>
+                    <div className="text-sm text-primary font-medium mb-2">{plan.savings}</div>
                   )}
-                  <p className="text-sm text-foreground-muted mt-2">{plan.description}</p>
+                  <p className="text-sm text-foreground-muted">{plan.description}</p>
                 </div>
 
-                <div className="space-y-3 mb-8">
+                <div className="space-y-3 mb-8 min-h-[200px]">
                   {plan.features.map((feature, featureIndex) => (
                     <div key={featureIndex} className="flex items-start text-sm text-foreground-muted">
                       <CheckCircle className="w-4 h-4 text-primary mr-3 flex-shrink-0 mt-0.5" />
-                      <span>{feature}</span>
+                      <span className="leading-relaxed">{feature}</span>
                     </div>
                   ))}
                 </div>
