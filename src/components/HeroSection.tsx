@@ -1,5 +1,6 @@
 import { ArrowRight, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { trackWhatsAppClick, trackNotionClick, trackCTAClick } from "@/lib/analytics";
 
 const HeroSection = () => {
   return (
@@ -36,7 +37,11 @@ const HeroSection = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 animate-slide-up delay-300">
             <Button 
               className="btn-hero group"
-              onClick={() => window.open('https://wa.me/5511916742443?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20personaliza%C3%A7%C3%A3o%20de%20sistemas.', '_blank')}
+              onClick={() => {
+                trackWhatsAppClick('hero_cta');
+                trackCTAClick('Conheça nossos serviços', 'hero');
+                window.open('https://wa.me/5511916742443?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20personaliza%C3%A7%C3%A3o%20de%20sistemas.', '_blank');
+              }}
             >
               Conheça nossos serviços
               <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
@@ -45,7 +50,11 @@ const HeroSection = () => {
             <Button 
               variant="ghost" 
               className="btn-secondary group"
-              onClick={() => window.open('https://www.notion.com/pt/@focusgestao', '_blank')}
+              onClick={() => {
+                trackNotionClick('demo', 'hero');
+                trackCTAClick('Ver demonstração', 'hero');
+                window.open('https://www.notion.com/pt/@focusgestao', '_blank');
+              }}
             >
               <Play className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform duration-300" />
               Ver demonstração

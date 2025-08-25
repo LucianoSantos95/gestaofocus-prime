@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Target } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { trackWhatsAppClick, trackNavigationClick } from "@/lib/analytics";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -54,6 +55,7 @@ const Navigation = () => {
                     ? "text-primary font-medium"
                     : "text-foreground-muted hover:text-foreground hover:bg-accent"
                 }`}
+                onClick={() => trackNavigationClick(item.name)}
               >
                 {item.name}
                 {location.pathname === item.href && (
@@ -64,7 +66,10 @@ const Navigation = () => {
             
             <Button 
               className="btn-hero ml-4"
-              onClick={() => window.open('https://wa.me/5511916742443?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20personaliza%C3%A7%C3%A3o%20de%20sistemas.', '_blank')}
+              onClick={() => {
+                trackWhatsAppClick('header');
+                window.open('https://wa.me/5511916742443?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20personaliza%C3%A7%C3%A3o%20de%20sistemas.', '_blank');
+              }}
             >
               Falar com Focus
             </Button>
@@ -91,7 +96,10 @@ const Navigation = () => {
                 <Link
                   key={item.name}
                   to={item.href}
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => {
+                    trackNavigationClick(item.name);
+                    setIsOpen(false);
+                  }}
                   className={`block py-3 px-4 rounded-lg transition-all duration-200 ${
                     location.pathname === item.href
                       ? "text-primary font-medium bg-accent"
@@ -104,7 +112,10 @@ const Navigation = () => {
               <div className="pt-4 border-t border-card-border">
                 <Button 
                   className="btn-hero w-full"
-                  onClick={() => window.open('https://wa.me/5511916742443?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20personaliza%C3%A7%C3%A3o%20de%20sistemas.', '_blank')}
+                  onClick={() => {
+                    trackWhatsAppClick('mobile_menu');
+                    window.open('https://wa.me/5511916742443?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20personaliza%C3%A7%C3%A3o%20de%20sistemas.', '_blank');
+                  }}
                 >
                   Falar com Focus
                 </Button>

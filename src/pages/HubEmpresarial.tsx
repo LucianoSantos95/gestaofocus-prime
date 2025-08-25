@@ -18,6 +18,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { trackStripeClick, trackNotionClick, trackCTAClick } from "@/lib/analytics";
 
 const HubEmpresarial = () => {
   const features = [
@@ -146,7 +147,11 @@ const HubEmpresarial = () => {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button 
                 className="btn-hero group"
-                onClick={() => window.open('https://buy.stripe.com/8x23cv2VCbsN1l2aVngUM0b', '_blank')}
+                onClick={() => {
+                  trackStripeClick('hero_cta');
+                  trackCTAClick('Comece agora', 'hero');
+                  window.open('https://buy.stripe.com/8x23cv2VCbsN1l2aVngUM0b', '_blank');
+                }}
               >
                 Comece agora
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
@@ -155,7 +160,11 @@ const HubEmpresarial = () => {
               <Button 
                 variant="outline" 
                 className="btn-secondary"
-                onClick={() => window.open('https://www.notion.com/templates/hub-empresarial-pro', '_blank')}
+                onClick={() => {
+                  trackNotionClick('hub_pro', 'hero');
+                  trackCTAClick('Ver demonstração', 'hero');
+                  window.open('https://www.notion.com/templates/hub-empresarial-pro', '_blank');
+                }}
               >
                 Ver demonstração
               </Button>
@@ -242,7 +251,11 @@ const HubEmpresarial = () => {
 
               <Button 
                 className="btn-hero group"
-                onClick={() => window.open('https://www.notion.com/templates/hub-empresarial-pro', '_blank')}
+                onClick={() => {
+                  trackNotionClick('hub_pro', 'benefits');
+                  trackCTAClick('Solicitar demonstração', 'benefits');
+                  window.open('https://www.notion.com/templates/hub-empresarial-pro', '_blank');
+                }}
               >
                 Solicitar demonstração
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
@@ -330,7 +343,11 @@ const HubEmpresarial = () => {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button 
                 className="btn-hero group"
-                onClick={() => window.open('https://www.notion.com/templates/hub-empresarial-free', '_blank')}
+                onClick={() => {
+                  trackNotionClick('hub_free', 'cta');
+                  trackCTAClick('Começar teste gratuito', 'cta');
+                  window.open('https://www.notion.com/templates/hub-empresarial-free', '_blank');
+                }}
               >
                 Começar teste gratuito
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
@@ -338,7 +355,11 @@ const HubEmpresarial = () => {
               <Button 
                 variant="outline" 
                 className="btn-secondary"
-                onClick={() => window.open('https://www.notion.com/templates/hub-empresarial-pro', '_blank')}
+                onClick={() => {
+                  trackNotionClick('hub_pro', 'cta_secondary');
+                  trackCTAClick('Agendar apresentação', 'cta');
+                  window.open('https://www.notion.com/templates/hub-empresarial-pro', '_blank');
+                }}
               >
                 Agendar apresentação
               </Button>

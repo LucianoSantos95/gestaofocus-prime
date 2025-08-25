@@ -11,8 +11,15 @@ import SprintProdutividade from "./pages/SprintProdutividade";
 import HubEmpresarial from "./pages/HubEmpresarial";
 import FocusClub from "./pages/FocusClub";
 import NotFound from "./pages/NotFound";
+import { useAnalytics } from "./hooks/useAnalytics";
 
 const queryClient = new QueryClient();
+
+// Analytics component to track page views
+const AnalyticsProvider = () => {
+  useAnalytics();
+  return null;
+};
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -20,6 +27,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <AnalyticsProvider />
         <div className="min-h-screen bg-background flex flex-col">
           <Navigation />
           <main className="flex-1">
