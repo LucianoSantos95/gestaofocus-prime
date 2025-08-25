@@ -67,7 +67,10 @@ const SistemasNotion = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button className="btn-hero group">
+              <Button 
+                className="btn-hero group"
+                onClick={() => window.open('https://wa.me/5511916742443?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20personaliza%C3%A7%C3%A3o%20de%20sistemas.', '_blank')}
+              >
                 Solicitar personalização
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
               </Button>
@@ -133,7 +136,10 @@ const SistemasNotion = () => {
                 ))}
               </div>
 
-              <Button className="btn-hero group">
+              <Button 
+                className="btn-hero group"
+                onClick={() => window.open('https://wa.me/5511916742443?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20personaliza%C3%A7%C3%A3o%20de%20sistemas.', '_blank')}
+              >
                 Começar meu projeto
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
               </Button>
@@ -189,7 +195,10 @@ const SistemasNotion = () => {
               para o seu negócio. Solicite uma consultoria gratuita.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button className="btn-hero group">
+              <Button 
+                className="btn-hero group"
+                onClick={() => window.open('https://wa.me/5511916742443?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20personaliza%C3%A7%C3%A3o%20de%20sistemas.', '_blank')}
+              >
                 Solicitar consultoria gratuita
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
               </Button>

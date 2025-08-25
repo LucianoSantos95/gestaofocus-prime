@@ -62,7 +62,10 @@ const Navigation = () => {
               </Link>
             ))}
             
-            <Button className="btn-hero ml-4">
+            <Button 
+              className="btn-hero ml-4"
+              onClick={() => window.open('https://wa.me/5511916742443?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20personaliza%C3%A7%C3%A3o%20de%20sistemas.', '_blank')}
+            >
               Falar com Focus
             </Button>
           </div>
@@ -99,7 +102,10 @@ const Navigation = () => {
                 </Link>
               ))}
               <div className="pt-4 border-t border-card-border">
-                <Button className="btn-hero w-full">
+                <Button 
+                  className="btn-hero w-full"
+                  onClick={() => window.open('https://wa.me/5511916742443?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20personaliza%C3%A7%C3%A3o%20de%20sistemas.', '_blank')}
+                >
                   Falar com Focus
                 </Button>
               </div>
