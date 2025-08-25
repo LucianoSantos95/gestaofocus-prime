@@ -144,12 +144,19 @@ const HubEmpresarial = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button className="btn-hero group">
+              <Button 
+                className="btn-hero group"
+                onClick={() => window.open('https://buy.stripe.com/8x23cv2VCbsN1l2aVngUM0b', '_blank')}
+              >
                 Comece agora
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
               </Button>
               
-              <Button variant="outline" className="btn-secondary">
+              <Button 
+                variant="outline" 
+                className="btn-secondary"
+                onClick={() => window.open('https://www.notion.com/templates/hub-empresarial-pro', '_blank')}
+              >
                 Ver demonstração
               </Button>
             </div>
@@ -233,7 +240,10 @@ const HubEmpresarial = () => {
                 ))}
               </div>
 
-              <Button className="btn-hero group">
+              <Button 
+                className="btn-hero group"
+                onClick={() => window.open('https://www.notion.com/templates/hub-empresarial-pro', '_blank')}
+              >
                 Solicitar demonstração
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
               </Button>
@@ -318,11 +328,18 @@ const HubEmpresarial = () => {
               Sem compromisso, com suporte completo para implementação.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button className="btn-hero group">
+              <Button 
+                className="btn-hero group"
+                onClick={() => window.open('https://www.notion.com/templates/hub-empresarial-free', '_blank')}
+              >
                 Começar teste gratuito
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
               </Button>
-              <Button variant="outline" className="btn-secondary">
+              <Button 
+                variant="outline" 
+                className="btn-secondary"
+                onClick={() => window.open('https://www.notion.com/templates/hub-empresarial-pro', '_blank')}
+              >
                 Agendar apresentação
               </Button>
             </div>
