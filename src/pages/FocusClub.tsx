@@ -9,7 +9,11 @@ import {
   Award,
   Calendar,
   Download,
-  Lightbulb
+  Lightbulb,
+  Zap,
+  Cog,
+  Target,
+  Building
 } from "lucide-react";
 
 const FocusClub = () => {
@@ -38,35 +42,31 @@ const FocusClub = () => {
 
   const monthlyContent = [
     {
-      week: "Semana 1",
-      title: "Estratégia e Planejamento",
-      description: "Definição de objetivos, OKRs e planejamento estratégico.",
-      icon: <Award className="w-5 h-5" />
+      title: "Produtividade (Base pessoal → Time)",
+      description: "Rotina, priorização 80/20 e foco na prática. Planejamento e revisão semanais que viram cadências simples para o time, reduzindo distrações e aumentando a execução.",
+      icon: <Zap className="w-5 h-5" />
     },
     {
-      week: "Semana 2", 
-      title: "Operações e Processos",
-      description: "Otimização de processos, automações e eficiência operacional.",
-      icon: <Calendar className="w-5 h-5" />
+      title: "Processos (Da ideia ao SOP)",
+      description: "Do AS-IS ao TO-BE de forma enxuta. Criação de SOPs com dono, gatilhos e SLAs, além de melhoria contínua e indicadores práticos (lead time, taxa de erro).",
+      icon: <Cog className="w-5 h-5" />
     },
     {
-      week: "Semana 3",
-      title: "Pessoas e Liderança",
-      description: "Gestão de equipes, liderança e desenvolvimento de pessoas.",
-      icon: <Users className="w-5 h-5" />
+      title: "Projetos (Execução sem caos)",
+      description: "Planejamento por valor, escopo mínimo e fluxo Kanban/Scrum 'lite'. Ritos curtos, gestão de riscos e um painel claro conectando Projetos ↔ Tarefas ↔ Pessoas.",
+      icon: <Target className="w-5 h-5" />
     },
     {
-      week: "Semana 4",
-      title: "Resultados e Análise",
-      description: "Métricas, análise de performance e tomada de decisões.",
-      icon: <Lightbulb className="w-5 h-5" />
+      title: "Gestão Empresarial (Máquina do negócio)",
+      description: "Estratégia simples, funil de vendas e playbook comercial. Finanças sem complicação (fluxo de caixa, unit economics) e rotinas de gestão guiadas por métricas que importam.",
+      icon: <Building className="w-5 h-5" />
     }
   ];
 
   const plans = [
     {
       name: "Mensal",
-      price: "R$ 97",
+      price: "R$ 67,90",
       period: "mês",
       description: "Flexibilidade para experimentar",
       features: [
@@ -81,20 +81,19 @@ const FocusClub = () => {
     },
     {
       name: "Anual", 
-      price: "R$ 67",
-      period: "mês",
-      originalPrice: "R$ 97",
+      price: "R$ 497,00",
+      period: "ano",
+      originalPrice: "R$ 814,80",
       description: "2 meses grátis + bônus exclusivos",
       features: [
         "Todos os benefícios do plano mensal",
-        "2 meses grátis (economia de R$ 194)",
-        "Bônus: Curso de Excel Avançado",
+        "2 meses grátis (economia de R$ 135,80)",
         "Bônus: Templates exclusivos",
         "Bônus: Consultoria 1:1 (30 min)",
         "Prioridade no suporte"
       ],
       highlight: true,
-      savings: "Economize R$ 360/ano"
+      savings: "Economize R$ 317,80/ano"
     }
   ];
 
@@ -112,12 +111,11 @@ const FocusClub = () => {
             </div>
             
             <h1 className="hero-title mb-6">
-              Aprendizado contínuo em produtividade, processos e gestão
+              Aprendizado contínuo
             </h1>
             
             <p className="hero-subtitle mb-12 max-w-3xl mx-auto">
-              Junte-se a uma comunidade exclusiva de profissionais que buscam excelência. 
-              Conteúdo semanal, networking qualificado e desenvolvimento acelerado.
+              Comunidade exclusiva para profissionais em busca de excelência, com conteúdos semanais, networking estratégico e desenvolvimento acelerado.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -132,14 +130,10 @@ const FocusClub = () => {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 max-w-2xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16 max-w-md mx-auto">
               <div className="text-center">
-                <div className="text-3xl font-bold text-primary mb-2">1.200+</div>
-                <div className="text-sm text-foreground-muted">Membros ativos</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-primary mb-2">52</div>
-                <div className="text-sm text-foreground-muted">Aulas por ano</div>
+                <div className="text-3xl font-bold text-primary mb-2">+20</div>
+                <div className="text-sm text-foreground-muted">Aulas disponíveis</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-primary mb-2">4.9</div>
@@ -188,27 +182,24 @@ const FocusClub = () => {
         <div className="container-focus">
           <div className="text-center mb-20">
             <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
-              Cronograma mensal
+              Aprendizado Contínuo
             </h2>
             <p className="text-xl text-foreground-muted max-w-3xl mx-auto">
-              Cada mês é cuidadosamente estruturado para cobrir todos os aspectos 
-              da gestão empresarial e desenvolvimento pessoal.
+              Conteúdos exclusivos que unem gestão, processos e desenvolvimento pessoal em aulas práticas.
             </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {monthlyContent.map((content, index) => (
-              <div key={content.week} className="service-card animate-slide-up" style={{ animationDelay: `${index * 100}ms` }}>
-                <div className="flex items-center justify-between mb-4">
-                  <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-primary/10 text-primary">
+              <div key={content.title} className="service-card animate-slide-up" style={{ animationDelay: `${index * 100}ms` }}>
+                <div className="flex items-center mb-4">
+                  <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-primary/10 text-primary mr-4">
                     {content.icon}
                   </div>
-                  <span className="text-sm text-foreground-muted">{content.week}</span>
+                  <h3 className="text-xl font-bold text-card-foreground">
+                    {content.title}
+                  </h3>
                 </div>
-                
-                <h3 className="text-xl font-bold text-card-foreground mb-3">
-                  {content.title}
-                </h3>
                 
                 <p className="text-foreground-muted">
                   {content.description}
@@ -228,10 +219,10 @@ const FocusClub = () => {
                 exclusivas desenvolvidas pela Focus para acelerar sua implementação.
               </p>
               <div className="grid grid-cols-2 gap-4 text-sm text-foreground-muted">
-                <div>✓ 50+ Templates exclusivos</div>
-                <div>✓ 30+ Checklists práticos</div>
-                <div>✓ 20+ Planilhas avançadas</div>
+                <div>✓ Sistemas exclusivos</div>
+                <div>✓ Checklists práticos</div>
                 <div>✓ Ferramentas de análise</div>
+                <div></div>
               </div>
             </div>
           </div>
