@@ -31,8 +31,12 @@ const Footer = () => {
             {/* Brand */}
             <div className="lg:col-span-2">
               <Link to="/" className="flex items-center space-x-2 mb-6">
-                <div className="p-2 bg-gradient-primary rounded-xl">
-                  <Target className="w-6 h-6 text-primary-foreground" />
+                <div className="w-10 h-10 flex items-center justify-center">
+                  <img 
+                    src="/lovable-uploads/4a125d6e-b8ad-4fde-a87f-349e56af291e.png" 
+                    alt="Focus Logo" 
+                    className="w-8 h-8 object-contain"
+                  />
                 </div>
                 <span className="font-bold text-xl text-foreground">Focus</span>
               </Link>
