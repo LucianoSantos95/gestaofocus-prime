@@ -1,0 +1,339 @@
+import { Button } from "@/components/ui/button";
+import { 
+  Building2, 
+  ArrowRight, 
+  CheckCircle, 
+  DollarSign,
+  Users,
+  BarChart3,
+  Headphones,
+  Zap,
+  Shield,
+  TrendingUp
+} from "lucide-react";
+
+const HubEmpresarial = () => {
+  const features = [
+    {
+      icon: <DollarSign className="w-6 h-6" />,
+      title: "Controle Financeiro",
+      description: "Fluxo de caixa, contas a pagar/receber, relatórios financeiros e análise de rentabilidade.",
+      details: ["Dashboard financeiro", "Previsão de caixa", "Relatórios automáticos", "Controle de custos"]
+    },
+    {
+      icon: <Users className="w-6 h-6" />,
+      title: "Área Comercial",
+      description: "CRM completo, pipeline de vendas, controle de leads e acompanhamento de performance.",
+      details: ["Gestão de leads", "Pipeline visual", "Histórico de contatos", "Metas de vendas"]
+    },
+    {
+      icon: <BarChart3 className="w-6 h-6" />,
+      title: "Marketing Integrado",
+      description: "Campanhas, métricas, ROI e análise de performance de todos os canais de marketing.",
+      details: ["Tracking de campanhas", "ROI por canal", "Análise de conversão", "Planejamento"]
+    },
+    {
+      icon: <Headphones className="w-6 h-6" />,
+      title: "Suporte ao Cliente",
+      description: "Sistema de tickets, base de conhecimento e acompanhamento de satisfação.",
+      details: ["Gestão de tickets", "SLA automático", "Base de conhecimento", "NPS integrado"]
+    }
+  ];
+
+  const benefits = [
+    "Visão completa do negócio em um só lugar",
+    "Dashboards em tempo real",
+    "Relatórios automáticos",
+    "Integração entre todas as áreas", 
+    "Análise preditiva e insights",
+    "Controle de permissões por usuário",
+    "Backup automático na nuvem",
+    "Suporte técnico especializado"
+  ];
+
+  const plans = [
+    {
+      name: "Starter",
+      price: "R$ 297",
+      period: "mensal",
+      description: "Para pequenas empresas iniciando a organização",
+      features: [
+        "Até 5 usuários",
+        "Módulos básicos",
+        "Suporte por email",
+        "1 integração inclusa"
+      ],
+      highlighted: false
+    },
+    {
+      name: "Professional", 
+      price: "R$ 497",
+      period: "mensal",
+      description: "Para empresas em crescimento",
+      features: [
+        "Até 15 usuários",
+        "Todos os módulos",
+        "Suporte prioritário",
+        "5 integrações inclusas",
+        "Relatórios avançados",
+        "Personalização básica"
+      ],
+      highlighted: true
+    },
+    {
+      name: "Enterprise",
+      price: "Sob consulta",
+      period: "",
+      description: "Para grandes empresas", 
+      features: [
+        "Usuários ilimitados",
+        "Personalização completa",
+        "Suporte dedicado",
+        "Integrações ilimitadas",
+        "Treinamento incluído",
+        "SLA garantido"
+      ],
+      highlighted: false
+    }
+  ];
+
+  return (
+    <div className="min-h-screen pt-20">
+      {/* Hero Section */}
+      <section className="section-padding bg-gradient-dark">
+        <div className="container-focus">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="inline-flex items-center px-4 py-2 rounded-full border border-card-border bg-card/50 backdrop-blur-sm mb-8">
+              <Building2 className="w-4 h-4 text-primary mr-2" />
+              <span className="text-sm text-foreground-muted">
+                Hub Empresarial Pro
+              </span>
+            </div>
+            
+            <h1 className="hero-title mb-6">
+              A ferramenta completa para gerir seu negócio
+            </h1>
+            
+            <p className="hero-subtitle mb-12 max-w-3xl mx-auto">
+              Sistema integrado que centraliza financeiro, comercial, marketing e suporte, 
+              oferecendo visão estratégica completa do seu negócio.
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Button className="btn-hero group">
+                Comece agora
+                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+              </Button>
+              
+              <Button variant="outline" className="btn-secondary">
+                Ver demonstração
+              </Button>
+            </div>
+
+            {/* Stats */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 max-w-2xl mx-auto">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-primary mb-2">4</div>
+                <div className="text-sm text-foreground-muted">Módulos integrados</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-primary mb-2">+50</div>
+                <div className="text-sm text-foreground-muted">Relatórios automáticos</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-primary mb-2">24/7</div>
+                <div className="text-sm text-foreground-muted">Monitoramento</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="section-padding bg-background-secondary">
+        <div className="container-focus">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
+              Funcionalidades completas
+            </h2>
+            <p className="text-xl text-foreground-muted max-w-3xl mx-auto">
+              Cada módulo foi desenvolvido para trabalhar em perfeita sintonia, 
+              oferecendo uma visão 360° do seu negócio.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {features.map((feature, index) => (
+              <div key={feature.title} className="service-card animate-slide-up" style={{ animationDelay: `${index * 100}ms` }}>
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 text-primary mb-6">
+                  {feature.icon}
+                </div>
+                
+                <h3 className="text-xl font-bold text-card-foreground mb-3">
+                  {feature.title}
+                </h3>
+                
+                <p className="text-foreground-muted mb-6">
+                  {feature.description}
+                </p>
+
+                <div className="space-y-2">
+                  {feature.details.map((detail, detailIndex) => (
+                    <div key={detailIndex} className="flex items-center text-sm text-foreground-muted">
+                      <div className="w-1.5 h-1.5 bg-primary rounded-full mr-3 flex-shrink-0" />
+                      {detail}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits Section */}
+      <section className="section-padding">
+        <div className="container-focus">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
+                Por que escolher o Hub Empresarial?
+              </h2>
+              <p className="text-xl text-foreground-muted leading-relaxed mb-8">
+                Mais que um software, é a evolução da gestão empresarial. 
+                Integração total, insights inteligentes e crescimento sustentável.
+              </p>
+              
+              <div className="grid grid-cols-1 gap-4 mb-8">
+                {benefits.map((benefit, index) => (
+                  <div key={index} className="flex items-center space-x-3">
+                    <CheckCircle className="w-6 h-6 text-primary flex-shrink-0" />
+                    <span className="text-foreground-muted">{benefit}</span>
+                  </div>
+                ))}
+              </div>
+
+              <Button className="btn-hero group">
+                Solicitar demonstração
+                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+              </Button>
+            </div>
+
+            <div className="space-y-6">
+              <div className="service-card">
+                <TrendingUp className="w-8 h-8 text-primary mb-4" />
+                <h3 className="text-xl font-bold text-card-foreground mb-3">Analytics Inteligente</h3>
+                <p className="text-foreground-muted">
+                  Dashboards em tempo real com insights automáticos e análise preditiva 
+                  para tomada de decisões estratégicas.
+                </p>
+              </div>
+              
+              <div className="service-card">
+                <Zap className="w-8 h-8 text-primary mb-4" />
+                <h3 className="text-xl font-bold text-card-foreground mb-3">Automações Avançadas</h3>
+                <p className="text-foreground-muted">
+                  Workflows automatizados que conectam todos os setores, 
+                  eliminando trabalho manual e reduzindo erros.
+                </p>
+              </div>
+              
+              <div className="service-card">
+                <Shield className="w-8 h-8 text-primary mb-4" />
+                <h3 className="text-xl font-bold text-card-foreground mb-3">Segurança Enterprise</h3>
+                <p className="text-foreground-muted">
+                  Controle granular de permissões, backup automático e 
+                  conformidade com LGPD garantida.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section className="section-padding bg-background-secondary">
+        <div className="container-focus">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
+              Escolha o plano ideal
+            </h2>
+            <p className="text-xl text-foreground-muted max-w-3xl mx-auto">
+              Planos flexíveis que crescem junto com seu negócio. 
+              Comece hoje e escale conforme sua necessidade.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {plans.map((plan, index) => (
+              <div 
+                key={plan.name} 
+                className={`service-card relative ${
+                  plan.highlighted ? 'ring-2 ring-primary animate-glow' : ''
+                }`}
+              >
+                {plan.highlighted && (
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                    <span className="bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-medium">
+                      Mais popular
+                    </span>
+                  </div>
+                )}
+                
+                <div className="text-center mb-6">
+                  <h3 className="text-xl font-bold text-card-foreground mb-2">{plan.name}</h3>
+                  <div className="mb-2">
+                    <span className="text-3xl font-bold text-primary">{plan.price}</span>
+                    {plan.period && <span className="text-foreground-muted">/{plan.period}</span>}
+                  </div>
+                  <p className="text-sm text-foreground-muted">{plan.description}</p>
+                </div>
+
+                <div className="space-y-3 mb-8">
+                  {plan.features.map((feature, featureIndex) => (
+                    <div key={featureIndex} className="flex items-center text-sm text-foreground-muted">
+                      <CheckCircle className="w-4 h-4 text-primary mr-3 flex-shrink-0" />
+                      {feature}
+                    </div>
+                  ))}
+                </div>
+
+                <Button 
+                  className={plan.highlighted ? "btn-hero w-full" : "btn-secondary w-full"}
+                >
+                  {plan.name === "Enterprise" ? "Falar com vendas" : "Começar agora"}
+                </Button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="section-padding">
+        <div className="container-focus">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
+              Pronto para revolucionar sua gestão?
+            </h2>
+            <p className="text-xl text-foreground-muted mb-8 max-w-2xl mx-auto">
+              Experimente o Hub Empresarial Pro por 14 dias grátis. 
+              Sem compromisso, com suporte completo para implementação.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Button className="btn-hero group">
+                Começar teste gratuito
+                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+              </Button>
+              <Button variant="outline" className="btn-secondary">
+                Agendar apresentação
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default HubEmpresarial;
