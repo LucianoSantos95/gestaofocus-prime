@@ -242,16 +242,16 @@ const FocusClub = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto mt-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto pt-12">
             {plans.map((plan, index) => (
               <div 
                 key={plan.name} 
-                className={`service-card relative ${
+                className={`service-card relative min-h-[520px] flex flex-col ${
                   plan.highlight ? 'ring-2 ring-primary animate-glow' : ''
-                } ${plan.highlight ? 'mt-8' : 'mt-2'}`}
+                }`}
               >
                 {plan.highlight && (
-                  <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 z-10">
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
                     <span className="bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap shadow-lg">
                       Melhor valor
                     </span>
@@ -275,7 +275,7 @@ const FocusClub = () => {
                   <p className="text-sm text-foreground-muted">{plan.description}</p>
                 </div>
 
-                <div className="space-y-3 mb-8 min-h-[200px]">
+                <div className="space-y-3 mb-8 flex-grow">
                   {plan.features.map((feature, featureIndex) => (
                     <div key={featureIndex} className="flex items-start text-sm text-foreground-muted">
                       <CheckCircle className="w-4 h-4 text-primary mr-3 flex-shrink-0 mt-0.5" />
@@ -285,7 +285,7 @@ const FocusClub = () => {
                 </div>
 
                 <Button 
-                  className={plan.highlight ? "btn-hero w-full" : "btn-secondary w-full"}
+                  className={plan.highlight ? "btn-hero w-full mt-auto" : "btn-secondary w-full mt-auto"}
                 >
                   Escolher {plan.name}
                 </Button>
