@@ -35,9 +35,8 @@ const SistemasNotion = () => {
   ];
 
   const features = [
-    "Templates personalizados para seu setor",
+    "Páginas personalizados para seu setor",
     "Dashboards executivos em tempo real",
-    "Automações de workflow",
     "Integrações com ferramentas existentes",
     "Banco de dados relacionais",
     "Sistema de permissões avançado",
@@ -59,7 +58,7 @@ const SistemasNotion = () => {
             </div>
             
             <h1 className="hero-title mb-6">
-              Construa um sistema sob medida para o seu negócio
+              Tenha um sistema sob medida para o seu negócio
             </h1>
             
             <p className="hero-subtitle mb-12 max-w-3xl mx-auto">
