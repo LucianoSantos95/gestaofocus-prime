@@ -42,7 +42,11 @@ const HeroSection = () => {
               <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
             </Button>
             
-            <Button variant="ghost" className="btn-secondary group">
+            <Button 
+              variant="ghost" 
+              className="btn-secondary group"
+              onClick={() => window.open('https://www.notion.com/pt/@focusgestao', '_blank')}
+            >
               <Play className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform duration-300" />
               Ver demonstração
             </Button>

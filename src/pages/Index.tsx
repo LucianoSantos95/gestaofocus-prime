@@ -188,7 +188,11 @@ const Index = () => {
                 Fale com a Focus
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
               </Button>
-              <Button variant="outline" className="btn-secondary">
+              <Button 
+                variant="outline" 
+                className="btn-secondary"
+                onClick={() => window.open('https://www.notion.com/pt/@focusgestao', '_blank')}
+              >
                 Conhecer sistema gratuito
               </Button>
             </div>

@@ -75,7 +75,11 @@ const SistemasNotion = () => {
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
               </Button>
               
-              <Button variant="outline" className="btn-secondary">
+              <Button 
+                variant="outline" 
+                className="btn-secondary"
+                onClick={() => window.open('https://www.notion.com/pt/@focusgestao', '_blank')}
+              >
                 Ver exemplos de sistemas
               </Button>
             </div>
@@ -202,7 +206,11 @@ const SistemasNotion = () => {
                 Solicitar consultoria gratuita
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
               </Button>
-              <Button variant="outline" className="btn-secondary">
+              <Button 
+                variant="outline" 
+                className="btn-secondary"
+                onClick={() => window.open('https://www.notion.com/pt/@focusgestao', '_blank')}
+              >
                 Ver portfólio de sistemas
               </Button>
             </div>
