@@ -38,7 +38,6 @@ const Footer = () => {
                     className="w-8 h-8 object-contain"
                   />
                 </div>
-                <span className="font-bold text-xl text-foreground">Focus</span>
               </Link>
               
               <p className="text-foreground-muted leading-relaxed mb-6 max-w-md">
