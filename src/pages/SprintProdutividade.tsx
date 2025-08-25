@@ -14,38 +14,38 @@ const SprintProdutividade = () => {
   const dailyProgram = [
     {
       day: "Dia 1",
-      title: "Fundamentos da Produtividade",
-      topics: ["Análise da rotina atual", "Identificação de gargalos", "Definição de objetivos"]
+      title: "Captura mental",
+      topics: ["Transforme o caos mental em clareza organizando pensamentos, ideias e preocupações em um único espaço."]
     },
     {
       day: "Dia 2", 
-      title: "Gestão de Tempo Eficaz",
-      topics: ["Técnicas de time blocking", "Priorização matriz Eisenhower", "Eliminação de distrações"]
+      title: "Classificação de tarefas",
+      topics: ["Aprenda a priorizar com clareza o que é urgente, importante ou apenas ruído."]
     },
     {
       day: "Dia 3",
-      title: "Organização Digital",
-      topics: ["Inbox zero", "Sistemas de arquivos", "Automações básicas"]
+      title: "Semana ideal",
+      topics: ["Crie uma visão realista da semana distribuindo suas atividades com equilíbrio."]
     },
     {
       day: "Dia 4",
-      title: "Processos e Workflows", 
-      topics: ["Mapeamento de processos", "Criação de checklists", "Padronização de atividades"]
+      title: "Cortando distrações", 
+      topics: ["Mapeie o que rouba seu foco e crie um plano simples para manter a mente limpa."]
     },
     {
       day: "Dia 5",
-      title: "Foco e Concentração",
-      topics: ["Técnica Pomodoro avançada", "Deep work", "Ambiente produtivo"]
+      title: "Rotina estratégica",
+      topics: ["Construa uma rotina sob medida para sua realidade, seus objetivos e seu ritmo."]
     },
     {
       day: "Dia 6",
-      title: "Hábitos de Alta Performance",
-      topics: ["Rotinas matinais", "Revisões semanais", "Rituais de fechamento"]
+      title: "Organização digital",
+      topics: ["Limpe, organize e otimize seus ambientes digitais para fluir com leveza."]
     },
     {
       day: "Dia 7",
-      title: "Sustentabilidade e Evolução",
-      topics: ["Métricas de produtividade", "Ajustes finos", "Plano de continuidade"]
+      title: "Planejamento final",
+      topics: ["Una tudo em um sistema pessoal e funcional e termine com clareza e direção."]
     }
   ];
 
