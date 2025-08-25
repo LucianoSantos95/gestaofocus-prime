@@ -102,19 +102,22 @@ const Index = () => {
         <div className="container-focus">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
+              <div className="mb-8">
+                <img 
+                  src="/lovable-uploads/84889f04-d903-46ca-b467-39dd119fdcc4.png" 
+                  alt="Logo Focus" 
+                  className="h-16 mb-6"
+                />
+              </div>
               <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
                 Sobre a Focus
               </h2>
               <p className="text-xl text-foreground-muted leading-relaxed mb-8">
-                Somos especialistas em transformar a gestão de empresas e pessoas através 
-                de sistemas organizados, processos claros e metodologias de produtividade 
-                que geram resultados reais.
+                Somos especialistas em gestão empresarial e produtividade. Ajudamos empresas 
+                e profissionais a crescerem com eficiência por meio de sistemas personalizados, 
+                processos organizados e metodologias comprovadas que geram resultados reais.
               </p>
               <div className="grid grid-cols-2 gap-6 mb-8">
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="w-6 h-6 text-primary flex-shrink-0" />
-                  <span className="text-foreground-muted">+5 anos de experiência</span>
-                </div>
                 <div className="flex items-center space-x-3">
                   <CheckCircle className="w-6 h-6 text-primary flex-shrink-0" />
                   <span className="text-foreground-muted">Metodologia comprovada</span>
@@ -126,6 +129,10 @@ const Index = () => {
                 <div className="flex items-center space-x-3">
                   <CheckCircle className="w-6 h-6 text-primary flex-shrink-0" />
                   <span className="text-foreground-muted">Resultados garantidos</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <CheckCircle className="w-6 h-6 text-primary flex-shrink-0" />
+                  <span className="text-foreground-muted">Sistemas personalizados</span>
                 </div>
               </div>
               <Button className="btn-hero group">

@@ -13,9 +13,7 @@ const Footer = () => {
     ],
     company: [
       { name: "Sobre a Focus", href: "/sobre" },
-      { name: "Blog", href: "/blog" },
-      { name: "Contato", href: "/contato" },
-      { name: "Carreiras", href: "/carreiras" }
+      { name: "Contato", href: "/contato" }
     ],
     support: [
       { name: "Central de Ajuda", href: "/ajuda" },
@@ -40,22 +38,15 @@ const Footer = () => {
               </Link>
               
               <p className="text-foreground-muted leading-relaxed mb-6 max-w-md">
-                Transformamos a gestão de empresas e pessoas através de sistemas organizados, 
-                processos claros e metodologias de produtividade que geram resultados reais.
+                Somos especialistas em gestão empresarial e produtividade. Ajudamos empresas 
+                e profissionais a crescerem com eficiência por meio de sistemas personalizados, 
+                processos organizados e metodologias comprovadas que geram resultados reais.
               </p>
 
               <div className="space-y-3">
                 <div className="flex items-center text-foreground-muted">
                   <Mail className="w-4 h-4 mr-3 text-primary" />
-                  <span>contato@focus.com.br</span>
-                </div>
-                <div className="flex items-center text-foreground-muted">
-                  <Phone className="w-4 h-4 mr-3 text-primary" />
-                  <span>+55 (11) 99999-9999</span>
-                </div>
-                <div className="flex items-center text-foreground-muted">
-                  <MessageCircle className="w-4 h-4 mr-3 text-primary" />
-                  <span>WhatsApp: +55 (11) 88888-8888</span>
+                  <span>comercial@focusinteligente.com.br</span>
                 </div>
               </div>
             </div>

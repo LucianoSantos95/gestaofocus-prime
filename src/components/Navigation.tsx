@@ -36,10 +36,11 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 group">
-            <div className="relative p-2 bg-gradient-primary rounded-xl group-hover:scale-105 transition-transform duration-200">
-              <Target className="w-6 h-6 text-primary-foreground" />
-            </div>
-            <span className="font-bold text-xl text-foreground">Focus</span>
+            <img 
+              src="/lovable-uploads/84889f04-d903-46ca-b467-39dd119fdcc4.png" 
+              alt="Focus" 
+              className="h-8 group-hover:scale-105 transition-transform duration-200"
+            />
           </Link>
 
           {/* Desktop Menu */}

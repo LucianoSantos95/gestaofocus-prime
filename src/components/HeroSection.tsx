@@ -23,7 +23,7 @@ const HeroSection = () => {
 
           {/* Main Title */}
           <h1 className="hero-title mb-6 animate-slide-up">
-            Centralize, Organize e Evolua sua Gestão
+            Gestão organizada, processos otimizados e soluções personalizadas para empresas que buscam eficiência e resultados.
           </h1>
 
           {/* Subtitle */}
@@ -48,16 +48,12 @@ const HeroSection = () => {
           {/* Stats */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-2xl mx-auto animate-slide-up delay-500">
             <div className="text-center">
-              <div className="text-3xl font-bold text-primary mb-2">+8.000</div>
+              <div className="text-3xl font-bold text-primary mb-2">+10.000</div>
               <div className="text-sm text-foreground-muted">Downloads de sistemas</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-primary mb-2">+500</div>
+              <div className="text-3xl font-bold text-primary mb-2">+20</div>
               <div className="text-sm text-foreground-muted">Empresas atendidas</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-primary mb-2">5+</div>
-              <div className="text-sm text-foreground-muted">Anos de experiência</div>
             </div>
           </div>
         </div>
