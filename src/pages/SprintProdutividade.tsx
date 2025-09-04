@@ -95,9 +95,11 @@ const SprintProdutividade = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button className="btn-hero group">
-                Garanta seu acesso
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+              <Button className="btn-hero group" asChild>
+                <a href="https://pay.hub.la/xBQ4OluTw1yDyAr8AT5Q" target="_blank" rel="noopener noreferrer">
+                  Garanta seu acesso
+                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+                </a>
               </Button>
               
               <Button variant="outline" className="btn-secondary">
@@ -197,9 +199,11 @@ const SprintProdutividade = () => {
                 ))}
               </div>
 
-              <Button className="btn-hero group">
-                Começar hoje mesmo
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+              <Button className="btn-hero group" asChild>
+                <a href="https://pay.hub.la/xBQ4OluTw1yDyAr8AT5Q" target="_blank" rel="noopener noreferrer">
+                  Começar hoje mesmo
+                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+                </a>
               </Button>
             </div>
 
@@ -247,9 +251,11 @@ const SprintProdutividade = () => {
               com nosso Sprint. Garantia de 30 dias ou seu dinheiro de volta.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button className="btn-hero group">
-                Garantir minha vaga
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+              <Button className="btn-hero group" asChild>
+                <a href="https://pay.hub.la/xBQ4OluTw1yDyAr8AT5Q" target="_blank" rel="noopener noreferrer">
+                  Garantir minha vaga
+                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+                </a>
               </Button>
               <Button variant="outline" className="btn-secondary">
                 Ver depoimentos
