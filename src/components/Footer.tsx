@@ -13,7 +13,7 @@ const Footer = () => {
     ],
     company: [
       { name: "Sobre a Focus", href: "/sobre" },
-      { name: "Contato", href: "/contato" }
+      { name: "Contato", href: "https://api.whatsapp.com/send/?phone=5511916742443&text=Ol%C3%A1%2C+gostaria+de+saber+mais+informa%C3%A7%C3%B5es+sobre+personaliza%C3%A7%C3%A3o+de+sistemas.&type=phone_number&app_absent=0" }
     ],
     support: [
       { name: "Central de Ajuda", href: "/ajuda" },
@@ -77,12 +77,23 @@ const Footer = () => {
               <ul className="space-y-4">
                 {footerLinks.company.map((link) => (
                   <li key={link.name}>
-                    <Link 
-                      to={link.href}
-                      className="text-foreground-muted hover:text-primary transition-colors duration-200"
-                    >
-                      {link.name}
-                    </Link>
+                    {link.name === 'Contato' ? (
+                      <a 
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-foreground-muted hover:text-primary transition-colors duration-200"
+                      >
+                        {link.name}
+                      </a>
+                    ) : (
+                      <Link 
+                        to={link.href}
+                        className="text-foreground-muted hover:text-primary transition-colors duration-200"
+                      >
+                        {link.name}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
