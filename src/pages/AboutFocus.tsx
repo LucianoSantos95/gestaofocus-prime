@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import focusLogo from "@/assets/focus-logo-about.png";
 
 const AboutFocus = () => {
   return (
@@ -14,15 +13,6 @@ const AboutFocus = () => {
             <p className="hero-subtitle max-w-3xl mx-auto">
               Transformando empresas em organizações mais eficientes e estratégicas
             </p>
-          </div>
-
-          {/* Logo Image */}
-          <div className="flex justify-center mb-16 animate-slide-up">
-            <img 
-              src={focusLogo} 
-              alt="Focus Gestão Empresarial" 
-              className="max-w-md w-full h-auto"
-            />
           </div>
 
           {/* Content */}
