@@ -12,6 +12,9 @@ import HubEmpresarial from "./pages/HubEmpresarial";
 import FocusClub from "./pages/FocusClub";
 import AboutFocus from "./pages/AboutFocus";
 import Privacidade from "./pages/Privacidade";
+import CentralAjuda from "./pages/CentralAjuda";
+import Documentacao from "./pages/Documentacao";
+import StatusPlataforma from "./pages/StatusPlataforma";
 import NotFound from "./pages/NotFound";
 import { useAnalytics } from "./hooks/useAnalytics";
 
@@ -41,6 +44,9 @@ const App = () => (
               <Route path="/focus-club" element={<FocusClub />} />
               <Route path="/sobre" element={<AboutFocus />} />
               <Route path="/privacidade" element={<Privacidade />} />
+              <Route path="/ajuda" element={<CentralAjuda />} />
+              <Route path="/docs" element={<Documentacao />} />
+              <Route path="/status" element={<StatusPlataforma />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
