@@ -17,6 +17,7 @@ import Documentacao from "./pages/Documentacao";
 import StatusPlataforma from "./pages/StatusPlataforma";
 import NotFound from "./pages/NotFound";
 import { useAnalytics } from "./hooks/useAnalytics";
+import CookieConsent from "./components/CookieConsent";
 
 const queryClient = new QueryClient();
 
@@ -33,6 +34,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <AnalyticsProvider />
+        <CookieConsent />
         <div className="min-h-screen bg-background flex flex-col">
           <Navigation />
           <main className="flex-1">
