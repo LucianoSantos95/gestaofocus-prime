@@ -12,6 +12,8 @@ import HubEmpresarial from "./pages/HubEmpresarial";
 import FocusClub from "./pages/FocusClub";
 import AboutFocus from "./pages/AboutFocus";
 import Privacidade from "./pages/Privacidade";
+import TermosUso from "./pages/TermosUso";
+import Cookies from "./pages/Cookies";
 import CentralAjuda from "./pages/CentralAjuda";
 import Documentacao from "./pages/Documentacao";
 import StatusPlataforma from "./pages/StatusPlataforma";
@@ -46,6 +48,8 @@ const App = () => (
               <Route path="/focus-club" element={<FocusClub />} />
               <Route path="/sobre" element={<AboutFocus />} />
               <Route path="/privacidade" element={<Privacidade />} />
+              <Route path="/termos" element={<TermosUso />} />
+              <Route path="/cookies" element={<Cookies />} />
               <Route path="/ajuda" element={<CentralAjuda />} />
               <Route path="/docs" element={<Documentacao />} />
               <Route path="/status" element={<StatusPlataforma />} />
