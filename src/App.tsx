@@ -10,6 +10,7 @@ import SistemasNotion from "./pages/SistemasNotion";
 import SprintProdutividade from "./pages/SprintProdutividade";
 import HubEmpresarial from "./pages/HubEmpresarial";
 import FocusClub from "./pages/FocusClub";
+import AboutFocus from "./pages/AboutFocus";
 import NotFound from "./pages/NotFound";
 import { useAnalytics } from "./hooks/useAnalytics";
 
@@ -37,6 +38,7 @@ const App = () => (
               <Route path="/sprint-produtividade" element={<SprintProdutividade />} />
               <Route path="/hub-empresarial" element={<HubEmpresarial />} />
               <Route path="/focus-club" element={<FocusClub />} />
+              <Route path="/sobre" element={<AboutFocus />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
