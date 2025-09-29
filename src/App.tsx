@@ -11,6 +11,7 @@ import SprintProdutividade from "./pages/SprintProdutividade";
 import HubEmpresarial from "./pages/HubEmpresarial";
 import FocusClub from "./pages/FocusClub";
 import AboutFocus from "./pages/AboutFocus";
+import Privacidade from "./pages/Privacidade";
 import NotFound from "./pages/NotFound";
 import { useAnalytics } from "./hooks/useAnalytics";
 
@@ -39,6 +40,7 @@ const App = () => (
               <Route path="/hub-empresarial" element={<HubEmpresarial />} />
               <Route path="/focus-club" element={<FocusClub />} />
               <Route path="/sobre" element={<AboutFocus />} />
+              <Route path="/privacidade" element={<Privacidade />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
