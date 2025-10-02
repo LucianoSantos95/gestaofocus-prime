@@ -16,8 +16,8 @@ import {
 const Index = () => {
   const services = [
     {
-      title: "Sistemas Personalizados Notion",
-      description: "Construa um sistema sob medida para centralizar operações, processos e gestão do seu negócio.",
+      title: "Sistemas Notion Personalizados",
+      description: "Desenvolva sistemas empresariais sob medida no Notion para centralizar operações, otimizar processos e ter dashboards estratégicos em tempo real.",
       features: [
         "Templates customizados para sua empresa",
         "Automações inteligentes",
@@ -29,8 +29,8 @@ const Index = () => {
       gradient: "from-blue-500/20 to-purple-500/20"
     },
     {
-      title: "Sprint de Produtividade",
-      description: "7 dias para transformar sua rotina com aulas práticas e aplicação diária.",
+      title: "Sprint de Produtividade Empresarial",
+      description: "Programa intensivo de 7 dias com metodologias de produtividade, gestão de tempo e ferramentas práticas para transformar sua rotina profissional.",
       features: [
         "Metodologias comprovadas",
         "Exercícios práticos diários",
@@ -43,7 +43,7 @@ const Index = () => {
     },
     {
       title: "Hub Empresarial Pro",
-      description: "A ferramenta completa para gerir seu negócio com visão financeira, comercial e estratégica.",
+      description: "Sistema completo de gestão empresarial com controle financeiro, CRM integrado, dashboards em tempo real e relatórios automáticos para decisões estratégicas.",
       features: [
         "Controle financeiro completo",
         "CRM integrado",
@@ -55,8 +55,8 @@ const Index = () => {
       gradient: "from-green-500/20 to-emerald-500/20"
     },
     {
-      title: "Comunidade Focus Club",
-      description: "Aprendizado contínuo em produtividade, processos e gestão com networking qualificado.",
+      title: "Focus Club - Comunidade Empresarial",
+      description: "Comunidade exclusiva de empreendedores e gestores com aprendizado contínuo em produtividade, otimização de processos, gestão estratégica e networking qualificado.",
       features: [
         "Aulas exclusivas semanais",
         "Networking qualificado",
@@ -79,11 +79,12 @@ const Index = () => {
         <div className="container-focus">
           <div className="text-center mb-20">
             <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
-              Nossos Serviços
+              Serviços de Consultoria e Sistemas Empresariais
             </h2>
             <p className="text-xl text-foreground-muted max-w-3xl mx-auto">
-              Soluções completas para transformar sua gestão empresarial e aumentar 
-              sua produtividade com metodologias comprovadas.
+              Soluções completas em gestão empresarial: sistemas Notion personalizados, 
+              sprint de produtividade, hub empresarial e comunidade exclusiva para transformar 
+              processos e aumentar resultados com metodologias comprovadas.
             </p>
           </div>
 
@@ -103,12 +104,13 @@ const Index = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
               <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
-                Sobre a Focus
+                Consultoria Especializada em Gestão Empresarial
               </h2>
               <p className="text-xl text-foreground-muted leading-relaxed mb-8">
-                Somos especialistas em gestão empresarial e produtividade. Ajudamos empresas 
-                e profissionais a crescerem com eficiência por meio de sistemas personalizados, 
-                processos organizados e metodologias comprovadas que geram resultados reais.
+                A Focus é referência em consultoria empresarial, sistemas Notion personalizados e 
+                metodologias de produtividade. Transformamos a gestão de empresas e profissionais 
+                por meio de processos otimizados, automação inteligente, dashboards estratégicos e 
+                soluções escaláveis que geram crescimento sustentável e resultados mensuráveis.
               </p>
               <div className="grid grid-cols-2 gap-6 mb-8">
                 <div className="flex items-center space-x-3">
@@ -174,11 +176,12 @@ const Index = () => {
         <div className="container-focus">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
-              Pronto para evoluir sua gestão?
+              Transforme sua Gestão Empresarial Hoje
             </h2>
             <p className="text-xl text-foreground-muted mb-8 max-w-2xl mx-auto">
-              Vamos construir juntos o sistema perfeito para o seu negócio. 
-              Entre em contato e descubra como podemos ajudar.
+              Implemente sistemas empresariais personalizados, otimize processos e aumente 
+              a produtividade da sua equipe. Consultoria especializada para crescimento real. 
+              Entre em contato e descubra nossas soluções.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button 
