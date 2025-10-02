@@ -58,12 +58,11 @@ const SistemasNotion = () => {
             </div>
             
             <h1 className="hero-title mb-6">
-              Tenha um sistema sob medida para o seu negócio
+              Seus processos estão espalhados? Centralize tudo em um sistema sob medida para sua empresa.
             </h1>
             
             <p className="hero-subtitle mb-12 max-w-3xl mx-auto">
-              Desenvolvemos soluções completas no Notion para centralizar suas operações, 
-              otimizar processos e dar visibilidade estratégica ao seu negócio.
+              Criamos sistemas empresariais no Notion que organizam operações, eliminam retrabalho e entregam relatórios estratégicos para decisões mais rápidas.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
