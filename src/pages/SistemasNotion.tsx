@@ -58,7 +58,7 @@ const SistemasNotion = () => {
             </div>
             
             <h1 className="hero-title mb-6">
-              Seus processos estão espalhados? Centralize tudo em um sistema sob medida para sua empresa.
+              Processos soltos? Centralize tudo em um sistema sob medida.
             </h1>
             
             <p className="hero-subtitle mb-12 max-w-3xl mx-auto">
