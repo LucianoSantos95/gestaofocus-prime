@@ -68,9 +68,9 @@ const SistemasNotion = () => {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button 
                 className="btn-hero group"
-                onClick={() => window.open('https://wa.me/5511916742443?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20personaliza%C3%A7%C3%A3o%20de%20sistemas.', '_blank')}
+                onClick={() => window.open('https://gestaofocus.notion.site/276be653a5aa80818bd3d4ca142884f6?pvs=105', '_blank')}
               >
-                Solicitar personalização
+                Analisar meu negócio
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
               </Button>
               
@@ -141,9 +141,9 @@ const SistemasNotion = () => {
 
               <Button 
                 className="btn-hero group"
-                onClick={() => window.open('https://wa.me/5511916742443?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20personaliza%C3%A7%C3%A3o%20de%20sistemas.', '_blank')}
+                onClick={() => window.open('https://gestaofocus.notion.site/276be653a5aa80818bd3d4ca142884f6?pvs=105', '_blank')}
               >
-                Começar meu projeto
+                Analisar meu negócio
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
               </Button>
             </div>
@@ -200,9 +200,9 @@ const SistemasNotion = () => {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button 
                 className="btn-hero group"
-                onClick={() => window.open('https://wa.me/5511916742443?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20personaliza%C3%A7%C3%A3o%20de%20sistemas.', '_blank')}
+                onClick={() => window.open('https://gestaofocus.notion.site/276be653a5aa80818bd3d4ca142884f6?pvs=105', '_blank')}
               >
-                Solicitar consultoria gratuita
+                Analisar meu negócio
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
               </Button>
               <Button 
