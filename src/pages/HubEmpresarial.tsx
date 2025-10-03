@@ -150,7 +150,7 @@ const HubEmpresarial = () => {
                 onClick={() => {
                   trackStripeClick('hero_cta');
                   trackCTAClick('Comece agora', 'hero');
-                  window.open('https://buy.stripe.com/8x23cv2VCbsN1l2aVngUM0b', '_blank');
+                  window.open('https://buy.stripe.com/fZu28rbs8gN73ta6F7gUM0d', '_blank');
                 }}
               >
                 Comece agora
