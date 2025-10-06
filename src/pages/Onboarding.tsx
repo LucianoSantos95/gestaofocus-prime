@@ -137,16 +137,19 @@ const Onboarding = () => {
       </section>
 
       {/* Social Proof Section */}
-      <section className="container-focus py-16 lg:py-24">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="heading-2 text-center mb-4">
-            Resultados Reais
-          </h2>
-          <p className="text-center text-foreground-muted mb-16 max-w-2xl mx-auto">
-            Veja o que nossos clientes alcançaram com a Focus
-          </p>
+      <section className="section-padding">
+        <div className="container-focus">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
+              Resultados Reais
+            </h2>
+            <p className="text-xl text-foreground-muted max-w-3xl mx-auto">
+              Veja o que nossos clientes alcançaram com a Focus
+            </p>
+          </div>
 
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
+          <div className="max-w-5xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-8 mb-12">
             {/* Testimonial Card 1 */}
             <Card className="card-hover border-primary/10">
               <CardContent className="p-8">
@@ -192,37 +195,41 @@ const Onboarding = () => {
                 </div>
               </CardContent>
             </Card>
-          </div>
+            </div>
 
-          {/* Stats */}
-          <div className="grid grid-cols-3 gap-6 text-center">
-            <div className="p-6 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5">
-              <div className="text-4xl font-bold text-primary mb-2">50+</div>
-              <div className="text-sm text-foreground-muted">Sistemas Entregues</div>
-            </div>
-            <div className="p-6 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5">
-              <div className="text-4xl font-bold text-primary mb-2">15+</div>
-              <div className="text-sm text-foreground-muted">Estados Atendidos</div>
-            </div>
-            <div className="p-6 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5">
-              <div className="text-4xl font-bold text-primary mb-2">100%</div>
-              <div className="text-sm text-foreground-muted">Satisfação</div>
+            {/* Stats */}
+            <div className="grid grid-cols-3 gap-6 text-center">
+              <div className="p-6 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5">
+                <div className="text-4xl font-bold text-primary mb-2">50+</div>
+                <div className="text-sm text-foreground-muted">Sistemas Entregues</div>
+              </div>
+              <div className="p-6 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5">
+                <div className="text-4xl font-bold text-primary mb-2">15+</div>
+                <div className="text-sm text-foreground-muted">Estados Atendidos</div>
+              </div>
+              <div className="p-6 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5">
+                <div className="text-4xl font-bold text-primary mb-2">100%</div>
+                <div className="text-sm text-foreground-muted">Satisfação</div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="container-focus py-16 lg:py-24 bg-gradient-to-b from-primary/5 to-background">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="heading-2 mb-4">
-            Pronto para dar o próximo passo?
-          </h2>
-          <p className="text-xl text-foreground-muted mb-12">
-            Em breve entraremos em contato para agendar nossa conversa. Enquanto isso, fique à vontade para explorar e anotar suas ideias.
-          </p>
+      <section className="section-padding bg-background-secondary">
+        <div className="container-focus">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
+              Pronto para dar o próximo passo?
+            </h2>
+            <p className="text-xl text-foreground-muted max-w-3xl mx-auto">
+              Em breve entraremos em contato para agendar nossa conversa. Enquanto isso, fique à vontade para explorar e anotar suas ideias.
+            </p>
+          </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="max-w-3xl mx-auto">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <Button 
               className="btn-hero group w-full sm:w-auto"
               onClick={handleCalendarClick}
@@ -239,11 +246,12 @@ const Onboarding = () => {
               <MessageCircle className="w-5 h-5 mr-2" />
               Quero falar pelo WhatsApp
             </Button>
-          </div>
+            </div>
 
-          <div className="mt-12 flex items-center justify-center gap-2 text-foreground-muted">
-            <CheckCircle2 className="w-5 h-5 text-primary" />
-            <span className="text-sm">Consulta gratuita e sem compromisso</span>
+            <div className="flex items-center justify-center gap-2 text-foreground-muted">
+              <CheckCircle2 className="w-5 h-5 text-primary" />
+              <span className="text-sm">Consulta gratuita e sem compromisso</span>
+            </div>
           </div>
         </div>
       </section>
