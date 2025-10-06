@@ -9,44 +9,30 @@ import {
   Users,
   Award
 } from "lucide-react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import dia01 from "@/assets/sprint-dia-01.png";
+import dia02 from "@/assets/sprint-dia-02.png";
+import dia03 from "@/assets/sprint-dia-03.png";
+import dia04 from "@/assets/sprint-dia-04.png";
+import dia05 from "@/assets/sprint-dia-05.png";
+import dia06 from "@/assets/sprint-dia-06.png";
+import dia07 from "@/assets/sprint-dia-07.png";
 
 const SprintProdutividade = () => {
-  const dailyProgram = [
-    {
-      day: "Dia 1",
-      title: "Captura mental",
-      topics: ["Transforme o caos mental em clareza organizando pensamentos, ideias e preocupações em um único espaço."]
-    },
-    {
-      day: "Dia 2", 
-      title: "Classificação de tarefas",
-      topics: ["Aprenda a priorizar com clareza o que é urgente, importante ou apenas ruído."]
-    },
-    {
-      day: "Dia 3",
-      title: "Semana ideal",
-      topics: ["Crie uma visão realista da semana distribuindo suas atividades com equilíbrio."]
-    },
-    {
-      day: "Dia 4",
-      title: "Cortando distrações", 
-      topics: ["Mapeie o que rouba seu foco e crie um plano simples para manter a mente limpa."]
-    },
-    {
-      day: "Dia 5",
-      title: "Rotina estratégica",
-      topics: ["Construa uma rotina sob medida para sua realidade, seus objetivos e seu ritmo."]
-    },
-    {
-      day: "Dia 6",
-      title: "Organização digital",
-      topics: ["Limpe, organize e otimize seus ambientes digitais para fluir com leveza."]
-    },
-    {
-      day: "Dia 7",
-      title: "Planejamento final",
-      topics: ["Una tudo em um sistema pessoal e funcional e termine com clareza e direção."]
-    }
+  const moduleImages = [
+    { src: dia01, alt: "Módulo 1 - Captura mental" },
+    { src: dia02, alt: "Módulo 2 - Classificação de tarefas" },
+    { src: dia03, alt: "Módulo 3 - Semana ideal" },
+    { src: dia04, alt: "Módulo 4 - Cortando distrações" },
+    { src: dia05, alt: "Módulo 5 - Rotina estratégica" },
+    { src: dia06, alt: "Módulo 6 - Organização digital" },
+    { src: dia07, alt: "Módulo 7 - Planejamento final" }
   ];
 
   const benefits = [
@@ -129,7 +115,7 @@ const SprintProdutividade = () => {
       {/* Program Section */}
       <section className="section-padding bg-background-secondary">
         <div className="container-focus">
-          <div className="text-center mb-20">
+          <div className="text-center mb-12">
             <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
               O que você vai aprender
             </h2>
@@ -139,30 +125,32 @@ const SprintProdutividade = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {dailyProgram.map((day, index) => (
-              <div key={day.day} className="service-card animate-slide-up" style={{ animationDelay: `${index * 100}ms` }}>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary text-primary-foreground text-sm font-bold">
-                    {index + 1}
-                  </span>
-                  <span className="text-sm text-foreground-muted">{day.day}</span>
-                </div>
-                
-                <h3 className="text-xl font-bold text-card-foreground mb-3">
-                  {day.title}
-                </h3>
-                
-                <div className="space-y-2">
-                  {day.topics.map((topic, topicIndex) => (
-                    <div key={topicIndex} className="flex items-center text-sm text-foreground-muted">
-                      <div className="w-1.5 h-1.5 bg-primary rounded-full mr-3 flex-shrink-0" />
-                      {topic}
+          <div className="max-w-7xl mx-auto px-4">
+            <Carousel
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+              className="w-full"
+            >
+              <CarouselContent className="-ml-2 md:-ml-4">
+                {moduleImages.map((module, index) => (
+                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-full sm:basis-1/2 lg:basis-1/3">
+                    <div className="group cursor-pointer">
+                      <div className="relative overflow-hidden rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-elegant">
+                        <img
+                          src={module.src}
+                          alt={module.alt}
+                          className="w-full h-auto object-cover"
+                        />
+                      </div>
                     </div>
-                  ))}
-                </div>
-              </div>
-            ))}
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="hidden md:flex -left-12" />
+              <CarouselNext className="hidden md:flex -right-12" />
+            </Carousel>
           </div>
         </div>
       </section>
