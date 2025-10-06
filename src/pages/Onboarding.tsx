@@ -32,7 +32,7 @@ const Onboarding = () => {
   ];
 
   const handleWhatsAppClick = () => {
-    window.open('https://wa.me/5511999999999?text=Olá! Vi a página de onboarding e gostaria de agendar uma conversa.', '_blank');
+    window.open('https://api.whatsapp.com/send/?phone=5511916742443&text=Ol%C3%A1%2C+gostaria+de+saber+mais+informa%C3%A7%C3%B5es+sobre+personaliza%C3%A7%C3%A3o+de+sistemas.&type=phone_number&app_absent=0', '_blank');
   };
 
   const handleCalendarClick = () => {
