@@ -1,4 +1,7 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { 
   Building2, 
   ArrowRight, 
@@ -21,30 +24,64 @@ import {
 import { trackStripeClick, trackNotionClick, trackCTAClick } from "@/lib/analytics";
 
 const HubEmpresarial = () => {
+  const [selectedFeature, setSelectedFeature] = useState<number | null>(null);
+  const [selectedAdvantage, setSelectedAdvantage] = useState<number | null>(null);
   const features = [
     {
-      icon: <DollarSign className="w-6 h-6" />,
+      icon: DollarSign,
       title: "Controle Financeiro",
       description: "Fluxo de caixa, contas a pagar/receber, relatórios financeiros e análise de rentabilidade.",
-      details: ["Dashboard financeiro", "Previsão de caixa", "Relatórios automáticos", "Controle de custos"]
+      details: ["Dashboard financeiro", "Previsão de caixa", "Relatórios automáticos", "Controle de custos"],
+      gradient: "from-green-500 to-emerald-500",
+      fullDetails: "Tenha controle total sobre as finanças da sua empresa com nosso módulo financeiro completo. Acompanhe o fluxo de caixa em tempo real com gráficos intuitivos, gerencie todas as contas a pagar e receber com alertas automáticos de vencimento, gere relatórios financeiros detalhados com apenas um clique, analise a rentabilidade por produto, serviço ou projeto. Inclui previsão de caixa inteligente, controle de despesas por categoria, conciliação bancária automatizada e muito mais. Tome decisões financeiras com dados precisos e atualizados."
     },
     {
-      icon: <Users className="w-6 h-6" />,
+      icon: Users,
       title: "Área Comercial",
       description: "CRM completo, pipeline de vendas, controle de leads e acompanhamento de performance.",
-      details: ["Gestão de leads", "Pipeline visual", "Histórico de contatos", "Metas de vendas"]
+      details: ["Gestão de leads", "Pipeline visual", "Histórico de contatos", "Metas de vendas"],
+      gradient: "from-blue-500 to-cyan-500",
+      fullDetails: "Transforme sua gestão comercial com um CRM completo e intuitivo. Organize todos os seus leads em um funil visual interativo, acompanhe cada etapa da jornada do cliente, registre todas as interações e histórico de comunicação, defina e monitore metas de vendas individuais e da equipe. O sistema inclui pontuação automática de leads, notificações de follow-up, relatórios de performance de vendedores, previsão de fechamento e integração com WhatsApp e email. Nunca mais perca uma oportunidade de venda."
     },
     {
-      icon: <BarChart3 className="w-6 h-6" />,
+      icon: BarChart3,
       title: "Marketing Integrado",
       description: "Campanhas, métricas, ROI e análise de performance de todos os canais de marketing.",
-      details: ["Tracking de campanhas", "ROI por canal", "Análise de conversão", "Planejamento"]
+      details: ["Tracking de campanhas", "ROI por canal", "Análise de conversão", "Planejamento"],
+      gradient: "from-purple-500 to-pink-500",
+      fullDetails: "Gerencie todas as suas campanhas de marketing em um único lugar. Planeje e acompanhe campanhas de todos os canais (Facebook, Instagram, Google Ads, Email Marketing), calcule automaticamente o ROI de cada campanha, analise taxas de conversão em cada etapa do funil, visualize métricas unificadas de performance. Inclui calendário editorial, biblioteca de criativos, controle de orçamento por campanha, análise de público e relatórios visuais personalizados. Maximize seus resultados com decisões baseadas em dados reais."
     },
     {
-      icon: <Headphones className="w-6 h-6" />,
+      icon: Headphones,
       title: "Suporte ao Cliente",
       description: "Sistema de tickets, base de conhecimento e acompanhamento de satisfação.",
-      details: ["Gestão de tickets", "SLA automático", "Base de conhecimento", "NPS integrado"]
+      details: ["Gestão de tickets", "SLA automático", "Base de conhecimento", "NPS integrado"],
+      gradient: "from-orange-500 to-red-500",
+      fullDetails: "Eleve o nível do seu atendimento ao cliente com um sistema completo de suporte. Gerencie todos os tickets de suporte em uma interface organizada, controle automaticamente os SLAs e prazos de resposta, crie uma base de conhecimento para reduzir tickets repetitivos, meça a satisfação com pesquisas NPS integradas. O sistema inclui categorização automática de tickets, distribuição inteligente entre atendentes, histórico completo do cliente, relatórios de tempo de resposta e resolução, e muito mais. Clientes satisfeitos, negócio crescendo."
+    }
+  ];
+
+  const advantages = [
+    {
+      icon: TrendingUp,
+      title: "Analytics Inteligente",
+      description: "Dashboards em tempo real com insights automáticos e análise preditiva para tomada de decisões estratégicas.",
+      gradient: "from-cyan-500 to-blue-500",
+      details: "Transforme dados em decisões estratégicas com nosso módulo de analytics inteligente. Visualize KPIs essenciais em dashboards customizáveis que atualizam em tempo real, receba insights automáticos sobre tendências e anomalias nos seus dados, use análise preditiva para antecipar cenários futuros e planejar com antecedência. O sistema cruza dados de todos os módulos para gerar análises completas: correlação entre investimento em marketing e vendas, impacto do atendimento na retenção, saúde financeira projetada e muito mais. Relatórios visuais e executivos gerados automaticamente."
+    },
+    {
+      icon: Zap,
+      title: "Automações Avançadas",
+      description: "Workflows automatizados que conectam todos os setores, eliminando trabalho manual e reduzindo erros.",
+      gradient: "from-yellow-500 to-orange-500",
+      details: "Elimine tarefas repetitivas e ganhe horas no seu dia com automações inteligentes. Configure workflows que conectam diferentes módulos: quando um lead vira cliente no CRM, cria automaticamente no financeiro e envia boas-vindas; quando um pagamento atrasa, cria ticket de cobrança automático; quando meta é batida, notifica a equipe e atualiza dashboard. Inclui automações de email, notificações, atualizações de status, cálculos financeiros, distribuição de tarefas e muito mais. Tudo funciona 24/7 sem intervenção manual, reduzindo erros humanos e aumentando eficiência operacional."
+    },
+    {
+      icon: Shield,
+      title: "Segurança Enterprise",
+      description: "Controle granular de permissões, backup automático e conformidade com LGPD garantida.",
+      gradient: "from-emerald-500 to-green-500",
+      details: "Seus dados empresariais protegidos com segurança de nível corporativo. Configure permissões granulares: cada usuário vê e edita apenas o que é relevante para sua função, com controle por módulo, página e até campo específico. Backup automático diário com versionamento, permitindo recuperar qualquer informação de até 30 dias atrás. Sistema 100% em conformidade com LGPD: registro de acessos, consentimento documentado, portabilidade e exclusão de dados sob demanda. Inclui autenticação de dois fatores, log de auditoria completo, criptografia de dados sensíveis e políticas de retenção customizáveis."
     }
   ];
 
@@ -199,31 +236,93 @@ const HubEmpresarial = () => {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {features.map((feature, index) => (
-              <div key={feature.title} className="service-card animate-slide-up" style={{ animationDelay: `${index * 100}ms` }}>
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 text-primary mb-6">
-                  {feature.icon}
-                </div>
-                
-                <h3 className="text-xl font-bold text-card-foreground mb-3">
-                  {feature.title}
-                </h3>
-                
-                <p className="text-foreground-muted mb-6">
-                  {feature.description}
-                </p>
+            {features.map((feature, index) => {
+              const IconComponent = feature.icon;
+              return (
+                <div key={feature.title} className="animate-slide-up" style={{ animationDelay: `${index * 100}ms` }}>
+                  <Card 
+                    className="card-hover h-full border-primary/10 transition-all duration-300 hover:scale-105 hover:shadow-elegant cursor-pointer"
+                    onClick={() => setSelectedFeature(index)}
+                  >
+                    <div className="p-8">
+                      <div className="relative mb-6 flex justify-start">
+                        <div className={`relative w-14 h-14 rounded-2xl bg-gradient-to-br ${feature.gradient} p-0.5 shadow-lg`}>
+                          <div className="w-full h-full rounded-2xl bg-background/95 backdrop-blur-sm flex items-center justify-center">
+                            <IconComponent className="w-7 h-7 text-foreground" />
+                          </div>
+                        </div>
+                        <div className={`absolute inset-0 w-14 h-14 rounded-2xl bg-gradient-to-br ${feature.gradient} blur-xl opacity-30`} />
+                      </div>
+                      
+                      <h3 className="text-xl font-bold text-card-foreground mb-3">
+                        {feature.title}
+                      </h3>
+                      
+                      <p className="text-foreground-muted mb-6">
+                        {feature.description}
+                      </p>
 
-                <div className="space-y-2">
-                  {feature.details.map((detail, detailIndex) => (
-                    <div key={detailIndex} className="flex items-center text-sm text-foreground-muted">
-                      <div className="w-1.5 h-1.5 bg-primary rounded-full mr-3 flex-shrink-0" />
-                      {detail}
+                      <div className="space-y-2 mb-4">
+                        {feature.details.map((detail, detailIndex) => (
+                          <div key={detailIndex} className="flex items-center text-sm text-foreground-muted">
+                            <div className="w-1.5 h-1.5 bg-primary rounded-full mr-3 flex-shrink-0" />
+                            {detail}
+                          </div>
+                        ))}
+                      </div>
+
+                      <p className="text-sm text-primary hover:text-primary/80 transition-colors">
+                        Clique para saber mais →
+                      </p>
                     </div>
-                  ))}
+                  </Card>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
+
+          {/* Features Dialog */}
+          <Dialog open={selectedFeature !== null} onOpenChange={(open) => !open && setSelectedFeature(null)}>
+            <DialogContent className="max-w-2xl">
+              {selectedFeature !== null && (
+                <>
+                  <DialogHeader>
+                    <div className="flex items-center gap-4 mb-4">
+                      <div className={`relative w-16 h-16 rounded-2xl bg-gradient-to-br ${features[selectedFeature].gradient} p-0.5 shadow-lg`}>
+                        <div className="w-full h-full rounded-2xl bg-background/95 backdrop-blur-sm flex items-center justify-center">
+                          {(() => {
+                            const IconComponent = features[selectedFeature].icon;
+                            return <IconComponent className="w-8 h-8 text-foreground" />;
+                          })()}
+                        </div>
+                      </div>
+                      <div className="text-left">
+                        <DialogTitle className="text-2xl">
+                          {features[selectedFeature].title}
+                        </DialogTitle>
+                      </div>
+                    </div>
+                    <DialogDescription className="text-base leading-relaxed text-foreground-muted">
+                      {features[selectedFeature].fullDetails}
+                    </DialogDescription>
+                  </DialogHeader>
+                  <div className="mt-6">
+                    <Button 
+                      className="btn-hero w-full group"
+                      onClick={() => {
+                        trackNotionClick('hub_pro', 'feature_dialog');
+                        trackCTAClick('Ver demonstração', 'feature_dialog');
+                        window.open('https://www.notion.com/templates/hub-empresarial-pro', '_blank');
+                      }}
+                    >
+                      Ver demonstração completa
+                      <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+                    </Button>
+                  </div>
+                </>
+              )}
+            </DialogContent>
+          </Dialog>
         </div>
       </section>
 
@@ -263,33 +362,81 @@ const HubEmpresarial = () => {
             </div>
 
             <div className="space-y-6">
-              <div className="service-card">
-                <TrendingUp className="w-8 h-8 text-primary mb-4" />
-                <h3 className="text-xl font-bold text-card-foreground mb-3">Analytics Inteligente</h3>
-                <p className="text-foreground-muted">
-                  Dashboards em tempo real com insights automáticos e análise preditiva 
-                  para tomada de decisões estratégicas.
-                </p>
-              </div>
-              
-              <div className="service-card">
-                <Zap className="w-8 h-8 text-primary mb-4" />
-                <h3 className="text-xl font-bold text-card-foreground mb-3">Automações Avançadas</h3>
-                <p className="text-foreground-muted">
-                  Workflows automatizados que conectam todos os setores, 
-                  eliminando trabalho manual e reduzindo erros.
-                </p>
-              </div>
-              
-              <div className="service-card">
-                <Shield className="w-8 h-8 text-primary mb-4" />
-                <h3 className="text-xl font-bold text-card-foreground mb-3">Segurança Enterprise</h3>
-                <p className="text-foreground-muted">
-                  Controle granular de permissões, backup automático e 
-                  conformidade com LGPD garantida.
-                </p>
-              </div>
+              {advantages.map((advantage, index) => {
+                const IconComponent = advantage.icon;
+                return (
+                  <div key={advantage.title}>
+                    <Card 
+                      className="card-hover border-primary/10 transition-all duration-300 hover:scale-105 hover:shadow-elegant cursor-pointer"
+                      onClick={() => setSelectedAdvantage(index)}
+                    >
+                      <div className="p-6">
+                        <div className="relative mb-4 flex justify-start">
+                          <div className={`relative w-14 h-14 rounded-2xl bg-gradient-to-br ${advantage.gradient} p-0.5 shadow-lg`}>
+                            <div className="w-full h-full rounded-2xl bg-background/95 backdrop-blur-sm flex items-center justify-center">
+                              <IconComponent className="w-7 h-7 text-foreground" />
+                            </div>
+                          </div>
+                          <div className={`absolute inset-0 w-14 h-14 rounded-2xl bg-gradient-to-br ${advantage.gradient} blur-xl opacity-30`} />
+                        </div>
+                        <h3 className="text-xl font-bold text-card-foreground mb-3">
+                          {advantage.title}
+                        </h3>
+                        <p className="text-foreground-muted mb-3">
+                          {advantage.description}
+                        </p>
+                        <p className="text-sm text-primary hover:text-primary/80 transition-colors">
+                          Clique para saber mais →
+                        </p>
+                      </div>
+                    </Card>
+                  </div>
+                );
+              })}
             </div>
+
+            {/* Advantages Dialog */}
+            <Dialog open={selectedAdvantage !== null} onOpenChange={(open) => !open && setSelectedAdvantage(null)}>
+              <DialogContent className="max-w-2xl">
+                {selectedAdvantage !== null && (
+                  <>
+                    <DialogHeader>
+                      <div className="flex items-center gap-4 mb-4">
+                        <div className={`relative w-16 h-16 rounded-2xl bg-gradient-to-br ${advantages[selectedAdvantage].gradient} p-0.5 shadow-lg`}>
+                          <div className="w-full h-full rounded-2xl bg-background/95 backdrop-blur-sm flex items-center justify-center">
+                            {(() => {
+                              const IconComponent = advantages[selectedAdvantage].icon;
+                              return <IconComponent className="w-8 h-8 text-foreground" />;
+                            })()}
+                          </div>
+                        </div>
+                        <div className="text-left">
+                          <DialogTitle className="text-2xl">
+                            {advantages[selectedAdvantage].title}
+                          </DialogTitle>
+                        </div>
+                      </div>
+                      <DialogDescription className="text-base leading-relaxed text-foreground-muted">
+                        {advantages[selectedAdvantage].details}
+                      </DialogDescription>
+                    </DialogHeader>
+                    <div className="mt-6">
+                      <Button 
+                        className="btn-hero w-full group"
+                        onClick={() => {
+                          trackStripeClick('advantage_dialog');
+                          trackCTAClick('Comece agora', 'advantage_dialog');
+                          window.open('https://buy.stripe.com/fZu28rbs8gN73ta6F7gUM0d', '_blank');
+                        }}
+                      >
+                        Comece agora
+                        <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+                      </Button>
+                    </div>
+                  </>
+                )}
+              </DialogContent>
+            </Dialog>
           </div>
         </div>
       </section>
