@@ -17,6 +17,7 @@ import Cookies from "./pages/Cookies";
 import CentralAjuda from "./pages/CentralAjuda";
 import Documentacao from "./pages/Documentacao";
 import StatusPlataforma from "./pages/StatusPlataforma";
+import Onboarding from "./pages/Onboarding";
 import NotFound from "./pages/NotFound";
 import { useAnalytics } from "./hooks/useAnalytics";
 import CookieConsent from "./components/CookieConsent";
@@ -53,6 +54,7 @@ const App = () => (
               <Route path="/ajuda" element={<CentralAjuda />} />
               <Route path="/docs" element={<Documentacao />} />
               <Route path="/status" element={<StatusPlataforma />} />
+              <Route path="/onboarding" element={<Onboarding />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
