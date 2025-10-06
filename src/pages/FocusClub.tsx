@@ -53,27 +53,27 @@ const FocusClub = () => {
     highlight: true,
     savings: "Economize R$ 317,80/ano"
   }];
-  return <div className="min-h-screen pt-20">
+  return <div className="min-h-screen pt-16">
       {/* Hero Section */}
       <section className="section-padding bg-gradient-dark">
         <div className="container-focus">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center px-4 py-2 rounded-full border border-card-border bg-card/50 backdrop-blur-sm mb-8">
+            <div className="inline-flex items-center px-4 py-2 rounded-full border border-card-border bg-card/50 backdrop-blur-sm mb-8 animate-fade-in">
               <Users className="w-4 h-4 text-primary mr-2" />
               <span className="text-sm text-foreground-muted">
                 Comunidade Focus Club
               </span>
             </div>
             
-            <h1 className="hero-title mb-6">
+            <h1 className="hero-title mb-6 animate-fade-in" style={{ animationDelay: '100ms' }}>
               Aprendizado contínuo
             </h1>
             
-            <p className="hero-subtitle mb-12 max-w-3xl mx-auto">
+            <p className="hero-subtitle mb-12 max-w-3xl mx-auto animate-fade-in" style={{ animationDelay: '200ms' }}>
               Comunidade exclusiva para profissionais em busca de excelência, com conteúdos semanais, networking estratégico e desenvolvimento acelerado.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in" style={{ animationDelay: '300ms' }}>
               <Button className="btn-hero group">
                 Entrar na comunidade
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />

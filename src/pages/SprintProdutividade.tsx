@@ -73,28 +73,28 @@ const SprintProdutividade = () => {
   ];
 
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen pt-16">
       {/* Hero Section */}
       <section className="section-padding bg-gradient-dark">
         <div className="container-focus">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center px-4 py-2 rounded-full border border-card-border bg-card/50 backdrop-blur-sm mb-8">
+            <div className="inline-flex items-center px-4 py-2 rounded-full border border-card-border bg-card/50 backdrop-blur-sm mb-8 animate-fade-in">
               <Zap className="w-4 h-4 text-primary mr-2" />
               <span className="text-sm text-foreground-muted">
                 Sprint de Produtividade
               </span>
             </div>
             
-            <h1 className="hero-title mb-6">
+            <h1 className="hero-title mb-6 animate-fade-in" style={{ animationDelay: '100ms' }}>
               7 dias para transformar sua rotina
             </h1>
             
-            <p className="hero-subtitle mb-12 max-w-3xl mx-auto">
+            <p className="hero-subtitle mb-12 max-w-3xl mx-auto animate-fade-in" style={{ animationDelay: '200ms' }}>
               Um programa intensivo de produtividade com aulas práticas diárias, 
               exercícios aplicados e acompanhamento personalizado para resultados reais.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in" style={{ animationDelay: '300ms' }}>
               <Button className="btn-hero group" asChild>
                 <a href="https://pay.hub.la/bZk8tJXer0JtaUU3l10n" target="_blank" rel="noopener noreferrer">
                   Garanta seu acesso

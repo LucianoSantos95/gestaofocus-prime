@@ -45,27 +45,27 @@ const SistemasNotion = () => {
   ];
 
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen pt-16">
       {/* Hero Section */}
       <section className="section-padding bg-gradient-dark">
         <div className="container-focus">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center px-4 py-2 rounded-full border border-card-border bg-card/50 backdrop-blur-sm mb-8">
+            <div className="inline-flex items-center px-4 py-2 rounded-full border border-card-border bg-card/50 backdrop-blur-sm mb-8 animate-fade-in">
               <Database className="w-4 h-4 text-primary mr-2" />
               <span className="text-sm text-foreground-muted">
                 Sistemas Personalizados Notion
               </span>
             </div>
             
-            <h1 className="hero-title mb-6">
+            <h1 className="hero-title mb-6 animate-fade-in" style={{ animationDelay: '100ms' }}>
               Processos soltos? Centralize tudo em um sistema sob medida.
             </h1>
             
-            <p className="hero-subtitle mb-12 max-w-3xl mx-auto">
+            <p className="hero-subtitle mb-12 max-w-3xl mx-auto animate-fade-in" style={{ animationDelay: '200ms' }}>
               Criamos sistemas empresariais no Notion que organizam operações, eliminam retrabalho e entregam relatórios estratégicos para decisões mais rápidas.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in" style={{ animationDelay: '300ms' }}>
               <Button 
                 className="btn-hero group"
                 onClick={() => window.open('https://gestaofocus.notion.site/276be653a5aa80818bd3d4ca142884f6?pvs=105', '_blank')}
