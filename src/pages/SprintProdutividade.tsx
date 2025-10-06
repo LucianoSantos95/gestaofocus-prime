@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { 
   Zap, 
@@ -7,8 +8,17 @@ import {
   Target,
   BookOpen,
   Users,
-  Award
+  Award,
+  Star,
+  Quote
 } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import {
   Carousel,
   CarouselContent,
@@ -25,6 +35,53 @@ import dia06 from "@/assets/sprint-dia-06.png";
 import dia07 from "@/assets/sprint-dia-07.png";
 
 const SprintProdutividade = () => {
+  const [showTestimonials, setShowTestimonials] = useState(false);
+
+  const testimonials = [
+    {
+      name: "Mariana Costa",
+      role: "Gerente de Projetos",
+      company: "Tech Solutions",
+      text: "Depois do Sprint consegui organizar melhor meu dia e parei de deixar tarefas importantes para última hora. O método da captura mental mudou completamente minha forma de lidar com o excesso de informações.",
+      rating: 5
+    },
+    {
+      name: "Roberto Silva",
+      role: "Empreendedor",
+      company: "Startup Digital",
+      text: "Eu estava totalmente perdido com tantas tarefas e projetos ao mesmo tempo. O Sprint me ensinou a priorizar o que realmente importa. Hoje consigo focar no que gera resultado e não apenas apagar incêndios.",
+      rating: 5
+    },
+    {
+      name: "Juliana Mendes",
+      role: "Analista de Marketing",
+      company: "Agência Criativa",
+      text: "A parte de cortando distrações foi um divisor de águas pra mim. Identifiquei que perdia mais de 2 horas por dia com notificações e redes sociais. Agora tenho uma rotina muito mais produtiva e focada.",
+      rating: 5
+    },
+    {
+      name: "Carlos Eduardo",
+      role: "Desenvolvedor",
+      company: "Freelancer",
+      text: "Como freelancer, eu sempre tive dificuldade em criar uma rotina. O módulo de rotina estratégica me ajudou a estruturar meu dia de forma que funciona para o MEU ritmo, não um modelo genérico que nunca dava certo.",
+      rating: 5
+    },
+    {
+      name: "Fernanda Oliveira",
+      role: "Coordenadora Pedagógica",
+      company: "Escola Integrada",
+      text: "Aplicar a semana ideal na prática me fez perceber que eu estava tentando fazer tudo ao mesmo tempo. Agora distribuo melhor minhas atividades e consigo ter mais qualidade de vida sem comprometer o trabalho.",
+      rating: 5
+    },
+    {
+      name: "Lucas Rodrigues",
+      role: "Designer",
+      company: "Estúdio Criativo",
+      text: "O Sprint foi direto ao ponto. Nada de enrolação, só métodos práticos que funcionam de verdade. A organização digital me ajudou a encontrar meus arquivos em segundos ao invés de perder tempo procurando. Valeu muito a pena!",
+      rating: 5
+    }
+  ];
+
   const moduleImages = [
     { src: dia01, alt: "Módulo 1 - Captura mental" },
     { src: dia02, alt: "Módulo 2 - Classificação de tarefas" },
@@ -246,13 +303,59 @@ const SprintProdutividade = () => {
                   <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
                 </a>
               </Button>
-              <Button variant="outline" className="btn-secondary">
+              <Button 
+                variant="outline" 
+                className="btn-secondary"
+                onClick={() => setShowTestimonials(true)}
+              >
                 Ver depoimentos
               </Button>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Testimonials Dialog */}
+      <Dialog open={showTestimonials} onOpenChange={setShowTestimonials}>
+        <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto bg-card border-card-border">
+          <DialogHeader>
+            <DialogTitle className="text-3xl font-bold text-foreground mb-2">
+              O que dizem os participantes
+            </DialogTitle>
+            <DialogDescription className="text-foreground-muted">
+              Veja como o Sprint de Produtividade transformou a rotina de centenas de profissionais
+            </DialogDescription>
+          </DialogHeader>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+            {testimonials.map((testimonial, index) => (
+              <div 
+                key={index}
+                className="bg-background-secondary/50 p-6 rounded-xl border border-card-border hover:border-primary/50 transition-all duration-300"
+              >
+                <div className="flex items-start justify-between mb-4">
+                  <Quote className="w-8 h-8 text-primary/30" />
+                  <div className="flex gap-1">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                    ))}
+                  </div>
+                </div>
+                
+                <p className="text-foreground-muted mb-6 leading-relaxed">
+                  "{testimonial.text}"
+                </p>
+                
+                <div className="border-t border-card-border pt-4">
+                  <p className="font-semibold text-foreground">{testimonial.name}</p>
+                  <p className="text-sm text-foreground-muted">{testimonial.role}</p>
+                  <p className="text-xs text-foreground-muted/70">{testimonial.company}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
