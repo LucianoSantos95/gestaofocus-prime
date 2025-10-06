@@ -43,7 +43,7 @@ const Onboarding = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
         {/* Background Elements */}
         <div className="absolute inset-0 bg-gradient-dark" />
         <div className="absolute inset-0">
