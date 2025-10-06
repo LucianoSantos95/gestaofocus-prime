@@ -1,7 +1,9 @@
+import { useState } from "react";
 import HeroSection from "@/components/HeroSection";
 import ServiceCard from "@/components/ServiceCard";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { 
   Database, 
   Zap, 
@@ -15,6 +17,7 @@ import {
 } from "lucide-react";
 
 const Index = () => {
+  const [selectedService, setSelectedService] = useState<number | null>(null);
   const services = [
     {
       title: "Sistemas Notion Personalizados",
@@ -26,8 +29,9 @@ const Index = () => {
         "Integração com ferramentas existentes"
       ],
       href: "/sistemas-notion",
-      icon: <Database className="w-7 h-7" />,
-      gradient: "from-blue-500/20 to-purple-500/20"
+      icon: Database,
+      gradient: "from-blue-500 to-purple-500",
+      details: "Criamos sistemas Notion completamente personalizados para sua empresa. Desde o design até a implementação, cada detalhe é pensado para atender suas necessidades específicas. Inclui databases relacionados, automações via Make/Zapier, dashboards executivos com métricas em tempo real, templates reutilizáveis e integração com suas ferramentas atuais. Tudo isso com treinamento completo da equipe e suporte contínuo."
     },
     {
       title: "Sprint de Produtividade Empresarial",
@@ -39,8 +43,9 @@ const Index = () => {
         "Ferramentas de produtividade"
       ],
       href: "/sprint-produtividade",
-      icon: <Zap className="w-7 h-7" />,
-      gradient: "from-orange-500/20 to-red-500/20"
+      icon: Zap,
+      gradient: "from-orange-500 to-red-500",
+      details: "Uma jornada transformadora de 7 dias para revolucionar sua produtividade. Cada dia traz uma nova metodologia comprovada com exercícios práticos que você implementa imediatamente. Inclui material exclusivo em vídeo, workbooks interativos, templates prontos, acompanhamento diário via grupo VIP e certificado de conclusão. Você aprende técnicas como GTD, Pomodoro, Time Blocking, gestão de energia e muito mais."
     },
     {
       title: "Hub Empresarial Pro",
@@ -52,8 +57,9 @@ const Index = () => {
         "Relatórios automáticos"
       ],
       href: "/hub-empresarial",
-      icon: <Building2 className="w-7 h-7" />,
-      gradient: "from-green-500/20 to-emerald-500/20"
+      icon: Building2,
+      gradient: "from-green-500 to-emerald-500",
+      details: "O sistema all-in-one para gestão empresarial completa. Centralize todas as operações da sua empresa em um único lugar: controle financeiro com fluxo de caixa automático, CRM com pipeline de vendas, gestão de projetos e tarefas, controle de estoque, dashboards executivos com KPIs em tempo real e relatórios personalizados. Tudo integrado e sincronizado automaticamente."
     },
     {
       title: "Focus Club - Comunidade Empresarial",
@@ -65,8 +71,9 @@ const Index = () => {
         "Recursos exclusivos"
       ],
       href: "/focus-club",
-      icon: <Users className="w-7 h-7" />,
-      gradient: "from-pink-500/20 to-violet-500/20"
+      icon: Users,
+      gradient: "from-pink-500 to-violet-500",
+      details: "Mais que uma comunidade, uma família de empreendedores e gestores que querem crescer juntos. Acesso a aulas semanais exclusivas sobre produtividade, gestão e estratégia, networking qualificado com outros membros, mentorias em grupo mensais, biblioteca completa de recursos (templates, checklists, frameworks), eventos presenciais e online, além de descontos em todos os serviços Focus."
     }
   ];
 
@@ -90,43 +97,85 @@ const Index = () => {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {services.map((service, index) => (
-              <div key={service.title} className="animate-slide-up" style={{ animationDelay: `${index * 100}ms` }}>
-                <Card 
-                  className="card-hover h-full border-primary/10 transition-all duration-300 hover:scale-105 hover:shadow-elegant cursor-pointer"
-                  onClick={() => window.location.href = service.href}
-                >
-                  <div className="p-8">
-                    <div className="relative mb-6 flex justify-start">
-                      <div className={`relative w-16 h-16 rounded-2xl bg-gradient-to-br ${service.gradient} p-0.5 shadow-lg`}>
+            {services.map((service, index) => {
+              const IconComponent = service.icon;
+              return (
+                <div key={service.title} className="animate-slide-up" style={{ animationDelay: `${index * 100}ms` }}>
+                  <Card 
+                    className="card-hover h-full border-primary/10 transition-all duration-300 hover:scale-105 hover:shadow-elegant cursor-pointer"
+                    onClick={() => setSelectedService(index)}
+                  >
+                    <div className="p-8">
+                      <div className="relative mb-6 flex justify-start">
+                        <div className={`relative w-16 h-16 rounded-2xl bg-gradient-to-br ${service.gradient} p-0.5 shadow-lg`}>
+                          <div className="w-full h-full rounded-2xl bg-background/95 backdrop-blur-sm flex items-center justify-center">
+                            <IconComponent className="w-7 h-7 text-foreground" />
+                          </div>
+                        </div>
+                        <div className={`absolute inset-0 w-16 h-16 rounded-2xl bg-gradient-to-br ${service.gradient} blur-xl opacity-30`} />
+                      </div>
+                      <h3 className="text-xl font-bold text-foreground mb-3">
+                        {service.title}
+                      </h3>
+                      <p className="text-foreground-muted mb-4">
+                        {service.description}
+                      </p>
+                      <ul className="space-y-2 mb-6">
+                        {service.features.map((feature, idx) => (
+                          <li key={idx} className="flex items-start text-sm text-foreground-muted">
+                            <CheckCircle className="w-4 h-4 text-primary mr-2 mt-0.5 flex-shrink-0" />
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                      <p className="text-sm text-primary hover:text-primary/80 transition-colors">
+                        Clique para saber mais →
+                      </p>
+                    </div>
+                  </Card>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Service Details Dialog */}
+          <Dialog open={selectedService !== null} onOpenChange={(open) => !open && setSelectedService(null)}>
+            <DialogContent className="max-w-2xl">
+              {selectedService !== null && (
+                <>
+                  <DialogHeader>
+                    <div className="flex items-center gap-4 mb-4">
+                      <div className={`relative w-16 h-16 rounded-2xl bg-gradient-to-br ${services[selectedService].gradient} p-0.5 shadow-lg`}>
                         <div className="w-full h-full rounded-2xl bg-background/95 backdrop-blur-sm flex items-center justify-center">
-                          {service.icon}
+                          {(() => {
+                            const IconComponent = services[selectedService].icon;
+                            return <IconComponent className="w-8 h-8 text-foreground" />;
+                          })()}
                         </div>
                       </div>
-                      <div className={`absolute inset-0 w-16 h-16 rounded-2xl bg-gradient-to-br ${service.gradient} blur-xl opacity-30`} />
+                      <div className="text-left">
+                        <DialogTitle className="text-2xl">
+                          {services[selectedService].title}
+                        </DialogTitle>
+                      </div>
                     </div>
-                    <h3 className="text-xl font-bold text-foreground mb-3">
-                      {service.title}
-                    </h3>
-                    <p className="text-foreground-muted mb-4">
-                      {service.description}
-                    </p>
-                    <ul className="space-y-2 mb-6">
-                      {service.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-start text-sm text-foreground-muted">
-                          <CheckCircle className="w-4 h-4 text-primary mr-2 mt-0.5 flex-shrink-0" />
-                          <span>{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    <p className="text-sm text-primary hover:text-primary/80 transition-colors">
-                      Saiba mais →
-                    </p>
+                    <DialogDescription className="text-base leading-relaxed text-foreground-muted">
+                      {services[selectedService].details}
+                    </DialogDescription>
+                  </DialogHeader>
+                  <div className="mt-6">
+                    <Button 
+                      className="btn-hero w-full group"
+                      onClick={() => window.location.href = services[selectedService].href}
+                    >
+                      Saiba mais sobre este serviço
+                      <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+                    </Button>
                   </div>
-                </Card>
-              </div>
-            ))}
-          </div>
+                </>
+              )}
+            </DialogContent>
+          </Dialog>
         </div>
       </section>
 
