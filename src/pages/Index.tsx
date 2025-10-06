@@ -1,6 +1,7 @@
 import HeroSection from "@/components/HeroSection";
 import ServiceCard from "@/components/ServiceCard";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import { 
   Database, 
   Zap, 
@@ -101,7 +102,7 @@ const Index = () => {
       {/* About Focus Section */}
       <section className="section-padding">
         <div className="container-focus">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
               <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
                 Consultoria Especializada em Gestão Empresarial
@@ -140,32 +141,59 @@ const Index = () => {
             </div>
 
             <div className="grid grid-cols-1 gap-6">
-              <div className="service-card">
-                <Target className="w-8 h-8 text-primary mb-4" />
-                <h3 className="text-xl font-bold text-card-foreground mb-3">Foco em Resultados</h3>
-                <p className="text-foreground-muted">
-                  Cada solução é desenvolvida com foco em gerar resultados mensuráveis 
-                  para o seu negócio.
-                </p>
-              </div>
+              <Card className="card-hover border-primary/10 transition-all duration-300 hover:scale-105 hover:shadow-elegant">
+                <div className="p-6">
+                  <div className="relative mb-4 flex justify-start">
+                    <div className="relative w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 p-0.5 shadow-lg">
+                      <div className="w-full h-full rounded-2xl bg-background/95 backdrop-blur-sm flex items-center justify-center">
+                        <Target className="w-7 h-7 text-foreground" />
+                      </div>
+                    </div>
+                    <div className="absolute inset-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 blur-xl opacity-30" />
+                  </div>
+                  <h3 className="text-xl font-bold text-card-foreground mb-3">Foco em Resultados</h3>
+                  <p className="text-foreground-muted">
+                    Cada solução é desenvolvida com foco em gerar resultados mensuráveis 
+                    para o seu negócio.
+                  </p>
+                </div>
+              </Card>
               
-              <div className="service-card">
-                <TrendingUp className="w-8 h-8 text-primary mb-4" />
-                <h3 className="text-xl font-bold text-card-foreground mb-3">Crescimento Sustentável</h3>
-                <p className="text-foreground-muted">
-                  Implementamos sistemas que crescem junto com sua empresa, 
-                  sempre escaláveis e eficientes.
-                </p>
-              </div>
+              <Card className="card-hover border-primary/10 transition-all duration-300 hover:scale-105 hover:shadow-elegant">
+                <div className="p-6">
+                  <div className="relative mb-4 flex justify-start">
+                    <div className="relative w-14 h-14 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-500 p-0.5 shadow-lg">
+                      <div className="w-full h-full rounded-2xl bg-background/95 backdrop-blur-sm flex items-center justify-center">
+                        <TrendingUp className="w-7 h-7 text-foreground" />
+                      </div>
+                    </div>
+                    <div className="absolute inset-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-500 blur-xl opacity-30" />
+                  </div>
+                  <h3 className="text-xl font-bold text-card-foreground mb-3">Crescimento Sustentável</h3>
+                  <p className="text-foreground-muted">
+                    Implementamos sistemas que crescem junto com sua empresa, 
+                    sempre escaláveis e eficientes.
+                  </p>
+                </div>
+              </Card>
               
-              <div className="service-card">
-                <Workflow className="w-8 h-8 text-primary mb-4" />
-                <h3 className="text-xl font-bold text-card-foreground mb-3">Processos Otimizados</h3>
-                <p className="text-foreground-muted">
-                  Organizamos e otimizamos seus processos para máxima eficiência 
-                  e produtividade.
-                </p>
-              </div>
+              <Card className="card-hover border-primary/10 transition-all duration-300 hover:scale-105 hover:shadow-elegant">
+                <div className="p-6">
+                  <div className="relative mb-4 flex justify-start">
+                    <div className="relative w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 p-0.5 shadow-lg">
+                      <div className="w-full h-full rounded-2xl bg-background/95 backdrop-blur-sm flex items-center justify-center">
+                        <Workflow className="w-7 h-7 text-foreground" />
+                      </div>
+                    </div>
+                    <div className="absolute inset-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 blur-xl opacity-30" />
+                  </div>
+                  <h3 className="text-xl font-bold text-card-foreground mb-3">Processos Otimizados</h3>
+                  <p className="text-foreground-muted">
+                    Organizamos e otimizamos seus processos para máxima eficiência 
+                    e produtividade.
+                  </p>
+                </div>
+              </Card>
             </div>
           </div>
         </div>
