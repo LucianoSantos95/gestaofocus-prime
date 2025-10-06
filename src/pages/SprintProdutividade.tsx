@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import { 
   Zap, 
   ArrowRight, 
@@ -36,6 +37,7 @@ import dia07 from "@/assets/sprint-dia-07.png";
 
 const SprintProdutividade = () => {
   const [showTestimonials, setShowTestimonials] = useState(false);
+  const [selectedExclusive, setSelectedExclusive] = useState<number | null>(null);
 
   const testimonials = [
     {
@@ -90,6 +92,30 @@ const SprintProdutividade = () => {
     { src: dia05, alt: "Módulo 5 - Rotina estratégica" },
     { src: dia06, alt: "Módulo 6 - Organização digital" },
     { src: dia07, alt: "Módulo 7 - Planejamento final" }
+  ];
+
+  const exclusiveItems = [
+    {
+      icon: BookOpen,
+      title: "Material Exclusivo",
+      description: "Templates, checklists e guias práticos para aplicar imediatamente em sua rotina de trabalho.",
+      gradient: "from-blue-500 to-cyan-500",
+      details: "Você receberá acesso completo a uma biblioteca exclusiva com mais de 20 templates prontos para usar, checklists detalhados para cada metodologia ensinada, workbooks interativos em PDF para acompanhar seu progresso, guias rápidos de referência que você pode imprimir e deixar na sua mesa, além de planilhas e ferramentas digitais otimizadas. Todo material foi desenvolvido por especialistas em produtividade e já ajudou milhares de profissionais a transformar suas rotinas."
+    },
+    {
+      icon: Users,
+      title: "Grupo Exclusivo",
+      description: "Acesso ao grupo privado com outros participantes para trocar experiências e manter a motivação.",
+      gradient: "from-purple-500 to-pink-500",
+      details: "Entre para uma comunidade vibrante de profissionais comprometidos com a produtividade. No grupo privado você compartilha suas conquistas e desafios, recebe apoio e motivação diária de outros participantes, troca experiências sobre a aplicação prática das técnicas, participa de desafios e dinâmicas exclusivas, faz networking qualificado com pessoas que pensam como você, e ainda tem acesso a conteúdos bônus compartilhados apenas no grupo. É um ambiente seguro e estimulante para seu crescimento."
+    },
+    {
+      icon: Target,
+      title: "Acompanhamento",
+      description: "Suporte direto durante os 7 dias para esclarecer dúvidas e garantir sua evolução.",
+      gradient: "from-orange-500 to-red-500",
+      details: "Você não estará sozinho nessa jornada. Durante os 7 dias você terá suporte direto via grupo exclusivo para tirar todas as suas dúvidas, feedback personalizado sobre os exercícios que você realizar, orientação para adaptar as técnicas à sua realidade específica, acompanhamento do seu progresso para garantir que está no caminho certo, sessões de perguntas e respostas ao vivo, e motivação constante para manter seu foco e disciplina até o final. Nosso compromisso é com seu resultado real."
+    }
   ];
 
   const benefits = [
@@ -254,33 +280,79 @@ const SprintProdutividade = () => {
             </div>
 
             <div className="space-y-6">
-              <div className="service-card">
-                <BookOpen className="w-8 h-8 text-primary mb-4" />
-                <h3 className="text-xl font-bold text-card-foreground mb-3">Material Exclusivo</h3>
-                <p className="text-foreground-muted">
-                  Templates, checklists e guias práticos para aplicar imediatamente 
-                  em sua rotina de trabalho.
-                </p>
-              </div>
-              
-              <div className="service-card">
-                <Users className="w-8 h-8 text-primary mb-4" />
-                <h3 className="text-xl font-bold text-card-foreground mb-3">Grupo Exclusivo</h3>
-                <p className="text-foreground-muted">
-                  Acesso ao grupo privado com outros participantes para trocar 
-                  experiências e manter a motivação.
-                </p>
-              </div>
-              
-              <div className="service-card">
-                <Target className="w-8 h-8 text-primary mb-4" />
-                <h3 className="text-xl font-bold text-card-foreground mb-3">Acompanhamento</h3>
-                <p className="text-foreground-muted">
-                  Suporte direto durante os 7 dias para esclarecer dúvidas 
-                  e garantir sua evolução.
-                </p>
-              </div>
+              {exclusiveItems.map((item, index) => {
+                const IconComponent = item.icon;
+                return (
+                  <div key={item.title}>
+                    <Card 
+                      className="card-hover border-primary/10 transition-all duration-300 hover:scale-105 hover:shadow-elegant cursor-pointer"
+                      onClick={() => setSelectedExclusive(index)}
+                    >
+                      <div className="p-6">
+                        <div className="relative mb-4 flex justify-start">
+                          <div className={`relative w-14 h-14 rounded-2xl bg-gradient-to-br ${item.gradient} p-0.5 shadow-lg`}>
+                            <div className="w-full h-full rounded-2xl bg-background/95 backdrop-blur-sm flex items-center justify-center">
+                              <IconComponent className="w-7 h-7 text-foreground" />
+                            </div>
+                          </div>
+                          <div className={`absolute inset-0 w-14 h-14 rounded-2xl bg-gradient-to-br ${item.gradient} blur-xl opacity-30`} />
+                        </div>
+                        <h3 className="text-xl font-bold text-card-foreground mb-3">
+                          {item.title}
+                        </h3>
+                        <p className="text-foreground-muted mb-3">
+                          {item.description}
+                        </p>
+                        <p className="text-sm text-primary hover:text-primary/80 transition-colors">
+                          Clique para saber mais →
+                        </p>
+                      </div>
+                    </Card>
+                  </div>
+                );
+              })}
             </div>
+
+            {/* Exclusive Items Dialog */}
+            <Dialog open={selectedExclusive !== null} onOpenChange={(open) => !open && setSelectedExclusive(null)}>
+              <DialogContent className="max-w-2xl">
+                {selectedExclusive !== null && (
+                  <>
+                    <DialogHeader>
+                      <div className="flex items-center gap-4 mb-4">
+                        <div className={`relative w-16 h-16 rounded-2xl bg-gradient-to-br ${exclusiveItems[selectedExclusive].gradient} p-0.5 shadow-lg`}>
+                          <div className="w-full h-full rounded-2xl bg-background/95 backdrop-blur-sm flex items-center justify-center">
+                            {(() => {
+                              const IconComponent = exclusiveItems[selectedExclusive].icon;
+                              return <IconComponent className="w-8 h-8 text-foreground" />;
+                            })()}
+                          </div>
+                        </div>
+                        <div className="text-left">
+                          <DialogTitle className="text-2xl">
+                            {exclusiveItems[selectedExclusive].title}
+                          </DialogTitle>
+                        </div>
+                      </div>
+                      <DialogDescription className="text-base leading-relaxed text-foreground-muted">
+                        {exclusiveItems[selectedExclusive].details}
+                      </DialogDescription>
+                    </DialogHeader>
+                    <div className="mt-6">
+                      <Button 
+                        className="btn-hero w-full group"
+                        asChild
+                      >
+                        <a href="https://pay.hub.la/bZk8tJXer0JtaUU3l10n" target="_blank" rel="noopener noreferrer">
+                          Garantir meu acesso agora
+                          <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+                        </a>
+                      </Button>
+                    </div>
+                  </>
+                )}
+              </DialogContent>
+            </Dialog>
           </div>
         </div>
       </section>
