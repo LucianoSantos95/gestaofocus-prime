@@ -125,7 +125,7 @@ const SprintProdutividade = () => {
             </p>
           </div>
 
-          <div className="max-w-7xl mx-auto px-4">
+          <div className="max-w-6xl mx-auto px-4">
             <Carousel
               opts={{
                 align: "start",
@@ -135,9 +135,10 @@ const SprintProdutividade = () => {
             >
               <CarouselContent className="-ml-2 md:-ml-4">
                 {moduleImages.map((module, index) => (
-                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-full sm:basis-1/2 lg:basis-1/3">
-                    <div className="group cursor-pointer">
-                      <div className="relative overflow-hidden rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-elegant">
+                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-full sm:basis-1/2 lg:basis-1/3 xl:basis-1/4">
+                    <div className="group cursor-pointer relative">
+                      <div className="absolute inset-0 bg-yellow-500/0 group-hover:bg-yellow-500/20 blur-2xl transition-all duration-500 -z-10 scale-90 group-hover:scale-100" />
+                      <div className="relative overflow-hidden rounded-lg transition-all duration-300 hover:scale-105">
                         <img
                           src={module.src}
                           alt={module.alt}
