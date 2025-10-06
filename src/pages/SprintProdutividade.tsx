@@ -137,7 +137,7 @@ const SprintProdutividade = () => {
                 {moduleImages.map((module, index) => (
                   <CarouselItem key={index} className="pl-2 md:pl-4 basis-full sm:basis-1/2 lg:basis-1/3 xl:basis-1/4">
                     <div className="group cursor-pointer relative">
-                      <div className="absolute inset-0 bg-yellow-500/0 group-hover:bg-yellow-500/20 blur-2xl transition-all duration-500 -z-10 scale-90 group-hover:scale-100" />
+                      <div className="absolute inset-0 bg-yellow-400/0 group-hover:bg-yellow-400/40 blur-3xl transition-all duration-500 -z-10 scale-75 group-hover:scale-110" />
                       <div className="relative overflow-hidden rounded-lg transition-all duration-300 hover:scale-105">
                         <img
                           src={module.src}
