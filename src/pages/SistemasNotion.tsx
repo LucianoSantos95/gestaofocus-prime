@@ -1,4 +1,7 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { 
   Database, 
   ArrowRight, 
@@ -11,26 +14,35 @@ import {
 } from "lucide-react";
 
 const SistemasNotion = () => {
+  const [selectedBenefit, setSelectedBenefit] = useState<number | null>(null);
   const benefits = [
     {
-      icon: <Layers className="w-6 h-6" />,
+      icon: Layers,
       title: "Centralização Total",
-      description: "Todos os processos, dados e informações em um só lugar, organizados e acessíveis."
+      description: "Todos os processos, dados e informações em um só lugar, organizados e acessíveis.",
+      gradient: "from-blue-500 to-cyan-500",
+      details: "Acabe com a fragmentação de informações entre diferentes ferramentas e planilhas. Nosso sistema centraliza absolutamente tudo em um único workspace Notion: processos operacionais, dados de clientes, projetos, tarefas, documentos, conhecimento interno e muito mais. Tudo perfeitamente organizado, com navegação intuitiva e busca poderosa. Sua equipe acessa tudo que precisa em segundos, de qualquer lugar, em qualquer dispositivo."
     },
     {
-      icon: <Zap className="w-6 h-6" />,
+      icon: Zap,
       title: "Automação Inteligente",
-      description: "Workflows automatizados que eliminam trabalho manual e reduzem erros."
+      description: "Workflows automatizados que eliminam trabalho manual e reduzem erros.",
+      gradient: "from-orange-500 to-red-500",
+      details: "Chega de tarefas repetitivas e manuais que consomem tempo precioso. Implementamos automações inteligentes usando Make, Zapier e as próprias ferramentas do Notion. Atualizações automáticas de status, notificações personalizadas, geração de relatórios, sincronização entre databases, e muito mais. As automações trabalham 24/7 para você, eliminando erros humanos e liberando sua equipe para focar no que realmente importa."
     },
     {
-      icon: <BarChart3 className="w-6 h-6" />,
+      icon: BarChart3,
       title: "Visão Estratégica",
-      description: "Dashboards e relatórios que transformam dados em insights acionáveis."
+      description: "Dashboards e relatórios que transformam dados em insights acionáveis.",
+      gradient: "from-purple-500 to-pink-500",
+      details: "Dados soltos não servem para nada. Transformamos seus dados em dashboards visuais e intuitivos que mostram exatamente o que você precisa saber para tomar decisões estratégicas. KPIs em tempo real, gráficos interativos, análises de tendências, comparativos de performance e muito mais. Tudo atualizado automaticamente e acessível em uma visão executiva clara e objetiva. Decisões baseadas em dados reais, não em suposições."
     },
     {
-      icon: <Shield className="w-6 h-6" />,
+      icon: Shield,
       title: "Segurança e Controle",
-      description: "Permissões personalizadas e controle total sobre acesso às informações."
+      description: "Permissões personalizadas e controle total sobre acesso às informações.",
+      gradient: "from-green-500 to-emerald-500",
+      details: "Segurança e privacidade são prioridades absolutas. Configuramos permissões granulares para cada membro da equipe, garantindo que cada pessoa veja apenas o que precisa ver. Controle total sobre edição, visualização e compartilhamento. Histórico completo de alterações, backups automáticos e possibilidade de restaurar versões anteriores. Seus dados corporativos protegidos e organizados com o mais alto nível de segurança."
     }
   ];
 
@@ -100,20 +112,77 @@ const SistemasNotion = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {benefits.map((benefit, index) => (
-              <div key={benefit.title} className="service-card animate-slide-up" style={{ animationDelay: `${index * 100}ms` }}>
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 text-primary mb-6">
-                  {benefit.icon}
+            {benefits.map((benefit, index) => {
+              const IconComponent = benefit.icon;
+              return (
+                <div key={benefit.title} className="animate-slide-up" style={{ animationDelay: `${index * 100}ms` }}>
+                  <Card 
+                    className="card-hover h-full border-primary/10 transition-all duration-300 hover:scale-105 hover:shadow-elegant cursor-pointer"
+                    onClick={() => setSelectedBenefit(index)}
+                  >
+                    <div className="p-8">
+                      <div className="relative mb-6 flex justify-start">
+                        <div className={`relative w-16 h-16 rounded-2xl bg-gradient-to-br ${benefit.gradient} p-0.5 shadow-lg`}>
+                          <div className="w-full h-full rounded-2xl bg-background/95 backdrop-blur-sm flex items-center justify-center">
+                            <IconComponent className="w-7 h-7 text-foreground" />
+                          </div>
+                        </div>
+                        <div className={`absolute inset-0 w-16 h-16 rounded-2xl bg-gradient-to-br ${benefit.gradient} blur-xl opacity-30`} />
+                      </div>
+                      <h3 className="text-xl font-bold text-foreground mb-3">
+                        {benefit.title}
+                      </h3>
+                      <p className="text-foreground-muted mb-4">
+                        {benefit.description}
+                      </p>
+                      <p className="text-sm text-primary hover:text-primary/80 transition-colors">
+                        Clique para saber mais →
+                      </p>
+                    </div>
+                  </Card>
                 </div>
-                <h3 className="text-xl font-bold text-card-foreground mb-3">
-                  {benefit.title}
-                </h3>
-                <p className="text-foreground-muted">
-                  {benefit.description}
-                </p>
-              </div>
-            ))}
+              );
+            })}
           </div>
+
+          {/* Benefits Details Dialog */}
+          <Dialog open={selectedBenefit !== null} onOpenChange={(open) => !open && setSelectedBenefit(null)}>
+            <DialogContent className="max-w-2xl">
+              {selectedBenefit !== null && (
+                <>
+                  <DialogHeader>
+                    <div className="flex items-center gap-4 mb-4">
+                      <div className={`relative w-16 h-16 rounded-2xl bg-gradient-to-br ${benefits[selectedBenefit].gradient} p-0.5 shadow-lg`}>
+                        <div className="w-full h-full rounded-2xl bg-background/95 backdrop-blur-sm flex items-center justify-center">
+                          {(() => {
+                            const IconComponent = benefits[selectedBenefit].icon;
+                            return <IconComponent className="w-8 h-8 text-foreground" />;
+                          })()}
+                        </div>
+                      </div>
+                      <div className="text-left">
+                        <DialogTitle className="text-2xl">
+                          {benefits[selectedBenefit].title}
+                        </DialogTitle>
+                      </div>
+                    </div>
+                    <DialogDescription className="text-base leading-relaxed text-foreground-muted">
+                      {benefits[selectedBenefit].details}
+                    </DialogDescription>
+                  </DialogHeader>
+                  <div className="mt-6">
+                    <Button 
+                      className="btn-hero w-full group"
+                      onClick={() => window.open('https://gestaofocus.notion.site/276be653a5aa80818bd3d4ca142884f6?pvs=105', '_blank')}
+                    >
+                      Analisar meu negócio
+                      <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+                    </Button>
+                  </div>
+                </>
+              )}
+            </DialogContent>
+          </Dialog>
         </div>
       </section>
 
