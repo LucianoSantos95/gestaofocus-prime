@@ -111,7 +111,7 @@ const Onboarding = () => {
           <div className="grid md:grid-cols-5 gap-6">
             {timelineSteps.map((step, index) => (
               <div key={index} className="animate-slide-up" style={{ animationDelay: `${index * 100}ms` }}>
-                <Card className="card-hover h-full border-primary/10">
+                <Card className="card-hover h-full border-primary/10 transition-transform duration-300 hover:scale-105">
                   <CardContent className="p-6 text-center">
                     <div className="text-5xl mb-4">{step.icon}</div>
                     <div className="text-sm font-semibold text-primary mb-2">
@@ -200,15 +200,15 @@ const Onboarding = () => {
             {/* Stats */}
             <div className="grid grid-cols-3 gap-6 text-center">
               <div className="p-6 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5">
-                <div className="text-4xl font-bold text-primary mb-2">50+</div>
+                <div className="text-4xl font-bold text-primary mb-2">20+</div>
                 <div className="text-sm text-foreground-muted">Sistemas Entregues</div>
               </div>
               <div className="p-6 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5">
-                <div className="text-4xl font-bold text-primary mb-2">15+</div>
+                <div className="text-4xl font-bold text-primary mb-2">8+</div>
                 <div className="text-sm text-foreground-muted">Estados Atendidos</div>
               </div>
               <div className="p-6 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5">
-                <div className="text-4xl font-bold text-primary mb-2">100%</div>
+                <div className="text-4xl font-bold text-primary mb-2">98%</div>
                 <div className="text-sm text-foreground-muted">Satisfação</div>
               </div>
             </div>
@@ -229,23 +229,14 @@ const Onboarding = () => {
           </div>
 
           <div className="max-w-3xl mx-auto">
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-            <Button 
-              className="btn-hero group w-full sm:w-auto"
-              onClick={handleCalendarClick}
-            >
-              <Calendar className="w-5 h-5 mr-2" />
-              Agendar direto na agenda
-            </Button>
-
-            <Button 
-              variant="outline"
-              className="btn-secondary w-full sm:w-auto"
-              onClick={handleWhatsAppClick}
-            >
-              <MessageCircle className="w-5 h-5 mr-2" />
-              Quero falar pelo WhatsApp
-            </Button>
+            <div className="flex justify-center items-center mb-12">
+              <Button 
+                className="btn-hero group"
+                onClick={handleWhatsAppClick}
+              >
+                <MessageCircle className="w-5 h-5 mr-2" />
+                Quero falar no WhatsApp
+              </Button>
             </div>
 
             <div className="flex items-center justify-center gap-2 text-foreground-muted">
