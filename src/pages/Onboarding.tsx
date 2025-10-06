@@ -1,33 +1,38 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { CheckCircle2, MessageCircle, Calendar } from "lucide-react";
+import { CheckCircle2, MessageCircle, Calendar, Smartphone, Brain, Wrench, Building2, Sparkles } from "lucide-react";
 
 const Onboarding = () => {
   const timelineSteps = [
     {
-      icon: "📲",
+      icon: Smartphone,
       title: "Contato inicial",
-      description: "Você preencheu o formulário ou nos chamou no WhatsApp."
+      description: "Você preencheu o formulário ou nos chamou no WhatsApp.",
+      gradient: "from-blue-500 to-cyan-500"
     },
     {
-      icon: "🧠",
+      icon: Brain,
       title: "Bate-papo gratuito",
-      description: "Entendemos suas necessidades e objetivos."
+      description: "Entendemos suas necessidades e objetivos.",
+      gradient: "from-purple-500 to-pink-500"
     },
     {
-      icon: "🛠️",
+      icon: Wrench,
       title: "Proposta personalizada",
-      description: "Recebe um plano sob medida."
+      description: "Recebe um plano sob medida.",
+      gradient: "from-orange-500 to-red-500"
     },
     {
-      icon: "🧱",
+      icon: Building2,
       title: "Construção e implementação",
-      description: "Criamos seu sistema Notion."
+      description: "Criamos seu sistema Notion.",
+      gradient: "from-green-500 to-emerald-500"
     },
     {
-      icon: "✨",
+      icon: Sparkles,
       title: "Entrega + Box Focus",
-      description: "Encerramento com experiência premium."
+      description: "Encerramento com experiência premium.",
+      gradient: "from-yellow-500 to-amber-500"
     }
   ];
 
@@ -109,29 +114,39 @@ const Onboarding = () => {
           </div>
 
           <div className="grid md:grid-cols-5 gap-6">
-            {timelineSteps.map((step, index) => (
-              <div key={index} className="animate-slide-up" style={{ animationDelay: `${index * 100}ms` }}>
-                <Card className="card-hover h-full border-primary/10 transition-transform duration-300 hover:scale-105">
-                  <CardContent className="p-6 text-center">
-                    <div className="text-5xl mb-4">{step.icon}</div>
-                    <div className="text-sm font-semibold text-primary mb-2">
-                      Passo {index + 1}
-                    </div>
-                    <h3 className="font-bold mb-2 text-foreground">
-                      {step.title}
-                    </h3>
-                    <p className="text-sm text-foreground-muted">
-                      {step.description}
-                    </p>
-                  </CardContent>
-                </Card>
-                
-                {/* Connector Line */}
-                {index < timelineSteps.length - 1 && (
-                  <div className="hidden md:block absolute top-1/2 -right-3 w-6 h-0.5 bg-gradient-to-r from-primary/30 to-transparent" />
-                )}
-              </div>
-            ))}
+            {timelineSteps.map((step, index) => {
+              const IconComponent = step.icon;
+              return (
+                <div key={index} className="animate-slide-up" style={{ animationDelay: `${index * 100}ms` }}>
+                  <Card className="card-hover h-full border-primary/10 transition-transform duration-300 hover:scale-105">
+                    <CardContent className="p-6 text-center">
+                      <div className="relative mb-6 flex justify-center">
+                        <div className={`relative w-16 h-16 rounded-2xl bg-gradient-to-br ${step.gradient} p-0.5 shadow-lg`}>
+                          <div className="w-full h-full rounded-2xl bg-background/95 backdrop-blur-sm flex items-center justify-center">
+                            <IconComponent className="w-8 h-8 text-foreground" />
+                          </div>
+                        </div>
+                        <div className={`absolute inset-0 w-16 h-16 rounded-2xl bg-gradient-to-br ${step.gradient} blur-xl opacity-30`} />
+                      </div>
+                      <div className="text-sm font-semibold text-primary mb-2">
+                        Passo {index + 1}
+                      </div>
+                      <h3 className="font-bold mb-2 text-foreground">
+                        {step.title}
+                      </h3>
+                      <p className="text-sm text-foreground-muted">
+                        {step.description}
+                      </p>
+                    </CardContent>
+                  </Card>
+                  
+                  {/* Connector Line */}
+                  {index < timelineSteps.length - 1 && (
+                    <div className="hidden md:block absolute top-1/2 -right-3 w-6 h-0.5 bg-gradient-to-r from-primary/30 to-transparent" />
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
