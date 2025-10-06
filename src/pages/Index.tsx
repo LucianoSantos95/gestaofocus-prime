@@ -92,7 +92,38 @@ const Index = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {services.map((service, index) => (
               <div key={service.title} className="animate-slide-up" style={{ animationDelay: `${index * 100}ms` }}>
-                <ServiceCard {...service} />
+                <Card 
+                  className="card-hover h-full border-primary/10 transition-all duration-300 hover:scale-105 hover:shadow-elegant cursor-pointer"
+                  onClick={() => window.location.href = service.href}
+                >
+                  <div className="p-8">
+                    <div className="relative mb-6 flex justify-start">
+                      <div className={`relative w-16 h-16 rounded-2xl bg-gradient-to-br ${service.gradient} p-0.5 shadow-lg`}>
+                        <div className="w-full h-full rounded-2xl bg-background/95 backdrop-blur-sm flex items-center justify-center">
+                          {service.icon}
+                        </div>
+                      </div>
+                      <div className={`absolute inset-0 w-16 h-16 rounded-2xl bg-gradient-to-br ${service.gradient} blur-xl opacity-30`} />
+                    </div>
+                    <h3 className="text-xl font-bold text-foreground mb-3">
+                      {service.title}
+                    </h3>
+                    <p className="text-foreground-muted mb-4">
+                      {service.description}
+                    </p>
+                    <ul className="space-y-2 mb-6">
+                      {service.features.map((feature, idx) => (
+                        <li key={idx} className="flex items-start text-sm text-foreground-muted">
+                          <CheckCircle className="w-4 h-4 text-primary mr-2 mt-0.5 flex-shrink-0" />
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <p className="text-sm text-primary hover:text-primary/80 transition-colors">
+                      Saiba mais →
+                    </p>
+                  </div>
+                </Card>
               </div>
             ))}
           </div>
