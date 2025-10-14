@@ -24,49 +24,49 @@ const SistemasGratuitos = () => {
       id: 1,
       nome: "Hub Empresarial Free",
       descricao: "Organize sua empresa com o Hub Empresarial gratuito da Focus. Um sistema no Notion com áreas de finanças, RH, marketing, projetos e mais — tudo em um só lugar, personalizável e pronto para equipes!",
-      imagem: "/lovable-uploads/focus-logo.png",
+      imagem: "/lovable-uploads/hub-empresarial-free.jpg",
       link: "#"
     },
     {
       id: 2,
       nome: "Hub Vida Pessoal",
       descricao: "Organize sua vida em um só lugar! Com este modelo, você pode gerenciar finanças, viagens, rotina, saúde e metas de forma simples e eficiente. Fácil de usar e personalizável, é o primeiro passo para uma vida mais organizada!",
-      imagem: "/lovable-uploads/focus-logo.png",
+      imagem: "/lovable-uploads/hub-vida-pessoal.jpg",
       link: "#"
     },
     {
       id: 3,
       nome: "Controle Financeiro Básico",
       descricao: "Organize suas finanças pessoais no Notion com o Controle Financeiro — controle gastos, acompanhe receitas e alcance seus objetivos com planejamento e eficiência.",
-      imagem: "/lovable-uploads/focus-logo.png",
+      imagem: "/lovable-uploads/controle-financeiro.jpg",
       link: "#"
     },
     {
       id: 4,
       nome: "Central Social Media",
       descricao: "Gerencie suas redes sociais e campanhas de marketing digital no Notion com o Central Social Media — um template simples e funcional com calendário de conteúdo, planejamento de campanhas, biblioteca de mídia e análises.",
-      imagem: "/lovable-uploads/focus-logo.png",
+      imagem: "/lovable-uploads/central-social-media.jpg",
       link: "#"
     },
     {
       id: 5,
       nome: "Easy Travel",
       descricao: "Planeje viagens perfeitas com o Easy Travel — crie roteiros, controle gastos, organize voos, hospedagens e passeios em um único lugar.",
-      imagem: "/lovable-uploads/focus-logo.png",
+      imagem: "/lovable-uploads/easy-travel.jpg",
       link: "#"
     },
     {
       id: 6,
       nome: "Facilitador de Treino",
       descricao: "Organize seus treinos de musculação e cardio com o Facilitador de Treino Básico — um template prático para criar, acompanhar e adaptar seu plano de treino de forma simples e eficiente.",
-      imagem: "/lovable-uploads/focus-logo.png",
+      imagem: "/lovable-uploads/facilitador-treino.jpg",
       link: "#"
     },
     {
       id: 7,
       nome: "Biblioteca Digital",
       descricao: "Organize seus livros e conteúdos digitais com praticidade usando o template Biblioteca Digital. Simples, intuitivo e ideal para manter tudo sempre em ordem.",
-      imagem: "/lovable-uploads/focus-logo.png",
+      imagem: "/lovable-uploads/biblioteca-digital.jpg",
       link: "#"
     },
   ]);
