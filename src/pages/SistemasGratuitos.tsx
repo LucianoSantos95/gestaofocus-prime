@@ -161,13 +161,13 @@ const SistemasGratuitos = () => {
             <div className="mt-12 text-center">
               <div>
                 <div className="text-4xl font-bold text-primary mb-2">+12.000</div>
-                <div className="text-sm text-foreground-muted mb-4">Downloads de sistemas</div>
-                <div className="flex justify-center animate-bounce mt-6">
-                  <img 
-                    src="/lovable-uploads/mouse-icon.png" 
-                    alt="Scroll" 
-                    className="w-8 h-8 opacity-70"
-                  />
+                <div className="text-sm text-foreground-muted">Downloads de sistemas</div>
+              </div>
+              
+              {/* Scroll Indicator */}
+              <div className="mt-8 flex justify-center">
+                <div className="w-6 h-10 border-2 border-card-border rounded-full flex justify-center">
+                  <div className="w-1 h-3 bg-primary rounded-full mt-2 animate-bounce" />
                 </div>
               </div>
             </div>
