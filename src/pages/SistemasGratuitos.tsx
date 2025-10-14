@@ -8,7 +8,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, CheckCircle2 } from "lucide-react";
+import { ExternalLink, CheckCircle2, Star, TrendingUp, Users, Award } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -16,9 +16,12 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import essentialsBadge from "@/assets/notion-academy-essentials.png";
-import workflowsBadge from "@/assets/notion-academy-workflows.png";
-import advancedBadge from "@/assets/notion-academy-advanced.png";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 interface Sistema {
   id: number;
@@ -32,22 +35,6 @@ interface Sistema {
 
 const SistemasGratuitos = () => {
   const [selectedSistema, setSelectedSistema] = useState<Sistema | null>(null);
-  const [selectedBadge, setSelectedBadge] = useState<string | null>(null);
-
-  const badgeInfo = {
-    essentials: {
-      title: "Notion Academy Essentials",
-      description: "Certificação fundamental que demonstra domínio dos conceitos básicos do Notion. Criadores com este badge possuem conhecimento sólido sobre databases, páginas, blocos e funcionalidades essenciais da plataforma."
-    },
-    workflows: {
-      title: "Notion Academy Workflows",
-      description: "Certificação avançada que comprova expertise na criação de fluxos de trabalho automatizados e integrados. Criadores certificados sabem construir sistemas complexos que conectam diferentes áreas e otimizam processos."
-    },
-    advanced: {
-      title: "Notion Academy Advanced",
-      description: "A certificação mais prestigiada do Notion Academy. Demonstra maestria em fórmulas avançadas, relações complexas, automações sofisticadas e arquitetura de sistemas de alto nível no Notion."
-    }
-  };
   const [sistemas] = useState<Sistema[]>([
     {
       id: 1,
@@ -171,32 +158,10 @@ const SistemasGratuitos = () => {
             </p>
             
             {/* Stats */}
-            <div className="mt-12 text-center space-y-8">
+            <div className="mt-12 text-center">
               <div>
                 <div className="text-4xl font-bold text-primary mb-2">+12.000</div>
                 <div className="text-sm text-foreground-muted">Downloads de sistemas</div>
-              </div>
-              
-              {/* Notion Academy Badges */}
-              <div className="flex items-center justify-center gap-6 md:gap-10">
-                <img 
-                  src={essentialsBadge} 
-                  alt="Notion Academy Essentials" 
-                  onClick={() => setSelectedBadge('essentials')}
-                  className="w-28 h-36 md:w-36 md:h-44 object-contain hover:scale-110 transition-transform duration-300 rounded-xl cursor-pointer"
-                />
-                <img 
-                  src={workflowsBadge} 
-                  alt="Notion Academy Workflows" 
-                  onClick={() => setSelectedBadge('workflows')}
-                  className="w-28 h-36 md:w-36 md:h-44 object-contain hover:scale-110 transition-transform duration-300 rounded-xl cursor-pointer"
-                />
-                <img 
-                  src={advancedBadge} 
-                  alt="Notion Academy Advanced" 
-                  onClick={() => setSelectedBadge('advanced')}
-                  className="w-28 h-36 md:w-36 md:h-44 object-contain hover:scale-110 transition-transform duration-300 rounded-xl cursor-pointer"
-                />
               </div>
             </div>
           </div>
@@ -234,7 +199,7 @@ const SistemasGratuitos = () => {
                       <Card className="relative overflow-hidden border-border/50 bg-card/50 backdrop-blur-sm hover:border-primary/50 transition-all duration-500 hover:shadow-elegant hover:shadow-primary/20 hover:scale-105">
                         <CardContent className="p-0">
                           {/* Imagem do Sistema */}
-                          <div className="relative aspect-video overflow-hidden bg-gradient-to-br from-primary/20 to-accent/20">
+                           <div className="relative aspect-video overflow-hidden bg-gradient-to-br from-primary/20 to-accent/20">
                             <img
                               src={sistema.imagem}
                               alt={sistema.nome}
@@ -242,12 +207,23 @@ const SistemasGratuitos = () => {
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                             
-                            {/* Category Badge */}
-                            <div className="absolute top-3 right-3">
-                              <span className="px-3 py-1 bg-primary/90 text-primary-foreground text-xs font-semibold rounded-full backdrop-blur-sm">
-                                {sistema.categoria}
-                              </span>
-                            </div>
+                            {/* Popular/Most Downloaded Badges */}
+                            {sistema.id === 1 && (
+                              <div className="absolute top-3 left-3">
+                                <span className="px-3 py-1.5 bg-yellow-500/90 text-white text-xs font-bold rounded-full backdrop-blur-sm flex items-center gap-1.5">
+                                  <Star className="w-3.5 h-3.5 fill-white" />
+                                  Mais Popular
+                                </span>
+                              </div>
+                            )}
+                            {sistema.id === 3 && (
+                              <div className="absolute top-3 left-3">
+                                <span className="px-3 py-1.5 bg-blue-500/90 text-white text-xs font-bold rounded-full backdrop-blur-sm flex items-center gap-1.5">
+                                  <TrendingUp className="w-3.5 h-3.5" />
+                                  Mais Baixado
+                                </span>
+                              </div>
+                            )}
                           </div>
 
                           {/* Informações do Sistema */}
@@ -272,8 +248,161 @@ const SistemasGratuitos = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* Social Proof Section */}
+      <section className="py-20 md:py-32 bg-background">
+        <div className="container-focus">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                Confiado por Milhares de Usuários
+              </h2>
+              <p className="text-foreground-muted text-lg">
+                Veja o que nossos usuários dizem sobre nossos templates
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
+                <CardContent className="p-6 space-y-4">
+                  <div className="flex items-center gap-1 text-yellow-500">
+                    <Star className="w-5 h-5 fill-yellow-500" />
+                    <Star className="w-5 h-5 fill-yellow-500" />
+                    <Star className="w-5 h-5 fill-yellow-500" />
+                    <Star className="w-5 h-5 fill-yellow-500" />
+                    <Star className="w-5 h-5 fill-yellow-500" />
+                  </div>
+                  <p className="text-foreground leading-relaxed">
+                    "Os templates da Focus transformaram completamente minha organização empresarial. Tudo que preciso em um só lugar!"
+                  </p>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
+                      <Users className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-foreground">Maria Silva</p>
+                      <p className="text-sm text-foreground-muted">Empresária</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
+                <CardContent className="p-6 space-y-4">
+                  <div className="flex items-center gap-1 text-yellow-500">
+                    <Star className="w-5 h-5 fill-yellow-500" />
+                    <Star className="w-5 h-5 fill-yellow-500" />
+                    <Star className="w-5 h-5 fill-yellow-500" />
+                    <Star className="w-5 h-5 fill-yellow-500" />
+                    <Star className="w-5 h-5 fill-yellow-500" />
+                  </div>
+                  <p className="text-foreground leading-relaxed">
+                    "Finalmente consigo controlar minhas finanças de forma simples e eficiente. O template é perfeito!"
+                  </p>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
+                      <Users className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-foreground">João Santos</p>
+                      <p className="text-sm text-foreground-muted">Freelancer</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
+                <CardContent className="p-6 space-y-4">
+                  <div className="flex items-center gap-1 text-yellow-500">
+                    <Star className="w-5 h-5 fill-yellow-500" />
+                    <Star className="w-5 h-5 fill-yellow-500" />
+                    <Star className="w-5 h-5 fill-yellow-500" />
+                    <Star className="w-5 h-5 fill-yellow-500" />
+                    <Star className="w-5 h-5 fill-yellow-500" />
+                  </div>
+                  <p className="text-foreground leading-relaxed">
+                    "Templates profissionais e bem estruturados. Economizei horas de trabalho configurando meu workspace!"
+                  </p>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
+                      <Users className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-foreground">Ana Costa</p>
+                      <p className="text-sm text-foreground-muted">Designer</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
       <section className="py-20 md:py-32 bg-gradient-to-b from-background to-primary/5">
+        <div className="container-focus">
+          <div className="max-w-3xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                Perguntas Frequentes
+              </h2>
+              <p className="text-foreground-muted text-lg">
+                Tire suas dúvidas sobre nossos templates
+              </p>
+            </div>
+
+            <Accordion type="single" collapsible className="space-y-4">
+              <AccordionItem value="item-1" className="border border-border/50 rounded-lg px-6 bg-card/50 backdrop-blur-sm">
+                <AccordionTrigger className="text-left hover:no-underline">
+                  Os templates são realmente gratuitos?
+                </AccordionTrigger>
+                <AccordionContent className="text-foreground-muted">
+                  Sim! Todos os templates desta página são 100% gratuitos e você pode usá-los sem nenhum custo. Basta duplicar para o seu workspace do Notion.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-2" className="border border-border/50 rounded-lg px-6 bg-card/50 backdrop-blur-sm">
+                <AccordionTrigger className="text-left hover:no-underline">
+                  Preciso ter uma conta no Notion?
+                </AccordionTrigger>
+                <AccordionContent className="text-foreground-muted">
+                  Sim, você precisa de uma conta no Notion para usar os templates. A boa notícia é que criar uma conta é gratuito e leva apenas alguns minutos!
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-3" className="border border-border/50 rounded-lg px-6 bg-card/50 backdrop-blur-sm">
+                <AccordionTrigger className="text-left hover:no-underline">
+                  Posso personalizar os templates?
+                </AccordionTrigger>
+                <AccordionContent className="text-foreground-muted">
+                  Com certeza! Todos os templates são 100% personalizáveis. Você pode modificar cores, adicionar ou remover seções e adaptar completamente ao seu estilo e necessidades.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-4" className="border border-border/50 rounded-lg px-6 bg-card/50 backdrop-blur-sm">
+                <AccordionTrigger className="text-left hover:no-underline">
+                  Como faço para usar um template?
+                </AccordionTrigger>
+                <AccordionContent className="text-foreground-muted">
+                  É simples! Clique no template desejado, depois clique em "Abrir Template no Notion". Na página do Notion, clique em "Duplicate" no canto superior direito e o template será copiado para o seu workspace.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-5" className="border border-border/50 rounded-lg px-6 bg-card/50 backdrop-blur-sm">
+                <AccordionTrigger className="text-left hover:no-underline">
+                  Qual a diferença entre os templates gratuitos e premium?
+                </AccordionTrigger>
+                <AccordionContent className="text-foreground-muted">
+                  Os templates gratuitos são perfeitos para começar e incluem funcionalidades essenciais. Já os templates premium oferecem recursos mais avançados, automações complexas, integrações e suporte dedicado.
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 md:py-32 bg-gradient-to-b from-primary/5 to-background">
         <div className="container-focus">
           <div className="max-w-3xl mx-auto text-center space-y-6 p-12 rounded-2xl bg-gradient-to-br from-primary/10 to-accent/10 border border-primary/20">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">
@@ -337,20 +466,6 @@ const SistemasGratuitos = () => {
               Abrir Template no Notion
             </Button>
           </div>
-        </DialogContent>
-      </Dialog>
-
-      {/* Dialog de Certificações Notion Academy */}
-      <Dialog open={!!selectedBadge} onOpenChange={() => setSelectedBadge(null)}>
-        <DialogContent className="max-w-md">
-          <DialogHeader>
-            <DialogTitle className="text-xl">
-              {selectedBadge && badgeInfo[selectedBadge as keyof typeof badgeInfo].title}
-            </DialogTitle>
-            <DialogDescription className="text-base leading-relaxed pt-4">
-              {selectedBadge && badgeInfo[selectedBadge as keyof typeof badgeInfo].description}
-            </DialogDescription>
-          </DialogHeader>
         </DialogContent>
       </Dialog>
     </div>
