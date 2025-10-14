@@ -8,7 +8,17 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, CheckCircle2 } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import essentialsBadge from "@/assets/notion-academy-essentials.png";
+import workflowsBadge from "@/assets/notion-academy-workflows.png";
+import advancedBadge from "@/assets/notion-academy-advanced.png";
 
 interface Sistema {
   id: number;
@@ -16,58 +26,117 @@ interface Sistema {
   descricao: string;
   imagem: string;
   link: string;
+  categoria: string;
+  beneficios: string[];
 }
 
 const SistemasGratuitos = () => {
+  const [selectedSistema, setSelectedSistema] = useState<Sistema | null>(null);
   const [sistemas] = useState<Sistema[]>([
     {
       id: 1,
       nome: "Hub Empresarial Free",
       descricao: "Organize sua empresa com o Hub Empresarial gratuito da Focus. Um sistema no Notion com áreas de finanças, RH, marketing, projetos e mais — tudo em um só lugar, personalizável e pronto para equipes!",
       imagem: "/lovable-uploads/hub-empresarial-free.jpg",
-      link: "https://www.notion.com/templates/hub-empresarial-free"
+      link: "https://www.notion.com/templates/hub-empresarial-free",
+      categoria: "Empresarial",
+      beneficios: [
+        "Gestão completa de finanças",
+        "Controle de RH e equipes",
+        "Planejamento de marketing",
+        "Gerenciamento de projetos",
+        "100% personalizável"
+      ]
     },
     {
       id: 2,
       nome: "Hub Vida Pessoal",
       descricao: "Organize sua vida em um só lugar! Com este modelo, você pode gerenciar finanças, viagens, rotina, saúde e metas de forma simples e eficiente. Fácil de usar e personalizável, é o primeiro passo para uma vida mais organizada!",
       imagem: "/lovable-uploads/hub-vida-pessoal.jpg",
-      link: "https://www.notion.com/templates/hub-vida-pessoal"
+      link: "https://www.notion.com/templates/hub-vida-pessoal",
+      categoria: "Pessoal",
+      beneficios: [
+        "Controle financeiro pessoal",
+        "Planejamento de viagens",
+        "Organização da rotina",
+        "Acompanhamento de saúde",
+        "Gestão de metas pessoais"
+      ]
     },
     {
       id: 3,
       nome: "Controle Financeiro Básico",
       descricao: "Organize suas finanças pessoais no Notion com o Controle Financeiro — controle gastos, acompanhe receitas e alcance seus objetivos com planejamento e eficiência.",
       imagem: "/lovable-uploads/controle-financeiro.jpg",
-      link: "https://www.notion.com/templates/controle-financeiro-b-sico"
+      link: "https://www.notion.com/templates/controle-financeiro-b-sico",
+      categoria: "Pessoal",
+      beneficios: [
+        "Controle de gastos detalhado",
+        "Acompanhamento de receitas",
+        "Planejamento financeiro",
+        "Visualização de objetivos",
+        "Relatórios automáticos"
+      ]
     },
     {
       id: 4,
       nome: "Central Social Media",
       descricao: "Gerencie suas redes sociais e campanhas de marketing digital no Notion com o Central Social Media — um template simples e funcional com calendário de conteúdo, planejamento de campanhas, biblioteca de mídia e análises.",
       imagem: "/lovable-uploads/central-social-media.jpg",
-      link: "https://www.notion.com/templates/central-social-media-basic"
+      link: "https://www.notion.com/templates/central-social-media-basic",
+      categoria: "Empresarial",
+      beneficios: [
+        "Calendário de conteúdo",
+        "Planejamento de campanhas",
+        "Biblioteca de mídia organizada",
+        "Análise de resultados",
+        "Gestão de múltiplas redes"
+      ]
     },
     {
       id: 5,
       nome: "Easy Travel",
       descricao: "Planeje viagens perfeitas com o Easy Travel — crie roteiros, controle gastos, organize voos, hospedagens e passeios em um único lugar.",
       imagem: "/lovable-uploads/easy-travel.jpg",
-      link: "https://www.notion.com/templates/easy-travel"
+      link: "https://www.notion.com/templates/easy-travel",
+      categoria: "Estilo de Vida",
+      beneficios: [
+        "Criação de roteiros detalhados",
+        "Controle de gastos de viagem",
+        "Organização de voos",
+        "Gestão de hospedagens",
+        "Planejamento de passeios"
+      ]
     },
     {
       id: 6,
       nome: "Facilitador de Treino",
       descricao: "Organize seus treinos de musculação e cardio com o Facilitador de Treino Básico — um template prático para criar, acompanhar e adaptar seu plano de treino de forma simples e eficiente.",
       imagem: "/lovable-uploads/facilitador-treino.jpg",
-      link: "https://www.notion.com/templates/facilitador-de-treino-b-sico"
+      link: "https://www.notion.com/templates/facilitador-de-treino-b-sico",
+      categoria: "Estilo de Vida",
+      beneficios: [
+        "Planos de treino personalizados",
+        "Acompanhamento de progresso",
+        "Exercícios de musculação",
+        "Treinos de cardio",
+        "Adaptação fácil de rotinas"
+      ]
     },
     {
       id: 7,
       nome: "Biblioteca Digital",
       descricao: "Organize seus livros e conteúdos digitais com praticidade usando o template Biblioteca Digital. Simples, intuitivo e ideal para manter tudo sempre em ordem.",
       imagem: "/lovable-uploads/biblioteca-digital.jpg",
-      link: "https://www.notion.com/templates/biblioteca-digital-588"
+      link: "https://www.notion.com/templates/biblioteca-digital-588",
+      categoria: "Estilo de Vida",
+      beneficios: [
+        "Organização de livros",
+        "Catálogo de conteúdos digitais",
+        "Sistema de categorias",
+        "Acompanhamento de leitura",
+        "Interface intuitiva"
+      ]
     },
   ]);
 
@@ -86,9 +155,30 @@ const SistemasGratuitos = () => {
             </p>
             
             {/* Stats */}
-            <div className="mt-12 text-center">
-              <div className="text-4xl font-bold text-primary mb-2">+12.000</div>
-              <div className="text-sm text-foreground-muted">Downloads de sistemas</div>
+            <div className="mt-12 text-center space-y-8">
+              <div>
+                <div className="text-4xl font-bold text-primary mb-2">+12.000</div>
+                <div className="text-sm text-foreground-muted">Downloads de sistemas</div>
+              </div>
+              
+              {/* Notion Academy Badges */}
+              <div className="flex items-center justify-center gap-4 md:gap-8">
+                <img 
+                  src={essentialsBadge} 
+                  alt="Notion Academy Essentials" 
+                  className="w-16 h-20 md:w-20 md:h-24 object-contain hover:scale-110 transition-transform duration-300"
+                />
+                <img 
+                  src={workflowsBadge} 
+                  alt="Notion Academy Workflows" 
+                  className="w-16 h-20 md:w-20 md:h-24 object-contain hover:scale-110 transition-transform duration-300"
+                />
+                <img 
+                  src={advancedBadge} 
+                  alt="Notion Academy Advanced" 
+                  className="w-16 h-20 md:w-20 md:h-24 object-contain hover:scale-110 transition-transform duration-300"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -117,7 +207,10 @@ const SistemasGratuitos = () => {
               <CarouselContent className="-ml-4">
                 {sistemas.map((sistema) => (
                   <CarouselItem key={sistema.id} className="pl-4 md:basis-1/2 lg:basis-1/3">
-                    <div className="group cursor-pointer relative">
+                    <div 
+                      className="group cursor-pointer relative"
+                      onClick={() => setSelectedSistema(sistema)}
+                    >
                       <div className="absolute inset-0 bg-yellow-400/0 group-hover:bg-yellow-400/40 blur-3xl transition-all duration-500 -z-10 scale-75 group-hover:scale-110" />
                       <Card className="relative overflow-hidden border-border/50 bg-card/50 backdrop-blur-sm hover:border-primary/50 transition-all duration-500 hover:shadow-elegant hover:shadow-primary/20 hover:scale-105">
                         <CardContent className="p-0">
@@ -130,16 +223,11 @@ const SistemasGratuitos = () => {
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                             
-                            {/* Overlay com botão */}
-                            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                              <Button
-                                size="sm"
-                                className="bg-primary hover:bg-primary/90"
-                                onClick={() => window.open(sistema.link, '_blank')}
-                              >
-                                <ExternalLink className="w-4 h-4 mr-2" />
-                                Ver Template
-                              </Button>
+                            {/* Category Badge */}
+                            <div className="absolute top-3 right-3">
+                              <span className="px-3 py-1 bg-primary/90 text-primary-foreground text-xs font-semibold rounded-full backdrop-blur-sm">
+                                {sistema.categoria}
+                              </span>
                             </div>
                           </div>
 
@@ -148,7 +236,7 @@ const SistemasGratuitos = () => {
                             <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
                               {sistema.nome}
                             </h3>
-                            <p className="text-foreground-muted text-sm leading-relaxed">
+                            <p className="text-foreground-muted text-sm leading-relaxed line-clamp-3">
                               {sistema.descricao}
                             </p>
                           </div>
@@ -185,6 +273,53 @@ const SistemasGratuitos = () => {
           </div>
         </div>
       </section>
+
+      {/* Dialog de Detalhes do Sistema */}
+      <Dialog open={!!selectedSistema} onOpenChange={() => setSelectedSistema(null)}>
+        <DialogContent className="max-w-2xl">
+          <DialogHeader>
+            <DialogTitle className="text-2xl">{selectedSistema?.nome}</DialogTitle>
+            <DialogDescription className="text-base">
+              {selectedSistema?.descricao}
+            </DialogDescription>
+          </DialogHeader>
+          
+          <div className="space-y-6 mt-4">
+            {/* Categoria */}
+            <div>
+              <h3 className="text-sm font-semibold text-foreground-muted mb-2">Categoria</h3>
+              <span className="inline-flex px-4 py-2 bg-primary/10 text-primary font-semibold rounded-lg">
+                {selectedSistema?.categoria}
+              </span>
+            </div>
+
+            {/* Benefícios */}
+            <div>
+              <h3 className="text-sm font-semibold text-foreground-muted mb-3">Benefícios do Sistema</h3>
+              <ul className="space-y-2">
+                {selectedSistema?.beneficios.map((beneficio, index) => (
+                  <li key={index} className="flex items-start gap-2">
+                    <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                    <span className="text-foreground">{beneficio}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Botão para abrir template */}
+            <Button
+              className="w-full bg-primary hover:bg-primary/90"
+              onClick={() => {
+                window.open(selectedSistema?.link, '_blank');
+                setSelectedSistema(null);
+              }}
+            >
+              <ExternalLink className="w-4 h-4 mr-2" />
+              Abrir Template no Notion
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
