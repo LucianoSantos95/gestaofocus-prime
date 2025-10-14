@@ -90,7 +90,7 @@ const Onboarding = () => {
               <video 
                 className="w-full h-full object-cover"
                 controls
-                poster="/lovable-uploads/focus-logo.png"
+                poster="/lovable-uploads/onboarding-cover.png"
               >
                 <source src="/onboarding-video.mp4" type="video/mp4" />
                 Seu navegador não suporta vídeos.
