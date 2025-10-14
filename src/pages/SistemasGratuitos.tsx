@@ -84,6 +84,14 @@ const SistemasGratuitos = () => {
               Templates prontos para transformar sua produtividade. 
               Baixe gratuitamente e comece a organizar sua vida hoje mesmo.
             </p>
+            <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 pt-4">
+              <p className="text-foreground font-medium">
+                ✨ Somos criador recomendado no marketplace Notion
+              </p>
+              <p className="text-foreground font-medium">
+                📥 Mais de 12 mil Downloads
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -92,7 +100,7 @@ const SistemasGratuitos = () => {
       <section className="section-padding">
         <div className="container-focus">
           <div className="space-y-12">
-            <div className="space-y-4">
+            <div className="space-y-4 text-center">
               <h2 className="text-3xl md:text-4xl font-bold text-foreground">
                 Explore Nossos Sistemas
               </h2>
@@ -111,7 +119,7 @@ const SistemasGratuitos = () => {
               <CarouselContent className="-ml-4">
                 {sistemas.map((sistema) => (
                   <CarouselItem key={sistema.id} className="pl-4 md:basis-1/2 lg:basis-1/3">
-                    <Card className="group overflow-hidden border-border/50 bg-card/50 backdrop-blur-sm hover:border-primary/50 transition-all duration-500 hover:shadow-elegant hover:shadow-primary/20">
+                    <Card className="group overflow-hidden border-border/50 bg-card/50 backdrop-blur-sm hover:border-primary/50 hover:bg-yellow-50 dark:hover:bg-yellow-950/20 transition-all duration-500 hover:shadow-elegant hover:shadow-primary/20">
                       <CardContent className="p-0">
                         {/* Imagem do Sistema */}
                         <div className="relative aspect-video overflow-hidden bg-gradient-to-br from-primary/20 to-accent/20">
