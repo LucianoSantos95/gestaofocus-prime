@@ -166,17 +166,17 @@ const SistemasGratuitos = () => {
                 <img 
                   src={essentialsBadge} 
                   alt="Notion Academy Essentials" 
-                  className="w-16 h-20 md:w-20 md:h-24 object-contain hover:scale-110 transition-transform duration-300"
+                  className="w-16 h-20 md:w-20 md:h-24 object-contain hover:scale-110 transition-transform duration-300 rounded-lg"
                 />
                 <img 
                   src={workflowsBadge} 
                   alt="Notion Academy Workflows" 
-                  className="w-16 h-20 md:w-20 md:h-24 object-contain hover:scale-110 transition-transform duration-300"
+                  className="w-16 h-20 md:w-20 md:h-24 object-contain hover:scale-110 transition-transform duration-300 rounded-lg"
                 />
                 <img 
                   src={advancedBadge} 
                   alt="Notion Academy Advanced" 
-                  className="w-16 h-20 md:w-20 md:h-24 object-contain hover:scale-110 transition-transform duration-300"
+                  className="w-16 h-20 md:w-20 md:h-24 object-contain hover:scale-110 transition-transform duration-300 rounded-lg"
                 />
               </div>
             </div>
