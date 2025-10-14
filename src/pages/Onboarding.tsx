@@ -86,17 +86,15 @@ const Onboarding = () => {
             </p>
 
             {/* Video Container */}
-            <div className="relative aspect-video bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl overflow-hidden border border-card-border mb-8 max-w-3xl mx-auto animate-slide-up delay-300">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center p-8">
-                  <div className="w-20 h-20 mx-auto mb-4 bg-primary/20 rounded-full flex items-center justify-center">
-                    <div className="w-0 h-0 border-t-8 border-t-transparent border-l-12 border-l-primary border-b-8 border-b-transparent ml-1"></div>
-                  </div>
-                  <p className="text-foreground-muted">
-                    Adicione seu vídeo de boas-vindas aqui
-                  </p>
-                </div>
-              </div>
+            <div className="relative aspect-video rounded-2xl overflow-hidden border border-card-border mb-8 max-w-3xl mx-auto animate-slide-up delay-300 shadow-elegant">
+              <video 
+                className="w-full h-full object-cover"
+                controls
+                poster="/lovable-uploads/focus-logo.png"
+              >
+                <source src="/onboarding-video.mp4" type="video/mp4" />
+                Seu navegador não suporta vídeos.
+              </video>
             </div>
           </div>
         </div>
