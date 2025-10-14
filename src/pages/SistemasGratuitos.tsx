@@ -8,7 +8,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Download } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 
 interface Sistema {
   id: number;
@@ -25,49 +25,49 @@ const SistemasGratuitos = () => {
       nome: "Hub Empresarial Free",
       descricao: "Organize sua empresa com o Hub Empresarial gratuito da Focus. Um sistema no Notion com áreas de finanças, RH, marketing, projetos e mais — tudo em um só lugar, personalizável e pronto para equipes!",
       imagem: "/lovable-uploads/hub-empresarial-free.jpg",
-      link: "#"
+      link: "https://www.notion.com/templates/hub-empresarial-free"
     },
     {
       id: 2,
       nome: "Hub Vida Pessoal",
       descricao: "Organize sua vida em um só lugar! Com este modelo, você pode gerenciar finanças, viagens, rotina, saúde e metas de forma simples e eficiente. Fácil de usar e personalizável, é o primeiro passo para uma vida mais organizada!",
       imagem: "/lovable-uploads/hub-vida-pessoal.jpg",
-      link: "#"
+      link: "https://www.notion.com/templates/hub-vida-pessoal"
     },
     {
       id: 3,
       nome: "Controle Financeiro Básico",
       descricao: "Organize suas finanças pessoais no Notion com o Controle Financeiro — controle gastos, acompanhe receitas e alcance seus objetivos com planejamento e eficiência.",
       imagem: "/lovable-uploads/controle-financeiro.jpg",
-      link: "#"
+      link: "https://www.notion.com/templates/controle-financeiro-b-sico"
     },
     {
       id: 4,
       nome: "Central Social Media",
       descricao: "Gerencie suas redes sociais e campanhas de marketing digital no Notion com o Central Social Media — um template simples e funcional com calendário de conteúdo, planejamento de campanhas, biblioteca de mídia e análises.",
       imagem: "/lovable-uploads/central-social-media.jpg",
-      link: "#"
+      link: "https://www.notion.com/templates/central-social-media-basic"
     },
     {
       id: 5,
       nome: "Easy Travel",
       descricao: "Planeje viagens perfeitas com o Easy Travel — crie roteiros, controle gastos, organize voos, hospedagens e passeios em um único lugar.",
       imagem: "/lovable-uploads/easy-travel.jpg",
-      link: "#"
+      link: "https://www.notion.com/templates/easy-travel"
     },
     {
       id: 6,
       nome: "Facilitador de Treino",
       descricao: "Organize seus treinos de musculação e cardio com o Facilitador de Treino Básico — um template prático para criar, acompanhar e adaptar seu plano de treino de forma simples e eficiente.",
       imagem: "/lovable-uploads/facilitador-treino.jpg",
-      link: "#"
+      link: "https://www.notion.com/templates/facilitador-de-treino-b-sico"
     },
     {
       id: 7,
       nome: "Biblioteca Digital",
       descricao: "Organize seus livros e conteúdos digitais com praticidade usando o template Biblioteca Digital. Simples, intuitivo e ideal para manter tudo sempre em ordem.",
       imagem: "/lovable-uploads/biblioteca-digital.jpg",
-      link: "#"
+      link: "https://www.notion.com/templates/biblioteca-digital-588"
     },
   ]);
 
@@ -122,8 +122,8 @@ const SistemasGratuitos = () => {
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                           
-                          {/* Overlay com botões */}
-                          <div className="absolute inset-0 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          {/* Overlay com botão */}
+                          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             <Button
                               size="sm"
                               className="bg-primary hover:bg-primary/90"
@@ -131,14 +131,6 @@ const SistemasGratuitos = () => {
                             >
                               <ExternalLink className="w-4 h-4 mr-2" />
                               Ver Template
-                            </Button>
-                            <Button
-                              size="sm"
-                              variant="outline"
-                              className="border-primary/50 hover:bg-primary/10"
-                            >
-                              <Download className="w-4 h-4 mr-2" />
-                              Baixar
                             </Button>
                           </div>
                         </div>
