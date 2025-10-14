@@ -74,7 +74,7 @@ const SistemasGratuitos = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="section-padding bg-gradient-to-b from-primary/5 to-background">
+      <section className="py-20 md:py-32 bg-gradient-to-b from-primary/5 to-background">
         <div className="container-focus">
           <div className="max-w-3xl mx-auto text-center space-y-6 animate-fade-in">
             <h1 className="hero-title">
@@ -95,7 +95,7 @@ const SistemasGratuitos = () => {
       </section>
 
       {/* Carousel Section - Estilo Netflix */}
-      <section className="section-padding">
+      <section className="py-20 md:py-32">
         <div className="container-focus">
           <div className="space-y-12">
             <div className="space-y-4 text-center">
@@ -166,7 +166,7 @@ const SistemasGratuitos = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-gradient-to-b from-background to-primary/5">
+      <section className="py-20 md:py-32 bg-gradient-to-b from-background to-primary/5">
         <div className="container-focus">
           <div className="max-w-3xl mx-auto text-center space-y-6 p-12 rounded-2xl bg-gradient-to-br from-primary/10 to-accent/10 border border-primary/20">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">
