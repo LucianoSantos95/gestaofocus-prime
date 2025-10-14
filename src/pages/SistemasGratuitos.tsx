@@ -146,7 +146,7 @@ const SistemasGratuitos = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="py-20 md:py-32 bg-gradient-to-b from-primary/5 to-background">
+      <section className="py-16 md:py-24 bg-gradient-to-b from-primary/5 to-background">
         <div className="container-focus">
           <div className="max-w-3xl mx-auto text-center space-y-6 animate-fade-in">
             <h1 className="hero-title">
@@ -161,7 +161,14 @@ const SistemasGratuitos = () => {
             <div className="mt-12 text-center">
               <div>
                 <div className="text-4xl font-bold text-primary mb-2">+12.000</div>
-                <div className="text-sm text-foreground-muted">Downloads de sistemas</div>
+                <div className="text-sm text-foreground-muted mb-4">Downloads de sistemas</div>
+                <div className="flex justify-center animate-bounce mt-6">
+                  <img 
+                    src="/lovable-uploads/mouse-icon.png" 
+                    alt="Scroll" 
+                    className="w-8 h-8 opacity-70"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -169,7 +176,7 @@ const SistemasGratuitos = () => {
       </section>
 
       {/* Carousel Section - Estilo Netflix */}
-      <section className="py-20 md:py-32">
+      <section className="py-16 md:py-24">
         <div className="container-focus">
           <div className="space-y-12">
             <div className="space-y-4 text-center">
@@ -249,7 +256,7 @@ const SistemasGratuitos = () => {
       </section>
 
       {/* Social Proof Section */}
-      <section className="py-20 md:py-32 bg-background">
+      <section className="py-16 md:py-24 bg-background">
         <div className="container-focus">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
@@ -423,7 +430,7 @@ const SistemasGratuitos = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 md:py-32 bg-gradient-to-b from-background to-primary/5">
+      <section className="py-16 md:py-24 bg-gradient-to-b from-background to-primary/5">
         <div className="container-focus">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12">
