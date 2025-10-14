@@ -10,6 +10,7 @@ import SistemasNotion from "./pages/SistemasNotion";
 import SprintProdutividade from "./pages/SprintProdutividade";
 import HubEmpresarial from "./pages/HubEmpresarial";
 import FocusClub from "./pages/FocusClub";
+import SistemasGratuitos from "./pages/SistemasGratuitos";
 import AboutFocus from "./pages/AboutFocus";
 import Privacidade from "./pages/Privacidade";
 import TermosUso from "./pages/TermosUso";
@@ -45,10 +46,11 @@ const App = () => (
           <main className="flex-1">
             <Routes>
               <Route path="/" element={<Index />} />
-              <Route path="/sistemas-notion" element={<SistemasNotion />} />
-              <Route path="/sprint-produtividade" element={<SprintProdutividade />} />
-              <Route path="/hub-empresarial" element={<HubEmpresarial />} />
-              <Route path="/focus-club" element={<FocusClub />} />
+            <Route path="/sistemas-notion" element={<SistemasNotion />} />
+            <Route path="/sprint-produtividade" element={<SprintProdutividade />} />
+            <Route path="/hub-empresarial" element={<HubEmpresarial />} />
+            <Route path="/focus-club" element={<FocusClub />} />
+            <Route path="/sistemas-gratuitos" element={<SistemasGratuitos />} />
               <Route path="/sobre" element={<AboutFocus />} />
               <Route path="/privacidade" element={<Privacidade />} />
               <Route path="/termos" element={<TermosUso />} />
