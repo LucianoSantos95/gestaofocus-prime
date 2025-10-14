@@ -86,16 +86,9 @@ const SistemasGratuitos = () => {
             </p>
             
             {/* Stats */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12 max-w-2xl mx-auto">
-              <div className="text-center">
-                <div className="text-4xl font-bold text-primary mb-2">
-                  Criador recomendado Notion <span className="inline-block">👍</span>
-                </div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold text-primary mb-2">+12.000</div>
-                <div className="text-sm text-foreground-muted">Downloads de sistemas</div>
-              </div>
+            <div className="mt-12 text-center">
+              <div className="text-4xl font-bold text-primary mb-2">+12.000</div>
+              <div className="text-sm text-foreground-muted">Downloads de sistemas</div>
             </div>
           </div>
         </div>
