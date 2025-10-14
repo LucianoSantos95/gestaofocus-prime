@@ -32,6 +32,22 @@ interface Sistema {
 
 const SistemasGratuitos = () => {
   const [selectedSistema, setSelectedSistema] = useState<Sistema | null>(null);
+  const [selectedBadge, setSelectedBadge] = useState<string | null>(null);
+
+  const badgeInfo = {
+    essentials: {
+      title: "Notion Academy Essentials",
+      description: "Certificação fundamental que demonstra domínio dos conceitos básicos do Notion. Criadores com este badge possuem conhecimento sólido sobre databases, páginas, blocos e funcionalidades essenciais da plataforma."
+    },
+    workflows: {
+      title: "Notion Academy Workflows",
+      description: "Certificação avançada que comprova expertise na criação de fluxos de trabalho automatizados e integrados. Criadores certificados sabem construir sistemas complexos que conectam diferentes áreas e otimizam processos."
+    },
+    advanced: {
+      title: "Notion Academy Advanced",
+      description: "A certificação mais prestigiada do Notion Academy. Demonstra maestria em fórmulas avançadas, relações complexas, automações sofisticadas e arquitetura de sistemas de alto nível no Notion."
+    }
+  };
   const [sistemas] = useState<Sistema[]>([
     {
       id: 1,
@@ -166,17 +182,20 @@ const SistemasGratuitos = () => {
                 <img 
                   src={essentialsBadge} 
                   alt="Notion Academy Essentials" 
-                  className="w-16 h-20 md:w-20 md:h-24 object-contain hover:scale-110 transition-transform duration-300 rounded-lg"
+                  onClick={() => setSelectedBadge('essentials')}
+                  className="w-20 h-24 md:w-24 md:h-28 object-contain hover:scale-110 transition-transform duration-300 rounded-xl cursor-pointer"
                 />
                 <img 
                   src={workflowsBadge} 
                   alt="Notion Academy Workflows" 
-                  className="w-16 h-20 md:w-20 md:h-24 object-contain hover:scale-110 transition-transform duration-300 rounded-lg"
+                  onClick={() => setSelectedBadge('workflows')}
+                  className="w-20 h-24 md:w-24 md:h-28 object-contain hover:scale-110 transition-transform duration-300 rounded-xl cursor-pointer"
                 />
                 <img 
                   src={advancedBadge} 
                   alt="Notion Academy Advanced" 
-                  className="w-16 h-20 md:w-20 md:h-24 object-contain hover:scale-110 transition-transform duration-300 rounded-lg"
+                  onClick={() => setSelectedBadge('advanced')}
+                  className="w-20 h-24 md:w-24 md:h-28 object-contain hover:scale-110 transition-transform duration-300 rounded-xl cursor-pointer"
                 />
               </div>
             </div>
@@ -318,6 +337,20 @@ const SistemasGratuitos = () => {
               Abrir Template no Notion
             </Button>
           </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* Dialog de Certificações Notion Academy */}
+      <Dialog open={!!selectedBadge} onOpenChange={() => setSelectedBadge(null)}>
+        <DialogContent className="max-w-md">
+          <DialogHeader>
+            <DialogTitle className="text-xl">
+              {selectedBadge && badgeInfo[selectedBadge as keyof typeof badgeInfo].title}
+            </DialogTitle>
+            <DialogDescription className="text-base leading-relaxed pt-4">
+              {selectedBadge && badgeInfo[selectedBadge as keyof typeof badgeInfo].description}
+            </DialogDescription>
+          </DialogHeader>
         </DialogContent>
       </Dialog>
     </div>
