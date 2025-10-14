@@ -251,7 +251,7 @@ const SistemasGratuitos = () => {
       {/* Social Proof Section */}
       <section className="py-20 md:py-32 bg-background">
         <div className="container-focus">
-          <div className="max-w-5xl mx-auto">
+          <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
                 Confiado por Milhares de Usuários
@@ -261,7 +261,8 @@ const SistemasGratuitos = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {/* Michelle Claudino */}
               <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
                 <CardContent className="p-6 space-y-4">
                   <div className="flex items-center gap-1 text-yellow-500">
@@ -271,21 +272,23 @@ const SistemasGratuitos = () => {
                     <Star className="w-5 h-5 fill-yellow-500" />
                     <Star className="w-5 h-5 fill-yellow-500" />
                   </div>
-                  <p className="text-foreground leading-relaxed">
-                    "Os templates da Focus transformaram completamente minha organização empresarial. Tudo que preciso em um só lugar!"
+                  <h3 className="font-bold text-foreground">Perfeito!</h3>
+                  <p className="text-foreground leading-relaxed text-sm">
+                    A tempos buscava um controle financeiro que me atendesse. Esse tá perfeito! O Luciano ainda me auxiliou numa dificuldade em pronto atendimento. Perfeito, perfeito, perfeito!
                   </p>
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3 pt-2">
                     <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
-                      <Users className="w-5 h-5 text-primary" />
+                      <span className="text-primary font-semibold">M</span>
                     </div>
                     <div>
-                      <p className="font-semibold text-foreground">Maria Silva</p>
-                      <p className="text-sm text-foreground-muted">Empresária</p>
+                      <p className="font-semibold text-foreground">Michelle Claudino</p>
+                      <p className="text-xs text-foreground-muted">8 de set. de 2025</p>
                     </div>
                   </div>
                 </CardContent>
               </Card>
 
+              {/* Bezerra Neto */}
               <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
                 <CardContent className="p-6 space-y-4">
                   <div className="flex items-center gap-1 text-yellow-500">
@@ -295,21 +298,23 @@ const SistemasGratuitos = () => {
                     <Star className="w-5 h-5 fill-yellow-500" />
                     <Star className="w-5 h-5 fill-yellow-500" />
                   </div>
-                  <p className="text-foreground leading-relaxed">
-                    "Finalmente consigo controlar minhas finanças de forma simples e eficiente. O template é perfeito!"
+                  <h3 className="font-bold text-foreground">Excelente</h3>
+                  <p className="text-foreground leading-relaxed text-sm">
+                    Simples, intuitivo e objetivo. Bom para iniciantes, tendo sempre a paciência de entender a lógica da proposta e se comprometer na disciplina de preencher e adequar a sua realidade
                   </p>
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3 pt-2">
                     <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
-                      <Users className="w-5 h-5 text-primary" />
+                      <span className="text-primary font-semibold">B</span>
                     </div>
                     <div>
-                      <p className="font-semibold text-foreground">João Santos</p>
-                      <p className="text-sm text-foreground-muted">Freelancer</p>
+                      <p className="font-semibold text-foreground">Bezerra Neto</p>
+                      <p className="text-xs text-foreground-muted">6 de abr. de 2025</p>
                     </div>
                   </div>
                 </CardContent>
               </Card>
 
+              {/* LORENA */}
               <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
                 <CardContent className="p-6 space-y-4">
                   <div className="flex items-center gap-1 text-yellow-500">
@@ -319,16 +324,95 @@ const SistemasGratuitos = () => {
                     <Star className="w-5 h-5 fill-yellow-500" />
                     <Star className="w-5 h-5 fill-yellow-500" />
                   </div>
-                  <p className="text-foreground leading-relaxed">
-                    "Templates profissionais e bem estruturados. Economizei horas de trabalho configurando meu workspace!"
+                  <h3 className="font-bold text-foreground">Ótimo</h3>
+                  <p className="text-foreground leading-relaxed text-sm">
+                    Me ajudou muito a organizar meu bolso e a me planejar melhor para o futuro
                   </p>
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3 pt-2">
                     <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
-                      <Users className="w-5 h-5 text-primary" />
+                      <span className="text-primary font-semibold">L</span>
                     </div>
                     <div>
-                      <p className="font-semibold text-foreground">Ana Costa</p>
-                      <p className="text-sm text-foreground-muted">Designer</p>
+                      <p className="font-semibold text-foreground">LORENA</p>
+                      <p className="text-xs text-foreground-muted">12 de jan. de 2025</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Diego Kirch */}
+              <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
+                <CardContent className="p-6 space-y-4">
+                  <div className="flex items-center gap-1 text-yellow-500">
+                    <Star className="w-5 h-5 fill-yellow-500" />
+                    <Star className="w-5 h-5 fill-yellow-500" />
+                    <Star className="w-5 h-5 fill-yellow-500" />
+                    <Star className="w-5 h-5 fill-yellow-500" />
+                    <Star className="w-5 h-5 fill-yellow-500" />
+                  </div>
+                  <h3 className="font-bold text-foreground">NOTA 9,9!</h3>
+                  <p className="text-foreground leading-relaxed text-sm">
+                    PERFEITO! É COMPLETO, E SUPRE MINHA ORGANIZAÇÃO TOTALMENTE
+                  </p>
+                  <div className="flex items-center gap-3 pt-2">
+                    <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
+                      <span className="text-primary font-semibold">D</span>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-foreground">Diego Kirch</p>
+                      <p className="text-xs text-foreground-muted">2 de out. de 2025</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Ellys Bernardo */}
+              <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
+                <CardContent className="p-6 space-y-4">
+                  <div className="flex items-center gap-1 text-yellow-500">
+                    <Star className="w-5 h-5 fill-yellow-500" />
+                    <Star className="w-5 h-5 fill-yellow-500" />
+                    <Star className="w-5 h-5 fill-yellow-500" />
+                    <Star className="w-5 h-5 fill-yellow-500" />
+                    <Star className="w-5 h-5 fill-yellow-500" />
+                  </div>
+                  <h3 className="font-bold text-foreground">Muito bom, atende perfeitamente ao que preciso.</h3>
+                  <p className="text-foreground leading-relaxed text-sm">
+                    Muito bom, várias funcionalidades, que me atenderam em tudo que eu precisava, e o melhor é grátis, parabéns para quem o fez.
+                  </p>
+                  <div className="flex items-center gap-3 pt-2">
+                    <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
+                      <span className="text-primary font-semibold">E</span>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-foreground">Ellys Bernardo</p>
+                      <p className="text-xs text-foreground-muted">26 de ago. de 2025</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Cris Neutzling */}
+              <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
+                <CardContent className="p-6 space-y-4">
+                  <div className="flex items-center gap-1 text-yellow-500">
+                    <Star className="w-5 h-5 fill-yellow-500" />
+                    <Star className="w-5 h-5 fill-yellow-500" />
+                    <Star className="w-5 h-5 fill-yellow-500" />
+                    <Star className="w-5 h-5 fill-yellow-500" />
+                    <Star className="w-5 h-5 fill-yellow-500" />
+                  </div>
+                  <h3 className="font-bold text-foreground">EXCELENTE</h3>
+                  <p className="text-foreground leading-relaxed text-sm">
+                    Excelente template... Tem todas as funcionalidades possíveis pra um treino bem feito. Recomendo!
+                  </p>
+                  <div className="flex items-center gap-3 pt-2">
+                    <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
+                      <span className="text-primary font-semibold">C</span>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-foreground">Cris Neutzling</p>
+                      <p className="text-xs text-foreground-muted">9 de fev. de 2025</p>
                     </div>
                   </div>
                 </CardContent>
