@@ -64,7 +64,7 @@ const HeroSection = () => {
           {/* Stats */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-xl mx-auto animate-slide-up delay-500">
             <div className="text-center">
-              <div className="text-3xl font-bold text-primary mb-2">+10.000</div>
+              <div className="text-3xl font-bold text-primary mb-2">+12.000</div>
               <div className="text-sm text-foreground-muted">Downloads de sistemas</div>
             </div>
             <div className="text-center">

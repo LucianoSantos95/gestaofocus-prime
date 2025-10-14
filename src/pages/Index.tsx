@@ -20,7 +20,7 @@ const Index = () => {
   const [selectedService, setSelectedService] = useState<number | null>(null);
   const services = [
     {
-      title: "Sistemas Notion Personalizados",
+      title: "Consultoria Notion Personalizada",
       description: "Desenvolva sistemas empresariais sob medida no Notion para centralizar operações, otimizar processos e ter dashboards estratégicos em tempo real.",
       features: [
         "Templates customizados para sua empresa",

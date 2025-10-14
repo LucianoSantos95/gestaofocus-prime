@@ -19,7 +19,7 @@ const Navigation = () => {
 
   const navItems = [
     { name: "Início", href: "/" },
-    { name: "Sistemas Notion", href: "/sistemas-notion" },
+    { name: "Consultoria Notion", href: "/sistemas-notion" },
     { name: "Sprint Produtividade", href: "/sprint-produtividade" },
     { name: "Hub Empresarial", href: "/hub-empresarial" },
     { name: "Focus Club", href: "/focus-club" },
