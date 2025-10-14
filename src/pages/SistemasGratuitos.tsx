@@ -84,13 +84,18 @@ const SistemasGratuitos = () => {
               Templates prontos para transformar sua produtividade. 
               Baixe gratuitamente e comece a organizar sua vida hoje mesmo.
             </p>
-            <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 pt-4">
-              <p className="text-foreground font-medium">
-                ✨ Somos criador recomendado no marketplace Notion
-              </p>
-              <p className="text-foreground font-medium">
-                📥 Mais de 12 mil Downloads
-              </p>
+            
+            {/* Stats */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12 max-w-2xl mx-auto">
+              <div className="text-center">
+                <div className="text-4xl font-bold text-primary mb-2">
+                  Criador recomendado Notion <span className="inline-block">👍</span>
+                </div>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl font-bold text-primary mb-2">+12.000</div>
+                <div className="text-sm text-foreground-muted">Downloads de sistemas</div>
+              </div>
             </div>
           </div>
         </div>
@@ -119,41 +124,44 @@ const SistemasGratuitos = () => {
               <CarouselContent className="-ml-4">
                 {sistemas.map((sistema) => (
                   <CarouselItem key={sistema.id} className="pl-4 md:basis-1/2 lg:basis-1/3">
-                    <Card className="group overflow-hidden border-border/50 bg-card/50 backdrop-blur-sm hover:border-primary/50 hover:bg-yellow-50 dark:hover:bg-yellow-950/20 transition-all duration-500 hover:shadow-elegant hover:shadow-primary/20">
-                      <CardContent className="p-0">
-                        {/* Imagem do Sistema */}
-                        <div className="relative aspect-video overflow-hidden bg-gradient-to-br from-primary/20 to-accent/20">
-                          <img
-                            src={sistema.imagem}
-                            alt={sistema.nome}
-                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                          
-                          {/* Overlay com botão */}
-                          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <Button
-                              size="sm"
-                              className="bg-primary hover:bg-primary/90"
-                              onClick={() => window.open(sistema.link, '_blank')}
-                            >
-                              <ExternalLink className="w-4 h-4 mr-2" />
-                              Ver Template
-                            </Button>
+                    <div className="group cursor-pointer relative">
+                      <div className="absolute inset-0 bg-yellow-400/0 group-hover:bg-yellow-400/40 blur-3xl transition-all duration-500 -z-10 scale-75 group-hover:scale-110" />
+                      <Card className="relative overflow-hidden border-border/50 bg-card/50 backdrop-blur-sm hover:border-primary/50 transition-all duration-500 hover:shadow-elegant hover:shadow-primary/20 hover:scale-105">
+                        <CardContent className="p-0">
+                          {/* Imagem do Sistema */}
+                          <div className="relative aspect-video overflow-hidden bg-gradient-to-br from-primary/20 to-accent/20">
+                            <img
+                              src={sistema.imagem}
+                              alt={sistema.nome}
+                              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                            
+                            {/* Overlay com botão */}
+                            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                              <Button
+                                size="sm"
+                                className="bg-primary hover:bg-primary/90"
+                                onClick={() => window.open(sistema.link, '_blank')}
+                              >
+                                <ExternalLink className="w-4 h-4 mr-2" />
+                                Ver Template
+                              </Button>
+                            </div>
                           </div>
-                        </div>
 
-                        {/* Informações do Sistema */}
-                        <div className="p-6 space-y-2">
-                          <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
-                            {sistema.nome}
-                          </h3>
-                          <p className="text-foreground-muted text-sm leading-relaxed">
-                            {sistema.descricao}
-                          </p>
-                        </div>
-                      </CardContent>
-                    </Card>
+                          {/* Informações do Sistema */}
+                          <div className="p-6 space-y-2">
+                            <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
+                              {sistema.nome}
+                            </h3>
+                            <p className="text-foreground-muted text-sm leading-relaxed">
+                              {sistema.descricao}
+                            </p>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </div>
                   </CarouselItem>
                 ))}
               </CarouselContent>
