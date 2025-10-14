@@ -178,24 +178,24 @@ const SistemasGratuitos = () => {
               </div>
               
               {/* Notion Academy Badges */}
-              <div className="flex items-center justify-center gap-4 md:gap-8">
+              <div className="flex items-center justify-center gap-6 md:gap-10">
                 <img 
                   src={essentialsBadge} 
                   alt="Notion Academy Essentials" 
                   onClick={() => setSelectedBadge('essentials')}
-                  className="w-20 h-24 md:w-24 md:h-28 object-contain hover:scale-110 transition-transform duration-300 rounded-xl cursor-pointer"
+                  className="w-28 h-36 md:w-36 md:h-44 object-contain hover:scale-110 transition-transform duration-300 rounded-xl cursor-pointer"
                 />
                 <img 
                   src={workflowsBadge} 
                   alt="Notion Academy Workflows" 
                   onClick={() => setSelectedBadge('workflows')}
-                  className="w-20 h-24 md:w-24 md:h-28 object-contain hover:scale-110 transition-transform duration-300 rounded-xl cursor-pointer"
+                  className="w-28 h-36 md:w-36 md:h-44 object-contain hover:scale-110 transition-transform duration-300 rounded-xl cursor-pointer"
                 />
                 <img 
                   src={advancedBadge} 
                   alt="Notion Academy Advanced" 
                   onClick={() => setSelectedBadge('advanced')}
-                  className="w-20 h-24 md:w-24 md:h-28 object-contain hover:scale-110 transition-transform duration-300 rounded-xl cursor-pointer"
+                  className="w-28 h-36 md:w-36 md:h-44 object-contain hover:scale-110 transition-transform duration-300 rounded-xl cursor-pointer"
                 />
               </div>
             </div>
