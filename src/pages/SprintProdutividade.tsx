@@ -165,7 +165,7 @@ const SprintProdutividade = () => {
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in" style={{ animationDelay: '300ms' }}>
               <Button className="btn-hero group" asChild>
-                <a href="https://pay.hub.la/bZk8tJXer0JtaUU3l10n" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.notion.com/templates/sprint-de-organiza-o-7-dias" target="_blank" rel="noopener noreferrer">
                   Garanta seu acesso
                   <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
                 </a>
@@ -272,7 +272,7 @@ const SprintProdutividade = () => {
               </div>
 
               <Button className="btn-hero group" asChild>
-                <a href="https://pay.hub.la/bZk8tJXer0JtaUU3l10n" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.notion.com/templates/sprint-de-organiza-o-7-dias" target="_blank" rel="noopener noreferrer">
                   Começar hoje mesmo
                   <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
                 </a>
@@ -370,7 +370,7 @@ const SprintProdutividade = () => {
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button className="btn-hero group" asChild>
-                <a href="https://pay.hub.la/bZk8tJXer0JtaUU3l10n" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.notion.com/templates/sprint-de-organiza-o-7-dias" target="_blank" rel="noopener noreferrer">
                   Garantir minha vaga
                   <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
                 </a>
