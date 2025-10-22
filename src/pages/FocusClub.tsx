@@ -80,21 +80,21 @@ const FocusClub = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-dark">
+      <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-gradient-dark py-20">
         <div className="relative z-10 container-focus">
           <div className="max-w-5xl mx-auto text-center">
-            <div className="inline-flex items-center px-4 py-2 rounded-full border border-card-border bg-card/50 backdrop-blur-sm mb-8 animate-fade-in">
+            <div className="inline-flex items-center px-4 py-2 rounded-full border border-card-border bg-card/50 backdrop-blur-sm mb-6 animate-fade-in">
               <Lightbulb className="w-4 h-4 text-primary mr-2" />
               <span className="text-sm text-foreground-muted">
                 Metodologia Focus Gestão Empresarial
               </span>
             </div>
             
-            <h1 className="hero-title mb-8 animate-fade-in" style={{ animationDelay: '100ms' }}>
+            <h1 className="hero-title mb-6 animate-fade-in" style={{ animationDelay: '100ms' }}>
               Método FOCUS™
             </h1>
             
-            <p className="text-2xl md:text-3xl text-foreground mb-12 max-w-4xl mx-auto animate-fade-in leading-relaxed" style={{ animationDelay: '200ms' }}>
+            <p className="text-2xl md:text-3xl text-foreground max-w-4xl mx-auto animate-fade-in leading-relaxed" style={{ animationDelay: '200ms' }}>
               Organize o essencial. Execute com foco. Cresça com clareza.
             </p>
           </div>
