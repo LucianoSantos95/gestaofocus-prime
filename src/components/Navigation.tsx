@@ -22,7 +22,7 @@ const Navigation = () => {
     { name: "Consultoria Notion", href: "/sistemas-notion" },
     { name: "Sprint Produtividade", href: "/sprint-produtividade" },
     { name: "Hub Empresarial", href: "/hub-empresarial" },
-    { name: "Focus Club", href: "/focus-club" },
+    { name: "Método FOCUS", href: "/focus-club" },
   ];
 
   return (
