@@ -12,6 +12,11 @@ import HubEmpresarial from "./pages/HubEmpresarial";
 import FocusClub from "./pages/FocusClub";
 import SistemasGratuitos from "./pages/SistemasGratuitos";
 import Blog from "./pages/Blog";
+import PoderNotionEmpresas from "./pages/blog/PoderNotionEmpresas";
+import MapeamentoProcessos from "./pages/blog/MapeamentoProcessos";
+import ErrosProdutividade from "./pages/blog/ErrosProdutividade";
+import GestaoProjetosNotion from "./pages/blog/GestaoProjetosNotion";
+import SistemaCompletoNotion from "./pages/blog/SistemaCompletoNotion";
 import AboutFocus from "./pages/AboutFocus";
 import Privacidade from "./pages/Privacidade";
 import TermosUso from "./pages/TermosUso";
@@ -53,6 +58,11 @@ const App = () => (
             <Route path="/focus-club" element={<FocusClub />} />
             <Route path="/sistemas-gratuitos" element={<SistemasGratuitos />} />
             <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/poder-do-notion-empresas-produtivas" element={<PoderNotionEmpresas />} />
+              <Route path="/blog/mapeamento-processos-crescimento" element={<MapeamentoProcessos />} />
+              <Route path="/blog/5-erros-produtividade" element={<ErrosProdutividade />} />
+              <Route path="/blog/gestao-projetos-notion" element={<GestaoProjetosNotion />} />
+              <Route path="/blog/sistema-completo-notion-automacao" element={<SistemaCompletoNotion />} />
               <Route path="/sobre" element={<AboutFocus />} />
               <Route path="/privacidade" element={<Privacidade />} />
               <Route path="/termos" element={<TermosUso />} />
