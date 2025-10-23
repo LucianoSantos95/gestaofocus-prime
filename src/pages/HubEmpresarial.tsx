@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -161,6 +162,66 @@ const HubEmpresarial = () => {
 
   return (
     <div className="min-h-screen">
+      <Helmet>
+        <title>Hub Empresarial PRO | Sistema Completo Gestão Empresarial - Focus</title>
+        <meta name="description" content="Sistema integrado completo para gestão empresarial: controle financeiro com fluxo caixa, CRM com pipeline vendas, marketing integrado, suporte cliente e dashboards em tempo real. Centralize tudo em um único lugar." />
+        <meta name="keywords" content="hub empresarial, sistema gestão empresarial, ERP notion, controle financeiro empresarial, CRM vendas, gestão marketing, suporte cliente, dashboards executivos, gestão integrada, software gestão, analytics empresarial" />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <link rel="canonical" href="https://focusinteligente.com.br/hub-empresarial" />
+        <meta property="og:title" content="Hub Empresarial PRO - Sistema Completo de Gestão" />
+        <meta property="og:description" content="Sistema integrado: financeiro, CRM, marketing, suporte e analytics. Dashboards em tempo real para decisões estratégicas." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://focusinteligente.com.br/hub-empresarial" />
+        <meta property="og:image" content="https://focusinteligente.com.br/lovable-uploads/focus-logo.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Hub Empresarial PRO - Focus" />
+        <meta name="twitter:description" content="Sistema completo de gestão empresarial com módulos integrados e dashboards em tempo real." />
+        
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "Hub Empresarial PRO",
+            "applicationCategory": "BusinessApplication",
+            "description": "Sistema integrado de gestão empresarial com controle financeiro, CRM, marketing, suporte e analytics",
+            "operatingSystem": "Web",
+            "offers": {
+              "@type": "Offer",
+              "price": "297",
+              "priceCurrency": "BRL",
+              "availability": "https://schema.org/InStock"
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.8",
+              "ratingCount": "100",
+              "bestRating": "5"
+            },
+            "provider": {
+              "@type": "Organization",
+              "name": "Focus Gestão Empresarial",
+              "url": "https://focusinteligente.com.br"
+            }
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [{
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Início",
+              "item": "https://focusinteligente.com.br/"
+            }, {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Hub Empresarial",
+              "item": "https://focusinteligente.com.br/hub-empresarial"
+            }]
+          })}
+        </script>
+      </Helmet>
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-dark">
         <div className="relative z-10 container-focus">

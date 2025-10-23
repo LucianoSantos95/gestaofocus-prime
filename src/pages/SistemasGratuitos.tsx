@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
@@ -145,6 +146,59 @@ const SistemasGratuitos = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>Sistemas Gratuitos Notion | +12.000 Downloads Templates Produtividade - Focus</title>
+        <meta name="description" content="Baixe gratuitamente sistemas Notion para gestão empresarial e vida pessoal: Hub Empresarial, Controle Financeiro, Central Social Media, Easy Travel e mais. +12.000 downloads de templates prontos para usar." />
+        <meta name="keywords" content="templates notion gratuitos, sistemas notion free, hub empresarial gratis, controle financeiro notion, templates produtividade, notion português, sistemas notion download, templates gestão grátis, notion templates brasil" />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <link rel="canonical" href="https://focusinteligente.com.br/sistemas-gratuitos" />
+        <meta property="og:title" content="Sistemas Gratuitos Notion - +12.000 Downloads" />
+        <meta property="og:description" content="Templates Notion gratuitos para gestão empresarial e vida pessoal. Hub Empresarial, Controle Financeiro e muito mais." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://focusinteligente.com.br/sistemas-gratuitos" />
+        <meta property="og:image" content="https://focusinteligente.com.br/lovable-uploads/focus-logo.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Sistemas Gratuitos Notion - Focus" />
+        <meta name="twitter:description" content="Baixe templates Notion gratuitos. +12.000 downloads de sistemas prontos para produtividade." />
+        
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "name": "Sistemas Gratuitos Notion",
+            "description": "Coleção de templates gratuitos Notion para gestão empresarial e vida pessoal",
+            "url": "https://focusinteligente.com.br/sistemas-gratuitos",
+            "provider": {
+              "@type": "Organization",
+              "name": "Focus Gestão Empresarial",
+              "url": "https://focusinteligente.com.br"
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.9",
+              "ratingCount": "12000",
+              "bestRating": "5"
+            }
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [{
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Início",
+              "item": "https://focusinteligente.com.br/"
+            }, {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Sistemas Gratuitos",
+              "item": "https://focusinteligente.com.br/sistemas-gratuitos"
+            }]
+          })}
+        </script>
+      </Helmet>
       {/* Hero Section */}
       <section className="py-16 md:py-24 bg-gradient-to-b from-primary/5 to-background">
         <div className="container-focus">

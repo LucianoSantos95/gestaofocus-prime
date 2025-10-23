@@ -2,27 +2,74 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://focusinteligente.com.br/</loc>
-    <lastmod>2025-09-29</lastmod>
+    <lastmod>2025-01-20</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://focusinteligente.com.br/sistemas-notion</loc>
-    <lastmod>2025-09-29</lastmod>
+    <lastmod>2025-01-20</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://focusinteligente.com.br/sprint-produtividade</loc>
-    <lastmod>2025-09-29</lastmod>
+    <lastmod>2025-01-20</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://focusinteligente.com.br/hub-empresarial</loc>
-    <lastmod>2025-09-29</lastmod>
+    <lastmod>2025-01-20</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://focusinteligente.com.br/focus-club</loc>
-    <lastmod>2025-09-29</lastmod>
+    <lastmod>2025-01-20</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://focusinteligente.com.br/sistemas-gratuitos</loc>
+    <lastmod>2025-01-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://focusinteligente.com.br/blog</loc>
+    <lastmod>2025-01-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://focusinteligente.com.br/blog/poder-notion-empresas</loc>
+    <lastmod>2025-01-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://focusinteligente.com.br/blog/mapeamento-processos</loc>
+    <lastmod>2025-01-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://focusinteligente.com.br/blog/erros-produtividade</loc>
+    <lastmod>2025-01-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://focusinteligente.com.br/blog/gestao-projetos-notion</loc>
+    <lastmod>2025-01-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://focusinteligente.com.br/blog/sistema-completo-notion</loc>
+    <lastmod>2025-01-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>

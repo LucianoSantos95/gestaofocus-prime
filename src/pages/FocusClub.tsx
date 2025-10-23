@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Target, Users, FolderKanban, Zap, TrendingUp, CheckCircle, ArrowRight, Database, Lightbulb, Repeat } from "lucide-react";
@@ -79,6 +80,84 @@ const FocusClub = () => {
 
   return (
     <div className="min-h-screen">
+      <Helmet>
+        <title>Método FOCUS™ | Metodologia Gestão Empresarial e Produtividade - Focus</title>
+        <meta name="description" content="Método FOCUS™: metodologia completa gestão empresarial em 5 etapas - Fundamento, Organização, Centralização, Utilização Produtiva e Sustentação. Transforme rotinas empresariais com sistemas personalizados, clareza nos processos e foco na execução." />
+        <meta name="keywords" content="método focus, metodologia gestão empresarial, método produtividade, transformação empresarial, gestão processos, organização empresarial, centralização operações, sistemas escaláveis, evolução contínua, consultoria metodologia" />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <link rel="canonical" href="https://focusinteligente.com.br/focus-club" />
+        <meta property="og:title" content="Método FOCUS™ - Metodologia de Gestão Empresarial" />
+        <meta property="og:description" content="Metodologia completa em 5 etapas para transformar gestão empresarial: diagnóstico, organização, centralização, aplicação e evolução." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://focusinteligente.com.br/focus-club" />
+        <meta property="og:image" content="https://focusinteligente.com.br/lovable-uploads/focus-logo.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Método FOCUS™ - Focus Gestão" />
+        <meta name="twitter:description" content="Metodologia completa para transformar gestão empresarial do diagnóstico à evolução contínua." />
+        
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "HowTo",
+            "name": "Método FOCUS™",
+            "description": "Metodologia em 5 etapas para transformar gestão empresarial",
+            "step": [
+              {
+                "@type": "HowToStep",
+                "position": 1,
+                "name": "Fundamento - Diagnóstico e clareza do cenário",
+                "text": "Identificamos os principais gargalos e definimos metas realistas."
+              },
+              {
+                "@type": "HowToStep",
+                "position": 2,
+                "name": "Organização - Estrutura que sustenta o crescimento",
+                "text": "Mapeamos processos, definimos prioridades e estruturamos o fluxo de trabalho."
+              },
+              {
+                "@type": "HowToStep",
+                "position": 3,
+                "name": "Centralização - Um único ambiente, todas as informações",
+                "text": "Implementamos o sistema Notion para reunir tudo em um só lugar."
+              },
+              {
+                "@type": "HowToStep",
+                "position": 4,
+                "name": "Utilização Produtiva - Aplicação prática no dia a dia",
+                "text": "Transformamos ferramenta em resultado com hábitos e rotinas produtivas."
+              },
+              {
+                "@type": "HowToStep",
+                "position": 5,
+                "name": "Sustentação - Evolução contínua",
+                "text": "O sistema cresce junto com o negócio."
+              }
+            ],
+            "provider": {
+              "@type": "Organization",
+              "name": "Focus Gestão Empresarial",
+              "url": "https://focusinteligente.com.br"
+            }
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [{
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Início",
+              "item": "https://focusinteligente.com.br/"
+            }, {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Método FOCUS",
+              "item": "https://focusinteligente.com.br/focus-club"
+            }]
+          })}
+        </script>
+      </Helmet>
       {/* Hero Section */}
       <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-gradient-dark py-20">
         <div className="relative z-10 container-focus">

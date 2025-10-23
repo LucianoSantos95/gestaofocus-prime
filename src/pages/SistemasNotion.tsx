@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -58,6 +59,57 @@ const SistemasNotion = () => {
 
   return (
     <div className="min-h-screen">
+      <Helmet>
+        <title>Sistemas Notion Personalizados | Consultoria Empresarial Especializada - Focus</title>
+        <meta name="description" content="Criamos sistemas empresariais Notion sob medida: dashboards em tempo real, automações inteligentes, controle centralizado de processos e relatórios estratégicos. Consultoria especializada para otimizar sua gestão empresarial." />
+        <meta name="keywords" content="sistemas notion personalizados, consultoria notion empresarial, automação notion, dashboards notion, notion para empresas, gestão processos notion, CRM notion, controle financeiro notion, banco dados notion, integrações notion" />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <link rel="canonical" href="https://focusinteligente.com.br/sistemas-notion" />
+        <meta property="og:title" content="Sistemas Notion Personalizados - Consultoria Empresarial Focus" />
+        <meta property="og:description" content="Sistemas empresariais Notion sob medida com automações, dashboards e integração completa. Centralize operações e otimize processos." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://focusinteligente.com.br/sistemas-notion" />
+        <meta property="og:image" content="https://focusinteligente.com.br/lovable-uploads/focus-logo.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Sistemas Notion Personalizados - Focus" />
+        <meta name="twitter:description" content="Sistemas empresariais Notion sob medida com automações, dashboards e integração completa para sua empresa." />
+        
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "serviceType": "Consultoria em Sistemas Notion Personalizados",
+            "provider": {
+              "@type": "Organization",
+              "name": "Focus Gestão Empresarial",
+              "url": "https://focusinteligente.com.br"
+            },
+            "description": "Desenvolvimento de sistemas empresariais personalizados no Notion com automações inteligentes, dashboards executivos e integração completa de processos",
+            "areaServed": "BR",
+            "offers": {
+              "@type": "Offer",
+              "availability": "https://schema.org/InStock"
+            }
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [{
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Início",
+              "item": "https://focusinteligente.com.br/"
+            }, {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Sistemas Notion",
+              "item": "https://focusinteligente.com.br/sistemas-notion"
+            }]
+          })}
+        </script>
+      </Helmet>
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-dark">
         <div className="relative z-10 container-focus">

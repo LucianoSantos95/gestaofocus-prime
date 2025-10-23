@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet";
 import HeroSection from "@/components/HeroSection";
 import ServiceCard from "@/components/ServiceCard";
 import { Button } from "@/components/ui/button";
@@ -79,6 +80,65 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
+      <Helmet>
+        <title>Focus - Gestão Empresarial e Sistemas Notion Personalizados | Consultoria Especializada</title>
+        <meta name="description" content="Consultoria em gestão empresarial com sistemas Notion personalizados, sprint de produtividade 7 dias, hub empresarial completo e comunidade exclusiva. Transforme processos, aumente eficiência operacional e impulsione resultados com metodologias comprovadas." />
+        <meta name="keywords" content="gestão empresarial, sistemas notion personalizados, consultoria empresarial, produtividade empresarial, processos empresariais, automação notion, hub empresarial, sprint produtividade, focus club, dashboards executivos, CRM notion, controle financeiro empresarial, otimização processos, crescimento empresarial, metodologias produtividade" />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <link rel="canonical" href="https://focusinteligente.com.br/" />
+        <meta property="og:title" content="Focus - Consultoria em Gestão Empresarial e Sistemas Notion Personalizados" />
+        <meta property="og:description" content="Sistemas Notion personalizados, sprint de produtividade, hub empresarial e comunidade exclusiva. Consultoria especializada para otimizar processos empresariais e aumentar resultados." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://focusinteligente.com.br/" />
+        <meta property="og:image" content="https://focusinteligente.com.br/lovable-uploads/focus-logo.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Focus - Consultoria em Gestão Empresarial e Sistemas Notion" />
+        <meta name="twitter:description" content="Sistemas Notion personalizados, sprint de produtividade, hub empresarial e comunidade exclusiva para transformar sua gestão empresarial." />
+        <meta name="twitter:image" content="https://focusinteligente.com.br/lovable-uploads/focus-logo.png" />
+        
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Focus Gestão Empresarial",
+            "url": "https://focusinteligente.com.br",
+            "logo": "https://focusinteligente.com.br/lovable-uploads/focus-logo.png",
+            "description": "Consultoria especializada em gestão empresarial com sistemas Notion personalizados, sprint de produtividade e hub empresarial",
+            "address": {
+              "@type": "PostalAddress",
+              "addressCountry": "BR"
+            },
+            "sameAs": [
+              "https://www.notion.com/pt/@focusgestao"
+            ]
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "Focus Gestão Empresarial",
+            "url": "https://focusinteligente.com.br",
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://focusinteligente.com.br/blog?q={search_term_string}",
+              "query-input": "required name=search_term_string"
+            }
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [{
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Início",
+              "item": "https://focusinteligente.com.br/"
+            }]
+          })}
+        </script>
+      </Helmet>
       {/* Hero Section */}
       <HeroSection />
 

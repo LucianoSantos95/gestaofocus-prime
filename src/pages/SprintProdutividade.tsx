@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { 
@@ -143,6 +144,60 @@ const SprintProdutividade = () => {
 
   return (
     <div className="min-h-screen">
+      <Helmet>
+        <title>Sprint de Produtividade 7 Dias | Transforme sua Rotina Profissional - Focus</title>
+        <meta name="description" content="Programa intensivo de produtividade em 7 dias com metodologias comprovadas, exercícios práticos diários, material exclusivo e acompanhamento personalizado. GTD, Pomodoro, Time Blocking e mais técnicas para resultados reais." />
+        <meta name="keywords" content="sprint produtividade, produtividade 7 dias, metodologias produtividade, GTD, pomodoro, time blocking, gestão tempo, rotina produtiva, organização pessoal, planejamento diário, foco concentração, eliminar distrações" />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <link rel="canonical" href="https://focusinteligente.com.br/sprint-produtividade" />
+        <meta property="og:title" content="Sprint de Produtividade 7 Dias - Transforme sua Rotina" />
+        <meta property="og:description" content="Programa intensivo com metodologias comprovadas, exercícios práticos e acompanhamento. 98% de satisfação." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://focusinteligente.com.br/sprint-produtividade" />
+        <meta property="og:image" content="https://focusinteligente.com.br/lovable-uploads/focus-logo.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Sprint de Produtividade 7 Dias - Focus" />
+        <meta name="twitter:description" content="Programa intensivo de produtividade com metodologias comprovadas e resultados garantidos." />
+        
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Course",
+            "name": "Sprint de Produtividade 7 Dias",
+            "description": "Programa intensivo de produtividade com metodologias comprovadas, exercícios práticos diários e acompanhamento personalizado",
+            "provider": {
+              "@type": "Organization",
+              "name": "Focus Gestão Empresarial",
+              "url": "https://focusinteligente.com.br"
+            },
+            "educationalLevel": "Intermediário",
+            "timeRequired": "P7D",
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.9",
+              "ratingCount": "1000",
+              "bestRating": "5"
+            }
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [{
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Início",
+              "item": "https://focusinteligente.com.br/"
+            }, {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Sprint Produtividade",
+              "item": "https://focusinteligente.com.br/sprint-produtividade"
+            }]
+          })}
+        </script>
+      </Helmet>
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-dark">
         <div className="relative z-10 container-focus">
