@@ -95,7 +95,7 @@ const Navigation = () => {
                     Produtos
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="w-[200px] p-2 bg-background-elevated/95 backdrop-blur-lg border border-card-border rounded-lg">
+                    <ul className="w-[240px] p-2">
                       {productItems.map((item) => (
                         <li key={item.name}>
                           <Link to={item.href} onClick={() => trackNavigationClick(item.name)}>
