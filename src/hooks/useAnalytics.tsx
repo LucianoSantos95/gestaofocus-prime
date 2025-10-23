@@ -23,6 +23,8 @@ const getPageTitle = (pathname: string): string => {
     '/sprint-produtividade': 'Sprint Produtividade - Focus',
     '/hub-empresarial': 'Hub Empresarial - Focus',
     '/focus-club': 'Método FOCUS - Focus',
+    '/blog': 'Blog - Focus',
+    '/sistemas-gratuitos': 'Sistemas Gratuitos - Focus',
   };
 
   return titles[pathname] || 'Focus - Gestão Empresarial e Produtividade';

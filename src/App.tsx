@@ -11,6 +11,7 @@ import SprintProdutividade from "./pages/SprintProdutividade";
 import HubEmpresarial from "./pages/HubEmpresarial";
 import FocusClub from "./pages/FocusClub";
 import SistemasGratuitos from "./pages/SistemasGratuitos";
+import Blog from "./pages/Blog";
 import AboutFocus from "./pages/AboutFocus";
 import Privacidade from "./pages/Privacidade";
 import TermosUso from "./pages/TermosUso";
@@ -51,6 +52,7 @@ const App = () => (
             <Route path="/hub-empresarial" element={<HubEmpresarial />} />
             <Route path="/focus-club" element={<FocusClub />} />
             <Route path="/sistemas-gratuitos" element={<SistemasGratuitos />} />
+            <Route path="/blog" element={<Blog />} />
               <Route path="/sobre" element={<AboutFocus />} />
               <Route path="/privacidade" element={<Privacidade />} />
               <Route path="/termos" element={<TermosUso />} />

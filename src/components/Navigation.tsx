@@ -1,7 +1,15 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Target } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
 import { trackWhatsAppClick, trackNavigationClick } from "@/lib/analytics";
 
 const Navigation = () => {
@@ -20,9 +28,17 @@ const Navigation = () => {
   const navItems = [
     { name: "Início", href: "/" },
     { name: "Consultoria Notion", href: "/sistemas-notion" },
-    { name: "Sprint Produtividade", href: "/sprint-produtividade" },
+  ];
+
+  const productItems = [
+    { name: "Sprint de Produtividade", href: "/sprint-produtividade" },
     { name: "Hub Empresarial", href: "/hub-empresarial" },
+    { name: "Sistemas Gratuitos", href: "/sistemas-gratuitos" },
+  ];
+
+  const finalNavItems = [
     { name: "Método FOCUS", href: "/focus-club" },
+    { name: "Blog", href: "/blog" },
   ];
 
   return (
@@ -45,24 +61,80 @@ const Navigation = () => {
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden lg:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                to={item.href}
-                className={`relative py-2 px-4 rounded-lg transition-all duration-200 ${
-                  location.pathname === item.href
-                    ? "text-primary font-medium"
-                    : "text-foreground-muted hover:text-foreground hover:bg-accent"
-                }`}
-                onClick={() => trackNavigationClick(item.name)}
-              >
-                {item.name}
-                {location.pathname === item.href && (
-                  <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-primary rounded-full" />
-                )}
-              </Link>
-            ))}
+          <div className="hidden lg:flex items-center space-x-2">
+            <NavigationMenu>
+              <NavigationMenuList className="space-x-2">
+                {navItems.map((item) => (
+                  <NavigationMenuItem key={item.name}>
+                    <Link to={item.href} onClick={() => trackNavigationClick(item.name)}>
+                      <NavigationMenuLink
+                        className={`relative py-2 px-4 rounded-lg transition-all duration-200 ${
+                          location.pathname === item.href
+                            ? "text-primary font-medium"
+                            : "text-foreground-muted hover:text-foreground hover:bg-accent"
+                        }`}
+                      >
+                        {item.name}
+                        {location.pathname === item.href && (
+                          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-primary rounded-full" />
+                        )}
+                      </NavigationMenuLink>
+                    </Link>
+                  </NavigationMenuItem>
+                ))}
+
+                {/* Produtos Dropdown */}
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger
+                    className={`relative py-2 px-4 rounded-lg transition-all duration-200 ${
+                      productItems.some(item => location.pathname === item.href)
+                        ? "text-primary font-medium"
+                        : "text-foreground-muted hover:text-foreground hover:bg-accent"
+                    }`}
+                  >
+                    Produtos
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <ul className="w-[200px] p-2 bg-background-elevated/95 backdrop-blur-lg border border-card-border rounded-lg">
+                      {productItems.map((item) => (
+                        <li key={item.name}>
+                          <Link to={item.href} onClick={() => trackNavigationClick(item.name)}>
+                            <NavigationMenuLink
+                              className={`block py-3 px-4 rounded-lg transition-all duration-200 ${
+                                location.pathname === item.href
+                                  ? "text-primary font-medium bg-accent"
+                                  : "text-foreground-muted hover:text-foreground hover:bg-accent"
+                              }`}
+                            >
+                              {item.name}
+                            </NavigationMenuLink>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+
+                {finalNavItems.map((item) => (
+                  <NavigationMenuItem key={item.name}>
+                    <Link to={item.href} onClick={() => trackNavigationClick(item.name)}>
+                      <NavigationMenuLink
+                        className={`relative py-2 px-4 rounded-lg transition-all duration-200 ${
+                          location.pathname === item.href
+                            ? "text-primary font-medium"
+                            : "text-foreground-muted hover:text-foreground hover:bg-accent"
+                        }`}
+                      >
+                        {item.name}
+                        {location.pathname === item.href && (
+                          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-primary rounded-full" />
+                        )}
+                      </NavigationMenuLink>
+                    </Link>
+                  </NavigationMenuItem>
+                ))}
+              </NavigationMenuList>
+            </NavigationMenu>
             
             <Button 
               className="btn-hero ml-4"
@@ -109,6 +181,49 @@ const Navigation = () => {
                   {item.name}
                 </Link>
               ))}
+              
+              {/* Produtos Section Mobile */}
+              <div>
+                <div className="py-3 px-4 text-foreground font-medium">Produtos</div>
+                <div className="pl-4 space-y-2">
+                  {productItems.map((item) => (
+                    <Link
+                      key={item.name}
+                      to={item.href}
+                      onClick={() => {
+                        trackNavigationClick(item.name);
+                        setIsOpen(false);
+                      }}
+                      className={`block py-2 px-4 rounded-lg transition-all duration-200 text-sm ${
+                        location.pathname === item.href
+                          ? "text-primary font-medium bg-accent"
+                          : "text-foreground-muted hover:text-foreground hover:bg-accent"
+                      }`}
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              {finalNavItems.map((item) => (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  onClick={() => {
+                    trackNavigationClick(item.name);
+                    setIsOpen(false);
+                  }}
+                  className={`block py-3 px-4 rounded-lg transition-all duration-200 ${
+                    location.pathname === item.href
+                      ? "text-primary font-medium bg-accent"
+                      : "text-foreground-muted hover:text-foreground hover:bg-accent"
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              ))}
+              
               <div className="pt-4 border-t border-card-border">
                 <Button 
                   className="btn-hero w-full"
