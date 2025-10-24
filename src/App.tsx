@@ -17,6 +17,11 @@ import MapeamentoProcessos from "./pages/blog/MapeamentoProcessos";
 import ErrosProdutividade from "./pages/blog/ErrosProdutividade";
 import GestaoProjetosNotion from "./pages/blog/GestaoProjetosNotion";
 import SistemaCompletoNotion from "./pages/blog/SistemaCompletoNotion";
+import PerdaTempoProfissionais from "./pages/blog/PerdaTempoProfissionais";
+import NotionVsPlanilhas from "./pages/blog/NotionVsPlanilhas";
+import OrganizarProjetosCaoticos from "./pages/blog/OrganizarProjetosCaoticos";
+import ProcessosInteligentesAutonomos from "./pages/blog/ProcessosInteligentesAutonomos";
+import SistemasNotionPequenasEmpresas from "./pages/blog/SistemasNotionPequenasEmpresas";
 import AboutFocus from "./pages/AboutFocus";
 import Privacidade from "./pages/Privacidade";
 import TermosUso from "./pages/TermosUso";
@@ -63,6 +68,11 @@ const App = () => (
               <Route path="/blog/5-erros-produtividade" element={<ErrosProdutividade />} />
               <Route path="/blog/gestao-projetos-notion" element={<GestaoProjetosNotion />} />
               <Route path="/blog/sistema-completo-notion-automacao" element={<SistemaCompletoNotion />} />
+              <Route path="/blog/perda-tempo-profissionais" element={<PerdaTempoProfissionais />} />
+              <Route path="/blog/notion-vs-planilhas" element={<NotionVsPlanilhas />} />
+              <Route path="/blog/organizar-projetos-caoticos" element={<OrganizarProjetosCaoticos />} />
+              <Route path="/blog/processos-inteligentes-autonomos" element={<ProcessosInteligentesAutonomos />} />
+              <Route path="/blog/sistemas-notion-pequenas-empresas" element={<SistemasNotionPequenasEmpresas />} />
               <Route path="/sobre" element={<AboutFocus />} />
               <Route path="/privacidade" element={<Privacidade />} />
               <Route path="/termos" element={<TermosUso />} />
