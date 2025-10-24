@@ -7,11 +7,66 @@ import mapeamentoImage from "@/assets/blog/mapeamento-processos.jpg";
 import errosImage from "@/assets/blog/erros-produtividade.jpg";
 import gestaoProjetosImage from "@/assets/blog/gestao-projetos-notion.jpg";
 import sistemaCompletoImage from "@/assets/blog/sistema-completo-notion.jpg";
+import perdaTempoImage from "@/assets/blog/perda-tempo-profissionais.jpg";
+import notionVsPlanilhasImage from "@/assets/blog/notion-vs-planilhas.jpg";
+import organizarProjetosImage from "@/assets/blog/organizar-projetos-caoticos.jpg";
+import processosInteligentesImage from "@/assets/blog/processos-inteligentes-autonomos.jpg";
+import sistemasNotionPequenasImage from "@/assets/blog/sistemas-notion-pequenas-empresas.jpg";
 
 const Blog = () => {
   const blogPosts = [
     {
       id: 1,
+      title: "Por que 80% dos Profissionais Perdem Tempo Todos os Dias (e Como Resolver Isso)",
+      excerpt: "Descubra os principais vilões da produtividade que consomem 2-3 horas por dia e aprenda o método prático para recuperar esse tempo perdido.",
+      date: "2025-01-22",
+      readTime: "8 min",
+      category: "Produtividade",
+      slug: "perda-tempo-profissionais",
+      image: perdaTempoImage
+    },
+    {
+      id: 2,
+      title: "Notion vs Planilhas: O Que as Empresas Modernas Estão Usando Para Crescer Mais Rápido",
+      excerpt: "Compare as duas ferramentas e descubra por que 73% das empresas em crescimento estão migrando para o Notion em 2025.",
+      date: "2025-01-21",
+      readTime: "9 min",
+      category: "Ferramentas",
+      slug: "notion-vs-planilhas",
+      image: notionVsPlanilhasImage
+    },
+    {
+      id: 3,
+      title: "O Método Para Organizar Projetos Caóticos e Dobrar a Eficiência",
+      excerpt: "Descubra o método testado que transforma projetos caóticos em sistemas organizados, dobrando a eficiência da equipe em 30 dias.",
+      date: "2025-01-20",
+      readTime: "9 min",
+      category: "Gestão de Projetos",
+      slug: "organizar-projetos-caoticos",
+      image: organizarProjetosImage
+    },
+    {
+      id: 4,
+      title: "Como Criar Processos Inteligentes que Funcionam Sozinhos",
+      excerpt: "Aprenda o framework para criar processos que funcionam no piloto automático, mesmo quando você não está presente.",
+      date: "2025-01-20",
+      readTime: "10 min",
+      category: "Automação",
+      slug: "processos-inteligentes-autonomos",
+      image: processosInteligentesImage
+    },
+    {
+      id: 5,
+      title: "3 Sistemas Prontos no Notion Que Toda Pequena Empresa Deveria Ter",
+      excerpt: "Conheça os 3 sistemas essenciais que transformam pequenas empresas em operações profissionais e escaláveis.",
+      date: "2025-01-20",
+      readTime: "7 min",
+      category: "Sistemas",
+      slug: "sistemas-notion-pequenas-empresas",
+      image: sistemasNotionPequenasImage
+    },
+    {
+      id: 6,
       title: "O segredo que as empresas produtivas usam (e ninguém te contou): o poder do Notion",
       excerpt: "Descubra como o Notion se tornou a ferramenta preferida de empresas que multiplicam sua produtividade e organize seu negócio de forma inteligente.",
       date: "2025-01-20",
@@ -21,7 +76,7 @@ const Blog = () => {
       image: notionPoderImage
     },
     {
-      id: 2,
+      id: 7,
       title: "Seu negócio está travado? Veja como o mapeamento de processos pode destravar seu crescimento",
       excerpt: "Aprenda como identificar gargalos, eliminar retrabalho e criar um fluxo de trabalho que realmente funciona para sua empresa crescer.",
       date: "2025-01-18",
@@ -31,7 +86,7 @@ const Blog = () => {
       image: mapeamentoImage
     },
     {
-      id: 3,
+      id: 8,
       title: "Você comete esses 5 erros de produtividade sem perceber? Descubra agora como evitá-los",
       excerpt: "Identifique os erros mais comuns que sabotam sua produtividade e aprenda técnicas práticas para corrigi-los imediatamente.",
       date: "2025-01-15",
@@ -41,7 +96,7 @@ const Blog = () => {
       image: errosImage
     },
     {
-      id: 4,
+      id: 9,
       title: "Gestão de projetos no Notion: o passo a passo para parar de perder tempo e ganhar resultados",
       excerpt: "Monte um sistema completo de gestão de projetos no Notion e transforme a forma como sua equipe trabalha com eficiência comprovada.",
       date: "2025-01-12",
@@ -51,7 +106,7 @@ const Blog = () => {
       image: gestaoProjetosImage
     },
     {
-      id: 5,
+      id: 10,
       title: "Como montar um sistema completo no Notion e fazer sua empresa funcionar no piloto automático",
       excerpt: "Crie automações inteligentes e processos integrados que fazem sua empresa operar sozinha enquanto você foca no estratégico.",
       date: "2025-01-10",
