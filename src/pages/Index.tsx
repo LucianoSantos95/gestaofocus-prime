@@ -63,7 +63,7 @@ const Index = () => {
       details: "O sistema all-in-one para gestão empresarial completa. Centralize todas as operações da sua empresa em um único lugar: controle financeiro com fluxo de caixa automático, CRM com pipeline de vendas, gestão de projetos e tarefas, controle de estoque, dashboards executivos com KPIs em tempo real e relatórios personalizados. Tudo integrado e sincronizado automaticamente."
     },
     {
-      title: "Focus Club - Comunidade Empresarial",
+      title: "metodofocus - Comunidade Empresarial",
       description: "Comunidade exclusiva de empreendedores e gestores com aprendizado contínuo em produtividade, otimização de processos, gestão estratégica e networking qualificado.",
       features: [
         "Aulas exclusivas semanais",

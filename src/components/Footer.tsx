@@ -9,7 +9,7 @@ const Footer = () => {
       { name: "Sistemas Notion", href: "/sistemas-notion" },
       { name: "Sprint Produtividade", href: "/sprint-produtividade" },
       { name: "Hub Empresarial", href: "/hub-empresarial" },
-      { name: "Focus Club", href: "/focus-club" }
+      { name: "metodofocus", href: "/focus-club" }
     ],
     company: [
       { name: "Sobre a Focus", href: "/sobre" },

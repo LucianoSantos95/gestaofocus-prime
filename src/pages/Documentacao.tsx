@@ -71,7 +71,7 @@ const Documentacao = () => {
           time: "12 min"
         },
         {
-          title: "Focus Club",
+          title: "metodofocus",
           description: "Benefícios e como aproveitar ao máximo a comunidade",
           icon: CheckCircle,
           time: "6 min"
