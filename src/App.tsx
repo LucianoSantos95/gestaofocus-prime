@@ -22,6 +22,11 @@ import NotionVsPlanilhas from "./pages/blog/NotionVsPlanilhas";
 import OrganizarProjetosCaoticos from "./pages/blog/OrganizarProjetosCaoticos";
 import ProcessosInteligentesAutonomos from "./pages/blog/ProcessosInteligentesAutonomos";
 import SistemasNotionPequenasEmpresas from "./pages/blog/SistemasNotionPequenasEmpresas";
+import ErroSilenciosoProdutividade from "./pages/blog/ErroSilenciosoProdutividade";
+import CaosRotinaProdutiva from "./pages/blog/CaosRotinaProdutiva";
+import TarefasVsIncendios from "./pages/blog/TarefasVsIncendios";
+import SistemaProdutividadePassoPasso from "./pages/blog/SistemaProdutividadePassoPasso";
+import SistemasNotion150 from "./pages/blog/150SistemasNotion";
 import AboutFocus from "./pages/AboutFocus";
 import Privacidade from "./pages/Privacidade";
 import TermosUso from "./pages/TermosUso";
@@ -73,6 +78,11 @@ const App = () => (
               <Route path="/blog/organizar-projetos-caoticos" element={<OrganizarProjetosCaoticos />} />
               <Route path="/blog/processos-inteligentes-autonomos" element={<ProcessosInteligentesAutonomos />} />
               <Route path="/blog/sistemas-notion-pequenas-empresas" element={<SistemasNotionPequenasEmpresas />} />
+              <Route path="/blog/erro-silencioso-produtividade-equipe" element={<ErroSilenciosoProdutividade />} />
+              <Route path="/blog/transformar-caos-rotina-produtiva-notion" element={<CaosRotinaProdutiva />} />
+              <Route path="/blog/gerenciando-tarefas-ou-apagando-incendios" element={<TarefasVsIncendios />} />
+              <Route path="/blog/criar-sistema-produtividade-funciona" element={<SistemaProdutividadePassoPasso />} />
+              <Route path="/blog/150-sistemas-notion-licoes-praticas" element={<SistemasNotion150 />} />
               <Route path="/sobre" element={<AboutFocus />} />
               <Route path="/privacidade" element={<Privacidade />} />
               <Route path="/termos" element={<TermosUso />} />
