@@ -227,12 +227,11 @@ const Blog = () => {
           {archivedPosts.length > 0 && (
             <div className="mt-12 text-center">
               <Button
-                variant="outline"
                 size="lg"
                 onClick={() => setShowArchived(!showArchived)}
                 className="min-w-[200px]"
               >
-                {showArchived ? "Ver Menos" : `Ver Mais (${archivedPosts.length} arquivados)`}
+                {showArchived ? "Ver Menos" : "Ver Mais"}
               </Button>
             </div>
           )}
