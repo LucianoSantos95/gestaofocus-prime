@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import { Calendar, Clock, ArrowRight, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
 import notionPoderImage from "@/assets/blog/notion-poder-empresas.jpg";
 import mapeamentoImage from "@/assets/blog/mapeamento-processos.jpg";
 import errosImage from "@/assets/blog/erros-produtividade.jpg";
@@ -14,6 +15,8 @@ import processosInteligentesImage from "@/assets/blog/processos-inteligentes-aut
 import sistemasNotionPequenasImage from "@/assets/blog/sistemas-notion-pequenas-empresas.jpg";
 
 const Blog = () => {
+  const [showArchived, setShowArchived] = useState(false);
+  
   const blogPosts = [
     {
       id: 1,
@@ -117,6 +120,10 @@ const Blog = () => {
     }
   ];
 
+  const recentPosts = blogPosts.slice(0, 5);
+  const archivedPosts = blogPosts.slice(5);
+  const displayedPosts = showArchived ? blogPosts : recentPosts;
+
   return (
     <>
       <Helmet>
@@ -164,8 +171,9 @@ const Blog = () => {
 
         {/* Blog Posts Grid */}
         <section className="container-focus">
+          <h2 className="text-2xl font-bold mb-8">Posts Recentes</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogPosts.map((post) => (
+            {displayedPosts.map((post) => (
               <article 
                 key={post.id}
                 className="group bg-card border border-card-border rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
@@ -214,6 +222,20 @@ const Blog = () => {
               </article>
             ))}
           </div>
+
+          {/* Ver Mais Button */}
+          {archivedPosts.length > 0 && (
+            <div className="mt-12 text-center">
+              <Button
+                variant="outline"
+                size="lg"
+                onClick={() => setShowArchived(!showArchived)}
+                className="min-w-[200px]"
+              >
+                {showArchived ? "Ver Menos" : `Ver Mais (${archivedPosts.length} arquivados)`}
+              </Button>
+            </div>
+          )}
         </section>
 
         {/* CTA Section */}
