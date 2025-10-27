@@ -6,7 +6,7 @@ import coverImage from "@/assets/blog/erro-silencioso-produtividade.jpg";
 
 const ErroSilenciosoProdutividade = () => {
   const publishDate = "2025-01-25";
-  const articleUrl = "https://focusinteligente.com/blog/erro-silencioso-produtividade-equipe";
+  const articleUrl = "https://focusinteligente.com/blog/erro-produtividade-equipe";
 
   const tableOfContents = [
     { id: "introducao", title: "O Erro Que Ninguém Vê (Mas Todos Sofrem)" },
@@ -200,7 +200,7 @@ const ErroSilenciosoProdutividade = () => {
 
             <img 
               src={coverImage} 
-              alt="Equipe frustrada em reunião com quadro branco desorganizado" 
+              alt="Gestão de equipes - Focus Inteligente mostra erro de produtividade em reunião empresarial desorganizada" 
               className="w-full rounded-lg shadow-xl mb-8"
             />
           </div>
@@ -254,12 +254,19 @@ const ErroSilenciosoProdutividade = () => {
             <section id="problema" className="mb-12">
               <h2 className="text-3xl font-bold mb-6">O Erro Silencioso Revelado</h2>
               
+              <div className="bg-primary/10 rounded-lg p-6 mb-6">
+                <p className="text-lg font-semibold mb-2">Definição Rápida:</p>
+                <p className="text-lg">
+                  <strong>Erro silencioso de produtividade</strong> é quando cada membro da equipe guarda informações críticas em lugares diferentes, criando um caos invisível que consome horas diárias.
+                </p>
+              </div>
+
               <p className="text-lg leading-relaxed mb-4">
                 O erro não é sua equipe ser desorganizada. Não é falta de compromisso. E definitivamente não é falta de ferramentas - você provavelmente já tem dezenas delas.
               </p>
 
               <p className="text-lg leading-relaxed mb-4">
-                O erro é este: <strong>cada membro da equipe guarda informações críticas em lugares diferentes</strong>.
+                Quando não há um <Link to="/blog/sistema-produtividade-passo-passo" className="text-primary hover:underline">sistema centralizado de gestão</Link>, o erro é este: <strong>cada membro da equipe guarda informações críticas em lugares diferentes</strong>.
               </p>
 
               <div className="bg-card border-l-4 border-primary p-6 my-8">
@@ -344,7 +351,7 @@ const ErroSilenciosoProdutividade = () => {
               </p>
 
               <p className="text-lg leading-relaxed mb-4">
-                É exatamente para isso que ferramentas como o Notion foram criadas. Não para substituir suas ferramentas atuais, mas para organizá-las em um sistema coerente.
+                É exatamente para isso que ferramentas como o Notion foram criadas. Não para substituir suas ferramentas atuais, mas para organizá-las em um sistema coerente. Se você está começando, veja nosso <Link to="/blog/sistema-produtividade-passo-passo" className="text-primary hover:underline">guia passo a passo para criar um sistema de produtividade</Link>.
               </p>
 
               <div className="bg-gradient-primary rounded-lg p-8 text-white my-8">

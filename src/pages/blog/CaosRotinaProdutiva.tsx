@@ -6,7 +6,7 @@ import coverImage from "@/assets/blog/caos-rotina-produtiva.jpg";
 
 const CaosRotinaProdutiva = () => {
   const publishDate = "2025-01-28";
-  const articleUrl = "https://focusinteligente.com/blog/transformar-caos-rotina-produtiva-notion";
+  const articleUrl = "https://focusinteligente.com/blog/caos-rotina-produtiva";
 
   const tableOfContents = [
     { id: "introducao", title: "O Dia Que Nunca Acaba" },
@@ -199,7 +199,7 @@ const CaosRotinaProdutiva = () => {
 
             <img 
               src={coverImage} 
-              alt="Antes e depois: mesa caótica vs workspace organizado no Notion" 
+              alt="Rotina produtiva Focus Inteligente - transformação de workspace caótico em organizado com Notion" 
               className="w-full rounded-lg shadow-xl mb-8"
             />
           </div>
@@ -255,8 +255,15 @@ const CaosRotinaProdutiva = () => {
             <section id="diagnostico" className="mb-12">
               <h2 className="text-3xl font-bold mb-6">Por Que Seu Dia Está Caótico</h2>
               
+              <div className="bg-primary/10 rounded-lg p-6 mb-6">
+                <p className="text-lg font-semibold mb-2">Resposta Direta:</p>
+                <p className="text-lg">
+                  Seu dia está caótico porque você está tentando gerenciar tudo na memória, sem um <strong>sistema externo confiável</strong> para capturar e organizar informações.
+                </p>
+              </div>
+              
               <p className="text-lg leading-relaxed mb-4">
-                O caos não acontece porque você é desorganizado. Acontece porque você está tentando gerenciar sua vida inteira dentro da sua cabeça.
+                O caos não acontece porque você é desorganizado. Acontece porque você está tentando gerenciar sua vida inteira dentro da sua cabeça. Saiba mais sobre <Link to="/blog/erro-produtividade-equipe" className="text-primary hover:underline">como erros silenciosos destroem a produtividade</Link>.
               </p>
 
               <div className="bg-card border-l-4 border-primary p-6 my-8">
@@ -311,7 +318,7 @@ const CaosRotinaProdutiva = () => {
               <h2 className="text-3xl font-bold mb-6">A Solução: Sistemas, Não Disciplina</h2>
               
               <p className="text-lg leading-relaxed mb-4">
-                Você não precisa de mais força de vontade. Você precisa de um <strong>Sistema de Comando e Controle</strong> para o seu dia.
+                Você não precisa de mais força de vontade. Você precisa de um <strong>Sistema de Comando e Controle</strong> para o seu dia. Descubra <Link to="/blog/tarefas-vs-incendios" className="text-primary hover:underline">a diferença entre gerenciar tarefas e apagar incêndios</Link>.
               </p>
 
               <p className="text-lg leading-relaxed mb-4">

@@ -190,7 +190,7 @@ const OneFiftySystemsNotion = () => {
 
             <img 
               src={coverImage} 
-              alt="Ilustração representando centenas de sistemas organizados no Notion" 
+              alt="150 sistemas Notion Focus Inteligente - experiência organizando workspaces empresariais" 
               className="w-full h-[400px] object-cover rounded-lg shadow-lg"
             />
           </header>
@@ -236,8 +236,16 @@ const OneFiftySystemsNotion = () => {
                 <Lightbulb className="h-8 w-8 text-primary" />
                 Lição 1: Simplicidade Vence Complexidade
               </h2>
+              
+              <div className="bg-primary/10 rounded-lg p-6 mb-6">
+                <p className="text-lg font-semibold mb-2">Lição Principal:</p>
+                <p className="text-lg">
+                  Sistemas complexos são difíceis de manter. Comece simples e evolua gradualmente conforme suas necessidades reais.
+                </p>
+              </div>
+              
               <p className="text-muted-foreground leading-relaxed mb-4">
-                A tentação de criar sistemas complexos é grande. Bancos de dados interligados, fórmulas mirabolantes, automações infinitas…
+                A tentação de criar sistemas complexos é grande. Bancos de dados interligados, fórmulas mirabolantes, automações infinitas… Mas antes de complicar, veja <Link to="/blog/sistema-produtividade-passo-passo" className="text-primary hover:underline">como criar um sistema simples que funciona</Link>.
               </p>
               <p className="text-muted-foreground leading-relaxed mb-4">
                 Mas a verdade é que <strong>sistemas complexos são difíceis de manter</strong>. Quanto mais complexo, maior a chance de algo quebrar e mais tempo você gasta consertando.

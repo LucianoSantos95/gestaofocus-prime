@@ -189,7 +189,7 @@ const TarefasVsIncendios = () => {
 
             <img 
               src={coverImage} 
-              alt="Ilustração representando a diferença entre gestão de tarefas e combate a incêndios" 
+              alt="Gestão proativa Focus Inteligente - diferença entre organizar tarefas e apagar incêndios empresariais" 
               className="w-full h-[400px] object-cover rounded-lg shadow-lg"
             />
           </header>
@@ -235,6 +235,13 @@ const TarefasVsIncendios = () => {
                 <ListTodo className="h-8 w-8 text-primary" />
                 A Diferença Entre Tarefas e Incêndios
               </h2>
+              
+              <div className="bg-primary/10 rounded-lg p-6 mb-6">
+                <p className="text-lg font-semibold mb-2">Definição Rápida:</p>
+                <p className="text-lg">
+                  <strong>Gestão de tarefas</strong> é trabalhar proativamente com planejamento. <strong>Apagar incêndios</strong> é viver no modo reativo, sem tempo para estratégia.
+                </p>
+              </div>
               
               <div className="bg-muted/30 rounded-lg p-6 mb-6">
                 <h3 className="text-xl font-semibold mb-4 text-foreground">📋 Gestão de Tarefas (Proativa)</h3>

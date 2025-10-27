@@ -189,7 +189,7 @@ const SistemaProdutividadePassoPasso = () => {
 
             <img 
               src={coverImage} 
-              alt="Ilustração de um sistema de produtividade organizado e funcional" 
+              alt="Sistema de produtividade Focus Inteligente - guia completo Notion organizado e funcional" 
               className="w-full h-[400px] object-cover rounded-lg shadow-lg"
             />
           </header>
@@ -219,8 +219,16 @@ const SistemaProdutividadePassoPasso = () => {
                 <Target className="h-8 w-8 text-primary" />
                 Por Que Você Precisa de um Sistema
               </h2>
+              
+              <div className="bg-primary/10 rounded-lg p-6 mb-6">
+                <p className="text-lg font-semibold mb-2">O Que É Sistema de Produtividade:</p>
+                <p className="text-lg">
+                  Um <strong>sistema de produtividade</strong> é uma estrutura organizada com processos claros para capturar, organizar, priorizar e executar tarefas sem depender da memória.
+                </p>
+              </div>
+              
               <p className="text-muted-foreground leading-relaxed mb-4">
-                A maioria das pessoas não tem um <strong>sistema de produtividade</strong>. Elas têm uma coleção caótica de listas, lembretes, post-its e ferramentas que não conversam entre si.
+                A maioria das pessoas não tem um <strong>sistema de produtividade</strong>. Elas têm uma coleção caótica de listas, lembretes, post-its e ferramentas que não conversam entre si. Se isso parece familiar, veja <Link to="/blog/150-sistemas-notion" className="text-primary hover:underline">lições de quem já organizou 150+ sistemas no Notion</Link>.
               </p>
               <p className="text-muted-foreground leading-relaxed mb-4">
                 O resultado? Tarefas esquecidas, prioridades confusas, sensação constante de estar perdendo algo importante e, pior ainda, uma mente que nunca descansa porque está sempre tentando lembrar de tudo.
