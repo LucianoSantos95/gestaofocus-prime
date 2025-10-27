@@ -1,23 +1,25 @@
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Clock, Calendar, Share2, BookOpen } from "lucide-react";
+import { ArrowLeft, Clock, Calendar, ChevronRight, Inbox, Filter, FolderTree, Calendar as CalendarIcon, CheckCircle2, Lightbulb, Target } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import coverImage from "@/assets/blog/sistema-produtividade-passo-passo.jpg";
+import relatedImage1 from "@/assets/blog/150-sistemas-notion.jpg";
+import relatedImage2 from "@/assets/blog/tarefas-vs-incendios.jpg";
+import relatedImage3 from "@/assets/blog/erro-silencioso-produtividade.jpg";
 
 const SistemaProdutividadePassoPasso = () => {
-  const publishDate = "2025-01-28";
-  const articleUrl = "https://focusinteligente.com/blog/criar-sistema-produtividade-funciona";
-
+  const publishDate = "2025-01-29";
+  const articleUrl = "https://focusinteligente.com.br/blog/sistema-produtividade-passo-passo";
+  
   const tableOfContents = [
-    { id: "introducao", title: "Por Que a Maioria Falha ao Tentar Ser Mais Produtiva?" },
-    { id: "armadilhas", title: "As 3 Armadilhas Que Te Impedem de Criar um Sistema Eficaz" },
-    { id: "passo1", title: "Passo 1: Defina Seus Objetivos Reais (e Não Suas Fantasias)" },
-    { id: "passo2", title: "Passo 2: Simplifique ao Máximo (Menos Ferramentas, Mais Foco)" },
-    { id: "passo3", title: "Passo 3: Crie Um Fluxo de Trabalho Visual (e Que Faça Sentido)" },
-    { id: "passo4", title: "Passo 4: Automatize o Que For Possível (Para Não Se Sobrecarregar)" },
-    { id: "passo5", title: "Passo 5: Monitore e Ajuste Constantemente (A Produtividade É Dinâmica)" },
-    { id: "conclusao", title: "Conclusão: A Produtividade Sustentável Está Mais Perto do Que Você Imagina" },
-    { id: "cta", title: "Pronto Para Criar Seu Sistema de Produtividade?" }
+    { id: "introducao", title: "Por Que Você Precisa de um Sistema" },
+    { id: "fundamentos", title: "Os 4 Pilares de um Sistema Eficaz" },
+    { id: "passo-1", title: "Passo 1: Capture Tudo" },
+    { id: "passo-2", title: "Passo 2: Processe com Clareza" },
+    { id: "passo-3", title: "Passo 3: Organize por Contexto" },
+    { id: "passo-4", title: "Passo 4: Revise Regularmente" },
+    { id: "implementacao", title: "Como Implementar no Notion" },
+    { id: "conclusao", title: "Conclusão" }
   ];
 
   const faqSchema = {
@@ -26,34 +28,34 @@ const SistemaProdutividadePassoPasso = () => {
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Por que a maioria das pessoas não consegue criar um sistema de produtividade eficaz?",
+        "name": "O que é um sistema de produtividade?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "A maioria das pessoas falha porque tenta complicar demais, usando dezenas de ferramentas e técnicas complexas. Um sistema eficaz é simples, focado e adaptado às suas necessidades."
+          "text": "Um sistema de produtividade é um conjunto estruturado de processos, ferramentas e hábitos que permite capturar, organizar, priorizar e executar tarefas de forma consistente e eficiente, sem depender apenas da memória ou improviso."
         }
       },
       {
         "@type": "Question",
-        "name": "Quais são as armadilhas mais comuns na criação de um sistema de produtividade?",
+        "name": "Por que preciso de um sistema de produtividade?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "As armadilhas mais comuns são: não definir objetivos claros, usar ferramentas demais e não monitorar o sistema para ajustá-lo ao longo do tempo."
+          "text": "Sem um sistema, você fica refém da memória, perde informações importantes, não consegue priorizar com clareza e vive no modo reativo. Um sistema bem estruturado libera sua mente para pensar estrategicamente e garante que nada importante seja esquecido."
         }
       },
       {
         "@type": "Question",
-        "name": "Como o Notion pode ajudar na criação de um sistema de produtividade?",
+        "name": "Qual a melhor ferramenta para criar um sistema de produtividade?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "O Notion é uma ferramenta flexível que permite criar um sistema de produtividade visual, integrado e adaptado às suas necessidades. Você pode centralizar tarefas, projetos, notas e informações em um só lugar."
+          "text": "O Notion é uma das melhores opções por sua flexibilidade, permitindo criar sistemas personalizados com bancos de dados, múltiplas visões, templates e automações — tudo em um único lugar e acessível de qualquer dispositivo."
         }
       },
       {
         "@type": "Question",
-        "name": "Qual é o primeiro passo para criar um sistema de produtividade que realmente funcione?",
+        "name": "Quanto tempo leva para implementar um sistema de produtividade?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "O primeiro passo é definir seus objetivos reais, ou seja, o que você quer alcançar com o sistema. Não se prenda a fantasias ou modismos, foque no que é importante para você."
+          "text": "A estrutura inicial pode ser criada em 2-3 horas. Mas o sistema se consolida ao longo de 2-4 semanas de uso consistente, conforme você ajusta e refina os processos para sua realidade."
         }
       }
     ]
@@ -62,26 +64,22 @@ const SistemaProdutividadePassoPasso = () => {
   const blogPostingSchema = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "headline": "O Passo a Passo Para Criar um Sistema de Produtividade Que Realmente Funciona (Sem Complicar)",
-    "description": "Guia completo e prático para criar um sistema de produtividade simples, funcional e sustentável que transforma sua forma de trabalhar.",
-    "image": `https://focusinteligente.com${coverImage}`,
+    "headline": "O Passo a Passo para Criar um Sistema de Produtividade que Realmente Funciona",
+    "description": "Aprenda a construir um sistema de produtividade eficaz do zero, sem complicação. Guia prático com os 4 pilares essenciais e implementação passo a passo no Notion.",
+    "image": `https://focusinteligente.com.br${coverImage}`,
+    "datePublished": publishDate,
+    "dateModified": publishDate,
     "author": {
-      "@type": "Organization",
-      "name": "Focus Gestão Empresarial"
+      "@type": "Person",
+      "name": "Focus Inteligente"
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Focus Gestão Empresarial",
+      "name": "Focus Inteligente",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://focusinteligente.com/lovable-uploads/focus-logo.png"
+        "url": "https://focusinteligente.com.br/lovable-uploads/focus-logo.png"
       }
-    },
-    "datePublished": publishDate,
-    "dateModified": publishDate,
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": articleUrl
     }
   };
 
@@ -93,18 +91,18 @@ const SistemaProdutividadePassoPasso = () => {
         "@type": "ListItem",
         "position": 1,
         "name": "Início",
-        "item": "https://focusinteligente.com"
+        "item": "https://focusinteligente.com.br"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Blog",
-        "item": "https://focusinteligente.com/blog"
+        "item": "https://focusinteligente.com.br/blog"
       },
       {
         "@type": "ListItem",
         "position": 3,
-        "name": "Sistema de Produtividade Que Funciona",
+        "name": "Sistema de Produtividade Passo a Passo",
         "item": articleUrl
       }
     ]
@@ -113,27 +111,27 @@ const SistemaProdutividadePassoPasso = () => {
   return (
     <>
       <Helmet>
-        <title>O Passo a Passo Para Criar um Sistema de Produtividade Que Realmente Funciona | Focus</title>
-        <meta 
-          name="description" 
-          content="Guia completo e prático para criar um sistema de produtividade simples, funcional e sustentável que transforma sua forma de trabalhar." 
-        />
-        <meta name="keywords" content="sistema de produtividade, como ser mais produtivo, gestão de tempo, organização pessoal, notion, ferramentas de produtividade" />
+        <title>Sistema de Produtividade Passo a Passo (Sem Complicação) | Focus Inteligente</title>
+        <meta name="description" content="Aprenda a construir um sistema de produtividade eficaz do zero. Guia prático com os 4 pilares essenciais e implementação passo a passo no Notion." />
+        <meta name="keywords" content="sistema de produtividade, produtividade pessoal, organização pessoal, notion produtividade, gtd, gestão de tarefas" />
         <link rel="canonical" href={articleUrl} />
-        <meta property="og:title" content="O Passo a Passo Para Criar um Sistema de Produtividade Que Realmente Funciona" />
-        <meta property="og:description" content="Guia completo e prático para criar um sistema de produtividade simples, funcional e sustentável." />
-        <meta property="og:image" content={`https://focusinteligente.com${coverImage}`} />
+        
+        <meta property="og:title" content="Sistema de Produtividade Passo a Passo (Sem Complicação)" />
+        <meta property="og:description" content="Guia prático para criar um sistema de produtividade que realmente funciona." />
+        <meta property="og:image" content={`https://focusinteligente.com.br${coverImage}`} />
         <meta property="og:url" content={articleUrl} />
         <meta property="og:type" content="article" />
-        <meta property="og:locale" content="pt_BR" />
-        <meta property="article:published_time" content={publishDate} />
-        <meta property="article:modified_time" content={publishDate} />
-        <meta property="article:author" content="Focus Gestão Empresarial" />
+        
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="O Passo a Passo Para Criar um Sistema de Produtividade Que Realmente Funciona" />
-        <meta name="twitter:description" content="Guia completo e prático para criar um sistema de produtividade simples, funcional e sustentável." />
-        <meta name="twitter:image" content={`https://focusinteligente.com${coverImage}`} />
-        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <meta name="twitter:title" content="Sistema de Produtividade Passo a Passo" />
+        <meta name="twitter:description" content="Guia prático para criar um sistema que realmente funciona." />
+        <meta name="twitter:image" content={`https://focusinteligente.com.br${coverImage}`} />
+        
+        <meta name="robots" content="index, follow" />
+        <meta name="author" content="Focus Inteligente" />
+        <meta property="article:published_time" content={publishDate} />
+        <meta property="article:author" content="Focus Inteligente" />
+        
         <script type="application/ld+json">
           {JSON.stringify(blogPostingSchema)}
         </script>
@@ -145,274 +143,551 @@ const SistemaProdutividadePassoPasso = () => {
         </script>
       </Helmet>
 
-      <article className="min-h-screen pt-24 pb-16">
-        {/* Breadcrumbs */}
-        <div className="container-focus mb-8">
-          <nav className="flex items-center space-x-2 text-sm text-foreground-muted">
-            <Link to="/" className="hover:text-primary transition-colors">Início</Link>
-            <span>/</span>
-            <Link to="/blog" className="hover:text-primary transition-colors">Blog</Link>
-            <span>/</span>
-            <span className="text-foreground">Sistema de Produtividade Que Funciona</span>
+      <article className="min-h-screen bg-background">
+        <div className="container mx-auto px-4 py-8 max-w-4xl">
+          {/* Breadcrumbs */}
+          <nav className="flex items-center gap-2 text-sm text-muted-foreground mb-8">
+            <Link to="/" className="hover:text-foreground transition-colors">
+              Início
+            </Link>
+            <ChevronRight className="h-4 w-4" />
+            <Link to="/blog" className="hover:text-foreground transition-colors">
+              Blog
+            </Link>
+            <ChevronRight className="h-4 w-4" />
+            <span className="text-foreground">Sistema de Produtividade</span>
           </nav>
-        </div>
 
-        {/* Header */}
-        <header className="container-focus mb-12">
-          <div className="max-w-4xl mx-auto">
+          {/* Header */}
+          <header className="mb-12">
             <Link 
               to="/blog"
-              className="inline-flex items-center text-primary hover:underline mb-6"
+              className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-6"
             >
-              <ArrowLeft className="w-4 h-4 mr-2" />
+              <ArrowLeft className="h-4 w-4" />
               Voltar para o blog
             </Link>
-
-            <div className="inline-flex items-center px-4 py-2 rounded-full border border-card-border bg-card/50 backdrop-blur-sm mb-6">
-              <BookOpen className="w-4 h-4 text-primary mr-2" />
-              <span className="text-sm text-foreground-muted">Produtividade</span>
-            </div>
-
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              O Passo a Passo Para Criar um Sistema de Produtividade Que Realmente Funciona (Sem Complicar)
+            
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
+              O Passo a Passo para Criar um Sistema de Produtividade que Realmente Funciona (Sem Complicar)
             </h1>
-
-            <p className="text-xl text-foreground-muted mb-8">
-              Guia completo e prático para criar um sistema de produtividade simples, funcional e sustentável que transforma sua forma de trabalhar.
+            
+            <p className="text-xl text-muted-foreground mb-6">
+              Um sistema simples, prático e eficaz que você pode implementar hoje — sem perder horas configurando ferramentas complexas.
             </p>
-
-            <div className="flex items-center gap-6 text-sm text-foreground-muted mb-8">
+            
+            <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-8">
               <div className="flex items-center gap-2">
-                <Calendar className="w-4 h-4" />
-                <time dateTime={publishDate}>
-                  {new Date(publishDate).toLocaleDateString('pt-BR')}
-                </time>
+                <Calendar className="h-4 w-4" />
+                <time dateTime={publishDate}>29 de janeiro de 2025</time>
               </div>
               <div className="flex items-center gap-2">
-                <Clock className="w-4 h-4" />
-                <span>10 min de leitura</span>
+                <Clock className="h-4 w-4" />
+                <span>9 min de leitura</span>
               </div>
-              <button className="flex items-center gap-2 hover:text-primary transition-colors">
-                <Share2 className="w-4 h-4" />
-                <span>Compartilhar</span>
-              </button>
             </div>
 
             <img 
               src={coverImage} 
-              alt="Pessoa organizando tarefas em um sistema visual" 
-              className="w-full rounded-lg shadow-xl mb-8"
+              alt="Ilustração de um sistema de produtividade organizado e funcional" 
+              className="w-full h-[400px] object-cover rounded-lg shadow-lg"
             />
-          </div>
-        </header>
+          </header>
 
-        {/* Table of Contents */}
-        <aside className="container-focus mb-12">
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-card border border-card-border rounded-lg p-6">
-              <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
-                <BookOpen className="w-5 h-5 text-primary" />
-                Índice de Conteúdo
-              </h2>
-              <nav>
-                <ol className="space-y-2">
-                  {tableOfContents.map((item, index) => (
-                    <li key={item.id}>
-                      <a 
-                        href={`#${item.id}`}
-                        className="text-foreground-muted hover:text-primary transition-colors"
-                      >
-                        {index + 1}. {item.title}
-                      </a>
-                    </li>
-                  ))}
-                </ol>
-              </nav>
-            </div>
-          </div>
-        </aside>
+          {/* Table of Contents */}
+          <nav className="bg-muted/50 rounded-lg p-6 mb-12">
+            <h2 className="text-lg font-semibold mb-4 text-foreground">Neste artigo:</h2>
+            <ul className="space-y-2">
+              {tableOfContents.map((item) => (
+                <li key={item.id}>
+                  <a 
+                    href={`#${item.id}`}
+                    className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2"
+                  >
+                    <ChevronRight className="h-4 w-4" />
+                    {item.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
-        {/* Content */}
-        <div className="container-focus">
-          <div className="max-w-4xl mx-auto prose prose-lg">
+          {/* Content */}
+          <div className="prose prose-lg max-w-none">
             <section id="introducao" className="mb-12">
-              <h2 className="text-3xl font-bold mb-6">Por Que a Maioria Falha ao Tentar Ser Mais Produtiva?</h2>
-              
-              <p className="text-lg leading-relaxed mb-4">
-                Você já se sentiu perdido em meio a tantas ferramentas, técnicas e "gurus" da produtividade? A sensação de que, quanto mais você tenta se organizar, mais sobrecarregado você fica?
+              <h2 className="text-3xl font-bold mb-6 text-foreground flex items-center gap-3">
+                <Target className="h-8 w-8 text-primary" />
+                Por Que Você Precisa de um Sistema
+              </h2>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                A maioria das pessoas não tem um <strong>sistema de produtividade</strong>. Elas têm uma coleção caótica de listas, lembretes, post-its e ferramentas que não conversam entre si.
               </p>
-
-              <p className="text-lg leading-relaxed mb-4">
-                A verdade é que a maioria das pessoas falha ao tentar criar um sistema de produtividade porque comete um erro fatal: <strong>complica demais</strong>.
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                O resultado? Tarefas esquecidas, prioridades confusas, sensação constante de estar perdendo algo importante e, pior ainda, uma mente que nunca descansa porque está sempre tentando lembrar de tudo.
               </p>
-
-              <p className="text-lg leading-relaxed mb-4">
-                Em vez de simplificar e focar no que realmente importa, elas se perdem em planilhas complexas, aplicativos mirabolantes e métodos que consomem mais tempo do que economizam.
+              <p className="text-muted-foreground leading-relaxed">
+                <strong>A boa notícia:</strong> criar um sistema de produtividade eficaz não precisa ser complicado. Na verdade, quanto mais simples, melhor.
               </p>
             </section>
 
-            <section id="armadilhas" className="mb-12">
-              <h2 className="text-3xl font-bold mb-6">As 3 Armadilhas Que Te Impedem de Criar um Sistema Eficaz</h2>
-              
-              <p className="text-lg leading-relaxed mb-4">
-                Antes de mergulharmos no passo a passo, é fundamental que você conheça as armadilhas que sabotam a maioria dos sistemas de produtividade:
+            <section id="fundamentos" className="mb-12">
+              <h2 className="text-3xl font-bold mb-6 text-foreground">
+                Os 4 Pilares de um Sistema Eficaz
+              </h2>
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                Todo sistema de produtividade que realmente funciona se apoia em 4 pilares fundamentais:
               </p>
 
-              <div className="space-y-6">
-                <div className="bg-card border border-card-border rounded-lg p-6">
-                  <h3 className="text-xl font-bold mb-3">1. Não Definir Objetivos Claros</h3>
-                  <p>Você começa a usar ferramentas e técnicas sem saber o que realmente quer alcançar. O resultado é um sistema que não te leva a lugar nenhum.</p>
+              <div className="grid md:grid-cols-2 gap-6 mb-6">
+                <div className="bg-primary/10 rounded-lg p-6">
+                  <div className="flex items-center gap-3 mb-3">
+                    <Inbox className="h-6 w-6 text-primary" />
+                    <h3 className="text-lg font-semibold text-foreground">1. Captura</h3>
+                  </div>
+                  <p className="text-muted-foreground text-sm">
+                    Um lugar único onde TUDO que chega na sua cabeça é registrado imediatamente, sem exceção.
+                  </p>
                 </div>
 
-                <div className="bg-card border border-card-border rounded-lg p-6">
-                  <h3 className="text-xl font-bold mb-3">2. Usar Ferramentas Demais</h3>
-                  <p>Você se torna escravo de dezenas de aplicativos e planilhas, gastando mais tempo gerenciando as ferramentas do que executando as tarefas.</p>
+                <div className="bg-primary/10 rounded-lg p-6">
+                  <div className="flex items-center gap-3 mb-3">
+                    <Filter className="h-6 w-6 text-primary" />
+                    <h3 className="text-lg font-semibold text-foreground">2. Processamento</h3>
+                  </div>
+                  <p className="text-muted-foreground text-sm">
+                    Um método claro para decidir o que fazer com cada item capturado: fazer, delegar, agendar ou arquivar.
+                  </p>
                 </div>
 
-                <div className="bg-card border border-card-border rounded-lg p-6">
-                  <h3 className="text-xl font-bold mb-3">3. Não Monitorar e Ajustar</h3>
-                  <p>Você cria um sistema estático que não se adapta às suas mudanças de rotina e prioridades. O resultado é um sistema que se torna obsoleto rapidamente.</p>
+                <div className="bg-primary/10 rounded-lg p-6">
+                  <div className="flex items-center gap-3 mb-3">
+                    <FolderTree className="h-6 w-6 text-primary" />
+                    <h3 className="text-lg font-semibold text-foreground">3. Organização</h3>
+                  </div>
+                  <p className="text-muted-foreground text-sm">
+                    Estrutura lógica que permite encontrar qualquer informação em segundos, sem precisar vasculhar dezenas de pastas.
+                  </p>
+                </div>
+
+                <div className="bg-primary/10 rounded-lg p-6">
+                  <div className="flex items-center gap-3 mb-3">
+                    <CalendarIcon className="h-6 w-6 text-primary" />
+                    <h3 className="text-lg font-semibold text-foreground">4. Revisão</h3>
+                  </div>
+                  <p className="text-muted-foreground text-sm">
+                    Ritual periódico para garantir que o sistema está atualizado e alinhado com suas prioridades reais.
+                  </p>
                 </div>
               </div>
-            </section>
 
-            <section id="passo1" className="mb-12">
-              <h2 className="text-3xl font-bold mb-6">Passo 1: Defina Seus Objetivos Reais (e Não Suas Fantasias)</h2>
-              
-              <p className="text-lg leading-relaxed mb-4">
-                O primeiro passo para criar um sistema de produtividade que realmente funcione é ter clareza sobre o que você quer alcançar. Mas não se engane: não estamos falando de "metas de ano novo" genéricas e vagas.
-              </p>
-
-              <p className="text-lg leading-relaxed mb-4">
-                Estamos falando de <strong>objetivos reais</strong>, ou seja, aqueles que estão alinhados com seus valores, paixões e propósito de vida.
-              </p>
-
-              <p className="text-lg leading-relaxed mb-4">
-                Pergunte-se: o que eu realmente quero realizar? Quais são as áreas da minha vida que eu quero melhorar? Quais são os projetos que me dão energia e me fazem sentir vivo?
+              <p className="text-muted-foreground leading-relaxed">
+                Se qualquer um desses pilares estiver faltando, o sistema desmorona. Vamos construir cada um deles.
               </p>
             </section>
 
-            <section id="passo2" className="mb-12">
-              <h2 className="text-3xl font-bold mb-6">Passo 2: Simplifique ao Máximo (Menos Ferramentas, Mais Foco)</h2>
+            <section id="passo-1" className="mb-12">
+              <h2 className="text-3xl font-bold mb-6 text-foreground flex items-center gap-3">
+                <Inbox className="h-8 w-8 text-primary" />
+                Passo 1: Capture Tudo
+              </h2>
               
-              <p className="text-lg leading-relaxed mb-4">
-                Agora que você tem clareza sobre seus objetivos, é hora de simplificar. Elimine tudo o que não é essencial e foque no que realmente importa.
-              </p>
+              <div className="bg-muted/30 rounded-lg p-6 mb-6">
+                <p className="text-muted-foreground leading-relaxed mb-4">
+                  <strong>Regra de ouro:</strong> sua mente é para ter ideias, não para guardar ideias.
+                </p>
+                <p className="text-muted-foreground leading-relaxed">
+                  Cada vez que você tenta lembrar de algo, você gasta energia mental que poderia estar sendo usada para pensar, criar ou executar.
+                </p>
+              </div>
 
-              <p className="text-lg leading-relaxed mb-4">
-                Isso significa <strong>reduzir o número de ferramentas</strong> que você usa. Em vez de ter um aplicativo para cada tarefa, escolha um ou dois que sejam flexíveis e integrados.
-              </p>
+              <h3 className="text-xl font-semibold mb-4 text-foreground">Como implementar a captura:</h3>
+              
+              <div className="space-y-4 mb-6">
+                <div className="border-l-4 border-primary pl-4">
+                  <h4 className="font-semibold mb-2 text-foreground">Crie uma Inbox Universal</h4>
+                  <p className="text-muted-foreground text-sm">
+                    Um único lugar onde TUDO é capturado: tarefas, ideias, links, referências. No Notion, isso pode ser uma database simples com apenas dois campos: "Item" e "Data de Captura".
+                  </p>
+                </div>
 
-              <p className="text-lg leading-relaxed mb-4">
-                O Notion, por exemplo, é uma excelente opção para centralizar tarefas, projetos, notas e informações em um só lugar.
+                <div className="border-l-4 border-primary pl-4">
+                  <h4 className="font-semibold mb-2 text-foreground">Torne a Captura Instantânea</h4>
+                  <p className="text-muted-foreground text-sm">
+                    Use o app do Notion no celular, atalhos de teclado no desktop, comandos rápidos. Quanto mais rápido você captura, mais você usa.
+                  </p>
+                </div>
+
+                <div className="border-l-4 border-primary pl-4">
+                  <h4 className="font-semibold mb-2 text-foreground">Não Julgue, Apenas Capture</h4>
+                  <p className="text-muted-foreground text-sm">
+                    No momento da captura, não perca tempo decidindo se é importante ou não. Jogue tudo na Inbox. Você vai processar depois.
+                  </p>
+                </div>
+              </div>
+
+              <p className="text-muted-foreground leading-relaxed">
+                <strong>Resultado:</strong> sua mente fica livre. Você sabe que nada será esquecido porque tudo está registrado.
               </p>
             </section>
 
-            <section id="passo3" className="mb-12">
-              <h2 className="text-3xl font-bold mb-6">Passo 3: Crie Um Fluxo de Trabalho Visual (e Que Faça Sentido)</h2>
+            <section id="passo-2" className="mb-12">
+              <h2 className="text-3xl font-bold mb-6 text-foreground flex items-center gap-3">
+                <Filter className="h-8 w-8 text-primary" />
+                Passo 2: Processe com Clareza
+              </h2>
               
-              <p className="text-lg leading-relaxed mb-4">
-                Um sistema de produtividade eficaz precisa ser visual e intuitivo. Ele precisa te mostrar, de forma clara e organizada, o que você precisa fazer, quando precisa fazer e como precisa fazer.
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                A Inbox não pode virar um cemitério de tarefas. Processar significa <strong>decidir o que fazer</strong> com cada item capturado.
               </p>
 
-              <p className="text-lg leading-relaxed mb-4">
-                Uma ótima maneira de fazer isso é criar um <strong>fluxo de trabalho visual</strong>, ou seja, um mapa que te guia desde o momento em que você recebe uma tarefa até o momento em que você a conclui.
-              </p>
+              <div className="bg-primary/10 rounded-lg p-6 mb-6">
+                <h3 className="text-lg font-semibold mb-4 text-foreground">Fluxo de Processamento</h3>
+                <div className="space-y-3 text-sm">
+                  <div className="flex items-start gap-3">
+                    <span className="bg-primary text-primary-foreground rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 text-xs font-bold">1</span>
+                    <div>
+                      <p className="font-semibold text-foreground">Isso é acionável?</p>
+                      <p className="text-muted-foreground">Se não: arquive ou delete. Se sim: continue.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <span className="bg-primary text-primary-foreground rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 text-xs font-bold">2</span>
+                    <div>
+                      <p className="font-semibold text-foreground">Leva menos de 2 minutos?</p>
+                      <p className="text-muted-foreground">Se sim: faça AGORA. Se não: continue.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <span className="bg-primary text-primary-foreground rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 text-xs font-bold">3</span>
+                    <div>
+                      <p className="font-semibold text-foreground">Você é a pessoa certa para isso?</p>
+                      <p className="text-muted-foreground">Se não: delegue. Se sim: continue.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <span className="bg-primary text-primary-foreground rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 text-xs font-bold">4</span>
+                    <div>
+                      <p className="font-semibold text-foreground">Quando você vai fazer?</p>
+                      <p className="text-muted-foreground">Agende uma data/hora específica ou adicione à sua lista de tarefas.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-              <p className="text-lg leading-relaxed mb-4">
-                Você pode usar quadros Kanban, listas de tarefas, calendários ou qualquer outra ferramenta que te ajude a visualizar seu trabalho de forma clara e organizada.
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                <strong>Dica crucial:</strong> processe sua Inbox diariamente, de preferência no início ou final do dia. Nunca deixe passar mais de 48h sem processar.
               </p>
             </section>
 
-            <section id="passo4" className="mb-12">
-              <h2 className="text-3xl font-bold mb-6">Passo 4: Automatize o Que For Possível (Para Não Se Sobrecarregar)</h2>
+            <section id="passo-3" className="mb-12">
+              <h2 className="text-3xl font-bold mb-6 text-foreground flex items-center gap-3">
+                <FolderTree className="h-8 w-8 text-primary" />
+                Passo 3: Organize por Contexto
+              </h2>
               
-              <p className="text-lg leading-relaxed mb-4">
-                A automação é uma das chaves para a produtividade sustentável. Ela te permite eliminar tarefas repetitivas e burocráticas, liberando tempo e energia para o que realmente importa.
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                Depois de processar, cada item precisa ir para o lugar certo. A organização ideal não é por projeto, nem por urgência, mas por <strong>contexto</strong>.
               </p>
 
-              <p className="text-lg leading-relaxed mb-4">
-                Você pode automatizar tarefas como: agendamento de reuniões, envio de e-mails, criação de backups, organização de arquivos e muito mais.
-              </p>
+              <div className="space-y-6 mb-6">
+                <div className="bg-muted/30 rounded-lg p-6">
+                  <h3 className="text-lg font-semibold mb-3 text-foreground">📅 Agenda</h3>
+                  <p className="text-muted-foreground text-sm mb-2">
+                    Tudo que tem data e hora específica. Reuniões, compromissos, deadlines.
+                  </p>
+                  <p className="text-muted-foreground text-xs italic">
+                    Exemplo: "Reunião com cliente - 10h de terça"
+                  </p>
+                </div>
 
-              <p className="text-lg leading-relaxed mb-4">
-                Existem diversas ferramentas que te ajudam a automatizar tarefas, como o Zapier, o IFTTT e o próprio Notion.
+                <div className="bg-muted/30 rounded-lg p-6">
+                  <h3 className="text-lg font-semibold mb-3 text-foreground">✅ Tarefas Ativas</h3>
+                  <p className="text-muted-foreground text-sm mb-2">
+                    O que você precisa fazer em breve, organizado por área de foco (trabalho, pessoal, finanças, etc).
+                  </p>
+                  <p className="text-muted-foreground text-xs italic">
+                    Exemplo: "Revisar proposta comercial [Trabalho]"
+                  </p>
+                </div>
+
+                <div className="bg-muted/30 rounded-lg p-6">
+                  <h3 className="text-lg font-semibold mb-3 text-foreground">📋 Projetos</h3>
+                  <p className="text-muted-foreground text-sm mb-2">
+                    Qualquer resultado que exige mais de uma ação. Cada projeto tem suas próprias tarefas.
+                  </p>
+                  <p className="text-muted-foreground text-xs italic">
+                    Exemplo: "Lançamento novo produto" → [15 tarefas]
+                  </p>
+                </div>
+
+                <div className="bg-muted/30 rounded-lg p-6">
+                  <h3 className="text-lg font-semibold mb-3 text-foreground">💭 Algum Dia/Talvez</h3>
+                  <p className="text-muted-foreground text-sm mb-2">
+                    Ideias, projetos futuros, coisas que você quer fazer mas não agora.
+                  </p>
+                  <p className="text-muted-foreground text-xs italic">
+                    Exemplo: "Aprender espanhol", "Viajar para Portugal"
+                  </p>
+                </div>
+
+                <div className="bg-muted/30 rounded-lg p-6">
+                  <h3 className="text-lg font-semibold mb-3 text-foreground">📚 Referências</h3>
+                  <p className="text-muted-foreground text-sm mb-2">
+                    Informações que você quer guardar para consulta futura. Documentos, artigos, anotações.
+                  </p>
+                  <p className="text-muted-foreground text-xs italic">
+                    Exemplo: "Guia de branding", "Artigo sobre SEO"
+                  </p>
+                </div>
+              </div>
+
+              <p className="text-muted-foreground leading-relaxed">
+                <strong>Lembre-se:</strong> organização não é sobre ter milhares de categorias. É sobre conseguir encontrar rapidamente o que você precisa quando precisa.
               </p>
             </section>
 
-            <section id="passo5" className="mb-12">
-              <h2 className="text-3xl font-bold mb-6">Passo 5: Monitore e Ajuste Constantemente (A Produtividade É Dinâmica)</h2>
+            <section id="passo-4" className="mb-12">
+              <h2 className="text-3xl font-bold mb-6 text-foreground flex items-center gap-3">
+                <CalendarIcon className="h-8 w-8 text-primary" />
+                Passo 4: Revise Regularmente
+              </h2>
               
-              <p className="text-lg leading-relaxed mb-4">
-                Por fim, lembre-se de que a produtividade não é um destino, mas sim uma jornada. Seu sistema de produtividade precisa ser flexível e adaptável, para que você possa ajustá-lo ao longo do tempo.
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                Um sistema sem revisão morre em poucas semanas. A revisão é o que mantém tudo atualizado e alinhado com suas prioridades reais.
               </p>
 
-              <p className="text-lg leading-relaxed mb-4">
-                Monitore seus resultados, identifique seus pontos fortes e fracos, e faça os ajustes necessários para otimizar seu sistema.
+              <div className="grid md:grid-cols-2 gap-6 mb-6">
+                <div className="bg-primary/10 rounded-lg p-6">
+                  <h3 className="text-lg font-semibold mb-3 text-foreground">🔄 Revisão Diária (5 min)</h3>
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Processe a Inbox</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Revise a agenda do dia</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Defina 3 prioridades</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="bg-primary/10 rounded-lg p-6">
+                  <h3 className="text-lg font-semibold mb-3 text-foreground">📅 Revisão Semanal (30 min)</h3>
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Revise todos os projetos ativos</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Atualize prazos e prioridades</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Planeje a semana seguinte</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Limpe o que não é mais relevante</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <p className="text-muted-foreground leading-relaxed">
+                <strong>Agende essas revisões no calendário.</strong> Trate como compromisso inegociável. É isso que separa quem usa o sistema de quem abandona em duas semanas.
+              </p>
+            </section>
+
+            <section id="implementacao" className="mb-12">
+              <h2 className="text-3xl font-bold mb-6 text-foreground flex items-center gap-3">
+                <Lightbulb className="h-8 w-8 text-primary" />
+                Como Implementar no Notion
+              </h2>
+              
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                O Notion é ideal para construir esse sistema porque permite flexibilidade sem perder simplicidade. Aqui está uma estrutura básica:
               </p>
 
-              <p className="text-lg leading-relaxed mb-4">
-                Lembre-se: a produtividade é dinâmica, e o que funciona hoje pode não funcionar amanhã.
+              <div className="space-y-4 mb-6">
+                <div className="bg-muted/30 rounded-lg p-5">
+                  <h3 className="font-semibold mb-2 text-foreground">1. Crie uma database "Tarefas"</h3>
+                  <p className="text-muted-foreground text-sm">
+                    Com campos: Nome, Status (Inbox/Ativa/Concluída/Arquivada), Área, Projeto, Data, Prioridade
+                  </p>
+                </div>
+
+                <div className="bg-muted/30 rounded-lg p-5">
+                  <h3 className="font-semibold mb-2 text-foreground">2. Configure múltiplas visões</h3>
+                  <p className="text-muted-foreground text-sm">
+                    • Inbox: mostra apenas itens não processados<br/>
+                    • Esta Semana: filtro por data<br/>
+                    • Por Área: agrupa por trabalho/pessoal/etc<br/>
+                    • Projetos: visão board ou timeline
+                  </p>
+                </div>
+
+                <div className="bg-muted/30 rounded-lg p-5">
+                  <h3 className="font-semibold mb-2 text-foreground">3. Use templates</h3>
+                  <p className="text-muted-foreground text-sm">
+                    Crie templates de projetos recorrentes para acelerar o setup de novos trabalhos
+                  </p>
+                </div>
+
+                <div className="bg-muted/30 rounded-lg p-5">
+                  <h3 className="font-semibold mb-2 text-foreground">4. Integre com calendário</h3>
+                  <p className="text-muted-foreground text-sm">
+                    Sincronize eventos importantes com Google Calendar para ter visão completa
+                  </p>
+                </div>
+              </div>
+
+              <p className="text-muted-foreground leading-relaxed">
+                Não complique. Comece simples e ajuste conforme necessário. Um sistema usado é melhor que um sistema perfeito e abandonado.
               </p>
             </section>
 
             <section id="conclusao" className="mb-12">
-              <h2 className="text-3xl font-bold mb-6">Conclusão: A Produtividade Sustentável Está Mais Perto do Que Você Imagina</h2>
-              
-              <p className="text-lg leading-relaxed mb-4">
-                Criar um sistema de produtividade que realmente funcione não precisa ser complicado. Basta ter clareza sobre seus objetivos, simplificar ao máximo, criar um fluxo de trabalho visual, automatizar o que for possível e monitorar seus resultados.
-              </p>
-
-              <p className="text-lg leading-relaxed mb-4">
-                Lembre-se: a produtividade sustentável está mais perto do que você imagina. Basta dar o primeiro passo e começar a construir seu sistema hoje mesmo.
-              </p>
-            </section>
-
-            <section id="cta" className="mb-12">
-              <h2 className="text-3xl font-bold mb-6">Pronto Para Criar Seu Sistema de Produtividade?</h2>
-              
-              <p className="text-lg leading-relaxed mb-4">
-                Descubra os sistemas prontos da Focus que te ajudam a organizar suas tarefas, projetos e informações no Notion.
-              </p>
-            </section>
-
-            {/* CTA */}
-            <div className="bg-gradient-primary rounded-2xl p-8 md:p-12 text-center text-white mt-16">
-              <h2 className="text-3xl font-bold mb-4">
-                Crie Seu Sistema de Produtividade no Notion
+              <h2 className="text-3xl font-bold mb-6 text-foreground">
+                Conclusão
               </h2>
-              <p className="text-xl mb-8 opacity-90">
-                Descubra os sistemas prontos da Focus que te ajudam a organizar suas tarefas, projetos e informações no Notion.
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                Um sistema de produtividade não é sobre ter a ferramenta mais sofisticada ou o método mais complexo. É sobre ter <strong>clareza, controle e consistência</strong>.
               </p>
-              <Link to="/sistemas-notion">
-                <Button size="lg" className="bg-white text-primary hover:bg-white/90 font-semibold">
-                  Conhecer os Sistemas Focus
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </div>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                Quando você captura tudo, processa com clareza, organiza com lógica e revisa regularmente, algo mágico acontece: sua mente finalmente descansa. Você para de viver no modo reativo e começa a trabalhar de forma proativa.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                <strong>Comece hoje.</strong> Crie sua Inbox, processe o que está na sua cabeça agora, organize em contextos claros e agende sua primeira revisão semanal. Em 2-4 semanas, isso se torna natural.
+              </p>
+            </section>
 
-        {/* Related Articles */}
-        <section className="container-focus mt-20">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold mb-8">Artigos Relacionados</h2>
-            <div className="grid md:grid-cols-2 gap-6">
-              <Link to="/blog/erro-silencioso-produtividade-equipe" className="group bg-card border border-card-border rounded-lg p-6 hover:shadow-xl transition-all">
-                <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
-                  O Erro Silencioso que Destrói a Produtividade de Qualquer Equipe
-                </h3>
-                <p className="text-foreground-muted">Descubra o erro invisível que está custando horas de produtividade...</p>
+            {/* FAQ Section */}
+            <section className="mb-12">
+              <h2 className="text-3xl font-bold mb-6 text-foreground">
+                Perguntas Frequentes
+              </h2>
+              <div className="space-y-6">
+                <div className="bg-muted/30 rounded-lg p-6">
+                  <h3 className="text-lg font-semibold mb-2 text-foreground">
+                    O que é um sistema de produtividade?
+                  </h3>
+                  <p className="text-muted-foreground">
+                    Um sistema de produtividade é um conjunto estruturado de processos, ferramentas e hábitos que permite capturar, organizar, priorizar e executar tarefas de forma consistente e eficiente, sem depender apenas da memória ou improviso.
+                  </p>
+                </div>
+
+                <div className="bg-muted/30 rounded-lg p-6">
+                  <h3 className="text-lg font-semibold mb-2 text-foreground">
+                    Por que preciso de um sistema de produtividade?
+                  </h3>
+                  <p className="text-muted-foreground">
+                    Sem um sistema, você fica refém da memória, perde informações importantes, não consegue priorizar com clareza e vive no modo reativo. Um sistema bem estruturado libera sua mente para pensar estrategicamente.
+                  </p>
+                </div>
+
+                <div className="bg-muted/30 rounded-lg p-6">
+                  <h3 className="text-lg font-semibold mb-2 text-foreground">
+                    Qual a melhor ferramenta para criar um sistema?
+                  </h3>
+                  <p className="text-muted-foreground">
+                    O Notion é uma das melhores opções por sua flexibilidade, permitindo criar sistemas personalizados com bancos de dados, múltiplas visões, templates e automações — tudo em um único lugar.
+                  </p>
+                </div>
+
+                <div className="bg-muted/30 rounded-lg p-6">
+                  <h3 className="text-lg font-semibold mb-2 text-foreground">
+                    Quanto tempo leva para implementar?
+                  </h3>
+                  <p className="text-muted-foreground">
+                    A estrutura inicial pode ser criada em 2-3 horas. Mas o sistema se consolida ao longo de 2-4 semanas de uso consistente, conforme você ajusta para sua realidade.
+                  </p>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          {/* CTA Section */}
+          <div className="bg-primary/10 rounded-lg p-8 mb-12 text-center">
+            <h2 className="text-2xl font-bold mb-4 text-foreground">
+              Quer um sistema pronto para usar?
+            </h2>
+            <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+              Conheça os sistemas profissionais da Focus Inteligente — estruturas completas e personalizáveis para você implementar em minutos no Notion.
+            </p>
+            <Button asChild size="lg">
+              <Link to="/produtos">
+                Explorar Sistemas Notion
               </Link>
-              <Link to="/blog/organizar-projetos-caoticos" className="group bg-card border border-card-border rounded-lg p-6 hover:shadow-xl transition-all">
-                <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
-                  O Método Para Organizar Projetos Caóticos
-                </h3>
-                <p className="text-foreground-muted">Transforme projetos caóticos em sistemas organizados...</p>
+            </Button>
+          </div>
+
+          {/* Related Articles */}
+          <section>
+            <h2 className="text-2xl font-bold mb-6 text-foreground">
+              Artigos Relacionados
+            </h2>
+            <div className="grid md:grid-cols-3 gap-6">
+              <Link to="/blog/150-sistemas-notion" className="group">
+                <article className="bg-card rounded-lg overflow-hidden border hover:border-primary transition-colors">
+                  <img 
+                    src={relatedImage1} 
+                    alt="O que aprendi organizando mais de 150 sistemas no Notion" 
+                    className="w-full h-48 object-cover"
+                  />
+                  <div className="p-4">
+                    <h3 className="font-semibold mb-2 group-hover:text-primary transition-colors text-foreground">
+                      150 Sistemas no Notion
+                    </h3>
+                    <p className="text-sm text-muted-foreground">
+                      Lições práticas de quem já organizou centenas de sistemas.
+                    </p>
+                  </div>
+                </article>
+              </Link>
+
+              <Link to="/blog/tarefas-vs-incendios" className="group">
+                <article className="bg-card rounded-lg overflow-hidden border hover:border-primary transition-colors">
+                  <img 
+                    src={relatedImage2} 
+                    alt="Tarefas vs Incêndios" 
+                    className="w-full h-48 object-cover"
+                  />
+                  <div className="p-4">
+                    <h3 className="font-semibold mb-2 group-hover:text-primary transition-colors text-foreground">
+                      Tarefas vs. Incêndios
+                    </h3>
+                    <p className="text-sm text-muted-foreground">
+                      Descubra se você está gerenciando ou apenas reagindo.
+                    </p>
+                  </div>
+                </article>
+              </Link>
+
+              <Link to="/blog/erro-silencioso-produtividade" className="group">
+                <article className="bg-card rounded-lg overflow-hidden border hover:border-primary transition-colors">
+                  <img 
+                    src={relatedImage3} 
+                    alt="O erro silencioso que destrói a produtividade" 
+                    className="w-full h-48 object-cover"
+                  />
+                  <div className="p-4">
+                    <h3 className="font-semibold mb-2 group-hover:text-primary transition-colors text-foreground">
+                      O erro silencioso
+                    </h3>
+                    <p className="text-sm text-muted-foreground">
+                      O erro invisível que sabota toda a equipe.
+                    </p>
+                  </div>
+                </article>
               </Link>
             </div>
-          </div>
-        </section>
+          </section>
+        </div>
       </article>
     </>
   );

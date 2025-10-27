@@ -1,21 +1,25 @@
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Clock, Calendar, Share2, BookOpen } from "lucide-react";
+import { ArrowLeft, Clock, Calendar, ChevronRight, Flame, ListTodo, AlertTriangle, CheckCircle2, Target, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import coverImage from "@/assets/blog/tarefas-vs-incendios.jpg";
+import relatedImage1 from "@/assets/blog/erro-silencioso-produtividade.jpg";
+import relatedImage2 from "@/assets/blog/sistema-produtividade-passo-passo.jpg";
+import relatedImage3 from "@/assets/blog/caos-rotina-produtiva.jpg";
 
 const TarefasVsIncendios = () => {
-  const publishDate = "2025-01-27";
-  const articleUrl = "https://focusinteligente.com/blog/gerenciando-tarefas-ou-apagando-incendios";
-
+  const publishDate = "2025-01-28";
+  const articleUrl = "https://focusinteligente.com.br/blog/tarefas-vs-incendios";
+  
   const tableOfContents = [
-    { id: "introducao", title: "A Realidade da Maioria das Empresas" },
-    { id: "tarefas-vs-incendios", title: "Gerenciando Tarefas vs. Apagando Incêndios" },
-    { id: "armadilhas", title: "As Armadilhas da Reatividade Constante" },
-    { id: "estrategias", title: "Estratégias Para Uma Gestão Proativa" },
+    { id: "introducao", title: "Introdução: O Ciclo Vicioso" },
+    { id: "diferenca", title: "A Diferença Entre Tarefas e Incêndios" },
+    { id: "sinais", title: "5 Sinais de Que Você Está Só Apagando Incêndios" },
+    { id: "custo", title: "O Custo Real da Gestão Reativa" },
+    { id: "transicao", title: "Como Fazer a Transição" },
+    { id: "sistema", title: "Construindo um Sistema Preventivo" },
     { id: "notion", title: "Como o Notion Pode Ajudar" },
-    { id: "conclusao", title: "Conclusão" },
-    { id: "faq", title: "Perguntas Frequentes" }
+    { id: "conclusao", title: "Conclusão" }
   ];
 
   const faqSchema = {
@@ -24,26 +28,34 @@ const TarefasVsIncendios = () => {
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Qual a diferença entre gerenciar tarefas e apagar incêndios?",
+        "name": "Qual a diferença entre gestão de tarefas e apagar incêndios?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Gerenciar tarefas é planejar e executar atividades de forma organizada e antecipada. Apagar incêndios é reagir a problemas urgentes e inesperados, muitas vezes negligenciando o planejamento."
+          "text": "Gestão de tarefas é trabalhar de forma proativa, planejando e executando atividades que trazem resultado. Apagar incêndios é reagir a urgências constantes, sem tempo para pensar estrategicamente. A primeira gera crescimento sustentável; a segunda, apenas sobrevivência."
         }
       },
       {
         "@type": "Question",
-        "name": "Quais os riscos de apenas apagar incêndios?",
+        "name": "Como saber se estou apenas apagando incêndios?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "A reatividade constante leva ao estresse, falta de foco, perda de oportunidades estratégicas e, no longo prazo, à exaustão da equipe."
+          "text": "Principais sinais: você sempre trabalha sob pressão, não tem tempo para planejar, vive de imprevistos, termina o dia exausto mas com sensação de que nada importante foi feito, e suas tarefas estratégicas nunca saem do papel."
         }
       },
       {
         "@type": "Question",
-        "name": "Como o Notion pode ajudar na gestão proativa?",
+        "name": "É possível sair do modo reativo?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "O Notion permite centralizar informações, planejar projetos, definir prioridades e acompanhar o progresso das tarefas, facilitando a gestão proativa e a prevenção de crises."
+          "text": "Sim, mas exige mudança de mentalidade e sistema. É preciso separar tempo para prevenção, criar processos claros, documentar padrões e usar ferramentas que organizem o trabalho de forma visual e acessível."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "O Notion ajuda a evitar a gestão reativa?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sim. O Notion permite criar sistemas de gestão com visões, filtros e automações que antecipam problemas, organizam prioridades e mantêm tudo documentado em um só lugar, reduzindo drasticamente os imprevistos."
         }
       }
     ]
@@ -53,25 +65,21 @@ const TarefasVsIncendios = () => {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "headline": "Você Está Gerenciando Tarefas… ou Apenas Apagando Incêndios?",
-    "description": "Aprenda a diferenciar gestão proativa de reatividade constante e descubra como sair do modo bombeiro para se tornar um gestor estratégico.",
-    "image": `https://focusinteligente.com${coverImage}`,
+    "description": "Descubra a diferença entre gestão proativa e reativa, identifique se você está preso no modo urgência e aprenda a construir um sistema que previne crises ao invés de apenas reagir a elas.",
+    "image": `https://focusinteligente.com.br${coverImage}`,
+    "datePublished": publishDate,
+    "dateModified": publishDate,
     "author": {
-      "@type": "Organization",
-      "name": "Focus Gestão Empresarial"
+      "@type": "Person",
+      "name": "Focus Inteligente"
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Focus Gestão Empresarial",
+      "name": "Focus Inteligente",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://focusinteligente.com/lovable-uploads/focus-logo.png"
+        "url": "https://focusinteligente.com.br/lovable-uploads/focus-logo.png"
       }
-    },
-    "datePublished": publishDate,
-    "dateModified": publishDate,
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": articleUrl
     }
   };
 
@@ -83,18 +91,18 @@ const TarefasVsIncendios = () => {
         "@type": "ListItem",
         "position": 1,
         "name": "Início",
-        "item": "https://focusinteligente.com"
+        "item": "https://focusinteligente.com.br"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Blog",
-        "item": "https://focusinteligente.com/blog"
+        "item": "https://focusinteligente.com.br/blog"
       },
       {
         "@type": "ListItem",
         "position": 3,
-        "name": "Gerenciando Tarefas ou Apagando Incêndios?",
+        "name": "Você Está Gerenciando Tarefas… ou Apenas Apagando Incêndios?",
         "item": articleUrl
       }
     ]
@@ -103,27 +111,27 @@ const TarefasVsIncendios = () => {
   return (
     <>
       <Helmet>
-        <title>Você Está Gerenciando Tarefas… ou Apenas Apagando Incêndios? | Focus</title>
-        <meta 
-          name="description" 
-          content="Aprenda a diferenciar gestão proativa de reatividade constante e descubra como sair do modo bombeiro para se tornar um gestor estratégico." 
-        />
-        <meta name="keywords" content="gestão de tarefas, apagar incêndios, gestão proativa, reatividade, planejamento, priorização, foco, produtividade" />
+        <title>Você Está Gerenciando Tarefas… ou Apenas Apagando Incêndios? | Focus Inteligente</title>
+        <meta name="description" content="Descubra a diferença entre gestão proativa e reativa, identifique se você está preso no modo urgência e aprenda a construir um sistema que previne crises." />
+        <meta name="keywords" content="gestão de tarefas, gestão reativa, produtividade, apagar incêndios, gestão proativa, organização empresarial, sistemas notion" />
         <link rel="canonical" href={articleUrl} />
+        
         <meta property="og:title" content="Você Está Gerenciando Tarefas… ou Apenas Apagando Incêndios?" />
-        <meta property="og:description" content="Aprenda a diferenciar gestão proativa de reatividade constante." />
-        <meta property="og:image" content={`https://focusinteligente.com${coverImage}`} />
+        <meta property="og:description" content="Descubra a diferença entre gestão proativa e reativa e aprenda a sair do modo urgência." />
+        <meta property="og:image" content={`https://focusinteligente.com.br${coverImage}`} />
         <meta property="og:url" content={articleUrl} />
         <meta property="og:type" content="article" />
-        <meta property="og:locale" content="pt_BR" />
-        <meta property="article:published_time" content={publishDate} />
-        <meta property="article:modified_time" content={publishDate} />
-        <meta property="article:author" content="Focus Gestão Empresarial" />
+        
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Você Está Gerenciando Tarefas… ou Apenas Apagando Incêndios?" />
-        <meta name="twitter:description" content="Aprenda a diferenciar gestão proativa de reatividade constante." />
-        <meta name="twitter:image" content={`https://focusinteligente.com${coverImage}`} />
-        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <meta name="twitter:description" content="Descubra a diferença entre gestão proativa e reativa." />
+        <meta name="twitter:image" content={`https://focusinteligente.com.br${coverImage}`} />
+        
+        <meta name="robots" content="index, follow" />
+        <meta name="author" content="Focus Inteligente" />
+        <meta property="article:published_time" content={publishDate} />
+        <meta property="article:author" content="Focus Inteligente" />
+        
         <script type="application/ld+json">
           {JSON.stringify(blogPostingSchema)}
         </script>
@@ -135,319 +143,486 @@ const TarefasVsIncendios = () => {
         </script>
       </Helmet>
 
-      <article className="min-h-screen pt-24 pb-16">
-        {/* Breadcrumbs */}
-        <div className="container-focus mb-8">
-          <nav className="flex items-center space-x-2 text-sm text-foreground-muted">
-            <Link to="/" className="hover:text-primary transition-colors">Início</Link>
-            <span>/</span>
-            <Link to="/blog" className="hover:text-primary transition-colors">Blog</Link>
-            <span>/</span>
-            <span className="text-foreground">Gerenciando Tarefas ou Apagando Incêndios?</span>
+      <article className="min-h-screen bg-background">
+        <div className="container mx-auto px-4 py-8 max-w-4xl">
+          {/* Breadcrumbs */}
+          <nav className="flex items-center gap-2 text-sm text-muted-foreground mb-8">
+            <Link to="/" className="hover:text-foreground transition-colors">
+              Início
+            </Link>
+            <ChevronRight className="h-4 w-4" />
+            <Link to="/blog" className="hover:text-foreground transition-colors">
+              Blog
+            </Link>
+            <ChevronRight className="h-4 w-4" />
+            <span className="text-foreground">Tarefas vs. Incêndios</span>
           </nav>
-        </div>
 
-        {/* Header */}
-        <header className="container-focus mb-12">
-          <div className="max-w-4xl mx-auto">
+          {/* Header */}
+          <header className="mb-12">
             <Link 
               to="/blog"
-              className="inline-flex items-center text-primary hover:underline mb-6"
+              className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-6"
             >
-              <ArrowLeft className="w-4 h-4 mr-2" />
+              <ArrowLeft className="h-4 w-4" />
               Voltar para o blog
             </Link>
-
-            <div className="inline-flex items-center px-4 py-2 rounded-full border border-card-border bg-card/50 backdrop-blur-sm mb-6">
-              <BookOpen className="w-4 h-4 text-primary mr-2" />
-              <span className="text-sm text-foreground-muted">Gestão de Tempo</span>
-            </div>
-
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+            
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
               Você Está Gerenciando Tarefas… ou Apenas Apagando Incêndios?
             </h1>
-
-            <p className="text-xl text-foreground-muted mb-8">
-              Aprenda a diferenciar gestão proativa de reatividade constante e descubra como sair do modo bombeiro para se tornar um gestor estratégico.
+            
+            <p className="text-xl text-muted-foreground mb-6">
+              A diferença entre gestão proativa e reativa pode ser a linha entre crescimento sustentável e estagnação disfarçada de produtividade.
             </p>
-
-            <div className="flex items-center gap-6 text-sm text-foreground-muted mb-8">
+            
+            <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-8">
               <div className="flex items-center gap-2">
-                <Calendar className="w-4 h-4" />
-                <time dateTime={publishDate}>
-                  {new Date(publishDate).toLocaleDateString('pt-BR')}
-                </time>
+                <Calendar className="h-4 w-4" />
+                <time dateTime={publishDate}>28 de janeiro de 2025</time>
               </div>
               <div className="flex items-center gap-2">
-                <Clock className="w-4 h-4" />
-                <span>10 min de leitura</span>
+                <Clock className="h-4 w-4" />
+                <span>8 min de leitura</span>
               </div>
-              <button className="flex items-center gap-2 hover:text-primary transition-colors">
-                <Share2 className="w-4 h-4" />
-                <span>Compartilhar</span>
-              </button>
             </div>
 
             <img 
               src={coverImage} 
-              alt="Profissional exausto tentando apagar vários focos de incêndio simultaneamente" 
-              className="w-full rounded-lg shadow-xl mb-8"
+              alt="Ilustração representando a diferença entre gestão de tarefas e combate a incêndios" 
+              className="w-full h-[400px] object-cover rounded-lg shadow-lg"
             />
-          </div>
-        </header>
+          </header>
 
-        {/* Table of Contents */}
-        <aside className="container-focus mb-12">
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-card border border-card-border rounded-lg p-6">
-              <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
-                <BookOpen className="w-5 h-5 text-primary" />
-                Índice de Conteúdo
-              </h2>
-              <nav>
-                <ol className="space-y-2">
-                  {tableOfContents.map((item, index) => (
-                    <li key={item.id}>
-                      <a 
-                        href={`#${item.id}`}
-                        className="text-foreground-muted hover:text-primary transition-colors"
-                      >
-                        {index + 1}. {item.title}
-                      </a>
-                    </li>
-                  ))}
-                </ol>
-              </nav>
-            </div>
-          </div>
-        </aside>
+          {/* Table of Contents */}
+          <nav className="bg-muted/50 rounded-lg p-6 mb-12">
+            <h2 className="text-lg font-semibold mb-4 text-foreground">Neste artigo:</h2>
+            <ul className="space-y-2">
+              {tableOfContents.map((item) => (
+                <li key={item.id}>
+                  <a 
+                    href={`#${item.id}`}
+                    className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2"
+                  >
+                    <ChevronRight className="h-4 w-4" />
+                    {item.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
-        {/* Content */}
-        <div className="container-focus">
-          <div className="max-w-4xl mx-auto prose prose-lg">
+          {/* Content */}
+          <div className="prose prose-lg max-w-none">
             <section id="introducao" className="mb-12">
-              <h2 className="text-3xl font-bold mb-6">A Realidade da Maioria das Empresas</h2>
-              
-              <p className="text-lg leading-relaxed mb-4">
-                Você chega para trabalhar e já é recebido com uma enxurrada de e-mails, mensagens e notificações urgentes. A lista de tarefas só aumenta, e a sensação é de que você está sempre correndo atrás do próprio rabo.
+              <h2 className="text-3xl font-bold mb-6 text-foreground flex items-center gap-3">
+                <Flame className="h-8 w-8 text-destructive" />
+                Introdução: O Ciclo Vicioso
+              </h2>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                Você já terminou um dia de trabalho completamente exausto, com a sensação de que não parou um segundo sequer, mas ao olhar para trás… percebeu que nada realmente importante foi feito?
               </p>
-
-              <p className="text-lg leading-relaxed mb-4">
-                Se essa cena te parece familiar, saiba que você não está sozinho. A maioria das empresas opera em um ciclo constante de reatividade, onde o "modo bombeiro" se torna a norma.
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                Isso acontece porque você não estava <strong>gerenciando tarefas</strong>. Você estava <strong>apagando incêndios</strong>.
               </p>
-
-              <p className="text-lg leading-relaxed mb-4">
-                Mas será que essa é a única forma de trabalhar? Existe uma alternativa para quem deseja ter mais controle sobre o próprio tempo e resultados?
-              </p>
-            </section>
-
-            <section id="tarefas-vs-incendios" className="mb-12">
-              <h2 className="text-3xl font-bold mb-6">Gerenciando Tarefas vs. Apagando Incêndios</h2>
-              
-              <p className="text-lg leading-relaxed mb-4">
-                A diferença entre gerenciar tarefas e apagar incêndios é simples, mas crucial:
-              </p>
-
-              <ul className="list-disc pl-6 mb-4">
-                <li><strong>Gerenciar tarefas:</strong> é planejar, organizar e executar atividades de forma proativa, com foco em metas e prioridades.</li>
-                <li><strong>Apagar incêndios:</strong> é reagir a problemas urgentes e inesperados, muitas vezes negligenciando o planejamento e a organização.</li>
-              </ul>
-
-              <p className="text-lg leading-relaxed mb-4">
-                Enquanto o gerenciamento de tarefas te coloca no controle da situação, o ato de apagar incêndios te transforma em refém das circunstâncias.
+              <p className="text-muted-foreground leading-relaxed">
+                E existe uma diferença enorme entre essas duas coisas. Uma leva ao crescimento sustentável. A outra, à exaustão disfarçada de produtividade.
               </p>
             </section>
 
-            <section id="armadilhas" className="mb-12">
-              <h2 className="text-3xl font-bold mb-6">As Armadilhas da Reatividade Constante</h2>
+            <section id="diferenca" className="mb-12">
+              <h2 className="text-3xl font-bold mb-6 text-foreground flex items-center gap-3">
+                <ListTodo className="h-8 w-8 text-primary" />
+                A Diferença Entre Tarefas e Incêndios
+              </h2>
               
-              <p className="text-lg leading-relaxed mb-4">
-                Viver no "modo bombeiro" pode parecer emocionante no curto prazo, mas as consequências a longo prazo são devastadoras:
+              <div className="bg-muted/30 rounded-lg p-6 mb-6">
+                <h3 className="text-xl font-semibold mb-4 text-foreground">📋 Gestão de Tarefas (Proativa)</h3>
+                <ul className="space-y-2 text-muted-foreground">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
+                    <span>Você trabalha com base em planejamento e prioridades claras</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
+                    <span>Consegue enxergar o mês, a semana e o dia com antecedência</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
+                    <span>Sabe o que é importante e o que é urgente (e age de acordo)</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
+                    <span>Tem tempo para prevenção, melhoria e estratégia</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
+                    <span>Termina o dia com sensação de progresso real</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="bg-destructive/10 rounded-lg p-6 mb-6">
+                <h3 className="text-xl font-semibold mb-4 text-foreground">🔥 Apagar Incêndios (Reativa)</h3>
+                <ul className="space-y-2 text-muted-foreground">
+                  <li className="flex items-start gap-2">
+                    <AlertTriangle className="h-5 w-5 text-destructive mt-1 flex-shrink-0" />
+                    <span>Você vive respondendo a urgências e imprevistos</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <AlertTriangle className="h-5 w-5 text-destructive mt-1 flex-shrink-0" />
+                    <span>Não consegue planejar porque está sempre apagando fogo</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <AlertTriangle className="h-5 w-5 text-destructive mt-1 flex-shrink-0" />
+                    <span>Tudo parece urgente, nada é realmente prioritário</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <AlertTriangle className="h-5 w-5 text-destructive mt-1 flex-shrink-0" />
+                    <span>Nunca sobra tempo para pensar estrategicamente</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <AlertTriangle className="h-5 w-5 text-destructive mt-1 flex-shrink-0" />
+                    <span>Termina o dia exausto, mas com sensação de vazio</span>
+                  </li>
+                </ul>
+              </div>
+
+              <p className="text-muted-foreground leading-relaxed">
+                <strong>A verdade brutal:</strong> quem vive apagando incêndios não cresce. Apenas sobrevive.
               </p>
+            </section>
+
+            <section id="sinais" className="mb-12">
+              <h2 className="text-3xl font-bold mb-6 text-foreground">
+                5 Sinais de Que Você Está Só Apagando Incêndios
+              </h2>
 
               <div className="space-y-6">
-                <div className="bg-card border border-card-border rounded-lg p-6">
-                  <h3 className="text-xl font-bold mb-3">1. Estresse e Exaustão</h3>
-                  <p>A pressão constante para resolver problemas urgentes leva ao esgotamento físico e mental.</p>
+                <div className="border-l-4 border-destructive pl-4">
+                  <h3 className="text-xl font-semibold mb-2 text-foreground">1. Você sempre trabalha sob pressão</h3>
+                  <p className="text-muted-foreground">
+                    Se cada tarefa parece um sprint de última hora, você não está planejando — está reagindo.
+                  </p>
                 </div>
 
-                <div className="bg-card border border-card-border rounded-lg p-6">
-                  <h3 className="text-xl font-bold mb-3">2. Falta de Foco</h3>
-                  <p>A reatividade impede que você se concentre em tarefas importantes e estratégicas.</p>
+                <div className="border-l-4 border-destructive pl-4">
+                  <h3 className="text-xl font-semibold mb-2 text-foreground">2. Suas tarefas estratégicas nunca saem do papel</h3>
+                  <p className="text-muted-foreground">
+                    Aquele projeto importante que fica sendo adiado? É porque você não tem sistema, só urgências.
+                  </p>
                 </div>
 
-                <div className="bg-card border border-card-border rounded-lg p-6">
-                  <h3 className="text-xl font-bold mb-3">3. Perda de Oportunidades</h3>
-                  <p>Ao focar apenas no urgente, você perde a chance de identificar e aproveitar oportunidades de crescimento.</p>
+                <div className="border-l-4 border-destructive pl-4">
+                  <h3 className="text-xl font-semibold mb-2 text-foreground">3. Você não consegue planejar a semana</h3>
+                  <p className="text-muted-foreground">
+                    Sem visibilidade do que vem pela frente, cada dia é uma surpresa desagradável.
+                  </p>
                 </div>
 
-                <div className="bg-card border border-card-border rounded-lg p-6">
-                  <h3 className="text-xl font-bold mb-3">4. Queda na Produtividade</h3>
-                  <p>A falta de planejamento e organização leva a retrabalho, erros e perda de tempo.</p>
+                <div className="border-l-4 border-destructive pl-4">
+                  <h3 className="text-xl font-semibold mb-2 text-foreground">4. Os mesmos problemas se repetem</h3>
+                  <p className="text-muted-foreground">
+                    Se você apaga o mesmo incêndio toda semana, o problema não é a tarefa — é a falta de prevenção.
+                  </p>
+                </div>
+
+                <div className="border-l-4 border-destructive pl-4">
+                  <h3 className="text-xl font-semibold mb-2 text-foreground">5. Sua equipe vive perguntando o que fazer</h3>
+                  <p className="text-muted-foreground">
+                    Falta de processos claros transforma você no gargalo de todas as decisões.
+                  </p>
                 </div>
               </div>
             </section>
 
-            <section id="estrategias" className="mb-12">
-              <h2 className="text-3xl font-bold mb-6">Estratégias Para Uma Gestão Proativa</h2>
+            <section id="custo" className="mb-12">
+              <h2 className="text-3xl font-bold mb-6 text-foreground">
+                O Custo Real da Gestão Reativa
+              </h2>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                Trabalhar no modo "apagar incêndios" tem custos invisíveis que se acumulam com o tempo:
+              </p>
+              <ul className="space-y-3 text-muted-foreground mb-6">
+                <li className="flex items-start gap-2">
+                  <span className="text-destructive font-bold mt-1">•</span>
+                  <span><strong>Esgotamento da equipe:</strong> ninguém aguenta viver sob pressão constante</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-destructive font-bold mt-1">•</span>
+                  <span><strong>Perda de oportunidades:</strong> enquanto você apaga fogo, a concorrência inova</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-destructive font-bold mt-1">•</span>
+                  <span><strong>Decisões ruins:</strong> urgência elimina tempo para pensar</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-destructive font-bold mt-1">•</span>
+                  <span><strong>Falta de documentação:</strong> ninguém registra nada, então os erros se repetem</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-destructive font-bold mt-1">•</span>
+                  <span><strong>Dependência de pessoas:</strong> sem processo, tudo depende de alguém específico</span>
+                </li>
+              </ul>
+            </section>
+
+            <section id="transicao" className="mb-12">
+              <h2 className="text-3xl font-bold mb-6 text-foreground flex items-center gap-3">
+                <Target className="h-8 w-8 text-primary" />
+                Como Fazer a Transição
+              </h2>
               
-              <p className="text-lg leading-relaxed mb-4">
-                A boa notícia é que é possível sair do ciclo de reatividade e adotar uma gestão mais proativa. Aqui estão algumas estratégias:
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                Sair do modo reativo não acontece da noite para o dia. Mas é possível. Aqui está o caminho:
               </p>
 
-              <div className="space-y-8">
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center font-bold text-xl">
-                    1
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2">Planeje Seu Dia/Semana</h3>
-                    <p>Defina as tarefas mais importantes e reserve tempo para executá-las sem interrupções.</p>
-                  </div>
+              <div className="space-y-6">
+                <div className="bg-muted/30 rounded-lg p-6">
+                  <h3 className="text-xl font-semibold mb-3 text-foreground">Passo 1: Reconheça o padrão</h3>
+                  <p className="text-muted-foreground">
+                    Admitir que você está preso no ciclo reativo é o primeiro passo. Faça uma auditoria honesta: quantas horas por dia você gasta apagando incêndios vs. trabalhando em tarefas estratégicas?
+                  </p>
                 </div>
 
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center font-bold text-xl">
-                    2
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2">Priorize Tarefas</h3>
-                    <p>Use a matriz de Eisenhower (urgente/importante) para identificar as tarefas que realmente importam.</p>
-                  </div>
+                <div className="bg-muted/30 rounded-lg p-6">
+                  <h3 className="text-xl font-semibold mb-3 text-foreground">Passo 2: Separe tempo para prevenção</h3>
+                  <p className="text-muted-foreground">
+                    Reserve 2-3 horas por semana (não negociáveis) para trabalhar EM processos, não apenas NOS processos. Use esse tempo para documentar, melhorar e prevenir.
+                  </p>
                 </div>
 
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center font-bold text-xl">
-                    3
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2">Delegue Tarefas</h3>
-                    <p>Não tente fazer tudo sozinho. Delegue tarefas para membros da equipe e confie em suas habilidades.</p>
-                  </div>
+                <div className="bg-muted/30 rounded-lg p-6">
+                  <h3 className="text-xl font-semibold mb-3 text-foreground">Passo 3: Crie processos visuais</h3>
+                  <p className="text-muted-foreground">
+                    Transforme conhecimento tácito em processos explícitos. Use ferramentas visuais como o Notion para mapear fluxos, criar checklists e padronizar o trabalho.
+                  </p>
                 </div>
 
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center font-bold text-xl">
-                    4
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2">Automatize Processos</h3>
-                    <p>Use ferramentas e tecnologias para automatizar tarefas repetitivas e liberar tempo para atividades mais estratégicas.</p>
-                  </div>
+                <div className="bg-muted/30 rounded-lg p-6">
+                  <h3 className="text-xl font-semibold mb-3 text-foreground">Passo 4: Implemente revisões semanais</h3>
+                  <p className="text-muted-foreground">
+                    Dedique 30-60 minutos toda sexta-feira para revisar a semana e planejar a próxima. Isso cria o hábito de pensar estrategicamente.
+                  </p>
                 </div>
 
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center font-bold text-xl">
-                    5
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2">Aprenda a Dizer Não</h3>
-                    <p>Não se sobrecarregue com tarefas que não são prioritárias ou que podem ser feitas por outras pessoas.</p>
-                  </div>
+                <div className="bg-muted/30 rounded-lg p-6">
+                  <h3 className="text-xl font-semibold mb-3 text-foreground">Passo 5: Automatize o que for repetitivo</h3>
+                  <p className="text-muted-foreground">
+                    Use templates, automações e integrações para reduzir trabalho manual. Cada minuto economizado é um minuto a mais para pensar.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <section id="sistema" className="mb-12">
+              <h2 className="text-3xl font-bold mb-6 text-foreground flex items-center gap-3">
+                <Shield className="h-8 w-8 text-primary" />
+                Construindo um Sistema Preventivo
+              </h2>
+              
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                Um sistema preventivo não elimina imprevistos, mas reduz drasticamente sua frequência e impacto. Elementos essenciais:
+              </p>
+
+              <div className="grid md:grid-cols-2 gap-6 mb-6">
+                <div className="bg-primary/10 rounded-lg p-6">
+                  <h3 className="text-lg font-semibold mb-3 text-foreground">Visibilidade Total</h3>
+                  <p className="text-muted-foreground text-sm">
+                    Tenha uma visão clara de todas as tarefas, projetos e responsabilidades em um único lugar. Sem visibilidade, não há controle.
+                  </p>
+                </div>
+
+                <div className="bg-primary/10 rounded-lg p-6">
+                  <h3 className="text-lg font-semibold mb-3 text-foreground">Priorização Clara</h3>
+                  <p className="text-muted-foreground text-sm">
+                    Use frameworks como Matriz de Eisenhower para separar urgente de importante. Nem tudo que grita é prioridade.
+                  </p>
+                </div>
+
+                <div className="bg-primary/10 rounded-lg p-6">
+                  <h3 className="text-lg font-semibold mb-3 text-foreground">Documentação Viva</h3>
+                  <p className="text-muted-foreground text-sm">
+                    Processos documentados não apenas evitam erros — eles permitem delegar e escalar sem perder qualidade.
+                  </p>
+                </div>
+
+                <div className="bg-primary/10 rounded-lg p-6">
+                  <h3 className="text-lg font-semibold mb-3 text-foreground">Revisões Periódicas</h3>
+                  <p className="text-muted-foreground text-sm">
+                    Sem revisão regular, o sistema degrada. Dedique tempo para ajustar, melhorar e manter tudo atualizado.
+                  </p>
                 </div>
               </div>
             </section>
 
             <section id="notion" className="mb-12">
-              <h2 className="text-3xl font-bold mb-6">Como o Notion Pode Ajudar</h2>
-              
-              <p className="text-lg leading-relaxed mb-4">
-                O Notion é uma ferramenta poderosa para quem busca uma gestão mais proativa e organizada. Com ele, você pode:
+              <h2 className="text-3xl font-bold mb-6 text-foreground">
+                Como o Notion Pode Ajudar
+              </h2>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                O Notion é a ferramenta ideal para fazer a transição de reativo para proativo porque permite:
               </p>
-
-              <ul className="list-disc pl-6 mb-4">
-                <li>Centralizar todas as informações em um só lugar.</li>
-                <li>Criar painéis de controle personalizados para acompanhar o progresso das tarefas.</li>
-                <li>Definir prioridades e prazos para cada atividade.</li>
-                <li>Automatizar processos e fluxos de trabalho.</li>
-                <li>Colaborar com a equipe de forma eficiente.</li>
+              <ul className="space-y-3 text-muted-foreground mb-6">
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
+                  <span><strong>Centralizar tudo:</strong> tarefas, projetos, documentos e processos em um só lugar</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
+                  <span><strong>Criar visões múltiplas:</strong> veja suas tarefas por projeto, por semana, por prioridade</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
+                  <span><strong>Automatizar processos:</strong> reduza trabalho manual com templates e automações</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
+                  <span><strong>Documentar de forma visual:</strong> crie wikis, guias e processos que sua equipe realmente usa</span>
+                </li>
               </ul>
-
-              <p className="text-lg leading-relaxed mb-4">
-                Com o Notion, você terá uma visão clara de tudo o que precisa ser feito e poderá tomar decisões mais informadas e estratégicas.
+              <p className="text-muted-foreground leading-relaxed">
+                Com um sistema bem estruturado no Notion, você deixa de ser refém dos imprevistos e passa a ter controle real sobre o seu tempo e resultados.
               </p>
             </section>
 
             <section id="conclusao" className="mb-12">
-              <h2 className="text-3xl font-bold mb-6">Conclusão</h2>
-              
-              <p className="text-lg leading-relaxed mb-4">
-                Gerenciar tarefas é muito mais do que simplesmente apagar incêndios. É ter o controle da situação, planejar o futuro e focar no que realmente importa.
+              <h2 className="text-3xl font-bold mb-6 text-foreground">
+                Conclusão
+              </h2>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                A diferença entre gestão de tarefas e apagar incêndios é simples: uma é escolha, a outra é consequência.
               </p>
-
-              <p className="text-lg leading-relaxed mb-4">
-                Ao adotar uma gestão mais proativa, você não apenas aumenta sua produtividade, mas também reduz o estresse, melhora o foco e abre espaço para novas oportunidades.
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                Se você quer crescer de forma sustentável, precisa sair do modo reativo. E isso começa com um sistema que organize, priorize e antecipe — não apenas reaja.
               </p>
-
-              <p className="text-lg leading-relaxed mb-4">
-                Então, da próxima vez que você se sentir sobrecarregado e perdido em meio a tantos "incêndios", pare, respire e lembre-se: você tem o poder de mudar essa realidade.
+              <p className="text-muted-foreground leading-relaxed">
+                <strong>A pergunta final:</strong> você quer continuar apagando incêndios até se esgotar… ou está pronto para construir um sistema que previne crises?
               </p>
             </section>
 
-            <section id="faq" className="mb-12">
-              <h2 className="text-3xl font-bold mb-8">Perguntas Frequentes</h2>
-              
+            {/* FAQ Section */}
+            <section className="mb-12">
+              <h2 className="text-3xl font-bold mb-6 text-foreground">
+                Perguntas Frequentes
+              </h2>
               <div className="space-y-6">
-                <div className="bg-card border border-card-border rounded-lg p-6">
-                  <h3 className="text-xl font-bold mb-3">Qual a diferença entre gerenciar tarefas e apagar incêndios?</h3>
-                  <p className="text-foreground-muted">
-                    Gerenciar tarefas é planejar e executar atividades de forma organizada e antecipada. Apagar incêndios é reagir a problemas urgentes e inesperados, muitas vezes negligenciando o planejamento.
+                <div className="bg-muted/30 rounded-lg p-6">
+                  <h3 className="text-lg font-semibold mb-2 text-foreground">
+                    Qual a diferença entre gestão de tarefas e apagar incêndios?
+                  </h3>
+                  <p className="text-muted-foreground">
+                    Gestão de tarefas é trabalhar de forma proativa, planejando e executando atividades que trazem resultado. Apagar incêndios é reagir a urgências constantes, sem tempo para pensar estrategicamente. A primeira gera crescimento sustentável; a segunda, apenas sobrevivência.
                   </p>
                 </div>
 
-                <div className="bg-card border border-card-border rounded-lg p-6">
-                  <h3 className="text-xl font-bold mb-3">Quais os riscos de apenas apagar incêndios?</h3>
-                  <p className="text-foreground-muted">
-                    A reatividade constante leva ao estresse, falta de foco, perda de oportunidades estratégicas e, no longo prazo, à exaustão da equipe.
+                <div className="bg-muted/30 rounded-lg p-6">
+                  <h3 className="text-lg font-semibold mb-2 text-foreground">
+                    Como saber se estou apenas apagando incêndios?
+                  </h3>
+                  <p className="text-muted-foreground">
+                    Principais sinais: você sempre trabalha sob pressão, não tem tempo para planejar, vive de imprevistos, termina o dia exausto mas com sensação de que nada importante foi feito, e suas tarefas estratégicas nunca saem do papel.
                   </p>
                 </div>
 
-                <div className="bg-card border border-card-border rounded-lg p-6">
-                  <h3 className="text-xl font-bold mb-3">Como o Notion pode ajudar na gestão proativa?</h3>
-                  <p className="text-foreground-muted">
-                    O Notion permite centralizar informações, planejar projetos, definir prioridades e acompanhar o progresso das tarefas, facilitando a gestão proativa e a prevenção de crises.
+                <div className="bg-muted/30 rounded-lg p-6">
+                  <h3 className="text-lg font-semibold mb-2 text-foreground">
+                    É possível sair do modo reativo?
+                  </h3>
+                  <p className="text-muted-foreground">
+                    Sim, mas exige mudança de mentalidade e sistema. É preciso separar tempo para prevenção, criar processos claros, documentar padrões e usar ferramentas que organizem o trabalho de forma visual e acessível.
+                  </p>
+                </div>
+
+                <div className="bg-muted/30 rounded-lg p-6">
+                  <h3 className="text-lg font-semibold mb-2 text-foreground">
+                    O Notion ajuda a evitar a gestão reativa?
+                  </h3>
+                  <p className="text-muted-foreground">
+                    Sim. O Notion permite criar sistemas de gestão com visões, filtros e automações que antecipam problemas, organizam prioridades e mantêm tudo documentado em um só lugar, reduzindo drasticamente os imprevistos.
                   </p>
                 </div>
               </div>
             </section>
+          </div>
 
-            {/* CTA */}
-            <div className="bg-gradient-primary rounded-2xl p-8 md:p-12 text-center text-white mt-16">
-              <h2 className="text-3xl font-bold mb-4">
-                Transforme Sua Gestão com o Notion
-              </h2>
-              <p className="text-xl mb-8 opacity-90">
-                Descubra os sistemas prontos da Focus que te ajudam a planejar, organizar e executar suas tarefas de forma eficiente no Notion.
-              </p>
-              <Link to="/sistemas-notion">
-                <Button size="lg" className="bg-white text-primary hover:bg-white/90 font-semibold">
-                  Conhecer os Sistemas Focus
-                </Button>
+          {/* CTA Section */}
+          <div className="bg-primary/10 rounded-lg p-8 mb-12 text-center">
+            <h2 className="text-2xl font-bold mb-4 text-foreground">
+              Pronto para sair do modo reativo?
+            </h2>
+            <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+              Conheça os sistemas profissionais da Focus Inteligente e transforme a forma como você gerencia tarefas, projetos e processos no Notion.
+            </p>
+            <Button asChild size="lg">
+              <Link to="/produtos">
+                Descobrir Sistemas Focus
+              </Link>
+            </Button>
+          </div>
+
+          {/* Related Articles */}
+          <section>
+            <h2 className="text-2xl font-bold mb-6 text-foreground">
+              Artigos Relacionados
+            </h2>
+            <div className="grid md:grid-cols-3 gap-6">
+              <Link to="/blog/erro-silencioso-produtividade" className="group">
+                <article className="bg-card rounded-lg overflow-hidden border hover:border-primary transition-colors">
+                  <img 
+                    src={relatedImage1} 
+                    alt="O erro silencioso que destrói a produtividade" 
+                    className="w-full h-48 object-cover"
+                  />
+                  <div className="p-4">
+                    <h3 className="font-semibold mb-2 group-hover:text-primary transition-colors text-foreground">
+                      O erro silencioso que destrói a produtividade
+                    </h3>
+                    <p className="text-sm text-muted-foreground">
+                      Descubra o erro invisível que pode estar sabotando toda a sua equipe.
+                    </p>
+                  </div>
+                </article>
+              </Link>
+
+              <Link to="/blog/sistema-produtividade-passo-passo" className="group">
+                <article className="bg-card rounded-lg overflow-hidden border hover:border-primary transition-colors">
+                  <img 
+                    src={relatedImage2} 
+                    alt="Sistema de produtividade passo a passo" 
+                    className="w-full h-48 object-cover"
+                  />
+                  <div className="p-4">
+                    <h3 className="font-semibold mb-2 group-hover:text-primary transition-colors text-foreground">
+                      Sistema de produtividade passo a passo
+                    </h3>
+                    <p className="text-sm text-muted-foreground">
+                      Aprenda a criar um sistema que realmente funciona, sem complicação.
+                    </p>
+                  </div>
+                </article>
+              </Link>
+
+              <Link to="/blog/caos-rotina-produtiva" className="group">
+                <article className="bg-card rounded-lg overflow-hidden border hover:border-primary transition-colors">
+                  <img 
+                    src={relatedImage3} 
+                    alt="Como transformar o caos em rotina produtiva" 
+                    className="w-full h-48 object-cover"
+                  />
+                  <div className="p-4">
+                    <h3 className="font-semibold mb-2 group-hover:text-primary transition-colors text-foreground">
+                      Do caos à rotina produtiva
+                    </h3>
+                    <p className="text-sm text-muted-foreground">
+                      Transforme dias caóticos em uma rotina leve e produtiva.
+                    </p>
+                  </div>
+                </article>
               </Link>
             </div>
-          </div>
+          </section>
         </div>
-
-        {/* Related Articles */}
-        <section className="container-focus mt-20">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold mb-8">Artigos Relacionados</h2>
-            <div className="grid md:grid-cols-2 gap-6">
-              <Link to="/blog/erro-silencioso-produtividade-equipe" className="group bg-card border border-card-border rounded-lg p-6 hover:shadow-xl transition-all">
-                <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
-                  O Erro Silencioso que Destrói a Produtividade de Qualquer Equipe
-                </h3>
-                <p className="text-foreground-muted">Descubra o erro invisível que está custando horas de produtividade...</p>
-              </Link>
-              <Link to="/blog/como-organizar-rotina-produtiva-notion" className="group bg-card border border-card-border rounded-lg p-6 hover:shadow-xl transition-all">
-                <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
-                  Como Transformar o Caos do Seu Dia em uma Rotina Leve e Produtiva
-                </h3>
-                <p className="text-foreground-muted">Descubra o método prático para transformar dias caóticos...</p>
-              </Link>
-            </div>
-          </div>
-        </section>
       </article>
     </>
   );
