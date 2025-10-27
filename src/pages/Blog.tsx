@@ -233,13 +233,13 @@ const Blog = () => {
                 key={post.id}
                 className="group bg-card border border-card-border rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
               >
-                <div className="aspect-video overflow-hidden">
+                <Link to={`/blog/${post.slug}`} className="block aspect-video overflow-hidden">
                   <img 
                     src={post.image} 
                     alt={post.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
-                </div>
+                </Link>
                 <div className="p-6">
                   <div className="flex items-center gap-4 mb-4 text-sm text-foreground-muted">
                     <span className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary font-medium">
