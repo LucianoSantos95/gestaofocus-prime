@@ -2,6 +2,10 @@ import { useState } from "react";
 import { Helmet } from "react-helmet";
 import HeroSection from "@/components/HeroSection";
 import ServiceCard from "@/components/ServiceCard";
+import GuaranteeSection from "@/components/GuaranteeSection";
+import ServicesComparison from "@/components/ServicesComparison";
+import TrustedBySection from "@/components/TrustedBySection";
+import ExitIntentPopup from "@/components/ExitIntentPopup";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -14,7 +18,8 @@ import {
   CheckCircle,
   Target,
   TrendingUp,
-  Workflow
+  Workflow,
+  Clock
 } from "lucide-react";
 
 const Index = () => {
@@ -166,6 +171,23 @@ const Index = () => {
                     onClick={() => setSelectedService(index)}
                   >
                     <div className="p-8">
+                      {/* Urgency badge for personalized services */}
+                      {index === 0 && (
+                        <div className="mb-4 inline-flex items-center px-3 py-1 rounded-full bg-primary/10 border border-primary/30">
+                          <Clock className="w-3 h-3 text-primary mr-2" />
+                          <span className="text-xs font-semibold text-primary">
+                            5 vagas disponíveis este mês
+                          </span>
+                        </div>
+                      )}
+                      {index === 1 && (
+                        <div className="mb-4 inline-flex items-center px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/30">
+                          <Clock className="w-3 h-3 text-orange-500 mr-2" />
+                          <span className="text-xs font-semibold text-orange-500">
+                            Próxima turma: 15 dias
+                          </span>
+                        </div>
+                      )}
                       <div className="relative mb-6 flex justify-start">
                         <div className={`relative w-16 h-16 rounded-2xl bg-gradient-to-br ${service.gradient} p-0.5 shadow-lg`}>
                           <div className="w-full h-full rounded-2xl bg-background/95 backdrop-blur-sm flex items-center justify-center">
@@ -238,6 +260,15 @@ const Index = () => {
           </Dialog>
         </div>
       </section>
+
+      {/* Services Comparison Table */}
+      <ServicesComparison />
+
+      {/* Guarantee Section */}
+      <GuaranteeSection />
+
+      {/* Trusted By Section */}
+      <TrustedBySection />
 
       {/* About Focus Section */}
       <section className="section-padding">
@@ -370,6 +401,9 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Exit Intent Popup */}
+      <ExitIntentPopup />
     </div>
   );
 };

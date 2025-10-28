@@ -14,11 +14,11 @@ const HeroSection = () => {
       
       <div className="relative z-10 container-focus text-center">
         <div className="max-w-5xl mx-auto animate-fade-in">
-          {/* Badge */}
-          <div className="inline-flex items-center px-4 py-2 rounded-full border border-card-border bg-card/50 backdrop-blur-sm mb-8">
+          {/* Badge with urgency */}
+          <div className="inline-flex items-center px-4 py-2 rounded-full border border-primary/30 bg-primary/10 backdrop-blur-sm mb-8 animate-pulse">
             <span className="w-2 h-2 bg-primary rounded-full mr-2 animate-pulse" />
-            <span className="text-sm text-foreground-muted">
-              Transformando empresas através da organização
+            <span className="text-sm text-primary font-medium">
+              🔥 Apenas 5 vagas para consultoria este mês
             </span>
           </div>
 
@@ -33,17 +33,17 @@ const HeroSection = () => {
             e pessoas que querem crescer com eficiência.
           </p>
 
-          {/* CTA Buttons */}
+          {/* CTA Buttons - Simplified (1 primary + 1 secondary) */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 animate-slide-up delay-300">
             <Button 
-              className="btn-hero group"
+              className="btn-hero group text-lg px-10 py-6"
               onClick={() => {
-                trackWhatsAppClick('hero_cta');
-                trackCTAClick('Conheça nossos serviços', 'hero');
-                window.open('https://wa.me/5511916742443?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20personaliza%C3%A7%C3%A3o%20de%20sistemas.', '_blank');
+                trackWhatsAppClick('hero_cta_primary');
+                trackCTAClick('Agendar consultoria gratuita', 'hero');
+                window.open('https://wa.me/5511916742443?text=Ol%C3%A1%2C%20quero%20agendar%20minha%20consultoria%20gratuita%20de%2030%20minutos!', '_blank');
               }}
             >
-              Conheça nossos serviços
+              Agendar Consultoria Gratuita
               <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
             </Button>
             
@@ -52,12 +52,12 @@ const HeroSection = () => {
               className="btn-secondary group"
               onClick={() => {
                 trackNotionClick('demo', 'hero');
-                trackCTAClick('Ver demonstração', 'hero');
-                window.open('https://www.notion.com/pt/@focusgestao', '_blank');
+                trackCTAClick('Ver sistemas gratuitos', 'hero');
+                window.location.href = '/sistemas-gratuitos';
               }}
             >
               <Play className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform duration-300" />
-              Ver demonstração
+              Ver Sistemas Gratuitos
             </Button>
           </div>
 
