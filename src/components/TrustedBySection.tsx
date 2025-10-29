@@ -1,9 +1,9 @@
 import { Card } from "@/components/ui/card";
-import company1Logo from "@/assets/companies/company1-logo.png";
-import company2Logo from "@/assets/companies/company2-logo.png";
-import company3Logo from "@/assets/companies/company3-logo.png";
-import company4Logo from "@/assets/companies/company4-logo.png";
-import company5Logo from "@/assets/companies/company5-logo.png";
+import company1Logo from "@/assets/companies/techflow-simple.png";
+import company2Logo from "@/assets/companies/innovatech-simple.png";
+import company3Logo from "@/assets/companies/nextgen-simple.png";
+import company4Logo from "@/assets/companies/alpha-simple.png";
+import company5Logo from "@/assets/companies/vertex-simple.png";
 
 const TrustedBySection = () => {
   const companies = [
