@@ -24,7 +24,7 @@ const TrustedBySection = () => {
     <section className="section-padding bg-background">
       <div className="container-focus">
         {/* Empresas que confiam */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
             Empresas que Confiam na Focus
           </h2>
@@ -33,7 +33,7 @@ const TrustedBySection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-20">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-16">
           {companies.map((company, index) => (
             <Card 
               key={index}

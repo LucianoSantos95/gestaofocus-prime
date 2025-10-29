@@ -65,8 +65,8 @@ const ServicesComparison = () => {
   return (
     <section className="section-padding bg-background-secondary">
       <div className="container-focus">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-4">
             Qual Solução É Ideal Para Você?
           </h2>
           <p className="text-xl text-foreground-muted max-w-3xl mx-auto">
