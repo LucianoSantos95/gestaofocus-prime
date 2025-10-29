@@ -425,11 +425,8 @@ const SprintProdutividade = () => {
                     <div className="inline-flex items-center px-3 py-1 bg-yellow-500/20 text-yellow-600 text-xs font-semibold rounded-full mb-4">
                       🔥 Oferta por Tempo Limitado
                     </div>
-                    <div className="mb-2">
-                      <span className="text-foreground-muted line-through text-2xl">R$ 197</span>
-                    </div>
                     <div className="text-5xl font-bold text-foreground mb-2">
-                      R$ 97
+                      R$ 37,90
                     </div>
                     <p className="text-foreground-muted">pagamento único • acesso vitalício</p>
                   </div>
