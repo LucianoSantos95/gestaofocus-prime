@@ -10,7 +10,7 @@ const TrustedBySection = () => {
   ];
 
   const certifications = [
-    { name: "Selo Básico", description: "Selo Fluxos de trabalho - Selo Avançado" },
+    { name: "Certificações Notion", description: "Selo básico - Selo Fluxos de Trabalho - Selo Avançado" },
     { name: "Gestão de Projetos", description: "Qualidade certificada" },
     { name: "Lean Seis Sigma", description: "White e Yellow Belt" },
   ];
