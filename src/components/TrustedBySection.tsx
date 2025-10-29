@@ -1,12 +1,17 @@
 import { Card } from "@/components/ui/card";
+import techflowLogo from "@/assets/companies/techflow-logo.png";
+import innovatechLogo from "@/assets/companies/innovatech-logo.png";
+import nextgenLogo from "@/assets/companies/nextgen-logo.png";
+import alphaLogo from "@/assets/companies/alpha-logo.png";
+import vertexLogo from "@/assets/companies/vertex-logo.png";
 
 const TrustedBySection = () => {
   const companies = [
-    { name: "TechFlow Solutions", logo: "/lovable-uploads/focus-logo.png" },
-    { name: "Innovatech Brasil", logo: "/lovable-uploads/focus-logo.png" },
-    { name: "Grupo NextGen", logo: "/lovable-uploads/focus-logo.png" },
-    { name: "Alpha Consultoria", logo: "/lovable-uploads/focus-logo.png" },
-    { name: "Vertex Systems", logo: "/lovable-uploads/focus-logo.png" },
+    { name: "TechFlow Solutions", logo: techflowLogo },
+    { name: "Innovatech Brasil", logo: innovatechLogo },
+    { name: "Grupo NextGen", logo: nextgenLogo },
+    { name: "Alpha Consultoria", logo: alphaLogo },
+    { name: "Vertex Systems", logo: vertexLogo },
   ];
 
   const certifications = [
