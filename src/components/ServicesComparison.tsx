@@ -24,7 +24,7 @@ const ServicesComparison = () => {
     },
     {
       name: "Sprint Produtividade",
-      price: "R$ 497",
+      price: "R$ 37,90",
       description: "Transformação em 7 dias",
       features: [
         { name: "Templates básicos", included: true },
