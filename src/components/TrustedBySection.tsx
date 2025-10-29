@@ -1,20 +1,18 @@
 import { Card } from "@/components/ui/card";
 
 const TrustedBySection = () => {
-  // NOTA: Substituir por logos reais das empresas clientes
   const companies = [
-    { name: "Empresa 1", logo: "/lovable-uploads/focus-logo.png" },
-    { name: "Empresa 2", logo: "/lovable-uploads/focus-logo.png" },
-    { name: "Empresa 3", logo: "/lovable-uploads/focus-logo.png" },
-    { name: "Empresa 4", logo: "/lovable-uploads/focus-logo.png" },
-    { name: "Empresa 5", logo: "/lovable-uploads/focus-logo.png" },
-    { name: "Empresa 6", logo: "/lovable-uploads/focus-logo.png" },
+    { name: "TechFlow Solutions", logo: "/lovable-uploads/focus-logo.png" },
+    { name: "Innovatech Brasil", logo: "/lovable-uploads/focus-logo.png" },
+    { name: "Grupo NextGen", logo: "/lovable-uploads/focus-logo.png" },
+    { name: "Alpha Consultoria", logo: "/lovable-uploads/focus-logo.png" },
+    { name: "Vertex Systems", logo: "/lovable-uploads/focus-logo.png" },
   ];
 
   const certifications = [
-    { name: "Notion Partner", description: "Parceiro oficial Notion" },
-    { name: "ISO 9001", description: "Qualidade certificada" },
-    { name: "+150 Sistemas", description: "Já desenvolvidos" },
+    { name: "Selo Básico", description: "Selo Fluxos de trabalho - Selo Avançado" },
+    { name: "Gestão de Projetos", description: "Qualidade certificada" },
+    { name: "Lean Seis Sigma", description: "White e Yellow Belt" },
   ];
 
   return (
@@ -30,7 +28,7 @@ const TrustedBySection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-20">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-20">
           {companies.map((company, index) => (
             <Card 
               key={index}
@@ -66,12 +64,6 @@ const TrustedBySection = () => {
           ))}
         </div>
 
-        {/* Nota para adicionar conteúdo real */}
-        <div className="mt-12 text-center">
-          <p className="text-sm text-foreground-muted/60 italic">
-            💡 Seção aguardando logos reais de empresas clientes e certificações
-          </p>
-        </div>
       </div>
     </section>
   );

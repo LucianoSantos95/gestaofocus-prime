@@ -10,8 +10,8 @@ const GuaranteeSection = () => {
     },
     {
       icon: Clock,
-      title: "Suporte por 90 Dias",
-      description: "Suporte técnico completo por 3 meses para garantir que você aproveite ao máximo sua solução.",
+      title: "Suporte por 14 Dias",
+      description: "Suporte técnico completo por 2 semanas para garantir que você aproveite ao máximo sua solução.",
     },
     {
       icon: Headphones,
