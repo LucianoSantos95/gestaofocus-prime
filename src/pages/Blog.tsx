@@ -18,6 +18,11 @@ import caosRotinaImage from "@/assets/blog/caos-rotina-produtiva.jpg";
 import tarefasIncendiosImage from "@/assets/blog/tarefas-vs-incendios.jpg";
 import sistemaProdutividadeImage from "@/assets/blog/sistema-produtividade-passo-passo.jpg";
 import sistemas150Image from "@/assets/blog/150-sistemas-notion.jpg";
+import produtividadeFazerImage from "@/assets/blog/produtividade-fazer-o-que-importa.jpg";
+import confiarSistemasImage from "@/assets/blog/confiar-em-sistemas.jpg";
+import tarefasResultadosImage from "@/assets/blog/tarefas-em-resultados.jpg";
+import pararIncendiosImage from "@/assets/blog/parar-apagar-incendios.jpg";
+import clarezaNotionImage from "@/assets/blog/clareza-projetos-notion.jpg";
 
 const Blog = () => {
   const [showArchived, setShowArchived] = useState(false);
@@ -25,6 +30,56 @@ const Blog = () => {
   const blogPosts = [
     {
       id: 1,
+      title: "Como usar o Notion para ter clareza total nos seus projetos (mesmo com pouco tempo)",
+      excerpt: "O método completo para configurar o Notion e ter visão 360° dos seus projetos em minutos — não em horas de organização.",
+      date: "2025-02-05",
+      readTime: "9 min",
+      category: "Notion",
+      slug: "clareza-projetos-notion",
+      image: clarezaNotionImage
+    },
+    {
+      id: 2,
+      title: "Por que sua empresa está sempre apagando incêndios — e como parar com isso de uma vez",
+      excerpt: "O ciclo vicioso do modo bombeiro está matando empresas promissoras. Descubra como quebrar esse padrão e construir uma operação verdadeiramente estratégica.",
+      date: "2025-02-04",
+      readTime: "11 min",
+      category: "Gestão Empresarial",
+      slug: "parar-apagar-incendios-empresa",
+      image: pararIncendiosImage
+    },
+    {
+      id: 3,
+      title: "A fórmula que uso para transformar tarefas soltas em resultados consistentes",
+      excerpt: "O método testado que transforma sua lista caótica de tarefas em um sistema previsível de execução e resultados.",
+      date: "2025-02-03",
+      readTime: "10 min",
+      category: "Metodologia",
+      slug: "tarefas-soltas-em-resultados",
+      image: tarefasResultadosImage
+    },
+    {
+      id: 4,
+      title: "O que acontece quando você para de confiar na sua memória e começa a confiar em sistemas",
+      excerpt: "Sua mente não foi feita para armazenar informações — foi feita para processar ideias. Descubra como sistemas externos podem liberar seu potencial criativo.",
+      date: "2025-02-02",
+      readTime: "9 min",
+      category: "Sistemas",
+      slug: "confiar-sistemas-producao",
+      image: confiarSistemasImage
+    },
+    {
+      id: 5,
+      title: "Produtividade não é fazer mais — é fazer o que importa (e o Notion pode provar)",
+      excerpt: "Pare de medir seu sucesso pela quantidade de tarefas completadas. Descubra como focar no que realmente move a agulha dos seus resultados.",
+      date: "2025-02-01",
+      readTime: "8 min",
+      category: "Produtividade",
+      slug: "produtividade-fazer-o-que-importa",
+      image: produtividadeFazerImage
+    },
+    {
+      id: 6,
       title: "O erro silencioso que destrói a produtividade de qualquer equipe (e como evitar)",
       excerpt: "Descubra o erro invisível que está custando horas de produtividade da sua equipe todos os dias e aprenda o método prático para eliminá-lo.",
       date: "2025-01-29",
