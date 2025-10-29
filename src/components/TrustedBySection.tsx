@@ -1,17 +1,17 @@
 import { Card } from "@/components/ui/card";
-import techflowLogo from "@/assets/companies/techflow-logo.png";
-import innovatechLogo from "@/assets/companies/innovatech-logo.png";
-import nextgenLogo from "@/assets/companies/nextgen-logo.png";
-import alphaLogo from "@/assets/companies/alpha-logo.png";
-import vertexLogo from "@/assets/companies/vertex-logo.png";
+import company1Logo from "@/assets/companies/company1-logo.png";
+import company2Logo from "@/assets/companies/company2-logo.png";
+import company3Logo from "@/assets/companies/company3-logo.png";
+import company4Logo from "@/assets/companies/company4-logo.png";
+import company5Logo from "@/assets/companies/company5-logo.png";
 
 const TrustedBySection = () => {
   const companies = [
-    { name: "TechFlow Solutions", logo: techflowLogo },
-    { name: "Innovatech Brasil", logo: innovatechLogo },
-    { name: "Grupo NextGen", logo: nextgenLogo },
-    { name: "Alpha Consultoria", logo: alphaLogo },
-    { name: "Vertex Systems", logo: vertexLogo },
+    { name: "TechFlow Solutions", logo: company1Logo },
+    { name: "Innovatech Brasil", logo: company2Logo },
+    { name: "Grupo NextGen", logo: company3Logo },
+    { name: "Alpha Consultoria", logo: company4Logo },
+    { name: "Vertex Systems", logo: company5Logo },
   ];
 
   const certifications = [
