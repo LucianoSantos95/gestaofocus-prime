@@ -12,7 +12,8 @@ import {
   Users,
   Award,
   Star,
-  Quote
+  Quote,
+  Shield
 } from "lucide-react";
 import {
   Dialog,
@@ -408,6 +409,119 @@ const SprintProdutividade = () => {
                 )}
               </DialogContent>
             </Dialog>
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing & Guarantee Section */}
+      <section className="section-padding">
+        <div className="container-focus">
+          <div className="max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+              {/* Pricing Card */}
+              <Card className="border-2 border-primary bg-gradient-to-br from-primary/5 to-accent/5">
+                <div className="p-8 md:p-10">
+                  <div className="text-center mb-8">
+                    <div className="inline-flex items-center px-3 py-1 bg-yellow-500/20 text-yellow-600 text-xs font-semibold rounded-full mb-4">
+                      🔥 Oferta por Tempo Limitado
+                    </div>
+                    <div className="mb-2">
+                      <span className="text-foreground-muted line-through text-2xl">R$ 197</span>
+                    </div>
+                    <div className="text-5xl font-bold text-foreground mb-2">
+                      R$ 97
+                    </div>
+                    <p className="text-foreground-muted">pagamento único • acesso vitalício</p>
+                  </div>
+                  
+                  <div className="space-y-4 mb-8">
+                    <div className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
+                      <div>
+                        <p className="font-semibold text-foreground">7 dias de transformação</p>
+                        <p className="text-sm text-foreground-muted">Conteúdo prático e aplicável</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
+                      <div>
+                        <p className="font-semibold text-foreground">Material exclusivo</p>
+                        <p className="text-sm text-foreground-muted">Templates e checklists</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
+                      <div>
+                        <p className="font-semibold text-foreground">Grupo exclusivo</p>
+                        <p className="text-sm text-foreground-muted">Networking e suporte</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
+                      <div>
+                        <p className="font-semibold text-foreground">Acompanhamento diário</p>
+                        <p className="text-sm text-foreground-muted">Durante os 7 dias</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <Button className="btn-hero w-full group" asChild>
+                    <a href="https://www.notion.com/templates/sprint-de-organiza-o-7-dias" target="_blank" rel="noopener noreferrer">
+                      Garantir minha vaga agora
+                      <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+                    </a>
+                  </Button>
+                  
+                  <p className="text-center text-xs text-foreground-muted mt-4">
+                    🔒 Pagamento seguro • Últimas vagas
+                  </p>
+                </div>
+              </Card>
+              
+              {/* Guarantee Card */}
+              <Card className="border-2 border-primary/30">
+                <div className="p-8 md:p-10">
+                  <div className="text-center mb-6">
+                    <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 text-primary mb-4">
+                      <Shield className="w-10 h-10" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-foreground mb-3">
+                      Garantia Incondicional de 30 Dias
+                    </h3>
+                  </div>
+                  
+                  <p className="text-foreground-muted leading-relaxed mb-6">
+                    Estamos tão confiantes na qualidade do Sprint de Produtividade que oferecemos 
+                    garantia total de 30 dias. Se você seguir os exercícios e não ver melhoria 
+                    significativa na sua produtividade, devolvemos 100% do seu investimento.
+                  </p>
+                  
+                  <div className="space-y-3 mb-6">
+                    <div className="flex items-center gap-3">
+                      <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" />
+                      <span className="text-foreground-muted">Sem perguntas complicadas</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" />
+                      <span className="text-foreground-muted">Reembolso total em até 7 dias</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" />
+                      <span className="text-foreground-muted">Risco zero para você</span>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-primary/5 rounded-lg p-4 border border-primary/20">
+                    <p className="text-sm text-foreground-muted leading-relaxed">
+                      <strong className="text-foreground">Por que oferecemos isso?</strong><br />
+                      Porque sabemos que nosso método funciona. Mais de 98% dos participantes 
+                      ficam satisfeitos e veem resultados reais. Queremos que você tenha total 
+                      tranquilidade ao fazer sua inscrição.
+                    </p>
+                  </div>
+                </div>
+              </Card>
+            </div>
           </div>
         </div>
       </section>

@@ -57,6 +57,50 @@ const SistemasNotion = () => {
     "Suporte e treinamento inclusos"
   ];
 
+  const testimonials = [
+    {
+      name: "Carlos Mendes",
+      role: "CEO",
+      company: "TechFlow Solutions",
+      text: "A Focus transformou completamente nossa operação. Antes tínhamos informações espalhadas em 7 ferramentas diferentes. Hoje tudo está centralizado, automatizado e visual. Reduzimos 15 horas semanais só em relatórios.",
+      result: "15h/semana economizadas",
+      image: "C"
+    },
+    {
+      name: "Juliana Santos",
+      role: "Diretora Comercial",
+      company: "Vertex Marketing",
+      text: "O CRM personalizado que a Focus criou aumentou nossa taxa de conversão em 40%. O pipeline visual e as automações de follow-up são incríveis. Nunca mais perdemos uma oportunidade por falta de acompanhamento.",
+      result: "+40% conversão",
+      image: "J"
+    },
+    {
+      name: "Roberto Lima",
+      role: "CFO",
+      company: "Alpha Ventures",
+      text: "Implementamos o módulo financeiro há 6 meses. A visibilidade que temos agora sobre fluxo de caixa e rentabilidade por projeto é impressionante. Conseguimos reduzir custos em 23% apenas com insights que o sistema nos deu.",
+      result: "-23% custos",
+      image: "R"
+    }
+  ];
+
+  const caseStudies = [
+    {
+      company: "TechFlow Solutions",
+      industry: "Tecnologia",
+      challenge: "Equipe de 25 pessoas usando 7 ferramentas diferentes sem integração",
+      solution: "Hub centralizado com automações entre departamentos",
+      results: ["15h/semana economizadas em relatórios", "100% visibilidade operacional", "Redução de 35% em erros de processo"]
+    },
+    {
+      company: "Vertex Marketing",
+      industry: "Marketing Digital",
+      challenge: "Pipeline de vendas desorganizado com 60% das oportunidades perdidas por falta de follow-up",
+      solution: "CRM customizado com automações de follow-up e scoring de leads",
+      results: ["+40% taxa de conversão", "95% das oportunidades com follow-up em dia", "Previsibilidade de 85% no forecast"]
+    }
+  ];
+
   return (
     <div className="min-h-screen">
       <Helmet>
@@ -303,6 +347,93 @@ const SistemasNotion = () => {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="section-padding">
+        <div className="container-focus">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
+              Resultados reais de clientes
+            </h2>
+            <p className="text-xl text-foreground-muted max-w-3xl mx-auto">
+              Empresas que transformaram sua gestão com nossos sistemas personalizados.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+            {testimonials.map((testimonial, index) => (
+              <Card key={index} className="card-hover border-primary/10 h-full">
+                <div className="p-8 space-y-6">
+                  <div className="flex items-start justify-between">
+                    <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-lg">
+                      {testimonial.image}
+                    </div>
+                    <div className="px-3 py-1 bg-primary/10 text-primary text-xs font-semibold rounded-full">
+                      {testimonial.result}
+                    </div>
+                  </div>
+                  
+                  <p className="text-foreground-muted leading-relaxed italic">
+                    "{testimonial.text}"
+                  </p>
+                  
+                  <div className="pt-4 border-t border-border">
+                    <p className="font-semibold text-foreground">{testimonial.name}</p>
+                    <p className="text-sm text-foreground-muted">{testimonial.role}</p>
+                    <p className="text-sm text-primary">{testimonial.company}</p>
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </div>
+
+          {/* Case Studies */}
+          <div className="space-y-8">
+            <div className="text-center mb-12">
+              <h3 className="text-3xl font-bold text-foreground mb-4">
+                Cases de Sucesso
+              </h3>
+            </div>
+            
+            {caseStudies.map((caseStudy, index) => (
+              <Card key={index} className="card-hover border-primary/10">
+                <div className="p-8 md:p-12">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className="space-y-4">
+                      <div>
+                        <div className="text-sm text-primary font-semibold mb-2">{caseStudy.industry}</div>
+                        <h4 className="text-2xl font-bold text-foreground mb-4">{caseStudy.company}</h4>
+                      </div>
+                      
+                      <div>
+                        <h5 className="font-semibold text-foreground mb-2">Desafio:</h5>
+                        <p className="text-foreground-muted">{caseStudy.challenge}</p>
+                      </div>
+                      
+                      <div>
+                        <h5 className="font-semibold text-foreground mb-2">Solução:</h5>
+                        <p className="text-foreground-muted">{caseStudy.solution}</p>
+                      </div>
+                    </div>
+                    
+                    <div>
+                      <h5 className="font-semibold text-foreground mb-4">Resultados:</h5>
+                      <div className="space-y-3">
+                        {caseStudy.results.map((result, idx) => (
+                          <div key={idx} className="flex items-start space-x-3">
+                            <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
+                            <span className="text-foreground-muted">{result}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            ))}
           </div>
         </div>
       </section>

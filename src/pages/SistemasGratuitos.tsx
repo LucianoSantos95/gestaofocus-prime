@@ -483,6 +483,77 @@ const SistemasGratuitos = () => {
         </div>
       </section>
 
+      {/* Upsell CTA Section */}
+      <section className="py-16 md:py-24 bg-gradient-to-br from-primary/10 via-accent/5 to-background">
+        <div className="container-focus">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="inline-flex items-center px-4 py-2 rounded-full border border-primary/30 bg-primary/10 backdrop-blur-sm mb-6">
+              <TrendingUp className="w-4 h-4 text-primary mr-2" />
+              <span className="text-sm text-primary font-semibold">
+                Próximo Nível
+              </span>
+            </div>
+            
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Precisa de algo mais robusto?
+            </h2>
+            <p className="text-lg text-foreground-muted mb-8 max-w-2xl mx-auto">
+              Nossos templates gratuitos são ótimos para começar. Mas se você precisa de um sistema 
+              completo e personalizado para sua empresa, temos soluções profissionais.
+            </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+              <Card className="border-primary/20 hover:border-primary/50 transition-all duration-300 hover:shadow-elegant">
+                <CardContent className="p-6 text-center">
+                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary mb-4">
+                    <Users className="w-6 h-6" />
+                  </div>
+                  <h3 className="font-bold text-foreground mb-2">Hub Empresarial Pro</h3>
+                  <p className="text-sm text-foreground-muted">Sistema completo de gestão integrada</p>
+                </CardContent>
+              </Card>
+              
+              <Card className="border-primary/20 hover:border-primary/50 transition-all duration-300 hover:shadow-elegant">
+                <CardContent className="p-6 text-center">
+                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary mb-4">
+                    <TrendingUp className="w-6 h-6" />
+                  </div>
+                  <h3 className="font-bold text-foreground mb-2">Sprint Produtividade</h3>
+                  <p className="text-sm text-foreground-muted">7 dias para transformar sua rotina</p>
+                </CardContent>
+              </Card>
+              
+              <Card className="border-primary/20 hover:border-primary/50 transition-all duration-300 hover:shadow-elegant">
+                <CardContent className="p-6 text-center">
+                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary mb-4">
+                    <Award className="w-6 h-6" />
+                  </div>
+                  <h3 className="font-bold text-foreground mb-2">Consultoria Notion</h3>
+                  <p className="text-sm text-foreground-muted">Sistema personalizado para seu negócio</p>
+                </CardContent>
+              </Card>
+            </div>
+            
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Button 
+                className="btn-hero group"
+                onClick={() => window.location.href = '/sistemas-notion'}
+              >
+                Conhecer soluções profissionais
+                <ExternalLink className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+              </Button>
+              <Button 
+                variant="outline" 
+                className="btn-secondary"
+                onClick={() => window.open('https://wa.me/5511999999999?text=Olá! Preciso de uma solução profissional para minha empresa.', '_blank')}
+              >
+                Falar com consultor
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* FAQ Section */}
       <section className="py-16 md:py-24 bg-gradient-to-b from-background to-primary/5">
         <div className="container-focus">

@@ -222,6 +222,19 @@ const HubEmpresarial = () => {
           })}
         </script>
       </Helmet>
+      {/* Urgency Banner */}
+      <div className="bg-gradient-to-r from-yellow-500/20 via-orange-500/20 to-red-500/20 border-b border-yellow-500/30">
+        <div className="container-focus py-3">
+          <div className="flex items-center justify-center gap-2 text-center">
+            <Zap className="w-4 h-4 text-yellow-500 animate-pulse" />
+            <span className="text-sm font-semibold text-foreground">
+              🔥 Oferta de Lançamento: Apenas R$ 349 (valor normal R$ 497) • Últimas 15 vagas
+            </span>
+            <Zap className="w-4 h-4 text-yellow-500 animate-pulse" />
+          </div>
+        </div>
+      </div>
+
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-dark">
         <div className="relative z-10 container-focus">
@@ -537,27 +550,62 @@ const HubEmpresarial = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* Guarantee Section */}
       <section className="section-padding">
+        <div className="container-focus">
+          <div className="max-w-4xl mx-auto">
+            <Card className="border-2 border-primary/30 bg-gradient-to-br from-primary/5 to-accent/5">
+              <div className="p-8 md:p-12 text-center">
+                <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 text-primary mb-6">
+                  <Shield className="w-10 h-10" />
+                </div>
+                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                  Garantia de 30 Dias
+                </h2>
+                <p className="text-xl text-foreground-muted mb-6 max-w-2xl mx-auto">
+                  Se em 30 dias você não perceber melhoria significativa na organização 
+                  e eficiência do seu negócio, devolvemos 100% do seu investimento.
+                </p>
+                <div className="flex flex-wrap justify-center gap-6 text-sm text-foreground-muted">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-primary" />
+                    <span>Sem perguntas</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-primary" />
+                    <span>Reembolso total</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-primary" />
+                    <span>Suporte completo incluído</span>
+                  </div>
+                </div>
+              </div>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="section-padding bg-background-secondary">
         <div className="container-focus">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
               Pronto para revolucionar sua gestão?
             </h2>
             <p className="text-xl text-foreground-muted mb-8 max-w-2xl mx-auto">
-              Experimente o Hub Empresarial Pro por 14 dias grátis. 
-              Sem compromisso, com suporte completo para implementação.
+              Garanta sua vaga na oferta de lançamento. Apenas R$ 349 (valor normal R$ 497).
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button 
                 className="btn-hero group"
                 onClick={() => {
-                  trackNotionClick('hub_free', 'cta');
-                  trackCTAClick('Começar teste gratuito', 'cta');
-                  window.open('https://www.notion.com/templates/hub-empresarial-free', '_blank');
+                  trackStripeClick('cta_final');
+                  trackCTAClick('Garantir minha vaga', 'cta');
+                  window.open('https://buy.stripe.com/fZu28rbs8gN73ta6F7gUM0d', '_blank');
                 }}
               >
-                Começar teste gratuito
+                Garantir minha vaga agora
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
               </Button>
               <Button 
@@ -565,13 +613,16 @@ const HubEmpresarial = () => {
                 className="btn-secondary"
                 onClick={() => {
                   trackNotionClick('hub_pro', 'cta_secondary');
-                  trackCTAClick('Agendar apresentação', 'cta');
+                  trackCTAClick('Ver demonstração', 'cta');
                   window.open('https://www.notion.com/templates/hub-empresarial-pro', '_blank');
                 }}
               >
-                Agendar apresentação
+                Ver demonstração
               </Button>
             </div>
+            <p className="text-sm text-foreground-muted mt-4">
+              🔒 Garantia de 30 dias • Últimas 15 vagas disponíveis
+            </p>
           </div>
         </div>
       </section>
