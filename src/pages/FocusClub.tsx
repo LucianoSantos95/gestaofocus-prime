@@ -85,11 +85,11 @@ const FocusClub = () => {
         <meta name="description" content="Método FOCUS™: metodologia completa gestão empresarial em 5 etapas - Fundamento, Organização, Centralização, Utilização Produtiva e Sustentação. Transforme rotinas empresariais com sistemas personalizados, clareza nos processos e foco na execução." />
         <meta name="keywords" content="método focus, metodologia gestão empresarial, método produtividade, transformação empresarial, gestão processos, organização empresarial, centralização operações, sistemas escaláveis, evolução contínua, consultoria metodologia" />
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-        <link rel="canonical" href="https://focusinteligente.com.br/focus-club" />
+        <link rel="canonical" href="https://focusinteligente.com.br/metodofocus" />
         <meta property="og:title" content="Método FOCUS™ - Metodologia de Gestão Empresarial" />
         <meta property="og:description" content="Metodologia completa em 5 etapas para transformar gestão empresarial: diagnóstico, organização, centralização, aplicação e evolução." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://focusinteligente.com.br/focus-club" />
+        <meta property="og:url" content="https://focusinteligente.com.br/metodofocus" />
         <meta property="og:image" content="https://focusinteligente.com.br/lovable-uploads/focus-logo.png" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Método FOCUS™ - Focus Gestão" />
@@ -153,7 +153,7 @@ const FocusClub = () => {
               "@type": "ListItem",
               "position": 2,
               "name": "Método FOCUS",
-              "item": "https://focusinteligente.com.br/focus-club"
+              "item": "https://focusinteligente.com.br/metodofocus"
             }]
           })}
         </script>

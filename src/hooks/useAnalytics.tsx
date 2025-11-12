@@ -22,7 +22,7 @@ const getPageTitle = (pathname: string): string => {
     '/sistemas-notion': 'Sistemas Notion - Focus',
     '/sprint-produtividade': 'Sprint Produtividade - Focus',
     '/hub-empresarial': 'Hub Empresarial - Focus',
-    '/focus-club': 'Método FOCUS - Focus',
+    '/metodofocus': 'Método FOCUS - Focus',
     '/blog': 'Blog - Focus',
     '/sistemas-gratuitos': 'Sistemas Gratuitos - Focus',
   };

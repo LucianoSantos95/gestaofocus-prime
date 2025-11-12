@@ -70,7 +70,7 @@ const App = () => (
             <Route path="/sistemas-notion" element={<SistemasNotion />} />
             <Route path="/sprint-produtividade" element={<SprintProdutividade />} />
             <Route path="/hub-empresarial" element={<HubEmpresarial />} />
-            <Route path="/focus-club" element={<FocusClub />} />
+            <Route path="/metodofocus" element={<FocusClub />} />
             <Route path="/sistemas-gratuitos" element={<SistemasGratuitos />} />
             <Route path="/blog" element={<Blog />} />
               <Route path="/blog/poder-do-notion-empresas-produtivas" element={<PoderNotionEmpresas />} />

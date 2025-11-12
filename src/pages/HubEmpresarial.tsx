@@ -236,7 +236,7 @@ const HubEmpresarial = () => {
       </div>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-dark">
+      <section className="relative py-20 md:py-32 overflow-hidden bg-gradient-dark">
         <div className="relative z-10 container-focus">
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center px-4 py-2 rounded-full border border-card-border bg-card/50 backdrop-blur-sm mb-8 animate-fade-in">

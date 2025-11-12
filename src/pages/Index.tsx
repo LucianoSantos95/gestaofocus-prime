@@ -76,7 +76,7 @@ const Index = () => {
         "Mentorias em grupo",
         "Recursos exclusivos"
       ],
-      href: "/focus-club",
+      href: "/metodofocus",
       icon: Users,
       gradient: "from-pink-500 to-violet-500",
       details: "Mais que uma comunidade, uma família de empreendedores e gestores que querem crescer juntos. Acesso a aulas semanais exclusivas sobre produtividade, gestão e estratégia, networking qualificado com outros membros, mentorias em grupo mensais, biblioteca completa de recursos (templates, checklists, frameworks), eventos presenciais e online, além de descontos em todos os serviços Focus."
