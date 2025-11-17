@@ -30,6 +30,16 @@ import SistemasNotion150 from "./pages/blog/150SistemasNotion";
 import ProdutividadeFazerOqueImporta from "./pages/blog/ProdutividadeFazerOqueImporta";
 import ConfiarSistemasProducao from "./pages/blog/ConfiarSistemasProducao";
 import TarefasSoltasEmResultados from "./pages/blog/TarefasSoltasEmResultados";
+import ChecklistDiarioProdutividade from "./pages/blog/ChecklistDiarioProdutividade";
+import OrganizarRotinaSemanal from "./pages/blog/OrganizarRotinaSemanal";
+import ProdutividadeAutonomosFreelancers from "./pages/blog/ProdutividadeAutonomosFreelancers";
+import PararProcrastinarSistemasVisuais from "./pages/blog/PararProcrastinarSistemasVisuais";
+import PlanejamentoMensalSistema from "./pages/blog/PlanejamentoMensalSistema";
+import OrganizacaoPessoalTecnologia from "./pages/blog/OrganizacaoPessoalTecnologia";
+import MetasInteligentesSmart from "./pages/blog/MetasInteligentesSmart";
+import GuiaFocoEvitarDistracoes from "./pages/blog/GuiaFocoEvitarDistracoes";
+import MetodosProdutividade2025 from "./pages/blog/MetodosProdutividade2025";
+import OrganizarDocumentosEmpresa from "./pages/blog/OrganizarDocumentosEmpresa";
 import PararApagarIncendiosEmpresa from "./pages/blog/PararApagarIncendiosEmpresa";
 import ClarezaProjetosNotion from "./pages/blog/ClarezaProjetosNotion";
 import AboutFocus from "./pages/AboutFocus";
@@ -90,7 +100,17 @@ const App = () => (
               <Route path="/blog/150-sistemas-notion-licoes-praticas" element={<SistemasNotion150 />} />
               <Route path="/blog/produtividade-fazer-o-que-importa" element={<ProdutividadeFazerOqueImporta />} />
               <Route path="/blog/confiar-sistemas-producao" element={<ConfiarSistemasProducao />} />
-              <Route path="/blog/tarefas-soltas-em-resultados" element={<TarefasSoltasEmResultados />} />
+          <Route path="/blog/tarefas-soltas-em-resultados" element={<TarefasSoltasEmResultados />} />
+          <Route path="/blog/checklist-diario-produtividade" element={<ChecklistDiarioProdutividade />} />
+          <Route path="/blog/organizar-rotina-semanal" element={<OrganizarRotinaSemanal />} />
+          <Route path="/blog/produtividade-autonomos-freelancers" element={<ProdutividadeAutonomosFreelancers />} />
+          <Route path="/blog/parar-procrastinar-sistemas-visuais" element={<PararProcrastinarSistemasVisuais />} />
+          <Route path="/blog/planejamento-mensal-sistema" element={<PlanejamentoMensalSistema />} />
+          <Route path="/blog/organizacao-pessoal-tecnologia" element={<OrganizacaoPessoalTecnologia />} />
+          <Route path="/blog/metas-inteligentes-smart" element={<MetasInteligentesSmart />} />
+          <Route path="/blog/guia-foco-evitar-distracoes" element={<GuiaFocoEvitarDistracoes />} />
+          <Route path="/blog/metodos-produtividade-2025" element={<MetodosProdutividade2025 />} />
+          <Route path="/blog/organizar-documentos-empresa" element={<OrganizarDocumentosEmpresa />} />
               <Route path="/blog/parar-apagar-incendios-empresa" element={<PararApagarIncendiosEmpresa />} />
               <Route path="/blog/clareza-projetos-notion" element={<ClarezaProjetosNotion />} />
               <Route path="/sobre" element={<AboutFocus />} />
