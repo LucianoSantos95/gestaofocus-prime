@@ -23,6 +23,16 @@ import confiarSistemasImage from "@/assets/blog/confiar-em-sistemas.jpg";
 import tarefasResultadosImage from "@/assets/blog/tarefas-em-resultados.jpg";
 import pararIncendiosImage from "@/assets/blog/parar-apagar-incendios.jpg";
 import clarezaNotionImage from "@/assets/blog/clareza-projetos-notion.jpg";
+import checklistDiarioImage from "@/assets/blog/checklist-diario-produtividade.jpg";
+import organizarRotinaImage from "@/assets/blog/organizar-rotina-semanal.jpg";
+import produtividadeAutonomosImage from "@/assets/blog/produtividade-autonomos-freelancers.jpg";
+import pararProcrastinarImage from "@/assets/blog/parar-procrastinar-sistemas-visuais.jpg";
+import planejamentoMensalImage from "@/assets/blog/planejamento-mensal-sistema.jpg";
+import organizacaoPessoalImage from "@/assets/blog/organizacao-pessoal-tecnologia.jpg";
+import metasSmartImage from "@/assets/blog/metas-inteligentes-smart.jpg";
+import guiaFocoImage from "@/assets/blog/guia-foco-evitar-distracoes.jpg";
+import metodosProdutividadeImage from "@/assets/blog/metodos-produtividade-2025.jpg";
+import organizarDocumentosImage from "@/assets/blog/organizar-documentos-empresa.jpg";
 
 const Blog = () => {
   const [showArchived, setShowArchived] = useState(false);
@@ -30,6 +40,106 @@ const Blog = () => {
   const blogPosts = [
     {
       id: 1,
+      title: "Checklist Diário: O Método Simples Que Aumenta Sua Produtividade em Até 40%",
+      excerpt: "Descubra o sistema de checklist que profissionais de alta performance usam para maximizar resultados e reduzir stress diário.",
+      date: "2025-02-15",
+      readTime: "8 min",
+      category: "Produtividade",
+      slug: "checklist-diario-produtividade",
+      image: checklistDiarioImage
+    },
+    {
+      id: 2,
+      title: "Como Organizar Sua Rotina Semanal Para Ter Mais Foco (Modelo Pronto Incluso)",
+      excerpt: "O método completo de planejamento semanal que elimina decisões desnecessárias e multiplica seu foco nas tarefas que importam.",
+      date: "2025-02-14",
+      readTime: "9 min",
+      category: "Organização",
+      slug: "organizar-rotina-semanal",
+      image: organizarRotinaImage
+    },
+    {
+      id: 3,
+      title: "Produtividade Para Quem Trabalha Sozinho: O Guia Essencial Para Autônomos e Freelancers",
+      excerpt: "Estrutura completa para autônomos e freelancers criarem sistemas de produtividade sem depender de equipe ou estrutura corporativa.",
+      date: "2025-02-13",
+      readTime: "10 min",
+      category: "Freelancing",
+      slug: "produtividade-autonomos-freelancers",
+      image: produtividadeAutonomosImage
+    },
+    {
+      id: 4,
+      title: "Como Parar de Procrastinar Usando Sistemas Visuais (Sem Depender de Motivação)",
+      excerpt: "O método baseado em gatilhos visuais que elimina procrastinação sem precisar de força de vontade ou motivação externa.",
+      date: "2025-02-12",
+      readTime: "7 min",
+      category: "Produtividade",
+      slug: "parar-procrastinar-sistemas-visuais",
+      image: pararProcrastinarImage
+    },
+    {
+      id: 5,
+      title: "Planejamento Mensal: Como Criar Um Sistema Que Realmente Funciona",
+      excerpt: "Framework prático de 4 pilares para planejar seu mês de forma estratégica e executar com consistência.",
+      date: "2025-02-11",
+      readTime: "9 min",
+      category: "Planejamento",
+      slug: "planejamento-mensal-sistema",
+      image: planejamentoMensalImage
+    },
+    {
+      id: 6,
+      title: "Organização Pessoal 2.0: Como Usar Tecnologia Para Ter Mais Clareza Mental",
+      excerpt: "Como construir seu Second Brain usando ferramentas digitais para liberar espaço mental e aumentar sua capacidade criativa.",
+      date: "2025-02-10",
+      readTime: "8 min",
+      category: "Sistemas",
+      slug: "organizacao-pessoal-tecnologia",
+      image: organizacaoPessoalImage
+    },
+    {
+      id: 7,
+      title: "Como Criar Metas Inteligentes (SMART) Sem Complicar — Com Exemplos Reais",
+      excerpt: "Aprenda a transformar desejos vagos em metas SMART acionáveis com exemplos práticos e template pronto para usar.",
+      date: "2025-02-09",
+      readTime: "7 min",
+      category: "Gestão de Metas",
+      slug: "metas-inteligentes-smart",
+      image: metasSmartImage
+    },
+    {
+      id: 8,
+      title: "Guia Definitivo do Foco: Como Evitar Distrações no Trabalho e em Casa",
+      excerpt: "Técnicas práticas e comprovadas para eliminar distrações digitais e criar ambientes de foco profundo.",
+      date: "2025-02-08",
+      readTime: "10 min",
+      category: "Foco",
+      slug: "guia-foco-evitar-distracoes",
+      image: guiaFocoImage
+    },
+    {
+      id: 9,
+      title: "Métodos de Produtividade Que Realmente Funcionam em 2025 (E Quais Evitar)",
+      excerpt: "Análise completa dos métodos de produtividade mais eficazes em 2025. Saiba quais funcionam e quais são apenas hype.",
+      date: "2025-02-07",
+      readTime: "11 min",
+      category: "Métodos",
+      slug: "metodos-produtividade-2025",
+      image: metodosProdutividadeImage
+    },
+    {
+      id: 10,
+      title: "Como Organizar Documentos, Ideias e Informações da Empresa em Um Só Lugar",
+      excerpt: "Sistema completo para centralizar conhecimento empresarial e acabar com informações perdidas em e-mails e chats.",
+      date: "2025-02-06",
+      readTime: "8 min",
+      category: "Gestão Empresarial",
+      slug: "organizar-documentos-empresa",
+      image: organizarDocumentosImage
+    },
+    {
+      id: 11,
       title: "Como usar o Notion para ter clareza total nos seus projetos (mesmo com pouco tempo)",
       excerpt: "O método completo para configurar o Notion e ter visão 360° dos seus projetos em minutos — não em horas de organização.",
       date: "2025-02-05",
