@@ -3,629 +3,409 @@ import { Helmet } from "react-helmet";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Badge } from "@/components/ui/badge";
 import { 
-  Building2, 
-  ArrowRight, 
   CheckCircle, 
-  DollarSign,
-  Users,
-  BarChart3,
-  Headphones,
-  Zap,
+  ArrowRight,
   Shield,
-  TrendingUp
+  Zap,
+  TrendingUp,
+  Star,
+  Play
 } from "lucide-react";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import { trackStripeClick, trackNotionClick, trackCTAClick } from "@/lib/analytics";
+import { trackStripeClick, trackCTAClick } from "@/lib/analytics";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
+import GuaranteeSection from "@/components/GuaranteeSection";
 
 const HubEmpresarial = () => {
-  const [selectedFeature, setSelectedFeature] = useState<number | null>(null);
-  const [selectedAdvantage, setSelectedAdvantage] = useState<number | null>(null);
-  const features = [
+  const [selectedModule, setSelectedModule] = useState<string | null>(null);
+
+  // Módulos do sistema com suas funcionalidades
+  const modules = [
     {
-      icon: DollarSign,
-      title: "Controle Financeiro",
-      description: "Fluxo de caixa, contas a pagar/receber, relatórios financeiros e análise de rentabilidade.",
-      details: ["Dashboard financeiro", "Previsão de caixa", "Relatórios automáticos", "Controle de custos"],
-      gradient: "from-green-500 to-emerald-500",
-      fullDetails: "Tenha controle total sobre as finanças da sua empresa com nosso módulo financeiro completo. Acompanhe o fluxo de caixa em tempo real com gráficos intuitivos, gerencie todas as contas a pagar e receber com alertas automáticos de vencimento, gere relatórios financeiros detalhados com apenas um clique, analise a rentabilidade por produto, serviço ou projeto. Inclui previsão de caixa inteligente, controle de despesas por categoria, conciliação bancária automatizada e muito mais. Tome decisões financeiras com dados precisos e atualizados."
+      id: "comece-aqui",
+      title: "Comece por aqui",
+      image: "/lovable-uploads/hub-comece-aqui.png",
+      description: "Guia completo para começar a usar o sistema",
+      features: [
+        "Aulas gravadas para melhor utilização do sistema",
+        "Tutorial passo a passo",
+        "Dicas de configuração inicial",
+        "Suporte via WhatsApp"
+      ]
     },
     {
-      icon: Users,
-      title: "Área Comercial",
-      description: "CRM completo, pipeline de vendas, controle de leads e acompanhamento de performance.",
-      details: ["Gestão de leads", "Pipeline visual", "Histórico de contatos", "Metas de vendas"],
-      gradient: "from-blue-500 to-cyan-500",
-      fullDetails: "Transforme sua gestão comercial com um CRM completo e intuitivo. Organize todos os seus leads em um funil visual interativo, acompanhe cada etapa da jornada do cliente, registre todas as interações e histórico de comunicação, defina e monitore metas de vendas individuais e da equipe. O sistema inclui pontuação automática de leads, notificações de follow-up, relatórios de performance de vendedores, previsão de fechamento e integração com WhatsApp e email. Nunca mais perca uma oportunidade de venda."
+      id: "financeiro",
+      title: "Financeiro",
+      image: "/lovable-uploads/hub-financeiro.png",
+      description: "Controle total das finanças da sua empresa",
+      features: [
+        "Visão geral mensal",
+        "Categorias de despesas e entradas",
+        "Entradas e Despesas",
+        "Fluxo semanal e mensal - previsto e realizado",
+        "Controle de Cartão de crédito",
+        "Investimentos e economias",
+        "Cadastros de bancos",
+        "Controle financeiro mensal",
+        "Gráficos para Análise"
+      ]
     },
     {
-      icon: BarChart3,
-      title: "Marketing Integrado",
-      description: "Campanhas, métricas, ROI e análise de performance de todos os canais de marketing.",
-      details: ["Tracking de campanhas", "ROI por canal", "Análise de conversão", "Planejamento"],
-      gradient: "from-purple-500 to-pink-500",
-      fullDetails: "Gerencie todas as suas campanhas de marketing em um único lugar. Planeje e acompanhe campanhas de todos os canais (Facebook, Instagram, Google Ads, Email Marketing), calcule automaticamente o ROI de cada campanha, analise taxas de conversão em cada etapa do funil, visualize métricas unificadas de performance. Inclui calendário editorial, biblioteca de criativos, controle de orçamento por campanha, análise de público e relatórios visuais personalizados. Maximize seus resultados com decisões baseadas em dados reais."
+      id: "rh",
+      title: "Recursos Humanos",
+      image: "/lovable-uploads/hub-rh.png",
+      description: "Gestão completa de pessoas e processos de RH",
+      features: [
+        "Gestão de Pessoas",
+        "Gestão de vagas",
+        "Onboarding para novos funcionários",
+        "Avaliação de desempenho",
+        "Controle de Documentos"
+      ]
     },
     {
-      icon: Headphones,
-      title: "Suporte ao Cliente",
-      description: "Sistema de tickets, base de conhecimento e acompanhamento de satisfação.",
-      details: ["Gestão de tickets", "SLA automático", "Base de conhecimento", "NPS integrado"],
-      gradient: "from-orange-500 to-red-500",
-      fullDetails: "Eleve o nível do seu atendimento ao cliente com um sistema completo de suporte. Gerencie todos os tickets de suporte em uma interface organizada, controle automaticamente os SLAs e prazos de resposta, crie uma base de conhecimento para reduzir tickets repetitivos, meça a satisfação com pesquisas NPS integradas. O sistema inclui categorização automática de tickets, distribuição inteligente entre atendentes, histórico completo do cliente, relatórios de tempo de resposta e resolução, e muito mais. Clientes satisfeitos, negócio crescendo."
+      id: "marketing",
+      title: "Marketing",
+      image: "/lovable-uploads/hub-marketing.png",
+      description: "Organize e potencialize suas estratégias de marketing",
+      features: [
+        "Tarefas e Responsabilidades + visualização dedicada",
+        "Base de análise + visualização dedicada",
+        "Controle de campanhas",
+        "Ideias de conteúdo",
+        "Planejamento de Lançamentos",
+        "Monitoramento de concorrência",
+        "Recursos e Referências",
+        "Post Campeão"
+      ]
+    },
+    {
+      id: "projetos",
+      title: "Projetos",
+      image: "/lovable-uploads/hub-projetos.png",
+      description: "Gestão eficiente de todos os seus projetos",
+      features: [
+        "Controle de Projetos + visualização dedicada",
+        "Tarefas de Projetos + visualização dedicada",
+        "Análise de riscos de Projetos",
+        "Decisões e Mudanças",
+        "Marcos e Objetivos"
+      ]
+    },
+    {
+      id: "crm",
+      title: "CRM",
+      image: "/lovable-uploads/hub-crm.png",
+      description: "Gerencie leads e vendas de forma profissional",
+      features: [
+        "Entrada de leads + base dedicada + formulário personalizável",
+        "Vendas + visualização dedicada",
+        "Documentos e Notas",
+        "Base de leads"
+      ]
+    },
+    {
+      id: "atividades",
+      title: "Atividades",
+      image: "/lovable-uploads/hub-atividades.png",
+      description: "Organize tarefas, reuniões e processos diários",
+      features: [
+        "Tarefas Gerais + Visualização dedicada",
+        "Controle de Reuniões",
+        "Processos e Rotinas",
+        "Objetivos e Metas"
+      ]
     }
   ];
 
-  const advantages = [
-    {
-      icon: TrendingUp,
-      title: "Analytics Inteligente",
-      description: "Dashboards em tempo real com insights automáticos e análise preditiva para tomada de decisões estratégicas.",
-      gradient: "from-cyan-500 to-blue-500",
-      details: "Transforme dados em decisões estratégicas com nosso módulo de analytics inteligente. Visualize KPIs essenciais em dashboards customizáveis que atualizam em tempo real, receba insights automáticos sobre tendências e anomalias nos seus dados, use análise preditiva para antecipar cenários futuros e planejar com antecedência. O sistema cruza dados de todos os módulos para gerar análises completas: correlação entre investimento em marketing e vendas, impacto do atendimento na retenção, saúde financeira projetada e muito mais. Relatórios visuais e executivos gerados automaticamente."
-    },
+  const selectedModuleData = modules.find(m => m.id === selectedModule);
+
+  const benefits = [
     {
       icon: Zap,
-      title: "Automações Avançadas",
-      description: "Workflows automatizados que conectam todos os setores, eliminando trabalho manual e reduzindo erros.",
-      gradient: "from-yellow-500 to-orange-500",
-      details: "Elimine tarefas repetitivas e ganhe horas no seu dia com automações inteligentes. Configure workflows que conectam diferentes módulos: quando um lead vira cliente no CRM, cria automaticamente no financeiro e envia boas-vindas; quando um pagamento atrasa, cria ticket de cobrança automático; quando meta é batida, notifica a equipe e atualiza dashboard. Inclui automações de email, notificações, atualizações de status, cálculos financeiros, distribuição de tarefas e muito mais. Tudo funciona 24/7 sem intervenção manual, reduzindo erros humanos e aumentando eficiência operacional."
+      title: "Tudo em um só lugar",
+      description: "7 módulos integrados para gestão completa da sua empresa"
     },
     {
       icon: Shield,
-      title: "Segurança Enterprise",
-      description: "Controle granular de permissões, backup automático e conformidade com LGPD garantida.",
-      gradient: "from-emerald-500 to-green-500",
-      details: "Seus dados empresariais protegidos com segurança de nível corporativo. Configure permissões granulares: cada usuário vê e edita apenas o que é relevante para sua função, com controle por módulo, página e até campo específico. Backup automático diário com versionamento, permitindo recuperar qualquer informação de até 30 dias atrás. Sistema 100% em conformidade com LGPD: registro de acessos, consentimento documentado, portabilidade e exclusão de dados sob demanda. Inclui autenticação de dois fatores, log de auditoria completo, criptografia de dados sensíveis e políticas de retenção customizáveis."
+      title: "Dados seguros",
+      description: "Seus dados protegidos no Notion, uma das plataformas mais seguras do mundo"
+    },
+    {
+      icon: TrendingUp,
+      title: "Escalável",
+      description: "Cresce com sua empresa, do freelancer à multinacional"
     }
   ];
 
-  const benefits = [
-    "Visão completa do negócio em um só lugar",
-    "Dashboards em tempo real",
-    "Integração entre todas as áreas", 
-    "Controle de permissões por usuário",
-    "Backup automático na nuvem",
-    "Suporte técnico especializado"
-  ];
-
-  const carouselImages = [
-    {
-      src: "/lovable-uploads/e7cb35d7-2048-4ad6-841f-d0cebc69f29b.png",
-      alt: "Hub Empresarial Dashboard"
-    },
-    {
-      src: "/lovable-uploads/9a534dd9-2fc7-4069-b764-020f532fe69c.png",
-      alt: "Módulo Finanças"
-    },
-    {
-      src: "/lovable-uploads/2f76d4c5-3684-494b-b193-4b8f4a3c15fb.png",
-      alt: "Módulo Projetos"
-    },
-    {
-      src: "/lovable-uploads/b1b84ecc-e932-4297-af10-a6f7bc45041d.png",
-      alt: "Módulo Atividades"
-    }
-  ];
-
-  const plans = [
-    {
-      name: "Starter",
-      price: "R$ 297",
-      period: "mensal",
-      description: "Para pequenas empresas iniciando a organização",
-      features: [
-        "Até 5 usuários",
-        "Módulos básicos",
-        "Suporte por email",
-        "1 integração inclusa"
-      ],
-      highlighted: false
-    },
-    {
-      name: "Professional", 
-      price: "R$ 497",
-      period: "mensal",
-      description: "Para empresas em crescimento",
-      features: [
-        "Até 15 usuários",
-        "Todos os módulos",
-        "Suporte prioritário",
-        "5 integrações inclusas",
-        "Relatórios avançados",
-        "Personalização básica"
-      ],
-      highlighted: true
-    },
-    {
-      name: "Enterprise",
-      price: "Sob consulta",
-      period: "",
-      description: "Para grandes empresas", 
-      features: [
-        "Usuários ilimitados",
-        "Personalização completa",
-        "Suporte dedicado",
-        "Integrações ilimitadas",
-        "Treinamento incluído",
-        "SLA garantido"
-      ],
-      highlighted: false
-    }
-  ];
+  const handlePurchaseClick = (location: string) => {
+    trackStripeClick(location);
+    trackCTAClick("Adquirir Hub Empresarial", location);
+    window.open("https://buy.stripe.com/5kAcPg22odJZ7YceVb", "_blank");
+  };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background">
       <Helmet>
-        <title>Hub Empresarial PRO | Sistema Completo Gestão Empresarial - Focus</title>
-        <meta name="description" content="Sistema integrado completo para gestão empresarial: controle financeiro com fluxo caixa, CRM com pipeline vendas, marketing integrado, suporte cliente e dashboards em tempo real. Centralize tudo em um único lugar." />
-        <meta name="keywords" content="hub empresarial, sistema gestão empresarial, ERP notion, controle financeiro empresarial, CRM vendas, gestão marketing, suporte cliente, dashboards executivos, gestão integrada, software gestão, analytics empresarial" />
-        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <title>Hub Empresarial PRO 1.0 - Sistema Completo de Gestão no Notion | Focus Inteligente</title>
+        <meta name="description" content="Sistema completo de gestão empresarial no Notion: Financeiro, RH, CRM, Marketing, Projetos e muito mais. Tudo integrado em um só lugar." />
+        <meta property="og:title" content="Hub Empresarial PRO 1.0 - Gestão Completa no Notion" />
+        <meta property="og:description" content="7 módulos integrados para gestão total da sua empresa. Financeiro, RH, Marketing, CRM, Projetos, Atividades e muito mais." />
+        <meta property="og:type" content="product" />
         <link rel="canonical" href="https://focusinteligente.com.br/hub-empresarial" />
-        <meta property="og:title" content="Hub Empresarial PRO - Sistema Completo de Gestão" />
-        <meta property="og:description" content="Sistema integrado: financeiro, CRM, marketing, suporte e analytics. Dashboards em tempo real para decisões estratégicas." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://focusinteligente.com.br/hub-empresarial" />
-        <meta property="og:image" content="https://focusinteligente.com.br/lovable-uploads/focus-logo.png" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Hub Empresarial PRO - Focus" />
-        <meta name="twitter:description" content="Sistema completo de gestão empresarial com módulos integrados e dashboards em tempo real." />
-        
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "SoftwareApplication",
-            "name": "Hub Empresarial PRO",
-            "applicationCategory": "BusinessApplication",
-            "description": "Sistema integrado de gestão empresarial com controle financeiro, CRM, marketing, suporte e analytics",
-            "operatingSystem": "Web",
-            "offers": {
-              "@type": "Offer",
-              "price": "297",
-              "priceCurrency": "BRL",
-              "availability": "https://schema.org/InStock"
-            },
-            "aggregateRating": {
-              "@type": "AggregateRating",
-              "ratingValue": "4.8",
-              "ratingCount": "100",
-              "bestRating": "5"
-            },
-            "provider": {
-              "@type": "Organization",
-              "name": "Focus Gestão Empresarial",
-              "url": "https://focusinteligente.com.br"
-            }
-          })}
-        </script>
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [{
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Início",
-              "item": "https://focusinteligente.com.br/"
-            }, {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Hub Empresarial",
-              "item": "https://focusinteligente.com.br/hub-empresarial"
-            }]
-          })}
-        </script>
       </Helmet>
-      {/* Urgency Banner */}
-      <div className="bg-gradient-to-r from-yellow-500/20 via-orange-500/20 to-red-500/20 border-b border-yellow-500/30">
-        <div className="container-focus py-3">
-          <div className="flex items-center justify-center gap-2 text-center">
-            <Zap className="w-4 h-4 text-yellow-500 animate-pulse" />
-            <span className="text-sm font-semibold text-foreground">
-              🔥 Oferta de Lançamento: Apenas R$ 349 (valor normal R$ 497) • Últimas 15 vagas
-            </span>
-            <Zap className="w-4 h-4 text-yellow-500 animate-pulse" />
-          </div>
-        </div>
-      </div>
+
+      <Navigation />
 
       {/* Hero Section */}
-      <section className="relative py-20 md:py-32 overflow-hidden bg-gradient-dark">
-        <div className="relative z-10 container-focus">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center px-4 py-2 rounded-full border border-card-border bg-card/50 backdrop-blur-sm mb-8 animate-fade-in">
-              <Building2 className="w-4 h-4 text-primary mr-2" />
-              <span className="text-sm text-foreground-muted">
-                Hub Empresarial Pro
-              </span>
-            </div>
-            
-            <h1 className="hero-title mb-6 animate-fade-in" style={{ animationDelay: '100ms' }}>
-              A ferramenta completa para gerir seu negócio
-            </h1>
-            
-            <p className="hero-subtitle mb-12 max-w-3xl mx-auto animate-fade-in" style={{ animationDelay: '200ms' }}>
-              Sistema integrado que centraliza financeiro, comercial, marketing e suporte, 
-              oferecendo visão estratégica completa do seu negócio.
-            </p>
+      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-20">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-background" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/20 via-transparent to-transparent" />
+        
+        <div className="container relative z-10 px-4 mx-auto text-center">
+          <Badge className="mb-6 text-lg px-6 py-2 bg-primary/10 text-primary border-primary/20 animate-fade-in">
+            🚀 Versão 1.0 Atualizada
+          </Badge>
+          
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary via-primary-glow to-primary bg-clip-text text-transparent animate-fade-in">
+            Hub Empresarial PRO 1.0
+          </h1>
+          
+          <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto animate-fade-in">
+            O sistema mais completo de gestão empresarial no Notion.<br />
+            <span className="text-primary font-semibold">7 módulos integrados</span> para você dominar todas as áreas do seu negócio.
+          </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in" style={{ animationDelay: '300ms' }}>
-              <Button 
-                className="btn-hero group"
-                onClick={() => {
-                  trackStripeClick('hero_cta');
-                  trackCTAClick('Comece agora', 'hero');
-                  window.open('https://buy.stripe.com/fZu28rbs8gN73ta6F7gUM0d', '_blank');
-                }}
-              >
-                Comece agora
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-              </Button>
-              
-              <Button 
-                variant="outline" 
-                className="btn-secondary"
-                onClick={() => {
-                  trackNotionClick('hub_pro', 'hero');
-                  trackCTAClick('Ver demonstração', 'hero');
-                  window.open('https://www.notion.com/templates/hub-empresarial-pro', '_blank');
-                }}
-              >
-                Ver demonstração
-              </Button>
-            </div>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-fade-in">
+            <Button 
+              size="lg" 
+              className="text-lg px-8 py-6 bg-gradient-to-r from-primary to-primary-glow hover:opacity-90 transition-all"
+              onClick={() => handlePurchaseClick("hero")}
+            >
+              Adquirir Agora
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="text-lg px-8 py-6"
+              onClick={() => document.getElementById('modulos')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              <Play className="mr-2 h-5 w-5" />
+              Ver Módulos
+            </Button>
+          </div>
 
-            {/* Stats */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16 max-w-xl mx-auto">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-primary mb-2">6</div>
-                <div className="text-sm text-foreground-muted">Módulos integrados</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-primary mb-2">+100</div>
-                <div className="text-sm text-foreground-muted">Downloads</div>
-              </div>
+          <div className="flex flex-wrap justify-center gap-8 text-center animate-fade-in">
+            <div>
+              <div className="text-4xl font-bold text-primary mb-2">7</div>
+              <div className="text-sm text-muted-foreground">Módulos Integrados</div>
+            </div>
+            <div>
+              <div className="text-4xl font-bold text-primary mb-2">100%</div>
+              <div className="text-sm text-muted-foreground">No Notion</div>
+            </div>
+            <div>
+              <div className="text-4xl font-bold text-primary mb-2">∞</div>
+              <div className="text-sm text-muted-foreground">Atualizações</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="section-padding bg-background-secondary">
-        <div className="container-focus">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
-              Funcionalidades completas
+      {/* Módulos Section - Estilo Netflix */}
+      <section id="modulos" className="py-20 bg-gradient-to-b from-background to-muted/20">
+        <div className="container px-4 mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              Explore Todos os Módulos
             </h2>
-            <p className="text-xl text-foreground-muted max-w-3xl mx-auto">
-              Cada módulo foi desenvolvido para trabalhar em perfeita sintonia, 
-              oferecendo uma visão 360° do seu negócio.
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Clique em cada módulo para descobrir todas as funcionalidades
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {features.map((feature, index) => {
-              const IconComponent = feature.icon;
-              return (
-                <div key={feature.title} className="animate-slide-up" style={{ animationDelay: `${index * 100}ms` }}>
-                  <Card 
-                    className="card-hover h-full border-primary/10 transition-all duration-300 hover:scale-105 hover:shadow-elegant cursor-pointer"
-                    onClick={() => setSelectedFeature(index)}
-                  >
-                    <div className="p-8">
-                      <div className="relative mb-6 flex justify-start">
-                        <div className={`relative w-14 h-14 rounded-2xl bg-gradient-to-br ${feature.gradient} p-0.5 shadow-lg`}>
-                          <div className="w-full h-full rounded-2xl bg-background/95 backdrop-blur-sm flex items-center justify-center">
-                            <IconComponent className="w-7 h-7 text-foreground" />
-                          </div>
-                        </div>
-                        <div className={`absolute inset-0 w-14 h-14 rounded-2xl bg-gradient-to-br ${feature.gradient} blur-xl opacity-30`} />
-                      </div>
-                      
-                      <h3 className="text-xl font-bold text-card-foreground mb-3">
-                        {feature.title}
-                      </h3>
-                      
-                      <p className="text-foreground-muted mb-6">
-                        {feature.description}
-                      </p>
-
-                      <div className="space-y-2 mb-4">
-                        {feature.details.map((detail, detailIndex) => (
-                          <div key={detailIndex} className="flex items-center text-sm text-foreground-muted">
-                            <div className="w-1.5 h-1.5 bg-primary rounded-full mr-3 flex-shrink-0" />
-                            {detail}
-                          </div>
-                        ))}
-                      </div>
-
-                      <p className="text-sm text-primary hover:text-primary/80 transition-colors">
-                        Clique para saber mais →
-                      </p>
-                    </div>
-                  </Card>
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Features Dialog */}
-          <Dialog open={selectedFeature !== null} onOpenChange={(open) => !open && setSelectedFeature(null)}>
-            <DialogContent className="max-w-2xl">
-              {selectedFeature !== null && (
-                <>
-                  <DialogHeader>
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className={`relative w-16 h-16 rounded-2xl bg-gradient-to-br ${features[selectedFeature].gradient} p-0.5 shadow-lg`}>
-                        <div className="w-full h-full rounded-2xl bg-background/95 backdrop-blur-sm flex items-center justify-center">
-                          {(() => {
-                            const IconComponent = features[selectedFeature].icon;
-                            return <IconComponent className="w-8 h-8 text-foreground" />;
-                          })()}
-                        </div>
-                      </div>
-                      <div className="text-left">
-                        <DialogTitle className="text-2xl">
-                          {features[selectedFeature].title}
-                        </DialogTitle>
-                      </div>
-                    </div>
-                    <DialogDescription className="text-base leading-relaxed text-foreground-muted">
-                      {features[selectedFeature].fullDetails}
-                    </DialogDescription>
-                  </DialogHeader>
-                  <div className="mt-6">
-                    <Button 
-                      className="btn-hero w-full group"
-                      onClick={() => {
-                        trackNotionClick('hub_pro', 'feature_dialog');
-                        trackCTAClick('Ver demonstração', 'feature_dialog');
-                        window.open('https://www.notion.com/templates/hub-empresarial-pro', '_blank');
-                      }}
-                    >
-                      Ver demonstração completa
-                      <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-                    </Button>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+            {modules.map((module, index) => (
+              <Card
+                key={module.id}
+                className="group cursor-pointer overflow-hidden border-2 border-border hover:border-primary transition-all duration-300 hover:scale-105 hover:shadow-2xl bg-card/50 backdrop-blur-sm"
+                onClick={() => setSelectedModule(module.id)}
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="relative aspect-video overflow-hidden">
+                  <img
+                    src={module.image}
+                    alt={module.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
+                  <div className="absolute bottom-0 left-0 right-0 p-4">
+                    <h3 className="text-2xl font-bold text-white mb-1 drop-shadow-lg">
+                      {module.title}
+                    </h3>
+                    <p className="text-sm text-white/90 drop-shadow">
+                      {module.description}
+                    </p>
                   </div>
-                </>
-              )}
-            </DialogContent>
-          </Dialog>
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="bg-primary/90 backdrop-blur-sm rounded-full p-4">
+                      <Play className="h-8 w-8 text-primary-foreground" fill="currentColor" />
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Benefits Section */}
-      <section className="section-padding">
-        <div className="container-focus">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
-                Por que escolher o Hub Empresarial?
-              </h2>
-              <p className="text-xl text-foreground-muted leading-relaxed mb-8">
-                Mais que um software, é a evolução da gestão empresarial. 
-                Integração total, insights inteligentes e crescimento sustentável.
-              </p>
-              
-              <div className="grid grid-cols-1 gap-4 mb-8">
-                {benefits.map((benefit, index) => (
-                  <div key={index} className="flex items-center space-x-3">
-                    <CheckCircle className="w-6 h-6 text-primary flex-shrink-0" />
-                    <span className="text-foreground-muted">{benefit}</span>
-                  </div>
-                ))}
-              </div>
+      <section className="py-20">
+        <div className="container px-4 mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              Por que escolher o Hub Empresarial?
+            </h2>
+          </div>
 
-              <Button 
-                className="btn-hero group"
-                onClick={() => {
-                  trackNotionClick('hub_pro', 'benefits');
-                  trackCTAClick('Solicitar demonstração', 'benefits');
-                  window.open('https://www.notion.com/templates/hub-empresarial-pro', '_blank');
-                }}
-              >
-                Solicitar demonstração
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-              </Button>
-            </div>
-
-            <div className="space-y-6">
-              {advantages.map((advantage, index) => {
-                const IconComponent = advantage.icon;
-                return (
-                  <div key={advantage.title}>
-                    <Card 
-                      className="card-hover border-primary/10 transition-all duration-300 hover:scale-105 hover:shadow-elegant cursor-pointer"
-                      onClick={() => setSelectedAdvantage(index)}
-                    >
-                      <div className="p-6">
-                        <div className="relative mb-4 flex justify-start">
-                          <div className={`relative w-14 h-14 rounded-2xl bg-gradient-to-br ${advantage.gradient} p-0.5 shadow-lg`}>
-                            <div className="w-full h-full rounded-2xl bg-background/95 backdrop-blur-sm flex items-center justify-center">
-                              <IconComponent className="w-7 h-7 text-foreground" />
-                            </div>
-                          </div>
-                          <div className={`absolute inset-0 w-14 h-14 rounded-2xl bg-gradient-to-br ${advantage.gradient} blur-xl opacity-30`} />
-                        </div>
-                        <h3 className="text-xl font-bold text-card-foreground mb-3">
-                          {advantage.title}
-                        </h3>
-                        <p className="text-foreground-muted mb-3">
-                          {advantage.description}
-                        </p>
-                        <p className="text-sm text-primary hover:text-primary/80 transition-colors">
-                          Clique para saber mais →
-                        </p>
-                      </div>
-                    </Card>
-                  </div>
-                );
-              })}
-            </div>
-
-            {/* Advantages Dialog */}
-            <Dialog open={selectedAdvantage !== null} onOpenChange={(open) => !open && setSelectedAdvantage(null)}>
-              <DialogContent className="max-w-2xl">
-                {selectedAdvantage !== null && (
-                  <>
-                    <DialogHeader>
-                      <div className="flex items-center gap-4 mb-4">
-                        <div className={`relative w-16 h-16 rounded-2xl bg-gradient-to-br ${advantages[selectedAdvantage].gradient} p-0.5 shadow-lg`}>
-                          <div className="w-full h-full rounded-2xl bg-background/95 backdrop-blur-sm flex items-center justify-center">
-                            {(() => {
-                              const IconComponent = advantages[selectedAdvantage].icon;
-                              return <IconComponent className="w-8 h-8 text-foreground" />;
-                            })()}
-                          </div>
-                        </div>
-                        <div className="text-left">
-                          <DialogTitle className="text-2xl">
-                            {advantages[selectedAdvantage].title}
-                          </DialogTitle>
-                        </div>
-                      </div>
-                      <DialogDescription className="text-base leading-relaxed text-foreground-muted">
-                        {advantages[selectedAdvantage].details}
-                      </DialogDescription>
-                    </DialogHeader>
-                    <div className="mt-6">
-                      <Button 
-                        className="btn-hero w-full group"
-                        onClick={() => {
-                          trackStripeClick('advantage_dialog');
-                          trackCTAClick('Comece agora', 'advantage_dialog');
-                          window.open('https://buy.stripe.com/fZu28rbs8gN73ta6F7gUM0d', '_blank');
-                        }}
-                      >
-                        Comece agora
-                        <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-                      </Button>
-                    </div>
-                  </>
-                )}
-              </DialogContent>
-            </Dialog>
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {benefits.map((benefit, index) => (
+              <Card key={index} className="p-8 text-center hover:shadow-xl transition-shadow border-2 hover:border-primary bg-card/50 backdrop-blur-sm">
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-6">
+                  <benefit.icon className="h-8 w-8 text-primary" />
+                </div>
+                <h3 className="text-2xl font-bold mb-3">{benefit.title}</h3>
+                <p className="text-muted-foreground">{benefit.description}</p>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Gallery Section */}
-      <section className="section-padding bg-background-secondary">
-        <div className="container-focus">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
-              Conheça mais
-            </h2>
-            <p className="text-xl text-foreground-muted max-w-3xl mx-auto">
-              Explore as principais funcionalidades do Hub Empresarial Pro 
-              através das imagens dos módulos em ação.
-            </p>
-          </div>
-
+      {/* Social Proof */}
+      <section className="py-20 bg-muted/20">
+        <div className="container px-4 mx-auto text-center">
           <div className="max-w-4xl mx-auto">
-            <Carousel className="w-full">
-              <CarouselContent>
-                {carouselImages.map((image, index) => (
-                  <CarouselItem key={index}>
-                    <div className="service-card p-1">
-                      <img 
-                        src={image.src} 
-                        alt={image.alt}
-                        className="w-full h-auto rounded-lg shadow-lg"
-                      />
-                    </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious />
-              <CarouselNext />
-            </Carousel>
+            <div className="flex justify-center gap-1 mb-6">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="h-8 w-8 text-yellow-500 fill-yellow-500" />
+              ))}
+            </div>
+            <p className="text-2xl md:text-3xl font-semibold mb-4">
+              "Transformou completamente a gestão da minha empresa"
+            </p>
+            <p className="text-lg text-muted-foreground mb-4">
+              Mais de 500+ empresas já organizaram seus processos com o Hub Empresarial PRO
+            </p>
           </div>
         </div>
       </section>
 
       {/* Guarantee Section */}
-      <section className="section-padding">
-        <div className="container-focus">
-          <div className="max-w-4xl mx-auto">
-            <Card className="border-2 border-primary/30 bg-gradient-to-br from-primary/5 to-accent/5">
-              <div className="p-8 md:p-12 text-center">
-                <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 text-primary mb-6">
-                  <Shield className="w-10 h-10" />
+      <GuaranteeSection />
+
+      {/* Final CTA */}
+      <section className="py-20 bg-gradient-to-b from-background to-primary/5">
+        <div className="container px-4 mx-auto">
+          <Card className="max-w-4xl mx-auto p-12 text-center border-2 border-primary/20 bg-gradient-to-br from-card to-primary/5">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              Pronto para organizar sua empresa?
+            </h2>
+            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+              Tenha acesso imediato ao Hub Empresarial PRO 1.0 e todas as atualizações futuras
+            </p>
+            
+            <div className="bg-background/80 backdrop-blur-sm rounded-lg p-8 mb-8 border border-primary/20">
+              <div className="text-5xl font-bold text-primary mb-2">
+                R$ 97
+              </div>
+              <div className="text-muted-foreground mb-6">
+                Pagamento único • Acesso vitalício
+              </div>
+              
+              <div className="space-y-3 text-left max-w-md mx-auto mb-8">
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
+                  <span>7 módulos completos integrados</span>
                 </div>
-                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                  Garantia de 30 Dias
-                </h2>
-                <p className="text-xl text-foreground-muted mb-6 max-w-2xl mx-auto">
-                  Se em 30 dias você não perceber melhoria significativa na organização 
-                  e eficiência do seu negócio, devolvemos 100% do seu investimento.
-                </p>
-                <div className="flex flex-wrap justify-center gap-6 text-sm text-foreground-muted">
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-primary" />
-                    <span>Sem perguntas</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-primary" />
-                    <span>Reembolso total</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-primary" />
-                    <span>Suporte completo incluído</span>
-                  </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
+                  <span>Aulas gravadas de implementação</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
+                  <span>Atualizações gratuitas vitalícias</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
+                  <span>Suporte via WhatsApp</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
+                  <span>Garantia de 30 dias</span>
                 </div>
               </div>
-            </Card>
-          </div>
+            </div>
+
+            <Button 
+              size="lg" 
+              className="text-xl px-12 py-8 bg-gradient-to-r from-primary to-primary-glow hover:opacity-90 transition-all"
+              onClick={() => handlePurchaseClick("final-cta")}
+            >
+              Começar Agora
+              <ArrowRight className="ml-2 h-6 w-6" />
+            </Button>
+
+            <p className="text-sm text-muted-foreground mt-6">
+              🔒 Pagamento 100% seguro via Stripe
+            </p>
+          </Card>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="section-padding bg-background-secondary">
-        <div className="container-focus">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
-              Pronto para revolucionar sua gestão?
-            </h2>
-            <p className="text-xl text-foreground-muted mb-8 max-w-2xl mx-auto">
-              Garanta sua vaga na oferta de lançamento. Apenas R$ 349 (valor normal R$ 497).
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button 
-                className="btn-hero group"
-                onClick={() => {
-                  trackStripeClick('cta_final');
-                  trackCTAClick('Garantir minha vaga', 'cta');
-                  window.open('https://buy.stripe.com/fZu28rbs8gN73ta6F7gUM0d', '_blank');
-                }}
-              >
-                Garantir minha vaga agora
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-              </Button>
-              <Button 
-                variant="outline" 
-                className="btn-secondary"
-                onClick={() => {
-                  trackNotionClick('hub_pro', 'cta_secondary');
-                  trackCTAClick('Ver demonstração', 'cta');
-                  window.open('https://www.notion.com/templates/hub-empresarial-pro', '_blank');
-                }}
-              >
-                Ver demonstração
-              </Button>
-            </div>
-            <p className="text-sm text-foreground-muted mt-4">
-              🔒 Garantia de 30 dias • Últimas 15 vagas disponíveis
-            </p>
+      <Footer />
+
+      {/* Module Details Dialog */}
+      <Dialog open={!!selectedModule} onOpenChange={() => setSelectedModule(null)}>
+        <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="text-3xl font-bold mb-2">
+              {selectedModuleData?.title}
+            </DialogTitle>
+            <DialogDescription className="text-lg">
+              {selectedModuleData?.description}
+            </DialogDescription>
+          </DialogHeader>
+          
+          <div className="mt-6">
+            <h4 className="text-xl font-semibold mb-4 text-foreground">Funcionalidades incluídas:</h4>
+            <ul className="space-y-3">
+              {selectedModuleData?.features.map((feature, index) => (
+                <li key={index} className="flex items-start gap-3">
+                  <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground">{feature}</span>
+                </li>
+              ))}
+            </ul>
           </div>
-        </div>
-      </section>
+
+          <div className="mt-8 pt-6 border-t">
+            <Button 
+              className="w-full text-lg py-6"
+              onClick={() => {
+                handlePurchaseClick(`module-${selectedModule}`);
+                setSelectedModule(null);
+              }}
+            >
+              Adquirir Hub Empresarial PRO
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
