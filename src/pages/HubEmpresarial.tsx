@@ -144,7 +144,7 @@ const HubEmpresarial = () => {
   const handlePurchaseClick = (location: string) => {
     trackStripeClick(location);
     trackCTAClick("Adquirir Hub Empresarial", location);
-    window.open("https://buy.stripe.com/5kAcPg22odJZ7YceVb", "_blank");
+    window.open("https://buy.stripe.com/fZu28rbs8gN73ta6F7gUM0d", "_blank");
   };
 
   return (
