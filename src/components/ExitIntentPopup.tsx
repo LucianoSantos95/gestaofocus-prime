@@ -4,11 +4,18 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Gift, X } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
+import { z } from "zod";
+
+const emailSchema = z.string()
+  .trim()
+  .email({ message: "Email inválido" })
+  .max(255, { message: "Email muito longo" });
 
 const ExitIntentPopup = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [hasShown, setHasShown] = useState(false);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     // Verificar se já foi mostrado nesta sessão
@@ -37,18 +44,26 @@ const ExitIntentPopup = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
-      trackEvent("exit_intent_email_captured", { email });
-      // Aqui você integraria com seu sistema de email marketing
-      console.log("Email capturado:", email);
-      
-      // Redirecionar para WhatsApp com oferta especial
-      window.open(
-        `https://wa.me/5511916742443?text=Ol%C3%A1%2C%20me%20cadastrei%20para%20receber%20a%20consultoria%20gratuita.%20Meu%20email%3A%20${email}`,
-        '_blank'
-      );
-      setIsOpen(false);
+    setError("");
+    
+    // Validate email
+    const result = emailSchema.safeParse(email);
+    if (!result.success) {
+      setError(result.error.errors[0].message);
+      return;
     }
+    
+    const validEmail = result.data;
+    const encodedEmail = encodeURIComponent(validEmail);
+    
+    trackEvent("exit_intent_email_captured", { source: 'exit_popup' });
+    
+    // Redirecionar para WhatsApp com oferta especial
+    window.open(
+      `https://wa.me/5511916742443?text=Ol%C3%A1%2C%20me%20cadastrei%20para%20receber%20a%20consultoria%20gratuita.%20Meu%20email%3A%20${encodedEmail}`,
+      '_blank'
+    );
+    setIsOpen(false);
   };
 
   return (
@@ -91,6 +106,9 @@ const ExitIntentPopup = () => {
               required
               className="w-full"
             />
+            {error && (
+              <p className="text-sm text-destructive mt-1">{error}</p>
+            )}
           </div>
 
           <Button type="submit" className="btn-hero w-full">
