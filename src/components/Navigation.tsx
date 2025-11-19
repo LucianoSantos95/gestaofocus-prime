@@ -37,6 +37,7 @@ const Navigation = () => {
   ];
 
   const finalNavItems = [
+    { name: "Focus Club", href: "/focus-club", highlight: true },
     { name: "Método FOCUS", href: "/metodofocus" },
     { name: "Blog", href: "/blog" },
   ];
@@ -126,6 +127,11 @@ const Navigation = () => {
                         }`}
                       >
                         {item.name}
+                        {item.highlight && (
+                          <span className="ml-2 text-xs bg-primary text-primary-foreground px-2 py-0.5 rounded-full font-semibold">
+                            Novo
+                          </span>
+                        )}
                         {location.pathname === item.href && (
                           <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-primary rounded-full" />
                         )}
@@ -220,7 +226,14 @@ const Navigation = () => {
                       : "text-foreground-muted hover:text-foreground hover:bg-accent"
                   }`}
                 >
-                  {item.name}
+                  <span className="flex items-center justify-between">
+                    {item.name}
+                    {item.highlight && (
+                      <span className="ml-2 text-xs bg-primary text-primary-foreground px-2 py-0.5 rounded-full font-semibold">
+                        Novo
+                      </span>
+                    )}
+                  </span>
                 </Link>
               ))}
               
