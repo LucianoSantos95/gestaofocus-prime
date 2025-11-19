@@ -42,6 +42,10 @@ import MetodosProdutividade2025 from "./pages/blog/MetodosProdutividade2025";
 import OrganizarDocumentosEmpresa from "./pages/blog/OrganizarDocumentosEmpresa";
 import PararApagarIncendiosEmpresa from "./pages/blog/PararApagarIncendiosEmpresa";
 import ClarezaProjetosNotion from "./pages/blog/ClarezaProjetosNotion";
+import OrganizarVidaDigital from "./pages/blog/OrganizarVidaDigital";
+import TecnicaPomodoroGuia from "./pages/blog/TecnicaPomodoroGuia";
+import PlanejamentoAnualZero from "./pages/blog/PlanejamentoAnualZero";
+import CriarHabitosDuram from "./pages/blog/CriarHabitosDuram";
 import AboutFocus from "./pages/AboutFocus";
 import Privacidade from "./pages/Privacidade";
 import TermosUso from "./pages/TermosUso";
@@ -113,6 +117,10 @@ const App = () => (
           <Route path="/blog/organizar-documentos-empresa" element={<OrganizarDocumentosEmpresa />} />
               <Route path="/blog/parar-apagar-incendios-empresa" element={<PararApagarIncendiosEmpresa />} />
               <Route path="/blog/clareza-projetos-notion" element={<ClarezaProjetosNotion />} />
+              <Route path="/blog/organizar-vida-digital" element={<OrganizarVidaDigital />} />
+              <Route path="/blog/tecnica-pomodoro-guia-definitivo" element={<TecnicaPomodoroGuia />} />
+              <Route path="/blog/planejamento-anual-do-zero" element={<PlanejamentoAnualZero />} />
+              <Route path="/blog/criar-habitos-que-duram" element={<CriarHabitosDuram />} />
               <Route path="/sobre" element={<AboutFocus />} />
               <Route path="/privacidade" element={<Privacidade />} />
               <Route path="/termos" element={<TermosUso />} />
