@@ -430,59 +430,89 @@ const Blog = () => {
         </section>
 
         {/* Search and Filters Section */}
-        <section className="container-focus mb-12">
-          <div className="bg-card/50 border border-card-border rounded-xl p-6 backdrop-blur-sm">
-            {/* Search Input */}
-            <div className="mb-6 relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-              <Input
-                type="text"
-                placeholder="Buscar artigos por título ou conteúdo..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 pr-10"
-              />
-              {searchTerm && (
-                <button
-                  onClick={() => setSearchTerm("")}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
-                  aria-label="Limpar busca"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-              )}
-            </div>
+        <section className="container-focus mb-16">
+          <div className="relative overflow-hidden bg-gradient-to-br from-card/60 via-card/50 to-card/40 border border-card-border rounded-2xl p-8 backdrop-blur-sm shadow-lg">
+            {/* Decorative gradient orbs */}
+            <div className="absolute -top-24 -right-24 w-48 h-48 bg-primary/5 rounded-full blur-3xl"></div>
+            <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-accent/5 rounded-full blur-3xl"></div>
+            
+            <div className="relative z-10">
+              {/* Search Input */}
+              <div className="mb-8 relative group">
+                <div className="absolute inset-0 bg-primary/5 rounded-xl blur-sm opacity-0 group-focus-within:opacity-100 transition-opacity"></div>
+                <div className="relative">
+                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground group-focus-within:text-primary transition-colors" />
+                  <Input
+                    type="text"
+                    placeholder="Buscar artigos por título ou conteúdo..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="pl-12 pr-12 h-14 text-base border-2 border-card-border bg-background/50 backdrop-blur-sm rounded-xl focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all shadow-sm"
+                  />
+                  {searchTerm && (
+                    <button
+                      onClick={() => setSearchTerm("")}
+                      className="absolute right-4 top-1/2 -translate-y-1/2 p-1 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all"
+                      aria-label="Limpar busca"
+                    >
+                      <X className="w-5 h-5" />
+                    </button>
+                  )}
+                </div>
+              </div>
 
-            {/* Category Filters */}
-            <div className="flex gap-2 overflow-x-auto pb-2">
-              {categories.map((category) => (
-                <Badge
-                  key={category}
-                  variant={selectedCategory === category ? "default" : "outline"}
-                  className="cursor-pointer whitespace-nowrap px-4 py-2 text-sm transition-all hover:scale-105"
-                  onClick={() => setSelectedCategory(category)}
-                >
-                  {category} ({getCategoryCount(category)})
-                </Badge>
-              ))}
-            </div>
+              {/* Category Filters */}
+              <div className="mb-6">
+                <div className="flex items-center gap-2 mb-3">
+                  <div className="h-px flex-1 bg-gradient-to-r from-transparent via-card-border to-transparent"></div>
+                  <span className="text-xs font-medium text-muted-foreground tracking-wider uppercase">Categorias</span>
+                  <div className="h-px flex-1 bg-gradient-to-r from-transparent via-card-border to-transparent"></div>
+                </div>
+                
+                <div className="flex gap-3 overflow-x-auto pb-3 scrollbar-thin scrollbar-thumb-muted scrollbar-track-transparent hover:scrollbar-thumb-muted-foreground">
+                  {categories.map((category) => (
+                    <Badge
+                      key={category}
+                      variant={selectedCategory === category ? "default" : "outline"}
+                      className={`
+                        cursor-pointer whitespace-nowrap px-5 py-2.5 text-sm font-medium transition-all duration-200
+                        ${selectedCategory === category 
+                          ? "bg-primary text-primary-foreground shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 scale-105" 
+                          : "border-2 border-card-border/60 hover:border-primary/40 hover:bg-primary/5 hover:scale-105"
+                        }
+                      `}
+                      onClick={() => setSelectedCategory(category)}
+                    >
+                      <span>{category}</span>
+                      <span className={`ml-1.5 ${selectedCategory === category ? "opacity-90" : "opacity-60"}`}>
+                        ({getCategoryCount(category)})
+                      </span>
+                    </Badge>
+                  ))}
+                </div>
+              </div>
 
-            {/* Results Counter */}
-            <div className="mt-4 flex items-center justify-between">
-              <p className="text-sm text-muted-foreground">
-                Mostrando {displayedPosts.length} de {filteredPosts.length} artigos
-              </p>
-              {(searchTerm || selectedCategory !== "Todos") && (
-                <button
-                  onClick={() => {
-                    setSearchTerm("");
-                    setSelectedCategory("Todos");
-                  }}
-                  className="text-sm text-primary hover:underline"
-                >
-                  Limpar filtros
-                </button>
-              )}
+              {/* Results Counter */}
+              <div className="flex items-center justify-between pt-4 border-t border-card-border/50">
+                <div className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></div>
+                  <p className="text-sm font-medium text-foreground">
+                    Mostrando <span className="text-primary font-bold">{displayedPosts.length}</span> de {filteredPosts.length} artigos
+                  </p>
+                </div>
+                {(searchTerm || selectedCategory !== "Todos") && (
+                  <button
+                    onClick={() => {
+                      setSearchTerm("");
+                      setSelectedCategory("Todos");
+                    }}
+                    className="group flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors"
+                  >
+                    <X className="w-4 h-4 group-hover:rotate-90 transition-transform duration-200" />
+                    <span>Limpar filtros</span>
+                  </button>
+                )}
+              </div>
             </div>
           </div>
         </section>
