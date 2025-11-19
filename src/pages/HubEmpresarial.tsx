@@ -241,19 +241,14 @@ const HubEmpresarial = () => {
                     alt={module.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
-                  <div className="absolute bottom-0 left-0 right-0 p-4">
-                    <h3 className="text-2xl font-bold text-white mb-1 drop-shadow-lg">
-                      {module.title}
-                    </h3>
-                    <p className="text-sm text-white/90 drop-shadow">
-                      {module.description}
-                    </p>
-                  </div>
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="bg-primary/90 backdrop-blur-sm rounded-full p-4">
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-300 group-hover:scale-110">
+                    <div className="bg-primary/90 backdrop-blur-sm rounded-full p-4 shadow-lg">
                       <Play className="h-8 w-8 text-primary-foreground" fill="currentColor" />
                     </div>
+                  </div>
+                  <div className="absolute bottom-4 left-0 right-0 text-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <p className="text-sm text-white font-medium drop-shadow-lg">Clique para ver funcionalidades</p>
                   </div>
                 </div>
               </Card>
@@ -317,10 +312,33 @@ const HubEmpresarial = () => {
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
               Tenha acesso imediato ao Hub Empresarial PRO 1.0 e todas as atualizações futuras
             </p>
+
+            {/* Cupom de Desconto */}
+            <div className="bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 border-2 border-primary/30 rounded-lg p-6 mb-8 animate-pulse-slow">
+              <div className="flex items-center justify-center gap-3 mb-2">
+                <Badge className="bg-primary text-primary-foreground text-lg px-4 py-1">
+                  🎉 OFERTA ESPECIAL
+                </Badge>
+              </div>
+              <p className="text-lg font-semibold mb-2">
+                Use o cupom <span className="text-2xl font-bold text-primary mx-2">FOCUS20</span> 
+              </p>
+              <p className="text-muted-foreground">
+                e ganhe 20% de desconto na sua compra!
+              </p>
+            </div>
             
             <div className="bg-background/80 backdrop-blur-sm rounded-lg p-8 mb-8 border border-primary/20">
-              <div className="text-5xl font-bold text-primary mb-2">
-                R$ 97
+              <div className="flex items-center justify-center gap-4 mb-2">
+                <div className="text-3xl font-bold text-muted-foreground line-through">
+                  R$ 349
+                </div>
+                <div className="text-5xl font-bold text-primary">
+                  R$ 279
+                </div>
+              </div>
+              <div className="text-sm text-primary font-semibold mb-1">
+                Com cupom FOCUS20
               </div>
               <div className="text-muted-foreground mb-6">
                 Pagamento único • Acesso vitalício
