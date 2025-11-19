@@ -1,372 +1,361 @@
 import { Helmet } from "react-helmet";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { Target, Users, FolderKanban, Zap, TrendingUp, CheckCircle, ArrowRight, Database, Lightbulb, Repeat } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { WaitlistForm } from "@/components/WaitlistForm";
+import { 
+  Target, 
+  FileText, 
+  Users, 
+  Zap, 
+  Sparkles,
+  CheckCircle2,
+  XCircle,
+  Lock,
+  Play,
+  BookOpen,
+  Layers,
+  MessageSquare,
+  Crown,
+  TrendingUp,
+  Clock
+} from "lucide-react";
 
-const FocusClub = () => {
-  const steps = [
+export default function FocusClub() {
+  const freeBenefits = [
+    { icon: Play, text: "1 curso básico por ano", available: true },
+    { icon: Layers, text: "1 sistema Notion por ano", available: true },
+    { icon: BookOpen, text: "1 playbook por mês (apenas mês atual)", available: true },
+    { icon: MessageSquare, text: "Acesso somente leitura à comunidade", available: true },
+    { icon: Users, text: "Suporte via comunidade", available: true },
+    { icon: Lock, text: "Conteúdo exclusivo PRO", available: false },
+    { icon: Crown, text: "Consultoria e mentoria", available: false },
+    { icon: Zap, text: "Atualizações prioritárias", available: false },
+  ];
+
+  const proBenefits = [
+    { icon: Play, text: "Todos os cursos e aulas (4-6 novas/mês)", highlight: true },
+    { icon: Layers, text: "Todos os sistemas Notion (6 novos/ano)", highlight: true },
+    { icon: BookOpen, text: "Biblioteca completa de playbooks", highlight: true },
+    { icon: MessageSquare, text: "Participação ativa na comunidade", highlight: true },
+    { icon: Crown, text: "Sessões mensais de mentoria ao vivo", highlight: true },
+    { icon: Sparkles, text: "Acesso antecipado a novos lançamentos", highlight: true },
+    { icon: Users, text: "Suporte prioritário", highlight: true },
+    { icon: TrendingUp, text: "Certificados de conclusão", highlight: true },
+  ];
+
+  const contentPreview = [
     {
-      icon: Target,
-      letter: "F",
-      title: "Fundamento",
-      subtitle: "Diagnóstico e clareza do cenário",
-      description: "Identificamos os principais gargalos e definimos metas realistas.",
-      gradient: "from-blue-500 to-cyan-500"
+      category: "Cursos",
+      items: [
+        "Notion para Gestão Empresarial Completa",
+        "CRM Inteligente: Da Prospecção ao Pós-Venda",
+        "Controle Financeiro que Funciona",
+        "Gestão de RH e Equipes"
+      ]
     },
     {
-      icon: FolderKanban,
-      letter: "O",
-      title: "Organização",
-      subtitle: "Estrutura que sustenta o crescimento",
-      description: "Mapeamos processos, definimos prioridades e estruturamos o fluxo de trabalho.",
-      gradient: "from-purple-500 to-pink-500"
+      category: "Sistemas Notion",
+      items: [
+        "Hub Empresarial PRO (sistema central)",
+        "Sistema de Projetos com GTD",
+        "Pipeline de Vendas Automatizado",
+        "Central de Documentos e Processos"
+      ]
     },
     {
-      icon: Database,
-      letter: "C",
-      title: "Centralização",
-      subtitle: "Um único ambiente, todas as informações",
-      description: "Implementamos o sistema Notion para reunir tudo em um só lugar.",
-      gradient: "from-orange-500 to-red-500"
-    },
-    {
-      icon: Zap,
-      letter: "U",
-      title: "Utilização Produtiva",
-      subtitle: "Aplicação prática no dia a dia",
-      description: "Transformamos ferramenta em resultado com hábitos e rotinas produtivas.",
-      gradient: "from-green-500 to-emerald-500"
-    },
-    {
-      icon: TrendingUp,
-      letter: "S",
-      title: "Sustentação",
-      subtitle: "Evolução contínua",
-      description: "O sistema cresce junto com o negócio.",
-      gradient: "from-yellow-500 to-orange-500"
+      category: "Playbooks",
+      items: [
+        "Como Organizar seu Ano em 1 Semana",
+        "Planejamento Estratégico para PMEs",
+        "Checklists de Processos Recorrentes",
+        "Guia de Mapeamento de Workflows"
+      ]
     }
   ];
 
-  const solutions = [
+  const faqs = [
     {
-      title: "Sprint de Produtividade",
-      stages: ["F", "O"],
-      description: "7 dias para organizar sua vida e trabalho",
-      gradient: "from-blue-500 to-purple-500"
+      q: "Qual a diferença entre FREE e PRO?",
+      a: "O plano FREE dá acesso a conteúdo introdutório (1 curso/ano, 1 sistema/ano, 1 playbook/mês). O PRO libera todo o ecossistema: 4-6 aulas novas por mês, 6 sistemas por ano, biblioteca completa de playbooks, comunidade ativa e mentorias ao vivo."
     },
     {
-      title: "Hub Empresarial PRO",
-      stages: ["O", "C", "U"],
-      description: "Sistema completo de gestão empresarial",
-      gradient: "from-purple-500 to-pink-500"
+      q: "Tem período de teste?",
+      a: "Sim! Oferecemos 7 dias de trial gratuito no plano PRO para você explorar todo o conteúdo antes de decidir."
     },
     {
-      title: "Consultoria Notion",
-      stages: ["F", "O", "C", "U", "S"],
-      description: "Metodologia completa personalizada",
-      gradient: "from-pink-500 to-orange-500",
-      highlight: true
+      q: "Como funciona o acesso aos sistemas Notion?",
+      a: "Você recebe links para duplicar os templates diretamente no seu workspace Notion. Todos os sistemas incluem vídeos explicativos e documentação completa."
+    },
+    {
+      q: "Posso cancelar a qualquer momento?",
+      a: "Sim, sem multas ou burocracias. Você mantém acesso até o final do período pago."
+    },
+    {
+      q: "Vou receber certificado?",
+      a: "Assinantes PRO recebem certificados de conclusão para cada curso finalizado."
     }
-  ];
-
-  const results = [
-    "Redução de ruído operacional",
-    "Clareza de prioridades",
-    "Mais foco e produtividade real",
-    "Processos simples e escaláveis",
-    "Equipes alinhadas"
   ];
 
   return (
-    <div className="min-h-screen">
+    <>
       <Helmet>
-        <title>Método FOCUS™ | Metodologia Gestão Empresarial e Produtividade - Focus</title>
-        <meta name="description" content="Método FOCUS™: metodologia completa gestão empresarial em 5 etapas - Fundamento, Organização, Centralização, Utilização Produtiva e Sustentação. Transforme rotinas empresariais com sistemas personalizados, clareza nos processos e foco na execução." />
-        <meta name="keywords" content="método focus, metodologia gestão empresarial, método produtividade, transformação empresarial, gestão processos, organização empresarial, centralização operações, sistemas escaláveis, evolução contínua, consultoria metodologia" />
-        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-        <link rel="canonical" href="https://focusinteligente.com.br/metodofocus" />
-        <meta property="og:title" content="Método FOCUS™ - Metodologia de Gestão Empresarial" />
-        <meta property="og:description" content="Metodologia completa em 5 etapas para transformar gestão empresarial: diagnóstico, organização, centralização, aplicação e evolução." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://focusinteligente.com.br/metodofocus" />
-        <meta property="og:image" content="https://focusinteligente.com.br/lovable-uploads/focus-logo.png" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Método FOCUS™ - Focus Gestão" />
-        <meta name="twitter:description" content="Metodologia completa para transformar gestão empresarial do diagnóstico à evolução contínua." />
+        <title>Focus Club - Comunidade de Produtividade e Sistemas Notion</title>
+        <meta 
+          name="description" 
+          content="Junte-se ao Focus Club: aulas práticas, sistemas Notion prontos, playbooks mensais e comunidade ativa. Plano FREE ou PRO com trial de 7 dias." 
+        />
+        <link rel="canonical" href="https://www.focusgestao.com/focus-club" />
         
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "HowTo",
-            "name": "Método FOCUS™",
-            "description": "Metodologia em 5 etapas para transformar gestão empresarial",
-            "step": [
-              {
-                "@type": "HowToStep",
-                "position": 1,
-                "name": "Fundamento - Diagnóstico e clareza do cenário",
-                "text": "Identificamos os principais gargalos e definimos metas realistas."
-              },
-              {
-                "@type": "HowToStep",
-                "position": 2,
-                "name": "Organização - Estrutura que sustenta o crescimento",
-                "text": "Mapeamos processos, definimos prioridades e estruturamos o fluxo de trabalho."
-              },
-              {
-                "@type": "HowToStep",
-                "position": 3,
-                "name": "Centralização - Um único ambiente, todas as informações",
-                "text": "Implementamos o sistema Notion para reunir tudo em um só lugar."
-              },
-              {
-                "@type": "HowToStep",
-                "position": 4,
-                "name": "Utilização Produtiva - Aplicação prática no dia a dia",
-                "text": "Transformamos ferramenta em resultado com hábitos e rotinas produtivas."
-              },
-              {
-                "@type": "HowToStep",
-                "position": 5,
-                "name": "Sustentação - Evolução contínua",
-                "text": "O sistema cresce junto com o negócio."
-              }
-            ],
-            "provider": {
-              "@type": "Organization",
-              "name": "Focus Gestão Empresarial",
-              "url": "https://focusinteligente.com.br"
-            }
-          })}
-        </script>
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [{
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Início",
-              "item": "https://focusinteligente.com.br/"
-            }, {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Método FOCUS",
-              "item": "https://focusinteligente.com.br/metodofocus"
-            }]
-          })}
-        </script>
+        {/* Open Graph */}
+        <meta property="og:title" content="Focus Club - Produtividade na Prática" />
+        <meta property="og:description" content="Aulas, sistemas Notion, playbooks e comunidade para transformar sua gestão." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.focusgestao.com/focus-club" />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Focus Club - Produtividade na Prática" />
+        <meta name="twitter:description" content="Aulas, sistemas Notion, playbooks e comunidade para transformar sua gestão." />
       </Helmet>
-      {/* Hero Section */}
-      <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-gradient-dark py-20">
-        <div className="relative z-10 container-focus">
-          <div className="max-w-5xl mx-auto text-center">
-            <div className="inline-flex items-center px-4 py-2 rounded-full border border-card-border bg-card/50 backdrop-blur-sm mb-6 animate-fade-in">
-              <Lightbulb className="w-4 h-4 text-primary mr-2" />
-              <span className="text-sm text-foreground-muted">
-                Metodologia Focus Gestão Empresarial
-              </span>
+
+      <div className="min-h-screen">
+        {/* Hero Section */}
+        <section className="relative py-20 px-4 bg-gradient-to-br from-primary/10 via-background to-secondary/10">
+          <div className="absolute inset-0 bg-[url('/lovable-uploads/hub-empresarial-og.jpg')] bg-cover bg-center opacity-5"></div>
+          
+          <div className="container max-w-6xl mx-auto relative z-10">
+            <div className="text-center mb-12">
+              <Badge className="mb-4 text-base px-4 py-2" variant="secondary">
+                <Sparkles className="w-4 h-4 mr-2" />
+                Em breve - Entre na lista de espera
+              </Badge>
+              
+              <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+                Focus Club
+              </h1>
+              
+              <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-8">
+                A comunidade de produtividade que ensina você a organizar de verdade. 
+                <span className="text-foreground font-semibold"> Aulas práticas + Sistemas Notion + Playbooks + Comunidade ativa.</span>
+              </p>
             </div>
-            
-            <h1 className="hero-title mb-6 animate-fade-in" style={{ animationDelay: '100ms' }}>
-              Método FOCUS™
-            </h1>
-            
-            <p className="text-2xl md:text-3xl text-foreground max-w-4xl mx-auto animate-fade-in leading-relaxed" style={{ animationDelay: '200ms' }}>
-              Organize o essencial. Execute com foco. Cresça com clareza.
-            </p>
-          </div>
-        </div>
-      </section>
 
-      {/* Introdução */}
-      <section className="section-padding bg-background-secondary">
-        <div className="container-focus">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-8 text-center">
-              A Base de Tudo que Fazemos
-            </h2>
-            <p className="text-lg text-foreground-muted leading-relaxed text-center">
-              Na Focus Gestão Empresarial, acreditamos que a organização é o ponto de partida para o crescimento. 
-              O Método FOCUS™ é uma metodologia prática criada para transformar rotinas e empresas por meio de 
-              sistemas personalizados, clareza nos processos e foco na execução. Essa estrutura está presente em 
-              todas as nossas soluções — do Sprint de Produtividade à Consultoria Notion — e garante que cada 
-              cliente tenha um caminho claro da desorganização à eficiência real.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* As 5 Etapas */}
-      <section className="section-padding">
-        <div className="container-focus">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
-              As 5 Etapas do Método FOCUS™
-            </h2>
-            <p className="text-xl text-foreground-muted max-w-3xl mx-auto">
-              Uma jornada estruturada do diagnóstico à evolução contínua
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {steps.map((step, index) => {
-              const IconComponent = step.icon;
-              return (
-                <Card
-                  key={step.letter}
-                  className="card-hover h-full border-primary/10 transition-all duration-300 hover:scale-105 hover:shadow-elegant"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
-                  <div className="p-8">
-                    <div className="relative mb-6 flex justify-start">
-                      <div className={`relative w-16 h-16 rounded-2xl bg-gradient-to-br ${step.gradient} p-0.5 shadow-lg`}>
-                        <div className="w-full h-full rounded-2xl bg-background/95 backdrop-blur-sm flex items-center justify-center">
-                          <IconComponent className="w-8 h-8 text-foreground" />
-                        </div>
-                      </div>
-                      <div className={`absolute inset-0 w-16 h-16 rounded-2xl bg-gradient-to-br ${step.gradient} blur-xl opacity-30`} />
-                      <div className="absolute -top-2 -right-2 w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg shadow-lg">
-                        {step.letter}
-                      </div>
-                    </div>
-                    
-                    <h3 className="text-2xl font-bold text-card-foreground mb-2">
-                      {step.title}
-                    </h3>
-                    
-                    <p className="text-sm text-primary font-semibold mb-3">
-                      {step.subtitle}
-                    </p>
-
-                    <p className="text-foreground-muted">
-                      {step.description}
-                    </p>
-                  </div>
+            {/* Stats Preview */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+              {[
+                { number: "50+", label: "Aulas Práticas" },
+                { number: "15+", label: "Sistemas Notion" },
+                { number: "24+", label: "Playbooks" },
+                { number: "500+", label: "Membros (meta)" }
+              ].map((stat, i) => (
+                <Card key={i} className="text-center p-6">
+                  <div className="text-3xl font-bold text-primary mb-2">{stat.number}</div>
+                  <div className="text-sm text-muted-foreground">{stat.label}</div>
                 </Card>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Como Aplicar */}
-      <section className="section-padding bg-background-secondary">
-        <div className="container-focus">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
-              Como Aplicar o Método
-            </h2>
-            <p className="text-xl text-foreground-muted max-w-3xl mx-auto">
-              Escolha a solução ideal para o seu momento
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {solutions.map((solution, index) => (
-              <Card
-                key={solution.title}
-                className={`card-hover h-full border-primary/10 transition-all duration-300 hover:scale-105 hover:shadow-elegant ${
-                  solution.highlight ? 'ring-2 ring-primary' : ''
-                }`}
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <div className="p-8">
-                  {solution.highlight && (
-                    <div className="inline-flex items-center px-3 py-1 rounded-full bg-primary text-white text-xs font-semibold mb-4">
-                      Mais Completo
-                    </div>
-                  )}
-                  
-                  <h3 className="text-xl font-bold text-card-foreground mb-4">
-                    {solution.title}
-                  </h3>
-
-                  <div className="flex gap-2 mb-4 flex-wrap">
-                    {solution.stages.map((stage) => (
-                      <div
-                        key={stage}
-                        className={`w-10 h-10 rounded-lg bg-gradient-to-br ${solution.gradient} flex items-center justify-center text-white font-bold shadow-lg`}
-                      >
-                        {stage}
-                      </div>
-                    ))}
-                  </div>
-
-                  <p className="text-foreground-muted mb-6">
-                    {solution.description}
-                  </p>
-
-                  <div className="text-sm text-muted-foreground">
-                    Etapas: {solution.stages.join(' + ')}
-                  </div>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Resultados */}
-      <section className="section-padding">
-        <div className="container-focus">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-12 text-center">
-              Resultados Esperados
-            </h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {results.map((result, index) => (
-                <div
-                  key={result}
-                  className="flex items-start gap-4 p-6 rounded-lg bg-card border border-primary/10 animate-slide-up"
-                  style={{ animationDelay: `${index * 50}ms` }}
-                >
-                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center">
-                    <CheckCircle className="w-4 h-4 text-primary" />
-                  </div>
-                  <p className="text-foreground text-lg">
-                    {result}
-                  </p>
-                </div>
               ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* CTA Final */}
-      <section className="section-padding bg-gradient-dark">
-        <div className="container-focus">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center px-4 py-2 rounded-full border border-card-border bg-card/50 backdrop-blur-sm mb-8">
-              <Repeat className="w-4 h-4 text-primary mr-2" />
-              <span className="text-sm text-foreground-muted">
-                Transformação Contínua
-              </span>
+        {/* Comparison Section */}
+        <section className="py-20 px-4 bg-background">
+          <div className="container max-w-7xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold mb-4">Escolha Seu Plano</h2>
+              <p className="text-xl text-muted-foreground">
+                Comece grátis ou acesse tudo com o PRO
+              </p>
             </div>
 
-            <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
-              Pronto para Transformar o Caos em Clareza?
-            </h2>
-            
-            <p className="text-xl text-foreground-muted mb-12 max-w-3xl mx-auto">
-              O Método FOCUS™ é mais que uma metodologia — é uma nova forma de enxergar 
-              a produtividade e a gestão empresarial. Comece hoje a transformar o caos em clareza.
-            </p>
+            <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+              {/* FREE Plan */}
+              <Card className="relative">
+                <CardHeader>
+                  <CardTitle className="text-3xl">FREE</CardTitle>
+                  <CardDescription className="text-lg">
+                    Para experimentar e conhecer o método
+                  </CardDescription>
+                  <div className="mt-4">
+                    <span className="text-4xl font-bold">R$ 0</span>
+                    <span className="text-muted-foreground">/mês</span>
+                  </div>
+                </CardHeader>
+                
+                <CardContent>
+                  <ul className="space-y-3 mb-6">
+                    {freeBenefits.map((benefit, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        {benefit.available ? (
+                          <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                        ) : (
+                          <XCircle className="w-5 h-5 text-muted-foreground/50 flex-shrink-0 mt-0.5" />
+                        )}
+                        <span className={benefit.available ? 'text-foreground' : 'text-muted-foreground line-through'}>
+                          {benefit.text}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                  
+                  <Button variant="outline" className="w-full" size="lg">
+                    Criar Conta Gratuita
+                  </Button>
+                </CardContent>
+              </Card>
 
-            <Button className="btn-hero group" asChild>
-              <Link to="/sistemas-notion">
-                Aplicar o Método FOCUS™ no meu negócio
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-              </Link>
-            </Button>
+              {/* PRO Plan */}
+              <Card className="relative border-primary shadow-lg shadow-primary/20">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+                  <Badge className="px-4 py-1.5 text-sm font-semibold bg-gradient-to-r from-primary to-primary/80">
+                    ⭐ Mais Popular
+                  </Badge>
+                </div>
+                
+                <CardHeader className="pt-8">
+                  <CardTitle className="text-3xl flex items-center gap-2">
+                    <Crown className="w-8 h-8 text-primary" />
+                    PRO
+                  </CardTitle>
+                  <CardDescription className="text-lg">
+                    Acesso completo ao ecossistema Focus
+                  </CardDescription>
+                  <div className="mt-4">
+                    <span className="text-4xl font-bold">R$ 97</span>
+                    <span className="text-muted-foreground">/mês</span>
+                    <div className="text-sm text-muted-foreground mt-2">
+                      ou R$ 970/ano (2 meses grátis)
+                    </div>
+                  </div>
+                </CardHeader>
+                
+                <CardContent>
+                  <div className="bg-primary/10 border border-primary/20 rounded-lg p-3 mb-6 flex items-center gap-2">
+                    <Clock className="w-5 h-5 text-primary flex-shrink-0" />
+                    <span className="text-sm font-medium">7 dias de trial gratuito</span>
+                  </div>
+
+                  <ul className="space-y-3 mb-6">
+                    {proBenefits.map((benefit, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                        <span className={benefit.highlight ? 'text-foreground font-medium' : 'text-foreground'}>
+                          {benefit.text}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                  
+                  <Button className="w-full" size="lg">
+                    Começar Trial Gratuito
+                  </Button>
+                </CardContent>
+              </Card>
+            </div>
           </div>
-        </div>
-      </section>
-    </div>
-  );
-};
+        </section>
 
-export default FocusClub;
+        {/* Content Preview */}
+        <section className="py-20 px-4 bg-muted/30">
+          <div className="container max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold mb-4">O Que Você Vai Encontrar</h2>
+              <p className="text-xl text-muted-foreground">
+                Conteúdo prático e aplicável desde o primeiro dia
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              {contentPreview.map((section, i) => (
+                <Card key={i}>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      {i === 0 && <Play className="w-5 h-5 text-primary" />}
+                      {i === 1 && <Layers className="w-5 h-5 text-primary" />}
+                      {i === 2 && <BookOpen className="w-5 h-5 text-primary" />}
+                      {section.category}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-2">
+                      {section.items.map((item, j) => (
+                        <li key={j} className="flex items-start gap-2">
+                          <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0 mt-1" />
+                          <span className="text-sm">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Waitlist Form Section */}
+        <section className="py-20 px-4 bg-background">
+          <div className="container max-w-2xl mx-auto">
+            <Card className="border-2 border-primary/20 shadow-xl">
+              <CardHeader className="text-center">
+                <CardTitle className="text-3xl mb-2">
+                  Entre na Lista de Espera
+                </CardTitle>
+                <CardDescription className="text-base">
+                  Seja um dos primeiros a ter acesso quando lançarmos. 
+                  <span className="text-primary font-semibold"> Membros da waitlist ganham 30% de desconto no primeiro mês.</span>
+                </CardDescription>
+              </CardHeader>
+              
+              <CardContent>
+                <WaitlistForm source="landing" />
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="py-20 px-4 bg-muted/30">
+          <div className="container max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold mb-4">Perguntas Frequentes</h2>
+            </div>
+
+            <div className="space-y-4">
+              {faqs.map((faq, i) => (
+                <Card key={i}>
+                  <CardHeader>
+                    <CardTitle className="text-lg">{faq.q}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground">{faq.a}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Final CTA */}
+        <section className="py-20 px-4 bg-gradient-to-br from-primary/10 to-secondary/10">
+          <div className="container max-w-3xl mx-auto text-center">
+            <h2 className="text-4xl font-bold mb-4">
+              Pronto para Transformar Sua Gestão?
+            </h2>
+            <p className="text-xl text-muted-foreground mb-8">
+              Junte-se a centenas de profissionais que já organizaram suas vidas e negócios com o Focus
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" className="text-lg px-8">
+                Entrar na Lista de Espera
+              </Button>
+              <Button size="lg" variant="outline" className="text-lg px-8">
+                Falar com a Equipe
+              </Button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </>
+  );
+}
