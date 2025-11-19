@@ -1,8 +1,10 @@
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
-import { Calendar, Clock, ArrowRight, BookOpen } from "lucide-react";
+import { Calendar, Clock, ArrowRight, BookOpen, Search, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+import { useState, useMemo, useEffect } from "react";
 import notionPoderImage from "@/assets/blog/notion-poder-empresas.jpg";
 import mapeamentoImage from "@/assets/blog/mapeamento-processos.jpg";
 import errosImage from "@/assets/blog/erros-produtividade.jpg";
@@ -36,6 +38,18 @@ import organizarDocumentosImage from "@/assets/blog/organizar-documentos-empresa
 
 const Blog = () => {
   const [showArchived, setShowArchived] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("Todos");
+
+  // Debounce search term
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedSearchTerm(searchTerm);
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, [searchTerm]);
   
   const blogPosts = [
     {
@@ -340,9 +354,35 @@ const Blog = () => {
     }
   ];
 
-  const recentPosts = blogPosts.slice(0, 5);
-  const archivedPosts = blogPosts.slice(5);
-  const displayedPosts = showArchived ? blogPosts : recentPosts;
+  // Extract unique categories
+  const allCategories = Array.from(new Set(blogPosts.map(post => post.category)));
+  const categories = ["Todos", ...allCategories];
+
+  // Count posts per category
+  const getCategoryCount = (category: string) => {
+    if (category === "Todos") return blogPosts.length;
+    return blogPosts.filter(post => post.category === category).length;
+  };
+
+  // Filter posts based on search and category
+  const filteredPosts = useMemo(() => {
+    return blogPosts.filter(post => {
+      const matchesSearch = 
+        debouncedSearchTerm === "" ||
+        post.title.toLowerCase().includes(debouncedSearchTerm.toLowerCase()) ||
+        post.excerpt.toLowerCase().includes(debouncedSearchTerm.toLowerCase());
+      
+      const matchesCategory = 
+        selectedCategory === "Todos" || 
+        post.category === selectedCategory;
+      
+      return matchesSearch && matchesCategory;
+    });
+  }, [debouncedSearchTerm, selectedCategory, blogPosts]);
+
+  const recentPosts = filteredPosts.slice(0, 5);
+  const archivedPosts = filteredPosts.slice(5);
+  const displayedPosts = showArchived ? filteredPosts : recentPosts;
 
   return (
     <>
@@ -389,59 +429,142 @@ const Blog = () => {
           </div>
         </section>
 
+        {/* Search and Filters Section */}
+        <section className="container-focus mb-12">
+          <div className="bg-card/50 border border-card-border rounded-xl p-6 backdrop-blur-sm">
+            {/* Search Input */}
+            <div className="mb-6 relative">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+              <Input
+                type="text"
+                placeholder="Buscar artigos por título ou conteúdo..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="pl-10 pr-10"
+              />
+              {searchTerm && (
+                <button
+                  onClick={() => setSearchTerm("")}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+                  aria-label="Limpar busca"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              )}
+            </div>
+
+            {/* Category Filters */}
+            <div className="flex gap-2 overflow-x-auto pb-2">
+              {categories.map((category) => (
+                <Badge
+                  key={category}
+                  variant={selectedCategory === category ? "default" : "outline"}
+                  className="cursor-pointer whitespace-nowrap px-4 py-2 text-sm transition-all hover:scale-105"
+                  onClick={() => setSelectedCategory(category)}
+                >
+                  {category} ({getCategoryCount(category)})
+                </Badge>
+              ))}
+            </div>
+
+            {/* Results Counter */}
+            <div className="mt-4 flex items-center justify-between">
+              <p className="text-sm text-muted-foreground">
+                Mostrando {displayedPosts.length} de {filteredPosts.length} artigos
+              </p>
+              {(searchTerm || selectedCategory !== "Todos") && (
+                <button
+                  onClick={() => {
+                    setSearchTerm("");
+                    setSelectedCategory("Todos");
+                  }}
+                  className="text-sm text-primary hover:underline"
+                >
+                  Limpar filtros
+                </button>
+              )}
+            </div>
+          </div>
+        </section>
+
         {/* Blog Posts Grid */}
         <section className="container-focus">
-          <h2 className="text-2xl font-bold mb-8">Posts Recentes</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {displayedPosts.map((post) => (
-              <article 
-                key={post.id}
-                className="group bg-card border border-card-border rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-              >
-                <Link to={`/blog/${post.slug}`} className="block aspect-video overflow-hidden">
-                  <img 
-                    src={post.image} 
-                    alt={post.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </Link>
-                <div className="p-6">
-                  <div className="flex items-center gap-4 mb-4 text-sm text-foreground-muted">
-                    <span className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary font-medium">
-                      {post.category}
-                    </span>
-                  </div>
-                  
-                  <h2 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors line-clamp-2">
-                    {post.title}
-                  </h2>
-                  
-                  <p className="text-foreground-muted mb-4 line-clamp-3">
-                    {post.excerpt}
-                  </p>
-                  
-                  <div className="flex items-center justify-between text-sm text-foreground-muted mb-4">
-                    <div className="flex items-center gap-1">
-                      <Calendar className="w-4 h-4" />
-                      <span>{new Date(post.date).toLocaleDateString('pt-BR')}</span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <Clock className="w-4 h-4" />
-                      <span>{post.readTime}</span>
-                    </div>
-                  </div>
-                  
-                  <Link 
-                    to={`/blog/${post.slug}`}
-                    className="inline-flex items-center text-primary font-medium group-hover:gap-2 transition-all"
-                  >
-                    Ler artigo
-                    <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+          <h2 className="text-2xl font-bold mb-8">
+            {searchTerm || selectedCategory !== "Todos" ? "Resultados da Busca" : "Posts Recentes"}
+          </h2>
+          
+          {displayedPosts.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {displayedPosts.map((post) => (
+                <article 
+                  key={post.id}
+                  className="group bg-card border border-card-border rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                >
+                  <Link to={`/blog/${post.slug}`} className="block aspect-video overflow-hidden">
+                    <img 
+                      src={post.image} 
+                      alt={post.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
+                    />
                   </Link>
-                </div>
-              </article>
-            ))}
-          </div>
+                  <div className="p-6">
+                    <div className="flex items-center gap-4 mb-4 text-sm text-foreground-muted">
+                      <span className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary font-medium">
+                        {post.category}
+                      </span>
+                    </div>
+                    
+                    <h2 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors line-clamp-2">
+                      {post.title}
+                    </h2>
+                    
+                    <p className="text-foreground-muted mb-4 line-clamp-3">
+                      {post.excerpt}
+                    </p>
+                    
+                    <div className="flex items-center justify-between text-sm text-foreground-muted mb-4">
+                      <div className="flex items-center gap-1">
+                        <Calendar className="w-4 h-4" />
+                        <span>{new Date(post.date).toLocaleDateString('pt-BR')}</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <Clock className="w-4 h-4" />
+                        <span>{post.readTime}</span>
+                      </div>
+                    </div>
+                    
+                    <Link 
+                      to={`/blog/${post.slug}`}
+                      className="inline-flex items-center text-primary font-medium group-hover:gap-2 transition-all"
+                    >
+                      Ler artigo
+                      <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                  </div>
+                </article>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-16 bg-card/30 border border-card-border rounded-xl">
+              <BookOpen className="w-16 h-16 mx-auto mb-4 text-muted-foreground" />
+              <h3 className="text-xl font-bold mb-2">Nenhum artigo encontrado</h3>
+              <p className="text-muted-foreground mb-6">
+                {searchTerm 
+                  ? `Não encontramos resultados para "${searchTerm}"`
+                  : "Não há artigos nesta categoria"
+                }
+              </p>
+              <Button
+                onClick={() => {
+                  setSearchTerm("");
+                  setSelectedCategory("Todos");
+                }}
+              >
+                Limpar Filtros
+              </Button>
+            </div>
+          )}
 
           {/* Ver Mais Button */}
           {archivedPosts.length > 0 && (
