@@ -282,19 +282,101 @@ const HubEmpresarial = () => {
 
       {/* Social Proof */}
       <section className="py-20 bg-muted/20">
-        <div className="container px-4 mx-auto text-center">
-          <div className="max-w-4xl mx-auto">
-            <div className="flex justify-center gap-1 mb-6">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="h-8 w-8 text-yellow-500 fill-yellow-500" />
-              ))}
-            </div>
-            <p className="text-2xl md:text-3xl font-semibold mb-4">
-              "Transformou completamente a gestão da minha empresa"
-            </p>
-            <p className="text-lg text-muted-foreground mb-4">
-              Mais de 500+ empresas já organizaram seus processos com o Hub Empresarial PRO
-            </p>
+        <div className="container px-4 mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              O que nossos clientes dizem
+            </h2>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+            {/* Depoimento 1 */}
+            <Card className="p-6 bg-card/50 backdrop-blur-sm border-2 hover:border-primary transition-colors">
+              <div className="flex justify-between items-start mb-4">
+                <div>
+                  <p className="font-bold text-lg mb-1">NOTA 9,9!</p>
+                  <div className="flex gap-1 mb-3">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="h-4 w-4 text-yellow-500 fill-yellow-500" />
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <p className="text-foreground mb-4">
+                PERFEITO! É COMPLETO, E SUPRE MINHA ORGANIZAÇÃO TOTALMENTE
+              </p>
+              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <span className="font-semibold">Diego Kirch</span>
+                <span>•</span>
+                <span>2 de out. de 2025</span>
+              </div>
+            </Card>
+
+            {/* Depoimento 2 */}
+            <Card className="p-6 bg-card/50 backdrop-blur-sm border-2 hover:border-primary transition-colors">
+              <div className="flex justify-between items-start mb-4">
+                <div>
+                  <p className="font-bold text-lg mb-1">mt bom</p>
+                  <div className="flex gap-1 mb-3">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="h-4 w-4 text-yellow-500 fill-yellow-500" />
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <p className="text-foreground mb-4">
+                completo demais. varias funcionalidades. meus parabens aos criadores
+              </p>
+              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <span className="font-semibold">joao costa</span>
+                <span>•</span>
+                <span>23 de ago. de 2025</span>
+              </div>
+            </Card>
+
+            {/* Depoimento 3 */}
+            <Card className="p-6 bg-card/50 backdrop-blur-sm border-2 hover:border-primary transition-colors">
+              <div className="flex justify-between items-start mb-4">
+                <div>
+                  <p className="font-bold text-lg mb-1">Muito bom!</p>
+                  <div className="flex gap-1 mb-3">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="h-4 w-4 text-yellow-500 fill-yellow-500" />
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <p className="text-foreground mb-4">
+                O modelo salvou a organização da minha empresa, super recomendo e agradeço a toda a equipe responsável!!!
+              </p>
+              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <span className="font-semibold">Apexia Marketing</span>
+                <span>•</span>
+                <span>5 de jun. de 2025</span>
+              </div>
+            </Card>
+
+            {/* Depoimento 4 */}
+            <Card className="p-6 bg-card/50 backdrop-blur-sm border-2 hover:border-primary transition-colors">
+              <div className="flex justify-between items-start mb-4">
+                <div>
+                  <p className="font-bold text-lg mb-1">mt bom</p>
+                  <div className="flex gap-1 mb-3">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="h-4 w-4 text-yellow-500 fill-yellow-500" />
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <p className="text-foreground mb-4">
+                gostei muito do modelo. serviu muito bem no que planejava
+              </p>
+              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <span className="font-semibold">bidwise</span>
+                <span>•</span>
+                <span>27 de mai. de 2025</span>
+              </div>
+            </Card>
           </div>
         </div>
       </section>
