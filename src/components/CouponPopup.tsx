@@ -24,7 +24,7 @@ const CouponPopup = () => {
   const handlePurchase = () => {
     trackStripeClick("popup-coupon");
     trackCTAClick("Adquirir Hub Empresarial", "popup-coupon");
-    window.open("https://buy.stripe.com/5kAcPg22odJZ7YceVb", "_blank");
+    window.open("https://buy.stripe.com/fZu28rbs8gN73ta6F7gUM0d", "_blank");
     handleClose();
   };
 
