@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { useState, useMemo, useEffect } from "react";
+import BlogCTA from "@/components/BlogCTA";
 import notionPoderImage from "@/assets/blog/notion-poder-empresas.jpg";
 import mapeamentoImage from "@/assets/blog/mapeamento-processos.jpg";
 import errosImage from "@/assets/blog/erros-produtividade.jpg";
@@ -593,6 +594,13 @@ const Blog = () => {
               >
                 Limpar Filtros
               </Button>
+            </div>
+          )}
+
+          {/* CTA no meio da listagem de posts */}
+          {displayedPosts.length > 0 && (
+            <div className="mt-16 mb-8">
+              <BlogCTA variant="default" location="blog_listing_page" />
             </div>
           )}
 

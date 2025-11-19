@@ -6,6 +6,9 @@ import GuaranteeSection from "@/components/GuaranteeSection";
 import ServicesComparison from "@/components/ServicesComparison";
 import TrustedBySection from "@/components/TrustedBySection";
 import ExitIntentPopup from "@/components/ExitIntentPopup";
+import LeadCaptureSection from "@/components/LeadCaptureSection";
+import TimeBasedPopup from "@/components/TimeBasedPopup";
+import OnboardingTour from "@/components/OnboardingTour";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -146,6 +149,13 @@ const Index = () => {
       </Helmet>
       {/* Hero Section */}
       <HeroSection />
+
+      {/* Lead Capture Section - Above the fold */}
+      <section className="section-padding bg-background">
+        <div className="container-focus">
+          <LeadCaptureSection />
+        </div>
+      </section>
 
       {/* Services Section */}
       <section className="section-padding bg-background-secondary">
@@ -404,6 +414,12 @@ const Index = () => {
 
       {/* Exit Intent Popup */}
       <ExitIntentPopup />
+      
+      {/* Time & Scroll Based Popup */}
+      <TimeBasedPopup />
+      
+      {/* Onboarding Tour for First Time Visitors */}
+      <OnboardingTour />
     </div>
   );
 };

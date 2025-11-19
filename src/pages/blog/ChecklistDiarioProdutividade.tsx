@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import checklistImage from "@/assets/blog/checklist-diario-produtividade.jpg";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import BlogCTA from "@/components/BlogCTA";
+import RelatedArticles from "@/components/RelatedArticles";
 
 const ChecklistDiarioProdutividade = () => {
   const publishDate = "2025-01-15";
@@ -200,6 +202,11 @@ const ChecklistDiarioProdutividade = () => {
                 </pre>
               </div>
 
+              {/* CTA Download no meio do artigo */}
+              <div className="my-12">
+                <BlogCTA variant="download" location="checklist_diario_mid_article" />
+              </div>
+
               <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
                 Os 3 Erros Que Matam Seu Checklist
               </h2>
@@ -264,48 +271,40 @@ const ChecklistDiarioProdutividade = () => {
                 Pronto. Você acabou de criar seu primeiro checklist diário estruturado.
               </p>
 
-              <div className="bg-muted p-8 rounded-lg my-12 text-center">
-                <h3 className="text-2xl font-bold mb-4">
-                  Quer um Sistema Completo de Produtividade?
-                </h3>
-                <p className="text-lg text-muted-foreground mb-6">
-                  Nossos templates no Notion já incluem checklists diários integrados com gestão de projetos, metas e revisões semanais.
-                </p>
-                <Link 
-                  to="/sistemas-notion" 
-                  className="inline-block bg-primary text-primary-foreground px-8 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors"
-                >
-                  Conhecer Sistemas Notion
-                </Link>
+              {/* CTA WhatsApp no final do artigo */}
+              <div className="my-12">
+                <BlogCTA variant="whatsapp" location="checklist_diario_end_article" />
               </div>
             </div>
 
-            <div className="mt-16 pt-8 border-t border-border">
-              <h3 className="text-2xl font-bold mb-6">Artigos Relacionados</h3>
-              <div className="grid md:grid-cols-3 gap-6">
-                <Link to="/blog/organizar-rotina-semanal" className="group">
-                  <div className="bg-muted rounded-lg p-4 hover:bg-muted/80 transition-colors">
-                    <h4 className="font-semibold group-hover:text-primary transition-colors">
-                      Como organizar sua rotina semanal para ter mais foco
-                    </h4>
-                  </div>
-                </Link>
-                <Link to="/blog/planejamento-mensal-sistema" className="group">
-                  <div className="bg-muted rounded-lg p-4 hover:bg-muted/80 transition-colors">
-                    <h4 className="font-semibold group-hover:text-primary transition-colors">
-                      Planejamento mensal: como criar um sistema que realmente funciona
-                    </h4>
-                  </div>
-                </Link>
-                <Link to="/blog/produtividade-fazer-o-que-importa" className="group">
-                  <div className="bg-muted rounded-lg p-4 hover:bg-muted/80 transition-colors">
-                    <h4 className="font-semibold group-hover:text-primary transition-colors">
-                      Produtividade não é fazer mais — é fazer o que importa
-                    </h4>
-                  </div>
-                </Link>
-              </div>
-            </div>
+            {/* Artigos Relacionados */}
+            <RelatedArticles 
+              currentSlug="checklist-diario-produtividade"
+              category="Produtividade"
+              allArticles={[
+                {
+                  title: "Como Organizar Sua Rotina Semanal Para Ter Mais Foco (Modelo Pronto Incluso)",
+                  excerpt: "O método completo de planejamento semanal que elimina decisões desnecessárias e multiplica seu foco nas tarefas que importam.",
+                  slug: "organizar-rotina-semanal",
+                  readTime: "9 min",
+                  category: "Produtividade"
+                },
+                {
+                  title: "Planejamento Mensal: Como Criar Um Sistema Que Realmente Funciona",
+                  excerpt: "Aprenda o método de planejamento mensal que transforma metas em ações concretas e te mantém no caminho certo o mês todo.",
+                  slug: "planejamento-mensal-sistema",
+                  readTime: "10 min",
+                  category: "Produtividade"
+                },
+                {
+                  title: "Produtividade Não É Fazer Mais — É Fazer o Que Importa",
+                  excerpt: "Descubra por que pessoas produtivas fazem menos tarefas, mas alcançam mais resultados. A diferença está no sistema.",
+                  slug: "produtividade-fazer-o-que-importa",
+                  readTime: "7 min",
+                  category: "Produtividade"
+                }
+              ]}
+            />
           </article>
         </main>
 
