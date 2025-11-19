@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 import { 
   CheckCircle, 
   ArrowRight,
@@ -11,7 +14,15 @@ import {
   Zap,
   TrendingUp,
   Star,
-  MousePointerClick
+  MousePointerClick,
+  Users,
+  Building2,
+  Rocket,
+  Target,
+  Clock,
+  DollarSign,
+  Check,
+  X
 } from "lucide-react";
 import { trackStripeClick, trackCTAClick } from "@/lib/analytics";
 import Navigation from "@/components/Navigation";
@@ -150,16 +161,170 @@ const HubEmpresarial = () => {
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>Hub Empresarial PRO 1.0 - Sistema Completo de Gestão no Notion | Focus Inteligente</title>
-        <meta name="description" content="Sistema completo de gestão empresarial no Notion: Financeiro, RH, CRM, Marketing, Projetos e muito mais. Tudo integrado em um só lugar." />
-        <meta property="og:title" content="Hub Empresarial PRO 1.0 - Gestão Completa no Notion" />
-        <meta property="og:description" content="7 módulos integrados para gestão total da sua empresa. Financeiro, RH, Marketing, CRM, Projetos, Atividades e muito mais." />
+        <title>Hub Empresarial PRO: Sistema Completo de Gestão no Notion | 7 Módulos Integrados - R$ 349</title>
+        <meta name="description" content="🚀 Transforme sua gestão com o Hub Empresarial PRO! 7 módulos integrados no Notion: Financeiro, RH, CRM, Marketing, Projetos. Por apenas R$ 349 + cupom FOCUS20. Garantia de 7 dias! ✅" />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content="Hub Empresarial PRO - 7 Módulos Integrados no Notion" />
+        <meta property="og:description" content="Sistema completo de gestão empresarial: Financeiro, RH, CRM, Marketing, Projetos por R$ 349. Acesso vitalício + atualizações gratuitas!" />
         <meta property="og:type" content="product" />
+        <meta property="og:image" content="https://focusinteligente.com.br/lovable-uploads/hub-empresarial-og.jpg" />
+        <meta property="og:url" content="https://focusinteligente.com.br/hub-empresarial" />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Hub Empresarial PRO - 7 Módulos Integrados" />
+        <meta name="twitter:description" content="Sistema completo de gestão empresarial no Notion por R$ 349" />
+        <meta name="twitter:image" content="https://focusinteligente.com.br/lovable-uploads/hub-empresarial-og.jpg" />
+        
         <link rel="canonical" href="https://focusinteligente.com.br/hub-empresarial" />
+        
+        {/* Structured Data - Product Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Product",
+            "name": "Hub Empresarial PRO 1.0",
+            "description": "Sistema completo de gestão empresarial no Notion com 7 módulos integrados: Financeiro, RH, CRM, Marketing, Projetos, Atividades e Comece por Aqui. Inclui aulas gravadas e suporte via WhatsApp.",
+            "image": "https://focusinteligente.com.br/lovable-uploads/hub-empresarial-og.jpg",
+            "brand": {
+              "@type": "Brand",
+              "name": "Focus Inteligente"
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": "https://focusinteligente.com.br/hub-empresarial",
+              "priceCurrency": "BRL",
+              "price": "349.00",
+              "availability": "https://schema.org/InStock",
+              "priceValidUntil": "2026-12-31"
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.9",
+              "reviewCount": "4",
+              "bestRating": "5",
+              "worstRating": "1"
+            }
+          })}
+        </script>
+        
+        {/* Structured Data - BreadcrumbList */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://focusinteligente.com.br"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Hub Empresarial PRO",
+                "item": "https://focusinteligente.com.br/hub-empresarial"
+              }
+            ]
+          })}
+        </script>
+        
+        {/* Structured Data - FAQPage */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "O que é o Hub Empresarial PRO?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "É um sistema completo de gestão empresarial desenvolvido no Notion, com 7 módulos integrados: Financeiro, RH, CRM, Marketing, Projetos, Atividades e Comece por Aqui. Tudo em um só lugar para você gerenciar sua empresa de forma profissional."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Quais módulos estão incluídos?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "7 módulos completos: (1) Comece por Aqui com aulas gravadas, (2) Financeiro com controle completo, (3) RH para gestão de pessoas, (4) Marketing para campanhas, (5) Projetos com análise de riscos, (6) CRM para vendas, (7) Atividades para tarefas diárias."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Preciso ter experiência com Notion?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Não! O módulo Comece por Aqui inclui aulas gravadas que ensinam desde o básico até recursos avançados. Mesmo iniciantes conseguem implementar o sistema seguindo o passo a passo detalhado."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Tem garantia?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Sim! Oferecemos garantia de 7 dias. Se não gostar do sistema por qualquer motivo, devolvemos 100% do seu dinheiro sem perguntas. Seu risco é zero."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Como recebo acesso ao sistema?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Imediatamente após a compra, você recebe um e-mail com o link para duplicar o template no seu Notion. O acesso é instantâneo e vitalício."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Preciso pagar mensalidade?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Não! É um pagamento único de R$ 349. Você tem acesso vitalício ao sistema e a todas as atualizações futuras sem custo adicional. Apenas o Notion cobra sua assinatura própria (tem plano gratuito disponível)."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Posso personalizar o sistema?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Totalmente! O Notion permite personalização completa. Você pode adicionar campos, mudar cores, criar novas visualizações e adaptar tudo ao seu fluxo de trabalho específico."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Funciona para qualquer tipo de empresa?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Sim! O sistema é flexível e funciona para freelancers, pequenas empresas, médias empresas, startups, agências, consultorias e diversos outros tipos de negócio. A estrutura modular se adapta à sua realidade."
+                }
+              }
+            ]
+          })}
+        </script>
       </Helmet>
 
       <Navigation />
       <CouponPopup />
+
+      {/* Breadcrumb */}
+      <div className="container mx-auto px-4 pt-24 pb-4">
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <Link to="/">Home</Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>Hub Empresarial PRO</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+      </div>
 
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-20">
@@ -172,7 +337,7 @@ const HubEmpresarial = () => {
           </Badge>
           
           <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary via-primary-glow to-primary bg-clip-text text-transparent animate-fade-in">
-            Hub Empresarial PRO 1.0
+            Hub Empresarial PRO - Sistema Completo de Gestão Empresarial no Notion
           </h1>
           
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto animate-fade-in">
@@ -240,7 +405,8 @@ const HubEmpresarial = () => {
                 <div className="relative aspect-video overflow-hidden">
                   <img
                     src={module.image}
-                    alt={module.title}
+                    alt={`Módulo ${module.title} - ${module.description}`}
+                    loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -377,6 +543,356 @@ const HubEmpresarial = () => {
                 <span>27 de mai. de 2025</span>
               </div>
             </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Como Funciona Section */}
+      <section className="py-20 bg-background">
+        <div className="container px-4 mx-auto max-w-6xl">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              Como o Hub Empresarial PRO funciona?
+            </h2>
+            <p className="text-xl text-muted-foreground">
+              Simples e rápido: em 5 passos você transforma a gestão da sua empresa
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-5 gap-6">
+            {[
+              { step: "1", icon: DollarSign, title: "Compra Segura", desc: "Pagamento 100% seguro via Stripe com garantia de 7 dias" },
+              { step: "2", icon: Zap, title: "Acesso Imediato", desc: "Receba o link de acesso instantaneamente por e-mail" },
+              { step: "3", icon: MousePointerClick, title: "Duplicate no Notion", desc: "Com 1 clique, duplique o template completo para seu workspace" },
+              { step: "4", icon: Rocket, title: "Assista as Aulas", desc: "Vídeos práticos ensinam como configurar cada módulo" },
+              { step: "5", icon: Target, title: "Personalize", desc: "Ajuste o sistema para o seu negócio e comece a usar" }
+            ].map((item, index) => (
+              <Card key={index} className="p-6 text-center hover:shadow-xl transition-all border-2 hover:border-primary bg-card/50 backdrop-blur-sm relative">
+                <div className="absolute -top-4 -left-4 w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold text-lg">
+                  {item.step}
+                </div>
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
+                  <item.icon className="h-8 w-8 text-primary" />
+                </div>
+                <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                <p className="text-sm text-muted-foreground">{item.desc}</p>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Para Quem É Section */}
+      <section className="py-20 bg-muted/20">
+        <div className="container px-4 mx-auto max-w-6xl">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              Para quem é o Hub Empresarial PRO?
+            </h2>
+            <p className="text-xl text-muted-foreground">
+              Ideal para quem busca organização e crescimento sustentável
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { 
+                icon: Users, 
+                title: "Empreendedores e PMEs", 
+                desc: "Donos de pequenas e médias empresas que precisam centralizar e profissionalizar a gestão sem gastar fortunas com softwares complexos."
+              },
+              { 
+                icon: Building2, 
+                title: "Startups em Crescimento", 
+                desc: "Times que estão estruturando processos e precisam de um sistema escalável que cresce junto com o negócio."
+              },
+              { 
+                icon: Target, 
+                title: "Consultores e Agências", 
+                desc: "Profissionais que gerenciam múltiplos projetos e clientes simultaneamente e precisam de visibilidade total."
+              },
+              { 
+                icon: Rocket, 
+                title: "Gestores e Líderes", 
+                desc: "Profissionais que querem ter controle dos processos da empresa e tomar decisões baseadas em dados organizados."
+              },
+              { 
+                icon: Clock, 
+                title: "Freelancers Profissionais", 
+                desc: "Autônomos que querem profissionalizar a gestão do próprio negócio com ferramentas de nível empresarial."
+              },
+              { 
+                icon: TrendingUp, 
+                title: "Empresas em Transformação", 
+                desc: "Negócios que estão migrando de planilhas e ferramentas fragmentadas para um sistema integrado e moderno."
+              }
+            ].map((persona, index) => (
+              <Card key={index} className="p-6 hover:shadow-xl transition-all border-2 hover:border-primary bg-card/50 backdrop-blur-sm">
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 mb-4">
+                  <persona.icon className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="text-xl font-bold mb-3">{persona.title}</h3>
+                <p className="text-muted-foreground">{persona.desc}</p>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Comparação Section */}
+      <section className="py-20 bg-background">
+        <div className="container px-4 mx-auto max-w-6xl">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              Hub Empresarial vs. Ferramentas Tradicionais
+            </h2>
+            <p className="text-xl text-muted-foreground">
+              Veja por que o Hub Empresarial PRO é a escolha mais inteligente
+            </p>
+          </div>
+
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse">
+              <thead>
+                <tr className="border-b-2 border-border">
+                  <th className="p-4 text-left">Característica</th>
+                  <th className="p-4 text-center bg-primary/5">
+                    <div className="font-bold text-lg text-primary">Hub Empresarial PRO</div>
+                  </th>
+                  <th className="p-4 text-center">Ferramentas Tradicionais</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  { feature: "Custo Mensal", pro: "R$ 0 (pag. único)", trad: "R$ 200-500/mês" },
+                  { feature: "Integração entre módulos", pro: "100% integrado", trad: "Ferramentas separadas" },
+                  { feature: "Curva de aprendizado", pro: "Rápida (com aulas)", trad: "Complexa e demorada" },
+                  { feature: "Personalização", pro: "Totalmente flexível", trad: "Limitada" },
+                  { feature: "Atualizações", pro: "Gratuitas vitalícias", trad: "Pagas ou limitadas" },
+                  { feature: "Mobilidade", pro: "Desktop + Mobile", trad: "Depende da ferramenta" },
+                  { feature: "Suporte", pro: "WhatsApp direto", trad: "Tickets ou chat bot" }
+                ].map((row, index) => (
+                  <tr key={index} className="border-b border-border hover:bg-muted/10">
+                    <td className="p-4 font-medium">{row.feature}</td>
+                    <td className="p-4 text-center bg-primary/5">
+                      <div className="flex items-center justify-center gap-2">
+                        <Check className="h-5 w-5 text-green-500 flex-shrink-0" />
+                        <span className="font-semibold text-primary">{row.pro}</span>
+                      </div>
+                    </td>
+                    <td className="p-4 text-center">
+                      <div className="flex items-center justify-center gap-2">
+                        <X className="h-5 w-5 text-red-500 flex-shrink-0" />
+                        <span className="text-muted-foreground">{row.trad}</span>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <div className="mt-8 text-center">
+            <Button 
+              size="lg" 
+              className="text-lg px-8 py-6"
+              onClick={() => handlePurchaseClick("comparison-cta")}
+            >
+              Começar com o Hub Empresarial PRO
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-20 bg-muted/20">
+        <div className="container px-4 mx-auto max-w-4xl">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              Perguntas Frequentes
+            </h2>
+            <p className="text-xl text-muted-foreground">
+              Tire todas as suas dúvidas sobre o Hub Empresarial PRO
+            </p>
+          </div>
+
+          <Accordion type="single" collapsible className="space-y-4">
+            <AccordionItem value="item-1" className="border bg-card px-6 rounded-lg">
+              <AccordionTrigger className="text-left hover:no-underline">
+                <span className="font-semibold">O que é o Hub Empresarial PRO?</span>
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground">
+                É um sistema completo de gestão empresarial desenvolvido no Notion, com 7 módulos integrados: Financeiro, RH, CRM, Marketing, Projetos, Atividades e Comece por Aqui. Tudo em um só lugar para você gerenciar sua empresa de forma profissional.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-2" className="border bg-card px-6 rounded-lg">
+              <AccordionTrigger className="text-left hover:no-underline">
+                <span className="font-semibold">Quais módulos estão incluídos?</span>
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground">
+                7 módulos completos: (1) Comece por Aqui com aulas gravadas, (2) Financeiro com controle completo, (3) RH para gestão de pessoas, (4) Marketing para campanhas, (5) Projetos com análise de riscos, (6) CRM para vendas, (7) Atividades para tarefas diárias.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-3" className="border bg-card px-6 rounded-lg">
+              <AccordionTrigger className="text-left hover:no-underline">
+                <span className="font-semibold">Como funciona a integração entre os módulos?</span>
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground">
+                Todos os módulos são interligados através de bancos de dados relacionais do Notion. Por exemplo, você pode vincular tarefas de Marketing a Projetos específicos, ou associar despesas financeiras a campanhas, tudo de forma automática e visual.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-4" className="border bg-card px-6 rounded-lg">
+              <AccordionTrigger className="text-left hover:no-underline">
+                <span className="font-semibold">Preciso ter experiência com Notion?</span>
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground">
+                Não! O módulo "Comece por Aqui" inclui aulas gravadas que ensinam desde o básico até recursos avançados. Mesmo iniciantes conseguem implementar o sistema seguindo o passo a passo detalhado.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-5" className="border bg-card px-6 rounded-lg">
+              <AccordionTrigger className="text-left hover:no-underline">
+                <span className="font-semibold">O sistema funciona em mobile?</span>
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground">
+                Sim! Como é desenvolvido no Notion, funciona perfeitamente em desktop, mobile (iOS e Android) e tablet. Acesse sua gestão de qualquer lugar, a qualquer momento.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-6" className="border bg-card px-6 rounded-lg">
+              <AccordionTrigger className="text-left hover:no-underline">
+                <span className="font-semibold">Tem garantia?</span>
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground">
+                Sim! Oferecemos garantia de 7 dias. Se não gostar do sistema por qualquer motivo, devolvemos 100% do seu dinheiro sem perguntas. Seu risco é zero.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-7" className="border bg-card px-6 rounded-lg">
+              <AccordionTrigger className="text-left hover:no-underline">
+                <span className="font-semibold">Como recebo acesso ao sistema?</span>
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground">
+                Imediatamente após a compra, você recebe um e-mail com o link para duplicar o template no seu Notion. O acesso é instantâneo e vitalício.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-8" className="border bg-card px-6 rounded-lg">
+              <AccordionTrigger className="text-left hover:no-underline">
+                <span className="font-semibold">Preciso pagar mensalidade?</span>
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground">
+                Não! É um pagamento único de R$ 349. Você tem acesso vitalício ao sistema e a todas as atualizações futuras sem custo adicional. Apenas o Notion cobra sua assinatura própria (tem plano gratuito disponível).
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-9" className="border bg-card px-6 rounded-lg">
+              <AccordionTrigger className="text-left hover:no-underline">
+                <span className="font-semibold">Posso personalizar o sistema?</span>
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground">
+                Totalmente! O Notion permite personalização completa. Você pode adicionar campos, mudar cores, criar novas visualizações e adaptar tudo ao seu fluxo de trabalho específico.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-10" className="border bg-card px-6 rounded-lg">
+              <AccordionTrigger className="text-left hover:no-underline">
+                <span className="font-semibold">Recebo atualizações?</span>
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground">
+                Sim! Todas as atualizações e melhorias futuras são gratuitas e vitalícias. Quando lançarmos novas funcionalidades ou módulos, você será notificado e poderá atualizar seu sistema.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-11" className="border bg-card px-6 rounded-lg">
+              <AccordionTrigger className="text-left hover:no-underline">
+                <span className="font-semibold">Tem suporte disponível?</span>
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground">
+                Sim! Oferecemos suporte via WhatsApp para tirar dúvidas sobre implementação e uso do sistema. Nossa equipe está pronta para ajudar você a ter sucesso.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-12" className="border bg-card px-6 rounded-lg">
+              <AccordionTrigger className="text-left hover:no-underline">
+                <span className="font-semibold">Funciona para qualquer tipo de empresa?</span>
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground">
+                Sim! O sistema é flexível e funciona para freelancers, pequenas empresas, médias empresas, startups, agências, consultorias e diversos outros tipos de negócio. A estrutura modular se adapta à sua realidade.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-13" className="border bg-card px-6 rounded-lg">
+              <AccordionTrigger className="text-left hover:no-underline">
+                <span className="font-semibold">Posso usar com minha equipe?</span>
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground">
+                Sim! O Notion permite colaboração em tempo real. Você pode convidar membros da equipe, definir permissões e todos trabalham no mesmo sistema simultaneamente.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-14" className="border bg-card px-6 rounded-lg">
+              <AccordionTrigger className="text-left hover:no-underline">
+                <span className="font-semibold">Meus dados ficam seguros?</span>
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground">
+                Absolutamente! Todos os dados ficam no SEU workspace do Notion, com a segurança de nível empresarial que o Notion oferece. Nós não temos acesso aos seus dados, eles são 100% seus.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-15" className="border bg-card px-6 rounded-lg">
+              <AccordionTrigger className="text-left hover:no-underline">
+                <span className="font-semibold">Quanto tempo leva para implementar?</span>
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground">
+                A duplicação do template leva apenas 1 minuto. A configuração inicial básica pode ser feita em 1-2 horas seguindo as aulas. A implementação completa e personalização depende do tamanho da sua empresa, mas é muito mais rápido que criar do zero.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-16" className="border bg-card px-6 rounded-lg">
+              <AccordionTrigger className="text-left hover:no-underline">
+                <span className="font-semibold">Posso integrar com outras ferramentas?</span>
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground">
+                Sim! O Notion tem integrações nativas e via API com diversas ferramentas como Google Calendar, Slack, Zapier, Make e centenas de outras. Você pode automatizar processos e conectar seu stack de ferramentas.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-17" className="border bg-card px-6 rounded-lg">
+              <AccordionTrigger className="text-left hover:no-underline">
+                <span className="font-semibold">E se eu já uso outras ferramentas?</span>
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground">
+                O Hub Empresarial foi projetado para substituir ou complementar suas ferramentas atuais. Você pode fazer uma migração gradual, começando por um módulo e expandindo conforme se adapta ao sistema.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-18" className="border bg-card px-6 rounded-lg">
+              <AccordionTrigger className="text-left hover:no-underline">
+                <span className="font-semibold">Posso revender ou redistribuir o sistema?</span>
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground">
+                Não. A licença é de uso pessoal ou empresarial interno apenas. Revenda, redistribuição ou compartilhamento público não são permitidos e violam os termos de uso.
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+
+          <div className="mt-12 text-center">
+            <p className="text-muted-foreground mb-6">
+              Ainda tem dúvidas? <Link to="/central-ajuda" className="text-primary hover:underline font-semibold">Entre em contato conosco</Link>
+            </p>
+            <Button 
+              size="lg" 
+              className="text-lg px-8 py-6"
+              onClick={() => handlePurchaseClick("faq-cta")}
+            >
+              Quero o Hub Empresarial PRO Agora
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
           </div>
         </div>
       </section>
