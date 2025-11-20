@@ -55,6 +55,11 @@ import Documentacao from "./pages/Documentacao";
 import StatusPlataforma from "./pages/StatusPlataforma";
 import Onboarding from "./pages/Onboarding";
 import NotFound from "./pages/NotFound";
+import SignUp from "./pages/auth/SignUp";
+import Login from "./pages/auth/Login";
+import ForgotPassword from "./pages/auth/ForgotPassword";
+import Dashboard from "./pages/dashboard/Dashboard";
+import { ProtectedRoute } from "./components/ProtectedRoute";
 import { useAnalytics } from "./hooks/useAnalytics";
 import CookieConsent from "./components/CookieConsent";
 import ScrollToTop from "./components/ScrollToTop";
@@ -122,13 +127,29 @@ const App = () => (
               <Route path="/blog/planejamento-anual-do-zero" element={<PlanejamentoAnualZero />} />
               <Route path="/blog/criar-habitos-que-duram" element={<CriarHabitosDuram />} />
               <Route path="/sobre" element={<AboutFocus />} />
+              <Route path="/sobre-focus" element={<AboutFocus />} />
               <Route path="/privacidade" element={<Privacidade />} />
               <Route path="/termos" element={<TermosUso />} />
+              <Route path="/termos-uso" element={<TermosUso />} />
               <Route path="/cookies" element={<Cookies />} />
               <Route path="/ajuda" element={<CentralAjuda />} />
               <Route path="/docs" element={<Documentacao />} />
               <Route path="/status" element={<StatusPlataforma />} />
               <Route path="/onboarding" element={<Onboarding />} />
+              
+              {/* Auth Routes */}
+              <Route path="/auth/signup" element={<SignUp />} />
+              <Route path="/auth/login" element={<Login />} />
+              <Route path="/auth/forgot-password" element={<ForgotPassword />} />
+              
+              {/* Protected Routes */}
+              <Route path="/dashboard" element={
+                <ProtectedRoute>
+                  <Dashboard />
+                </ProtectedRoute>
+              } />
+              <Route path="/focus-club" element={<FocusClub />} />
+              
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
