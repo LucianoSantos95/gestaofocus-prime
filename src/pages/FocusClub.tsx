@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { WaitlistForm } from "@/components/WaitlistForm";
 import { 
   Target, 
@@ -320,18 +321,18 @@ export default function FocusClub() {
               <h2 className="text-4xl font-bold mb-4">Perguntas Frequentes</h2>
             </div>
 
-            <div className="space-y-4">
+            <Accordion type="single" collapsible className="w-full">
               {faqs.map((faq, i) => (
-                <Card key={i}>
-                  <CardHeader>
-                    <CardTitle className="text-lg">{faq.q}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground">{faq.a}</p>
-                  </CardContent>
-                </Card>
+                <AccordionItem key={i} value={`item-${i}`}>
+                  <AccordionTrigger className="text-lg font-semibold text-left">
+                    {faq.q}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground">
+                    {faq.a}
+                  </AccordionContent>
+                </AccordionItem>
               ))}
-            </div>
+            </Accordion>
           </div>
         </section>
 

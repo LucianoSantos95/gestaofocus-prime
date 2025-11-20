@@ -33,9 +33,8 @@ export default function LeadCaptureSection() {
       email_captured: true,
     });
 
-    // Redirect to WhatsApp with email
-    const message = `Olá! Quero receber o Kit Gestor Organizado. Meu email: ${encodeURIComponent(email)}`;
-    window.open(`https://wa.me/5511916742443?text=${message}`, '_blank');
+    // Redirect to Notion Playbooks page
+    window.open('https://gestaofocus.notion.site/Central-de-Playbooks-Focus-2a7be653a5aa80eb867de9ef26aa4e73', '_blank');
     
     setIsSuccess(true);
     setIsSubmitting(false);
@@ -49,7 +48,7 @@ export default function LeadCaptureSection() {
         </div>
         <h3 className="text-2xl font-bold mb-2">Confirmado! 🎉</h3>
         <p className="text-foreground-muted">
-          Continue no WhatsApp para receber seu Kit Gestor Organizado
+          Acesse sua Central de Playbooks na nova aba que foi aberta
         </p>
       </div>
     );
@@ -63,7 +62,7 @@ export default function LeadCaptureSection() {
         </div>
         
         <h3 className="text-2xl font-bold mb-2">
-          Baixe GRÁTIS: Kit Gestor Organizado
+          Baixe GRÁTIS: Playbook Gestor Organizado
         </h3>
         <p className="text-foreground-muted mb-6">
           3 sistemas Notion prontos + Guia de Produtividade para começar hoje mesmo
