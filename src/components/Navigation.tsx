@@ -145,11 +145,11 @@ const Navigation = () => {
             <Button 
               className="btn-hero ml-4"
               onClick={() => {
-                trackWhatsAppClick('header');
-                window.open('https://wa.me/5511916742443?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20personaliza%C3%A7%C3%A3o%20de%20sistemas.', '_blank');
+                trackNavigationClick('waitlist_header');
+                window.location.href = '/lista-espera';
               }}
             >
-              Falar com Focus
+              Entrar na Lista
             </Button>
           </div>
 
@@ -241,11 +241,12 @@ const Navigation = () => {
                 <Button 
                   className="btn-hero w-full"
                   onClick={() => {
-                    trackWhatsAppClick('mobile_menu');
-                    window.open('https://wa.me/5511916742443?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20personaliza%C3%A7%C3%A3o%20de%20sistemas.', '_blank');
+                    trackNavigationClick('waitlist_mobile_menu');
+                    window.location.href = '/lista-espera';
+                    setIsOpen(false);
                   }}
                 >
-                  Falar com Focus
+                  Entrar na Lista
                 </Button>
               </div>
             </div>

@@ -17,6 +17,7 @@ export function WaitlistForm({ source = 'landing', onSuccess }: WaitlistFormProp
   const [email, setEmail] = useState('');
   const [fullName, setFullName] = useState('');
   const [mainChallenge, setMainChallenge] = useState('');
+  const [interest, setInterest] = useState<string[]>([]);
   const [wantsTrial, setWantsTrial] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -38,6 +39,7 @@ export function WaitlistForm({ source = 'landing', onSuccess }: WaitlistFormProp
         main_challenge: mainChallenge.trim() || null,
         wants_trial: wantsTrial,
         source,
+        interest: interest.length > 0 ? interest.join(', ') : null,
       });
 
     if (error) {
@@ -64,8 +66,12 @@ export function WaitlistForm({ source = 'landing', onSuccess }: WaitlistFormProp
     setEmail('');
     setFullName('');
     setMainChallenge('');
+    setInterest([]);
     setWantsTrial(false);
     setLoading(false);
+
+    // Redirect to success page
+    window.location.href = '/lista-espera/sucesso';
 
     if (onSuccess) onSuccess();
   };
@@ -108,6 +114,35 @@ export function WaitlistForm({ source = 'landing', onSuccess }: WaitlistFormProp
           maxLength={500}
           rows={3}
         />
+      </div>
+
+      <div>
+        <Label className="mb-3 block">Qual tipo de conteúdo te interessa mais? (opcional)</Label>
+        <div className="space-y-2">
+          {[
+            { value: 'cursos', label: 'Cursos em vídeo' },
+            { value: 'sistemas', label: 'Sistemas Notion' },
+            { value: 'playbooks', label: 'Playbooks (PDFs)' },
+            { value: 'comunidade', label: 'Comunidade' }
+          ].map((item) => (
+            <div key={item.value} className="flex items-center space-x-2">
+              <Checkbox
+                id={item.value}
+                checked={interest.includes(item.value)}
+                onCheckedChange={(checked) => {
+                  if (checked) {
+                    setInterest([...interest, item.value]);
+                  } else {
+                    setInterest(interest.filter(i => i !== item.value));
+                  }
+                }}
+              />
+              <Label htmlFor={item.value} className="text-sm font-normal cursor-pointer">
+                {item.label}
+              </Label>
+            </div>
+          ))}
+        </div>
       </div>
 
       <div className="flex items-center space-x-2">
