@@ -473,6 +473,7 @@ export type Database = {
           email: string
           full_name: string | null
           id: string
+          interest: string | null
           main_challenge: string | null
           source: string | null
           wants_trial: boolean | null
@@ -482,6 +483,7 @@ export type Database = {
           email: string
           full_name?: string | null
           id?: string
+          interest?: string | null
           main_challenge?: string | null
           source?: string | null
           wants_trial?: boolean | null
@@ -491,6 +493,7 @@ export type Database = {
           email?: string
           full_name?: string | null
           id?: string
+          interest?: string | null
           main_challenge?: string | null
           source?: string | null
           wants_trial?: boolean | null
