@@ -91,7 +91,8 @@ const App = () => (
             <Route path="/sistemas-notion" element={<SistemasNotion />} />
             <Route path="/sprint-produtividade" element={<SprintProdutividade />} />
             <Route path="/hub-empresarial" element={<HubEmpresarial />} />
-            <Route path="/metodofocus" element={<FocusClub />} />
+            <Route path="/focus-club" element={<FocusClub />} />
+            <Route path="/metodofocus" element={<FocusClub />} /> {/* Redirect legacy URL */}
             <Route path="/sistemas-gratuitos" element={<SistemasGratuitos />} />
             <Route path="/blog" element={<Blog />} />
               
@@ -154,7 +155,6 @@ const App = () => (
                   <Dashboard />
                 </ProtectedRoute>
               } />
-              <Route path="/focus-club" element={<FocusClub />} />
               
               <Route path="*" element={<NotFound />} />
             </Routes>

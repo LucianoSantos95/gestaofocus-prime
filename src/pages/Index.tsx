@@ -71,7 +71,7 @@ const Index = () => {
       details: "O sistema all-in-one para gestão empresarial completa. Centralize todas as operações da sua empresa em um único lugar: controle financeiro com fluxo de caixa automático, CRM com pipeline de vendas, gestão de projetos e tarefas, controle de estoque, dashboards executivos com KPIs em tempo real e relatórios personalizados. Tudo integrado e sincronizado automaticamente."
     },
     {
-      title: "metodofocus - Comunidade Empresarial",
+      title: "Focus Club - Comunidade Empresarial",
       description: "Comunidade exclusiva de empreendedores e gestores com aprendizado contínuo em produtividade, otimização de processos, gestão estratégica e networking qualificado.",
       features: [
         "Aulas exclusivas semanais",
@@ -79,7 +79,7 @@ const Index = () => {
         "Mentorias em grupo",
         "Recursos exclusivos"
       ],
-      href: "/metodofocus",
+      href: "/focus-club",
       icon: Users,
       gradient: "from-pink-500 to-violet-500",
       details: "Mais que uma comunidade, uma família de empreendedores e gestores que querem crescer juntos. Acesso a aulas semanais exclusivas sobre produtividade, gestão e estratégia, networking qualificado com outros membros, mentorias em grupo mensais, biblioteca completa de recursos (templates, checklists, frameworks), eventos presenciais e online, além de descontos em todos os serviços Focus."

@@ -38,7 +38,6 @@ const Navigation = () => {
 
   const finalNavItems = [
     { name: "Focus Club", href: "/focus-club", highlight: true },
-    { name: "Método FOCUS", href: "/metodofocus" },
     { name: "Blog", href: "/blog" },
   ];
 
