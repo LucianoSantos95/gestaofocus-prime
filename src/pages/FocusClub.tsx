@@ -198,7 +198,7 @@ export default function FocusClub() {
                     ))}
                   </ul>
                   
-                  <Button variant="outline" className="w-full" size="lg" onClick={() => window.location.href = '/auth/signup'}>
+                  <Button variant="outline" className="w-full" size="lg" onClick={() => window.location.href = '/lista-espera'}>
                     Criar Conta Gratuita
                   </Button>
                 </CardContent>
@@ -246,7 +246,7 @@ export default function FocusClub() {
                     ))}
                   </ul>
                   
-                  <Button className="w-full" size="lg" onClick={() => window.location.href = '/auth/signup'}>
+                  <Button className="w-full" size="lg" onClick={() => window.location.href = '/lista-espera'}>
                     Começar Trial Gratuito
                   </Button>
                 </CardContent>
@@ -346,7 +346,7 @@ export default function FocusClub() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="text-lg px-8" onClick={() => window.location.href = '/auth/signup'}>
+              <Button size="lg" className="text-lg px-8" onClick={() => window.location.href = '/lista-espera'}>
                 Entrar na Lista de Espera
               </Button>
               <Button 

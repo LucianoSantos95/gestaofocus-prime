@@ -12,6 +12,8 @@ import HubEmpresarial from "./pages/HubEmpresarial";
 import FocusClub from "./pages/FocusClub";
 import SistemasGratuitos from "./pages/SistemasGratuitos";
 import Blog from "./pages/Blog";
+import ListaEspera from "./pages/ListaEspera";
+import ListaEsperaSucesso from "./pages/ListaEsperaSucesso";
 import PoderNotionEmpresas from "./pages/blog/PoderNotionEmpresas";
 import MapeamentoProcessos from "./pages/blog/MapeamentoProcessos";
 import ErrosProdutividade from "./pages/blog/ErrosProdutividade";
@@ -92,6 +94,10 @@ const App = () => (
             <Route path="/metodofocus" element={<FocusClub />} />
             <Route path="/sistemas-gratuitos" element={<SistemasGratuitos />} />
             <Route path="/blog" element={<Blog />} />
+              
+              {/* Waitlist Routes */}
+              <Route path="/lista-espera" element={<ListaEspera />} />
+              <Route path="/lista-espera/sucesso" element={<ListaEsperaSucesso />} />
               <Route path="/blog/poder-do-notion-empresas-produtivas" element={<PoderNotionEmpresas />} />
               <Route path="/blog/mapeamento-processos-crescimento" element={<MapeamentoProcessos />} />
               <Route path="/blog/5-erros-produtividade" element={<ErrosProdutividade />} />
