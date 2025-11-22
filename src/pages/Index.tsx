@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Helmet } from "react-helmet";
-import HeroSection from "@/components/HeroSection";
+import PersonalizedHero from "@/components/PersonalizedHero";
+import ROICalculator from "@/components/ROICalculator";
 import ServiceCard from "@/components/ServiceCard";
 import GuaranteeSection from "@/components/GuaranteeSection";
 import ServicesComparison from "@/components/ServicesComparison";
@@ -147,10 +148,13 @@ const Index = () => {
           })}
         </script>
       </Helmet>
-      {/* Hero Section */}
-      <HeroSection />
+      {/* Personalized Hero Section with A/B Testing */}
+      <PersonalizedHero />
+      
+      {/* ROI Calculator Section */}
+      <ROICalculator />
 
-      {/* Lead Capture Section - Above the fold */}
+      {/* Lead Capture Section */}
       <section className="section-padding bg-background">
         <div className="container-focus">
           <LeadCaptureSection />
