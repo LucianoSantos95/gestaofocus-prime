@@ -3,7 +3,6 @@ import { ArrowRight, Play, Calculator } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { trackWhatsAppClick, trackCTAClick } from "@/lib/analytics";
 import HeroTestimonial from "./HeroTestimonial";
-import TrustedByMini from "./TrustedByMini";
 
 type HeroVersion = "A" | "B" | "C";
 
@@ -155,17 +154,12 @@ const PersonalizedHero = () => {
           </div>
 
           {/* Hero Testimonial */}
-          <div className="mb-12 animate-slide-up delay-400">
+          <div className="mb-16 animate-slide-up delay-400">
             <HeroTestimonial />
           </div>
 
-          {/* Trusted By - Mini Version */}
-          <div className="mb-8 animate-slide-up delay-500">
-            <TrustedByMini />
-          </div>
-
           {/* Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-xl mx-auto animate-slide-up delay-600">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-xl mx-auto animate-slide-up delay-500">
             <div className="text-center">
               <div className="text-3xl font-bold text-primary mb-2">+12.000</div>
               <div className="text-sm text-foreground-muted">Downloads de sistemas</div>
