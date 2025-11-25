@@ -10,14 +10,17 @@ export default function OnboardingTour() {
     const tourCompleted = localStorage.getItem('onboardingTourCompleted');
     
     if (!tourCompleted) {
-      // Start tour after a short delay
+      // Mark tour as active
+      sessionStorage.setItem('onboardingTourActive', 'true');
+      
+      // Start tour after 5 seconds (increased from 2)
       const timer = setTimeout(() => {
         setRunTour(true);
         trackEvent('onboarding_tour_started', {
           event_category: 'engagement',
           event_label: 'first_visit',
         });
-      }, 2000);
+      }, 5000);
 
       return () => clearTimeout(timer);
     }
@@ -53,6 +56,9 @@ export default function OnboardingTour() {
     if (status === STATUS.FINISHED || status === STATUS.SKIPPED) {
       setRunTour(false);
       localStorage.setItem('onboardingTourCompleted', 'true');
+      // Mark tour as no longer active and set timestamp
+      sessionStorage.removeItem('onboardingTourActive');
+      sessionStorage.setItem('lastPopupClosedTime', Date.now().toString());
       
       trackEvent('onboarding_tour_completed', {
         event_category: 'engagement',

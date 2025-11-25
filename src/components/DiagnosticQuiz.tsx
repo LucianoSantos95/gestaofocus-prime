@@ -115,15 +115,29 @@ const DiagnosticQuiz = () => {
       return;
     }
 
+    // Check if any popup was recently closed (within last 60 seconds)
+    const lastPopupClosed = sessionStorage.getItem('lastPopupClosedTime');
+    if (lastPopupClosed) {
+      const timeSinceClosed = Date.now() - parseInt(lastPopupClosed);
+      if (timeSinceClosed < 60000) {
+        setHasShown(true);
+        return;
+      }
+    }
+
     let timeoutId: NodeJS.Timeout;
     let hasTriggered = false;
 
     const handleScroll = () => {
       if (hasTriggered || hasShown) return;
       
+      // Don't show if onboarding tour is active
+      const onboardingActive = sessionStorage.getItem('onboardingTourActive');
+      if (onboardingActive === 'true') return;
+      
       const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
       
-      if (scrollPercent >= 30) {
+      if (scrollPercent >= 50) {
         hasTriggered = true;
         setIsOpen(true);
         setHasShown(true);
@@ -132,16 +146,20 @@ const DiagnosticQuiz = () => {
       }
     };
 
-    // Trigger after 15 seconds
+    // Trigger after 30 seconds
     timeoutId = setTimeout(() => {
       if (!hasTriggered && !hasShown) {
+        // Don't show if onboarding tour is active
+        const onboardingActive = sessionStorage.getItem('onboardingTourActive');
+        if (onboardingActive === 'true') return;
+        
         hasTriggered = true;
         setIsOpen(true);
         setHasShown(true);
         sessionStorage.setItem("diagnosticQuizShown", "true");
-        trackEvent("diagnostic_quiz_triggered", { trigger: "time", seconds: 15 });
+        trackEvent("diagnostic_quiz_triggered", { trigger: "time", seconds: 30 });
       }
-    }, 15000);
+    }, 30000);
 
     window.addEventListener("scroll", handleScroll);
 
@@ -212,6 +230,9 @@ const DiagnosticQuiz = () => {
       `https://wa.me/5511916742443?text=Ol%C3%A1%2C%20completei%20o%20diagn%C3%B3stico%20e%20gostaria%20de%20saber%20mais%20sobre%20${encodeURIComponent(recommendation)}.%20Meu%20email%3A%20${encodedEmail}`,
       '_blank'
     );
+    
+    // Mark popup as closed with timestamp
+    sessionStorage.setItem('lastPopupClosedTime', Date.now().toString());
     setIsOpen(false);
   };
 
@@ -224,6 +245,7 @@ const DiagnosticQuiz = () => {
       <DialogContent className="max-w-lg">
         <button 
           onClick={() => {
+            sessionStorage.setItem('lastPopupClosedTime', Date.now().toString());
             setIsOpen(false);
             trackEvent("diagnostic_quiz_closed", { step: currentStep });
           }}
