@@ -10,6 +10,8 @@ import ExitIntentPopup from "@/components/ExitIntentPopup";
 import LeadCaptureSection from "@/components/LeadCaptureSection";
 import TimeBasedPopup from "@/components/TimeBasedPopup";
 import OnboardingTour from "@/components/OnboardingTour";
+import DiagnosticQuiz from "@/components/DiagnosticQuiz";
+import VideoModal from "@/components/VideoModal";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -150,6 +152,15 @@ const Index = () => {
       </Helmet>
       {/* Personalized Hero Section with A/B Testing */}
       <PersonalizedHero />
+      
+      {/* Video Demonstration Section */}
+      <section className="section-padding bg-background">
+        <div className="container-focus">
+          <div className="text-center">
+            <VideoModal />
+          </div>
+        </div>
+      </section>
       
       {/* ROI Calculator Section */}
       <ROICalculator />
@@ -416,7 +427,10 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Exit Intent Popup */}
+      {/* Diagnostic Quiz */}
+      <DiagnosticQuiz />
+      
+      {/* Exit Intent Popup v2 */}
       <ExitIntentPopup />
       
       {/* Time & Scroll Based Popup */}
