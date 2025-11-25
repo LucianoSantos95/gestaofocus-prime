@@ -544,16 +544,7 @@ export type Database = {
       }
     }
     Views: {
-      analytics_dashboard: {
-        Row: {
-          event_category: string | null
-          event_count: number | null
-          event_name: string | null
-          time_bucket: string | null
-          unique_sessions: number | null
-        }
-        Relationships: []
-      }
+      [_ in never]: never
     }
     Functions: {
       calculate_bounce_rate: {
@@ -562,6 +553,16 @@ export type Database = {
           bounce_rate: number
           bounced_sessions: number
           total_sessions: number
+        }[]
+      }
+      get_analytics_dashboard: {
+        Args: { days_ago?: number }
+        Returns: {
+          event_category: string
+          event_count: number
+          event_name: string
+          time_bucket: string
+          unique_sessions: number
         }[]
       }
       has_role: {
