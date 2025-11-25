@@ -8,7 +8,6 @@ import ServicesComparison from "@/components/ServicesComparison";
 import TrustedBySection from "@/components/TrustedBySection";
 import ExitIntentPopup from "@/components/ExitIntentPopup";
 import LeadCaptureSection from "@/components/LeadCaptureSection";
-import TimeBasedPopup from "@/components/TimeBasedPopup";
 import OnboardingTour from "@/components/OnboardingTour";
 import DiagnosticQuiz from "@/components/DiagnosticQuiz";
 import VideoModal from "@/components/VideoModal";
@@ -432,9 +431,6 @@ const Index = () => {
       
       {/* Exit Intent Popup v2 */}
       <ExitIntentPopup />
-      
-      {/* Time & Scroll Based Popup */}
-      <TimeBasedPopup />
       
       {/* Onboarding Tour for First Time Visitors */}
       <OnboardingTour />
