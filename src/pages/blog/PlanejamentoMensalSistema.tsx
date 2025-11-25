@@ -31,7 +31,7 @@ const PlanejamentoMensalSistema = () => {
               </ol>
             </nav>
 
-            <img src={planejamentoImage} alt="Sistema de planejamento mensal" className="w-full h-[400px] object-cover rounded-lg mb-8" />
+            <img src={planejamentoImage} alt="Sistema de planejamento mensal que funciona - Método completo passo a passo" width="1200" height="400" className="w-full h-[400px] object-cover rounded-lg mb-8" loading="lazy" />
 
             <header className="mb-8">
               <h1 className="text-4xl md:text-5xl font-bold mb-4">Planejamento Mensal: Como Criar Um Sistema Que Realmente Funciona</h1>

@@ -34,8 +34,11 @@ const Footer = () => {
                 <div className="w-10 h-10 flex items-center justify-center">
                   <img 
                     src="/lovable-uploads/4a125d6e-b8ad-4fde-a87f-349e56af291e.png" 
-                    alt="Focus Logo" 
+                    alt="Focus - Consultoria em Gestão Empresarial e Sistemas Notion" 
+                    width="32"
+                    height="32"
                     className="w-8 h-8 object-contain"
+                    loading="lazy"
                   />
                 </div>
               </Link>

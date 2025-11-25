@@ -171,7 +171,10 @@ const PoderNotionEmpresas = () => {
               src={notionPoderImage} 
               alt="Workspace do Notion mostrando sistema completo de gestão empresarial com projetos, CRM integrado, banco de dados de clientes e dashboards executivos personalizados para empresas produtivas"
               title="Sistema de gestão empresarial no Notion para produtividade"
+              width="1200"
+              height="675"
               className="w-full h-full object-cover"
+              loading="lazy"
             />
           </div>
         </div>

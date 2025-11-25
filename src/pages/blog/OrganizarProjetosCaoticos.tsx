@@ -150,7 +150,7 @@ const OrganizarProjetosCaoticos = () => {
             <span className="text-foreground">Organizar Projetos Caóticos</span>
           </nav>
 
-          <img src={organizarProjetosImage} alt="Organização de projetos caóticos" className="w-full h-[400px] object-cover rounded-lg mb-8" />
+          <img src={organizarProjetosImage} alt="Como organizar projetos caóticos e recuperar o controle da sua gestão" width="1200" height="400" className="w-full h-[400px] object-cover rounded-lg mb-8" loading="lazy" />
 
           <header className="mb-12">
             <div className="inline-block px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">

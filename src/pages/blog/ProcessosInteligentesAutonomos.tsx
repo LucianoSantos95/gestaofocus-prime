@@ -150,7 +150,7 @@ const ProcessosInteligentesAutonomos = () => {
             <span className="text-foreground">Processos Inteligentes Autônomos</span>
           </nav>
 
-          <img src={processosImage} alt="Processos inteligentes e autônomos" className="w-full h-[400px] object-cover rounded-lg mb-8" />
+          <img src={processosImage} alt="Como criar processos inteligentes e autônomos para sua empresa" width="1200" height="400" className="w-full h-[400px] object-cover rounded-lg mb-8" loading="lazy" />
 
           <header className="mb-12">
             <div className="inline-block px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">

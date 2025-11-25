@@ -15,7 +15,7 @@ const MetodosProdutividade2025 = () => {
         <Navigation />
         <main className="flex-grow">
           <article className="container mx-auto px-4 py-12 max-w-4xl">
-            <img src={metodosImage} alt="Métodos de produtividade 2025" className="w-full h-[400px] object-cover rounded-lg mb-8" />
+            <img src={metodosImage} alt="Métodos de produtividade que realmente funcionam em 2025 - Guia completo" width="1200" height="400" className="w-full h-[400px] object-cover rounded-lg mb-8" loading="lazy" />
             <h1 className="text-4xl font-bold mb-8">Métodos de Produtividade Que Realmente Funcionam em 2025</h1>
             <div className="prose prose-lg max-w-none">
               <p className="text-lg mb-6 leading-relaxed">

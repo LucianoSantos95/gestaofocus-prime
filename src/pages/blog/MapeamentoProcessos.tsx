@@ -161,7 +161,10 @@ const MapeamentoProcessos = () => {
               src={mapeamentoImage} 
               alt="Diagrama BPMN de mapeamento de processos empresariais mostrando workflow, fluxograma de gestão de processos com identificação de gargalos, otimização de fluxo de trabalho e melhoria contínua usando metodologia Lean"
               title="Mapeamento de processos para crescimento empresarial"
+              width="1200"
+              height="675"
               className="w-full h-full object-cover"
+              loading="lazy"
             />
           </div>
         </div>

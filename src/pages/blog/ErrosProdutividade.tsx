@@ -161,7 +161,10 @@ const ErrosProdutividade = () => {
               src={errosImage} 
               alt="Profissional analisando erros de produtividade no trabalho, mostrando técnicas de gestão de tempo, pomodoro, deep work e time blocking para melhorar eficiência e foco"
               title="5 erros de produtividade mais comuns no trabalho"
+              width="1200"
+              height="675"
               className="w-full h-full object-cover"
+              loading="lazy"
             />
           </div>
         </div>
