@@ -13,7 +13,8 @@ import {
   BookOpen, 
   MessageSquare, 
   LogOut,
-  Sparkles
+  Sparkles,
+  BarChart3
 } from 'lucide-react';
 
 export default function Dashboard() {
@@ -77,10 +78,19 @@ export default function Dashboard() {
             </Badge>
           </div>
           
-          <Button variant="ghost" size="sm" onClick={handleLogout}>
-            <LogOut className="w-4 h-4 mr-2" />
-            Sair
-          </Button>
+          <div className="flex items-center gap-2">
+            {role === 'admin' && (
+              <Button variant="outline" size="sm" onClick={() => navigate('/dashboard/analytics')}>
+                <BarChart3 className="w-4 h-4 mr-2" />
+                Analytics
+              </Button>
+            )}
+            
+            <Button variant="ghost" size="sm" onClick={handleLogout}>
+              <LogOut className="w-4 h-4 mr-2" />
+              Sair
+            </Button>
+          </div>
         </div>
       </header>
 

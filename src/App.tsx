@@ -61,6 +61,7 @@ import SignUp from "./pages/auth/SignUp";
 import Login from "./pages/auth/Login";
 import ForgotPassword from "./pages/auth/ForgotPassword";
 import Dashboard from "./pages/dashboard/Dashboard";
+import Analytics from "./pages/dashboard/Analytics";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { useAnalytics } from "./hooks/useAnalytics";
 import CookieConsent from "./components/CookieConsent";
@@ -153,6 +154,12 @@ const App = () => (
               <Route path="/dashboard" element={
                 <ProtectedRoute>
                   <Dashboard />
+                </ProtectedRoute>
+              } />
+              
+              <Route path="/dashboard/analytics" element={
+                <ProtectedRoute>
+                  <Analytics />
                 </ProtectedRoute>
               } />
               
