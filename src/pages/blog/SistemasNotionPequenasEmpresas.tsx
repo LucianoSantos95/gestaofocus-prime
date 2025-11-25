@@ -150,7 +150,7 @@ const SistemasNotionPequenasEmpresas = () => {
             <span className="text-foreground">3 Sistemas Notion Para Pequenas Empresas</span>
           </nav>
 
-          <img src={sistemasNotionImage} alt="Sistemas Notion para pequenas empresas" className="w-full h-[400px] object-cover rounded-lg mb-8" />
+          <img src={sistemasNotionImage} alt="3 sistemas Notion essenciais para pequenas empresas crescerem organizadas" width="1200" height="400" className="w-full h-[400px] object-cover rounded-lg mb-8" loading="lazy" />
 
           <header className="mb-12">
             <div className="inline-block px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">

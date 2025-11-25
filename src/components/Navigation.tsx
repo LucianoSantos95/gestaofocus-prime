@@ -55,8 +55,11 @@ const Navigation = () => {
           <Link to="/" className="flex items-center space-x-2 group">
             <img 
               src="/lovable-uploads/focus-logo.png" 
-              alt="Focus" 
+              alt="Focus - Consultoria em Gestão Empresarial e Sistemas Notion" 
+              width="120"
+              height="32"
               className="h-8 group-hover:scale-105 transition-transform duration-200"
+              loading="eager"
             />
           </Link>
 

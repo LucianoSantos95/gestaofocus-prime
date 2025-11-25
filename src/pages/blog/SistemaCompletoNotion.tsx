@@ -125,7 +125,10 @@ const SistemaCompletoNotion = () => {
               src={sistemaCompletoImage} 
               alt="Dashboard integrado mostrando sistema completo de automação no Notion com módulos de CRM, gestão de projetos, base de conhecimento e automações usando Zapier e API Notion para empresas"
               title="Sistema completo de automação empresarial no Notion"
+              width="1200"
+              height="675"
               className="w-full h-full object-cover"
+              loading="lazy"
             />
           </div>
         </div>

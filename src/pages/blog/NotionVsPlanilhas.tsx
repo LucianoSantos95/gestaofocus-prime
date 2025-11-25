@@ -123,8 +123,11 @@ const NotionVsPlanilhas = () => {
 
           <img 
             src={notionVsPlanilhasImage} 
-            alt="Comparação entre Notion e planilhas para gestão empresarial" 
+            alt="Comparação visual entre Notion e planilhas Excel mostrando vantagens de gestão empresarial moderna" 
+            width="1200"
+            height="400"
             className="w-full h-[400px] object-cover rounded-lg mb-8"
+            loading="lazy"
           />
 
           <header className="mb-12">

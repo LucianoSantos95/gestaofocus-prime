@@ -15,7 +15,7 @@ const MetasInteligentesSmart = () => {
         <Navigation />
         <main className="flex-grow">
           <article className="container mx-auto px-4 py-12 max-w-4xl">
-            <img src={metasImage} alt="Metas SMART" className="w-full h-[400px] object-cover rounded-lg mb-8" />
+            <img src={metasImage} alt="Como criar metas SMART inteligentes para aumentar sua produtividade" width="1200" height="400" className="w-full h-[400px] object-cover rounded-lg mb-8" loading="lazy" />
             <h1 className="text-4xl font-bold mb-8">Como Criar Metas Inteligentes (SMART) Sem Complicar</h1>
             <div className="prose prose-lg max-w-none">
               <p className="text-lg mb-6 leading-relaxed">

@@ -161,7 +161,10 @@ const GestaoProjetosNotion = () => {
               src={gestaoProjetosImage} 
               alt="Sistema completo de gestão de projetos no Notion mostrando kanban board, sprint planning, roadmap em timeline, backlog de tarefas, templates de projetos e gerenciamento de equipe com visualizações múltiplas"
               title="Gestão de projetos no Notion com kanban e sprint"
+              width="1200"
+              height="675"
               className="w-full h-full object-cover"
+              loading="lazy"
             />
           </div>
         </div>
