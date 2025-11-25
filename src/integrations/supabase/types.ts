@@ -14,6 +14,48 @@ export type Database = {
   }
   public: {
     Tables: {
+      analytics_events: {
+        Row: {
+          created_at: string | null
+          event_category: string | null
+          event_label: string | null
+          event_name: string
+          event_value: number | null
+          id: string
+          page_path: string | null
+          referrer: string | null
+          session_id: string | null
+          user_agent: string | null
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          event_category?: string | null
+          event_label?: string | null
+          event_name: string
+          event_value?: number | null
+          id?: string
+          page_path?: string | null
+          referrer?: string | null
+          session_id?: string | null
+          user_agent?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          event_category?: string | null
+          event_label?: string | null
+          event_name?: string
+          event_value?: number | null
+          id?: string
+          page_path?: string | null
+          referrer?: string | null
+          session_id?: string | null
+          user_agent?: string | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       community_comments: {
         Row: {
           content: string
@@ -502,9 +544,26 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      analytics_dashboard: {
+        Row: {
+          event_category: string | null
+          event_count: number | null
+          event_name: string | null
+          time_bucket: string | null
+          unique_sessions: number | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
+      calculate_bounce_rate: {
+        Args: { hours_ago?: number }
+        Returns: {
+          bounce_rate: number
+          bounced_sessions: number
+          total_sessions: number
+        }[]
+      }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
