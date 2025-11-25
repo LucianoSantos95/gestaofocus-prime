@@ -44,7 +44,10 @@ const TrustedBySection = () => {
                 <img 
                   src={company.logo} 
                   alt={`Logo ${company.name}`}
+                  width="120"
+                  height="80"
                   className="h-20 w-auto object-contain"
+                  loading="lazy"
                 />
               </div>
             </Card>

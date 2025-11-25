@@ -29,7 +29,10 @@ const TrustedByMini = () => {
             <img 
               src={company.logo} 
               alt={`${company.name} logo`}
+              width="120"
+              height="40"
               className="h-8 md:h-10 w-auto object-contain"
+              loading="lazy"
             />
           </div>
         ))}
