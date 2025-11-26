@@ -36,6 +36,9 @@ import metasSmartImage from "@/assets/blog/metas-inteligentes-smart.jpg";
 import guiaFocoImage from "@/assets/blog/guia-foco-evitar-distracoes.jpg";
 import metodosProdutividadeImage from "@/assets/blog/metodos-produtividade-2025.jpg";
 import organizarDocumentosImage from "@/assets/blog/organizar-documentos-empresa.jpg";
+import rotinaMatinalImage from "@/assets/blog/rotina-matinal-poderosa.jpg";
+import organizacaoFinanceiraImage from "@/assets/blog/organizacao-financeira-pessoal.jpg";
+import concentracaoImage from "@/assets/blog/melhorar-concentracao-distracoes.jpg";
 
 const Blog = () => {
   const [showArchived, setShowArchived] = useState(false);
@@ -55,6 +58,36 @@ const Blog = () => {
   const blogPosts = [
     {
       id: 1,
+      title: "Como Criar uma Rotina Matinal Poderosa Que Melhora Seu Dia em 15 Minutos",
+      excerpt: "O método simples e comprovado que transforma suas manhãs e multiplica sua produtividade diária em apenas 15 minutos.",
+      date: "2025-02-20",
+      readTime: "8 min",
+      category: "Produtividade",
+      slug: "rotina-matinal-poderosa-15-minutos",
+      image: rotinaMatinalImage
+    },
+    {
+      id: 2,
+      title: "Organização Financeira Pessoal: Como Controlar Seus Gastos Usando Um Sistema Simples",
+      excerpt: "O método prático que elimina a bagunça financeira sem precisar de planilhas complexas ou aplicativos complicados.",
+      date: "2025-02-20",
+      readTime: "10 min",
+      category: "Finanças Pessoais",
+      slug: "organizacao-financeira-pessoal-sistema-simples",
+      image: organizacaoFinanceiraImage
+    },
+    {
+      id: 3,
+      title: "Como Melhorar Sua Concentração em Um Mundo Cheio de Distrações (Guia Prático)",
+      excerpt: "7 técnicas comprovadas para alcançar estado de foco profundo mesmo com notificações, redes sociais e interrupções constantes.",
+      date: "2025-02-20",
+      readTime: "12 min",
+      category: "Foco",
+      slug: "melhorar-concentracao-mundo-distracoes",
+      image: concentracaoImage
+    },
+    {
+      id: 4,
       title: "Checklist Diário: O Método Simples Que Aumenta Sua Produtividade em Até 40%",
       excerpt: "Descubra o sistema de checklist que profissionais de alta performance usam para maximizar resultados e reduzir stress diário.",
       date: "2025-02-15",

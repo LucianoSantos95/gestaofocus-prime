@@ -48,7 +48,7 @@ import OrganizarVidaDigital from "./pages/blog/OrganizarVidaDigital";
 import TecnicaPomodoroGuia from "./pages/blog/TecnicaPomodoroGuia";
 import PlanejamentoAnualZero from "./pages/blog/PlanejamentoAnualZero";
 import CriarHabitosDuram from "./pages/blog/CriarHabitosDuram";
-import RotinaMaFtinalPoderosa from "./pages/blog/RotinaMaFtinalPoderosa";
+import RotinaMatinalPoderosa from "./pages/blog/RotinaMatinalPoderosa";
 import OrganizacaoFinanceiraPessoal from "./pages/blog/OrganizacaoFinanceiraPessoal";
 import MelhorarConcentracaoDistracoes from "./pages/blog/MelhorarConcentracaoDistracoes";
 import AboutFocus from "./pages/AboutFocus";
@@ -137,7 +137,7 @@ const App = () => (
               <Route path="/blog/tecnica-pomodoro-guia-definitivo" element={<TecnicaPomodoroGuia />} />
               <Route path="/blog/planejamento-anual-do-zero" element={<PlanejamentoAnualZero />} />
               <Route path="/blog/criar-habitos-que-duram" element={<CriarHabitosDuram />} />
-              <Route path="/blog/rotina-matinal-poderosa-15-minutos" element={<RotinaMaFtinalPoderosa />} />
+              <Route path="/blog/rotina-matinal-poderosa-15-minutos" element={<RotinaMatinalPoderosa />} />
               <Route path="/blog/organizacao-financeira-pessoal-sistema-simples" element={<OrganizacaoFinanceiraPessoal />} />
               <Route path="/blog/melhorar-concentracao-mundo-distracoes" element={<MelhorarConcentracaoDistracoes />} />
               <Route path="/sobre" element={<AboutFocus />} />

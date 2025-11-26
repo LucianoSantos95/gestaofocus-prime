@@ -140,7 +140,7 @@ export default function MelhorarConcentracaoDistracoes() {
                   <ul className="space-y-2 text-foreground-muted">
                     <li>• Trabalhe em blocos de 90 minutos de foco total</li>
                     <li>• Pause 15-20 minutos entre blocos</li>
-                    <li>• Máximo 2-3 blocos por dia (qualidade > quantidade)</li>
+                    <li>• Máximo 2-3 blocos por dia (qualidade &gt; quantidade)</li>
                   </ul>
                 </div>
 
