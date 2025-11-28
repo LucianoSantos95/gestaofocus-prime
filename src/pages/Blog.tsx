@@ -39,6 +39,9 @@ import organizarDocumentosImage from "@/assets/blog/organizar-documentos-empresa
 import rotinaMatinalImage from "@/assets/blog/rotina-matinal-poderosa.jpg";
 import organizacaoFinanceiraImage from "@/assets/blog/organizacao-financeira-pessoal.jpg";
 import concentracaoImage from "@/assets/blog/melhorar-concentracao-distracoes.jpg";
+import mapasMentaisImage from "@/assets/blog/mapas-mentais-organizar-ideias.jpg";
+import gestaoTempoImage from "@/assets/blog/gestao-tempo-quem-vive-ocupado.jpg";
+import sistemaEstudosImage from "@/assets/blog/sistema-estudos-eficiente.jpg";
 
 const Blog = () => {
   const [showArchived, setShowArchived] = useState(false);
@@ -88,6 +91,36 @@ const Blog = () => {
     },
     {
       id: 4,
+      title: "Como Usar Mapas Mentais para Organizar Ideias e Aumentar a Produtividade",
+      excerpt: "Transforme ideias complexas em visualizações simples que aceleram decisões e aumentam sua clareza mental.",
+      date: "2025-02-20",
+      readTime: "8 min",
+      category: "Produtividade",
+      slug: "mapas-mentais-organizar-ideias-produtividade",
+      image: mapasMentaisImage
+    },
+    {
+      id: 5,
+      title: "Gestão do Tempo para Quem Vive Ocupado: Estratégias Simples que Realmente Funcionam",
+      excerpt: "Recupere o controle da sua agenda com técnicas práticas que cabem na rotina de quem tem pouco tempo.",
+      date: "2025-02-20",
+      readTime: "9 min",
+      category: "Gestão do Tempo",
+      slug: "gestao-tempo-ocupado-estrategias-funcionam",
+      image: gestaoTempoImage
+    },
+    {
+      id: 6,
+      title: "Como Criar um Sistema de Estudos Eficiente Usando Técnicas Modernas de Aprendizagem",
+      excerpt: "Transforme sua forma de estudar com métodos científicos que maximizam retenção e economizam tempo.",
+      date: "2025-02-20",
+      readTime: "10 min",
+      category: "Aprendizagem",
+      slug: "sistema-estudos-eficiente-tecnicas-modernas",
+      image: sistemaEstudosImage
+    },
+    {
+      id: 7,
       title: "Checklist Diário: O Método Simples Que Aumenta Sua Produtividade em Até 40%",
       excerpt: "Descubra o sistema de checklist que profissionais de alta performance usam para maximizar resultados e reduzir stress diário.",
       date: "2025-02-15",
