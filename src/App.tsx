@@ -51,6 +51,9 @@ import CriarHabitosDuram from "./pages/blog/CriarHabitosDuram";
 import RotinaMatinalPoderosa from "./pages/blog/RotinaMatinalPoderosa";
 import OrganizacaoFinanceiraPessoal from "./pages/blog/OrganizacaoFinanceiraPessoal";
 import MelhorarConcentracaoDistracoes from "./pages/blog/MelhorarConcentracaoDistracoes";
+import MapasMentaisOrganizarIdeias from "./pages/blog/MapasMentaisOrganizarIdeias";
+import GestaoTempoQuemViveOcupado from "./pages/blog/GestaoTempoQuemViveOcupado";
+import SistemaEstudosEficiente from "./pages/blog/SistemaEstudosEficiente";
 import AboutFocus from "./pages/AboutFocus";
 import Privacidade from "./pages/Privacidade";
 import TermosUso from "./pages/TermosUso";
@@ -140,6 +143,9 @@ const App = () => (
               <Route path="/blog/rotina-matinal-poderosa-15-minutos" element={<RotinaMatinalPoderosa />} />
               <Route path="/blog/organizacao-financeira-pessoal-sistema-simples" element={<OrganizacaoFinanceiraPessoal />} />
               <Route path="/blog/melhorar-concentracao-mundo-distracoes" element={<MelhorarConcentracaoDistracoes />} />
+              <Route path="/blog/mapas-mentais-organizar-ideias-produtividade" element={<MapasMentaisOrganizarIdeias />} />
+              <Route path="/blog/gestao-tempo-ocupado-estrategias-funcionam" element={<GestaoTempoQuemViveOcupado />} />
+              <Route path="/blog/sistema-estudos-eficiente-tecnicas-modernas" element={<SistemaEstudosEficiente />} />
               <Route path="/sobre" element={<AboutFocus />} />
               <Route path="/sobre-focus" element={<AboutFocus />} />
               <Route path="/privacidade" element={<Privacidade />} />
