@@ -23,10 +23,10 @@ Todas as cores DEVEM ser HSL para consistência.
     --foreground: 210 40% 98%;
     --foreground-muted: 210 20% 75%;
     
-    /* Brand Colors */
-    --primary: 213 94% 68%;
+    /* Brand Colors - Verde Esmeralda */
+    --primary: 160 84% 39%;
     --primary-foreground: 210 40% 98%;
-    --primary-glow: 213 100% 85%;
+    --primary-glow: 160 84% 55%;
     
     /* Accent Colors */
     --accent: 210 10% 12%;
@@ -46,13 +46,13 @@ Todas as cores DEVEM ser HSL para consistência.
     --ring: 213 94% 68%;
     
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(213 94% 68%) 0%, hsl(213 100% 85%) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(160 84% 39%) 0%, hsl(160 84% 55%) 100%);
     --gradient-dark: linear-gradient(180deg, hsl(210 15% 3%) 0%, hsl(210 12% 6%) 100%);
     --gradient-card: linear-gradient(145deg, hsl(210 10% 9%) 0%, hsl(210 12% 6%) 100%);
     
     /* Shadows */
     --shadow-elegant: 0 20px 25px -5px hsl(210 40% 1% / 0.5), 0 10px 10px -5px hsl(210 40% 1% / 0.2);
-    --shadow-glow: 0 0 50px hsl(213 94% 68% / 0.15);
+    --shadow-glow: 0 0 50px hsl(160 84% 39% / 0.15);
     
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -83,7 +83,7 @@ Todas as cores DEVEM ser HSL para consistência.
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 40px hsl(213 94% 68% / 0.3);
+    text-shadow: 0 0 40px hsl(160 84% 39% / 0.3);
   }
   
   .hero-subtitle {
@@ -165,10 +165,10 @@ Todas as cores DEVEM ser HSL para consistência.
 
 @keyframes glow {
   0%, 100% {
-    box-shadow: 0 0 20px hsl(213 94% 68% / 0.2);
+    box-shadow: 0 0 20px hsl(160 84% 39% / 0.2);
   }
   50% {
-    box-shadow: 0 0 40px hsl(213 94% 68% / 0.4);
+    box-shadow: 0 0 40px hsl(160 84% 39% / 0.4);
   }
 }
 
