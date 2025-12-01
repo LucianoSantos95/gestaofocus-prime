@@ -6,8 +6,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { LineChart, Line, BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
-import { ArrowLeft, TrendingUp, TrendingDown, Users, MousePointerClick, Eye, Activity } from "lucide-react";
+import { ArrowLeft, TrendingUp, TrendingDown, Users, MousePointerClick, Eye, Activity, Download } from "lucide-react";
+import { exportAnalyticsToCSV } from "@/lib/exportAnalytics";
+import { useToast } from "@/hooks/use-toast";
 
 interface BounceRateData {
   bounce_rate: number;
@@ -31,10 +34,12 @@ interface PopupConversion {
 
 const Analytics = () => {
   const navigate = useNavigate();
+  const { toast } = useToast();
   const { role, isLoading: roleLoading } = useUserRole();
   const [bounceRate, setBounceRate] = useState<BounceRateData | null>(null);
   const [events, setEvents] = useState<EventData[]>([]);
   const [loading, setLoading] = useState(true);
+  const [period, setPeriod] = useState<string>("7");
 
   useEffect(() => {
     if (!roleLoading && role !== 'admin') {
@@ -48,7 +53,7 @@ const Analytics = () => {
       const interval = setInterval(loadAnalytics, 30000);
       return () => clearInterval(interval);
     }
-  }, [role, roleLoading, navigate]);
+  }, [role, roleLoading, navigate, period]);
 
   const loadAnalytics = async () => {
     try {
@@ -61,9 +66,9 @@ const Analytics = () => {
         setBounceRate(bounceData[0]);
       }
 
-      // Get events data
+      // Get events data based on selected period
       const { data: eventsData, error: eventsError } = await supabase
-        .rpc('get_analytics_dashboard', { days_ago: 7 });
+        .rpc('get_analytics_dashboard', { days_ago: parseInt(period) });
       
       if (eventsError) throw eventsError;
       setEvents(eventsData || []);
@@ -72,6 +77,39 @@ const Analytics = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleExport = () => {
+    if (!bounceRate || events.length === 0) {
+      toast({
+        title: "Sem dados para exportar",
+        description: "Não há dados disponíveis no período selecionado.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    const periodLabels: Record<string, string> = {
+      "1": "Últimas 24 horas",
+      "7": "Últimos 7 dias",
+      "30": "Últimos 30 dias",
+      "90": "Últimos 90 dias",
+    };
+
+    exportAnalyticsToCSV(
+      {
+        bounceRate: bounceRate.bounce_rate,
+        totalSessions: bounceRate.total_sessions,
+        bouncedSessions: bounceRate.bounced_sessions,
+        events,
+      },
+      periodLabels[period] || `${period} dias`
+    );
+
+    toast({
+      title: "Exportado com sucesso!",
+      description: "Os dados de analytics foram exportados para CSV.",
+    });
   };
 
   if (roleLoading || loading) {
@@ -144,7 +182,7 @@ const Analytics = () => {
     <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-8 gap-4">
           <div className="flex items-center gap-4">
             <Button variant="ghost" onClick={() => navigate('/dashboard')}>
               <ArrowLeft className="h-4 w-4 mr-2" />
@@ -155,10 +193,27 @@ const Analytics = () => {
               <p className="text-muted-foreground">Monitoramento em tempo real</p>
             </div>
           </div>
-          <Badge variant="outline" className="text-sm">
-            <Activity className="h-3 w-3 mr-1" />
-            Atualiza a cada 30s
-          </Badge>
+          <div className="flex items-center gap-3">
+            <Select value={period} onValueChange={setPeriod}>
+              <SelectTrigger className="w-[180px]">
+                <SelectValue placeholder="Período" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="1">Últimas 24h</SelectItem>
+                <SelectItem value="7">Últimos 7 dias</SelectItem>
+                <SelectItem value="30">Últimos 30 dias</SelectItem>
+                <SelectItem value="90">Últimos 90 dias</SelectItem>
+              </SelectContent>
+            </Select>
+            <Button onClick={handleExport} variant="outline">
+              <Download className="h-4 w-4 mr-2" />
+              Exportar CSV
+            </Button>
+            <Badge variant="outline" className="text-sm">
+              <Activity className="h-3 w-3 mr-1" />
+              Atualiza a cada 30s
+            </Badge>
+          </div>
         </div>
 
         {/* Key Metrics */}
@@ -189,7 +244,7 @@ const Analytics = () => {
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">{totalEvents}</div>
-              <p className="text-xs text-muted-foreground">Últimos 7 dias</p>
+              <p className="text-xs text-muted-foreground">Período selecionado</p>
             </CardContent>
           </Card>
 
@@ -200,7 +255,7 @@ const Analytics = () => {
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">{totalSessions}</div>
-              <p className="text-xs text-muted-foreground">Últimos 7 dias</p>
+              <p className="text-xs text-muted-foreground">Período selecionado</p>
             </CardContent>
           </Card>
 
@@ -330,7 +385,7 @@ const Analytics = () => {
             <Card>
               <CardHeader>
                 <CardTitle>Top 10 Eventos</CardTitle>
-                <CardDescription>Eventos mais frequentes nos últimos 7 dias</CardDescription>
+                <CardDescription>Eventos mais frequentes no período selecionado</CardDescription>
               </CardHeader>
               <CardContent>
                 <ResponsiveContainer width="100%" height={400}>
