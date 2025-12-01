@@ -62,6 +62,13 @@ export const trackPageView = (pagePath: string, pageTitle?: string) => {
       page_title: pageTitle,
     });
   }
+  
+  // Also save to Supabase as a page_view event
+  saveEventToSupabase('page_view', {
+    event_category: 'navigation',
+    event_label: pageTitle || pagePath,
+    page_title: pageTitle,
+  });
 };
 
 // Specific tracking functions for common actions

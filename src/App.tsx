@@ -70,14 +70,16 @@ import Dashboard from "./pages/dashboard/Dashboard";
 import Analytics from "./pages/dashboard/Analytics";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { useAnalytics } from "./hooks/useAnalytics";
+import { usePageTracking } from "./hooks/usePageTracking";
 import CookieConsent from "./components/CookieConsent";
 import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
-// Analytics component to track page views
+// Analytics component to track page views and engagement
 const AnalyticsProvider = () => {
   useAnalytics();
+  usePageTracking();
   return null;
 };
 
