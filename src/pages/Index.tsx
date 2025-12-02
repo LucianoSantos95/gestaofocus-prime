@@ -11,10 +11,19 @@ import {
   Download,
   Star,
   CheckCircle,
-  BookOpen,
   ChevronRight
 } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
+
+// Importar imagens dos produtos
+import hubEmpresarialPro from "@/assets/hub-empresarial-pro.png";
+import controleFinanceiroPro from "@/assets/controle-financeiro-pro.png";
+import sprintProdutividade from "@/assets/sprint-produtividade.png";
+
+// Importar imagens do blog
+import blogProdutividade from "@/assets/blog/produtividade-fazer-o-que-importa.jpg";
+import blogIncendios from "@/assets/blog/parar-apagar-incendios.jpg";
+import blogClareza from "@/assets/blog/clareza-projetos-notion.jpg";
 
 // Blog articles data (últimos 3 artigos)
 const blogArticles = [
@@ -22,19 +31,19 @@ const blogArticles = [
     title: "Produtividade não é fazer mais, é fazer o que importa",
     description: "Descubra como focar no que realmente gera resultado e parar de desperdiçar tempo.",
     slug: "produtividade-fazer-o-que-importa",
-    image: "/src/assets/blog/produtividade-fazer-o-que-importa.jpg"
+    image: blogProdutividade
   },
   {
     title: "Por que sua empresa está sempre apagando incêndios",
     description: "Entenda o que impede sua empresa de crescer e como sair do ciclo de urgências.",
     slug: "parar-apagar-incendios-empresa",
-    image: "/src/assets/blog/parar-apagar-incendios.jpg"
+    image: blogIncendios
   },
   {
     title: "Como usar o Notion para ter clareza total nos seus projetos",
     description: "Um guia prático para organizar projetos no Notion de forma simples e eficiente.",
     slug: "clareza-projetos-notion",
-    image: "/src/assets/blog/clareza-projetos-notion.jpg"
+    image: blogClareza
   }
 ];
 
@@ -125,8 +134,8 @@ const Index = () => {
             <div className="relative animate-slide-up hidden lg:block">
               <div className="relative rounded-2xl overflow-hidden border border-card-border shadow-elegant">
                 <img 
-                  src="/lovable-uploads/hub-empresarial-og.jpg" 
-                  alt="Dashboard Notion Focus" 
+                  src={hubEmpresarialPro} 
+                  alt="Dashboard Notion Focus - Hub Empresarial PRO" 
                   className="w-full h-auto"
                   loading="lazy"
                 />
@@ -234,7 +243,7 @@ const Index = () => {
             <Card className="service-card group h-full flex flex-col">
               <div className="mb-4">
                 <img 
-                  src="/lovable-uploads/hub-empresarial-og.jpg" 
+                  src={hubEmpresarialPro} 
                   alt="Hub Empresarial PRO" 
                   className="w-full h-40 object-cover rounded-xl"
                   loading="lazy"
@@ -259,7 +268,7 @@ const Index = () => {
             <Card className="service-card group h-full flex flex-col">
               <div className="mb-4">
                 <img 
-                  src="/lovable-uploads/controle-financeiro.jpg" 
+                  src={controleFinanceiroPro} 
                   alt="Controle Financeiro PRO" 
                   className="w-full h-40 object-cover rounded-xl"
                   loading="lazy"
@@ -284,7 +293,7 @@ const Index = () => {
             <Card className="service-card group h-full flex flex-col">
               <div className="mb-4">
                 <img 
-                  src="/src/assets/sprint-dia-01.png" 
+                  src={sprintProdutividade} 
                   alt="Sprint de Produtividade" 
                   className="w-full h-40 object-cover rounded-xl"
                   loading="lazy"
@@ -311,7 +320,7 @@ const Index = () => {
                 <img 
                   src="/lovable-uploads/hub-empresarial-free.jpg" 
                   alt="Templates Gratuitos" 
-                  className="w-full h-40 object-cover rounded-xl"
+                  className="w-full h-40 object-contain rounded-xl bg-background-elevated"
                   loading="lazy"
                 />
                 <div className="absolute top-2 right-2 bg-primary text-primary-foreground text-xs font-bold px-2 py-1 rounded-full">
@@ -383,7 +392,7 @@ const Index = () => {
           <div className="grid md:grid-cols-4 gap-8 mb-16">
             <div className="text-center">
               <div className="text-4xl lg:text-5xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-2">
-                +150
+                +13 mil
               </div>
               <p className="text-foreground-muted">Downloads nos templates</p>
             </div>
@@ -473,9 +482,12 @@ const Index = () => {
             {blogArticles.map((article) => (
               <Card key={article.slug} className="service-card group overflow-hidden">
                 <div className="mb-4 -mx-8 -mt-8">
-                  <div className="h-48 bg-background-elevated flex items-center justify-center">
-                    <BookOpen className="w-12 h-12 text-foreground-muted" />
-                  </div>
+                  <img 
+                    src={article.image} 
+                    alt={article.title}
+                    className="w-full h-48 object-cover"
+                    loading="lazy"
+                  />
                 </div>
                 <h3 className="text-lg font-bold text-foreground mb-2 line-clamp-2">
                   {article.title}
