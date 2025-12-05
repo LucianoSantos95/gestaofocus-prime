@@ -19,7 +19,6 @@ import { trackEvent } from "@/lib/analytics";
 import hubEmpresarialPro from "@/assets/hub-empresarial-pro.png";
 import controleFinanceiroPro from "@/assets/controle-financeiro-pro.png";
 import sprintProdutividade from "@/assets/sprint-produtividade.png";
-import focusLogoHero from "@/assets/focus-logo-hero.png";
 
 // Importar imagens do blog
 import blogProdutividade from "@/assets/blog/produtividade-fazer-o-que-importa.jpg";
@@ -131,15 +130,16 @@ const Index = () => {
               </Link>
             </div>
 
-            {/* Logo Focus */}
+            {/* Dashboard Mockup */}
             <div className="relative animate-slide-up hidden lg:block">
-              <div className="relative flex items-center justify-center">
+              <div className="relative rounded-2xl overflow-hidden border border-card-border shadow-elegant">
                 <img 
-                  src={focusLogoHero} 
-                  alt="Focus Gestão Empresarial" 
-                  className="w-80 h-80 object-contain"
+                  src={hubEmpresarialPro} 
+                  alt="Dashboard Notion Focus - Hub Empresarial PRO" 
+                  className="w-full h-auto"
                   loading="lazy"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
               </div>
               <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-primary/10 rounded-full blur-[60px]" />
             </div>
@@ -320,7 +320,7 @@ const Index = () => {
                 <img 
                   src="/lovable-uploads/hub-empresarial-free.jpg" 
                   alt="Templates Gratuitos" 
-                  className="w-full h-40 object-cover rounded-xl"
+                  className="w-full h-40 object-contain rounded-xl bg-background-elevated"
                   loading="lazy"
                 />
                 <div className="absolute top-2 right-2 bg-primary text-primary-foreground text-xs font-bold px-2 py-1 rounded-full">
