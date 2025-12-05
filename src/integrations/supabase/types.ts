@@ -175,6 +175,51 @@ export type Database = {
           },
         ]
       }
+      consultation_leads: {
+        Row: {
+          additional_details: string | null
+          business_type: string
+          created_at: string
+          email: string
+          full_name: string
+          id: string
+          investment_range: string
+          looking_for: string
+          main_objective: string
+          phone: string
+          start_timeline: string
+          uses_notion: string
+        }
+        Insert: {
+          additional_details?: string | null
+          business_type: string
+          created_at?: string
+          email: string
+          full_name: string
+          id?: string
+          investment_range: string
+          looking_for: string
+          main_objective: string
+          phone: string
+          start_timeline: string
+          uses_notion: string
+        }
+        Update: {
+          additional_details?: string | null
+          business_type?: string
+          created_at?: string
+          email?: string
+          full_name?: string
+          id?: string
+          investment_range?: string
+          looking_for?: string
+          main_objective?: string
+          phone?: string
+          start_timeline?: string
+          uses_notion?: string
+        }
+        Relationships: []
+      }
       courses: {
         Row: {
           category: string | null
