@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { z } from 'zod';
 import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -7,6 +8,12 @@ import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import { toast } from 'sonner';
 import { trackEvent } from '@/lib/analytics';
+
+const waitlistSchema = z.object({
+  email: z.string().trim().email('Email inválido').max(255, 'Email muito longo'),
+  fullName: z.string().trim().min(2, 'Nome muito curto').max(100, 'Nome muito longo'),
+  mainChallenge: z.string().trim().max(500, 'Texto muito longo').optional(),
+});
 
 interface WaitlistFormProps {
   source?: 'landing' | 'blog' | 'popup';
@@ -24,8 +31,15 @@ export function WaitlistForm({ source = 'landing', onSuccess }: WaitlistFormProp
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!email || !fullName) {
-      toast.error('Por favor, preencha seu nome e email');
+    // Validate with Zod schema
+    const result = waitlistSchema.safeParse({ 
+      email, 
+      fullName, 
+      mainChallenge: mainChallenge || undefined 
+    });
+    
+    if (!result.success) {
+      toast.error(result.error.errors[0].message);
       return;
     }
 
@@ -34,9 +48,9 @@ export function WaitlistForm({ source = 'landing', onSuccess }: WaitlistFormProp
     const { error } = await supabase
       .from('waitlist')
       .insert({
-        email: email.trim().toLowerCase(),
-        full_name: fullName.trim(),
-        main_challenge: mainChallenge.trim() || null,
+        email: result.data.email.toLowerCase(),
+        full_name: result.data.fullName,
+        main_challenge: result.data.mainChallenge || null,
         wants_trial: wantsTrial,
         source,
         interest: interest.length > 0 ? interest.join(', ') : null,
