@@ -1,29 +1,40 @@
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { 
   ArrowRight, 
   Briefcase, 
   Building2, 
   Users, 
-  Sparkles,
   Download,
-  Star,
   CheckCircle,
-  ChevronRight
+  ChevronRight,
+  Sparkles,
+  Bot,
+  Target,
+  Clock,
+  Layers,
+  Zap,
+  BookOpen,
+  Star
 } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
 
 // Importar imagens dos produtos
 import hubEmpresarialPro from "@/assets/hub-empresarial-pro.png";
 import controleFinanceiroPro from "@/assets/controle-financeiro-pro.png";
 import sprintProdutividade from "@/assets/sprint-produtividade.png";
-
-// Importar imagens do blog
-import blogProdutividade from "@/assets/blog/produtividade-fazer-o-que-importa.jpg";
-import blogIncendios from "@/assets/blog/parar-apagar-incendios.jpg";
-import blogClareza from "@/assets/blog/clareza-projetos-notion.jpg";
 
 // Blog articles data (últimos 3 artigos)
 const blogArticles = [
@@ -31,23 +42,36 @@ const blogArticles = [
     title: "Produtividade não é fazer mais, é fazer o que importa",
     description: "Descubra como focar no que realmente gera resultado e parar de desperdiçar tempo.",
     slug: "produtividade-fazer-o-que-importa",
-    image: blogProdutividade
   },
   {
     title: "Por que sua empresa está sempre apagando incêndios",
     description: "Entenda o que impede sua empresa de crescer e como sair do ciclo de urgências.",
     slug: "parar-apagar-incendios-empresa",
-    image: blogIncendios
   },
   {
     title: "Como usar o Notion para ter clareza total nos seus projetos",
     description: "Um guia prático para organizar projetos no Notion de forma simples e eficiente.",
     slug: "clareza-projetos-notion",
-    image: blogClareza
   }
 ];
 
+// Templates gratuitos
+const freeTemplates = [
+  { name: "Controle Financeiro Básico", description: "Organize receitas e despesas de forma simples" },
+  { name: "Hub Empresarial Free", description: "Versão gratuita do sistema de gestão empresarial" },
+  { name: "Biblioteca Digital", description: "Organize livros, cursos e materiais de estudo" },
+  { name: "Easy Travel", description: "Planeje suas viagens com eficiência" },
+  { name: "Central Social Media", description: "Gerencie suas redes sociais em um só lugar" },
+  { name: "Hub Vida Pessoal", description: "Organize metas, hábitos e rotinas pessoais" },
+  { name: "Facilitador de Treino", description: "Acompanhe seus treinos e evolução física" },
+];
+
 const Index = () => {
+  const [focusProName, setFocusProName] = useState("");
+  const [focusProEmail, setFocusProEmail] = useState("");
+  const [focusProBusiness, setFocusProBusiness] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const handleCTAClick = (ctaName: string, destination: string) => {
     trackEvent('cta_click', {
       event_category: 'conversion',
@@ -55,16 +79,55 @@ const Index = () => {
     });
   };
 
+  const handleFocusProSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!focusProName || !focusProEmail) {
+      toast.error("Por favor, preencha seu nome e email");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const { error } = await supabase
+        .from('waitlist')
+        .insert({
+          email: focusProEmail.trim().toLowerCase(),
+          full_name: focusProName.trim(),
+          interest: focusProBusiness.trim() || null,
+          source: 'focus-pro-home',
+        });
+
+      if (error) throw error;
+
+      trackEvent('focus_pro_waitlist', {
+        event_category: 'lead',
+        event_label: 'home_form',
+      });
+
+      toast.success("Você está na lista! Avisaremos quando a Focus Pro for lançada.");
+      setFocusProName("");
+      setFocusProEmail("");
+      setFocusProBusiness("");
+    } catch (error) {
+      console.error('Error:', error);
+      toast.error("Erro ao cadastrar. Tente novamente.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>Focus - Sistemas e Templates Notion para Gestão Empresarial</title>
-        <meta name="description" content="Consultoria personalizada, templates prontos e soluções em Notion para produtividade, gestão e organização. Organize sua vida e sua empresa com clareza." />
-        <meta name="keywords" content="sistemas notion, templates notion, gestão empresarial, produtividade, consultoria notion, organização empresarial" />
+        <title>Focus Gestão Empresarial | Sistemas Notion, IA e Produtividade</title>
+        <meta name="description" content="Organize sua empresa com sistemas em Notion, IA e produtividade. Sistemas prontos, templates grátis e uma área Pro para gestão empresarial inteligente." />
+        <meta name="keywords" content="gestão empresarial, sistemas em Notion, Notion para empresas, produtividade empresarial, sistemas de gestão em Notion, templates Notion grátis, automação com IA, gestão inteligente" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://focusinteligente.com.br/" />
-        <meta property="og:title" content="Focus - Sistemas e Templates Notion para Gestão Empresarial" />
-        <meta property="og:description" content="Consultoria personalizada, templates prontos e soluções em Notion para produtividade, gestão e organização." />
+        <meta property="og:title" content="Focus Gestão Empresarial | Sistemas Notion, IA e Produtividade" />
+        <meta property="og:description" content="Organize sua empresa com sistemas em Notion, IA e produtividade. Sistemas prontos, templates grátis e uma área Pro para gestão empresarial inteligente." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://focusinteligente.com.br/" />
         <script type="application/ld+json">
@@ -73,61 +136,59 @@ const Index = () => {
             "@type": "Organization",
             "name": "Focus Gestão Empresarial",
             "url": "https://focusinteligente.com.br",
-            "description": "Sistemas e templates Notion para gestão empresarial e produtividade"
+            "description": "Sistemas em Notion, IA e produtividade para gestão empresarial inteligente",
+            "sameAs": []
           })}
         </script>
       </Helmet>
 
-      {/* SEÇÃO 1 — HERO */}
+      {/* =========================== */}
+      {/* SEÇÃO 1 — HERO (H1) */}
+      {/* =========================== */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
-        {/* Background gradient */}
         <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-background-secondary" />
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/5 rounded-full blur-[120px]" />
         
         <div className="container-focus relative z-10 py-20">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="animate-fade-in">
-              <h1 className="text-4xl lg:text-6xl font-bold text-foreground leading-tight mb-6">
-                Sistemas e Templates em Notion que{" "}
+              <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-6">
+                Gestão empresarial inteligente com{" "}
                 <span className="bg-gradient-primary bg-clip-text text-transparent">
-                  Organizam sua Vida e sua Empresa.
+                  Notion e IA
                 </span>
               </h1>
-              <p className="text-lg lg:text-xl text-foreground-muted mb-10 leading-relaxed">
-                Consultoria personalizada, templates prontos e soluções em Notion para produtividade, gestão e organização.
+              <p className="text-lg lg:text-xl text-foreground-muted mb-8 leading-relaxed">
+                A Focus é uma empresa de produtos digitais focada em sistemas em Notion, templates gratuitos e uma futura área Pro. Organize projetos, finanças e processos do seu negócio com mais produtividade — sem consultoria complexa.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 mb-6">
                 <Button 
                   className="btn-hero group text-base"
                   onClick={() => {
-                    handleCTAClick('hero_ver_templates', '/sistemas-notion');
+                    handleCTAClick('hero_ver_sistemas', '/sistemas-notion');
                     window.location.href = '/sistemas-notion';
                   }}
                 >
-                  Ver Templates
+                  Ver sistemas para empresas
                   <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
                 <Button 
                   className="btn-secondary group text-base"
                   onClick={() => {
-                    handleCTAClick('hero_consultoria', 'whatsapp');
-                    window.open('https://wa.me/5511916742443?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20consultoria%20empresarial.', '_blank');
+                    handleCTAClick('hero_templates_gratis', '/sistemas-gratuitos');
+                    window.location.href = '/sistemas-gratuitos';
                   }}
                 >
-                  Consultoria Empresarial
-                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                  <Download className="w-5 h-5 mr-2" />
+                  Baixar templates gratuitos
                 </Button>
               </div>
               
-              <Link 
-                to="/sistemas-gratuitos"
-                className="inline-flex items-center text-foreground-muted hover:text-primary transition-colors text-sm"
-                onClick={() => handleCTAClick('hero_template_gratis', '/sistemas-gratuitos')}
-              >
-                <Download className="w-4 h-4 mr-2" />
-                Baixar Template Grátis
-              </Link>
+              <div className="flex items-center gap-2 text-foreground-muted text-sm">
+                <Star className="w-4 h-4 text-primary" />
+                <span>Criador destaque no marketplace oficial do Notion Brasil em sistemas e templates.</span>
+              </div>
             </div>
 
             {/* Dashboard Mockup */}
@@ -135,9 +196,9 @@ const Index = () => {
               <div className="relative rounded-2xl overflow-hidden border border-card-border shadow-elegant">
                 <img 
                   src={hubEmpresarialPro} 
-                  alt="Dashboard Notion Focus - Hub Empresarial PRO" 
+                  alt="Dashboard de gestão empresarial em Notion - Hub Empresarial PRO Focus" 
                   className="w-full h-auto"
-                  loading="lazy"
+                  loading="eager"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
               </div>
@@ -147,78 +208,80 @@ const Index = () => {
         </div>
       </section>
 
-      {/* SEÇÃO 2 — PARA QUEM É */}
+      {/* =========================== */}
+      {/* SEÇÃO 2 — PARA QUEM A FOCUS FOI CRIADA (H2) */}
+      {/* =========================== */}
       <section className="section-padding bg-background-secondary">
         <div className="container-focus">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-              Para Quem é a Focus?
+              Para quem a Focus foi criada
             </h2>
             <p className="text-foreground-muted text-lg max-w-2xl mx-auto">
-              Soluções personalizadas para cada perfil
+              Sistemas em Notion e templates para quem quer organizar a gestão do negócio de forma simples
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {/* Card Empreendedores */}
+            {/* Card 1 - Pequenas empresas e MEIs */}
             <Card className="service-card group">
               <div className="mb-6">
                 <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center">
-                  <Briefcase className="w-7 h-7 text-white" />
-                </div>
-              </div>
-              <h3 className="text-xl font-bold text-foreground mb-3">Empreendedores</h3>
-              <p className="text-foreground-muted mb-6">
-                Organize rotinas, tarefas, estudos e finanças com templates prontos para usar.
-              </p>
-              <Link 
-                to="/sistemas-notion"
-                className="inline-flex items-center text-primary hover:text-primary-glow transition-colors font-medium"
-                onClick={() => handleCTAClick('card_empreendedores', '/sistemas-notion')}
-              >
-                Ver Soluções
-                <ChevronRight className="w-4 h-4 ml-1" />
-              </Link>
-            </Card>
-
-            {/* Card Empresas */}
-            <Card className="service-card group">
-              <div className="mb-6">
-                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center">
                   <Building2 className="w-7 h-7 text-white" />
                 </div>
               </div>
-              <h3 className="text-xl font-bold text-foreground mb-3">Empresas</h3>
+              <h3 className="text-xl font-bold text-foreground mb-3">Pequenas empresas e MEIs</h3>
               <p className="text-foreground-muted mb-6">
-                Sistemas em Notion para padronizar processos, projetos e rotinas internas.
+                Centralize clientes, projetos e finanças em um único sistema. Nossos sistemas em Notion ajudam você a ter clareza sobre o que está acontecendo no seu negócio, sem planilhas confusas.
               </p>
               <Link 
                 to="/hub-empresarial"
                 className="inline-flex items-center text-primary hover:text-primary-glow transition-colors font-medium"
-                onClick={() => handleCTAClick('card_empresas', '/hub-empresarial')}
+                onClick={() => handleCTAClick('card_pequenas_empresas', '/hub-empresarial')}
               >
-                Ver Soluções
+                Ver soluções para empresas
                 <ChevronRight className="w-4 h-4 ml-1" />
               </Link>
             </Card>
 
-            {/* Card Criadores */}
+            {/* Card 2 - Prestadores de serviço */}
+            <Card className="service-card group">
+              <div className="mb-6">
+                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center">
+                  <Briefcase className="w-7 h-7 text-white" />
+                </div>
+              </div>
+              <h3 className="text-xl font-bold text-foreground mb-3">Prestadores de serviço e consultores</h3>
+              <p className="text-foreground-muted mb-6">
+                Organize suas entregas, controle financeiro e relacionamento com clientes. Aumente a produtividade empresarial com templates prontos que funcionam desde o primeiro dia.
+              </p>
+              <Link 
+                to="/sistemas-notion"
+                className="inline-flex items-center text-primary hover:text-primary-glow transition-colors font-medium"
+                onClick={() => handleCTAClick('card_prestadores', '/sistemas-notion')}
+              >
+                Ver sistemas de gestão
+                <ChevronRight className="w-4 h-4 ml-1" />
+              </Link>
+            </Card>
+
+            {/* Card 3 - Empreendedores digitais */}
             <Card className="service-card group">
               <div className="mb-6">
                 <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-pink-500 to-violet-500 flex items-center justify-center">
                   <Users className="w-7 h-7 text-white" />
                 </div>
               </div>
-              <h3 className="text-xl font-bold text-foreground mb-3">Criadores de Conteúdo</h3>
+              <h3 className="text-xl font-bold text-foreground mb-3">Empreendedores digitais e criadores</h3>
               <p className="text-foreground-muted mb-6">
-                Fluxo completo de criação, agenda editorial, CRM e automações.
+                Gerencie conteúdo, agenda editorial e processos criativos. Os sistemas em Notion da Focus foram pensados para quem precisa de organização sem burocracia.
               </p>
               <Link 
                 to="/sistemas-notion"
                 className="inline-flex items-center text-primary hover:text-primary-glow transition-colors font-medium"
                 onClick={() => handleCTAClick('card_criadores', '/sistemas-notion')}
               >
-                Ver Soluções
+                Ver templates
                 <ChevronRight className="w-4 h-4 ml-1" />
               </Link>
             </Card>
@@ -226,41 +289,48 @@ const Index = () => {
         </div>
       </section>
 
-      {/* SEÇÃO 3 — PRODUTOS DE DESTAQUE */}
+      {/* =========================== */}
+      {/* SEÇÃO 3 — SOLUÇÕES DIGITAIS EM NOTION (H2) */}
+      {/* =========================== */}
       <section className="section-padding bg-background">
         <div className="container-focus">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-              Nossos Produtos
+              Soluções digitais em Notion para gestão empresarial
             </h2>
-            <p className="text-foreground-muted text-lg max-w-2xl mx-auto">
-              Templates e sistemas prontos para você começar agora
+            <p className="text-foreground-muted text-lg max-w-3xl mx-auto">
+              A Focus oferece sistemas prontos em Notion, pensados para pequenas empresas que querem uma gestão inteligente, com foco em produtividade e clareza. Sem complexidade, sem consultoria — apenas produtos digitais que funcionam.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <h3 className="text-2xl font-bold text-foreground mb-8 text-center">
+            Sistemas empresariais em Notion (produtos pagos)
+          </h3>
+
+          <div className="grid md:grid-cols-3 gap-8">
             {/* Hub Empresarial PRO */}
             <Card className="service-card group h-full flex flex-col">
               <div className="mb-4">
                 <img 
                   src={hubEmpresarialPro} 
-                  alt="Hub Empresarial PRO" 
-                  className="w-full h-40 object-cover rounded-xl"
+                  alt="Hub Empresarial PRO - Sistema de gestão empresarial em Notion" 
+                  className="w-full h-48 object-cover rounded-xl"
                   loading="lazy"
                 />
               </div>
-              <h3 className="text-lg font-bold text-foreground mb-2">Hub Empresarial PRO</h3>
-              <p className="text-foreground-muted text-sm mb-4 flex-grow">
-                Sistema completo de gestão com CRM, financeiro e dashboards.
+              <h4 className="text-xl font-bold text-foreground mb-3">Hub Empresarial PRO</h4>
+              <p className="text-foreground-muted mb-6 flex-grow">
+                Sistema completo de gestão empresarial com CRM, controle de projetos, processos internos e dashboards. Ideal para quem quer centralizar toda a operação do negócio em um só lugar.
               </p>
               <Button 
-                className="btn-secondary w-full text-sm"
+                className="btn-secondary w-full"
                 onClick={() => {
                   handleCTAClick('produto_hub_empresarial', '/hub-empresarial');
                   window.location.href = '/hub-empresarial';
                 }}
               >
-                Ver produto
+                Saiba mais
+                <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </Card>
 
@@ -269,23 +339,24 @@ const Index = () => {
               <div className="mb-4">
                 <img 
                   src={controleFinanceiroPro} 
-                  alt="Controle Financeiro PRO" 
-                  className="w-full h-40 object-cover rounded-xl"
+                  alt="Controle Financeiro PRO - Sistema financeiro em Notion" 
+                  className="w-full h-48 object-cover rounded-xl"
                   loading="lazy"
                 />
               </div>
-              <h3 className="text-lg font-bold text-foreground mb-2">Controle Financeiro PRO</h3>
-              <p className="text-foreground-muted text-sm mb-4 flex-grow">
-                Organize suas finanças pessoais e empresariais em um só lugar.
+              <h4 className="text-xl font-bold text-foreground mb-3">Controle Financeiro PRO</h4>
+              <p className="text-foreground-muted mb-6 flex-grow">
+                Sistema de controle financeiro em Notion para empresas e profissionais. Gerencie receitas, despesas, fluxo de caixa e categorias de forma visual e intuitiva.
               </p>
               <Button 
-                className="btn-secondary w-full text-sm"
+                className="btn-secondary w-full"
                 onClick={() => {
                   handleCTAClick('produto_financeiro', '/sistemas-notion');
                   window.location.href = '/sistemas-notion';
                 }}
               >
-                Ver produto
+                Ver detalhes
+                <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </Card>
 
@@ -294,210 +365,303 @@ const Index = () => {
               <div className="mb-4">
                 <img 
                   src={sprintProdutividade} 
-                  alt="Sprint de Produtividade" 
-                  className="w-full h-40 object-cover rounded-xl"
+                  alt="Sprint de Produtividade - Sistema de rotinas e foco em Notion" 
+                  className="w-full h-48 object-cover rounded-xl"
                   loading="lazy"
                 />
               </div>
-              <h3 className="text-lg font-bold text-foreground mb-2">Sprint de Produtividade</h3>
-              <p className="text-foreground-muted text-sm mb-4 flex-grow">
-                7 dias de transformação na sua rotina com metodologias práticas.
+              <h4 className="text-xl font-bold text-foreground mb-3">Sprint de Produtividade</h4>
+              <p className="text-foreground-muted mb-6 flex-grow">
+                Programa de 7 dias para transformar sua rotina com metodologias práticas. Foco em produtividade empresarial, gestão de tempo e construção de hábitos que geram resultados.
               </p>
               <Button 
-                className="btn-secondary w-full text-sm"
+                className="btn-secondary w-full"
                 onClick={() => {
                   handleCTAClick('produto_sprint', '/sprint-produtividade');
                   window.location.href = '/sprint-produtividade';
                 }}
               >
-                Ver produto
-              </Button>
-            </Card>
-
-            {/* Templates Gratuitos */}
-            <Card className="service-card group h-full flex flex-col border-primary/30">
-              <div className="mb-4 relative">
-                <img 
-                  src="/lovable-uploads/hub-empresarial-free.jpg" 
-                  alt="Templates Gratuitos" 
-                  className="w-full h-40 object-contain rounded-xl bg-background-elevated"
-                  loading="lazy"
-                />
-                <div className="absolute top-2 right-2 bg-primary text-primary-foreground text-xs font-bold px-2 py-1 rounded-full">
-                  GRÁTIS
-                </div>
-              </div>
-              <h3 className="text-lg font-bold text-foreground mb-2">Templates Gratuitos</h3>
-              <p className="text-foreground-muted text-sm mb-4 flex-grow">
-                Comece agora com templates prontos para organizar sua vida.
-              </p>
-              <Button 
-                className="btn-hero w-full text-sm"
-                onClick={() => {
-                  handleCTAClick('produto_gratis', '/sistemas-gratuitos');
-                  window.location.href = '/sistemas-gratuitos';
-                }}
-              >
-                Baixar grátis
+                Ver programa
+                <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </Card>
           </div>
         </div>
       </section>
 
-      {/* SEÇÃO 4 — OFERTA IMÃ (Lead Magnet) */}
-      <section className="py-16 bg-background-secondary">
-        <div className="container-focus">
-          <div className="relative bg-gradient-to-r from-primary/10 to-primary-glow/10 border border-primary/20 rounded-3xl p-10 lg:p-16 overflow-hidden">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[100px]" />
-            
-            <div className="relative z-10 max-w-2xl">
-              <div className="inline-flex items-center gap-2 bg-primary/20 text-primary text-sm font-medium px-4 py-2 rounded-full mb-6">
-                <Sparkles className="w-4 h-4" />
-                Template Gratuito
-              </div>
-              
-              <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-                Comece hoje com um Template Grátis de Produtividade.
-              </h2>
-              <p className="text-foreground-muted text-lg mb-8">
-                Ferramentas práticas para organizar sua vida e sua rotina. Sem custos, sem complicação.
-              </p>
-              
-              <Button 
-                className="btn-hero group"
-                onClick={() => {
-                  handleCTAClick('lead_magnet_download', '/sistemas-gratuitos');
-                  window.location.href = '/sistemas-gratuitos';
-                }}
-              >
-                <Download className="w-5 h-5 mr-2" />
-                Baixar Template Grátis
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SEÇÃO 5 — PROVA SOCIAL */}
-      <section className="section-padding bg-background">
-        <div className="container-focus">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-              Por Que Confiar na Focus?
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-4 gap-8 mb-16">
-            <div className="text-center">
-              <div className="text-4xl lg:text-5xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-2">
-                +13 mil
-              </div>
-              <p className="text-foreground-muted">Downloads nos templates</p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl lg:text-5xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-2">
-                +20
-              </div>
-              <p className="text-foreground-muted">Projetos entregues</p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl lg:text-5xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-2">
-                100%
-              </div>
-              <p className="text-foreground-muted">Clientes satisfeitos</p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl lg:text-5xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-2">
-                5★
-              </div>
-              <p className="text-foreground-muted">Avaliação média</p>
-            </div>
-          </div>
-
-          {/* Depoimentos */}
-          <div className="grid md:grid-cols-3 gap-6">
-            <Card className="service-card">
-              <div className="flex gap-1 mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-primary text-primary" />
-                ))}
-              </div>
-              <p className="text-foreground-muted mb-4">
-                "Os sistemas da Focus transformaram completamente a gestão da minha empresa. Recomendo muito!"
-              </p>
-              <p className="text-sm font-medium text-foreground">— Cliente satisfeito</p>
-            </Card>
-
-            <Card className="service-card">
-              <div className="flex gap-1 mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-primary text-primary" />
-                ))}
-              </div>
-              <p className="text-foreground-muted mb-4">
-                "Finalmente consegui organizar minha rotina e aumentar minha produtividade. Os templates são incríveis."
-              </p>
-              <p className="text-sm font-medium text-foreground">— Empreendedor</p>
-            </Card>
-
-            <Card className="service-card">
-              <div className="flex gap-1 mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-primary text-primary" />
-                ))}
-              </div>
-              <p className="text-foreground-muted mb-4">
-                "A consultoria personalizada fez toda a diferença. Sistemas sob medida para nossa realidade."
-              </p>
-              <p className="text-sm font-medium text-foreground">— Gestor de empresa</p>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* SEÇÃO 6 — BLOG / CONTEÚDO */}
+      {/* =========================== */}
+      {/* SEÇÃO 4 — TEMPLATES E SISTEMAS GRÁTIS (H2) */}
+      {/* =========================== */}
       <section className="section-padding bg-background-secondary">
         <div className="container-focus">
-          <div className="flex items-center justify-between mb-12">
-            <div>
-              <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-2">
-                Conteúdos para Evoluir
-              </h2>
-              <p className="text-foreground-muted">
-                Produtividade e gestão na prática
-              </p>
-            </div>
-            <Link 
-              to="/blog"
-              className="hidden md:inline-flex items-center text-primary hover:text-primary-glow transition-colors font-medium"
-            >
-              Ver todos
-              <ArrowRight className="w-4 h-4 ml-2" />
-            </Link>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
+              Templates e sistemas grátis em Notion para começar hoje
+            </h2>
+            <p className="text-foreground-muted text-lg max-w-2xl mx-auto">
+              Você pode começar agora mesmo com a versão gratuita dos nossos templates. Teste a lógica da Focus e veja como sistemas em Notion podem transformar sua gestão.
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {blogArticles.map((article) => (
-              <Card key={article.slug} className="service-card group overflow-hidden">
-                <div className="mb-4 -mx-8 -mt-8">
-                  <img 
-                    src={article.image} 
-                    alt={article.title}
-                    className="w-full h-48 object-cover"
-                    loading="lazy"
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-10">
+            {freeTemplates.map((template, index) => (
+              <div 
+                key={index}
+                className="flex items-start gap-3 p-4 rounded-xl bg-background-elevated border border-card-border hover:border-primary/30 transition-colors"
+              >
+                <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                <div>
+                  <p className="font-medium text-foreground text-sm">{template.name}</p>
+                  <p className="text-foreground-muted text-xs">{template.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <Button 
+              className="btn-hero group"
+              onClick={() => {
+                handleCTAClick('ver_templates_gratis', '/sistemas-gratuitos');
+                window.location.href = '/sistemas-gratuitos';
+              }}
+            >
+              <Download className="w-5 h-5 mr-2" />
+              Acessar todos os templates e sistemas grátis
+              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* =========================== */}
+      {/* SEÇÃO 5 — FOCUS PRO - LISTA DE ESPERA (H2) */}
+      {/* =========================== */}
+      <section className="section-padding bg-background">
+        <div className="container-focus">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 bg-primary/20 text-primary text-sm font-medium px-4 py-2 rounded-full mb-6">
+              <Sparkles className="w-4 h-4" />
+              Em breve
+            </div>
+            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
+              Focus Pro – sua área de gestão, IA e aprendizado
+            </h2>
+            <p className="text-foreground-muted text-lg max-w-3xl mx-auto">
+              A Focus Pro será uma área exclusiva com trilhas de gestão empresarial, produtividade e uso de automação com IA para pequenos negócios. Tudo pensado para quem quer organizar a empresa de forma inteligente.
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
+            {/* Coluna 1 - O que vai oferecer */}
+            <div className="space-y-6">
+              <h3 className="text-xl font-bold text-foreground mb-4">O que a Focus Pro vai oferecer:</h3>
+              
+              <div className="space-y-4">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0">
+                    <Target className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <p className="font-medium text-foreground">Trilhas de gestão empresarial</p>
+                    <p className="text-foreground-muted text-sm">Conteúdos estruturados para organizar finanças, projetos e processos</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0">
+                    <Bot className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <p className="font-medium text-foreground">Conteúdos sobre IA e automação</p>
+                    <p className="text-foreground-muted text-sm">Aprenda a usar inteligência artificial na gestão do seu negócio</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0">
+                    <BookOpen className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <p className="font-medium text-foreground">Materiais práticos e playbooks</p>
+                    <p className="text-foreground-muted text-sm">Guias diretos para implementar melhorias imediatas</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0">
+                    <Layers className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <p className="font-medium text-foreground">Integração com sistemas em Notion</p>
+                    <p className="text-foreground-muted text-sm">Acesso a templates exclusivos e atualizações constantes</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0">
+                    <Zap className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <p className="font-medium text-foreground">Atualizações constantes</p>
+                    <p className="text-foreground-muted text-sm">Novos conteúdos e sistemas adicionados regularmente</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Coluna 2 - Formulário */}
+            <div className="bg-gradient-to-br from-primary/10 to-primary-glow/5 border border-primary/20 rounded-2xl p-8">
+              <h3 className="text-xl font-bold text-foreground mb-2">Entre na lista de espera</h3>
+              <p className="text-foreground-muted mb-6">Seja o primeiro a saber quando a Focus Pro for lançada.</p>
+              
+              <form onSubmit={handleFocusProSubmit} className="space-y-4">
+                <div>
+                  <label htmlFor="focusProName" className="block text-sm font-medium text-foreground mb-1">
+                    Nome *
+                  </label>
+                  <Input
+                    id="focusProName"
+                    type="text"
+                    placeholder="Seu nome completo"
+                    value={focusProName}
+                    onChange={(e) => setFocusProName(e.target.value)}
+                    className="bg-background border-card-border"
+                    required
                   />
                 </div>
-                <h3 className="text-lg font-bold text-foreground mb-2 line-clamp-2">
-                  {article.title}
-                </h3>
-                <p className="text-foreground-muted text-sm mb-4 line-clamp-2">
-                  {article.description}
-                </p>
+
+                <div>
+                  <label htmlFor="focusProEmail" className="block text-sm font-medium text-foreground mb-1">
+                    E-mail *
+                  </label>
+                  <Input
+                    id="focusProEmail"
+                    type="email"
+                    placeholder="seu@email.com"
+                    value={focusProEmail}
+                    onChange={(e) => setFocusProEmail(e.target.value)}
+                    className="bg-background border-card-border"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="focusProBusiness" className="block text-sm font-medium text-foreground mb-1">
+                    Tipo de negócio (opcional)
+                  </label>
+                  <Input
+                    id="focusProBusiness"
+                    type="text"
+                    placeholder="Ex: Consultoria, E-commerce, Agência..."
+                    value={focusProBusiness}
+                    onChange={(e) => setFocusProBusiness(e.target.value)}
+                    className="bg-background border-card-border"
+                  />
+                </div>
+
+                <Button 
+                  type="submit" 
+                  className="btn-hero w-full"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "Cadastrando..." : "Quero entrar na lista da Focus Pro"}
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* =========================== */}
+      {/* SEÇÃO 6 — POR QUE USAR NOTION E IA (H2) */}
+      {/* =========================== */}
+      <section className="section-padding bg-background-secondary">
+        <div className="container-focus">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-8 text-center">
+              Por que usar Notion e IA na gestão da sua empresa
+            </h2>
+
+            <div className="space-y-6">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                  <CheckCircle className="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <p className="font-medium text-foreground mb-1">Centralize todas as informações em um único lugar</p>
+                  <p className="text-foreground-muted">Chega de procurar dados em planilhas, e-mails e aplicativos diferentes. Com sistemas em Notion, tudo fica organizado e acessível.</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                  <CheckCircle className="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <p className="font-medium text-foreground mb-1">Crie rotinas claras e processos padronizados</p>
+                  <p className="text-foreground-muted">A gestão empresarial inteligente começa com processos bem definidos. Notion para empresas permite criar fluxos de trabalho que sua equipe consegue seguir.</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                  <CheckCircle className="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <p className="font-medium text-foreground mb-1">Automatize partes do trabalho com IA</p>
+                  <p className="text-foreground-muted">Automação com IA reduz trabalho repetitivo e libera tempo para o que realmente importa no seu negócio.</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                  <CheckCircle className="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <p className="font-medium text-foreground mb-1">Reduza retrabalho e aumente a produtividade</p>
+                  <p className="text-foreground-muted">Sistemas de gestão em Notion eliminam a necessidade de refazer tarefas e melhoram a produtividade empresarial da equipe.</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                  <CheckCircle className="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <p className="font-medium text-foreground mb-1">Tenha clareza sobre o que está acontecendo</p>
+                  <p className="text-foreground-muted">Dashboards e visões organizadas mostram exatamente onde seu negócio está e para onde precisa ir.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* =========================== */}
+      {/* SEÇÃO 7 — BLOG (H2) */}
+      {/* =========================== */}
+      <section className="section-padding bg-background">
+        <div className="container-focus">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
+              Conteúdos sobre gestão empresarial, produtividade e Notion
+            </h2>
+            <p className="text-foreground-muted text-lg max-w-2xl mx-auto">
+              Artigos práticos para ajudar você a organizar melhor seu negócio
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 mb-10">
+            {blogArticles.map((article, index) => (
+              <Card key={index} className="service-card group h-full flex flex-col">
+                <h3 className="text-lg font-bold text-foreground mb-3">{article.title}</h3>
+                <p className="text-foreground-muted text-sm mb-6 flex-grow">{article.description}</p>
                 <Link 
                   to={`/blog/${article.slug}`}
-                  className="inline-flex items-center text-primary hover:text-primary-glow transition-colors text-sm font-medium"
+                  className="inline-flex items-center text-primary hover:text-primary-glow transition-colors font-medium"
+                  onClick={() => handleCTAClick(`blog_${article.slug}`, `/blog/${article.slug}`)}
                 >
                   Ler artigo
                   <ChevronRight className="w-4 h-4 ml-1" />
@@ -506,94 +670,111 @@ const Index = () => {
             ))}
           </div>
 
-          <div className="text-center mt-8 md:hidden">
-            <Link 
-              to="/blog"
-              className="inline-flex items-center text-primary hover:text-primary-glow transition-colors font-medium"
-            >
-              Ver todos os artigos
-              <ArrowRight className="w-4 h-4 ml-2" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* SEÇÃO 7 — SOBRE / QUEM SOMOS */}
-      <section className="section-padding bg-background">
-        <div className="container-focus">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-6">
-              Sobre a Focus
-            </h2>
-            <p className="text-lg text-foreground-muted leading-relaxed mb-8">
-              A Focus Gestão Empresarial cria sistemas, consultorias e templates em Notion para aumentar produtividade, clareza e desempenho. Atuamos com empreendedores, empresas e criadores que buscam estrutura e resultados reais.
-            </p>
-            
-            <div className="flex flex-wrap justify-center gap-6 mb-10">
-              <div className="flex items-center gap-2 text-foreground-muted">
-                <CheckCircle className="w-5 h-5 text-primary" />
-                <span>Metodologia comprovada</span>
-              </div>
-              <div className="flex items-center gap-2 text-foreground-muted">
-                <CheckCircle className="w-5 h-5 text-primary" />
-                <span>Suporte humanizado</span>
-              </div>
-              <div className="flex items-center gap-2 text-foreground-muted">
-                <CheckCircle className="w-5 h-5 text-primary" />
-                <span>Resultados mensuráveis</span>
-              </div>
-            </div>
-
+          <div className="text-center">
             <Button 
               className="btn-secondary group"
               onClick={() => {
-                handleCTAClick('sobre_conhecer_focus', '/sobre-focus');
-                window.location.href = '/sobre-focus';
+                handleCTAClick('ver_todos_artigos', '/blog');
+                window.location.href = '/blog';
               }}
             >
-              Conhecer a Focus
+              Ver todos os artigos do blog
               <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
           </div>
         </div>
       </section>
 
-      {/* SEÇÃO 8 — CTA FINAL */}
-      <section className="py-24 lg:py-32 bg-background-secondary relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-background-secondary to-background" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-primary/5 rounded-full blur-[100px]" />
-        
-        <div className="container-focus relative z-10">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl lg:text-5xl font-bold text-foreground mb-6">
-              Organize sua vida e sua empresa com{" "}
-              <span className="bg-gradient-primary bg-clip-text text-transparent">clareza.</span>
+      {/* =========================== */}
+      {/* SEÇÃO 8 — FAQ (H2) */}
+      {/* =========================== */}
+      <section className="section-padding bg-background-secondary">
+        <div className="container-focus">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-12 text-center">
+              Perguntas frequentes sobre gestão com Notion e Focus
             </h2>
-            <p className="text-lg text-foreground-muted mb-10">
-              Comece agora com nossos templates ou converse com um especialista.
-            </p>
+
+            <Accordion type="single" collapsible className="space-y-4">
+              <AccordionItem value="item-1" className="border border-card-border rounded-xl px-6 bg-background-elevated">
+                <AccordionTrigger className="text-foreground hover:no-underline py-6">
+                  Preciso saber usar o Notion para usar os sistemas da Focus?
+                </AccordionTrigger>
+                <AccordionContent className="text-foreground-muted pb-6">
+                  Não. Nossos sistemas em Notion são pensados para serem intuitivos. Você não precisa ser especialista — basta duplicar o template para sua conta e começar a usar. Incluímos tutoriais e guias para facilitar o início.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-2" className="border border-card-border rounded-xl px-6 bg-background-elevated">
+                <AccordionTrigger className="text-foreground hover:no-underline py-6">
+                  A Focus oferece consultoria personalizada?
+                </AccordionTrigger>
+                <AccordionContent className="text-foreground-muted pb-6">
+                  Não. A Focus é uma empresa de produtos digitais. Trabalhamos exclusivamente com sistemas em Notion, templates e a futura área Focus Pro. Nosso foco é entregar soluções prontas que você mesmo pode implementar, sem depender de atendimento individual.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-3" className="border border-card-border rounded-xl px-6 bg-background-elevated">
+                <AccordionTrigger className="text-foreground hover:no-underline py-6">
+                  Qual a diferença entre os sistemas pagos e os templates grátis?
+                </AccordionTrigger>
+                <AccordionContent className="text-foreground-muted pb-6">
+                  Os templates Notion grátis são versões simplificadas, ótimas para quem quer começar. Os sistemas pagos são mais completos, com mais funcionalidades, dashboards avançados e estruturas profissionais para gestão empresarial de verdade.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-4" className="border border-card-border rounded-xl px-6 bg-background-elevated">
+                <AccordionTrigger className="text-foreground hover:no-underline py-6">
+                  O que é a Focus Pro e quando será lançada?
+                </AccordionTrigger>
+                <AccordionContent className="text-foreground-muted pb-6">
+                  A Focus Pro será uma área exclusiva com trilhas de aprendizado, conteúdos sobre gestão inteligente, automação com IA e acesso a sistemas exclusivos. Ainda não temos data de lançamento definida — entre na lista de espera para ser avisado em primeira mão.
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </div>
+        </div>
+      </section>
+
+      {/* =========================== */}
+      {/* SEÇÃO 9 — CTA FINAL */}
+      {/* =========================== */}
+      <section className="section-padding bg-background">
+        <div className="container-focus">
+          <div className="relative bg-gradient-to-r from-primary/10 to-primary-glow/10 border border-primary/20 rounded-3xl p-10 lg:p-16 overflow-hidden text-center">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[100px]" />
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary-glow/10 rounded-full blur-[100px]" />
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                className="btn-hero group text-base"
-                onClick={() => {
-                  handleCTAClick('cta_final_templates', '/sistemas-notion');
-                  window.location.href = '/sistemas-notion';
-                }}
-              >
-                Ver Templates
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              <Button 
-                className="btn-secondary group text-base"
-                onClick={() => {
-                  handleCTAClick('cta_final_consultoria', 'whatsapp');
-                  window.open('https://wa.me/5511916742443?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20consultoria%20empresarial.', '_blank');
-                }}
-              >
-                Consultoria Empresarial
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
+            <div className="relative z-10 max-w-2xl mx-auto">
+              <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
+                Comece hoje a organizar a gestão do seu negócio com Notion e IA
+              </h2>
+              <p className="text-foreground-muted text-lg mb-8">
+                Pequenas empresas podem ter uma gestão profissional, organizada e inteligente — sem consultoria complexa. Escolha por onde começar:
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button 
+                  className="btn-hero group text-base"
+                  onClick={() => {
+                    handleCTAClick('cta_final_sistemas', '/sistemas-notion');
+                    window.location.href = '/sistemas-notion';
+                  }}
+                >
+                  Ver sistemas empresariais em Notion
+                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Button>
+                <Button 
+                  className="btn-secondary group text-base"
+                  onClick={() => {
+                    handleCTAClick('cta_final_gratis', '/sistemas-gratuitos');
+                    window.location.href = '/sistemas-gratuitos';
+                  }}
+                >
+                  <Download className="w-5 h-5 mr-2" />
+                  Baixar templates grátis
+                </Button>
+              </div>
             </div>
           </div>
         </div>
