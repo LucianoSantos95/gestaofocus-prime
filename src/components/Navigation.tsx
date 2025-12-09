@@ -27,7 +27,7 @@ const Navigation = () => {
 
   const navItems = [
     { name: "Início", href: "/" },
-    { name: "Consultoria Notion", href: "/sistemas-notion" },
+    { name: "Sistemas Notion", href: "/sistemas-notion" },
   ];
 
   const productItems = [
@@ -55,7 +55,7 @@ const Navigation = () => {
           <Link to="/" className="flex items-center space-x-2 group">
             <img 
               src="/lovable-uploads/focus-logo.png" 
-              alt="Focus - Consultoria em Gestão Empresarial e Sistemas Notion" 
+              alt="Focus - Sistemas em Notion e Gestão Empresarial" 
               width="120"
               height="32"
               className="h-8 group-hover:scale-105 transition-transform duration-200"

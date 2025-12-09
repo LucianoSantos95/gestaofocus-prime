@@ -145,26 +145,26 @@ const Index = () => {
       {/* =========================== */}
       {/* SEÇÃO 1 — HERO (H1) */}
       {/* =========================== */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+      <section className="relative pt-28 pb-16 lg:pt-32 lg:pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-background-secondary" />
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/5 rounded-full blur-[120px]" />
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-primary/8 rounded-full blur-[100px]" />
         
-        <div className="container-focus relative z-10 py-20">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="container-focus relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div className="animate-fade-in">
-              <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-6">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-5">
                 Gestão empresarial inteligente com{" "}
                 <span className="bg-gradient-primary bg-clip-text text-transparent">
                   Notion e IA
                 </span>
               </h1>
-              <p className="text-lg lg:text-xl text-foreground-muted mb-8 leading-relaxed">
-                A Focus é uma empresa de produtos digitais focada em sistemas em Notion, templates gratuitos e uma futura área Pro. Organize projetos, finanças e processos do seu negócio com mais produtividade — sem consultoria complexa.
+              <p className="text-base lg:text-lg text-foreground-muted mb-6 leading-relaxed max-w-xl">
+                Sistemas prontos em Notion, templates gratuitos e uma futura área Pro. Organize projetos, finanças e processos com mais produtividade — sem consultoria complexa.
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-4 mb-6">
+              <div className="flex flex-col sm:flex-row gap-3 mb-5">
                 <Button 
-                  className="btn-hero group text-base"
+                  className="btn-hero group"
                   onClick={() => {
                     handleCTAClick('hero_ver_sistemas', '/sistemas-notion');
                     window.location.href = '/sistemas-notion';
@@ -174,7 +174,7 @@ const Index = () => {
                   <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
                 <Button 
-                  className="btn-secondary group text-base"
+                  className="btn-secondary group"
                   onClick={() => {
                     handleCTAClick('hero_templates_gratis', '/sistemas-gratuitos');
                     window.location.href = '/sistemas-gratuitos';
@@ -186,23 +186,23 @@ const Index = () => {
               </div>
               
               <div className="flex items-center gap-2 text-foreground-muted text-sm">
-                <Star className="w-4 h-4 text-primary" />
-                <span>Criador destaque no marketplace oficial do Notion Brasil em sistemas e templates.</span>
+                <Star className="w-4 h-4 text-primary fill-primary" />
+                <span>Criador destaque no marketplace oficial do Notion Brasil</span>
               </div>
             </div>
 
             {/* Dashboard Mockup */}
             <div className="relative animate-slide-up hidden lg:block">
-              <div className="relative rounded-2xl overflow-hidden border border-card-border shadow-elegant">
+              <div className="relative rounded-xl overflow-hidden border border-card-border/50 shadow-elegant bg-background-elevated">
                 <img 
                   src={hubEmpresarialPro} 
                   alt="Dashboard de gestão empresarial em Notion - Hub Empresarial PRO Focus" 
-                  className="w-full h-auto"
+                  className="w-full h-auto object-cover"
                   loading="eager"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
               </div>
-              <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-primary/10 rounded-full blur-[60px]" />
+              <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-primary/15 rounded-full blur-[50px]" />
+              <div className="absolute -top-4 -left-4 w-20 h-20 bg-primary/10 rounded-full blur-[40px]" />
             </div>
           </div>
         </div>
