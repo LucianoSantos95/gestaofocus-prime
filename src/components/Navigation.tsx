@@ -30,8 +30,9 @@ const Navigation = () => {
   ];
 
   const productItems = [
-    { name: "Sprint de Produtividade", href: "/sprint-produtividade" },
     { name: "Hub Empresarial", href: "/hub-empresarial" },
+    { name: "Controle Financeiro PRO", href: "/controle-financeiro-pro" },
+    { name: "Sprint de Produtividade", href: "/sprint-produtividade" },
     { name: "Sistemas Gratuitos", href: "/sistemas-gratuitos" },
   ];
 
