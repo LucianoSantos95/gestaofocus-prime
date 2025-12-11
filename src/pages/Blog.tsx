@@ -51,7 +51,7 @@ const Blog = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-
+  const [visibleArticles, setVisibleArticles] = useState(4);
   useEffect(() => {
     const timer = setTimeout(() => {
       setDebouncedSearchTerm(searchTerm);
@@ -643,55 +643,72 @@ const Blog = () => {
           </div>
           
           {filteredPosts.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredPosts.map((post) => (
-                <article 
-                  key={`${post.id}-${post.slug}`}
-                  className="group bg-card border border-card-border rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-                >
-                  <Link to={`/blog/${post.slug}`} className="block aspect-video overflow-hidden">
-                    <img 
-                      src={post.image} 
-                      alt={post.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      loading="lazy"
-                    />
-                  </Link>
-                  <div className="p-6">
-                    <Badge variant="outline" className="mb-3 text-primary border-primary/30">
-                      {post.category}
-                    </Badge>
-                    
-                    <h3 className="text-lg font-bold mb-3 group-hover:text-primary transition-colors line-clamp-2">
-                      <Link to={`/blog/${post.slug}`}>{post.title}</Link>
-                    </h3>
-                    
-                    <p className="text-foreground-muted mb-4 line-clamp-2 text-sm">
-                      {post.excerpt}
-                    </p>
-                    
-                    <div className="flex items-center justify-between text-sm text-foreground-muted mb-4">
-                      <span className="flex items-center gap-1">
-                        <Calendar className="w-4 h-4" />
-                        {new Date(post.date).toLocaleDateString('pt-BR')}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <Clock className="w-4 h-4" />
-                        {post.readTime}
-                      </span>
-                    </div>
-                    
-                    <Link 
-                      to={`/blog/${post.slug}`}
-                      className="inline-flex items-center text-primary font-medium hover:gap-2 transition-all"
-                    >
-                      Ler artigo
-                      <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+            <>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {(selectedCategory || debouncedSearchTerm ? filteredPosts : filteredPosts.slice(0, visibleArticles)).map((post) => (
+                  <article 
+                    key={`${post.id}-${post.slug}`}
+                    className="group bg-card border border-card-border rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                  >
+                    <Link to={`/blog/${post.slug}`} className="block aspect-video overflow-hidden">
+                      <img 
+                        src={post.image} 
+                        alt={post.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        loading="lazy"
+                      />
                     </Link>
-                  </div>
-                </article>
-              ))}
-            </div>
+                    <div className="p-6">
+                      <Badge variant="outline" className="mb-3 text-primary border-primary/30">
+                        {post.category}
+                      </Badge>
+                      
+                      <h3 className="text-lg font-bold mb-3 group-hover:text-primary transition-colors line-clamp-2">
+                        <Link to={`/blog/${post.slug}`}>{post.title}</Link>
+                      </h3>
+                      
+                      <p className="text-foreground-muted mb-4 line-clamp-2 text-sm">
+                        {post.excerpt}
+                      </p>
+                      
+                      <div className="flex items-center justify-between text-sm text-foreground-muted mb-4">
+                        <span className="flex items-center gap-1">
+                          <Calendar className="w-4 h-4" />
+                          {new Date(post.date).toLocaleDateString('pt-BR')}
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <Clock className="w-4 h-4" />
+                          {post.readTime}
+                        </span>
+                      </div>
+                      
+                      <Link 
+                        to={`/blog/${post.slug}`}
+                        className="inline-flex items-center text-primary font-medium hover:gap-2 transition-all"
+                      >
+                        Ler artigo
+                        <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                      </Link>
+                    </div>
+                  </article>
+                ))}
+              </div>
+              
+              {/* Ver mais button - only show when not filtering and there are more articles */}
+              {!selectedCategory && !debouncedSearchTerm && visibleArticles < filteredPosts.length && (
+                <div className="flex justify-center mt-12">
+                  <Button 
+                    onClick={() => setVisibleArticles(prev => prev + 4)}
+                    variant="outline"
+                    size="lg"
+                    className="gap-2 px-8"
+                  >
+                    Ver mais
+                    <ArrowRight className="w-4 h-4" />
+                  </Button>
+                </div>
+              )}
+            </>
           ) : (
             <div className="text-center py-16 bg-card/30 border border-card-border rounded-xl">
               <BookOpen className="w-16 h-16 mx-auto mb-4 text-muted-foreground" />
