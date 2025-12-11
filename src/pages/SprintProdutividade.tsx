@@ -1,599 +1,743 @@
-import { useState } from "react";
 import { Helmet } from "react-helmet";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { 
   Zap, 
   ArrowRight, 
   CheckCircle, 
   Clock,
   Target,
-  BookOpen,
-  Users,
-  Award,
+  Brain,
+  Calendar,
+  TrendingUp,
+  Shield,
   Star,
+  Play,
+  Sparkles,
+  Users,
+  FileText,
+  Video,
+  MessageCircle,
+  Gift,
   Quote,
-  Shield
+  XCircle,
+  AlertTriangle
 } from "lucide-react";
+import { trackStripeClick, trackCTAClick } from "@/lib/analytics";
 import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import dia01 from "@/assets/sprint-dia-01.png";
-import dia02 from "@/assets/sprint-dia-02.png";
-import dia03 from "@/assets/sprint-dia-03.png";
-import dia04 from "@/assets/sprint-dia-04.png";
-import dia05 from "@/assets/sprint-dia-05.png";
-import dia06 from "@/assets/sprint-dia-06.png";
-import dia07 from "@/assets/sprint-dia-07.png";
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import sprintImage from "@/assets/sprint-produtividade.png";
 
 const SprintProdutividade = () => {
-  const [showTestimonials, setShowTestimonials] = useState(false);
-  const [selectedExclusive, setSelectedExclusive] = useState<number | null>(null);
+  const handlePurchase = () => {
+    trackStripeClick('sprint_produtividade');
+    window.open('https://www.notion.com/templates/sprint-de-organiza-o-7-dias', '_blank');
+  };
+
+  const handleDemo = () => {
+    trackCTAClick('ver_demonstracao_sprint', 'sprint_produtividade');
+    // Scroll to demo section
+    document.getElementById('demonstracao')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const painPoints = [
+    {
+      icon: XCircle,
+      title: "Você começa o dia sem saber por onde começar",
+      description: "Abre o computador, olha a lista de tarefas... e trava. Tudo parece urgente, nada parece certo."
+    },
+    {
+      icon: AlertTriangle,
+      title: "Sua rotina é controlada por emergências",
+      description: "Você passa o dia apagando incêndios. No fim, percebe que não avançou nada do que realmente importa."
+    },
+    {
+      icon: Brain,
+      title: "Procrastinação constante",
+      description: "Você sabe o que precisa fazer, mas não consegue começar. A ansiedade cresce e o ciclo se repete."
+    },
+    {
+      icon: Clock,
+      title: "Falta de clareza sobre prioridades",
+      description: "Tudo parece importante. Você trabalha muito, mas sente que não sai do lugar."
+    }
+  ];
+
+  const roadmap = [
+    { day: "Dia 1", title: "Captura Mental", result: "Mente limpa e todas as tarefas organizadas em um único lugar" },
+    { day: "Dia 2", title: "Classificação Inteligente", result: "Prioridades definidas com clareza absoluta" },
+    { day: "Dia 3", title: "Semana Ideal", result: "Rotina estruturada que respeita sua energia e foco" },
+    { day: "Dia 4", title: "Cortando Distrações", result: "Ambiente digital otimizado para máxima concentração" },
+    { day: "Dia 5", title: "Rotina Estratégica", result: "Rituais diários que sustentam sua produtividade" },
+    { day: "Dia 6", title: "Organização Digital", result: "Arquivos e informações acessíveis em segundos" },
+    { day: "Dia 7", title: "Planejamento Contínuo", result: "Sistema sustentável para manter os resultados" }
+  ];
+
+  const benefits = [
+    {
+      icon: Target,
+      title: "Clareza absoluta",
+      description: "Saiba exatamente o que fazer a cada momento do dia, sem dúvidas ou ansiedade."
+    },
+    {
+      icon: Zap,
+      title: "Foco real",
+      description: "Elimine distrações e entre em estado de fluxo com muito mais facilidade."
+    },
+    {
+      icon: TrendingUp,
+      title: "Ritmo consistente",
+      description: "Construa uma rotina que funciona todos os dias, não apenas na segunda-feira."
+    },
+    {
+      icon: Brain,
+      title: "Menos ansiedade",
+      description: "Pare de carregar tudo na cabeça. Confie no seu sistema e relaxe."
+    },
+    {
+      icon: CheckCircle,
+      title: "Execução de verdade",
+      description: "Transforme intenções em ações. Finalmente risque tarefas importantes da lista."
+    },
+    {
+      icon: Calendar,
+      title: "Tempo para o que importa",
+      description: "Recupere horas do seu dia para projetos pessoais, família e descanso."
+    }
+  ];
+
+  const targetAudience = [
+    "Empreendedores que se sentem sobrecarregados com demandas infinitas",
+    "Profissionais que trabalham de casa e lutam com a autogestão",
+    "Freelancers que precisam organizar múltiplos projetos",
+    "Estudantes que querem otimizar tempo de estudo",
+    "Qualquer pessoa que já tentou apps e métodos sem sucesso duradouro",
+    "Quem quer parar de procrastinar e começar a executar de verdade"
+  ];
+
+  const includedItems = [
+    { icon: FileText, title: "Template completo no Notion", description: "Sistema pronto para usar com todas as páginas e dashboards" },
+    { icon: Video, title: "7 módulos em vídeo", description: "Aulas práticas e diretas explicando cada etapa do método" },
+    { icon: CheckCircle, title: "Exercícios diários", description: "Desafios simples para aplicar imediatamente na sua rotina" },
+    { icon: FileText, title: "Checklists e guias", description: "Material de apoio para consulta rápida" },
+    { icon: MessageCircle, title: "Suporte via grupo", description: "Tire dúvidas e troque experiências com outros participantes" },
+    { icon: Gift, title: "Bônus exclusivos", description: "Templates extras e recursos adicionais para potencializar resultados" }
+  ];
 
   const testimonials = [
     {
       name: "Mariana Costa",
       role: "Gerente de Projetos",
-      company: "Tech Solutions",
-      text: "Depois do Sprint consegui organizar melhor meu dia e parei de deixar tarefas importantes para última hora. O método da captura mental mudou completamente minha forma de lidar com o excesso de informações.",
+      text: "Depois do Sprint consegui organizar melhor meu dia e parei de deixar tarefas importantes para última hora. O método da captura mental mudou tudo.",
       rating: 5
     },
     {
       name: "Roberto Silva",
       role: "Empreendedor",
-      company: "Startup Digital",
-      text: "Eu estava totalmente perdido com tantas tarefas e projetos ao mesmo tempo. O Sprint me ensinou a priorizar o que realmente importa. Hoje consigo focar no que gera resultado e não apenas apagar incêndios.",
+      text: "Eu estava perdido com tantas tarefas. O Sprint me ensinou a priorizar o que realmente importa. Hoje consigo focar no que gera resultado.",
       rating: 5
     },
     {
       name: "Juliana Mendes",
       role: "Analista de Marketing",
-      company: "Agência Criativa",
-      text: "A parte de cortando distrações foi um divisor de águas pra mim. Identifiquei que perdia mais de 2 horas por dia com notificações e redes sociais. Agora tenho uma rotina muito mais produtiva e focada.",
-      rating: 5
-    },
-    {
-      name: "Carlos Eduardo",
-      role: "Desenvolvedor",
-      company: "Freelancer",
-      text: "Como freelancer, eu sempre tive dificuldade em criar uma rotina. O módulo de rotina estratégica me ajudou a estruturar meu dia de forma que funciona para o MEU ritmo, não um modelo genérico que nunca dava certo.",
-      rating: 5
-    },
-    {
-      name: "Fernanda Oliveira",
-      role: "Coordenadora Pedagógica",
-      company: "Escola Integrada",
-      text: "Aplicar a semana ideal na prática me fez perceber que eu estava tentando fazer tudo ao mesmo tempo. Agora distribuo melhor minhas atividades e consigo ter mais qualidade de vida sem comprometer o trabalho.",
-      rating: 5
-    },
-    {
-      name: "Lucas Rodrigues",
-      role: "Designer",
-      company: "Estúdio Criativo",
-      text: "O Sprint foi direto ao ponto. Nada de enrolação, só métodos práticos que funcionam de verdade. A organização digital me ajudou a encontrar meus arquivos em segundos ao invés de perder tempo procurando. Valeu muito a pena!",
+      text: "A parte de cortando distrações foi um divisor de águas. Identifiquei que perdia mais de 2 horas por dia com notificações. Mudou minha vida.",
       rating: 5
     }
   ];
 
-  const moduleImages = [
-    { src: dia01, alt: "Módulo 1 - Captura mental" },
-    { src: dia02, alt: "Módulo 2 - Classificação de tarefas" },
-    { src: dia03, alt: "Módulo 3 - Semana ideal" },
-    { src: dia04, alt: "Módulo 4 - Cortando distrações" },
-    { src: dia05, alt: "Módulo 5 - Rotina estratégica" },
-    { src: dia06, alt: "Módulo 6 - Organização digital" },
-    { src: dia07, alt: "Módulo 7 - Planejamento final" }
-  ];
-
-  const exclusiveItems = [
+  const faqs = [
     {
-      icon: BookOpen,
-      title: "Material Exclusivo",
-      description: "Templates, checklists e guias práticos para aplicar imediatamente em sua rotina de trabalho.",
-      gradient: "from-blue-500 to-cyan-500",
-      details: "Você receberá acesso completo a uma biblioteca exclusiva com mais de 20 templates prontos para usar, checklists detalhados para cada metodologia ensinada, workbooks interativos em PDF para acompanhar seu progresso, guias rápidos de referência que você pode imprimir e deixar na sua mesa, além de planilhas e ferramentas digitais otimizadas. Todo material foi desenvolvido por especialistas em produtividade e já ajudou milhares de profissionais a transformar suas rotinas."
+      question: "Preciso saber usar o Notion?",
+      answer: "Não! O Sprint foi criado para iniciantes. Os vídeos explicam tudo passo a passo, desde a criação da conta até a configuração completa do sistema."
     },
     {
-      icon: Users,
-      title: "Grupo Exclusivo",
-      description: "Acesso ao grupo privado com outros participantes para trocar experiências e manter a motivação.",
-      gradient: "from-purple-500 to-pink-500",
-      details: "Entre para uma comunidade vibrante de profissionais comprometidos com a produtividade. No grupo privado você compartilha suas conquistas e desafios, recebe apoio e motivação diária de outros participantes, troca experiências sobre a aplicação prática das técnicas, participa de desafios e dinâmicas exclusivas, faz networking qualificado com pessoas que pensam como você, e ainda tem acesso a conteúdos bônus compartilhados apenas no grupo. É um ambiente seguro e estimulante para seu crescimento."
+      question: "Quanto tempo preciso dedicar por dia?",
+      answer: "Cada módulo leva de 15 a 30 minutos para assistir e aplicar. O importante é a consistência, não a quantidade de horas."
     },
     {
-      icon: Target,
-      title: "Acompanhamento",
-      description: "Suporte direto durante os 7 dias para esclarecer dúvidas e garantir sua evolução.",
-      gradient: "from-orange-500 to-red-500",
-      details: "Você não estará sozinho nessa jornada. Durante os 7 dias você terá suporte direto via grupo exclusivo para tirar todas as suas dúvidas, feedback personalizado sobre os exercícios que você realizar, orientação para adaptar as técnicas à sua realidade específica, acompanhamento do seu progresso para garantir que está no caminho certo, sessões de perguntas e respostas ao vivo, e motivação constante para manter seu foco e disciplina até o final. Nosso compromisso é com seu resultado real."
-    }
-  ];
-
-  const benefits = [
-    {
-      icon: <Target className="w-6 h-6" />,
-      title: "Metodologia Comprovada",
-      description: "Técnicas testadas e aprovadas por milhares de profissionais."
+      question: "E se o método não funcionar para mim?",
+      answer: "Você tem 30 dias de garantia incondicional. Se não gostar ou não ver resultados, devolvemos 100% do seu investimento sem perguntas."
     },
     {
-      icon: <Clock className="w-6 h-6" />,
-      title: "Aplicação Imediata",
-      description: "Cada dia inclui exercícios práticos para aplicar na sua rotina."
+      question: "O acesso é vitalício?",
+      answer: "Sim! Uma vez adquirido, você tem acesso permanente ao template, aos vídeos e a todas as atualizações futuras."
     },
     {
-      icon: <Users className="w-6 h-6" />,
-      title: "Suporte Personalizado",
-      description: "Acompanhamento diário para garantir seu sucesso."
-    },
-    {
-      icon: <Award className="w-6 h-6" />,
-      title: "Resultados Garantidos",
-      description: "Ou devolvemos 100% do seu investimento."
+      question: "Funciona para qualquer profissão?",
+      answer: "O Sprint é baseado em princípios universais de produtividade. Funciona para empreendedores, freelancers, CLT, estudantes e qualquer pessoa que queira organizar melhor sua rotina."
     }
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background">
       <Helmet>
-        <title>Sprint de Produtividade 7 Dias | Transforme sua Rotina Profissional - Focus</title>
-        <meta name="description" content="Programa intensivo de produtividade em 7 dias com metodologias comprovadas, exercícios práticos diários, material exclusivo e acompanhamento personalizado. GTD, Pomodoro, Time Blocking e mais técnicas para resultados reais." />
-        <meta name="keywords" content="sprint produtividade, produtividade 7 dias, metodologias produtividade, GTD, pomodoro, time blocking, gestão tempo, rotina produtiva, organização pessoal, planejamento diário, foco concentração, eliminar distrações" />
-        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <title>Sprint de Produtividade | Destrave sua Rotina em 7 Dias - Focus</title>
+        <meta name="description" content="Método de 7 dias para organizar sua rotina, criar foco real e executar o que importa. Sistema prático em Notion com exercícios diários. R$ 37,90 com garantia de 30 dias." />
+        <meta name="keywords" content="produtividade, rotina produtiva, foco, organização pessoal, Notion, gestão pessoal, planejamento, sprint produtividade, método 7 dias, produtividade pessoal" />
+        <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://focusinteligente.com.br/sprint-produtividade" />
-        <meta property="og:title" content="Sprint de Produtividade 7 Dias - Transforme sua Rotina" />
-        <meta property="og:description" content="Programa intensivo com metodologias comprovadas, exercícios práticos e acompanhamento. 98% de satisfação." />
-        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Sprint de Produtividade | Destrave sua Rotina em 7 Dias" />
+        <meta property="og:description" content="Método de 7 dias para organizar sua rotina, criar foco real e executar o que importa. Sistema prático em Notion com exercícios diários." />
+        <meta property="og:type" content="product" />
         <meta property="og:url" content="https://focusinteligente.com.br/sprint-produtividade" />
-        <meta property="og:image" content="https://focusinteligente.com.br/lovable-uploads/focus-logo.png" />
+        <meta property="og:image" content="https://focusinteligente.com.br/lovable-uploads/sprint-produtividade.png" />
+        <meta property="product:price:amount" content="37.90" />
+        <meta property="product:price:currency" content="BRL" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Sprint de Produtividade 7 Dias - Focus" />
-        <meta name="twitter:description" content="Programa intensivo de produtividade com metodologias comprovadas e resultados garantidos." />
+        <meta name="twitter:title" content="Sprint de Produtividade | Focus" />
+        <meta name="twitter:description" content="Método de 7 dias para destravara sua produtividade. Sistema em Notion com garantia de 30 dias." />
         
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "Course",
+            "@type": "Product",
             "name": "Sprint de Produtividade 7 Dias",
-            "description": "Programa intensivo de produtividade com metodologias comprovadas, exercícios práticos diários e acompanhamento personalizado",
-            "provider": {
-              "@type": "Organization",
-              "name": "Focus Gestão Empresarial",
-              "url": "https://focusinteligente.com.br"
+            "description": "Método de 7 dias para organizar sua rotina, criar foco real e executar o que importa com sistema prático em Notion",
+            "brand": {
+              "@type": "Brand",
+              "name": "Focus Gestão Empresarial"
             },
-            "educationalLevel": "Intermediário",
-            "timeRequired": "P7D",
+            "offers": {
+              "@type": "Offer",
+              "price": "37.90",
+              "priceCurrency": "BRL",
+              "availability": "https://schema.org/InStock",
+              "priceValidUntil": "2025-12-31"
+            },
             "aggregateRating": {
               "@type": "AggregateRating",
               "ratingValue": "4.9",
-              "ratingCount": "1000",
-              "bestRating": "5"
+              "reviewCount": "150"
             }
           })}
         </script>
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [{
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Início",
-              "item": "https://focusinteligente.com.br/"
-            }, {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Sprint Produtividade",
-              "item": "https://focusinteligente.com.br/sprint-produtividade"
-            }]
+            "@type": "FAQPage",
+            "mainEntity": faqs.map(faq => ({
+              "@type": "Question",
+              "name": faq.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+              }
+            }))
           })}
         </script>
       </Helmet>
+
+      {/* Breadcrumb */}
+      <div className="bg-background-secondary border-b border-border/50">
+        <div className="container-focus py-3">
+          <Breadcrumb>
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink href="/">Início</BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbPage>Sprint de Produtividade</BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
+        </div>
+      </div>
+
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-dark">
-        <div className="relative z-10 container-focus">
+      <section className="relative py-20 lg:py-28 overflow-hidden bg-gradient-dark">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent" />
+        
+        <div className="container-focus relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center px-4 py-2 rounded-full border border-card-border bg-card/50 backdrop-blur-sm mb-8 animate-fade-in">
-              <Zap className="w-4 h-4 text-primary mr-2" />
-              <span className="text-sm text-foreground-muted">
-                Sprint de Produtividade
-              </span>
-            </div>
+            <Badge variant="outline" className="mb-6 px-4 py-2 text-sm border-primary/30 bg-primary/5">
+              <Zap className="w-4 h-4 mr-2 text-primary" />
+              Método validado por +1.000 pessoas
+            </Badge>
             
-            <h1 className="hero-title mb-6 animate-fade-in" style={{ animationDelay: '100ms' }}>
-              7 dias para transformar sua rotina
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
+              Destrave sua produtividade em 7 dias — com um sistema simples e direto no Notion
             </h1>
             
-            <p className="hero-subtitle mb-12 max-w-3xl mx-auto animate-fade-in" style={{ animationDelay: '200ms' }}>
-              Um programa intensivo de produtividade com aulas práticas diárias, 
-              exercícios aplicados e acompanhamento personalizado para resultados reais.
+            <p className="text-xl text-foreground-muted mb-10 max-w-3xl mx-auto leading-relaxed">
+              O Sprint de Produtividade é um método rápido para organizar sua rotina, criar foco real e executar o que importa — mesmo se você já tentou de tudo sem conseguir manter.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in" style={{ animationDelay: '300ms' }}>
-              <Button className="btn-hero group" asChild>
-                <a href="https://www.notion.com/templates/sprint-de-organiza-o-7-dias" target="_blank" rel="noopener noreferrer">
-                  Garanta seu acesso
-                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-                </a>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+              <Button 
+                size="lg" 
+                className="btn-hero group text-lg px-8 py-6"
+                onClick={handlePurchase}
+              >
+                Começar agora o Sprint
+                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
               
-              <Button variant="outline" className="btn-secondary">
-                Ver cronograma completo
+              <Button 
+                variant="outline" 
+                size="lg"
+                className="text-lg px-8 py-6"
+                onClick={handleDemo}
+              >
+                <Play className="w-5 h-5 mr-2" />
+                Ver como funciona
               </Button>
             </div>
 
-            {/* Stats */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 max-w-2xl mx-auto">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-primary mb-2">7</div>
-                <div className="text-sm text-foreground-muted">Dias de transformação</div>
+            {/* Social Proof Mini */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-foreground-muted">
+              <div className="flex items-center gap-2">
+                <div className="flex -space-x-2">
+                  {[1, 2, 3, 4].map((i) => (
+                    <div key={i} className="w-8 h-8 rounded-full bg-primary/20 border-2 border-background flex items-center justify-center">
+                      <Users className="w-4 h-4 text-primary" />
+                    </div>
+                  ))}
+                </div>
+                <span className="text-sm">+1.000 pessoas transformadas</span>
               </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-primary mb-2">+2hrs</div>
-                <div className="text-sm text-foreground-muted">Ganho médio diário</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-primary mb-2">98%</div>
-                <div className="text-sm text-foreground-muted">Taxa de satisfação</div>
+              <div className="flex items-center gap-1">
+                {[1, 2, 3, 4, 5].map((i) => (
+                  <Star key={i} className="w-4 h-4 fill-yellow-500 text-yellow-500" />
+                ))}
+                <span className="text-sm ml-1">4.9/5 de avaliação</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Program Section */}
-      <section className="section-padding bg-background-secondary">
+      {/* Problem Section */}
+      <section className="py-20 bg-background">
         <div className="container-focus">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
-              O que você vai aprender
+          <div className="max-w-3xl mx-auto text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Você se reconhece aqui?
             </h2>
-            <p className="text-xl text-foreground-muted max-w-3xl mx-auto">
-              Cada dia é cuidadosamente estruturado para construir suas habilidades 
-              de produtividade de forma progressiva e sustentável.
+            <p className="text-lg text-foreground-muted">
+              Esses são os sinais de que sua rotina precisa de um sistema de verdade.
             </p>
           </div>
 
-          <div className="max-w-6xl mx-auto px-4">
-            <Carousel
-              opts={{
-                align: "start",
-                loop: true,
-              }}
-              className="w-full"
-            >
-              <CarouselContent className="-ml-2 md:-ml-4">
-                {moduleImages.map((module, index) => (
-                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-full sm:basis-1/2 lg:basis-1/3 xl:basis-1/4">
-                    <div className="group cursor-pointer relative">
-                      <div className="absolute inset-0 bg-yellow-400/0 group-hover:bg-yellow-400/40 blur-3xl transition-all duration-500 -z-10 scale-75 group-hover:scale-110" />
-                      <div className="relative overflow-hidden rounded-lg transition-all duration-300 hover:scale-105">
-                        <img
-                          src={module.src}
-                          alt={module.alt}
-                          className="w-full h-auto object-cover"
-                        />
+          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {painPoints.map((point, index) => {
+              const IconComponent = point.icon;
+              return (
+                <Card key={index} className="p-6 border-destructive/20 bg-destructive/5 hover:border-destructive/40 transition-colors">
+                  <div className="flex items-start gap-4">
+                    <div className="p-3 rounded-lg bg-destructive/10">
+                      <IconComponent className="w-6 h-6 text-destructive" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-foreground mb-2">{point.title}</h3>
+                      <p className="text-foreground-muted text-sm">{point.description}</p>
+                    </div>
+                  </div>
+                </Card>
+              );
+            })}
+          </div>
+
+          <div className="text-center mt-12">
+            <p className="text-xl text-foreground-muted italic">
+              "Se você se identificou com pelo menos um desses pontos, o Sprint foi feito para você."
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Solution Section */}
+      <section className="py-20 bg-background-secondary">
+        <div className="container-focus">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <Badge variant="outline" className="mb-4 px-4 py-2 border-primary/30 bg-primary/5">
+                <Sparkles className="w-4 h-4 mr-2 text-primary" />
+                A Solução
+              </Badge>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+                O Sprint de Produtividade resolve isso em 7 dias
+              </h2>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div className="space-y-6">
+                <p className="text-lg text-foreground-muted leading-relaxed">
+                  O Sprint é um programa prático de <strong className="text-foreground">7 dias guiados</strong> que te ensina a construir um sistema de produtividade pessoal no Notion — simples de manter e poderoso nos resultados.
+                </p>
+                <p className="text-lg text-foreground-muted leading-relaxed">
+                  Cada dia você aplica um passo concreto: da captura mental à organização digital, passando por priorização, rotinas e eliminação de distrações. No final, você terá uma <strong className="text-foreground">rotina clara, um sistema confiável e a sensação de controle</strong> que faltava.
+                </p>
+                <div className="flex items-center gap-4 pt-4">
+                  <div className="flex items-center gap-2 text-primary">
+                    <CheckCircle className="w-5 h-5" />
+                    <span className="text-sm font-medium">Sem teoria excessiva</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-primary">
+                    <CheckCircle className="w-5 h-5" />
+                    <span className="text-sm font-medium">100% prático</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-purple-500/20 blur-3xl -z-10" />
+                <Card className="p-8 bg-card/80 backdrop-blur border-primary/20">
+                  <div className="text-center">
+                    <div className="text-5xl font-bold text-primary mb-2">7</div>
+                    <div className="text-foreground font-semibold mb-4">dias de transformação</div>
+                    <div className="space-y-3 text-left">
+                      <div className="flex items-center gap-2 text-foreground-muted">
+                        <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
+                        <span className="text-sm">Exercícios diários práticos</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-foreground-muted">
+                        <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
+                        <span className="text-sm">Sistema pronto no Notion</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-foreground-muted">
+                        <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
+                        <span className="text-sm">Progresso visível a cada dia</span>
                       </div>
                     </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious className="hidden md:flex -left-12" />
-              <CarouselNext className="hidden md:flex -right-12" />
-            </Carousel>
+                  </div>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Roadmap Section */}
+      <section className="py-20 bg-background">
+        <div className="container-focus">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Sua jornada de 7 dias
+            </h2>
+            <p className="text-lg text-foreground-muted">
+              Cada dia é um passo concreto rumo à sua nova rotina produtiva.
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <div className="space-y-4">
+              {roadmap.map((item, index) => (
+                <Card key={index} className="p-6 hover:border-primary/30 transition-colors group">
+                  <div className="flex flex-col md:flex-row md:items-center gap-4">
+                    <div className="flex items-center gap-4">
+                      <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                        <span className="text-primary font-bold">{item.day}</span>
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-foreground text-lg">{item.title}</h3>
+                      </div>
+                    </div>
+                    <div className="md:ml-auto md:text-right">
+                      <div className="flex items-center gap-2 text-primary">
+                        <ArrowRight className="w-4 h-4 hidden md:block" />
+                        <span className="text-sm font-medium">{item.result}</span>
+                      </div>
+                    </div>
+                  </div>
+                </Card>
+              ))}
+            </div>
+          </div>
+
+          {/* CTA Intermediário */}
+          <div className="text-center mt-12">
+            <Button 
+              size="lg" 
+              className="btn-hero group"
+              onClick={handlePurchase}
+            >
+              Quero começar minha transformação
+              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Demo Section */}
+      <section id="demonstracao" className="py-20 bg-background-secondary">
+        <div className="container-focus">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Veja o sistema na prática
+            </h2>
+            <p className="text-lg text-foreground-muted">
+              Um preview do que você vai construir durante o Sprint.
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <div className="relative rounded-2xl overflow-hidden border border-border/50 shadow-2xl">
+              <img 
+                src={sprintImage} 
+                alt="Preview do Sistema Sprint de Produtividade no Notion" 
+                className="w-full h-auto"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent flex items-end justify-center pb-8">
+                <Button 
+                  size="lg" 
+                  className="btn-hero group"
+                  onClick={handlePurchase}
+                >
+                  <Play className="w-5 h-5 mr-2" />
+                  Assistir demonstração completa
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Benefits Section */}
-      <section className="section-padding">
+      <section className="py-20 bg-background">
         <div className="container-focus">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
-                Por que o Sprint funciona?
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              O que você vai conquistar
+            </h2>
+            <p className="text-lg text-foreground-muted">
+              Resultados reais que você vai sentir no dia a dia.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {benefits.map((benefit, index) => {
+              const IconComponent = benefit.icon;
+              return (
+                <Card key={index} className="p-6 hover:border-primary/30 transition-all hover:shadow-elegant group">
+                  <div className="mb-4">
+                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                      <IconComponent className="w-6 h-6 text-primary" />
+                    </div>
+                  </div>
+                  <h3 className="font-semibold text-foreground mb-2">{benefit.title}</h3>
+                  <p className="text-foreground-muted text-sm">{benefit.description}</p>
+                </Card>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Target Audience Section */}
+      <section className="py-20 bg-background-secondary">
+        <div className="container-focus">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                Para quem é o Sprint?
               </h2>
-              <p className="text-xl text-foreground-muted leading-relaxed mb-8">
-                Nosso método combina teoria comprovada com prática intensiva, 
-                garantindo que você não apenas aprenda, mas implemente e veja 
-                resultados imediatos.
+              <p className="text-lg text-foreground-muted">
+                O método foi criado para quem quer resultados práticos, não teoria.
               </p>
-              
-              <div className="space-y-6 mb-8">
-                {benefits.map((benefit, index) => (
-                  <div key={benefit.title} className="flex items-start space-x-4">
-                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 text-primary flex-shrink-0">
-                      {benefit.icon}
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-4">
+              {targetAudience.map((item, index) => (
+                <div key={index} className="flex items-start gap-3 p-4 rounded-lg bg-card border border-border/50">
+                  <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground">{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* What's Included Section */}
+      <section className="py-20 bg-background">
+        <div className="container-focus">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              O que está incluso no Sprint
+            </h2>
+            <p className="text-lg text-foreground-muted">
+              Tudo que você precisa para transformar sua rotina.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {includedItems.map((item, index) => {
+              const IconComponent = item.icon;
+              return (
+                <Card key={index} className="p-6 border-primary/10 hover:border-primary/30 transition-colors">
+                  <div className="flex items-start gap-4">
+                    <div className="p-2 rounded-lg bg-primary/10">
+                      <IconComponent className="w-5 h-5 text-primary" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-foreground mb-2">
-                        {benefit.title}
-                      </h3>
-                      <p className="text-foreground-muted">
-                        {benefit.description}
-                      </p>
+                      <h3 className="font-semibold text-foreground mb-1">{item.title}</h3>
+                      <p className="text-foreground-muted text-sm">{item.description}</p>
                     </div>
                   </div>
-                ))}
-              </div>
-
-              <Button className="btn-hero group" asChild>
-                <a href="https://www.notion.com/templates/sprint-de-organiza-o-7-dias" target="_blank" rel="noopener noreferrer">
-                  Começar hoje mesmo
-                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-                </a>
-              </Button>
-            </div>
-
-            <div className="space-y-6">
-              {exclusiveItems.map((item, index) => {
-                const IconComponent = item.icon;
-                return (
-                  <div key={item.title}>
-                    <Card 
-                      className="card-hover border-primary/10 transition-all duration-300 hover:scale-105 hover:shadow-elegant cursor-pointer"
-                      onClick={() => setSelectedExclusive(index)}
-                    >
-                      <div className="p-6">
-                        <div className="relative mb-4 flex justify-start">
-                          <div className={`relative w-14 h-14 rounded-2xl bg-gradient-to-br ${item.gradient} p-0.5 shadow-lg`}>
-                            <div className="w-full h-full rounded-2xl bg-background/95 backdrop-blur-sm flex items-center justify-center">
-                              <IconComponent className="w-7 h-7 text-foreground" />
-                            </div>
-                          </div>
-                          <div className={`absolute inset-0 w-14 h-14 rounded-2xl bg-gradient-to-br ${item.gradient} blur-xl opacity-30`} />
-                        </div>
-                        <h3 className="text-xl font-bold text-card-foreground mb-3">
-                          {item.title}
-                        </h3>
-                        <p className="text-foreground-muted mb-3">
-                          {item.description}
-                        </p>
-                        <p className="text-sm text-primary hover:text-primary/80 transition-colors">
-                          Clique para saber mais →
-                        </p>
-                      </div>
-                    </Card>
-                  </div>
-                );
-              })}
-            </div>
-
-            {/* Exclusive Items Dialog */}
-            <Dialog open={selectedExclusive !== null} onOpenChange={(open) => !open && setSelectedExclusive(null)}>
-              <DialogContent className="max-w-2xl">
-                {selectedExclusive !== null && (
-                  <>
-                    <DialogHeader>
-                      <div className="flex items-center gap-4 mb-4">
-                        <div className={`relative w-16 h-16 rounded-2xl bg-gradient-to-br ${exclusiveItems[selectedExclusive].gradient} p-0.5 shadow-lg`}>
-                          <div className="w-full h-full rounded-2xl bg-background/95 backdrop-blur-sm flex items-center justify-center">
-                            {(() => {
-                              const IconComponent = exclusiveItems[selectedExclusive].icon;
-                              return <IconComponent className="w-8 h-8 text-foreground" />;
-                            })()}
-                          </div>
-                        </div>
-                        <div className="text-left">
-                          <DialogTitle className="text-2xl">
-                            {exclusiveItems[selectedExclusive].title}
-                          </DialogTitle>
-                        </div>
-                      </div>
-                      <DialogDescription className="text-base leading-relaxed text-foreground-muted">
-                        {exclusiveItems[selectedExclusive].details}
-                      </DialogDescription>
-                    </DialogHeader>
-                    <div className="mt-6">
-                      <Button 
-                        className="btn-hero w-full group"
-                        asChild
-                      >
-                        <a href="https://pay.hub.la/bZk8tJXer0JtaUU3l10n" target="_blank" rel="noopener noreferrer">
-                          Garantir meu acesso agora
-                          <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-                        </a>
-                      </Button>
-                    </div>
-                  </>
-                )}
-              </DialogContent>
-            </Dialog>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* Pricing & Guarantee Section */}
-      <section className="section-padding">
+      {/* Social Proof Section */}
+      <section className="py-20 bg-background-secondary">
         <div className="container-focus">
-          <div className="max-w-5xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-              {/* Pricing Card */}
-              <Card className="border-2 border-primary bg-gradient-to-br from-primary/5 to-accent/5">
-                <div className="p-8 md:p-10">
-                  <div className="text-center mb-8">
-                    <div className="inline-flex items-center px-3 py-1 bg-yellow-500/20 text-yellow-600 text-xs font-semibold rounded-full mb-4">
-                      🔥 Oferta por Tempo Limitado
-                    </div>
-                    <div className="text-5xl font-bold text-foreground mb-2">
-                      R$ 37,90
-                    </div>
-                    <p className="text-foreground-muted">pagamento único • acesso vitalício</p>
-                  </div>
-                  
-                  <div className="space-y-4 mb-8">
-                    <div className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
-                      <div>
-                        <p className="font-semibold text-foreground">7 dias de transformação</p>
-                        <p className="text-sm text-foreground-muted">Conteúdo prático e aplicável</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
-                      <div>
-                        <p className="font-semibold text-foreground">Material exclusivo</p>
-                        <p className="text-sm text-foreground-muted">Templates e checklists</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
-                      <div>
-                        <p className="font-semibold text-foreground">Grupo exclusivo</p>
-                        <p className="text-sm text-foreground-muted">Networking e suporte</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
-                      <div>
-                        <p className="font-semibold text-foreground">Acompanhamento diário</p>
-                        <p className="text-sm text-foreground-muted">Durante os 7 dias</p>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <Button className="btn-hero w-full group" asChild>
-                    <a href="https://www.notion.com/templates/sprint-de-organiza-o-7-dias" target="_blank" rel="noopener noreferrer">
-                      Garantir minha vaga agora
-                      <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-                    </a>
-                  </Button>
-                  
-                  <p className="text-center text-xs text-foreground-muted mt-4">
-                    🔒 Pagamento seguro • Últimas vagas
-                  </p>
-                </div>
-              </Card>
-              
-              {/* Guarantee Card */}
-              <Card className="border-2 border-primary/30">
-                <div className="p-8 md:p-10">
-                  <div className="text-center mb-6">
-                    <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 text-primary mb-4">
-                      <Shield className="w-10 h-10" />
-                    </div>
-                    <h3 className="text-2xl font-bold text-foreground mb-3">
-                      Garantia Incondicional de 30 Dias
-                    </h3>
-                  </div>
-                  
-                  <p className="text-foreground-muted leading-relaxed mb-6">
-                    Estamos tão confiantes na qualidade do Sprint de Produtividade que oferecemos 
-                    garantia total de 30 dias. Se você seguir os exercícios e não ver melhoria 
-                    significativa na sua produtividade, devolvemos 100% do seu investimento.
-                  </p>
-                  
-                  <div className="space-y-3 mb-6">
-                    <div className="flex items-center gap-3">
-                      <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" />
-                      <span className="text-foreground-muted">Sem perguntas complicadas</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" />
-                      <span className="text-foreground-muted">Reembolso total em até 7 dias</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" />
-                      <span className="text-foreground-muted">Risco zero para você</span>
-                    </div>
-                  </div>
-                  
-                  <div className="bg-primary/5 rounded-lg p-4 border border-primary/20">
-                    <p className="text-sm text-foreground-muted leading-relaxed">
-                      <strong className="text-foreground">Por que oferecemos isso?</strong><br />
-                      Porque sabemos que nosso método funciona. Mais de 98% dos participantes 
-                      ficam satisfeitos e veem resultados reais. Queremos que você tenha total 
-                      tranquilidade ao fazer sua inscrição.
-                    </p>
-                  </div>
-                </div>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="section-padding bg-background-secondary">
-        <div className="container-focus">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
-              Pronto para a transformação?
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Quem já fez, recomenda
             </h2>
-            <p className="text-xl text-foreground-muted mb-8 max-w-2xl mx-auto">
-              Junte-se a milhares de profissionais que já transformaram sua produtividade 
-              com nosso Sprint. Garantia de 30 dias ou seu dinheiro de volta.
+            <p className="text-lg text-foreground-muted">
+              Histórias reais de pessoas que transformaram sua produtividade.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button className="btn-hero group" asChild>
-                <a href="https://www.notion.com/templates/sprint-de-organiza-o-7-dias" target="_blank" rel="noopener noreferrer">
-                  Garantir minha vaga
-                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-                </a>
-              </Button>
-              <Button 
-                variant="outline" 
-                className="btn-secondary"
-                onClick={() => setShowTestimonials(true)}
-              >
-                Ver depoimentos
-              </Button>
-            </div>
           </div>
-        </div>
-      </section>
 
-      {/* Testimonials Dialog */}
-      <Dialog open={showTestimonials} onOpenChange={setShowTestimonials}>
-        <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto bg-card border-card-border">
-          <DialogHeader>
-            <DialogTitle className="text-3xl font-bold text-foreground mb-2">
-              O que dizem os participantes
-            </DialogTitle>
-            <DialogDescription className="text-foreground-muted">
-              Veja como o Sprint de Produtividade transformou a rotina de centenas de profissionais
-            </DialogDescription>
-          </DialogHeader>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {testimonials.map((testimonial, index) => (
-              <div 
-                key={index}
-                className="bg-background-secondary/50 p-6 rounded-xl border border-card-border hover:border-primary/50 transition-all duration-300"
-              >
-                <div className="flex items-start justify-between mb-4">
-                  <Quote className="w-8 h-8 text-primary/30" />
-                  <div className="flex gap-1">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                    ))}
-                  </div>
+              <Card key={index} className="p-6 hover:shadow-elegant transition-shadow">
+                <div className="flex items-center gap-1 mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-yellow-500 text-yellow-500" />
+                  ))}
                 </div>
-                
-                <p className="text-foreground-muted mb-6 leading-relaxed">
+                <Quote className="w-8 h-8 text-primary/20 mb-3" />
+                <p className="text-foreground-muted mb-4 text-sm leading-relaxed">
                   "{testimonial.text}"
                 </p>
-                
-                <div className="border-t border-card-border pt-4">
-                  <p className="font-semibold text-foreground">{testimonial.name}</p>
-                  <p className="text-sm text-foreground-muted">{testimonial.role}</p>
-                  <p className="text-xs text-foreground-muted/70">{testimonial.company}</p>
+                <div className="border-t border-border/50 pt-4">
+                  <div className="font-semibold text-foreground">{testimonial.name}</div>
+                  <div className="text-sm text-foreground-muted">{testimonial.role}</div>
                 </div>
-              </div>
+              </Card>
             ))}
           </div>
-        </DialogContent>
-      </Dialog>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section className="py-20 bg-gradient-dark">
+        <div className="container-focus">
+          <div className="max-w-2xl mx-auto">
+            <Card className="p-8 md:p-12 border-primary/20 bg-card/80 backdrop-blur text-center relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-40 h-40 bg-primary/10 rounded-full blur-3xl -z-10" />
+              <div className="absolute bottom-0 left-0 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl -z-10" />
+              
+              <Badge className="mb-6 bg-primary text-primary-foreground">
+                Oferta especial
+              </Badge>
+              
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                Comece agora sua transformação
+              </h2>
+              
+              <p className="text-foreground-muted mb-8">
+                Investimento único com acesso vitalício e garantia de 30 dias.
+              </p>
+
+              <div className="mb-8">
+                <div className="text-foreground-muted line-through text-lg">De R$ 97,00</div>
+                <div className="text-5xl font-bold text-foreground mb-2">
+                  R$ <span className="text-primary">37,90</span>
+                </div>
+                <div className="text-foreground-muted text-sm">Pagamento único • Acesso imediato</div>
+              </div>
+
+              <Button 
+                size="lg" 
+                className="btn-hero group text-lg px-12 py-6 w-full md:w-auto"
+                onClick={handlePurchase}
+              >
+                Quero começar meu Sprint
+                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Button>
+
+              <div className="flex items-center justify-center gap-2 mt-6 text-foreground-muted text-sm">
+                <Shield className="w-4 h-4 text-primary" />
+                Garantia incondicional de 30 dias
+              </div>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-20 bg-background">
+        <div className="container-focus">
+          <div className="max-w-3xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                Perguntas frequentes
+              </h2>
+            </div>
+
+            <Accordion type="single" collapsible className="space-y-4">
+              {faqs.map((faq, index) => (
+                <AccordionItem 
+                  key={index} 
+                  value={`faq-${index}`}
+                  className="border border-border/50 rounded-lg px-6 data-[state=open]:border-primary/30"
+                >
+                  <AccordionTrigger className="text-left font-semibold text-foreground hover:text-primary">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-foreground-muted">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA Section */}
+      <section className="py-20 bg-background-secondary border-t border-border/50">
+        <div className="container-focus">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Comece agora sua mudança de rotina com o Sprint de Produtividade
+            </h2>
+            <p className="text-lg text-foreground-muted mb-8">
+              Em 7 dias você terá clareza, foco e um sistema que funciona de verdade.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Button 
+                size="lg" 
+                className="btn-hero group text-lg px-8"
+                onClick={handlePurchase}
+              >
+                Começar agora
+                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Button>
+              
+              <Button 
+                variant="outline" 
+                size="lg"
+                className="text-lg px-8"
+                onClick={handleDemo}
+              >
+                Ver demonstração
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
