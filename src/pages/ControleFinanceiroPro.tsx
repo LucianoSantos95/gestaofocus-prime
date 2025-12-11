@@ -172,19 +172,19 @@ const ControleFinanceiroPro = () => {
         {/* Hero Section */}
         <section className="relative pt-32 pb-20 px-4 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
-          <div className="absolute top-20 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-primary/10 rounded-full blur-3xl" />
+          <div className="absolute top-20 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-accent/10 rounded-full blur-3xl" />
 
           <div className="container mx-auto max-w-5xl relative z-10">
             <div className="text-center space-y-8">
-              <Badge variant="outline" className="px-4 py-2 text-sm border-emerald-500/30 text-emerald-400">
+              <Badge variant="outline" className="px-4 py-2 text-sm border-primary/30 text-primary">
                 <Wallet className="w-4 h-4 mr-2" />
                 Sistema Financeiro Completo
               </Badge>
 
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                 Controle financeiro empresarial{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-600">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
                   claro, simples e inteligente
                 </span>{" "}
                 — 100% em Notion
@@ -197,7 +197,7 @@ const ControleFinanceiroPro = () => {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-                <Button size="lg" className="text-lg px-8 py-6 bg-emerald-600 hover:bg-emerald-700">
+                <Button size="lg" className="text-lg px-8 py-6 bg-primary hover:bg-primary/90">
                   <Wallet className="w-5 h-5 mr-2" />
                   Quero o Controle Financeiro PRO
                   <ArrowRight className="w-5 h-5 ml-2" />
@@ -210,11 +210,11 @@ const ControleFinanceiroPro = () => {
 
               <div className="flex items-center justify-center gap-6 pt-4 text-sm text-muted-foreground">
                 <span className="flex items-center gap-2">
-                  <Shield className="w-4 h-4 text-emerald-500" />
+                  <Shield className="w-4 h-4 text-primary" />
                   Garantia de 7 dias
                 </span>
                 <span className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-500" />
+                  <CheckCircle2 className="w-4 h-4 text-primary" />
                   Acesso imediato
                 </span>
               </div>
@@ -236,11 +236,11 @@ const ControleFinanceiroPro = () => {
 
             <div className="grid md:grid-cols-2 gap-6">
               {problems.map((problem, index) => (
-                <Card key={index} className="bg-destructive/5 border-destructive/20 hover:border-destructive/40 transition-colors">
+                <Card key={index} className="bg-red-500/5 border-red-500/20 hover:border-red-500/40 transition-colors">
                   <CardContent className="p-6">
                     <div className="flex gap-4">
-                      <div className="w-12 h-12 rounded-xl bg-destructive/10 flex items-center justify-center flex-shrink-0">
-                        <problem.icon className="w-6 h-6 text-destructive" />
+                      <div className="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center flex-shrink-0">
+                        <problem.icon className="w-6 h-6 text-red-500" />
                       </div>
                       <div>
                         <h3 className="font-semibold text-lg mb-2">{problem.title}</h3>
@@ -268,11 +268,11 @@ const ControleFinanceiroPro = () => {
 
             <div className="grid md:grid-cols-2 gap-6">
               {solutions.map((solution, index) => (
-                <Card key={index} className="bg-emerald-500/5 border-emerald-500/20 hover:border-emerald-500/40 transition-colors">
+                <Card key={index} className="bg-primary/5 border-primary/20 hover:border-primary/40 transition-colors">
                   <CardContent className="p-6">
                     <div className="flex gap-4">
-                      <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
-                        <solution.icon className="w-6 h-6 text-emerald-500" />
+                      <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                        <solution.icon className="w-6 h-6 text-primary" />
                       </div>
                       <div>
                         <h3 className="font-semibold text-lg mb-2">{solution.title}</h3>
@@ -285,7 +285,7 @@ const ControleFinanceiroPro = () => {
             </div>
 
             <div className="text-center mt-10">
-              <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700">
+              <Button size="lg" className="bg-primary hover:bg-primary/90">
                 Quero organizar minhas finanças
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
@@ -309,8 +309,8 @@ const ControleFinanceiroPro = () => {
               {includes.map((item, index) => (
                 <Card key={index} className="bg-background/50 hover:bg-background transition-colors">
                   <CardContent className="p-5 text-center">
-                    <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center mx-auto mb-4">
-                      <item.icon className="w-6 h-6 text-emerald-500" />
+                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                      <item.icon className="w-6 h-6 text-primary" />
                     </div>
                     <h3 className="font-semibold mb-1">{item.title}</h3>
                     <p className="text-sm text-muted-foreground">{item.description}</p>
@@ -334,10 +334,10 @@ const ControleFinanceiroPro = () => {
             </div>
 
             <div className="relative rounded-2xl overflow-hidden border border-border/50 bg-card/50">
-              <div className="aspect-video bg-gradient-to-br from-emerald-500/10 to-primary/10 flex items-center justify-center">
+              <div className="aspect-video bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
                 <div className="text-center space-y-4">
-                  <div className="w-20 h-20 rounded-full bg-emerald-500/20 flex items-center justify-center mx-auto">
-                    <Play className="w-10 h-10 text-emerald-500" />
+                  <div className="w-20 h-20 rounded-full bg-primary/20 flex items-center justify-center mx-auto">
+                    <Play className="w-10 h-10 text-primary" />
                   </div>
                   <p className="text-muted-foreground">Demonstração do sistema</p>
                 </div>
@@ -365,8 +365,8 @@ const ControleFinanceiroPro = () => {
             <div className="max-w-2xl mx-auto">
               <div className="space-y-4">
                 {benefits.map((benefit, index) => (
-                  <div key={index} className="flex items-start gap-4 p-4 rounded-xl bg-background/50">
-                    <CheckCircle2 className="w-6 h-6 text-emerald-500 flex-shrink-0 mt-0.5" />
+                  <div key={index} className="flex items-start gap-4 p-4 rounded-xl bg-background/50 border border-border/30">
+                    <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" />
                     <span className="text-lg">{benefit}</span>
                   </div>
                 ))}
@@ -374,7 +374,7 @@ const ControleFinanceiroPro = () => {
             </div>
 
             <div className="text-center mt-10">
-              <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700">
+              <Button size="lg" className="bg-primary hover:bg-primary/90">
                 Quero esses resultados
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
@@ -399,8 +399,8 @@ const ControleFinanceiroPro = () => {
                 <Card key={index} className="bg-background/50 hover:bg-background transition-colors">
                   <CardContent className="p-5">
                     <div className="flex gap-4">
-                      <div className="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
-                        <audience.icon className="w-5 h-5 text-emerald-500" />
+                      <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                        <audience.icon className="w-5 h-5 text-primary" />
                       </div>
                       <div>
                         <h3 className="font-semibold mb-1">{audience.title}</h3>
@@ -435,8 +435,8 @@ const ControleFinanceiroPro = () => {
                     <p className="text-muted-foreground mb-4 italic">
                       "Depoimento em breve..."
                     </p>
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-emerald-500/20" />
+                      <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-full bg-primary/20" />
                       <div>
                         <p className="font-medium text-sm">Nome do Cliente</p>
                         <p className="text-xs text-muted-foreground">Empresa</p>
@@ -452,9 +452,9 @@ const ControleFinanceiroPro = () => {
         {/* Pricing Section */}
         <section className="py-20 px-4">
           <div className="container mx-auto max-w-3xl">
-            <Card className="bg-gradient-to-br from-emerald-500/10 to-primary/10 border-emerald-500/30">
+            <Card className="bg-gradient-to-br from-primary/10 to-accent/10 border-primary/30">
               <CardContent className="p-8 md:p-12 text-center">
-                <Badge className="mb-6 bg-emerald-500/20 text-emerald-400 border-emerald-500/30">
+                <Badge className="mb-6 bg-primary/20 text-primary border-primary/30">
                   Oferta Especial
                 </Badge>
 
@@ -468,22 +468,22 @@ const ControleFinanceiroPro = () => {
 
                 <div className="mb-8">
                   <p className="text-sm text-muted-foreground line-through mb-1">De R$ 197</p>
-                  <p className="text-5xl font-bold text-emerald-400">R$ 97</p>
+                  <p className="text-5xl font-bold text-primary">R$ 97</p>
                   <p className="text-sm text-muted-foreground mt-2">Pagamento único • Acesso vitalício</p>
                 </div>
 
-                <Button size="lg" className="text-lg px-10 py-7 bg-emerald-600 hover:bg-emerald-700 mb-6">
+                <Button size="lg" className="text-lg px-10 py-7 bg-primary hover:bg-primary/90 mb-6">
                   <Wallet className="w-5 h-5 mr-2" />
                   Quero organizar minhas finanças agora
                 </Button>
 
                 <div className="flex items-center justify-center gap-6 text-sm text-muted-foreground">
                   <span className="flex items-center gap-2">
-                    <Shield className="w-4 h-4 text-emerald-500" />
+                    <Shield className="w-4 h-4 text-primary" />
                     Garantia de 7 dias
                   </span>
                   <span className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-500" />
+                    <CheckCircle2 className="w-4 h-4 text-primary" />
                     Acesso imediato
                   </span>
                 </div>
@@ -521,7 +521,7 @@ const ControleFinanceiroPro = () => {
         </section>
 
         {/* Final CTA Section */}
-        <section className="py-20 px-4 bg-gradient-to-t from-emerald-500/5 to-transparent">
+        <section className="py-20 px-4 bg-gradient-to-t from-primary/5 to-transparent">
           <div className="container mx-auto max-w-4xl text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               Comece hoje sua gestão financeira inteligente
@@ -531,7 +531,7 @@ const ControleFinanceiroPro = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="text-lg px-8 py-6 bg-emerald-600 hover:bg-emerald-700">
+              <Button size="lg" className="text-lg px-8 py-6 bg-primary hover:bg-primary/90">
                 <Wallet className="w-5 h-5 mr-2" />
                 Comprar agora
                 <ArrowRight className="w-5 h-5 ml-2" />
