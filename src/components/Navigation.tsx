@@ -27,7 +27,6 @@ const Navigation = () => {
 
   const navItems = [
     { name: "Início", href: "/" },
-    { name: "Sistemas Notion", href: "/sistemas-notion" },
   ];
 
   const productItems = [
