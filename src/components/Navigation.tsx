@@ -37,7 +37,7 @@ const Navigation = () => {
   ];
 
   const finalNavItems = [
-    { name: "Focus Club", href: "/focus-club", highlight: true },
+    { name: "Focus Pro", href: "/focus-pro", highlight: true },
     { name: "Blog", href: "/blog" },
   ];
 

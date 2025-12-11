@@ -10,7 +10,7 @@ import Index from "./pages/Index";
 import SprintProdutividade from "./pages/SprintProdutividade";
 import HubEmpresarial from "./pages/HubEmpresarial";
 import ControleFinanceiroPro from "./pages/ControleFinanceiroPro";
-import FocusClub from "./pages/FocusClub";
+import FocusPro from "./pages/FocusPro";
 import SistemasGratuitos from "./pages/SistemasGratuitos";
 import Blog from "./pages/Blog";
 import ListaEspera from "./pages/ListaEspera";
@@ -102,8 +102,9 @@ const App = () => (
             <Route path="/sprint-produtividade" element={<SprintProdutividade />} />
             <Route path="/hub-empresarial" element={<HubEmpresarial />} />
             <Route path="/controle-financeiro-pro" element={<ControleFinanceiroPro />} />
-            <Route path="/focus-club" element={<FocusClub />} />
-            <Route path="/metodofocus" element={<FocusClub />} /> {/* Redirect legacy URL */}
+            <Route path="/focus-pro" element={<FocusPro />} />
+            <Route path="/focus-club" element={<FocusPro />} /> {/* Redirect legacy URL */}
+            <Route path="/metodofocus" element={<FocusPro />} /> {/* Redirect legacy URL */}
             <Route path="/sistemas-gratuitos" element={<SistemasGratuitos />} />
             <Route path="/blog" element={<Blog />} />
               
