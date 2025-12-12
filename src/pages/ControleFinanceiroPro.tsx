@@ -170,6 +170,7 @@ const ControleFinanceiroPro = () => {
             brand: { "@type": "Brand", name: "Focus" },
             offers: {
               "@type": "Offer",
+              price: "297.00",
               priceCurrency: "BRL",
               availability: "https://schema.org/InStock",
             },
@@ -493,8 +494,8 @@ const ControleFinanceiroPro = () => {
                 </p>
 
                 <div className="mb-8">
-                  <p className="text-sm text-muted-foreground line-through mb-1">De R$ 197</p>
-                  <p className="text-5xl font-bold text-primary">R$ 97</p>
+                  <p className="text-sm text-muted-foreground line-through mb-1">De R$ 497</p>
+                  <p className="text-5xl font-bold text-primary">R$ 297</p>
                   <p className="text-sm text-muted-foreground mt-2">Pagamento único • Acesso vitalício</p>
                 </div>
 
