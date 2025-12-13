@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Helmet } from "react-helmet";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -35,8 +36,10 @@ import {
   ListChecks,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import WaitlistFormModal from "@/components/WaitlistFormModal";
 
 const FocusPro = () => {
+  const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
   const pillars = [
     {
       icon: LayoutGrid,
@@ -122,8 +125,8 @@ const FocusPro = () => {
     },
   ];
 
-  const scrollToWaitlist = () => {
-    window.location.href = "/lista-espera";
+  const openWaitlistModal = () => {
+    setIsWaitlistOpen(true);
   };
 
   return (
@@ -177,7 +180,7 @@ const FocusPro = () => {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-                <Button size="lg" className="text-lg px-8 py-6" onClick={scrollToWaitlist}>
+                <Button size="lg" className="text-lg px-8 py-6" onClick={openWaitlistModal}>
                   <Sparkles className="w-5 h-5 mr-2" />
                   Entrar na lista de espera
                   <ArrowRight className="w-5 h-5 ml-2" />
@@ -271,7 +274,7 @@ const FocusPro = () => {
             </div>
 
             <div className="text-center mt-10">
-              <Button size="lg" onClick={scrollToWaitlist}>
+              <Button size="lg" onClick={openWaitlistModal}>
                 Entrar na lista de espera
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
@@ -360,7 +363,7 @@ const FocusPro = () => {
             </div>
 
             <div className="text-center mt-10">
-              <Button size="lg" className="text-lg px-10 py-7" onClick={scrollToWaitlist}>
+              <Button size="lg" className="text-lg px-10 py-7" onClick={openWaitlistModal}>
                 <Sparkles className="w-5 h-5 mr-2" />
                 Entrar na lista da Focus Pro
                 <ArrowRight className="w-5 h-5 ml-2" />
@@ -440,13 +443,19 @@ const FocusPro = () => {
               Entre na lista de espera e seja avisado em primeira mão quando abrirmos as vagas
             </p>
 
-            <Button size="lg" className="text-lg px-10 py-7" onClick={scrollToWaitlist}>
+            <Button size="lg" className="text-lg px-10 py-7" onClick={openWaitlistModal}>
               <Sparkles className="w-5 h-5 mr-2" />
               Entrar na lista de espera
               <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
           </div>
         </section>
+
+        <WaitlistFormModal 
+          open={isWaitlistOpen} 
+          onOpenChange={setIsWaitlistOpen}
+          source="focus-pro"
+        />
       </main>
     </>
   );
