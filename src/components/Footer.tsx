@@ -16,12 +16,6 @@ const Footer = () => {
             Templates
           </Link>
           <Link 
-            to="/hub-empresarial"
-            className="text-foreground-muted hover:text-primary transition-colors"
-          >
-            Consultoria
-          </Link>
-          <Link 
             to="/blog"
             className="text-foreground-muted hover:text-primary transition-colors"
           >
