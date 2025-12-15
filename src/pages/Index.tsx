@@ -166,8 +166,8 @@ const Index = () => {
                 <Button 
                   className="btn-hero group"
                   onClick={() => {
-                    handleCTAClick('hero_ver_sistemas', '/sistemas-notion');
-                    window.location.href = '/sistemas-notion';
+                    handleCTAClick('hero_ver_sistemas', '/hub-empresarial');
+                    window.location.href = '/hub-empresarial';
                   }}
                 >
                   Ver sistemas para empresas
@@ -314,7 +314,7 @@ const Index = () => {
                 <img 
                   src={hubEmpresarialPro} 
                   alt="Hub Empresarial PRO - Sistema de gestão empresarial em Notion" 
-                  className="w-full h-48 object-cover rounded-xl"
+                  className="w-full h-48 object-contain rounded-xl bg-background-elevated"
                   loading="lazy"
                 />
               </div>
@@ -340,7 +340,7 @@ const Index = () => {
                 <img 
                   src={controleFinanceiroPro} 
                   alt="Controle Financeiro PRO - Sistema financeiro em Notion" 
-                  className="w-full h-48 object-cover rounded-xl"
+                  className="w-full h-48 object-contain rounded-xl bg-background-elevated"
                   loading="lazy"
                 />
               </div>
@@ -366,7 +366,7 @@ const Index = () => {
                 <img 
                   src={sprintProdutividade} 
                   alt="Sprint de Produtividade - Sistema de rotinas e foco em Notion" 
-                  className="w-full h-48 object-cover rounded-xl"
+                  className="w-full h-48 object-contain rounded-xl bg-background-elevated"
                   loading="lazy"
                 />
               </div>
@@ -757,8 +757,8 @@ const Index = () => {
                 <Button 
                   className="btn-hero group text-base"
                   onClick={() => {
-                    handleCTAClick('cta_final_sistemas', '/sistemas-notion');
-                    window.location.href = '/sistemas-notion';
+                    handleCTAClick('cta_final_sistemas', '/hub-empresarial');
+                    window.location.href = '/hub-empresarial';
                   }}
                 >
                   Ver sistemas empresariais em Notion
