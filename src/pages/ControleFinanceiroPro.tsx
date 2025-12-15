@@ -364,7 +364,7 @@ const ControleFinanceiroPro = () => {
               <video
                 className="w-full"
                 controls
-                poster="/lovable-uploads/controle-financeiro.jpg"
+                poster="/lovable-uploads/controle-financeiro-video-cover.png"
               >
                 <source src="/videos/controle-financeiro-demo.mp4" type="video/mp4" />
                 Seu navegador não suporta vídeos.
