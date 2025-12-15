@@ -488,21 +488,14 @@ const SprintProdutividade = () => {
 
           <div className="max-w-4xl mx-auto">
             <div className="relative rounded-2xl overflow-hidden border border-border/50 shadow-2xl">
-              <img 
-                src={sprintImage} 
-                alt="Preview do Sistema Sprint de Produtividade no Notion" 
-                className="w-full h-auto"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent flex items-end justify-center pb-8">
-                <Button 
-                  size="lg" 
-                  className="btn-hero group"
-                  onClick={handlePurchase}
-                >
-                  <Play className="w-5 h-5 mr-2" />
-                  Assistir demonstração completa
-                </Button>
-              </div>
+              <video
+                className="w-full"
+                controls
+                poster={sprintImage}
+              >
+                <source src="/videos/sprint-produtividade-demo.mp4" type="video/mp4" />
+                Seu navegador não suporta vídeos.
+              </video>
             </div>
           </div>
         </div>

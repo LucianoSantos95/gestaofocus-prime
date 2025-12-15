@@ -408,23 +408,15 @@ const HubEmpresarial = () => {
             </p>
 
             <div className="relative rounded-2xl overflow-hidden border border-border/50 shadow-2xl shadow-primary/10 mb-10">
-              <img
-                src="/lovable-uploads/hub-empresarial-og.jpg"
-                alt="Hub Empresarial PRO - Sistema de gestão empresarial no Notion"
+              <video
                 className="w-full"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+                controls
+                poster="/lovable-uploads/hub-empresarial-og.jpg"
+              >
+                <source src="/videos/hub-empresarial-demo.mp4" type="video/mp4" />
+                Seu navegador não suporta vídeos.
+              </video>
             </div>
-
-            <Button 
-              size="lg" 
-              variant="outline"
-              className="text-lg px-8 py-6"
-              onClick={handleDemoClick}
-            >
-              <Play className="mr-2 h-5 w-5" />
-              Assistir demonstração
-            </Button>
           </div>
         </div>
       </section>

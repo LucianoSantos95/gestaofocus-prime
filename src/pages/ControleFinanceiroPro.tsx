@@ -361,21 +361,14 @@ const ControleFinanceiroPro = () => {
             </div>
 
             <div className="relative rounded-2xl overflow-hidden border border-border/50 bg-card/50">
-              <div className="aspect-video bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
-                <div className="text-center space-y-4">
-                  <div className="w-20 h-20 rounded-full bg-primary/20 flex items-center justify-center mx-auto">
-                    <Play className="w-10 h-10 text-primary" />
-                  </div>
-                  <p className="text-muted-foreground">Demonstração do sistema</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="text-center mt-8">
-              <Button size="lg" variant="outline">
-                <Play className="w-5 h-5 mr-2" />
-                Assistir demonstração completa
-              </Button>
+              <video
+                className="w-full"
+                controls
+                poster="/lovable-uploads/controle-financeiro.jpg"
+              >
+                <source src="/videos/controle-financeiro-demo.mp4" type="video/mp4" />
+                Seu navegador não suporta vídeos.
+              </video>
             </div>
           </div>
         </section>
