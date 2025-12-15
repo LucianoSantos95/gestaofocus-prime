@@ -411,7 +411,7 @@ const HubEmpresarial = () => {
               <video
                 className="w-full"
                 controls
-                poster="/lovable-uploads/hub-empresarial-og.jpg"
+                poster="/lovable-uploads/hub-empresarial-video-cover.png"
               >
                 <source src="/videos/hub-empresarial-demo.mp4" type="video/mp4" />
                 Seu navegador não suporta vídeos.
