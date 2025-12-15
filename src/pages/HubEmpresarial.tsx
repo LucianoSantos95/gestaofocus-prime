@@ -43,7 +43,7 @@ const HubEmpresarial = () => {
 
   const handleDemoClick = () => {
     trackCTAClick("Ver Demonstração", "demo-section");
-    window.open("https://www.notion.so/Hub-Empresarial-PRO-Demo", "_blank");
+    document.getElementById('demo-video')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const painPoints = [
@@ -397,7 +397,7 @@ const HubEmpresarial = () => {
       </section>
 
       {/* Seção 3: Demonstração Visual */}
-      <section className="py-20 bg-muted/30">
+      <section id="demo-video" className="py-20 bg-muted/30">
         <div className="container px-4 mx-auto">
           <div className="max-w-5xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">

@@ -43,6 +43,16 @@ import {
 import { Link } from "react-router-dom";
 
 const ControleFinanceiroPro = () => {
+  const stripeLink = "https://buy.stripe.com/7sY3cvbs87cxe7Oe7zgUM0c";
+
+  const handlePurchaseClick = () => {
+    window.open(stripeLink, "_blank");
+  };
+
+  const handleDemoClick = () => {
+    document.getElementById('demo-video')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -224,12 +234,12 @@ const ControleFinanceiroPro = () => {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-                <Button size="lg" className="text-lg px-8 py-6 bg-primary hover:bg-primary/90">
+                <Button size="lg" className="text-lg px-8 py-6 bg-primary hover:bg-primary/90" onClick={handlePurchaseClick}>
                   <Wallet className="w-5 h-5 mr-2" />
                   Quero o Controle Financeiro PRO
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
-                <Button size="lg" variant="outline" className="text-lg px-8 py-6">
+                <Button size="lg" variant="outline" className="text-lg px-8 py-6" onClick={handleDemoClick}>
                   <Play className="w-5 h-5 mr-2" />
                   Ver demonstração
                 </Button>
@@ -312,7 +322,7 @@ const ControleFinanceiroPro = () => {
             </div>
 
             <div className="text-center mt-10">
-              <Button size="lg" className="bg-primary hover:bg-primary/90">
+              <Button size="lg" className="bg-primary hover:bg-primary/90" onClick={handlePurchaseClick}>
                 Quero organizar minhas finanças
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
@@ -349,7 +359,7 @@ const ControleFinanceiroPro = () => {
         </section>
 
         {/* Demo Section */}
-        <section className="py-20 px-4">
+        <section id="demo-video" className="py-20 px-4">
           <div className="container mx-auto max-w-5xl">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -394,7 +404,7 @@ const ControleFinanceiroPro = () => {
             </div>
 
             <div className="text-center mt-10">
-              <Button size="lg" className="bg-primary hover:bg-primary/90">
+              <Button size="lg" className="bg-primary hover:bg-primary/90" onClick={handlePurchaseClick}>
                 Quero esses resultados
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
@@ -444,27 +454,71 @@ const ControleFinanceiroPro = () => {
             </div>
 
             <div className="grid md:grid-cols-3 gap-6">
-              {[1, 2, 3].map((i) => (
-                <Card key={i} className="bg-background/50">
-                  <CardContent className="p-6">
-                    <div className="flex gap-1 mb-4">
-                      {[1, 2, 3, 4, 5].map((star) => (
-                        <Star key={star} className="w-5 h-5 fill-yellow-500 text-yellow-500" />
-                      ))}
+              <Card className="bg-background/50">
+                <CardContent className="p-6">
+                  <div className="flex gap-1 mb-4">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <Star key={star} className="w-5 h-5 fill-yellow-500 text-yellow-500" />
+                    ))}
+                  </div>
+                  <p className="text-muted-foreground mb-4 italic">
+                    "Eu usava 3 planilhas diferentes para controlar minhas finanças e vivia perdida. Agora tenho tudo em um lugar só e finalmente sei exatamente quanto estou lucrando por mês."
+                  </p>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-semibold">
+                      JC
                     </div>
-                    <p className="text-muted-foreground mb-4 italic">
-                      "Depoimento em breve..."
-                    </p>
-                      <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-primary/20" />
-                      <div>
-                        <p className="font-medium text-sm">Nome do Cliente</p>
-                        <p className="text-xs text-muted-foreground">Empresa</p>
-                      </div>
+                    <div>
+                      <p className="font-medium text-sm">Juliana C.</p>
+                      <p className="text-xs text-muted-foreground">Consultora de Marketing</p>
                     </div>
-                  </CardContent>
-                </Card>
-              ))}
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-background/50">
+                <CardContent className="p-6">
+                  <div className="flex gap-1 mb-4">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <Star key={star} className="w-5 h-5 fill-yellow-500 text-yellow-500" />
+                    ))}
+                  </div>
+                  <p className="text-muted-foreground mb-4 italic">
+                    "O dashboard financeiro mudou minha forma de enxergar o negócio. Consegui identificar gastos desnecessários e economizei mais de R$ 2.000 no primeiro mês de uso."
+                  </p>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-semibold">
+                      RS
+                    </div>
+                    <div>
+                      <p className="font-medium text-sm">Roberto S.</p>
+                      <p className="text-xs text-muted-foreground">Dono de E-commerce</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-background/50">
+                <CardContent className="p-6">
+                  <div className="flex gap-1 mb-4">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <Star key={star} className="w-5 h-5 fill-yellow-500 text-yellow-500" />
+                    ))}
+                  </div>
+                  <p className="text-muted-foreground mb-4 italic">
+                    "Como freelancer, eu sempre tive dificuldade em controlar os pagamentos dos clientes. Com o sistema de contratos, nunca mais perdi um vencimento."
+                  </p>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-semibold">
+                      MA
+                    </div>
+                    <div>
+                      <p className="font-medium text-sm">Mariana A.</p>
+                      <p className="text-xs text-muted-foreground">Designer Freelancer</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </section>
@@ -492,7 +546,7 @@ const ControleFinanceiroPro = () => {
                   <p className="text-sm text-muted-foreground mt-2">Pagamento único • Acesso vitalício</p>
                 </div>
 
-                <Button size="lg" className="text-lg px-10 py-7 bg-primary hover:bg-primary/90 mb-6">
+                <Button size="lg" className="text-lg px-10 py-7 bg-primary hover:bg-primary/90 mb-6" onClick={handlePurchaseClick}>
                   <Wallet className="w-5 h-5 mr-2" />
                   Quero organizar minhas finanças agora
                 </Button>
@@ -551,12 +605,12 @@ const ControleFinanceiroPro = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="text-lg px-8 py-6 bg-primary hover:bg-primary/90">
+              <Button size="lg" className="text-lg px-8 py-6 bg-primary hover:bg-primary/90" onClick={handlePurchaseClick}>
                 <Wallet className="w-5 h-5 mr-2" />
                 Comprar agora
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
-              <Button size="lg" variant="outline" className="text-lg px-8 py-6">
+              <Button size="lg" variant="outline" className="text-lg px-8 py-6" onClick={handleDemoClick}>
                 <Play className="w-5 h-5 mr-2" />
                 Ver demonstração
               </Button>
