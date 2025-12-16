@@ -28,6 +28,53 @@ import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { trackEvent } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
+import { z } from "zod";
+
+// Zod validation schema for consultation form
+const consultationSchema = z.object({
+  fullName: z.string()
+    .trim()
+    .min(1, "Nome é obrigatório")
+    .max(100, "Nome deve ter no máximo 100 caracteres"),
+  email: z.string()
+    .trim()
+    .email("E-mail inválido")
+    .max(255, "E-mail deve ter no máximo 255 caracteres"),
+  phone: z.string()
+    .trim()
+    .min(1, "Telefone é obrigatório")
+    .max(20, "Telefone deve ter no máximo 20 caracteres")
+    .regex(/^[0-9()\s\-+]+$/, "Telefone deve conter apenas números e caracteres válidos"),
+  businessType: z.string()
+    .trim()
+    .min(1, "Tipo de negócio é obrigatório")
+    .max(100, "Tipo de negócio deve ter no máximo 100 caracteres"),
+  usesNotion: z.string()
+    .trim()
+    .min(1, "Experiência com Notion é obrigatória")
+    .max(100, "Resposta deve ter no máximo 100 caracteres"),
+  mainObjective: z.string()
+    .trim()
+    .min(1, "Objetivo principal é obrigatório")
+    .max(200, "Objetivo deve ter no máximo 200 caracteres"),
+  lookingFor: z.string()
+    .trim()
+    .min(1, "O que busca é obrigatório")
+    .max(200, "Resposta deve ter no máximo 200 caracteres"),
+  investmentRange: z.string()
+    .trim()
+    .min(1, "Faixa de investimento é obrigatória")
+    .max(50, "Resposta deve ter no máximo 50 caracteres"),
+  startTimeline: z.string()
+    .trim()
+    .min(1, "Prazo para início é obrigatório")
+    .max(50, "Resposta deve ter no máximo 50 caracteres"),
+  additionalDetails: z.string()
+    .trim()
+    .max(2000, "Detalhes devem ter no máximo 2000 caracteres")
+    .optional()
+    .default("")
+});
 
 interface ConsultationFormModalProps {
   open: boolean;
@@ -92,34 +139,38 @@ const ConsultationFormModal = ({ open, onOpenChange }: ConsultationFormModalProp
   };
 
   const handleSubmit = async () => {
-    if (!formData.fullName || !formData.email || !formData.phone || 
-        !formData.businessType || !formData.usesNotion || !formData.mainObjective ||
-        !formData.lookingFor || !formData.investmentRange || !formData.startTimeline) {
-      toast.error("Por favor, preencha todos os campos obrigatórios.");
+    // Validate with Zod schema
+    const validationResult = consultationSchema.safeParse(formData);
+    
+    if (!validationResult.success) {
+      const firstError = validationResult.error.errors[0];
+      toast.error(firstError.message);
       return;
     }
+    
+    const validatedData = validationResult.data;
 
     setIsSubmitting(true);
 
     try {
       const { error } = await supabase.from("consultation_leads").insert({
-        full_name: formData.fullName,
-        email: formData.email,
-        phone: formData.phone,
-        business_type: formData.businessType,
-        uses_notion: formData.usesNotion,
-        main_objective: formData.mainObjective,
-        looking_for: formData.lookingFor,
-        investment_range: formData.investmentRange,
-        start_timeline: formData.startTimeline,
-        additional_details: formData.additionalDetails
+        full_name: validatedData.fullName,
+        email: validatedData.email,
+        phone: validatedData.phone,
+        business_type: validatedData.businessType,
+        uses_notion: validatedData.usesNotion,
+        main_objective: validatedData.mainObjective,
+        looking_for: validatedData.lookingFor,
+        investment_range: validatedData.investmentRange,
+        start_timeline: validatedData.startTimeline,
+        additional_details: validatedData.additionalDetails || ""
       });
 
       if (error) throw error;
 
       trackEvent("consultation_form_submit", {
-        business_type: formData.businessType,
-        investment_range: formData.investmentRange
+        business_type: validatedData.businessType,
+        investment_range: validatedData.investmentRange
       });
 
       setFormSubmitted(true);
