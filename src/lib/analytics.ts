@@ -17,51 +17,66 @@ const getSessionId = (): string => {
   return sessionId;
 };
 
-// Save event to Supabase
-const saveEventToSupabase = async (eventName: string, parameters?: Record<string, any>) => {
-  try {
-    const { data: { user } } = await supabase.auth.getUser();
-    
-    await supabase.from('analytics_events').insert({
-      event_name: eventName,
-      event_category: parameters?.event_category || 'engagement',
-      event_label: parameters?.event_label || parameters?.label || '',
-      event_value: parameters?.value || 0,
-      user_id: user?.id || null,
-      session_id: getSessionId(),
-      page_path: window.location.pathname,
-      referrer: document.referrer || null,
-      user_agent: navigator.userAgent,
-    });
-  } catch (error) {
-    console.error('Error saving analytics event:', error);
+// Defer function execution using requestIdleCallback or setTimeout fallback
+const deferExecution = (callback: () => void) => {
+  if ('requestIdleCallback' in window) {
+    (window as any).requestIdleCallback(callback, { timeout: 2000 });
+  } else {
+    setTimeout(callback, 1000);
   }
+};
+
+// Save event to Supabase (deferred to not block main thread)
+const saveEventToSupabase = (eventName: string, parameters?: Record<string, any>) => {
+  deferExecution(async () => {
+    try {
+      const { data: { user } } = await supabase.auth.getUser();
+      
+      await supabase.from('analytics_events').insert({
+        event_name: eventName,
+        event_category: parameters?.event_category || 'engagement',
+        event_label: parameters?.event_label || parameters?.label || '',
+        event_value: parameters?.value || 0,
+        user_id: user?.id || null,
+        session_id: getSessionId(),
+        page_path: window.location.pathname,
+        referrer: document.referrer || null,
+        user_agent: navigator.userAgent,
+      });
+    } catch (error) {
+      console.error('Error saving analytics event:', error);
+    }
+  });
 };
 
 // Track custom events
 export const trackEvent = (eventName: string, parameters?: Record<string, any>) => {
-  // Track in Google Analytics
-  if (typeof window !== 'undefined' && window.gtag) {
-    window.gtag('event', eventName, {
-      event_category: 'engagement',
-      event_label: parameters?.label || '',
-      value: parameters?.value || 0,
-      ...parameters,
-    });
-  }
+  // Track in Google Analytics (deferred)
+  deferExecution(() => {
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: parameters?.label || '',
+        value: parameters?.value || 0,
+        ...parameters,
+      });
+    }
+  });
   
-  // Also save to Supabase for our dashboard
+  // Also save to Supabase for our dashboard (already deferred)
   saveEventToSupabase(eventName, parameters);
 };
 
 // Track page views (for SPA navigation)
 export const trackPageView = (pagePath: string, pageTitle?: string) => {
-  if (typeof window !== 'undefined' && window.gtag) {
-    window.gtag('config', 'GA_MEASUREMENT_ID', {
-      page_path: pagePath,
-      page_title: pageTitle,
-    });
-  }
+  deferExecution(() => {
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('config', 'GA_MEASUREMENT_ID', {
+        page_path: pagePath,
+        page_title: pageTitle,
+      });
+    }
+  });
   
   // Also save to Supabase as a page_view event
   saveEventToSupabase('page_view', {

@@ -1,16 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LS53J0LYDX"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-LS53J0LYDX');
-    </script>
-    
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Focus - Gestão Empresarial, Produtividade e Sistemas Notion Personalizados</title>
@@ -19,41 +9,69 @@
     <meta name="author" content="Focus" />
     <meta name="google-site-verification" content="gBoRHhf-57__TDfi3FCXExfHTaWzvtl54jzWirSPiCU" />
     
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2115254259011779"
-     crossorigin="anonymous"></script>
-
-    
-    
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://focusinteligente.com.br" />
     <meta property="og:image" content="https://storage.googleapis.com/gpt-engineer-file-uploads/GaBQr25hRUcB6hpchwr8nRaT34h2/social-images/social-1764595300463-Focus.png">
+    <meta property="og:title" content="Focus - Gestão Empresarial, Produtividade e Sistemas Notion Personalizados">
+    <meta property="og:description" content="Consultoria em gestão empresarial com sistemas Notion personalizados, sprint de produtividade, hub empresarial e comunidade exclusiva. Transforme processos, aumente eficiência e impulsione resultados.">
 
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Focus - Gestão Empresarial, Produtividade e Sistemas Notion Personalizados">
+    <meta name="twitter:description" content="Consultoria em gestão empresarial com sistemas Notion personalizados, sprint de produtividade, hub empresarial e comunidade exclusiva. Transforme processos, aumente eficiência e impulsione resultados.">
+    <meta name="twitter:image" content="https://storage.googleapis.com/gpt-engineer-file-uploads/GaBQr25hRUcB6hpchwr8nRaT34h2/social-images/social-1764595300463-Focus.png">
     
-    
-    
-    <!-- Preconnect to Google Fonts for better performance -->
+    <!-- Preconnect to critical origins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
-    <!-- Preconnect to Supabase for faster API calls -->
     <link rel="preconnect" href="https://pqhpxqccsrgbdmsknppj.supabase.co" crossorigin>
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
     
     <!-- Preload critical assets -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
     <link rel="preload" href="/lovable-uploads/focus-logo.png" as="image" type="image/png">
     
     <link rel="icon" href="/favicon.png" type="image/png" />
-    <meta property="og:title" content="Focus - Gestão Empresarial, Produtividade e Sistemas Notion Personalizados">
-  <meta name="twitter:title" content="Focus - Gestão Empresarial, Produtividade e Sistemas Notion Personalizados">
-  <meta property="og:description" content="Consultoria em gestão empresarial com sistemas Notion personalizados, sprint de produtividade, hub empresarial e comunidade exclusiva. Transforme processos, aumente eficiência e impulsione resultados.">
-  <meta name="twitter:description" content="Consultoria em gestão empresarial com sistemas Notion personalizados, sprint de produtividade, hub empresarial e comunidade exclusiva. Transforme processos, aumente eficiência e impulsione resultados.">
-  <meta name="twitter:image" content="https://storage.googleapis.com/gpt-engineer-file-uploads/GaBQr25hRUcB6hpchwr8nRaT34h2/social-images/social-1764595300463-Focus.png">
-</head>
+  </head>
 
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Google Analytics - Deferred loading -->
+    <script>
+      // Load GA after page is interactive
+      if (typeof window !== 'undefined') {
+        window.addEventListener('load', function() {
+          setTimeout(function() {
+            var gaScript = document.createElement('script');
+            gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-LS53J0LYDX';
+            gaScript.async = true;
+            document.head.appendChild(gaScript);
+            
+            gaScript.onload = function() {
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              window.gtag = gtag;
+              gtag('js', new Date());
+              gtag('config', 'G-LS53J0LYDX');
+            };
+          }, 100);
+        });
+      }
+    </script>
+    
+    <!-- Google AdSense - Lazy loaded after 3 seconds -->
+    <script>
+      if (typeof window !== 'undefined') {
+        setTimeout(function() {
+          var adsenseScript = document.createElement('script');
+          adsenseScript.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2115254259011779';
+          adsenseScript.async = true;
+          adsenseScript.crossOrigin = 'anonymous';
+          document.head.appendChild(adsenseScript);
+        }, 3000);
+      }
+    </script>
   </body>
 </html>
