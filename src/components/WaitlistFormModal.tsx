@@ -217,10 +217,10 @@ const WaitlistFormModal = ({ open, onOpenChange, source = "focus-pro" }: Waitlis
                           if (errors.fullName) setErrors({});
                         }}
                         onKeyDown={handleKeyDown}
-                        className={`text-lg h-14 bg-muted/30 border-2 transition-colors ${
+                        className={`text-lg h-14 bg-card border-2 transition-colors text-foreground ${
                           errors.fullName 
                             ? "border-destructive focus:border-destructive" 
-                            : "border-transparent focus:border-primary"
+                            : "border-border focus:border-primary"
                         }`}
                       />
                       {errors.fullName && (
@@ -262,10 +262,10 @@ const WaitlistFormModal = ({ open, onOpenChange, source = "focus-pro" }: Waitlis
                           if (errors.email) setErrors({});
                         }}
                         onKeyDown={handleKeyDown}
-                        className={`text-lg h-14 bg-muted/30 border-2 transition-colors ${
+                        className={`text-lg h-14 bg-card border-2 transition-colors text-foreground ${
                           errors.email 
                             ? "border-destructive focus:border-destructive" 
-                            : "border-transparent focus:border-primary"
+                            : "border-border focus:border-primary"
                         }`}
                       />
                       {errors.email && (
@@ -302,7 +302,7 @@ const WaitlistFormModal = ({ open, onOpenChange, source = "focus-pro" }: Waitlis
                         placeholder="Ex: Organizar meu financeiro, estruturar processos, ter mais tempo..."
                         value={mainChallenge}
                         onChange={(e) => setMainChallenge(e.target.value)}
-                        className="min-h-[100px] text-base bg-muted/30 border-2 border-transparent focus:border-primary resize-none transition-colors"
+                        className="min-h-[100px] text-base bg-card border-2 border-border focus:border-primary resize-none transition-colors text-foreground"
                       />
                       <p className="text-xs text-muted-foreground">
                         Pode pular se preferir
