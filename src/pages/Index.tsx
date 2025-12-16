@@ -199,6 +199,9 @@ const Index = () => {
                   alt="Dashboard de gestão empresarial em Notion - Hub Empresarial PRO Focus" 
                   className="w-full h-auto object-cover"
                   loading="eager"
+                  fetchPriority="high"
+                  width={574}
+                  height={260}
                 />
               </div>
               <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-primary/15 rounded-full blur-[50px]" />
