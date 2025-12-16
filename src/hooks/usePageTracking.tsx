@@ -14,24 +14,37 @@ export const usePageTracking = () => {
     timeTracked.current = new Set();
     entryTime.current = Date.now();
 
-    // Scroll tracking
+    // Scroll tracking with requestAnimationFrame to avoid forced reflow
+    let ticking = false;
     const handleScroll = () => {
-      const scrollPercentage = Math.round(
-        (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100
-      );
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const scrollHeight = document.documentElement.scrollHeight;
+          const clientHeight = window.innerHeight;
+          const scrollY = window.scrollY;
+          
+          if (scrollHeight > clientHeight) {
+            const scrollPercentage = Math.round(
+              (scrollY / (scrollHeight - clientHeight)) * 100
+            );
 
-      const milestones = [25, 50, 75, 100];
-      milestones.forEach((milestone) => {
-        if (scrollPercentage >= milestone && !scrollTracked.current.has(milestone)) {
-          scrollTracked.current.add(milestone);
-          trackEvent('scroll_depth', {
-            event_category: 'engagement',
-            event_label: `${milestone}%`,
-            value: milestone,
-            page_path: location.pathname,
-          });
-        }
-      });
+            const milestones = [25, 50, 75, 100];
+            milestones.forEach((milestone) => {
+              if (scrollPercentage >= milestone && !scrollTracked.current.has(milestone)) {
+                scrollTracked.current.add(milestone);
+                trackEvent('scroll_depth', {
+                  event_category: 'engagement',
+                  event_label: `${milestone}%`,
+                  value: milestone,
+                  page_path: location.pathname,
+                });
+              }
+            });
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
     // Time on page tracking
