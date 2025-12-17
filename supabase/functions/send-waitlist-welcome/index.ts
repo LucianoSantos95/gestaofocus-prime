@@ -121,8 +121,26 @@ const handler = async (req: Request): Promise<Response> => {
     return new Response(null, { headers: corsHeaders });
   }
 
+  // Only allow POST requests
+  if (req.method !== "POST") {
+    return new Response(
+      JSON.stringify({ error: "Method not allowed" }),
+      { status: 405, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+    );
+  }
+
   try {
-    const { fullName, email, mainChallenge, source = "focus-pro" }: WaitlistRequest = await req.json();
+    // Check for empty body
+    const contentLength = req.headers.get("content-length");
+    if (!contentLength || contentLength === "0") {
+      return new Response(
+        JSON.stringify({ error: "Request body is required" }),
+        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    const body = await req.json();
+    const { fullName, email, mainChallenge, source = "focus-pro" }: WaitlistRequest = body;
 
     // Validate required fields
     if (!fullName || !email) {
