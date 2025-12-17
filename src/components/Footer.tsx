@@ -10,7 +10,7 @@ const Footer = () => {
         {/* Main Links */}
         <div className="flex flex-wrap justify-center gap-8 mb-8">
           <Link 
-            to="/sistemas-notion"
+            to="/sistemas-gratuitos"
             className="text-foreground-muted hover:text-primary transition-colors"
           >
             Templates
