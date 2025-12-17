@@ -28,7 +28,7 @@ const Cookies = lazy(() => import("./pages/Cookies"));
 const CentralAjuda = lazy(() => import("./pages/CentralAjuda"));
 const Documentacao = lazy(() => import("./pages/Documentacao"));
 const StatusPlataforma = lazy(() => import("./pages/StatusPlataforma"));
-const Onboarding = lazy(() => import("./pages/Onboarding"));
+
 const NotFound = lazy(() => import("./pages/NotFound"));
 const SignUp = lazy(() => import("./pages/auth/SignUp"));
 const Login = lazy(() => import("./pages/auth/Login"));
@@ -176,7 +176,7 @@ const App = () => (
                 <Route path="/ajuda" element={<CentralAjuda />} />
                 <Route path="/docs" element={<Documentacao />} />
                 <Route path="/status" element={<StatusPlataforma />} />
-                <Route path="/onboarding" element={<Onboarding />} />
+                
                 
                 {/* Auth Routes */}
                 <Route path="/auth/signup" element={<SignUp />} />
