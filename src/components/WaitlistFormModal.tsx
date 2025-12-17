@@ -3,7 +3,6 @@ import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
 import { ArrowRight, ArrowLeft, CheckCircle2, Loader2, Sparkles } from "lucide-react";
 import { z } from "zod";
@@ -104,31 +103,42 @@ const WaitlistFormModal = ({ open, onOpenChange, source = "focus-pro" }: Waitlis
         mainChallenge: mainChallenge.trim() || undefined,
       });
 
-      const { error } = await supabase.from("waitlist").insert({
-        email: validatedData.email,
-        full_name: validatedData.fullName,
-        main_challenge: validatedData.mainChallenge || null,
-        source: source,
-        interest: "focus-pro",
-        wants_trial: true,
-      });
-
-      if (error) {
-        if (error.code === "23505") {
-          toast({
-            title: "Email já cadastrado",
-            description: "Este email já está na nossa lista de espera!",
-            variant: "default",
-          });
-          setIsSuccess(true);
-        } else {
-          throw error;
+      // Call edge function to insert and send welcome email
+      const response = await fetch(
+        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-waitlist-welcome`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+          },
+          body: JSON.stringify({
+            fullName: validatedData.fullName,
+            email: validatedData.email,
+            mainChallenge: validatedData.mainChallenge || null,
+            source: source,
+          }),
         }
+      );
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || "Erro ao cadastrar");
+      }
+
+      setIsSuccess(true);
+      
+      if (result.message === "Email já cadastrado") {
+        toast({
+          title: "Email já cadastrado",
+          description: "Este email já está na nossa lista de espera!",
+          variant: "default",
+        });
       } else {
-        setIsSuccess(true);
         toast({
           title: "Você está na lista!",
-          description: "Em breve você receberá novidades exclusivas.",
+          description: "Enviamos um email de boas-vindas para você.",
         });
       }
     } catch (error: any) {
@@ -136,6 +146,7 @@ const WaitlistFormModal = ({ open, onOpenChange, source = "focus-pro" }: Waitlis
         const firstError = error.errors[0];
         setErrors({ [firstError.path[0]]: firstError.message });
       } else {
+        console.error("Waitlist error:", error);
         toast({
           title: "Erro ao cadastrar",
           description: "Tente novamente em alguns instantes.",
