@@ -179,8 +179,9 @@ const handler = async (req: Request): Promise<Response> => {
     }
 
     // Send welcome email
+    // TODO: Alterar para comercial@focusinteligente.com.br após verificar domínio no Resend
     const emailResponse = await resend.emails.send({
-      from: "Focus Inteligente <comercial@focusinteligente.com.br>",
+      from: "Focus Inteligente <onboarding@resend.dev>",
       to: [email],
       subject: "Você está na lista! 🎉 Bem-vindo(a) à Focus Pro",
       html: getWelcomeEmailHtml(fullName),
