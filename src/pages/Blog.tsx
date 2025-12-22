@@ -48,6 +48,7 @@ import gestaoTempoImage from "@/assets/blog/gestao-tempo-quem-vive-ocupado.jpg";
 import sistemaEstudosImage from "@/assets/blog/sistema-estudos-eficiente.jpg";
 import reunioesProdutavasImage from "@/assets/blog/reunioes-produtivas.jpg";
 import metodoGtdImage from "@/assets/blog/metodo-gtd-guia.jpg";
+import matrizEisenhowerImage from "@/assets/blog/matriz-eisenhower-prioridades.jpg";
 
 const Blog = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -62,6 +63,16 @@ const Blog = () => {
   }, [searchTerm]);
 
   const blogPosts = [
+    {
+      id: -2,
+      title: "Matriz de Eisenhower: Como Definir Prioridades e Focar no Que Importa",
+      excerpt: "Aprenda a usar a Matriz de Eisenhower para organizar prioridades, tomar melhores decisões e focar no que realmente importa no trabalho.",
+      date: "2025-12-22",
+      readTime: "11 min",
+      category: "Produtividade",
+      slug: "matriz-eisenhower-prioridades",
+      image: matrizEisenhowerImage
+    },
     {
       id: -1,
       title: "Método GTD: O Que É, Como Funciona e Como Aplicar na Prática",
