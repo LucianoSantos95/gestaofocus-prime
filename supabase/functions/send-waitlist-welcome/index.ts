@@ -16,6 +16,36 @@ interface WaitlistRequest {
   source?: string;
 }
 
+// HTML escape function to prevent XSS attacks
+const escapeHtml = (str: string): string => {
+  return str.replace(/[&<>"']/g, (match) => {
+    const escapeMap: Record<string, string> = {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;'
+    };
+    return escapeMap[match] || match;
+  });
+};
+
+// Validate that input doesn't contain suspicious patterns
+const validateInput = (str: string): boolean => {
+  const suspiciousPatterns = [
+    /<script/i,
+    /javascript:/i,
+    /onclick/i,
+    /onerror/i,
+    /onload/i,
+    /onmouseover/i,
+    /<iframe/i,
+    /<object/i,
+    /<embed/i,
+  ];
+  return !suspiciousPatterns.some(pattern => pattern.test(str));
+};
+
 const getWelcomeEmailHtml = (fullName: string) => `
 <!DOCTYPE html>
 <html>
