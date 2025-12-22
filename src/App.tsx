@@ -78,6 +78,7 @@ const MelhorarConcentracaoDistracoes = lazy(() => import("./pages/blog/MelhorarC
 const MapasMentaisOrganizarIdeias = lazy(() => import("./pages/blog/MapasMentaisOrganizarIdeias"));
 const GestaoTempoQuemViveOcupado = lazy(() => import("./pages/blog/GestaoTempoQuemViveOcupado"));
 const SistemaEstudosEficiente = lazy(() => import("./pages/blog/SistemaEstudosEficiente"));
+const ReunioesProdutivas = lazy(() => import("./pages/blog/ReunioesProdutivas"));
 
 const queryClient = new QueryClient();
 
@@ -165,6 +166,7 @@ const App = () => (
                 <Route path="/blog/mapas-mentais-organizar-ideias-produtividade" element={<MapasMentaisOrganizarIdeias />} />
                 <Route path="/blog/gestao-tempo-ocupado-estrategias-funcionam" element={<GestaoTempoQuemViveOcupado />} />
                 <Route path="/blog/sistema-estudos-eficiente-tecnicas-modernas" element={<SistemaEstudosEficiente />} />
+                <Route path="/blog/reunioes-produtivas-parar-perder-tempo" element={<ReunioesProdutivas />} />
                 
                 {/* Info Pages */}
                 <Route path="/sobre" element={<AboutFocus />} />

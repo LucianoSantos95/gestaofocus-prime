@@ -46,6 +46,7 @@ import concentracaoImage from "@/assets/blog/melhorar-concentracao-distracoes.jp
 import mapasMentaisImage from "@/assets/blog/mapas-mentais-organizar-ideias.jpg";
 import gestaoTempoImage from "@/assets/blog/gestao-tempo-quem-vive-ocupado.jpg";
 import sistemaEstudosImage from "@/assets/blog/sistema-estudos-eficiente.jpg";
+import reunioesProdutavasImage from "@/assets/blog/reunioes-produtivas.jpg";
 
 const Blog = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -60,6 +61,16 @@ const Blog = () => {
   }, [searchTerm]);
 
   const blogPosts = [
+    {
+      id: 0,
+      title: "Como Fazer Reuniões Produtivas e Parar de Perder Tempo no Trabalho",
+      excerpt: "Aprenda a transformar reuniões improdutivas em encontros eficientes. Passo a passo para planejar, conduzir e documentar reuniões que geram resultados.",
+      date: "2025-12-22",
+      readTime: "12 min",
+      category: "Produtividade",
+      slug: "reunioes-produtivas-parar-perder-tempo",
+      image: reunioesProdutavasImage
+    },
     {
       id: 1,
       title: "Como Criar uma Rotina Matinal Poderosa Que Melhora Seu Dia em 15 Minutos",
