@@ -79,6 +79,7 @@ const MapasMentaisOrganizarIdeias = lazy(() => import("./pages/blog/MapasMentais
 const GestaoTempoQuemViveOcupado = lazy(() => import("./pages/blog/GestaoTempoQuemViveOcupado"));
 const SistemaEstudosEficiente = lazy(() => import("./pages/blog/SistemaEstudosEficiente"));
 const ReunioesProdutivas = lazy(() => import("./pages/blog/ReunioesProdutivas"));
+const MetodoGTDGuia = lazy(() => import("./pages/blog/MetodoGTDGuia"));
 
 const queryClient = new QueryClient();
 
@@ -167,6 +168,7 @@ const App = () => (
                 <Route path="/blog/gestao-tempo-ocupado-estrategias-funcionam" element={<GestaoTempoQuemViveOcupado />} />
                 <Route path="/blog/sistema-estudos-eficiente-tecnicas-modernas" element={<SistemaEstudosEficiente />} />
                 <Route path="/blog/reunioes-produtivas-parar-perder-tempo" element={<ReunioesProdutivas />} />
+                <Route path="/blog/metodo-gtd-guia-completo" element={<MetodoGTDGuia />} />
                 
                 {/* Info Pages */}
                 <Route path="/sobre" element={<AboutFocus />} />
