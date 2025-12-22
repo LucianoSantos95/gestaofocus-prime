@@ -47,6 +47,7 @@ import mapasMentaisImage from "@/assets/blog/mapas-mentais-organizar-ideias.jpg"
 import gestaoTempoImage from "@/assets/blog/gestao-tempo-quem-vive-ocupado.jpg";
 import sistemaEstudosImage from "@/assets/blog/sistema-estudos-eficiente.jpg";
 import reunioesProdutavasImage from "@/assets/blog/reunioes-produtivas.jpg";
+import metodoGtdImage from "@/assets/blog/metodo-gtd-guia.jpg";
 
 const Blog = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -61,6 +62,16 @@ const Blog = () => {
   }, [searchTerm]);
 
   const blogPosts = [
+    {
+      id: -1,
+      title: "Método GTD: O Que É, Como Funciona e Como Aplicar na Prática",
+      excerpt: "Aprenda o método GTD (Getting Things Done) de David Allen. Guia completo com os 5 passos, exemplos práticos e dicas para organizar suas tarefas.",
+      date: "2025-12-22",
+      readTime: "14 min",
+      category: "Produtividade",
+      slug: "metodo-gtd-guia-completo",
+      image: metodoGtdImage
+    },
     {
       id: 0,
       title: "Como Fazer Reuniões Produtivas e Parar de Perder Tempo no Trabalho",
