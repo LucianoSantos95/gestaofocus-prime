@@ -180,6 +180,18 @@ const handler = async (req: Request): Promise<Response> => {
       );
     }
 
+    // Validate input for suspicious content (XSS prevention)
+    if (!validateInput(fullName)) {
+      console.warn("Suspicious fullName input detected:", fullName);
+      return new Response(
+        JSON.stringify({ error: "Nome contém caracteres inválidos" }),
+        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    // Sanitize fullName for email template (escape HTML)
+    const sanitizedFullName = escapeHtml(fullName.trim());
+
     // Create Supabase client
     const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
     const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
@@ -214,7 +226,7 @@ const handler = async (req: Request): Promise<Response> => {
       from: "Focus Inteligente <onboarding@resend.dev>",
       to: [email],
       subject: "Você está na lista! 🎉 Bem-vindo(a) à Focus Pro",
-      html: getWelcomeEmailHtml(fullName),
+      html: getWelcomeEmailHtml(sanitizedFullName),
     });
 
     console.log("Welcome email sent successfully:", emailResponse);
