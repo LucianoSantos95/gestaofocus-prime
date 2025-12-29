@@ -145,6 +145,25 @@ const getWelcomeEmailHtml = (fullName: string) => `
 </html>
 `;
 
+// Get client IP from request headers
+const getClientIP = (req: Request): string => {
+  // Try various headers that might contain the real IP
+  const forwardedFor = req.headers.get("x-forwarded-for");
+  if (forwardedFor) {
+    return forwardedFor.split(",")[0].trim();
+  }
+  const realIP = req.headers.get("x-real-ip");
+  if (realIP) {
+    return realIP.trim();
+  }
+  const cfConnectingIP = req.headers.get("cf-connecting-ip");
+  if (cfConnectingIP) {
+    return cfConnectingIP.trim();
+  }
+  // Fallback to a generic identifier if no IP found
+  return "unknown";
+};
+
 const handler = async (req: Request): Promise<Response> => {
   // Handle CORS preflight requests
   if (req.method === "OPTIONS") {
@@ -156,6 +175,36 @@ const handler = async (req: Request): Promise<Response> => {
     return new Response(
       JSON.stringify({ error: "Method not allowed" }),
       { status: 405, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+    );
+  }
+
+  // Get client IP for rate limiting
+  const clientIP = getClientIP(req);
+
+  // Create Supabase client early for rate limiting check
+  const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
+  const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+  const supabase = createClient(supabaseUrl, supabaseServiceKey);
+
+  // Check rate limit: max 5 requests per hour per IP
+  const { data: rateLimitAllowed, error: rateLimitError } = await supabase.rpc(
+    "check_rate_limit",
+    {
+      p_ip_address: clientIP,
+      p_endpoint: "send-waitlist-welcome",
+      p_max_requests: 5,
+      p_window_minutes: 60
+    }
+  );
+
+  if (rateLimitError) {
+    console.error("Rate limit check error:", rateLimitError);
+    // Continue if rate limit check fails (fail open for user experience)
+  } else if (rateLimitAllowed === false) {
+    console.warn(`Rate limit exceeded for IP: ${clientIP}`);
+    return new Response(
+      JSON.stringify({ error: "Muitas tentativas. Tente novamente mais tarde." }),
+      { status: 429, headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
   }
 
@@ -192,10 +241,7 @@ const handler = async (req: Request): Promise<Response> => {
     // Sanitize fullName for email template (escape HTML)
     const sanitizedFullName = escapeHtml(fullName.trim());
 
-    // Create Supabase client
-    const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
-    const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
-    const supabase = createClient(supabaseUrl, supabaseServiceKey);
+    // Supabase client already created above for rate limiting
 
     // Insert into waitlist
     const { error: dbError } = await supabase.from("waitlist").insert({
