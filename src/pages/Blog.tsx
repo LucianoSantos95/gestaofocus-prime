@@ -1,6 +1,6 @@
-import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import { Calendar, Clock, ArrowRight, BookOpen, Search, X, Building2, Zap, Layout, Brain, Sparkles } from "lucide-react";
+import SEOHead from "@/components/SEOHead";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
@@ -493,26 +493,13 @@ const Blog = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Blog Focus — Gestão Empresarial, Produtividade e Notion na Prática</title>
-        <meta 
-          name="description" 
-          content="Conteúdos diretos para quem deseja organizar o negócio, aumentar produtividade e usar Notion e IA de forma inteligente. Artigos práticos e aplicáveis." 
-        />
-        <meta name="keywords" content="blog gestão empresarial, produtividade, notion para empresas, inteligência artificial, sistemas notion, organização empresarial" />
-        <link rel="canonical" href="https://focusinteligente.com.br/blog" />
-        
-        {/* Open Graph */}
-        <meta property="og:title" content="Blog Focus — Gestão Empresarial, Produtividade e Notion na Prática" />
-        <meta property="og:description" content="Conteúdos diretos para quem deseja organizar o negócio, aumentar produtividade e usar Notion e IA de forma inteligente." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://focusinteligente.com.br/blog" />
-        
-        {/* Twitter Card */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Blog Focus — Gestão Empresarial, Produtividade e Notion na Prática" />
-        <meta name="twitter:description" content="Conteúdos diretos para quem deseja organizar o negócio, aumentar produtividade e usar Notion e IA de forma inteligente." />
-      </Helmet>
+      <SEOHead
+        title="Blog Focus — Gestão Empresarial, Produtividade e Notion na Prática"
+        description="Conteúdos diretos para quem deseja organizar o negócio, aumentar produtividade e usar Notion e IA de forma inteligente. Artigos práticos e aplicáveis."
+        canonical="/blog"
+        keywords="blog gestão empresarial, produtividade, notion para empresas, inteligência artificial, sistemas notion, organização empresarial"
+        type="website"
+      />
 
       <Navigation />
 

@@ -1,8 +1,8 @@
-import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import SEOHead from "@/components/SEOHead";
 import { Input } from "@/components/ui/input";
 import {
   Accordion,
@@ -120,27 +120,13 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Helmet>
-        <title>Focus Gestão Empresarial | Sistemas Notion, IA e Produtividade</title>
-        <meta name="description" content="Organize sua empresa com sistemas em Notion, IA e produtividade. Sistemas prontos, templates grátis e uma área Pro para gestão empresarial inteligente." />
-        <meta name="keywords" content="gestão empresarial, sistemas em Notion, Notion para empresas, produtividade empresarial, sistemas de gestão em Notion, templates Notion grátis, automação com IA, gestão inteligente" />
-        <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://focusinteligente.com.br/" />
-        <meta property="og:title" content="Focus Gestão Empresarial | Sistemas Notion, IA e Produtividade" />
-        <meta property="og:description" content="Organize sua empresa com sistemas em Notion, IA e produtividade. Sistemas prontos, templates grátis e uma área Pro para gestão empresarial inteligente." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://focusinteligente.com.br/" />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "Focus Gestão Empresarial",
-            "url": "https://focusinteligente.com.br",
-            "description": "Sistemas em Notion, IA e produtividade para gestão empresarial inteligente",
-            "sameAs": []
-          })}
-        </script>
-      </Helmet>
+      <SEOHead
+        title="Focus Gestão Empresarial | Sistemas Notion, IA e Produtividade"
+        description="Organize sua empresa com sistemas em Notion, IA e produtividade. Sistemas prontos, templates grátis e uma área Pro para gestão empresarial inteligente."
+        canonical="/"
+        keywords="gestão empresarial, sistemas em Notion, Notion para empresas, produtividade empresarial, sistemas de gestão em Notion, templates Notion grátis, automação com IA, gestão inteligente"
+        type="website"
+      />
 
       {/* =========================== */}
       {/* SEÇÃO 1 — HERO (H1) */}

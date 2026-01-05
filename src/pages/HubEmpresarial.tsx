@@ -1,10 +1,10 @@
-import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
+import SEOHead from "@/components/SEOHead";
 import { 
   CheckCircle, 
   ArrowRight,
@@ -199,59 +199,14 @@ const HubEmpresarial = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Helmet>
-        <title>Gestão Empresarial Completa em Notion | Hub Empresarial PRO - R$ 349</title>
-        <meta name="description" content="Centralize clientes, tarefas, projetos e financeiro em um único sistema no Notion. 7 módulos integrados, dashboards claros e produtividade real. Acesso vitalício por R$ 349." />
-        <meta name="keywords" content="gestão empresarial, sistemas em Notion, produtividade, CRM em Notion, dashboard, financeiro, processos, organização empresarial, Notion para empresas" />
-        
-        <meta property="og:title" content="Gestão Empresarial Completa em Notion | Hub Empresarial PRO" />
-        <meta property="og:description" content="Centralize clientes, tarefas, projetos e financeiro em um único sistema. 7 módulos integrados por R$ 349." />
-        <meta property="og:type" content="product" />
-        <meta property="og:image" content="https://focusinteligente.com.br/lovable-uploads/hub-empresarial-og.jpg" />
-        <meta property="og:url" content="https://focusinteligente.com.br/hub-empresarial" />
-        
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Gestão Empresarial Completa em Notion" />
-        <meta name="twitter:description" content="Sistema completo de gestão empresarial no Notion por R$ 349" />
-        
-        <link rel="canonical" href="https://focusinteligente.com.br/hub-empresarial" />
-        
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Product",
-            "name": "Hub Empresarial PRO",
-            "description": "Sistema completo de gestão empresarial no Notion com 7 módulos integrados: Financeiro, RH, CRM, Marketing, Projetos, Atividades e tutoriais.",
-            "image": "https://focusinteligente.com.br/lovable-uploads/hub-empresarial-og.jpg",
-            "brand": { "@type": "Brand", "name": "Focus Inteligente" },
-            "offers": {
-              "@type": "Offer",
-              "url": "https://focusinteligente.com.br/hub-empresarial",
-              "priceCurrency": "BRL",
-              "price": "349.00",
-              "availability": "https://schema.org/InStock"
-            },
-            "aggregateRating": {
-              "@type": "AggregateRating",
-              "ratingValue": "4.9",
-              "reviewCount": "47",
-              "bestRating": "5"
-            }
-          })}
-        </script>
-
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": faqs.map(faq => ({
-              "@type": "Question",
-              "name": faq.question,
-              "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
-            }))
-          })}
-        </script>
-      </Helmet>
+      <SEOHead
+        title="Gestão Empresarial Completa em Notion | Hub Empresarial PRO - R$ 349"
+        description="Centralize clientes, tarefas, projetos e financeiro em um único sistema no Notion. 7 módulos integrados, dashboards claros e produtividade real. Acesso vitalício por R$ 349."
+        canonical="/hub-empresarial"
+        image="https://focusinteligente.com.br/lovable-uploads/hub-empresarial-og.jpg"
+        type="product"
+        keywords="gestão empresarial, sistemas em Notion, produtividade, CRM em Notion, dashboard, financeiro, processos, organização empresarial, Notion para empresas"
+      />
 
       <Navigation />
 

@@ -1,7 +1,7 @@
-import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Navigation from "@/components/Navigation";
+import SEOHead from "@/components/SEOHead";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -185,62 +185,14 @@ const SprintProdutividade = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Helmet>
-        <title>Sprint de Produtividade | Destrave sua Rotina em 7 Dias - Focus</title>
-        <meta name="description" content="Método de 7 dias para organizar sua rotina, criar foco real e executar o que importa. Sistema prático em Notion com exercícios diários. R$ 37,90 com garantia de 30 dias." />
-        <meta name="keywords" content="produtividade, rotina produtiva, foco, organização pessoal, Notion, gestão pessoal, planejamento, sprint produtividade, método 7 dias, produtividade pessoal" />
-        <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://focusinteligente.com.br/sprint-produtividade" />
-        <meta property="og:title" content="Sprint de Produtividade | Destrave sua Rotina em 7 Dias" />
-        <meta property="og:description" content="Método de 7 dias para organizar sua rotina, criar foco real e executar o que importa. Sistema prático em Notion com exercícios diários." />
-        <meta property="og:type" content="product" />
-        <meta property="og:url" content="https://focusinteligente.com.br/sprint-produtividade" />
-        <meta property="og:image" content="https://focusinteligente.com.br/lovable-uploads/sprint-produtividade.png" />
-        <meta property="product:price:amount" content="37.90" />
-        <meta property="product:price:currency" content="BRL" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Sprint de Produtividade | Focus" />
-        <meta name="twitter:description" content="Método de 7 dias para destravara sua produtividade. Sistema em Notion com garantia de 30 dias." />
-        
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Product",
-            "name": "Sprint de Produtividade 7 Dias",
-            "description": "Método de 7 dias para organizar sua rotina, criar foco real e executar o que importa com sistema prático em Notion",
-            "brand": {
-              "@type": "Brand",
-              "name": "Focus Gestão Empresarial"
-            },
-            "offers": {
-              "@type": "Offer",
-              "price": "37.90",
-              "priceCurrency": "BRL",
-              "availability": "https://schema.org/InStock",
-              "priceValidUntil": "2025-12-31"
-            },
-            "aggregateRating": {
-              "@type": "AggregateRating",
-              "ratingValue": "4.9",
-              "reviewCount": "150"
-            }
-          })}
-        </script>
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": faqs.map(faq => ({
-              "@type": "Question",
-              "name": faq.question,
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": faq.answer
-              }
-            }))
-          })}
-        </script>
-      </Helmet>
+      <SEOHead
+        title="Sprint de Produtividade | Destrave sua Rotina em 7 Dias - Focus"
+        description="Método de 7 dias para organizar sua rotina, criar foco real e executar o que importa. Sistema prático em Notion com exercícios diários. R$ 37,90 com garantia de 30 dias."
+        canonical="/sprint-produtividade"
+        image="https://focusinteligente.com.br/lovable-uploads/sprint-produtividade.png"
+        type="product"
+        keywords="produtividade, rotina produtiva, foco, organização pessoal, Notion, gestão pessoal, planejamento, sprint produtividade, método 7 dias, produtividade pessoal"
+      />
 
       <Navigation />
 
