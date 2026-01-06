@@ -51,6 +51,7 @@ import metodoGtdImage from "@/assets/blog/metodo-gtd-guia.jpg";
 import matrizEisenhowerImage from "@/assets/blog/matriz-eisenhower-prioridades.jpg";
 import organizarTarefasImage from "@/assets/blog/organizar-tarefas-dia-dia.jpg";
 import planejamentoSemanalImage from "@/assets/blog/planejamento-semanal-passo-passo.jpg";
+import metodoPessoalImage from "@/assets/blog/metodo-pessoal-produtividade.jpg";
 
 const Blog = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -65,6 +66,16 @@ const Blog = () => {
   }, [searchTerm]);
 
   const blogPosts = [
+    {
+      id: -5,
+      title: "Como Criar um Método Pessoal de Produtividade Que Funcione Para Você",
+      excerpt: "Aprenda a criar um método de produtividade personalizado que funcione para você. Descubra seu perfil e monte um sistema que se adapta à sua rotina.",
+      date: "2026-01-06",
+      readTime: "12 min",
+      category: "Produtividade",
+      slug: "metodo-pessoal-produtividade",
+      image: metodoPessoalImage
+    },
     {
       id: -4,
       title: "Planejamento Semanal Passo a Passo para Quem Vive Sem Tempo",
