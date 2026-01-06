@@ -1,5 +1,5 @@
-import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
+import SEOHead from "@/components/SEOHead";
 import tecnologiaImage from "@/assets/blog/organizacao-pessoal-tecnologia.jpg";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -13,44 +13,20 @@ import {
 } from "@/components/ui/breadcrumb";
 
 const OrganizacaoPessoalTecnologia = () => {
+  const imageUrl = "https://focusinteligente.com.br" + tecnologiaImage;
+
   return (
     <>
-      <Helmet>
-        <title>Organização Pessoal 2.0: Como Usar Tecnologia Para Ter Mais Clareza Mental | Focus</title>
-        <meta name="description" content="Descubra como usar tecnologia de forma inteligente para organizar sua vida e ter mais clareza mental. Guia completo do segundo cérebro digital." />
-        <meta name="keywords" content="organização pessoal, segundo cérebro, clarity mental, GTD, produtividade pessoal, ferramentas produtividade" />
-        <link rel="canonical" href="https://usefocus.com.br/blog/organizacao-pessoal-tecnologia" />
-        
-        <meta property="og:title" content="Organização Pessoal 2.0: Como Usar Tecnologia Para Ter Mais Clareza Mental" />
-        <meta property="og:description" content="Use tecnologia de forma inteligente para criar um segundo cérebro e ter mais clareza mental." />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://usefocus.com.br/blog/organizacao-pessoal-tecnologia" />
-        <meta property="og:image" content="https://usefocus.com.br/assets/blog/organizacao-pessoal-tecnologia.jpg" />
-        
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            "headline": "Organização Pessoal 2.0: Como Usar Tecnologia Para Ter Mais Clareza Mental",
-            "description": "Descubra como usar tecnologia de forma inteligente para organizar sua vida e ter mais clareza mental.",
-            "image": "https://usefocus.com.br/assets/blog/organizacao-pessoal-tecnologia.jpg",
-            "author": {
-              "@type": "Organization",
-              "name": "Focus"
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "Focus",
-              "logo": {
-                "@type": "ImageObject",
-                "url": "https://usefocus.com.br/lovable-uploads/focus-logo.png"
-              }
-            },
-            "datePublished": "2025-01-15",
-            "dateModified": "2025-01-15"
-          })}
-        </script>
-      </Helmet>
+      <SEOHead
+        title="Organização Pessoal 2.0: Como Usar Tecnologia Para Ter Mais Clareza Mental | Focus"
+        description="Descubra como usar tecnologia de forma inteligente para organizar sua vida e ter mais clareza mental. Guia completo do segundo cérebro digital."
+        canonical="/blog/organizacao-pessoal-tecnologia"
+        image={imageUrl}
+        type="article"
+        publishedTime="2025-01-15"
+        modifiedTime="2025-01-15"
+        keywords="organização pessoal, segundo cérebro, clareza mental, GTD, produtividade pessoal, ferramentas produtividade"
+      />
       <div className="min-h-screen flex flex-col bg-background">
         <Navigation />
         <main className="flex-grow">

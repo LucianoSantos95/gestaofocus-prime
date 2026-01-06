@@ -1,7 +1,7 @@
-import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import { Calendar, Clock, ArrowLeft, DollarSign } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import SEOHead from "@/components/SEOHead";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import BlogCTA from "@/components/BlogCTA";
@@ -32,44 +32,21 @@ const allArticles = [
   }
 ];
 
+const imageUrl = "https://focusinteligente.com.br" + organizacaoFinanceiraImage;
+
 export default function OrganizacaoFinanceiraPessoal() {
   return (
     <>
-      <Helmet>
-        <title>Organização Financeira Pessoal: Sistema Simples Para Controlar Gastos | Focus</title>
-        <meta 
-          name="description" 
-          content="Aprenda o método prático de organização financeira pessoal que te ajuda a controlar gastos sem planilhas complexas. Sistema simples que funciona." 
-        />
-        <meta name="keywords" content="organização financeira, controle de gastos, finanças pessoais, orçamento pessoal, gestão financeira, notion finanças" />
-        <link rel="canonical" href="https://focusinteligente.com.br/blog/organizacao-financeira-pessoal-sistema-simples" />
-        
-        <meta property="og:title" content="Organização Financeira Pessoal: Sistema Simples Para Controlar Gastos" />
-        <meta property="og:description" content="Aprenda o método prático de organização financeira pessoal que te ajuda a controlar gastos sem planilhas complexas." />
-        <meta property="og:image" content="https://focusinteligente.com.br/assets/blog/organizacao-financeira-pessoal.jpg" />
-        <meta property="og:url" content="https://focusinteligente.com.br/blog/organizacao-financeira-pessoal-sistema-simples" />
-        <meta property="og:type" content="article" />
-        
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Organização Financeira Pessoal: Sistema Simples Para Controlar Gastos" />
-        <meta name="twitter:description" content="Aprenda o método prático de organização financeira pessoal que te ajuda a controlar gastos sem planilhas complexas." />
-        <meta name="twitter:image" content="https://focusinteligente.com.br/assets/blog/organizacao-financeira-pessoal.jpg" />
-
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            "headline": "Organização Financeira Pessoal: Como Controlar Seus Gastos Usando Um Sistema Simples",
-            "description": "Aprenda o método prático de organização financeira pessoal que te ajuda a controlar gastos sem planilhas complexas.",
-            "image": "https://focusinteligente.com.br/assets/blog/organizacao-financeira-pessoal.jpg",
-            "datePublished": "2025-02-20",
-            "author": {
-              "@type": "Organization",
-              "name": "Focus Inteligente"
-            }
-          })}
-        </script>
-      </Helmet>
+      <SEOHead
+        title="Organização Financeira Pessoal: Sistema Simples Para Controlar Gastos | Focus"
+        description="Aprenda o método prático de organização financeira pessoal que te ajuda a controlar gastos sem planilhas complexas. Sistema simples que funciona."
+        canonical="/blog/organizacao-financeira-pessoal-sistema-simples"
+        image={imageUrl}
+        type="article"
+        publishedTime="2025-02-20"
+        modifiedTime="2025-02-20"
+        keywords="organização financeira, controle de gastos, finanças pessoais, orçamento pessoal, gestão financeira, notion finanças"
+      />
 
       <Navigation />
       

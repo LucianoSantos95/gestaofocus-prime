@@ -1,5 +1,5 @@
-import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
+import SEOHead from "@/components/SEOHead";
 import documentosImage from "@/assets/blog/organizar-documentos-empresa.jpg";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -13,44 +13,20 @@ import {
 } from "@/components/ui/breadcrumb";
 
 const OrganizarDocumentosEmpresa = () => {
+  const imageUrl = "https://focusinteligente.com.br" + documentosImage;
+
   return (
     <>
-      <Helmet>
-        <title>Como Organizar Documentos, Ideias e Informações da Empresa em Um Só Lugar | Focus</title>
-        <meta name="description" content="Sistema completo para centralizar e organizar todos os documentos e informações da sua empresa. Elimine informação espalhada e aumente eficiência." />
-        <meta name="keywords" content="organizar documentos empresa, base conhecimento, gestão documentos, centralizar informações, knowledge base" />
-        <link rel="canonical" href="https://usefocus.com.br/blog/organizar-documentos-empresa" />
-        
-        <meta property="og:title" content="Como Organizar Documentos e Informações da Empresa em Um Só Lugar" />
-        <meta property="og:description" content="Sistema completo para centralizar documentos e eliminar informação espalhada na empresa." />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://usefocus.com.br/blog/organizar-documentos-empresa" />
-        <meta property="og:image" content="https://usefocus.com.br/assets/blog/organizar-documentos-empresa.jpg" />
-        
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            "headline": "Como Organizar Documentos, Ideias e Informações da Empresa em Um Só Lugar",
-            "description": "Sistema completo para centralizar e organizar todos os documentos e informações da sua empresa.",
-            "image": "https://usefocus.com.br/assets/blog/organizar-documentos-empresa.jpg",
-            "author": {
-              "@type": "Organization",
-              "name": "Focus"
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "Focus",
-              "logo": {
-                "@type": "ImageObject",
-                "url": "https://usefocus.com.br/lovable-uploads/focus-logo.png"
-              }
-            },
-            "datePublished": "2025-01-15",
-            "dateModified": "2025-01-15"
-          })}
-        </script>
-      </Helmet>
+      <SEOHead
+        title="Como Organizar Documentos, Ideias e Informações da Empresa em Um Só Lugar | Focus"
+        description="Sistema completo para centralizar e organizar todos os documentos e informações da sua empresa. Elimine informação espalhada e aumente eficiência."
+        canonical="/blog/organizar-documentos-empresa"
+        image={imageUrl}
+        type="article"
+        publishedTime="2025-01-15"
+        modifiedTime="2025-01-15"
+        keywords="organizar documentos empresa, base conhecimento, gestão documentos, centralizar informações, knowledge base"
+      />
       <div className="min-h-screen flex flex-col bg-background">
         <Navigation />
         <main className="flex-grow">

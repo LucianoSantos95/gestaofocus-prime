@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet";
+import SEOHead from "@/components/SEOHead";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -9,14 +9,20 @@ import heroImage from "@/assets/blog/gestao-tempo-quem-vive-ocupado.jpg";
 
 const GestaoTempoQuemViveOcupado = () => {
   const navigate = useNavigate();
+  const imageUrl = "https://focusinteligente.com.br" + heroImage;
 
   return (
     <>
-      <Helmet>
-        <title>Gestão do Tempo para Quem Vive Ocupado: Estratégias Simples que Funcionam | Focus Inteligente</title>
-        <meta name="description" content="Descubra estratégias práticas de gestão do tempo para pessoas ocupadas. Aprenda a priorizar, eliminar desperdiçadores de tempo e recuperar o controle da sua agenda." />
-        <link rel="canonical" href="https://focusinteligente.com.br/blog/gestao-tempo-quem-vive-ocupado" />
-      </Helmet>
+      <SEOHead
+        title="Gestão do Tempo para Quem Vive Ocupado: Estratégias Simples que Funcionam | Focus Inteligente"
+        description="Descubra estratégias práticas de gestão do tempo para pessoas ocupadas. Aprenda a priorizar, eliminar desperdiçadores de tempo e recuperar o controle da sua agenda."
+        canonical="/blog/gestao-tempo-quem-vive-ocupado"
+        image={imageUrl}
+        type="article"
+        publishedTime="2025-02-20"
+        modifiedTime="2025-02-20"
+        keywords="gestão do tempo, produtividade, ocupados, priorização, matriz eisenhower, time blocking"
+      />
 
       <div className="min-h-screen bg-background">
         <Navigation />

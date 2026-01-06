@@ -1,6 +1,6 @@
-import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import { ArrowLeft, Clock, Calendar, CheckCircle2 } from "lucide-react";
+import SEOHead from "@/components/SEOHead";
 import organizarProjetosImage from "@/assets/blog/organizar-projetos-caoticos.jpg";
 
 const OrganizarProjetosCaoticos = () => {
@@ -10,135 +10,20 @@ const OrganizarProjetosCaoticos = () => {
     { title: "Como Criar Processos Inteligentes que Funcionam Sozinhos", slug: "processos-inteligentes-autonomos" }
   ];
 
-  const articleUrl = "https://focusinteligente.com.br/blog/organizar-projetos-caoticos";
   const imageUrl = "https://focusinteligente.com.br" + organizarProjetosImage;
-  const publishDate = "2025-01-20";
-  const modifiedDate = "2025-01-20";
 
   return (
     <>
-      <Helmet>
-        <title>O Método Para Organizar Projetos Caóticos e Dobrar a Eficiência | Focus</title>
-        <meta name="description" content="Descubra o método testado que transforma projetos caóticos em sistemas organizados, dobrando a eficiência da equipe em 30 dias." />
-        <meta name="keywords" content="organização de projetos, gestão de projetos, projetos caóticos, eficiência de equipe, metodologia de projetos, organização empresarial" />
-        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-        <link rel="canonical" href={articleUrl} />
-        
-        <meta property="og:locale" content="pt_BR" />
-        <meta property="og:type" content="article" />
-        <meta property="og:title" content="O Método Para Organizar Projetos Caóticos e Dobrar a Eficiência" />
-        <meta property="og:description" content="Descubra o método testado que transforma projetos caóticos em sistemas organizados, dobrando a eficiência da equipe em 30 dias." />
-        <meta property="og:url" content={articleUrl} />
-        <meta property="og:image" content={imageUrl} />
-        <meta property="og:site_name" content="Focus Inteligente" />
-        <meta property="article:published_time" content={publishDate} />
-        <meta property="article:modified_time" content={modifiedDate} />
-        <meta property="article:section" content="Gestão de Projetos" />
-        <meta property="article:tag" content="Produtividade" />
-        <meta property="article:tag" content="Gestão de Projetos" />
-        <meta property="article:tag" content="Eficiência" />
-        
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="O Método Para Organizar Projetos Caóticos e Dobrar a Eficiência" />
-        <meta name="twitter:description" content="Descubra o método testado que transforma projetos caóticos em sistemas organizados, dobrando a eficiência da equipe em 30 dias." />
-        <meta name="twitter:image" content={imageUrl} />
-
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            "headline": "O método que usei para organizar projetos caóticos e dobrar a eficiência do time",
-            "description": "Descubra o método testado que transforma projetos caóticos em sistemas organizados, dobrando a eficiência da equipe em 30 dias.",
-            "image": imageUrl,
-            "datePublished": publishDate,
-            "dateModified": modifiedDate,
-            "author": {
-              "@type": "Organization",
-              "name": "Focus Inteligente"
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "Focus Inteligente",
-              "logo": {
-                "@type": "ImageObject",
-                "url": "https://focusinteligente.com.br/lovable-uploads/focus-logo.png"
-              }
-            },
-            "mainEntityOfPage": {
-              "@type": "WebPage",
-              "@id": articleUrl
-            }
-          })}
-        </script>
-
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-              {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Home",
-                "item": "https://focusinteligente.com.br"
-              },
-              {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "Blog",
-                "item": "https://focusinteligente.com.br/blog"
-              },
-              {
-                "@type": "ListItem",
-                "position": 3,
-                "name": "O método que usei para organizar projetos caóticos",
-                "item": articleUrl
-              }
-            ]
-          })}
-        </script>
-
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": "Quanto tempo leva para implementar o método de 4 pilares?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "A implementação básica leva de 2 a 4 semanas, dependendo do tamanho da equipe e da complexidade dos projetos. O mais importante é começar com um projeto piloto e expandir gradualmente."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Preciso usar ferramentas pagas para implementar este método?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Não necessariamente. O método pode ser implementado com ferramentas gratuitas como Notion, Trello ou Google Sheets. O importante é a estrutura e os processos, não a ferramenta específica."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Como convencer a equipe a adotar um novo método de organização?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Comece demonstrando os benefícios com dados concretos, envolva a equipe no processo de implementação, ofereça treinamento adequado e celebre as pequenas vitórias. A mudança cultural leva tempo, mas com consistência e apoio da liderança, os resultados aparecem."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Qual o primeiro passo para organizar um projeto caótico?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "O primeiro passo é mapear todas as tarefas e processos existentes, identificando gargalos e prioridades. Em seguida, implemente um sistema visual de gestão e estabeleça rituais de comunicação claros com a equipe."
-                }
-              }
-            ]
-          })}
-        </script>
-      </Helmet>
+      <SEOHead
+        title="O Método Para Organizar Projetos Caóticos e Dobrar a Eficiência | Focus"
+        description="Descubra o método testado que transforma projetos caóticos em sistemas organizados, dobrando a eficiência da equipe em 30 dias."
+        canonical="/blog/organizar-projetos-caoticos"
+        image={imageUrl}
+        type="article"
+        publishedTime="2025-01-20"
+        modifiedTime="2025-01-20"
+        keywords="organização de projetos, gestão de projetos, projetos caóticos, eficiência de equipe, metodologia de projetos, organização empresarial"
+      />
 
       <article className="min-h-screen bg-background py-20">
         <div className="container-focus max-w-4xl mx-auto px-4">
@@ -165,7 +50,7 @@ const OrganizarProjetosCaoticos = () => {
             <div className="flex items-center gap-6 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
                 <Calendar className="w-4 h-4" />
-                <time dateTime={publishDate}>20 de janeiro de 2025</time>
+                <time dateTime="2025-01-20">20 de janeiro de 2025</time>
               </div>
               <div className="flex items-center gap-2">
                 <Clock className="w-4 h-4" />

@@ -1,7 +1,7 @@
-import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import { Calendar, Clock, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import SEOHead from "@/components/SEOHead";
 import articleImage from "@/assets/blog/clareza-projetos-notion.jpg";
 
 const ClarezaProjetosNotion = () => {
@@ -20,56 +20,20 @@ const ClarezaProjetosNotion = () => {
     }
   ];
 
-  const publishDate = "2025-02-05";
-  const modifiedDate = "2025-02-05";
-  const articleUrl = "https://focusinteligente.com.br/blog/clareza-projetos-notion";
   const imageUrl = "https://focusinteligente.com.br" + articleImage;
 
   return (
     <>
-      <Helmet>
-        <title>Como usar o Notion para ter clareza total nos projetos | Focus</title>
-        <meta name="description" content="Guia prático para usar o Notion e ter visão completa dos seus projetos mesmo com pouco tempo. Templates, estratégias e método testado." />
-        <meta name="keywords" content="notion projetos, gestão projetos notion, clareza projetos, organização notion, dashboard projetos, produtividade notion" />
-        <link rel="canonical" href={articleUrl} />
-        
-        <meta property="og:type" content="article" />
-        <meta property="og:title" content="Como usar o Notion para ter clareza total nos projetos" />
-        <meta property="og:description" content="Guia prático para ter visão completa dos seus projetos no Notion." />
-        <meta property="og:image" content={imageUrl} />
-        <meta property="og:url" content={articleUrl} />
-        <meta property="article:published_time" content={publishDate} />
-        <meta property="article:modified_time" content={modifiedDate} />
-
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Clareza total nos projetos com Notion" />
-        <meta name="twitter:description" content="Guia prático para ter visão completa dos seus projetos." />
-        <meta name="twitter:image" content={imageUrl} />
-
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            "headline": "Como usar o Notion para ter clareza total nos seus projetos (mesmo com pouco tempo)",
-            "image": imageUrl,
-            "author": {
-              "@type": "Organization",
-              "name": "Focus Gestão Empresarial"
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "Focus Gestão Empresarial",
-              "logo": {
-                "@type": "ImageObject",
-                "url": "https://focusinteligente.com.br/lovable-uploads/focus-logo.png"
-              }
-            },
-            "datePublished": publishDate,
-            "dateModified": modifiedDate,
-            "mainEntityOfPage": articleUrl
-          })}
-        </script>
-      </Helmet>
+      <SEOHead
+        title="Como usar o Notion para ter clareza total nos projetos | Focus"
+        description="Guia prático para usar o Notion e ter visão completa dos seus projetos mesmo com pouco tempo. Templates, estratégias e método testado."
+        canonical="/blog/clareza-projetos-notion"
+        image={imageUrl}
+        type="article"
+        publishedTime="2025-02-05"
+        modifiedTime="2025-02-05"
+        keywords="notion projetos, gestão projetos notion, clareza projetos, organização notion, dashboard projetos, produtividade notion"
+      />
 
       <article className="min-h-screen pt-24 pb-16">
         <div className="container-focus mb-8">

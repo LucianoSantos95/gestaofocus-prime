@@ -1,6 +1,6 @@
-import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import { Calendar, Clock, ArrowLeft, Brain } from "lucide-react";
+import SEOHead from "@/components/SEOHead";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import BlogCTA from "@/components/BlogCTA";
@@ -31,37 +31,21 @@ const allArticles = [
   }
 ];
 
+const imageUrl = "https://focusinteligente.com.br" + concentracaoImage;
+
 export default function MelhorarConcentracaoDistracoes() {
   return (
     <>
-      <Helmet>
-        <title>Como Melhorar Concentração em Mundo de Distrações | Guia Prático Focus</title>
-        <meta 
-          name="description" 
-          content="Guia prático com 7 técnicas comprovadas para melhorar sua concentração, eliminar distrações e alcançar estado de foco profundo no trabalho e estudos." 
-        />
-        <meta name="keywords" content="melhorar concentração, foco profundo, eliminar distrações, produtividade, técnicas de concentração, deep work" />
-        <link rel="canonical" href="https://focusinteligente.com.br/blog/melhorar-concentracao-mundo-distracoes" />
-        
-        <meta property="og:title" content="Como Melhorar Sua Concentração em Um Mundo Cheio de Distrações" />
-        <meta property="og:description" content="Guia prático com técnicas comprovadas para melhorar sua concentração e eliminar distrações." />
-        <meta property="og:image" content="https://focusinteligente.com.br/assets/blog/melhorar-concentracao-distracoes.jpg" />
-        <meta property="og:url" content="https://focusinteligente.com.br/blog/melhorar-concentracao-mundo-distracoes" />
-        
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            "headline": "Como Melhorar Sua Concentração em Um Mundo Cheio de Distrações",
-            "image": "https://focusinteligente.com.br/assets/blog/melhorar-concentracao-distracoes.jpg",
-            "datePublished": "2025-02-20",
-            "author": {
-              "@type": "Organization",
-              "name": "Focus Inteligente"
-            }
-          })}
-        </script>
-      </Helmet>
+      <SEOHead
+        title="Como Melhorar Concentração em Mundo de Distrações | Guia Prático Focus"
+        description="Guia prático com 7 técnicas comprovadas para melhorar sua concentração, eliminar distrações e alcançar estado de foco profundo no trabalho e estudos."
+        canonical="/blog/melhorar-concentracao-mundo-distracoes"
+        image={imageUrl}
+        type="article"
+        publishedTime="2025-02-20"
+        modifiedTime="2025-02-20"
+        keywords="melhorar concentração, foco profundo, eliminar distrações, produtividade, técnicas de concentração, deep work"
+      />
 
       <Navigation />
       

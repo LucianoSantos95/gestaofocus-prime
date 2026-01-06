@@ -1,16 +1,24 @@
-import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
+import SEOHead from "@/components/SEOHead";
 import metasImage from "@/assets/blog/metas-inteligentes-smart.jpg";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 
 const MetasInteligentesSmart = () => {
+  const imageUrl = "https://focusinteligente.com.br" + metasImage;
+
   return (
     <>
-      <Helmet>
-        <title>Como Criar Metas Inteligentes (SMART) Sem Complicar — Com Exemplos Reais | Focus</title>
-        <meta name="description" content="Aprenda a criar metas SMART de forma simples e prática. Exemplos reais e template pronto para usar." />
-      </Helmet>
+      <SEOHead
+        title="Como Criar Metas Inteligentes (SMART) Sem Complicar — Com Exemplos Reais | Focus"
+        description="Aprenda a criar metas SMART de forma simples e prática. Exemplos reais e template pronto para usar."
+        canonical="/blog/metas-inteligentes-smart"
+        image={imageUrl}
+        type="article"
+        publishedTime="2025-01-20"
+        modifiedTime="2025-01-20"
+        keywords="metas SMART, objetivos inteligentes, planejamento de metas, metodologia SMART, produtividade"
+      />
       <div className="min-h-screen flex flex-col bg-background">
         <Navigation />
         <main className="flex-grow">

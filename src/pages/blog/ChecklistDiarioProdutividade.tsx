@@ -1,5 +1,5 @@
-import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
+import SEOHead from "@/components/SEOHead";
 import checklistImage from "@/assets/blog/checklist-diario-produtividade.jpg";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -7,60 +7,20 @@ import BlogCTA from "@/components/BlogCTA";
 import RelatedArticles from "@/components/RelatedArticles";
 
 const ChecklistDiarioProdutividade = () => {
-  const publishDate = "2025-01-15";
-  const modifiedDate = "2025-01-15";
-  const articleUrl = "https://focusinteligente.com/blog/checklist-diario-produtividade";
-  const imageUrl = "https://focusinteligente.com" + checklistImage;
+  const imageUrl = "https://focusinteligente.com.br" + checklistImage;
 
   return (
     <>
-      <Helmet>
-        <title>Checklist Diário: O Método Simples Que Aumenta Sua Produtividade em Até 40% | Focus Inteligente</title>
-        <meta name="description" content="Descubra como um checklist diário estruturado pode aumentar sua produtividade em até 40%. Método prático e comprovado para organizar sua rotina." />
-        <meta name="keywords" content="checklist diário, produtividade, organização pessoal, rotina produtiva, gestão de tarefas, checklist notion, produtividade 40%" />
-        <link rel="canonical" href={articleUrl} />
-        
-        <meta property="og:title" content="Checklist Diário: O Método Simples Que Aumenta Sua Produtividade em Até 40%" />
-        <meta property="og:description" content="Descubra como um checklist diário estruturado pode aumentar sua produtividade em até 40%. Método prático e comprovado para organizar sua rotina." />
-        <meta property="og:image" content={imageUrl} />
-        <meta property="og:url" content={articleUrl} />
-        <meta property="og:type" content="article" />
-        <meta property="article:published_time" content={publishDate} />
-        <meta property="article:modified_time" content={modifiedDate} />
-        
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Checklist Diário: O Método Simples Que Aumenta Sua Produtividade em Até 40%" />
-        <meta name="twitter:description" content="Descubra como um checklist diário estruturado pode aumentar sua produtividade em até 40%. Método prático e comprovado para organizar sua rotina." />
-        <meta name="twitter:image" content={imageUrl} />
-        
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            "headline": "Checklist Diário: O Método Simples Que Aumenta Sua Produtividade em Até 40%",
-            "description": "Descubra como um checklist diário estruturado pode aumentar sua produtividade em até 40%. Método prático e comprovado para organizar sua rotina.",
-            "image": imageUrl,
-            "author": {
-              "@type": "Organization",
-              "name": "Focus Inteligente"
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "Focus Inteligente",
-              "logo": {
-                "@type": "ImageObject",
-                "url": "https://focusinteligente.com/lovable-uploads/focus-logo.png"
-              }
-            },
-            "datePublished": publishDate,
-            "dateModified": modifiedDate,
-            "mainEntityOfPage": {
-              "@type": "WebPage",
-              "@id": articleUrl
-            }
-          })}
-        </script>
-      </Helmet>
+      <SEOHead
+        title="Checklist Diário: O Método Simples Que Aumenta Sua Produtividade em Até 40% | Focus Inteligente"
+        description="Descubra como um checklist diário estruturado pode aumentar sua produtividade em até 40%. Método prático e comprovado para organizar sua rotina."
+        canonical="/blog/checklist-diario-produtividade"
+        image={imageUrl}
+        type="article"
+        publishedTime="2025-01-15"
+        modifiedTime="2025-01-15"
+        keywords="checklist diário, produtividade, organização pessoal, rotina produtiva, gestão de tarefas, checklist notion, produtividade 40%"
+      />
 
       <div className="min-h-screen flex flex-col bg-background">
         <Navigation />
@@ -91,7 +51,7 @@ const ChecklistDiarioProdutividade = () => {
                 Descubra como um sistema de checklist diário pode transformar sua rotina e multiplicar seus resultados
               </p>
               <div className="flex items-center gap-4 mt-4 text-sm text-muted-foreground">
-                <time dateTime={publishDate}>15 de janeiro de 2025</time>
+                <time dateTime="2025-01-15">15 de janeiro de 2025</time>
                 <span>•</span>
                 <span>8 min de leitura</span>
               </div>

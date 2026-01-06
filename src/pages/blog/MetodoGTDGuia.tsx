@@ -1,57 +1,25 @@
-import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
+import SEOHead from "@/components/SEOHead";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import BlogCTA from "@/components/BlogCTA";
 import articleImage from "@/assets/blog/metodo-gtd-guia.jpg";
 
 const MetodoGTDGuia = () => {
-  const articleUrl = "https://focusinteligente.com.br/blog/metodo-gtd-guia-completo";
   const imageUrl = "https://focusinteligente.com.br" + articleImage;
 
   return (
     <>
-      <Helmet>
-        <title>Método GTD: O Que É, Como Funciona e Como Aplicar na Prática</title>
-        <meta name="description" content="Aprenda o método GTD (Getting Things Done) de David Allen. Guia completo com os 5 passos, exemplos práticos e dicas para organizar suas tarefas." />
-        <meta name="keywords" content="método GTD, getting things done, produtividade, organização de tarefas, David Allen, gestão de tempo" />
-        <link rel="canonical" href={articleUrl} />
-        
-        <meta property="og:title" content="Método GTD: O Que É, Como Funciona e Como Aplicar na Prática" />
-        <meta property="og:description" content="Aprenda o método GTD de David Allen. Guia completo com os 5 passos e exemplos práticos." />
-        <meta property="og:image" content={imageUrl} />
-        <meta property="og:url" content={articleUrl} />
-        <meta property="og:type" content="article" />
-        
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Método GTD: Guia Completo e Prático" />
-        <meta name="twitter:description" content="Aprenda o método GTD de David Allen com exemplos práticos." />
-        <meta name="twitter:image" content={imageUrl} />
-
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            "headline": "Método GTD: O Que É, Como Funciona e Como Aplicar na Prática",
-            "image": imageUrl,
-            "datePublished": "2025-12-22",
-            "dateModified": "2025-12-22",
-            "author": {
-              "@type": "Organization",
-              "name": "Focus Inteligente"
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "Focus Inteligente",
-              "logo": {
-                "@type": "ImageObject",
-                "url": "https://focusinteligente.com.br/lovable-uploads/focus-logo.png"
-              }
-            },
-            "description": "Aprenda o método GTD (Getting Things Done) de David Allen. Guia completo com os 5 passos, exemplos práticos e dicas para organizar suas tarefas."
-          })}
-        </script>
-      </Helmet>
+      <SEOHead
+        title="Método GTD: O Que É, Como Funciona e Como Aplicar na Prática"
+        description="Aprenda o método GTD (Getting Things Done) de David Allen. Guia completo com os 5 passos, exemplos práticos e dicas para organizar suas tarefas."
+        canonical="/blog/metodo-gtd-guia-completo"
+        image={imageUrl}
+        type="article"
+        publishedTime="2025-12-22"
+        modifiedTime="2025-12-22"
+        keywords="método GTD, getting things done, produtividade, organização de tarefas, David Allen, gestão de tempo"
+      />
 
       <div className="min-h-screen bg-background">
         <Navigation />
