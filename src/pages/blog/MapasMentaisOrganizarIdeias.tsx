@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet";
+import SEOHead from "@/components/SEOHead";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -12,11 +12,16 @@ const MapasMentaisOrganizarIdeias = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Como Usar Mapas Mentais para Organizar Ideias e Aumentar a Produtividade | Focus Inteligente</title>
-        <meta name="description" content="Descubra como usar mapas mentais para organizar suas ideias de forma visual, tomar decisões mais rápidas e aumentar sua produtividade no dia a dia." />
-        <link rel="canonical" href="https://focusinteligente.com.br/blog/mapas-mentais-organizar-ideias" />
-      </Helmet>
+      <SEOHead
+        title="Como Usar Mapas Mentais para Organizar Ideias e Aumentar a Produtividade | Focus Inteligente"
+        description="Descubra como usar mapas mentais para organizar suas ideias de forma visual, tomar decisões mais rápidas e aumentar sua produtividade no dia a dia."
+        canonical="/blog/mapas-mentais-organizar-ideias"
+        image={`https://focusinteligente.com.br${heroImage}`}
+        type="article"
+        publishedTime="2025-02-20"
+        modifiedTime="2025-02-20"
+        keywords="mapas mentais, organizar ideias, produtividade, brainstorming, pensamento visual, mind mapping"
+      />
 
       <div className="min-h-screen bg-background">
         <Navigation />

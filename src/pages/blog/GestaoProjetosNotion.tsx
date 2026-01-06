@@ -1,5 +1,5 @@
-import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
+import SEOHead from "@/components/SEOHead";
 import { Calendar, Clock, ArrowLeft, Tag, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import gestaoProjetosImage from "@/assets/blog/gestao-projetos-notion.jpg";
@@ -27,122 +27,16 @@ const GestaoProjetosNotion = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Gestão de Projetos no Notion: Guia Completo Passo a Passo [2025] | Focus</title>
-        <meta name="description" content="Monte um sistema completo de gestão de projetos no Notion com kanban, sprint, roadmap e templates prontos. Guia passo a passo para gerenciamento de projetos eficiente." />
-        <meta name="keywords" content="gestão projetos notion, gerenciamento projetos, notion templates, kanban notion, sprint notion, roadmap, backlog, produtividade equipe, organização projetos, como usar notion para projetos, projeto notion template, sistema gestão projetos" />
-        <link rel="canonical" href={articleUrl} />
-        
-        {/* Open Graph Tags */}
-        <meta property="og:type" content="article" />
-        <meta property="og:title" content="Gestão de Projetos no Notion: Passo a Passo Completo" />
-        <meta property="og:description" content="Monte um sistema completo de gestão de projetos no Notion com kanban, sprint, roadmap e templates prontos." />
-        <meta property="og:image" content={imageUrl} />
-        <meta property="og:url" content={articleUrl} />
-        <meta property="article:published_time" content={publishDate} />
-        <meta property="article:modified_time" content={modifiedDate} />
-        <meta property="article:author" content="Focus Gestão Empresarial" />
-        <meta property="article:section" content="Notion" />
-        <meta property="article:tag" content="Notion" />
-        <meta property="article:tag" content="Gestão de Projetos" />
-
-        {/* Twitter Cards */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Gestão de Projetos no Notion: Passo a Passo Completo" />
-        <meta name="twitter:description" content="Sistema completo de gestão de projetos no Notion com kanban, sprint e templates." />
-        <meta name="twitter:image" content={imageUrl} />
-
-        {/* Schema Markup - BlogPosting */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            "headline": "Gestão de Projetos no Notion: Passo a Passo Completo",
-            "image": imageUrl,
-            "author": {
-              "@type": "Organization",
-              "name": "Focus Gestão Empresarial",
-              "url": "https://focusinteligente.com.br"
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "Focus Gestão Empresarial",
-              "logo": {
-                "@type": "ImageObject",
-                "url": "https://focusinteligente.com.br/lovable-uploads/focus-logo.png"
-              }
-            },
-            "datePublished": publishDate,
-            "dateModified": modifiedDate,
-            "description": "Monte um sistema completo de gestão de projetos no Notion com kanban, sprint, roadmap e templates prontos.",
-            "mainEntityOfPage": {
-              "@type": "WebPage",
-              "@id": articleUrl
-            }
-          })}
-        </script>
-
-        {/* Schema Markup - BreadcrumbList */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [{
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Início",
-              "item": "https://focusinteligente.com.br"
-            }, {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Blog",
-              "item": "https://focusinteligente.com.br/blog"
-            }, {
-              "@type": "ListItem",
-              "position": 3,
-              "name": "Gestão de Projetos no Notion",
-              "item": articleUrl
-            }]
-          })}
-        </script>
-
-        {/* Schema Markup - FAQPage */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [{
-              "@type": "Question",
-              "name": "O Notion é bom para gestão de projetos?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Sim, o Notion é excelente para gestão de projetos. Oferece visualizações múltiplas (kanban, calendário, timeline, tabela), permite criar templates personalizados, tem sistema de tarefas com atribuições, prazos e status. É mais flexível que ferramentas tradicionais como Trello ou Asana, pois você pode criar exatamente o sistema de gerenciamento de projetos que sua equipe precisa, incluindo sprints, roadmap e backlog."
-              }
-            }, {
-              "@type": "Question",
-              "name": "Como criar um kanban no Notion para gestão de projetos?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Para criar um kanban no Notion: 1) Crie um banco de dados de projetos, 2) Adicione propriedade 'Status' com opções: A fazer, Em progresso, Em revisão, Concluído, 3) Mude a visualização para 'Board' (kanban), 4) Agrupe por 'Status'. Pronto! Você terá um kanban funcional para gestão de projetos. Adicione mais campos como Responsável, Prazo, Prioridade para um sistema completo de gerenciamento de projetos no Notion."
-              }
-            }, {
-              "@type": "Question",
-              "name": "Notion ou Trello: qual é melhor para gestão de projetos?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Notion é melhor para gestão de projetos complexa porque oferece: documentação integrada, múltiplas visualizações (kanban, calendário, timeline), banco de dados relacionais, templates customizáveis e centralização de toda informação. Trello é mais simples e adequado para projetos básicos. Se você precisa de sistema robusto de gerenciamento de projetos com sprints, roadmap, backlog e documentação, o Notion é superior."
-              }
-            }, {
-              "@type": "Question",
-              "name": "Posso usar Notion para metodologia Agile/Scrum?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Sim, o Notion é perfeito para Agile/Scrum. Você pode criar: backlog de produto, sprints com datas, kanban para tarefas do sprint, roadmap no formato timeline, retrospectivas documentadas, e dashboards para velocity. Muitas equipes ágeis usam templates Notion específicos para gestão de projetos Scrum, incluindo planning poker, sprint review e daily standups documentados."
-              }
-            }]
-          })}
-        </script>
-      </Helmet>
+      <SEOHead
+        title="Gestão de Projetos no Notion: Guia Completo Passo a Passo [2025] | Focus"
+        description="Monte um sistema completo de gestão de projetos no Notion com kanban, sprint, roadmap e templates prontos. Guia passo a passo para gerenciamento de projetos eficiente."
+        canonical="/blog/gestao-projetos-notion"
+        image={imageUrl}
+        type="article"
+        publishedTime={publishDate}
+        modifiedTime={modifiedDate}
+        keywords="gestão projetos notion, gerenciamento projetos, notion templates, kanban notion, sprint notion, roadmap, backlog, produtividade equipe, organização projetos, como usar notion para projetos, projeto notion template, sistema gestão projetos"
+      />
 
       <article className="min-h-screen pt-24 pb-16">
         <div className="container-focus mb-8">

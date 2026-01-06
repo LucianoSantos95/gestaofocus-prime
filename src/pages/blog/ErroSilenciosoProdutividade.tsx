@@ -1,5 +1,5 @@
-import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
+import SEOHead from "@/components/SEOHead";
 import { ArrowLeft, Clock, Calendar, Share2, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import coverImage from "@/assets/blog/erro-silencioso-produtividade.jpg";
@@ -112,38 +112,16 @@ const ErroSilenciosoProdutividade = () => {
 
   return (
     <>
-      <Helmet>
-        <title>O Erro Silencioso que Destrói a Produtividade de Qualquer Equipe | Focus</title>
-        <meta 
-          name="description" 
-          content="Descubra o erro invisível que está custando horas de produtividade da sua equipe todos os dias e aprenda o método prático para eliminá-lo." 
-        />
-        <meta name="keywords" content="produtividade equipe, erro produtividade, gestão equipes, sistema centralizado, notion equipe, eficiência empresarial" />
-        <link rel="canonical" href={articleUrl} />
-        <meta property="og:title" content="O Erro Silencioso que Destrói a Produtividade de Qualquer Equipe" />
-        <meta property="og:description" content="Descubra o erro invisível que está custando horas de produtividade da sua equipe todos os dias." />
-        <meta property="og:image" content={`https://focusinteligente.com${coverImage}`} />
-        <meta property="og:url" content={articleUrl} />
-        <meta property="og:type" content="article" />
-        <meta property="og:locale" content="pt_BR" />
-        <meta property="article:published_time" content={publishDate} />
-        <meta property="article:modified_time" content={publishDate} />
-        <meta property="article:author" content="Focus Gestão Empresarial" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="O Erro Silencioso que Destrói a Produtividade de Qualquer Equipe" />
-        <meta name="twitter:description" content="Descubra o erro invisível que está custando horas de produtividade da sua equipe." />
-        <meta name="twitter:image" content={`https://focusinteligente.com${coverImage}`} />
-        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-        <script type="application/ld+json">
-          {JSON.stringify(blogPostingSchema)}
-        </script>
-        <script type="application/ld+json">
-          {JSON.stringify(breadcrumbSchema)}
-        </script>
-        <script type="application/ld+json">
-          {JSON.stringify(faqSchema)}
-        </script>
-      </Helmet>
+      <SEOHead
+        title="O Erro Silencioso que Destrói a Produtividade de Qualquer Equipe | Focus"
+        description="Descubra o erro invisível que está custando horas de produtividade da sua equipe todos os dias e aprenda o método prático para eliminá-lo."
+        canonical="/blog/erro-produtividade-equipe"
+        image={`https://focusinteligente.com${coverImage}`}
+        type="article"
+        publishedTime={publishDate}
+        modifiedTime={publishDate}
+        keywords="produtividade equipe, erro produtividade, gestão equipes, sistema centralizado, notion equipe, eficiência empresarial"
+      />
 
       <article className="min-h-screen pt-24 pb-16">
         {/* Breadcrumbs */}

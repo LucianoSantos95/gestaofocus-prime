@@ -1,5 +1,5 @@
-import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
+import SEOHead from "@/components/SEOHead";
 import { Calendar, Clock, ArrowLeft, Tag, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import mapeamentoImage from "@/assets/blog/mapeamento-processos.jpg";
@@ -27,122 +27,16 @@ const MapeamentoProcessos = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Mapeamento de Processos: Como Destravar o Crescimento [Guia 2025] | Focus</title>
-        <meta name="description" content="Aprenda como fazer mapeamento de processos empresariais com BPMN, identificar gargalos, eliminar retrabalho e criar workflow eficiente. Guia completo de gestão de processos para crescimento." />
-        <meta name="keywords" content="mapeamento de processos, gestão de processos, otimização empresarial, fluxo de trabalho, workflow, BPMN, fluxograma, lean, kaizen, crescimento empresarial, como mapear processos, melhoria de processos, diagrama de processos" />
-        <link rel="canonical" href={articleUrl} />
-        
-        {/* Open Graph Tags */}
-        <meta property="og:type" content="article" />
-        <meta property="og:title" content="Mapeamento de Processos: Como Destravar o Crescimento Empresarial" />
-        <meta property="og:description" content="Guia completo de mapeamento de processos: identifique gargalos, elimine retrabalho e crie workflow eficiente para crescer." />
-        <meta property="og:image" content={imageUrl} />
-        <meta property="og:url" content={articleUrl} />
-        <meta property="article:published_time" content={publishDate} />
-        <meta property="article:modified_time" content={modifiedDate} />
-        <meta property="article:author" content="Focus Gestão Empresarial" />
-        <meta property="article:section" content="Gestão" />
-        <meta property="article:tag" content="Mapeamento de Processos" />
-        <meta property="article:tag" content="Gestão" />
-
-        {/* Twitter Cards */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Mapeamento de Processos: Como Destravar o Crescimento" />
-        <meta name="twitter:description" content="Guia completo de mapeamento de processos empresariais com BPMN e workflow otimizado." />
-        <meta name="twitter:image" content={imageUrl} />
-
-        {/* Schema Markup - BlogPosting */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            "headline": "Mapeamento de Processos: Como Destravar o Crescimento",
-            "image": imageUrl,
-            "author": {
-              "@type": "Organization",
-              "name": "Focus Gestão Empresarial",
-              "url": "https://focusinteligente.com.br"
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "Focus Gestão Empresarial",
-              "logo": {
-                "@type": "ImageObject",
-                "url": "https://focusinteligente.com.br/lovable-uploads/focus-logo.png"
-              }
-            },
-            "datePublished": publishDate,
-            "dateModified": modifiedDate,
-            "description": "Aprenda como fazer mapeamento de processos empresariais, identificar gargalos e criar workflow eficiente para crescimento.",
-            "mainEntityOfPage": {
-              "@type": "WebPage",
-              "@id": articleUrl
-            }
-          })}
-        </script>
-
-        {/* Schema Markup - BreadcrumbList */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [{
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Início",
-              "item": "https://focusinteligente.com.br"
-            }, {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Blog",
-              "item": "https://focusinteligente.com.br/blog"
-            }, {
-              "@type": "ListItem",
-              "position": 3,
-              "name": "Mapeamento de Processos",
-              "item": articleUrl
-            }]
-          })}
-        </script>
-
-        {/* Schema Markup - FAQPage */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [{
-              "@type": "Question",
-              "name": "O que é mapeamento de processos?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Mapeamento de processos é a documentação visual e detalhada de como o trabalho acontece na empresa, desde o início até o fim. Utilizando técnicas como BPMN, fluxograma e workflow, você registra cada etapa, responsáveis, prazos e pontos de decisão de um processo, criando uma gestão de processos eficiente que permite identificar gargalos e oportunidades de otimização."
-              }
-            }, {
-              "@type": "Question",
-              "name": "Quanto tempo leva para mapear processos em uma empresa?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "O tempo de mapeamento de processos varia conforme a complexidade. Um processo simples pode ser mapeado em 2-4 horas, enquanto processos complexos podem levar 1-2 semanas. Para mapear os processos principais de uma empresa pequena, conte com 2-4 semanas. O uso de metodologias como BPMN e ferramentas adequadas acelera o processo."
-              }
-            }, {
-              "@type": "Question",
-              "name": "Qual ferramenta usar para mapeamento de processos?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Para mapeamento de processos, você pode usar desde ferramentas simples como Miro, Lucidchart e Draw.io até plataformas mais robustas como Bizagi (BPMN) ou Notion. O importante é escolher uma ferramenta que facilite a criação de fluxogramas, workflow e diagramas, e que seja acessível para toda a equipe visualizar e atualizar a gestão de processos."
-              }
-            }, {
-              "@type": "Question",
-              "name": "Como identificar gargalos em processos?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "No mapeamento de processos, gargalos aparecem como etapas onde o trabalho acumula, prazos são constantemente perdidos, ou uma única pessoa/departamento concentra muitas aprovações. Use métricas como tempo de ciclo, taxa de retrabalho e capacidade de throughput. Metodologias Lean e Kaizen ajudam a identificar e eliminar gargalos no workflow."
-              }
-            }]
-          })}
-        </script>
-      </Helmet>
+      <SEOHead
+        title="Mapeamento de Processos: Como Destravar o Crescimento [Guia 2025] | Focus"
+        description="Aprenda como fazer mapeamento de processos empresariais com BPMN, identificar gargalos, eliminar retrabalho e criar workflow eficiente. Guia completo de gestão de processos para crescimento."
+        canonical="/blog/mapeamento-processos-crescimento"
+        image={imageUrl}
+        type="article"
+        publishedTime={publishDate}
+        modifiedTime={modifiedDate}
+        keywords="mapeamento de processos, gestão de processos, otimização empresarial, fluxo de trabalho, workflow, BPMN, fluxograma, lean, kaizen, crescimento empresarial, como mapear processos, melhoria de processos, diagrama de processos"
+      />
 
       <article className="min-h-screen pt-24 pb-16">
         <div className="container-focus mb-8">

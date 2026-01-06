@@ -1,5 +1,5 @@
-import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
+import SEOHead from "@/components/SEOHead";
 import { Calendar, Clock, ArrowLeft, Tag, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import errosImage from "@/assets/blog/erros-produtividade.jpg";
@@ -27,122 +27,16 @@ const ErrosProdutividade = () => {
 
   return (
     <>
-      <Helmet>
-        <title>5 Erros de Produtividade que Você Comete Sem Perceber [Guia 2025] | Focus</title>
-        <meta name="description" content="Identifique os 5 erros mais comuns que sabotam sua produtividade no trabalho e aprenda técnicas práticas de gestão de tempo para corrigi-los imediatamente e aumentar sua eficiência." />
-        <meta name="keywords" content="erros produtividade, dicas produtividade, gestão tempo, técnicas produtividade, eficiência trabalho, organização pessoal, pomodoro, deep work, time blocking, foco trabalho, como ser mais produtivo, melhorar produtividade" />
-        <link rel="canonical" href={articleUrl} />
-        
-        {/* Open Graph Tags */}
-        <meta property="og:type" content="article" />
-        <meta property="og:title" content="5 Erros de Produtividade que Você Comete Sem Perceber" />
-        <meta property="og:description" content="Identifique os erros mais comuns que sabotam sua produtividade e aprenda técnicas práticas para corrigi-los imediatamente." />
-        <meta property="og:image" content={imageUrl} />
-        <meta property="og:url" content={articleUrl} />
-        <meta property="article:published_time" content={publishDate} />
-        <meta property="article:modified_time" content={modifiedDate} />
-        <meta property="article:author" content="Focus Gestão Empresarial" />
-        <meta property="article:section" content="Produtividade" />
-        <meta property="article:tag" content="Produtividade" />
-        <meta property="article:tag" content="Gestão de Tempo" />
-
-        {/* Twitter Cards */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="5 Erros de Produtividade que Você Comete Sem Perceber" />
-        <meta name="twitter:description" content="Identifique os erros mais comuns que sabotam sua produtividade e aprenda técnicas práticas para corrigi-los." />
-        <meta name="twitter:image" content={imageUrl} />
-
-        {/* Schema Markup - BlogPosting */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            "headline": "5 Erros de Produtividade que Você Comete Sem Perceber",
-            "image": imageUrl,
-            "author": {
-              "@type": "Organization",
-              "name": "Focus Gestão Empresarial",
-              "url": "https://focusinteligente.com.br"
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "Focus Gestão Empresarial",
-              "logo": {
-                "@type": "ImageObject",
-                "url": "https://focusinteligente.com.br/lovable-uploads/focus-logo.png"
-              }
-            },
-            "datePublished": publishDate,
-            "dateModified": modifiedDate,
-            "description": "Identifique os 5 erros mais comuns que sabotam sua produtividade no trabalho e aprenda técnicas práticas de gestão de tempo para corrigi-los.",
-            "mainEntityOfPage": {
-              "@type": "WebPage",
-              "@id": articleUrl
-            }
-          })}
-        </script>
-
-        {/* Schema Markup - BreadcrumbList */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [{
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Início",
-              "item": "https://focusinteligente.com.br"
-            }, {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Blog",
-              "item": "https://focusinteligente.com.br/blog"
-            }, {
-              "@type": "ListItem",
-              "position": 3,
-              "name": "5 Erros de Produtividade",
-              "item": articleUrl
-            }]
-          })}
-        </script>
-
-        {/* Schema Markup - FAQPage */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [{
-              "@type": "Question",
-              "name": "Qual é o erro de produtividade mais comum?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "O erro de produtividade mais comum é não planejar o dia ou a semana. Começar o dia sem um plano claro é como dirigir sem saber o destino. A solução é reservar 15 minutos no final do dia para planejar o próximo, listando as 3 tarefas mais importantes que você precisa completar."
-              }
-            }, {
-              "@type": "Question",
-              "name": "Multitarefa realmente prejudica a produtividade?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Sim, estudos mostram que multitarefa reduz sua produtividade em até 40%. Cada vez que você muda de tarefa, seu cérebro precisa de tempo para se reajustar. A técnica Pomodoro (25 minutos de foco total em uma tarefa, 5 minutos de pausa) é uma solução eficaz para melhorar o foco e a produtividade."
-              }
-            }, {
-              "@type": "Question",
-              "name": "Como evitar viver no modo 'apagando incêndios'?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Estabeleça blocos de tempo protegidos para trabalho profundo - no mínimo 2 horas por dia onde você não responde mensagens, não atende reuniões, e foca exclusivamente nas suas prioridades estratégicas. Use a técnica de time blocking para proteger seu tempo mais produtivo."
-              }
-            }, {
-              "@type": "Question",
-              "name": "Qual a diferença entre estar ocupado e ser produtivo?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Estar ocupado é fazer muitas coisas (responder emails, reuniões, tarefas pequenas). Ser produtivo é fazer as coisas certas - avançar nos seus objetivos principais. Todo dia, pergunte a si mesmo: 'Se eu pudesse completar apenas uma coisa hoje, qual seria?' Essa é sua prioridade número 1."
-              }
-            }]
-          })}
-        </script>
-      </Helmet>
+      <SEOHead
+        title="5 Erros de Produtividade que Você Comete Sem Perceber [Guia 2025] | Focus"
+        description="Identifique os 5 erros mais comuns que sabotam sua produtividade no trabalho e aprenda técnicas práticas de gestão de tempo para corrigi-los imediatamente e aumentar sua eficiência."
+        canonical="/blog/5-erros-produtividade"
+        image={imageUrl}
+        type="article"
+        publishedTime={publishDate}
+        modifiedTime={modifiedDate}
+        keywords="erros produtividade, dicas produtividade, gestão tempo, técnicas produtividade, eficiência trabalho, organização pessoal, pomodoro, deep work, time blocking, foco trabalho, como ser mais produtivo, melhorar produtividade"
+      />
 
       <article className="min-h-screen pt-24 pb-16">
         <div className="container-focus mb-8">
