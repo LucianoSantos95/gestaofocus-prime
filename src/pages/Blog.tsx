@@ -50,6 +50,7 @@ import reunioesProdutavasImage from "@/assets/blog/reunioes-produtivas.jpg";
 import metodoGtdImage from "@/assets/blog/metodo-gtd-guia.jpg";
 import matrizEisenhowerImage from "@/assets/blog/matriz-eisenhower-prioridades.jpg";
 import organizarTarefasImage from "@/assets/blog/organizar-tarefas-dia-dia.jpg";
+import planejamentoSemanalImage from "@/assets/blog/planejamento-semanal-passo-passo.jpg";
 
 const Blog = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -64,6 +65,16 @@ const Blog = () => {
   }, [searchTerm]);
 
   const blogPosts = [
+    {
+      id: -4,
+      title: "Planejamento Semanal Passo a Passo para Quem Vive Sem Tempo",
+      excerpt: "Aprenda a planejar sua semana de forma prática e eficiente, mesmo com uma rotina corrida. Guia completo com passo a passo.",
+      date: "2026-01-06",
+      readTime: "10 min",
+      category: "Organização",
+      slug: "planejamento-semanal-passo-passo",
+      image: planejamentoSemanalImage
+    },
     {
       id: -3,
       title: "Como Organizar Tarefas no Dia a Dia Sem Se Sentir Sobrecarregado",
