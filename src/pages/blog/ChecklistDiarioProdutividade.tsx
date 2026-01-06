@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import SEOHead from "@/components/SEOHead";
+import BlogBreadcrumb from "@/components/BlogBreadcrumb";
 import checklistImage from "@/assets/blog/checklist-diario-produtividade.jpg";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";

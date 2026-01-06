@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Calendar, Clock, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SEOHead from "@/components/SEOHead";
+import BlogBreadcrumb from "@/components/BlogBreadcrumb";
 import articleImage from "@/assets/blog/clareza-projetos-notion.jpg";
 
 const ClarezaProjetosNotion = () => {
@@ -37,13 +38,10 @@ const ClarezaProjetosNotion = () => {
 
       <article className="min-h-screen pt-24 pb-16">
         <div className="container-focus mb-8">
-          <nav className="flex items-center space-x-2 text-sm text-foreground-muted">
-            <Link to="/" className="hover:text-primary transition-colors">Início</Link>
-            <span>/</span>
-            <Link to="/blog" className="hover:text-primary transition-colors">Blog</Link>
-            <span>/</span>
-            <span className="text-foreground">Clareza nos projetos com Notion</span>
-          </nav>
+          <BlogBreadcrumb 
+            articleTitle="Clareza nos projetos com Notion" 
+            articleSlug="clareza-projetos-notion" 
+          />
         </div>
 
         <div className="container-focus mb-8">

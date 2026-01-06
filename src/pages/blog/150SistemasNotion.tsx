@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import SEOHead from "@/components/SEOHead";
+import BlogBreadcrumb from "@/components/BlogBreadcrumb";
 import { ArrowLeft, Clock, Calendar, ChevronRight, BookOpen, AlertTriangle, Wrench, Lightbulb, CheckCircle2, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import coverImage from "@/assets/blog/150-sistemas-notion.jpg";

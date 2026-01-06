@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import SEOHead from "@/components/SEOHead";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import BlogBreadcrumb from "@/components/BlogBreadcrumb";
 import BlogCTA from "@/components/BlogCTA";
 import articleImage from "@/assets/blog/metodo-gtd-guia.jpg";
 
@@ -26,14 +27,10 @@ const MetodoGTDGuia = () => {
         
         <article className="pt-32 pb-20">
           <div className="container mx-auto px-4 max-w-4xl">
-            {/* Breadcrumbs */}
-            <nav className="mb-8 text-sm text-muted-foreground">
-              <Link to="/" className="hover:text-foreground transition-colors">Início</Link>
-              <span className="mx-2">/</span>
-              <Link to="/blog" className="hover:text-foreground transition-colors">Blog</Link>
-              <span className="mx-2">/</span>
-              <span className="text-foreground">Método GTD</span>
-            </nav>
+            <BlogBreadcrumb 
+              articleTitle="Método GTD" 
+              articleSlug="metodo-gtd-guia-completo" 
+            />
 
             {/* Título e Subtítulo */}
             <header className="mb-8">

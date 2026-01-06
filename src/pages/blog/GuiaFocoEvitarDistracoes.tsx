@@ -1,16 +1,9 @@
 import { Link } from "react-router-dom";
 import SEOHead from "@/components/SEOHead";
+import BlogBreadcrumb from "@/components/BlogBreadcrumb";
 import focoImage from "@/assets/blog/guia-foco-evitar-distracoes.jpg";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { 
-  Breadcrumb, 
-  BreadcrumbItem, 
-  BreadcrumbLink, 
-  BreadcrumbList, 
-  BreadcrumbPage, 
-  BreadcrumbSeparator 
-} from "@/components/ui/breadcrumb";
 
 const GuiaFocoEvitarDistracoes = () => {
   return (
@@ -29,25 +22,10 @@ const GuiaFocoEvitarDistracoes = () => {
         <Navigation />
         <main className="flex-grow">
           <article className="container mx-auto px-4 py-12 max-w-4xl">
-            <Breadcrumb className="mb-6">
-              <BreadcrumbList>
-                <BreadcrumbItem>
-                  <BreadcrumbLink asChild>
-                    <Link to="/">Home</Link>
-                  </BreadcrumbLink>
-                </BreadcrumbItem>
-                <BreadcrumbSeparator />
-                <BreadcrumbItem>
-                  <BreadcrumbLink asChild>
-                    <Link to="/blog">Blog</Link>
-                  </BreadcrumbLink>
-                </BreadcrumbItem>
-                <BreadcrumbSeparator />
-                <BreadcrumbItem>
-                  <BreadcrumbPage>Guia do Foco</BreadcrumbPage>
-                </BreadcrumbItem>
-              </BreadcrumbList>
-            </Breadcrumb>
+            <BlogBreadcrumb 
+              articleTitle="Guia do Foco" 
+              articleSlug="guia-foco-evitar-distracoes" 
+            />
 
             <header className="mb-8">
               <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
