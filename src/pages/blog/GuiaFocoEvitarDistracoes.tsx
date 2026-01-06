@@ -1,5 +1,5 @@
-import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
+import SEOHead from "@/components/SEOHead";
 import focoImage from "@/assets/blog/guia-foco-evitar-distracoes.jpg";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -15,42 +15,16 @@ import {
 const GuiaFocoEvitarDistracoes = () => {
   return (
     <>
-      <Helmet>
-        <title>Guia Definitivo do Foco: Como Evitar Distrações no Trabalho e em Casa | Focus</title>
-        <meta name="description" content="Descubra técnicas práticas e comprovadas para manter o foco profundo e eliminar distrações. Guia completo com métodos aplicáveis hoje mesmo." />
-        <meta name="keywords" content="foco profundo, evitar distrações, concentração, produtividade, deep work, flow state" />
-        <link rel="canonical" href="https://usefocus.com.br/blog/guia-foco-evitar-distracoes" />
-        
-        <meta property="og:title" content="Guia Definitivo do Foco: Como Evitar Distrações no Trabalho e em Casa" />
-        <meta property="og:description" content="Técnicas práticas e comprovadas para alcançar concentração profunda e eliminar distrações." />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://usefocus.com.br/blog/guia-foco-evitar-distracoes" />
-        <meta property="og:image" content="https://usefocus.com.br/assets/blog/guia-foco-evitar-distracoes.jpg" />
-        
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            "headline": "Guia Definitivo do Foco: Como Evitar Distrações no Trabalho e em Casa",
-            "description": "Descubra técnicas práticas e comprovadas para manter o foco profundo e eliminar distrações.",
-            "image": "https://usefocus.com.br/assets/blog/guia-foco-evitar-distracoes.jpg",
-            "author": {
-              "@type": "Organization",
-              "name": "Focus"
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "Focus",
-              "logo": {
-                "@type": "ImageObject",
-                "url": "https://usefocus.com.br/lovable-uploads/focus-logo.png"
-              }
-            },
-            "datePublished": "2025-01-15",
-            "dateModified": "2025-01-15"
-          })}
-        </script>
-      </Helmet>
+      <SEOHead
+        title="Guia Definitivo do Foco: Como Evitar Distrações no Trabalho e em Casa | Focus"
+        description="Descubra técnicas práticas e comprovadas para manter o foco profundo e eliminar distrações. Guia completo com métodos aplicáveis hoje mesmo."
+        canonical="/blog/guia-foco-evitar-distracoes"
+        image={`https://focusinteligente.com.br${focoImage}`}
+        type="article"
+        publishedTime="2025-01-15"
+        modifiedTime="2025-01-15"
+        keywords="foco profundo, evitar distrações, concentração, produtividade, deep work, flow state"
+      />
       <div className="min-h-screen flex flex-col bg-background">
         <Navigation />
         <main className="flex-grow">

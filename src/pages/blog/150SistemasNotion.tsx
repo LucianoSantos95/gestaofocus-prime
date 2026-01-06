@@ -1,5 +1,5 @@
-import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
+import SEOHead from "@/components/SEOHead";
 import { ArrowLeft, Clock, Calendar, ChevronRight, BookOpen, AlertTriangle, Wrench, Lightbulb, CheckCircle2, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import coverImage from "@/assets/blog/150-sistemas-notion.jpg";
@@ -111,38 +111,16 @@ const OneFiftySystemsNotion = () => {
 
   return (
     <>
-      <Helmet>
-        <title>O Que Aprendi Organizando Mais de 150 Sistemas no Notion | Focus Inteligente</title>
-        <meta name="description" content="Lições práticas, armadilhas comuns e verdades brutais sobre criar sistemas no Notion. Experiência real de quem já organizou centenas de workspaces." />
-        <meta name="keywords" content="notion, sistemas notion, organização notion, produtividade notion, workspace notion, templates notion" />
-        <link rel="canonical" href={articleUrl} />
-        
-        <meta property="og:title" content="O Que Aprendi Organizando Mais de 150 Sistemas no Notion" />
-        <meta property="og:description" content="Lições práticas e verdades que ninguém conta sobre criar sistemas no Notion." />
-        <meta property="og:image" content={`https://focusinteligente.com.br${coverImage}`} />
-        <meta property="og:url" content={articleUrl} />
-        <meta property="og:type" content="article" />
-        
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="150 Sistemas no Notion: Lições Práticas" />
-        <meta name="twitter:description" content="O que aprendi organizando centenas de sistemas no Notion." />
-        <meta name="twitter:image" content={`https://focusinteligente.com.br${coverImage}`} />
-        
-        <meta name="robots" content="index, follow" />
-        <meta name="author" content="Focus Inteligente" />
-        <meta property="article:published_time" content={publishDate} />
-        <meta property="article:author" content="Focus Inteligente" />
-        
-        <script type="application/ld+json">
-          {JSON.stringify(blogPostingSchema)}
-        </script>
-        <script type="application/ld+json">
-          {JSON.stringify(breadcrumbSchema)}
-        </script>
-        <script type="application/ld+json">
-          {JSON.stringify(faqSchema)}
-        </script>
-      </Helmet>
+      <SEOHead
+        title="O Que Aprendi Organizando Mais de 150 Sistemas no Notion | Focus Inteligente"
+        description="Lições práticas, armadilhas comuns e verdades brutais sobre criar sistemas no Notion. Experiência real de quem já organizou centenas de workspaces."
+        canonical="/blog/150-sistemas-notion"
+        image={`https://focusinteligente.com.br${coverImage}`}
+        type="article"
+        publishedTime={publishDate}
+        modifiedTime={publishDate}
+        keywords="notion, sistemas notion, organização notion, produtividade notion, workspace notion, templates notion"
+      />
 
       <article className="min-h-screen bg-background">
         <div className="container mx-auto px-4 py-8 max-w-4xl">

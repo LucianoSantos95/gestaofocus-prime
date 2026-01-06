@@ -1,5 +1,5 @@
-import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
+import SEOHead from "@/components/SEOHead";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import BlogCTA from "@/components/BlogCTA";
@@ -11,47 +11,16 @@ const MatrizEisenhower = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Matriz de Eisenhower: Como Definir Prioridades e Focar no Que Importa</title>
-        <meta name="description" content="Aprenda a usar a Matriz de Eisenhower para organizar prioridades, tomar melhores decisões e focar no que realmente importa no trabalho." />
-        <meta name="keywords" content="matriz de eisenhower, priorização de tarefas, urgente vs importante, produtividade, gestão de tempo, foco" />
-        <link rel="canonical" href={articleUrl} />
-        
-        <meta property="og:title" content="Matriz de Eisenhower: Como Definir Prioridades e Focar no Que Importa" />
-        <meta property="og:description" content="Aprenda a usar a Matriz de Eisenhower para organizar prioridades e focar no que importa." />
-        <meta property="og:image" content={imageUrl} />
-        <meta property="og:url" content={articleUrl} />
-        <meta property="og:type" content="article" />
-        
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Matriz de Eisenhower: Guia Completo de Priorização" />
-        <meta name="twitter:description" content="Aprenda a usar a Matriz de Eisenhower para focar no que importa." />
-        <meta name="twitter:image" content={imageUrl} />
-
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            "headline": "Matriz de Eisenhower: Como Definir Prioridades e Focar no Que Realmente Importa",
-            "image": imageUrl,
-            "datePublished": "2025-12-22",
-            "dateModified": "2025-12-22",
-            "author": {
-              "@type": "Organization",
-              "name": "Focus Inteligente"
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "Focus Inteligente",
-              "logo": {
-                "@type": "ImageObject",
-                "url": "https://focusinteligente.com.br/lovable-uploads/focus-logo.png"
-              }
-            },
-            "description": "Aprenda a usar a Matriz de Eisenhower para organizar prioridades, tomar melhores decisões e focar no que realmente importa no trabalho."
-          })}
-        </script>
-      </Helmet>
+      <SEOHead
+        title="Matriz de Eisenhower: Como Definir Prioridades e Focar no Que Importa"
+        description="Aprenda a usar a Matriz de Eisenhower para organizar prioridades, tomar melhores decisões e focar no que realmente importa no trabalho."
+        canonical="/blog/matriz-eisenhower-prioridades"
+        image={imageUrl}
+        type="article"
+        publishedTime="2025-12-22"
+        modifiedTime="2025-12-22"
+        keywords="matriz de eisenhower, priorização de tarefas, urgente vs importante, produtividade, gestão de tempo, foco"
+      />
 
       <div className="min-h-screen bg-background">
         <Navigation />

@@ -1,5 +1,5 @@
-import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
+import SEOHead from "@/components/SEOHead";
 import { ArrowLeft, Clock, Calendar, Share2, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import coverImage from "@/assets/blog/caos-rotina-produtiva.jpg";
@@ -113,38 +113,16 @@ const CaosRotinaProdutiva = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Como Transformar o Caos do Seu Dia em uma Rotina Leve e Produtiva | Focus</title>
-        <meta 
-          name="description" 
-          content="Descubra o método prático para transformar dias caóticos em uma rotina organizada e produtiva usando o Notion como seu sistema de gestão pessoal." 
-        />
-        <meta name="keywords" content="rotina produtiva, organizar dia, caos produtividade, notion rotina, gestão pessoal, sistema produtividade" />
-        <link rel="canonical" href={articleUrl} />
-        <meta property="og:title" content="Como Transformar o Caos do Seu Dia em uma Rotina Leve e Produtiva" />
-        <meta property="og:description" content="Método prático para transformar dias caóticos em rotina organizada usando o Notion." />
-        <meta property="og:image" content={`https://focusinteligente.com${coverImage}`} />
-        <meta property="og:url" content={articleUrl} />
-        <meta property="og:type" content="article" />
-        <meta property="og:locale" content="pt_BR" />
-        <meta property="article:published_time" content={publishDate} />
-        <meta property="article:modified_time" content={publishDate} />
-        <meta property="article:author" content="Focus Gestão Empresarial" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Como Transformar o Caos do Seu Dia em uma Rotina Leve e Produtiva" />
-        <meta name="twitter:description" content="Método prático para transformar dias caóticos em rotina organizada." />
-        <meta name="twitter:image" content={`https://focusinteligente.com${coverImage}`} />
-        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-        <script type="application/ld+json">
-          {JSON.stringify(blogPostingSchema)}
-        </script>
-        <script type="application/ld+json">
-          {JSON.stringify(breadcrumbSchema)}
-        </script>
-        <script type="application/ld+json">
-          {JSON.stringify(faqSchema)}
-        </script>
-      </Helmet>
+      <SEOHead
+        title="Como Transformar o Caos do Seu Dia em uma Rotina Leve e Produtiva | Focus"
+        description="Descubra o método prático para transformar dias caóticos em uma rotina organizada e produtiva usando o Notion como seu sistema de gestão pessoal."
+        canonical="/blog/caos-rotina-produtiva"
+        image={`https://focusinteligente.com${coverImage}`}
+        type="article"
+        publishedTime={publishDate}
+        modifiedTime={publishDate}
+        keywords="rotina produtiva, organizar dia, caos produtividade, notion rotina, gestão pessoal, sistema produtividade"
+      />
 
       <article className="min-h-screen pt-24 pb-16">
         <div className="container-focus mb-8">

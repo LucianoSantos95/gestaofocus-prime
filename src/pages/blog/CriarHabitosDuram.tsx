@@ -1,5 +1,5 @@
-import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
+import SEOHead from "@/components/SEOHead";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import articleImage from "@/assets/blog/criar-habitos-duram.jpg";
@@ -10,47 +10,16 @@ const CriarHabitosDuram = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Como Criar Hábitos Que Duram: O Método das Pessoas Altamente Produtivas</title>
-        <meta name="description" content="Aprenda o método científico para criar hábitos duradouros. Framework completo usado por pessoas produtivas para transformar comportamentos em automatismos." />
-        <meta name="keywords" content="criar hábitos, hábitos produtivos, como criar hábitos duradouros, formação de hábitos, mudança de comportamento" />
-        <link rel="canonical" href={articleUrl} />
-        
-        <meta property="og:title" content="Como Criar Hábitos Que Duram: Método Científico" />
-        <meta property="og:description" content="Framework completo para criar hábitos que realmente duram e transformar sua produtividade." />
-        <meta property="og:image" content={imageUrl} />
-        <meta property="og:url" content={articleUrl} />
-        <meta property="og:type" content="article" />
-        
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Como Criar Hábitos Que Duram: Método Científico" />
-        <meta name="twitter:description" content="Aprenda o método usado por pessoas altamente produtivas." />
-        <meta name="twitter:image" content={imageUrl} />
-
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            "headline": "Como Criar Hábitos Que Duram: O Método das Pessoas Altamente Produtivas",
-            "image": imageUrl,
-            "datePublished": "2025-01-19",
-            "dateModified": "2025-01-19",
-            "author": {
-              "@type": "Organization",
-              "name": "Focus Inteligente"
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "Focus Inteligente",
-              "logo": {
-                "@type": "ImageObject",
-                "url": "https://focusinteligente.com.br/lovable-uploads/focus-logo.png"
-              }
-            },
-            "description": "Aprenda o método científico para criar hábitos duradouros. Framework completo usado por pessoas produtivas para transformar comportamentos em automatismos."
-          })}
-        </script>
-      </Helmet>
+      <SEOHead
+        title="Como Criar Hábitos Que Duram: O Método das Pessoas Altamente Produtivas"
+        description="Aprenda o método científico para criar hábitos duradouros. Framework completo usado por pessoas produtivas para transformar comportamentos em automatismos."
+        canonical="/blog/criar-habitos-que-duram"
+        image={imageUrl}
+        type="article"
+        publishedTime="2025-01-19"
+        modifiedTime="2025-01-19"
+        keywords="criar hábitos, hábitos produtivos, como criar hábitos duradouros, formação de hábitos, mudança de comportamento"
+      />
 
       <div className="min-h-screen bg-background">
         <Navigation />
