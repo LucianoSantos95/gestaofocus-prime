@@ -1,6 +1,7 @@
 import SEOHead from "@/components/SEOHead";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import BlogBreadcrumb from "@/components/BlogBreadcrumb";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Brain, Lightbulb, Target, Network } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -27,6 +28,11 @@ const MapasMentaisOrganizarIdeias = () => {
         <Navigation />
         
         <article className="container mx-auto px-4 py-12 max-w-4xl">
+          <BlogBreadcrumb 
+            articleTitle="Mapas Mentais para Organizar Ideias" 
+            articleSlug="mapas-mentais-organizar-ideias" 
+          />
+          
           <Button
             variant="ghost"
             onClick={() => navigate("/blog")}
