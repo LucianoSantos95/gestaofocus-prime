@@ -1,44 +1,24 @@
-import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
+import SEOHead from "@/components/SEOHead";
 import rotinaImage from "@/assets/blog/organizar-rotina-semanal.jpg";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 
 const OrganizarRotinaSemanal = () => {
-  const publishDate = "2025-01-16";
-  const modifiedDate = "2025-01-16";
-  const articleUrl = "https://focusinteligente.com/blog/organizar-rotina-semanal";
-  const imageUrl = "https://focusinteligente.com" + rotinaImage;
+  const imageUrl = "https://focusinteligente.com.br" + rotinaImage;
 
   return (
     <>
-      <Helmet>
-        <title>Como Organizar Sua Rotina Semanal Para Ter Mais Foco (Modelo Pronto Incluso) | Focus Inteligente</title>
-        <meta name="description" content="Aprenda a organizar sua rotina semanal com um método prático e eficaz. Modelo pronto para download e implementação imediata." />
-        <meta name="keywords" content="rotina semanal, planejamento semanal, organização pessoal, foco, produtividade semanal, modelo planejamento" />
-        <link rel="canonical" href={articleUrl} />
-        
-        <meta property="og:title" content="Como Organizar Sua Rotina Semanal Para Ter Mais Foco (Modelo Pronto Incluso)" />
-        <meta property="og:description" content="Aprenda a organizar sua rotina semanal com um método prático e eficaz. Modelo pronto para download e implementação imediata." />
-        <meta property="og:image" content={imageUrl} />
-        <meta property="og:url" content={articleUrl} />
-        <meta property="og:type" content="article" />
-        
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            "headline": "Como Organizar Sua Rotina Semanal Para Ter Mais Foco",
-            "image": imageUrl,
-            "datePublished": publishDate,
-            "dateModified": modifiedDate,
-            "author": {
-              "@type": "Organization",
-              "name": "Focus Inteligente"
-            }
-          })}
-        </script>
-      </Helmet>
+      <SEOHead
+        title="Como Organizar Sua Rotina Semanal Para Ter Mais Foco (Modelo Pronto Incluso) | Focus Inteligente"
+        description="Aprenda a organizar sua rotina semanal com um método prático e eficaz. Modelo pronto para download e implementação imediata."
+        canonical="/blog/organizar-rotina-semanal"
+        image={imageUrl}
+        type="article"
+        publishedTime="2025-01-16"
+        modifiedTime="2025-01-16"
+        keywords="rotina semanal, planejamento semanal, organização pessoal, foco, produtividade semanal, modelo planejamento"
+      />
 
       <div className="min-h-screen flex flex-col bg-background">
         <Navigation />
@@ -69,7 +49,7 @@ const OrganizarRotinaSemanal = () => {
                 O método completo para planejar sua semana e alcançar seus objetivos sem estresse
               </p>
               <div className="flex items-center gap-4 mt-4 text-sm text-muted-foreground">
-                <time dateTime={publishDate}>16 de janeiro de 2025</time>
+                <time dateTime="2025-01-16">16 de janeiro de 2025</time>
                 <span>•</span>
                 <span>10 min de leitura</span>
               </div>

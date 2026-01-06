@@ -1,7 +1,7 @@
-import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import { Calendar, Clock, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import SEOHead from "@/components/SEOHead";
 import articleImage from "@/assets/blog/confiar-em-sistemas.jpg";
 
 const ConfiarSistemasProducao = () => {
@@ -20,56 +20,20 @@ const ConfiarSistemasProducao = () => {
     }
   ];
 
-  const publishDate = "2025-02-02";
-  const modifiedDate = "2025-02-02";
-  const articleUrl = "https://focusinteligente.com.br/blog/confiar-sistemas-producao";
   const imageUrl = "https://focusinteligente.com.br" + articleImage;
 
   return (
     <>
-      <Helmet>
-        <title>O que acontece quando você confia em sistemas ao invés da memória | Focus</title>
-        <meta name="description" content="Descubra por que confiar na memória está sabotando sua produtividade e como sistemas externos podem multiplicar seus resultados." />
-        <meta name="keywords" content="sistemas produtividade, gestão conhecimento, notion, memória externa, organização, second brain, gestão informação, produtividade" />
-        <link rel="canonical" href={articleUrl} />
-        
-        <meta property="og:type" content="article" />
-        <meta property="og:title" content="O que acontece quando você para de confiar na sua memória" />
-        <meta property="og:description" content="Descubra como sistemas externos podem transformar sua produtividade." />
-        <meta property="og:image" content={imageUrl} />
-        <meta property="og:url" content={articleUrl} />
-        <meta property="article:published_time" content={publishDate} />
-        <meta property="article:modified_time" content={modifiedDate} />
-
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="O que acontece quando você para de confiar na sua memória" />
-        <meta name="twitter:description" content="Descubra por que confiar na memória está sabotando sua produtividade." />
-        <meta name="twitter:image" content={imageUrl} />
-
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            "headline": "O que acontece quando você para de confiar na sua memória e começa a confiar em sistemas",
-            "image": imageUrl,
-            "author": {
-              "@type": "Organization",
-              "name": "Focus Gestão Empresarial"
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "Focus Gestão Empresarial",
-              "logo": {
-                "@type": "ImageObject",
-                "url": "https://focusinteligente.com.br/lovable-uploads/focus-logo.png"
-              }
-            },
-            "datePublished": publishDate,
-            "dateModified": modifiedDate,
-            "mainEntityOfPage": articleUrl
-          })}
-        </script>
-      </Helmet>
+      <SEOHead
+        title="O que acontece quando você confia em sistemas ao invés da memória | Focus"
+        description="Descubra por que confiar na memória está sabotando sua produtividade e como sistemas externos podem multiplicar seus resultados."
+        canonical="/blog/confiar-sistemas-producao"
+        image={imageUrl}
+        type="article"
+        publishedTime="2025-02-02"
+        modifiedTime="2025-02-02"
+        keywords="sistemas produtividade, gestão conhecimento, notion, memória externa, organização, second brain, gestão informação, produtividade"
+      />
 
       <article className="min-h-screen pt-24 pb-16">
         <div className="container-focus mb-8">

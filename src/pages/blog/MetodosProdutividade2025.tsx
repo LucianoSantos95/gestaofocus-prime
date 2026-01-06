@@ -1,16 +1,24 @@
-import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
+import SEOHead from "@/components/SEOHead";
 import metodosImage from "@/assets/blog/metodos-produtividade-2025.jpg";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 
 const MetodosProdutividade2025 = () => {
+  const imageUrl = "https://focusinteligente.com.br" + metodosImage;
+
   return (
     <>
-      <Helmet>
-        <title>Métodos de Produtividade Que Realmente Funcionam em 2025 (E Quais Evitar) | Focus</title>
-        <meta name="description" content="Análise completa dos métodos de produtividade mais eficazes em 2025. Saiba quais funcionam e quais são apenas hype." />
-      </Helmet>
+      <SEOHead
+        title="Métodos de Produtividade Que Realmente Funcionam em 2025 (E Quais Evitar) | Focus"
+        description="Análise completa dos métodos de produtividade mais eficazes em 2025. Saiba quais funcionam e quais são apenas hype."
+        canonical="/blog/metodos-produtividade-2025"
+        image={imageUrl}
+        type="article"
+        publishedTime="2025-01-20"
+        modifiedTime="2025-01-20"
+        keywords="métodos produtividade, produtividade 2025, time blocking, GTD, pomodoro, kanban, produtividade eficaz"
+      />
       <div className="min-h-screen flex flex-col bg-background">
         <Navigation />
         <main className="flex-grow">

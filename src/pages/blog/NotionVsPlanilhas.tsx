@@ -1,6 +1,6 @@
-import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import { ArrowLeft, Clock } from "lucide-react";
+import SEOHead from "@/components/SEOHead";
 import notionVsPlanilhasImage from "@/assets/blog/notion-vs-planilhas.jpg";
 
 const NotionVsPlanilhas = () => {
@@ -10,106 +10,20 @@ const NotionVsPlanilhas = () => {
     { title: "3 Sistemas Prontos no Notion que Toda Pequena Empresa Deveria Ter", slug: "sistemas-notion-pequenas-empresas" }
   ];
 
-  const articleUrl = "https://focusinteligente.com.br/blog/notion-vs-planilhas";
   const imageUrl = "https://focusinteligente.com.br" + notionVsPlanilhasImage;
-  const publishDate = "2025-01-20";
-  const modifiedDate = "2025-01-20";
 
   return (
     <>
-      <Helmet>
-        <title>Notion vs Planilhas: O que Empresas Modernas Usam Para Crescer | Focus</title>
-        <meta name="description" content="Descubra por que empresas em crescimento estão migrando de planilhas para Notion e como essa mudança pode acelerar resultados em até 3x." />
-        <meta name="keywords" content="notion vs excel, notion vs planilhas, gestão empresarial, ferramentas de gestão, produtividade empresarial, sistemas de gestão, notion para empresas" />
-        <link rel="canonical" href={articleUrl} />
-        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-        <meta property="og:locale" content="pt_BR" />
-        <meta property="og:type" content="article" />
-        <meta property="og:title" content="Notion vs Planilhas: O que Empresas Modernas Usam Para Crescer" />
-        <meta property="og:description" content="Descubra por que empresas em crescimento estão migrando de planilhas para Notion e como essa mudança pode acelerar resultados em até 3x." />
-        <meta property="og:url" content={articleUrl} />
-        <meta property="og:site_name" content="Focus Inteligente" />
-        <meta property="article:published_time" content={publishDate} />
-        <meta property="article:modified_time" content={modifiedDate} />
-        <meta property="og:image" content={imageUrl} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Notion vs Planilhas: O que Empresas Modernas Usam Para Crescer" />
-        <meta name="twitter:description" content="Descubra por que empresas em crescimento estão migrando de planilhas para Notion e como essa mudança pode acelerar resultados em até 3x." />
-        <meta name="twitter:image" content={imageUrl} />
-
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            "headline": "Notion vs Planilhas: o que as empresas modernas estão usando para crescer mais rápido",
-            "image": imageUrl,
-            "datePublished": publishDate,
-            "dateModified": modifiedDate,
-            "author": {
-              "@type": "Organization",
-              "name": "Focus Inteligente"
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "Focus Inteligente",
-              "logo": {
-                "@type": "ImageObject",
-                "url": "https://focusinteligente.com.br/lovable-uploads/focus-logo.png"
-              }
-            },
-            "description": "Descubra por que empresas em crescimento estão migrando de planilhas para Notion e como essa mudança pode acelerar resultados em até 3x.",
-            "mainEntityOfPage": {
-              "@type": "WebPage",
-              "@id": articleUrl
-            }
-          })}
-        </script>
-
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://focusinteligente.com.br" },
-              { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://focusinteligente.com.br/blog" },
-              { "@type": "ListItem", "position": 3, "name": "Notion vs Planilhas", "item": articleUrl }
-            ]
-          })}
-        </script>
-
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": "O Notion substitui completamente as planilhas?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Para gestão de projetos, processos e informações sim. Para análises financeiras complexas ou grandes volumes de dados numéricos, planilhas ainda são superiores. O ideal é usar cada ferramenta para seu propósito: Notion para gestão operacional e estratégica, planilhas para análises numéricas detalhadas."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Quanto custa migrar de planilhas para Notion?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "O Notion oferece plano gratuito robusto. Planos pagos começam em $8/usuário/mês (Plus) e $15/usuário/mês (Business). O investimento em templates profissionais acelera drasticamente a implementação, custando de R$ 297 a R$ 997 dependendo da complexidade."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Quanto tempo leva para migrar de planilhas para Notion?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Com templates prontos, uma pequena empresa pode ter o sistema básico funcionando em 1 semana. A migração completa de dados e processos leva de 2 a 4 semanas. Sem templates, o processo pode levar de 2 a 6 meses."
-                }
-              }
-            ]
-          })}
-        </script>
-      </Helmet>
+      <SEOHead
+        title="Notion vs Planilhas: O que Empresas Modernas Usam Para Crescer | Focus"
+        description="Descubra por que empresas em crescimento estão migrando de planilhas para Notion e como essa mudança pode acelerar resultados em até 3x."
+        canonical="/blog/notion-vs-planilhas"
+        image={imageUrl}
+        type="article"
+        publishedTime="2025-01-20"
+        modifiedTime="2025-01-20"
+        keywords="notion vs excel, notion vs planilhas, gestão empresarial, ferramentas de gestão, produtividade empresarial, sistemas de gestão, notion para empresas"
+      />
 
       <article className="min-h-screen bg-background py-20">
         <div className="container-focus max-w-4xl mx-auto px-4">
@@ -139,7 +53,7 @@ const NotionVsPlanilhas = () => {
             </p>
             <div className="flex items-center gap-6 text-sm text-muted-foreground">
               <span className="px-3 py-1 bg-primary/10 text-primary rounded-full">Gestão Empresarial</span>
-              <time dateTime={publishDate}>20 de janeiro de 2025</time>
+              <time dateTime="2025-01-20">20 de janeiro de 2025</time>
               <span className="flex items-center gap-1">
                 <Clock className="w-4 h-4" />
                 10 min de leitura
