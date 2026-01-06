@@ -49,6 +49,7 @@ import sistemaEstudosImage from "@/assets/blog/sistema-estudos-eficiente.jpg";
 import reunioesProdutavasImage from "@/assets/blog/reunioes-produtivas.jpg";
 import metodoGtdImage from "@/assets/blog/metodo-gtd-guia.jpg";
 import matrizEisenhowerImage from "@/assets/blog/matriz-eisenhower-prioridades.jpg";
+import organizarTarefasImage from "@/assets/blog/organizar-tarefas-dia-dia.jpg";
 
 const Blog = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -63,6 +64,16 @@ const Blog = () => {
   }, [searchTerm]);
 
   const blogPosts = [
+    {
+      id: -3,
+      title: "Como Organizar Tarefas no Dia a Dia Sem Se Sentir Sobrecarregado",
+      excerpt: "Aprenda a organizar tarefas de forma simples, reduzir a sobrecarga mental e melhorar sua produtividade diária com dicas práticas.",
+      date: "2026-01-06",
+      readTime: "10 min",
+      category: "Produtividade",
+      slug: "organizar-tarefas-dia-dia",
+      image: organizarTarefasImage
+    },
     {
       id: -2,
       title: "Matriz de Eisenhower: Como Definir Prioridades e Focar no Que Importa",
