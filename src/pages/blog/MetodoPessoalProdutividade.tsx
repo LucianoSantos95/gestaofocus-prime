@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { ArrowLeft, Calendar, Clock, User, Lightbulb, Target, Compass, Puzzle, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SEOHead from "@/components/SEOHead";
+import BlogBreadcrumb from "@/components/BlogBreadcrumb";
 import BlogCTA from "@/components/BlogCTA";
 import RelatedArticles from "@/components/RelatedArticles";
 import heroImage from "@/assets/blog/metodo-pessoal-produtividade.jpg";

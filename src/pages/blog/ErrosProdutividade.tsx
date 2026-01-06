@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import SEOHead from "@/components/SEOHead";
+import BlogBreadcrumb from "@/components/BlogBreadcrumb";
 import { Calendar, Clock, ArrowLeft, Tag, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import errosImage from "@/assets/blog/erros-produtividade.jpg";
@@ -40,13 +41,10 @@ const ErrosProdutividade = () => {
 
       <article className="min-h-screen pt-24 pb-16">
         <div className="container-focus mb-8">
-          <nav className="flex items-center space-x-2 text-sm text-foreground-muted">
-            <Link to="/" className="hover:text-primary transition-colors">Início</Link>
-            <span>/</span>
-            <Link to="/blog" className="hover:text-primary transition-colors">Blog</Link>
-            <span>/</span>
-            <span className="text-foreground">5 Erros de Produtividade</span>
-          </nav>
+          <BlogBreadcrumb 
+            articleTitle="5 Erros de Produtividade" 
+            articleSlug="5-erros-produtividade" 
+          />
         </div>
 
         <div className="container-focus mb-8">

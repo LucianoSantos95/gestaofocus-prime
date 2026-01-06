@@ -1,6 +1,7 @@
 import SEOHead from "@/components/SEOHead";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import BlogBreadcrumb from "@/components/BlogBreadcrumb";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Clock, Target, Calendar, Zap } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -28,6 +29,11 @@ const GestaoTempoQuemViveOcupado = () => {
         <Navigation />
         
         <article className="container mx-auto px-4 py-12 max-w-4xl">
+          <BlogBreadcrumb 
+            articleTitle="Gestão do Tempo" 
+            articleSlug="gestao-tempo-quem-vive-ocupado" 
+          />
+          
           <Button
             variant="ghost"
             onClick={() => navigate("/blog")}

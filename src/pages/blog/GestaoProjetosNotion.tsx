@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import SEOHead from "@/components/SEOHead";
+import BlogBreadcrumb from "@/components/BlogBreadcrumb";
 import { Calendar, Clock, ArrowLeft, Tag, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import gestaoProjetosImage from "@/assets/blog/gestao-projetos-notion.jpg";
@@ -40,13 +41,10 @@ const GestaoProjetosNotion = () => {
 
       <article className="min-h-screen pt-24 pb-16">
         <div className="container-focus mb-8">
-          <nav className="flex items-center space-x-2 text-sm text-foreground-muted">
-            <Link to="/" className="hover:text-primary transition-colors">Início</Link>
-            <span>/</span>
-            <Link to="/blog" className="hover:text-primary transition-colors">Blog</Link>
-            <span>/</span>
-            <span className="text-foreground">Gestão de Projetos no Notion</span>
-          </nav>
+          <BlogBreadcrumb 
+            articleTitle="Gestão de Projetos no Notion" 
+            articleSlug="gestao-projetos-notion" 
+          />
         </div>
 
         <div className="container-focus mb-8">

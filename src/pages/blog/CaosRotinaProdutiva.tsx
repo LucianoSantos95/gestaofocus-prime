@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import SEOHead from "@/components/SEOHead";
+import BlogBreadcrumb from "@/components/BlogBreadcrumb";
 import { ArrowLeft, Clock, Calendar, Share2, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import coverImage from "@/assets/blog/caos-rotina-produtiva.jpg";

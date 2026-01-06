@@ -3,6 +3,7 @@ import { Calendar, Clock, ArrowLeft, Brain } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import BlogBreadcrumb from "@/components/BlogBreadcrumb";
 import BlogCTA from "@/components/BlogCTA";
 import RelatedArticles from "@/components/RelatedArticles";
 import concentracaoImage from "@/assets/blog/melhorar-concentracao-distracoes.jpg";
