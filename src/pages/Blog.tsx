@@ -53,6 +53,7 @@ import organizarTarefasImage from "@/assets/blog/organizar-tarefas-dia-dia.jpg";
 import planejamentoSemanalImage from "@/assets/blog/planejamento-semanal-passo-passo.jpg";
 import metodoPessoalImage from "@/assets/blog/metodo-pessoal-produtividade.jpg";
 import organizacaoPessoalProfissionalImage from "@/assets/blog/organizacao-pessoal-profissional.jpg";
+import reduzirEstresseImage from "@/assets/blog/reduzir-estresse-trabalho-organizacao.jpg";
 
 const Blog = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -67,6 +68,16 @@ const Blog = () => {
   }, [searchTerm]);
 
   const blogPosts = [
+    {
+      id: -7,
+      title: "Como Reduzir o Estresse no Trabalho Usando Organização e Planejamento",
+      excerpt: "Descubra como organização e planejamento podem reduzir o estresse no trabalho e melhorar sua qualidade de vida. Técnicas práticas para mais equilíbrio.",
+      date: "2026-01-06",
+      readTime: "13 min",
+      category: "Bem-estar",
+      slug: "reduzir-estresse-trabalho-organizacao",
+      image: reduzirEstresseImage
+    },
     {
       id: -6,
       title: "Organização Pessoal e Profissional: Como Equilibrar Rotina e Trabalho",

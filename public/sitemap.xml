@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://focusinteligente.com.br/blog/reduzir-estresse-trabalho-organizacao</loc>
+    <lastmod>2026-01-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
   <!-- Páginas Principais -->
   <url>
     <loc>https://focusinteligente.com.br/</loc>
