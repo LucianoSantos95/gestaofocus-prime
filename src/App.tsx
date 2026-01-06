@@ -84,6 +84,7 @@ const MatrizEisenhower = lazy(() => import("./pages/blog/MatrizEisenhower"));
 const OrganizarTarefasDiaDia = lazy(() => import("./pages/blog/OrganizarTarefasDiaDia"));
 const PlanejamentoSemanalPassoPasso = lazy(() => import("./pages/blog/PlanejamentoSemanalPassoPasso"));
 const MetodoPessoalProdutividade = lazy(() => import("./pages/blog/MetodoPessoalProdutividade"));
+const OrganizacaoPessoalProfissional = lazy(() => import("./pages/blog/OrganizacaoPessoalProfissional"));
 
 const queryClient = new QueryClient();
 
@@ -177,6 +178,7 @@ const App = () => (
                 <Route path="/blog/organizar-tarefas-dia-dia" element={<OrganizarTarefasDiaDia />} />
                 <Route path="/blog/planejamento-semanal-passo-passo" element={<PlanejamentoSemanalPassoPasso />} />
                 <Route path="/blog/metodo-pessoal-produtividade" element={<MetodoPessoalProdutividade />} />
+                <Route path="/blog/organizacao-pessoal-profissional" element={<OrganizacaoPessoalProfissional />} />
                 
                 {/* Info Pages */}
                 <Route path="/sobre" element={<AboutFocus />} />

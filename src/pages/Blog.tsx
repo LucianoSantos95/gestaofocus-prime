@@ -52,6 +52,7 @@ import matrizEisenhowerImage from "@/assets/blog/matriz-eisenhower-prioridades.j
 import organizarTarefasImage from "@/assets/blog/organizar-tarefas-dia-dia.jpg";
 import planejamentoSemanalImage from "@/assets/blog/planejamento-semanal-passo-passo.jpg";
 import metodoPessoalImage from "@/assets/blog/metodo-pessoal-produtividade.jpg";
+import organizacaoPessoalProfissionalImage from "@/assets/blog/organizacao-pessoal-profissional.jpg";
 
 const Blog = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -66,6 +67,16 @@ const Blog = () => {
   }, [searchTerm]);
 
   const blogPosts = [
+    {
+      id: -6,
+      title: "Organização Pessoal e Profissional: Como Equilibrar Rotina e Trabalho",
+      excerpt: "Aprenda como organizar vida pessoal e profissional sem conflito. Estratégias práticas para integrar rotina e trabalho de forma equilibrada.",
+      date: "2026-01-06",
+      readTime: "11 min",
+      category: "Organização",
+      slug: "organizacao-pessoal-profissional",
+      image: organizacaoPessoalProfissionalImage
+    },
     {
       id: -5,
       title: "Como Criar um Método Pessoal de Produtividade Que Funcione Para Você",
