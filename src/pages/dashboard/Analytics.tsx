@@ -18,6 +18,14 @@ interface BounceRateData {
   bounced_sessions: number;
 }
 
+interface EngagementData {
+  avg_pages_per_session: number;
+  avg_session_duration_seconds: number;
+  engaged_sessions: number;
+  total_sessions: number;
+  engagement_rate: number;
+}
+
 interface EventData {
   time_bucket: string;
   event_name: string;
@@ -37,6 +45,7 @@ const Analytics = () => {
   const { toast } = useToast();
   const { role, isLoading: roleLoading } = useUserRole();
   const [bounceRate, setBounceRate] = useState<BounceRateData | null>(null);
+  const [engagement, setEngagement] = useState<EngagementData | null>(null);
   const [events, setEvents] = useState<EventData[]>([]);
   const [loading, setLoading] = useState(true);
   const [period, setPeriod] = useState<string>("7");
@@ -59,11 +68,20 @@ const Analytics = () => {
     try {
       // Get bounce rate
       const { data: bounceData, error: bounceError } = await supabase
-        .rpc('calculate_bounce_rate', { hours_ago: 24 });
+        .rpc('calculate_bounce_rate', { hours_ago: parseInt(period) * 24 });
       
       if (bounceError) throw bounceError;
       if (bounceData && bounceData.length > 0) {
         setBounceRate(bounceData[0]);
+      }
+
+      // Get engagement metrics
+      const { data: engagementData, error: engagementError } = await supabase
+        .rpc('get_engagement_metrics', { hours_ago: parseInt(period) * 24 });
+      
+      if (engagementError) throw engagementError;
+      if (engagementData && engagementData.length > 0) {
+        setEngagement(engagementData[0]);
       }
 
       // Get events data based on selected period
@@ -220,7 +238,7 @@ const Analytics = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Bounce Rate (24h)</CardTitle>
+              <CardTitle className="text-sm font-medium">Bounce Rate Real</CardTitle>
               {bounceRate && bounceRate.bounce_rate < 50 ? (
                 <TrendingDown className="h-4 w-4 text-green-500" />
               ) : (
@@ -237,6 +255,56 @@ const Analytics = () => {
             </CardContent>
           </Card>
 
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">Taxa de Engajamento</CardTitle>
+              {engagement && engagement.engagement_rate > 50 ? (
+                <TrendingUp className="h-4 w-4 text-green-500" />
+              ) : (
+                <TrendingDown className="h-4 w-4 text-muted-foreground" />
+              )}
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">
+                {engagement ? `${engagement.engagement_rate}%` : 'N/A'}
+              </div>
+              <p className="text-xs text-muted-foreground">
+                {engagement?.engaged_sessions || 0} sessões engajadas
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">Páginas/Sessão</CardTitle>
+              <Eye className="h-4 w-4 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">
+                {engagement ? engagement.avg_pages_per_session : 'N/A'}
+              </div>
+              <p className="text-xs text-muted-foreground">Média por sessão</p>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">Tempo Médio</CardTitle>
+              <Activity className="h-4 w-4 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">
+                {engagement 
+                  ? `${Math.round((engagement.avg_session_duration_seconds || 0) / 60)}m ${Math.round((engagement.avg_session_duration_seconds || 0) % 60)}s`
+                  : 'N/A'}
+              </div>
+              <p className="text-xs text-muted-foreground">Duração por sessão</p>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Secondary Metrics */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Total de Eventos</CardTitle>
@@ -262,7 +330,7 @@ const Analytics = () => {
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Conversões Popups</CardTitle>
-              <Eye className="h-4 w-4 text-muted-foreground" />
+              <MousePointerClick className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">{totalConversions}</div>

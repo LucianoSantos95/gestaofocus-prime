@@ -647,6 +647,16 @@ export type Database = {
           unique_sessions: number
         }[]
       }
+      get_engagement_metrics: {
+        Args: { hours_ago?: number }
+        Returns: {
+          avg_pages_per_session: number
+          avg_session_duration_seconds: number
+          engaged_sessions: number
+          engagement_rate: number
+          total_sessions: number
+        }[]
+      }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
