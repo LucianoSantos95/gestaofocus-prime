@@ -4,13 +4,42 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import BlogBreadcrumb from "@/components/BlogBreadcrumb";
 import BlogCTA from "@/components/BlogCTA";
+import ReadingProgressBar from "@/components/blog/ReadingProgressBar";
+import TableOfContents from "@/components/blog/TableOfContents";
+import KeyTakeaways from "@/components/blog/KeyTakeaways";
+import ArticleEngagement from "@/components/blog/ArticleEngagement";
+import AuthorBio from "@/components/blog/AuthorBio";
+import InlineRelatedArticles from "@/components/blog/InlineRelatedArticles";
 import articleImage from "@/assets/blog/metodo-gtd-guia.jpg";
 
 const MetodoGTDGuia = () => {
   const imageUrl = "https://focusinteligente.com.br" + articleImage;
+  const articleUrl = "https://focusinteligente.com.br/blog/metodo-gtd-guia-completo";
+
+  const tocItems = [
+    { id: "o-que-e", text: "O Que É o Método GTD?", level: 2 },
+    { id: "5-passos", text: "Os 5 Passos do Método GTD", level: 2 },
+    { id: "exemplos", text: "Exemplos Práticos de Aplicação", level: 2 },
+    { id: "erros", text: "Erros Comuns ao Usar o GTD", level: 2 },
+    { id: "notion", text: "Como Usar GTD no Notion", level: 2 },
+  ];
+
+  const keyTakeaways = [
+    "GTD libera sua mente ao tirar todas as tarefas da cabeça",
+    "Os 5 passos: Capturar, Esclarecer, Organizar, Refletir e Engajar",
+    "Regra dos 2 minutos: se leva menos tempo, faça agora",
+    "Revisão semanal é obrigatória para manter o sistema funcionando",
+    "Notion é ferramenta ideal para implementar GTD",
+  ];
+
+  const inlineRelated = [
+    { title: "Técnica Pomodoro: complemento perfeito para GTD", slug: "tecnica-pomodoro-guia-definitivo" },
+    { title: "Matriz de Eisenhower para priorização", slug: "matriz-eisenhower-prioridades" },
+  ];
 
   return (
     <>
+      <ReadingProgressBar />
       <SEOHead
         title="Método GTD: O Que É, Como Funciona e Como Aplicar na Prática"
         description="Aprenda o método GTD (Getting Things Done) de David Allen. Guia completo com os 5 passos, exemplos práticos e dicas para organizar suas tarefas."
@@ -32,7 +61,6 @@ const MetodoGTDGuia = () => {
               articleSlug="metodo-gtd-guia-completo" 
             />
 
-            {/* Título e Subtítulo */}
             <header className="mb-8">
               <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground leading-tight">
                 Método GTD: O Que É, Como Funciona e Como Aplicar na Prática
@@ -42,7 +70,13 @@ const MetodoGTDGuia = () => {
               </p>
             </header>
 
-            {/* Imagem de Capa */}
+            <ArticleEngagement 
+              publishDate="22 de dezembro de 2025"
+              readTime="15 min"
+              articleUrl={articleUrl}
+              articleTitle="Método GTD: O Que É, Como Funciona e Como Aplicar na Prática"
+            />
+
             <div className="mb-12 rounded-xl overflow-hidden">
               <img 
                 src={articleImage} 
@@ -51,7 +85,10 @@ const MetodoGTDGuia = () => {
               />
             </div>
 
-            {/* Conteúdo do Artigo */}
+            <KeyTakeaways items={keyTakeaways} readTime="15 min" />
+
+            <TableOfContents items={tocItems} />
+
             <div className="prose prose-lg max-w-none">
               <p className="text-lg leading-relaxed mb-6">
                 Você já teve a sensação de que sua cabeça vai explodir com tantas tarefas, compromissos e ideias? Aquela ansiedade constante de estar esquecendo algo importante?
@@ -65,8 +102,7 @@ const MetodoGTDGuia = () => {
                 A boa notícia? Existe um método testado por milhões de pessoas que resolve exatamente isso: o <strong>GTD (Getting Things Done)</strong>, criado por David Allen. Neste guia, você vai entender o que é, como funciona e, principalmente, como aplicar na sua rotina real.
               </p>
 
-              {/* Seção 1 */}
-              <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
+              <h2 id="o-que-e" className="text-3xl font-bold mt-12 mb-6 text-foreground">
                 O Que É o Método GTD?
               </h2>
 
@@ -100,8 +136,9 @@ const MetodoGTDGuia = () => {
                 <li>✓ <strong>É flexível:</strong> Funciona com papel, apps, Notion — qualquer ferramenta</li>
               </ul>
 
-              {/* Seção 2 */}
-              <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
+              <InlineRelatedArticles articles={inlineRelated} title="Artigos relacionados" />
+
+              <h2 id="5-passos" className="text-3xl font-bold mt-12 mb-6 text-foreground">
                 Os 5 Passos do Método GTD
               </h2>
 
@@ -109,7 +146,6 @@ const MetodoGTDGuia = () => {
                 O GTD é estruturado em 5 etapas que formam um ciclo contínuo. Vamos entender cada uma:
               </p>
 
-              {/* Passo 1 */}
               <h3 className="text-2xl font-semibold mt-8 mb-4 text-foreground">
                 1. Capturar (Collect)
               </h3>
@@ -133,12 +169,6 @@ const MetodoGTDGuia = () => {
                 <strong>Regra importante:</strong> Não julgue, não organize, não priorize agora. Apenas capture. O objetivo é esvaziar sua mente completamente.
               </p>
 
-              <div className="border-l-4 border-primary pl-4 mb-8">
-                <p className="font-semibold mb-2">💡 Dica prática</p>
-                <p className="text-muted-foreground">Tenha uma caixa de entrada única e acessível. Pode ser um app no celular, um caderno que você sempre carrega, ou uma pasta de e-mail específica. O importante é que você confie nesse sistema.</p>
-              </div>
-
-              {/* Passo 2 */}
               <h3 className="text-2xl font-semibold mt-8 mb-4 text-foreground">
                 2. Esclarecer (Clarify)
               </h3>
@@ -153,34 +183,6 @@ const MetodoGTDGuia = () => {
                 </p>
               </div>
 
-              <p className="mb-4">
-                Aqui está o fluxo de decisão:
-              </p>
-
-              <div className="space-y-4 mb-6">
-                <div className="bg-muted/50 p-4 rounded-lg">
-                  <p className="font-semibold">É acionável?</p>
-                  <p className="text-muted-foreground">Se não, descarte, arquive ou coloque em "algum dia/talvez"</p>
-                </div>
-                <div className="bg-muted/50 p-4 rounded-lg">
-                  <p className="font-semibold">Leva menos de 2 minutos?</p>
-                  <p className="text-muted-foreground">Se sim, faça agora mesmo (Regra dos 2 minutos)</p>
-                </div>
-                <div className="bg-muted/50 p-4 rounded-lg">
-                  <p className="font-semibold">Sou a pessoa certa?</p>
-                  <p className="text-muted-foreground">Se não, delegue para quem pode fazer</p>
-                </div>
-                <div className="bg-muted/50 p-4 rounded-lg">
-                  <p className="font-semibold">Tem data específica?</p>
-                  <p className="text-muted-foreground">Se sim, coloque no calendário</p>
-                </div>
-                <div className="bg-muted/50 p-4 rounded-lg">
-                  <p className="font-semibold">É um projeto (mais de uma ação)?</p>
-                  <p className="text-muted-foreground">Se sim, adicione à lista de projetos e defina a próxima ação</p>
-                </div>
-              </div>
-
-              {/* Passo 3 */}
               <h3 className="text-2xl font-semibold mt-8 mb-4 text-foreground">
                 3. Organizar (Organize)
               </h3>
@@ -196,7 +198,7 @@ const MetodoGTDGuia = () => {
                 </div>
                 <div className="border-l-4 border-primary pl-4">
                   <p className="font-semibold">📁 Projetos</p>
-                  <p className="text-muted-foreground">Qualquer resultado que exija mais de uma ação (ex: "Lançar novo produto")</p>
+                  <p className="text-muted-foreground">Qualquer resultado que exija mais de uma ação</p>
                 </div>
                 <div className="border-l-4 border-primary pl-4">
                   <p className="font-semibold">📅 Calendário</p>
@@ -208,15 +210,10 @@ const MetodoGTDGuia = () => {
                 </div>
                 <div className="border-l-4 border-primary pl-4">
                   <p className="font-semibold">💭 Algum Dia/Talvez</p>
-                  <p className="text-muted-foreground">Ideias e desejos para o futuro (sem compromisso agora)</p>
-                </div>
-                <div className="border-l-4 border-primary pl-4">
-                  <p className="font-semibold">📂 Referência</p>
-                  <p className="text-muted-foreground">Informações que você pode precisar consultar depois</p>
+                  <p className="text-muted-foreground">Ideias e desejos para o futuro</p>
                 </div>
               </div>
 
-              {/* Passo 4 */}
               <h3 className="text-2xl font-semibold mt-8 mb-4 text-foreground">
                 4. Refletir (Reflect)
               </h3>
@@ -229,40 +226,22 @@ const MetodoGTDGuia = () => {
                 <p className="font-semibold mb-3">🔄 Revisão Semanal (obrigatória!):</p>
                 <ul className="space-y-2">
                   <li>• Esvaziar todas as caixas de entrada</li>
-                  <li>• Revisar lista de projetos (algum parado?)</li>
+                  <li>• Revisar lista de projetos</li>
                   <li>• Verificar calendário da próxima semana</li>
                   <li>• Atualizar lista de próximas ações</li>
-                  <li>• Revisar "Aguardando" (precisa cobrar alguém?)</li>
-                  <li>• Olhar "Algum Dia/Talvez" (algo virou prioridade?)</li>
+                  <li>• Revisar "Aguardando"</li>
                 </ul>
               </div>
 
-              <p className="mb-8">
-                <strong>Reserve 30-60 minutos por semana</strong> para essa revisão. É o investimento que garante que o sistema continue funcionando.
-              </p>
-
-              {/* Passo 5 */}
               <h3 className="text-2xl font-semibold mt-8 mb-4 text-foreground">
                 5. Engajar (Engage)
               </h3>
 
               <p className="mb-4">
-                Com tudo organizado, você está pronto para <strong>agir com confiança</strong>. Ao olhar sua lista de próximas ações, você escolhe o que fazer baseado em:
+                Com tudo organizado, você está pronto para <strong>agir com confiança</strong>. Ao olhar sua lista de próximas ações, você escolhe o que fazer baseado em contexto, tempo disponível, energia e prioridade.
               </p>
 
-              <ul className="space-y-2 mb-6">
-                <li>✓ <strong>Contexto:</strong> Onde você está? (escritório, casa, celular)</li>
-                <li>✓ <strong>Tempo disponível:</strong> Tem 5 minutos ou 2 horas?</li>
-                <li>✓ <strong>Energia:</strong> Está focado ou cansado?</li>
-                <li>✓ <strong>Prioridade:</strong> O que traz mais impacto agora?</li>
-              </ul>
-
-              <p className="mb-8">
-                <strong>O poder do GTD:</strong> Você não precisa mais pensar "o que eu deveria estar fazendo?". Basta olhar a lista e escolher a ação certa para o momento.
-              </p>
-
-              {/* Seção 3 */}
-              <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
+              <h2 id="exemplos" className="text-3xl font-bold mt-12 mb-6 text-foreground">
                 Exemplos Práticos de Aplicação do GTD
               </h2>
 
@@ -277,205 +256,96 @@ const MetodoGTDGuia = () => {
                 <ol className="list-decimal list-inside space-y-2">
                   <li><strong>Capturar:</strong> E-mail vai para a caixa de entrada</li>
                   <li><strong>Esclarecer:</strong> É acionável? Sim. Próxima ação? "Criar estrutura de slides"</li>
-                  <li><strong>Organizar:</strong> Adicionar "Apresentação para reunião" na lista de Projetos + "Criar estrutura de slides" em Próximas Ações + Reunião no Calendário (quinta)</li>
+                  <li><strong>Organizar:</strong> Adicionar "Apresentação para reunião" na lista de Projetos + "Criar estrutura de slides" em Próximas Ações</li>
                 </ol>
               </div>
 
-              <h3 className="text-2xl font-semibold mt-8 mb-4 text-foreground">
-                Exemplo 2: Ideia no banho
-              </h3>
-
-              <div className="bg-muted/50 p-6 rounded-lg mb-6">
-                <p className="mb-4"><strong>Situação:</strong> Você tem a ideia de criar um canal no YouTube sobre sua área.</p>
-                
-                <p className="mb-2"><strong>Processo GTD:</strong></p>
-                <ol className="list-decimal list-inside space-y-2">
-                  <li><strong>Capturar:</strong> Anotar "Ideia: canal YouTube" na caixa de entrada</li>
-                  <li><strong>Esclarecer:</strong> É algo que quero fazer agora? Se não, vai para "Algum Dia/Talvez"</li>
-                  <li><strong>Organizar:</strong> Adicionar à lista Algum Dia/Talvez para revisitar depois</li>
-                </ol>
-              </div>
-
-              <h3 className="text-2xl font-semibold mt-8 mb-4 text-foreground">
-                Exemplo 3: Tarefa delegada
-              </h3>
-
-              <div className="bg-muted/50 p-6 rounded-lg mb-8">
-                <p className="mb-4"><strong>Situação:</strong> Você pede para um colega enviar um relatório até sexta.</p>
-                
-                <p className="mb-2"><strong>Processo GTD:</strong></p>
-                <ol className="list-decimal list-inside space-y-2">
-                  <li><strong>Capturar:</strong> Anotar "Relatório - João" na caixa de entrada</li>
-                  <li><strong>Esclarecer:</strong> Depende de outra pessoa</li>
-                  <li><strong>Organizar:</strong> Adicionar à lista "Aguardando" com a data esperada</li>
-                  <li><strong>Refletir:</strong> Na revisão semanal, verificar se João entregou</li>
-                </ol>
-              </div>
-
-              {/* Seção 4 */}
-              <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
+              <h2 id="erros" className="text-3xl font-bold mt-12 mb-6 text-foreground">
                 Erros Comuns ao Usar o GTD (e Como Evitar)
               </h2>
 
               <div className="space-y-6 mb-8">
                 <div className="border-l-4 border-destructive pl-4">
                   <p className="font-semibold mb-2">❌ Erro 1: Complicar demais o sistema</p>
-                  <p className="text-muted-foreground mb-2">Criar dezenas de listas, categorias e tags. Resultado: você passa mais tempo organizando do que fazendo.</p>
-                  <p className="text-sm"><strong>Solução:</strong> Comece com o básico (Caixa de Entrada, Próximas Ações, Projetos, Calendário). Adicione listas só quando sentir necessidade real.</p>
+                  <p className="text-muted-foreground mb-2">Criar dezenas de listas, categorias e tags.</p>
+                  <p className="text-sm"><strong>Solução:</strong> Comece com o básico. Adicione listas só quando sentir necessidade real.</p>
                 </div>
 
                 <div className="border-l-4 border-destructive pl-4">
                   <p className="font-semibold mb-2">❌ Erro 2: Não fazer a revisão semanal</p>
-                  <p className="text-muted-foreground mb-2">Sem revisão, as listas ficam desatualizadas e você perde a confiança no sistema.</p>
+                  <p className="text-muted-foreground mb-2">Sem revisão, as listas ficam desatualizadas.</p>
                   <p className="text-sm"><strong>Solução:</strong> Bloqueie um horário fixo na agenda. Trate como reunião inadiável.</p>
                 </div>
 
                 <div className="border-l-4 border-destructive pl-4">
                   <p className="font-semibold mb-2">❌ Erro 3: Escrever tarefas vagas</p>
-                  <p className="text-muted-foreground mb-2">"Resolver situação do cliente" não é uma próxima ação. É um projeto disfarçado.</p>
-                  <p className="text-sm"><strong>Solução:</strong> Sempre pergunte: "Qual é a PRÓXIMA ação física?" (Ligar, escrever, pesquisar, decidir...)</p>
-                </div>
-
-                <div className="border-l-4 border-destructive pl-4">
-                  <p className="font-semibold mb-2">❌ Erro 4: Ignorar a caixa de entrada</p>
-                  <p className="text-muted-foreground mb-2">Deixar itens acumulando sem processar cria a mesma ansiedade de antes.</p>
-                  <p className="text-sm"><strong>Solução:</strong> Processe sua caixa de entrada pelo menos uma vez por dia. Não precisa fazer tudo — apenas decidir o que fazer com cada item.</p>
-                </div>
-
-                <div className="border-l-4 border-destructive pl-4">
-                  <p className="font-semibold mb-2">❌ Erro 5: Trocar de ferramenta toda hora</p>
-                  <p className="text-muted-foreground mb-2">Buscar o app perfeito em vez de usar o sistema.</p>
-                  <p className="text-sm"><strong>Solução:</strong> Escolha uma ferramenta simples e fique com ela por 3 meses. O método importa mais que a ferramenta.</p>
+                  <p className="text-muted-foreground mb-2">"Resolver situação do cliente" não é uma próxima ação.</p>
+                  <p className="text-sm"><strong>Solução:</strong> Sempre pergunte: "Qual é a PRÓXIMA ação física?"</p>
                 </div>
               </div>
 
-              {/* Seção 5 */}
-              <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
-                Ferramentas para Aplicar o GTD
+              <h2 id="notion" className="text-3xl font-bold mt-12 mb-6 text-foreground">
+                Como Usar GTD no Notion
               </h2>
 
               <p className="mb-4">
-                O GTD funciona com qualquer ferramenta. Aqui estão as mais populares:
+                O Notion é uma ferramenta perfeita para implementar GTD porque oferece:
               </p>
 
-              <div className="space-y-4 mb-8">
-                <div className="bg-muted/50 p-4 rounded-lg">
-                  <p className="font-semibold">📝 Papel e caneta</p>
-                  <p className="text-muted-foreground">Para quem prefere simplicidade total. Use um caderno dividido em seções.</p>
-                </div>
-                <div className="bg-muted/50 p-4 rounded-lg">
-                  <p className="font-semibold">📱 Todoist / TickTick</p>
-                  <p className="text-muted-foreground">Apps de lista de tarefas com projetos, etiquetas e lembretes.</p>
-                </div>
-                <div className="bg-muted/50 p-4 rounded-lg">
-                  <p className="font-semibold">🗂️ Notion</p>
-                  <p className="text-muted-foreground">Flexível para criar um sistema GTD personalizado com bancos de dados.</p>
-                </div>
-                <div className="bg-muted/50 p-4 rounded-lg">
-                  <p className="font-semibold">✅ Things 3 (Mac/iOS)</p>
-                  <p className="text-muted-foreground">Considerado um dos melhores para GTD no ecossistema Apple.</p>
-                </div>
-                <div className="bg-muted/50 p-4 rounded-lg">
-                  <p className="font-semibold">🔄 OmniFocus (Mac/iOS)</p>
-                  <p className="text-muted-foreground">O mais completo para GTD avançado, com contextos e perspectivas.</p>
-                </div>
-              </div>
+              <ul className="space-y-3 mb-8">
+                <li>✓ <strong>Banco de dados flexível:</strong> Crie sua caixa de entrada, projetos e próximas ações</li>
+                <li>✓ <strong>Múltiplas visualizações:</strong> Veja como lista, kanban ou calendário</li>
+                <li>✓ <strong>Templates:</strong> Automatize criação de projetos e revisões</li>
+                <li>✓ <strong>Acesso mobile:</strong> Capture ideias em qualquer lugar</li>
+              </ul>
 
-              {/* Conclusão */}
-              <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
-                Conclusão: Como Começar Hoje
-              </h2>
-
-              <p className="mb-4">
-                O GTD não é um método mágico que resolve tudo de uma vez. É uma prática que você desenvolve ao longo do tempo. Mas os benefícios são reais: <strong>menos ansiedade, mais clareza e controle sobre sua vida profissional e pessoal.</strong>
-              </p>
-
-              <div className="bg-primary/10 p-6 rounded-lg mb-8 border-l-4 border-primary">
-                <p className="font-semibold mb-4">🚀 Passos para começar agora:</p>
-                <ol className="list-decimal list-inside space-y-2">
-                  <li>Escolha uma ferramenta simples (pode ser um caderno)</li>
-                  <li>Faça um "brain dump": escreva TUDO que está na sua cabeça</li>
-                  <li>Processe cada item: defina a próxima ação concreta</li>
-                  <li>Organize nas listas básicas (Próximas Ações, Projetos, Calendário)</li>
-                  <li>Agende sua primeira revisão semanal</li>
-                </ol>
-              </div>
-
-              <p className="mb-8">
-                Lembre-se: o objetivo do GTD não é fazer mais coisas. É <strong>ter a mente tranquila</strong> sabendo que nada importante está sendo esquecido. Comece simples, seja consistente, e colha os resultados.
-              </p>
-
-              {/* CTA Section */}
-              <div className="bg-gradient-to-r from-primary/20 to-primary/5 p-8 rounded-2xl mt-12">
+              <div className="bg-muted p-8 rounded-lg my-12 text-center">
                 <h3 className="text-2xl font-bold mb-4">
-                  Quer um sistema GTD pronto para usar?
+                  Sistema GTD Pronto no Notion
                 </h3>
-                <p className="mb-6 text-muted-foreground">
-                  Conheça nossos sistemas no Notion — templates prontos que aplicam o método GTD de forma visual e intuitiva.
+                <p className="text-lg text-muted-foreground mb-6">
+                  Nossos templates já vêm com o GTD configurado para você começar imediatamente.
                 </p>
                 <Link 
-                  to="/sistemas-gratuitos"
-                  className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:opacity-90 transition-opacity"
+                  to="/sistemas-notion" 
+                  className="inline-block bg-primary text-primary-foreground px-8 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors"
                 >
-                  Conhecer Sistemas Focus
+                  Ver Sistemas Notion
                 </Link>
               </div>
 
-              {/* Artigos Relacionados */}
-              <div className="mt-16 pt-8 border-t border-border">
-                <h3 className="text-2xl font-bold mb-6">Artigos Relacionados</h3>
-                <div className="grid md:grid-cols-2 gap-6">
-                  <Link 
-                    to="/blog/criar-sistema-produtividade-funciona" 
-                    className="group block p-6 bg-muted/30 rounded-xl hover:bg-muted/50 transition-colors"
-                  >
-                    <p className="font-semibold mb-2 group-hover:text-primary transition-colors">
-                      Como Criar um Sistema de Produtividade que Funciona
-                    </p>
-                    <p className="text-sm text-muted-foreground">
-                      Passo a passo para montar seu próprio sistema de gestão de tarefas.
-                    </p>
-                  </Link>
-                  <Link 
-                    to="/blog/checklist-diario-produtividade" 
-                    className="group block p-6 bg-muted/30 rounded-xl hover:bg-muted/50 transition-colors"
-                  >
-                    <p className="font-semibold mb-2 group-hover:text-primary transition-colors">
-                      Checklist Diário de Produtividade
-                    </p>
-                    <p className="text-sm text-muted-foreground">
-                      O método simples que aumenta sua produtividade em até 40%.
-                    </p>
-                  </Link>
-                  <Link 
-                    to="/blog/organizar-rotina-semanal" 
-                    className="group block p-6 bg-muted/30 rounded-xl hover:bg-muted/50 transition-colors"
-                  >
-                    <p className="font-semibold mb-2 group-hover:text-primary transition-colors">
+              <AuthorBio />
+            </div>
+
+            <div className="mt-16 pt-8 border-t border-border">
+              <h3 className="text-2xl font-bold mb-6">Artigos Relacionados</h3>
+              <div className="grid md:grid-cols-3 gap-6">
+                <Link to="/blog/tecnica-pomodoro-guia-definitivo" className="group">
+                  <div className="bg-muted rounded-lg p-4 hover:bg-muted/80 transition-colors">
+                    <h4 className="font-semibold group-hover:text-primary transition-colors">
+                      Técnica Pomodoro: Funciona Mesmo?
+                    </h4>
+                  </div>
+                </Link>
+                <Link to="/blog/matriz-eisenhower-prioridades" className="group">
+                  <div className="bg-muted rounded-lg p-4 hover:bg-muted/80 transition-colors">
+                    <h4 className="font-semibold group-hover:text-primary transition-colors">
+                      Matriz de Eisenhower: Defina Prioridades
+                    </h4>
+                  </div>
+                </Link>
+                <Link to="/blog/organizar-rotina-semanal" className="group">
+                  <div className="bg-muted rounded-lg p-4 hover:bg-muted/80 transition-colors">
+                    <h4 className="font-semibold group-hover:text-primary transition-colors">
                       Como Organizar Sua Rotina Semanal
-                    </p>
-                    <p className="text-sm text-muted-foreground">
-                      Modelo prático para planejar sua semana com foco e clareza.
-                    </p>
-                  </Link>
-                  <Link 
-                    to="/blog/tecnica-pomodoro-guia-definitivo" 
-                    className="group block p-6 bg-muted/30 rounded-xl hover:bg-muted/50 transition-colors"
-                  >
-                    <p className="font-semibold mb-2 group-hover:text-primary transition-colors">
-                      Técnica Pomodoro: Guia Definitivo
-                    </p>
-                    <p className="text-sm text-muted-foreground">
-                      Como usar o método mais famoso de produtividade da forma correta.
-                    </p>
-                  </Link>
-                </div>
+                    </h4>
+                  </div>
+                </Link>
               </div>
             </div>
           </div>
         </article>
-        
-        <BlogCTA location="metodo-gtd-guia" />
+
         <Footer />
       </div>
     </>

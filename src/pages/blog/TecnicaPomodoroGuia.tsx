@@ -1,72 +1,66 @@
-import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import BlogBreadcrumb from "@/components/BlogBreadcrumb";
+import ReadingProgressBar from "@/components/blog/ReadingProgressBar";
+import TableOfContents from "@/components/blog/TableOfContents";
+import KeyTakeaways from "@/components/blog/KeyTakeaways";
+import ArticleEngagement from "@/components/blog/ArticleEngagement";
+import AuthorBio from "@/components/blog/AuthorBio";
+import InlineRelatedArticles from "@/components/blog/InlineRelatedArticles";
+import SEOHead from "@/components/SEOHead";
 import articleImage from "@/assets/blog/tecnica-pomodoro-guia.jpg";
 
 const TecnicaPomodoroGuia = () => {
   const articleUrl = "https://focusinteligente.com.br/blog/tecnica-pomodoro-guia-definitivo";
   const imageUrl = "https://focusinteligente.com.br" + articleImage;
 
+  const tocItems = [
+    { id: "o-que-e", text: "O Que É a Técnica Pomodoro", level: 2 },
+    { id: "como-usar", text: "Como Usar Pomodoro: Passo a Passo", level: 2 },
+    { id: "variacoes", text: "Variações do Pomodoro", level: 2 },
+    { id: "apps", text: "Melhores Apps e Ferramentas", level: 2 },
+    { id: "erros", text: "5 Erros Fatais ao Usar Pomodoro", level: 2 },
+    { id: "notion", text: "Pomodoro + Notion: Combinação Perfeita", level: 2 },
+  ];
+
+  const keyTakeaways = [
+    "25 minutos de foco + 5 minutos de pausa = 1 pomodoro",
+    "A técnica cria urgência artificial que aumenta o foco",
+    "Pausas são obrigatórias, não opcionais",
+    "Experimente variações (15/3, 50/10, 90/20) para seu ritmo",
+    "Forest e Pomofocus são os melhores apps gratuitos",
+  ];
+
+  const inlineRelated = [
+    { title: "Método GTD: complemento ideal para Pomodoro", slug: "metodo-gtd-guia-completo" },
+    { title: "Como organizar sua rotina semanal", slug: "organizar-rotina-semanal" },
+  ];
+
   return (
     <>
-      <Helmet>
-        <title>Técnica Pomodoro Funciona? Guia Definitivo para Aumentar o Foco em 2025</title>
-        <meta name="description" content="Descubra se a Técnica Pomodoro realmente funciona. Guia completo com passo a passo, apps recomendados e como aplicar o método para triplicar seu foco." />
-        <meta name="keywords" content="técnica pomodoro, pomodoro funciona, como usar pomodoro, foco e produtividade, gestão de tempo, método pomodoro" />
-        <link rel="canonical" href={articleUrl} />
-        
-        <meta property="og:title" content="Técnica Pomodoro Funciona? Guia Definitivo 2025" />
-        <meta property="og:description" content="Descubra se a Técnica Pomodoro realmente funciona e como aplicar o método para triplicar seu foco." />
-        <meta property="og:image" content={imageUrl} />
-        <meta property="og:url" content={articleUrl} />
-        <meta property="og:type" content="article" />
-        
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Técnica Pomodoro Funciona? Guia Definitivo 2025" />
-        <meta name="twitter:description" content="Guia completo sobre a Técnica Pomodoro e como triplicar seu foco." />
-        <meta name="twitter:image" content={imageUrl} />
-
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            "headline": "Técnica Pomodoro Funciona? Guia Definitivo para Aumentar o Foco em 2025",
-            "image": imageUrl,
-            "datePublished": "2025-01-19",
-            "dateModified": "2025-01-19",
-            "author": {
-              "@type": "Organization",
-              "name": "Focus Inteligente"
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "Focus Inteligente",
-              "logo": {
-                "@type": "ImageObject",
-                "url": "https://focusinteligente.com.br/lovable-uploads/focus-logo.png"
-              }
-            },
-            "description": "Descubra se a Técnica Pomodoro realmente funciona. Guia completo com passo a passo, apps recomendados e como aplicar o método para triplicar seu foco."
-          })}
-        </script>
-      </Helmet>
+      <ReadingProgressBar />
+      <SEOHead
+        title="Técnica Pomodoro Funciona? Guia Definitivo para Aumentar o Foco em 2025"
+        description="Descubra se a Técnica Pomodoro realmente funciona. Guia completo com passo a passo, apps recomendados e como aplicar o método para triplicar seu foco."
+        canonical="/blog/tecnica-pomodoro-guia-definitivo"
+        image={imageUrl}
+        type="article"
+        publishedTime="2025-01-19"
+        modifiedTime="2025-01-19"
+        keywords="técnica pomodoro, pomodoro funciona, como usar pomodoro, foco e produtividade, gestão de tempo, método pomodoro"
+      />
 
       <div className="min-h-screen bg-background">
         <Navigation />
         
         <article className="pt-32 pb-20">
           <div className="container mx-auto px-4 max-w-4xl">
-            {/* Breadcrumbs */}
-            <nav className="mb-8 text-sm text-muted-foreground">
-              <Link to="/" className="hover:text-foreground transition-colors">Início</Link>
-              <span className="mx-2">/</span>
-              <Link to="/blog" className="hover:text-foreground transition-colors">Blog</Link>
-              <span className="mx-2">/</span>
-              <span className="text-foreground">Técnica Pomodoro</span>
-            </nav>
+            <BlogBreadcrumb 
+              articleTitle="Técnica Pomodoro" 
+              articleSlug="tecnica-pomodoro-guia-definitivo" 
+            />
 
-            {/* Título e Subtítulo */}
             <header className="mb-8">
               <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground leading-tight">
                 Técnica Pomodoro: Funciona Mesmo? Guia Definitivo para Aumentar o Foco em 2025
@@ -76,7 +70,13 @@ const TecnicaPomodoroGuia = () => {
               </p>
             </header>
 
-            {/* Imagem de Capa */}
+            <ArticleEngagement 
+              publishDate="19 de janeiro de 2025"
+              readTime="12 min"
+              articleUrl={articleUrl}
+              articleTitle="Técnica Pomodoro: Funciona Mesmo?"
+            />
+
             <div className="mb-12 rounded-xl overflow-hidden">
               <img 
                 src={articleImage} 
@@ -85,7 +85,10 @@ const TecnicaPomodoroGuia = () => {
               />
             </div>
 
-            {/* Conteúdo do Artigo */}
+            <KeyTakeaways items={keyTakeaways} readTime="12 min" />
+
+            <TableOfContents items={tocItems} />
+
             <div className="prose prose-lg max-w-none">
               <p className="text-lg leading-relaxed mb-6">
                 Você já tentou usar a Técnica Pomodoro e desistiu depois de 2 dias? Ou leu sobre o método mas ficou na dúvida se realmente funciona?
@@ -99,8 +102,7 @@ const TecnicaPomodoroGuia = () => {
                 Neste guia, vou te mostrar exatamente como aplicar Pomodoro da forma correta (com ciência, apps e ajustes personalizados).
               </p>
 
-              {/* Seção 1 */}
-              <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
+              <h2 id="o-que-e" className="text-3xl font-bold mt-12 mb-6 text-foreground">
                 O Que É a Técnica Pomodoro (e Por Que Ela Funciona)
               </h2>
 
@@ -122,19 +124,16 @@ const TecnicaPomodoroGuia = () => {
                 Estudos de neurociência mostram que nosso cérebro tem <strong>capacidade limitada de atenção sustentada</strong>. Após 20-30 minutos de foco intenso, a performance começa a cair.
               </p>
 
-              <p className="mb-4">
-                O Pomodoro funciona porque:
-              </p>
-
               <ul className="space-y-3 mb-8">
                 <li>✓ <strong>Cria urgência artificial:</strong> "Tenho só 25 minutos" aumenta o foco</li>
-                <li>✓ <strong>Combate a procrastinação:</strong> 25 minutos parece mais gerenciável que "trabalhar 4 horas"</li>
+                <li>✓ <strong>Combate a procrastinação:</strong> 25 minutos parece mais gerenciável</li>
                 <li>✓ <strong>Previne burnout:</strong> Pausas regulares mantêm a energia mental</li>
                 <li>✓ <strong>Melhora a autoconsciência:</strong> Você mede quantos "pomodoros" cada tarefa requer</li>
               </ul>
 
-              {/* Seção 2 */}
-              <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
+              <InlineRelatedArticles articles={inlineRelated} title="Artigos relacionados" />
+
+              <h2 id="como-usar" className="text-3xl font-bold mt-12 mb-6 text-foreground">
                 Como Usar Pomodoro: Passo a Passo Completo
               </h2>
 
@@ -154,28 +153,20 @@ const TecnicaPomodoroGuia = () => {
                 <p className="text-muted-foreground">"Escrever introdução do relatório (estimativa: 2 pomodoros)"</p>
               </div>
 
-              <p className="mb-6">
-                <strong>Regra de ouro:</strong> Quebre tarefas grandes em subtarefas que cabem em 1-4 pomodoros.
-              </p>
-
               <h3 className="text-2xl font-semibold mt-8 mb-4 text-foreground">
                 Passo 2: Configure Seu Ambiente
               </h3>
 
               <ul className="space-y-2 mb-6">
                 <li>📱 <strong>Celular:</strong> Modo avião ou "Não Perturbe"</li>
-                <li>💬 <strong>Notificações:</strong> Desative todas (Slack, e-mail, WhatsApp)</li>
-                <li>🎧 <strong>Som:</strong> Silêncio ou ruído branco/música instrumental</li>
-                <li>🚪 <strong>Espaço:</strong> Avise que não quer ser interrompido nos próximos 25 min</li>
+                <li>💬 <strong>Notificações:</strong> Desative todas</li>
+                <li>🎧 <strong>Som:</strong> Silêncio ou ruído branco</li>
+                <li>🚪 <strong>Espaço:</strong> Avise que não quer ser interrompido</li>
               </ul>
 
               <h3 className="text-2xl font-semibold mt-8 mb-4 text-foreground">
                 Passo 3: Inicie o Timer e Trabalhe
               </h3>
-
-              <p className="mb-4">
-                Durante os 25 minutos:
-              </p>
 
               <ul className="space-y-3 mb-6">
                 <li>✓ Foque APENAS na tarefa escolhida</li>
@@ -183,11 +174,6 @@ const TecnicaPomodoroGuia = () => {
                 <li>✓ Não cheque celular, e-mail ou redes sociais</li>
                 <li>✓ Se terminar antes do timer, revise ou melhore o trabalho</li>
               </ul>
-
-              <div className="bg-muted/50 p-6 rounded-lg mb-6">
-                <p className="font-semibold mb-2">💡 Técnica da "Interrupção Anotada":</p>
-                <p>Tenha um bloco ao lado. Toda vez que uma distração surgir, anote rapidamente e volte ao trabalho. Você lida com isso na pausa.</p>
-              </div>
 
               <h3 className="text-2xl font-semibold mt-8 mb-4 text-foreground">
                 Passo 4: Faça a Pausa (Sério, Não Pule!)
@@ -197,213 +183,129 @@ const TecnicaPomodoroGuia = () => {
                 <strong>Erro mais comum:</strong> Pular pausas para "adiantar o trabalho". Isso sabota a técnica!
               </p>
 
-              <p className="mb-4">
-                O que fazer na pausa de 5 minutos:
-              </p>
-
               <ul className="space-y-2 mb-6">
-                <li>✅ Levante e caminhe (movimento ativa circulação cerebral)</li>
+                <li>✅ Levante e caminhe</li>
                 <li>✅ Alongue o corpo</li>
                 <li>✅ Beba água</li>
-                <li>✅ Olhe para longe (descansa os olhos)</li>
-                <li>❌ <strong>NÃO</strong> use redes sociais (estimula demais o cérebro)</li>
+                <li>❌ <strong>NÃO</strong> use redes sociais</li>
                 <li>❌ <strong>NÃO</strong> comece outra tarefa</li>
               </ul>
 
-              <p className="mb-8">
-                <strong>Pausa longa (15-30 min):</strong> Após 4 pomodoros, faça uma pausa maior. Almoce, caminhe ao ar livre, ou tire um cochilo de 20 minutos.
-              </p>
-
-              {/* Seção 3 */}
-              <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
+              <h2 id="variacoes" className="text-3xl font-bold mt-12 mb-6 text-foreground">
                 Variações do Pomodoro: Personalize Para Você
               </h2>
-
-              <p className="mb-4">
-                O formato clássico (25/5) não funciona para todo mundo. Aqui estão as variações mais populares:
-              </p>
 
               <div className="space-y-6 mb-8">
                 <div className="bg-muted/50 p-6 rounded-lg">
                   <p className="font-semibold mb-2">🔥 Pomodoro Intenso (50/10)</p>
                   <p className="mb-2">50 min de trabalho + 10 min de pausa</p>
-                  <p className="text-sm text-muted-foreground"><strong>Para quem:</strong> Tarefas que exigem contexto profundo (programação, escrita, design)</p>
+                  <p className="text-sm text-muted-foreground"><strong>Para quem:</strong> Tarefas que exigem contexto profundo</p>
                 </div>
 
                 <div className="bg-muted/50 p-6 rounded-lg">
                   <p className="font-semibold mb-2">⚡ Pomodoro Sprint (15/3)</p>
                   <p className="mb-2">15 min de trabalho + 3 min de pausa</p>
-                  <p className="text-sm text-muted-foreground"><strong>Para quem:</strong> Iniciantes, tarefas administrativas rápidas, dias com energia baixa</p>
+                  <p className="text-sm text-muted-foreground"><strong>Para quem:</strong> Iniciantes, tarefas rápidas</p>
                 </div>
 
                 <div className="bg-muted/50 p-6 rounded-lg">
                   <p className="font-semibold mb-2">🎯 Pomodoro Flow (90/20)</p>
                   <p className="mb-2">90 min de trabalho + 20 min de pausa</p>
-                  <p className="text-sm text-muted-foreground"><strong>Para quem:</strong> Trabalho criativo profundo (baseado nos ciclos ultradianos do cérebro)</p>
+                  <p className="text-sm text-muted-foreground"><strong>Para quem:</strong> Trabalho criativo profundo</p>
                 </div>
               </div>
 
-              <p className="mb-8">
-                <strong>Como escolher:</strong> Experimente cada formato por 1 semana e veja qual se encaixa melhor no seu tipo de trabalho e ritmo pessoal.
-              </p>
-
-              {/* Seção 4 */}
-              <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
+              <h2 id="apps" className="text-3xl font-bold mt-12 mb-6 text-foreground">
                 Melhores Apps e Ferramentas para Pomodoro
               </h2>
-
-              <h3 className="text-2xl font-semibold mt-8 mb-4 text-foreground">
-                🏆 Top 5 Apps Recomendados
-              </h3>
 
               <div className="space-y-6 mb-8">
                 <div className="border-l-4 border-primary pl-4">
                   <p className="font-semibold mb-2">1. Forest (iOS/Android)</p>
-                  <p className="text-muted-foreground mb-2">Gamificação: plante árvores virtuais enquanto trabalha. Se usar o celular, a árvore morre.</p>
-                  <p className="text-sm"><strong>Preço:</strong> Grátis (versão pro R$ 19)</p>
+                  <p className="text-muted-foreground">Gamificação: plante árvores virtuais enquanto trabalha.</p>
                 </div>
 
                 <div className="border-l-4 border-primary pl-4">
                   <p className="font-semibold mb-2">2. Pomofocus (Web)</p>
-                  <p className="text-muted-foreground mb-2">Simples, direto, gratuito. Funciona no navegador sem necessidade de cadastro.</p>
-                  <p className="text-sm"><strong>Preço:</strong> 100% grátis</p>
+                  <p className="text-muted-foreground">Simples, direto, gratuito. Funciona no navegador.</p>
                 </div>
 
                 <div className="border-l-4 border-primary pl-4">
                   <p className="font-semibold mb-2">3. Notion (Multi-plataforma)</p>
-                  <p className="text-muted-foreground mb-2">Integração com sistema de tarefas. Registre pomodoros ao lado de cada projeto.</p>
-                  <p className="text-sm"><strong>Preço:</strong> Grátis (versões pagas a partir de $8/mês)</p>
-                </div>
-
-                <div className="border-l-4 border-primary pl-4">
-                  <p className="font-semibold mb-2">4. Be Focused (Mac/iOS)</p>
-                  <p className="text-muted-foreground mb-2">Design minimalista, sincronização entre dispositivos Apple.</p>
-                  <p className="text-sm"><strong>Preço:</strong> Grátis (versão pro R$ 29)</p>
-                </div>
-
-                <div className="border-l-4 border-primary pl-4">
-                  <p className="font-semibold mb-2">5. Toggl Track (Multi-plataforma)</p>
-                  <p className="text-muted-foreground mb-2">Timer + rastreamento de tempo + relatórios. Ideal para freelancers.</p>
-                  <p className="text-sm"><strong>Preço:</strong> Grátis (versão pro a partir de $9/mês)</p>
+                  <p className="text-muted-foreground">Integração com sistema de tarefas.</p>
                 </div>
               </div>
 
-              <p className="mb-8">
-                <strong>Minha recomendação:</strong> Comece com Pomofocus (web) ou Forest (mobile). São simples e funcionam sem configurações complexas.
-              </p>
-
-              {/* Seção 5 */}
-              <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
-                5 Erros Fatais ao Usar Pomodoro (e Como Evitar)
+              <h2 id="erros" className="text-3xl font-bold mt-12 mb-6 text-foreground">
+                5 Erros Fatais ao Usar Pomodoro
               </h2>
 
               <div className="space-y-6 mb-8">
                 <div className="border-l-4 border-destructive pl-4">
                   <p className="font-semibold mb-2">❌ Erro 1: Não planejar o que vai fazer</p>
-                  <p className="text-muted-foreground mb-2">Começar sem saber a tarefa específica = perder tempo decidindo o que fazer.</p>
-                  <p className="text-sm"><strong>Solução:</strong> Liste tarefas no início do dia e estime pomodoros para cada uma.</p>
+                  <p className="text-sm"><strong>Solução:</strong> Liste tarefas no início do dia.</p>
                 </div>
 
                 <div className="border-l-4 border-destructive pl-4">
                   <p className="font-semibold mb-2">❌ Erro 2: Pular pausas</p>
-                  <p className="text-muted-foreground mb-2">Seu cérebro precisa descansar. Pular pausas = queda de produtividade nas próximas sessões.</p>
-                  <p className="text-sm"><strong>Solução:</strong> Trate a pausa como parte obrigatória do método. Configure alarme.</p>
+                  <p className="text-sm"><strong>Solução:</strong> Trate a pausa como parte obrigatória.</p>
                 </div>
 
                 <div className="border-l-4 border-destructive pl-4">
                   <p className="font-semibold mb-2">❌ Erro 3: Usar 25 min para tudo</p>
-                  <p className="text-muted-foreground mb-2">Nem toda tarefa se encaixa no formato padrão.</p>
-                  <p className="text-sm"><strong>Solução:</strong> Experimente variações (15 min, 50 min, 90 min) e ajuste ao seu trabalho.</p>
-                </div>
-
-                <div className="border-l-4 border-destructive pl-4">
-                  <p className="font-semibold mb-2">❌ Erro 4: Multitasking dentro do pomodoro</p>
-                  <p className="text-muted-foreground mb-2">Trocar de tarefa no meio do pomodoro anula o propósito do método.</p>
-                  <p className="text-sm"><strong>Solução:</strong> Uma tarefa por pomodoro. Sem exceções.</p>
-                </div>
-
-                <div className="border-l-4 border-destructive pl-4">
-                  <p className="font-semibold mb-2">❌ Erro 5: Desistir depois de 1 dia</p>
-                  <p className="text-muted-foreground mb-2">Leva 2-3 semanas para se adaptar ao ritmo.</p>
-                  <p className="text-sm"><strong>Solução:</strong> Comprometa-se com 2 semanas completas antes de avaliar se funciona.</p>
+                  <p className="text-sm"><strong>Solução:</strong> Experimente variações.</p>
                 </div>
               </div>
 
-              {/* Seção 6 */}
-              <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
+              <h2 id="notion" className="text-3xl font-bold mt-12 mb-6 text-foreground">
                 Pomodoro + Notion: A Combinação Perfeita
               </h2>
 
               <p className="mb-4">
-                Integrar Pomodoro com um sistema de produtividade potencializa os resultados:
+                Integrar Pomodoro com um sistema de produtividade potencializa os resultados.
               </p>
 
-              <div className="bg-muted/50 p-6 rounded-lg mb-8">
-                <p className="font-semibold mb-4">Como usar Pomodoro no Notion:</p>
-                <ul className="space-y-2">
-                  <li>→ Crie uma propriedade "Pomodoros Estimados" em cada tarefa</li>
-                  <li>→ Registre quantos pomodoros realmente levou</li>
-                  <li>→ Ao final da semana, analise: você está estimando corretamente?</li>
-                  <li>→ Use timers integrados do Notion ou extensões de browser</li>
-                </ul>
-              </div>
-
-              {/* CTA */}
-              <div className="bg-primary/10 border border-primary/20 rounded-xl p-8 my-12">
-                <h3 className="text-2xl font-bold mb-4 text-foreground">
-                  Quer um Sistema Completo com Pomodoro Integrado?
+              <div className="bg-muted p-8 rounded-lg my-12 text-center">
+                <h3 className="text-2xl font-bold mb-4">
+                  Sistema de Produtividade Completo
                 </h3>
-                <p className="text-lg mb-6">
-                  Nossos sistemas no Notion já vêm com rastreamento de pomodoros, planejamento de tarefas e dashboards de produtividade. Tudo pronto para usar.
+                <p className="text-lg text-muted-foreground mb-6">
+                  Nossos sistemas no Notion incluem tracking de Pomodoro integrado.
                 </p>
                 <Link 
-                  to="/sistemas-notion"
+                  to="/sistemas-notion" 
                   className="inline-block bg-primary text-primary-foreground px-8 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors"
                 >
-                  Conhecer Sistemas Profissionais →
+                  Ver Sistemas Notion
                 </Link>
               </div>
 
-              {/* Conclusão */}
-              <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
-                Conclusão: Pomodoro Funciona, Mas Exige Disciplina
-              </h2>
-
-              <p className="mb-4">
-                A Técnica Pomodoro não é mágica — <strong>é uma ferramenta</strong>. E como toda ferramenta, só funciona se você usar da forma correta e consistente.
-              </p>
-
-              <p className="mb-4">
-                Os benefícios são reais:
-              </p>
-
-              <ul className="space-y-2 mb-6">
-                <li>✓ Mais foco e menos distrações</li>
-                <li>✓ Melhor gestão de energia mental</li>
-                <li>✓ Redução de procrastinação</li>
-                <li>✓ Consciência de quanto tempo tarefas realmente levam</li>
-              </ul>
-
-              <p className="mb-8">
-                Comece hoje: escolha UMA tarefa, configure o timer para 25 minutos, e experimente. Você vai se surpreender com o quanto consegue avançar quando trabalha com foco total.
-              </p>
+              <AuthorBio />
             </div>
 
-            {/* Artigos Relacionados */}
             <div className="mt-16 pt-8 border-t border-border">
-              <h3 className="text-2xl font-bold mb-6 text-foreground">Artigos Relacionados</h3>
+              <h3 className="text-2xl font-bold mb-6">Artigos Relacionados</h3>
               <div className="grid md:grid-cols-3 gap-6">
-                <Link to="/blog/guia-foco-evitar-distracoes" className="block p-6 bg-muted/50 rounded-lg hover:bg-muted transition-colors">
-                  <h4 className="font-semibold mb-2 text-foreground">Guia Definitivo de Foco</h4>
-                  <p className="text-sm text-muted-foreground">Como eliminar distrações e manter foco profundo</p>
+                <Link to="/blog/metodo-gtd-guia-completo" className="group">
+                  <div className="bg-muted rounded-lg p-4 hover:bg-muted/80 transition-colors">
+                    <h4 className="font-semibold group-hover:text-primary transition-colors">
+                      Método GTD: Guia Completo
+                    </h4>
+                  </div>
                 </Link>
-                <Link to="/blog/metodos-produtividade-2025" className="block p-6 bg-muted/50 rounded-lg hover:bg-muted transition-colors">
-                  <h4 className="font-semibold mb-2 text-foreground">7 Métodos de Produtividade 2025</h4>
-                  <p className="text-sm text-muted-foreground">Comparativo dos principais métodos</p>
+                <Link to="/blog/organizar-rotina-semanal" className="group">
+                  <div className="bg-muted rounded-lg p-4 hover:bg-muted/80 transition-colors">
+                    <h4 className="font-semibold group-hover:text-primary transition-colors">
+                      Como Organizar Sua Rotina Semanal
+                    </h4>
+                  </div>
                 </Link>
-                <Link to="/blog/sistema-produtividade-passo-passo" className="block p-6 bg-muted/50 rounded-lg hover:bg-muted transition-colors">
-                  <h4 className="font-semibold mb-2 text-foreground">Sistema de Produtividade Completo</h4>
-                  <p className="text-sm text-muted-foreground">Construa seu sistema personalizado</p>
+                <Link to="/blog/guia-foco-evitar-distracoes" className="group">
+                  <div className="bg-muted rounded-lg p-4 hover:bg-muted/80 transition-colors">
+                    <h4 className="font-semibold group-hover:text-primary transition-colors">
+                      Guia Definitivo do Foco
+                    </h4>
+                  </div>
                 </Link>
               </div>
             </div>

@@ -1,17 +1,46 @@
 import { Link } from "react-router-dom";
 import SEOHead from "@/components/SEOHead";
-import BlogBreadcrumb from "@/components/BlogBreadcrumb";
 import checklistImage from "@/assets/blog/checklist-diario-produtividade.jpg";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import BlogCTA from "@/components/BlogCTA";
 import RelatedArticles from "@/components/RelatedArticles";
+import ReadingProgressBar from "@/components/blog/ReadingProgressBar";
+import TableOfContents from "@/components/blog/TableOfContents";
+import KeyTakeaways from "@/components/blog/KeyTakeaways";
+import ArticleEngagement from "@/components/blog/ArticleEngagement";
+import AuthorBio from "@/components/blog/AuthorBio";
+import InlineRelatedArticles from "@/components/blog/InlineRelatedArticles";
+import BlogBreadcrumb from "@/components/BlogBreadcrumb";
 
 const ChecklistDiarioProdutividade = () => {
   const imageUrl = "https://focusinteligente.com.br" + checklistImage;
+  const articleUrl = "https://focusinteligente.com.br/blog/checklist-diario-produtividade";
+
+  const tocItems = [
+    { id: "por-que-funciona", text: "Por Que Checklists Diários Funcionam", level: 2 },
+    { id: "metodo-3-blocos", text: "O Método dos 3 Blocos", level: 2 },
+    { id: "notion", text: "Como Implementar No Notion", level: 2 },
+    { id: "erros", text: "Os 3 Erros Que Matam Seu Checklist", level: 2 },
+    { id: "resultados", text: "Resultados Que Você Pode Esperar", level: 2 },
+  ];
+
+  const keyTakeaways = [
+    "Checklists estruturados aumentam produtividade em até 40%",
+    "Use o Método dos 3 Blocos: Impacto, Manutenção e Revisão",
+    "Máximo de 9 tarefas por dia (3 por bloco)",
+    "Sempre especifique tarefas de forma clara e concreta",
+    "Nunca pule o bloco de revisão no final do dia",
+  ];
+
+  const inlineRelated = [
+    { title: "Como organizar sua rotina semanal", slug: "organizar-rotina-semanal" },
+    { title: "Planejamento mensal que funciona", slug: "planejamento-mensal-sistema" },
+  ];
 
   return (
     <>
+      <ReadingProgressBar />
       <SEOHead
         title="Checklist Diário: O Método Simples Que Aumenta Sua Produtividade em Até 40% | Focus Inteligente"
         description="Descubra como um checklist diário estruturado pode aumentar sua produtividade em até 40%. Método prático e comprovado para organizar sua rotina."
@@ -28,20 +57,9 @@ const ChecklistDiarioProdutividade = () => {
         
         <main className="flex-grow">
           <article className="container mx-auto px-4 py-12 max-w-4xl">
-            <nav className="text-sm mb-8">
-              <ol className="flex items-center space-x-2 text-muted-foreground">
-                <li><Link to="/" className="hover:text-primary transition-colors">Início</Link></li>
-                <li>/</li>
-                <li><Link to="/blog" className="hover:text-primary transition-colors">Blog</Link></li>
-                <li>/</li>
-                <li className="text-foreground">Checklist Diário: O Método Simples Que Aumenta Sua Produtividade</li>
-              </ol>
-            </nav>
-
-            <img 
-              src={checklistImage} 
-              alt="Checklist diário em tablet digital em workspace organizado" 
-              className="w-full h-[400px] object-cover rounded-lg mb-8"
+            <BlogBreadcrumb 
+              articleTitle="Checklist Diário" 
+              articleSlug="checklist-diario-produtividade" 
             />
 
             <header className="mb-8">
@@ -51,12 +69,24 @@ const ChecklistDiarioProdutividade = () => {
               <p className="text-xl text-muted-foreground">
                 Descubra como um sistema de checklist diário pode transformar sua rotina e multiplicar seus resultados
               </p>
-              <div className="flex items-center gap-4 mt-4 text-sm text-muted-foreground">
-                <time dateTime="2025-01-15">15 de janeiro de 2025</time>
-                <span>•</span>
-                <span>8 min de leitura</span>
-              </div>
             </header>
+
+            <ArticleEngagement 
+              publishDate="15 de janeiro de 2025"
+              readTime="8 min"
+              articleUrl={articleUrl}
+              articleTitle="Checklist Diário: O Método Simples Que Aumenta Sua Produtividade"
+            />
+
+            <img 
+              src={checklistImage} 
+              alt="Checklist diário em tablet digital em workspace organizado" 
+              className="w-full h-[400px] object-cover rounded-lg mb-8"
+            />
+
+            <KeyTakeaways items={keyTakeaways} readTime="8 min" />
+
+            <TableOfContents items={tocItems} />
 
             <div className="prose prose-lg max-w-none">
               <p className="text-lg leading-relaxed mb-6">
@@ -67,7 +97,7 @@ const ChecklistDiarioProdutividade = () => {
                 <strong>Estudos mostram que profissionais que usam checklists diários estruturados aumentam sua produtividade em até 40%</strong> e relatam níveis significativamente menores de estresse e ansiedade relacionados ao trabalho.
               </p>
 
-              <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
+              <h2 id="por-que-funciona" className="text-3xl font-bold mt-12 mb-6 text-foreground">
                 Por Que Checklists Diários Funcionam?
               </h2>
 
@@ -82,7 +112,9 @@ const ChecklistDiarioProdutividade = () => {
                 <li><strong>Permitem rastreamento:</strong> Você vê exatamente onde seu tempo está indo</li>
               </ul>
 
-              <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
+              <InlineRelatedArticles articles={inlineRelated} title="Artigos relacionados" />
+
+              <h2 id="metodo-3-blocos" className="text-3xl font-bold mt-12 mb-6 text-foreground">
                 O Método dos 3 Blocos (Testado e Aprovado)
               </h2>
 
@@ -126,7 +158,7 @@ const ChecklistDiarioProdutividade = () => {
                 <li>✓ Preparar checklist do próximo dia</li>
               </ul>
 
-              <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
+              <h2 id="notion" className="text-3xl font-bold mt-12 mb-6 text-foreground">
                 Como Implementar No Notion (Em 10 Minutos)
               </h2>
 
@@ -163,12 +195,11 @@ const ChecklistDiarioProdutividade = () => {
                 </pre>
               </div>
 
-              {/* CTA Download no meio do artigo */}
               <div className="my-12">
                 <BlogCTA variant="download" location="checklist_diario_mid_article" />
               </div>
 
-              <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
+              <h2 id="erros" className="text-3xl font-bold mt-12 mb-6 text-foreground">
                 Os 3 Erros Que Matam Seu Checklist
               </h2>
 
@@ -193,7 +224,7 @@ const ChecklistDiarioProdutividade = () => {
                 Sem o bloco de revisão, seu checklist vira uma lista de pendências eterna que só gera culpa.
               </p>
 
-              <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
+              <h2 id="resultados" className="text-3xl font-bold mt-12 mb-6 text-foreground">
                 Resultados Que Você Pode Esperar
               </h2>
 
@@ -210,56 +241,38 @@ const ChecklistDiarioProdutividade = () => {
 
               <div className="bg-primary/5 border-l-4 border-primary p-6 my-8">
                 <p className="text-lg font-medium">
-                  💡 <strong>Dica Extra:</strong> Combine seu checklist diário com revisões semanais. Todo domingo, reserve 30 minutos para revisar a semana e planejar a próxima. Isso fecha o ciclo de produtividade.
+                  💡 <strong>Dica Extra:</strong> Combine seu checklist diário com revisões semanais. Todo domingo, reserve 30 minutos para revisar a semana e planejar a próxima.
                 </p>
               </div>
 
-              <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
-                Comece Hoje (É Sério)
-              </h2>
-
-              <p className="text-lg leading-relaxed mb-6">
-                Não espere a segunda-feira. Não espere o "momento certo". Pegue uma folha de papel ou abra uma nota no celular e escreva:
-              </p>
-
-              <ol className="space-y-3 mb-8">
-                <li><strong>1.</strong> Quais são as 3 coisas mais importantes que você PRECISA fazer amanhã?</li>
-                <li><strong>2.</strong> Que tarefas operacionais você não pode ignorar?</li>
-                <li><strong>3.</strong> Quando você vai revisar o dia (coloque um alarme)?</li>
-              </ol>
-
-              <p className="text-lg leading-relaxed mb-6">
-                Pronto. Você acabou de criar seu primeiro checklist diário estruturado.
-              </p>
-
-              {/* CTA WhatsApp no final do artigo */}
               <div className="my-12">
                 <BlogCTA variant="whatsapp" location="checklist_diario_end_article" />
               </div>
+
+              <AuthorBio />
             </div>
 
-            {/* Artigos Relacionados */}
             <RelatedArticles 
               currentSlug="checklist-diario-produtividade"
               category="Produtividade"
               allArticles={[
                 {
-                  title: "Como Organizar Sua Rotina Semanal Para Ter Mais Foco (Modelo Pronto Incluso)",
-                  excerpt: "O método completo de planejamento semanal que elimina decisões desnecessárias e multiplica seu foco nas tarefas que importam.",
+                  title: "Como Organizar Sua Rotina Semanal Para Ter Mais Foco",
+                  excerpt: "O método completo de planejamento semanal que elimina decisões desnecessárias.",
                   slug: "organizar-rotina-semanal",
                   readTime: "9 min",
                   category: "Produtividade"
                 },
                 {
-                  title: "Planejamento Mensal: Como Criar Um Sistema Que Realmente Funciona",
-                  excerpt: "Aprenda o método de planejamento mensal que transforma metas em ações concretas e te mantém no caminho certo o mês todo.",
+                  title: "Planejamento Mensal: Como Criar Um Sistema Que Funciona",
+                  excerpt: "Aprenda o método de planejamento mensal que transforma metas em ações.",
                   slug: "planejamento-mensal-sistema",
                   readTime: "10 min",
                   category: "Produtividade"
                 },
                 {
                   title: "Produtividade Não É Fazer Mais — É Fazer o Que Importa",
-                  excerpt: "Descubra por que pessoas produtivas fazem menos tarefas, mas alcançam mais resultados. A diferença está no sistema.",
+                  excerpt: "Descubra por que pessoas produtivas fazem menos tarefas.",
                   slug: "produtividade-fazer-o-que-importa",
                   readTime: "7 min",
                   category: "Produtividade"
