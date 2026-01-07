@@ -3,12 +3,41 @@ import SEOHead from "@/components/SEOHead";
 import rotinaImage from "@/assets/blog/organizar-rotina-semanal.jpg";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import BlogBreadcrumb from "@/components/BlogBreadcrumb";
+import ReadingProgressBar from "@/components/blog/ReadingProgressBar";
+import TableOfContents from "@/components/blog/TableOfContents";
+import KeyTakeaways from "@/components/blog/KeyTakeaways";
+import ArticleEngagement from "@/components/blog/ArticleEngagement";
+import AuthorBio from "@/components/blog/AuthorBio";
+import InlineRelatedArticles from "@/components/blog/InlineRelatedArticles";
 
 const OrganizarRotinaSemanal = () => {
   const imageUrl = "https://focusinteligente.com.br" + rotinaImage;
+  const articleUrl = "https://focusinteligente.com.br/blog/organizar-rotina-semanal";
+
+  const tocItems = [
+    { id: "framework", text: "O Framework de Planejamento Semanal", level: 2 },
+    { id: "modelo-pronto", text: "Modelo Pronto: Estrutura Visual da Semana", level: 2 },
+    { id: "erros", text: "Os 5 Erros Que Destroem Seu Planejamento", level: 2 },
+    { id: "notion", text: "Como Implementar No Notion", level: 2 },
+  ];
+
+  const keyTakeaways = [
+    "Planejamento semanal leva menos de 1 hora no domingo",
+    "Defina apenas 3 prioridades por semana para manter o foco",
+    "Use Time Blocking para alocar tarefas por tipo de energia",
+    "Reserve 20% do tempo para imprevistos (buffer)",
+    "Modelo pronto incluso para implementar hoje",
+  ];
+
+  const inlineRelated = [
+    { title: "Técnica Pomodoro: como manter o foco durante os blocos", slug: "tecnica-pomodoro-guia-definitivo" },
+    { title: "Planejamento mensal para complementar sua rotina", slug: "planejamento-mensal-sistema" },
+  ];
 
   return (
     <>
+      <ReadingProgressBar />
       <SEOHead
         title="Como Organizar Sua Rotina Semanal Para Ter Mais Foco (Modelo Pronto Incluso) | Focus Inteligente"
         description="Aprenda a organizar sua rotina semanal com um método prático e eficaz. Modelo pronto para download e implementação imediata."
@@ -25,20 +54,9 @@ const OrganizarRotinaSemanal = () => {
         
         <main className="flex-grow">
           <article className="container mx-auto px-4 py-12 max-w-4xl">
-            <nav className="text-sm mb-8">
-              <ol className="flex items-center space-x-2 text-muted-foreground">
-                <li><Link to="/" className="hover:text-primary transition-colors">Início</Link></li>
-                <li>/</li>
-                <li><Link to="/blog" className="hover:text-primary transition-colors">Blog</Link></li>
-                <li>/</li>
-                <li className="text-foreground">Como Organizar Sua Rotina Semanal</li>
-              </ol>
-            </nav>
-
-            <img 
-              src={rotinaImage} 
-              alt="Planejamento semanal organizado em quadros coloridos" 
-              className="w-full h-[400px] object-cover rounded-lg mb-8"
+            <BlogBreadcrumb 
+              articleTitle="Como Organizar Sua Rotina Semanal" 
+              articleSlug="organizar-rotina-semanal" 
             />
 
             <header className="mb-8">
@@ -48,12 +66,24 @@ const OrganizarRotinaSemanal = () => {
               <p className="text-xl text-muted-foreground">
                 O método completo para planejar sua semana e alcançar seus objetivos sem estresse
               </p>
-              <div className="flex items-center gap-4 mt-4 text-sm text-muted-foreground">
-                <time dateTime="2025-01-16">16 de janeiro de 2025</time>
-                <span>•</span>
-                <span>10 min de leitura</span>
-              </div>
             </header>
+
+            <ArticleEngagement 
+              publishDate="16 de janeiro de 2025"
+              readTime="10 min"
+              articleUrl={articleUrl}
+              articleTitle="Como Organizar Sua Rotina Semanal Para Ter Mais Foco"
+            />
+
+            <img 
+              src={rotinaImage} 
+              alt="Planejamento semanal organizado em quadros coloridos" 
+              className="w-full h-[400px] object-cover rounded-lg mb-8"
+            />
+
+            <KeyTakeaways items={keyTakeaways} readTime="10 min" />
+
+            <TableOfContents items={tocItems} />
 
             <div className="prose prose-lg max-w-none">
               <p className="text-lg leading-relaxed mb-6">
@@ -64,7 +94,7 @@ const OrganizarRotinaSemanal = () => {
                 Uma rotina semanal bem organizada é como um mapa: você sabe onde está, para onde vai e qual o melhor caminho. Sem ela, você está navegando no escuro.
               </p>
 
-              <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
+              <h2 id="framework" className="text-3xl font-bold mt-12 mb-6 text-foreground">
                 O Framework de Planejamento Semanal
               </h2>
 
@@ -118,7 +148,9 @@ const OrganizarRotinaSemanal = () => {
                 Nunca preencha 100% da sua agenda. Reserve pelo menos 20% do tempo para imprevistos e oportunidades inesperadas.
               </p>
 
-              <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
+              <InlineRelatedArticles articles={inlineRelated} title="Artigos relacionados" />
+
+              <h2 id="modelo-pronto" className="text-3xl font-bold mt-12 mb-6 text-foreground">
                 Modelo Pronto: Estrutura Visual da Semana
               </h2>
 
@@ -160,7 +192,7 @@ const OrganizarRotinaSemanal = () => {
                 </pre>
               </div>
 
-              <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
+              <h2 id="erros" className="text-3xl font-bold mt-12 mb-6 text-foreground">
                 Os 5 Erros Que Destroem Seu Planejamento Semanal
               </h2>
 
@@ -205,7 +237,7 @@ const OrganizarRotinaSemanal = () => {
                 </p>
               </div>
 
-              <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
+              <h2 id="notion" className="text-3xl font-bold mt-12 mb-6 text-foreground">
                 Como Implementar No Notion
               </h2>
 
@@ -234,6 +266,8 @@ const OrganizarRotinaSemanal = () => {
                   Ver Sistemas Notion
                 </Link>
               </div>
+
+              <AuthorBio />
             </div>
 
             <div className="mt-16 pt-8 border-t border-border">
