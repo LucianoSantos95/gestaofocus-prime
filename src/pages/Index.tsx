@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import AIRecommendationPopup from "@/components/AIRecommendationPopup";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import SEOHead from "@/components/SEOHead";
@@ -768,6 +769,9 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* AI Recommendation Popup */}
+      <AIRecommendationPopup />
     </div>
   );
 };
