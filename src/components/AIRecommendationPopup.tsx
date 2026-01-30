@@ -108,6 +108,31 @@ export default function AIRecommendationPopup({ onShow }: AIRecommendationPopupP
   const [showQuickReplies, setShowQuickReplies] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  
+  // Engagement tracking refs
+  const conversationStartTime = useRef<number | null>(null);
+  const firstInteractionTime = useRef<number | null>(null);
+  const messageCount = useRef(0);
+
+  // Track engagement metrics on close
+  const trackEngagementMetrics = useCallback(() => {
+    if (!conversationStartTime.current) return;
+    
+    const totalDuration = Math.round((Date.now() - conversationStartTime.current) / 1000);
+    const timeToFirstInteraction = firstInteractionTime.current && conversationStartTime.current
+      ? Math.round((firstInteractionTime.current - conversationStartTime.current) / 1000)
+      : null;
+    
+    trackEvent("ai_popup_engagement", {
+      event_category: "engagement",
+      event_label: "conversation_metrics",
+      value: totalDuration,
+      total_duration_seconds: totalDuration,
+      message_count: messageCount.current,
+      time_to_first_interaction: timeToFirstInteraction,
+      had_interaction: hasInteracted,
+    });
+  }, [hasInteracted]);
 
   // Check if popup should show
   useEffect(() => {
@@ -122,6 +147,7 @@ export default function AIRecommendationPopup({ onShow }: AIRecommendationPopupP
       if (otherPopupNow) return;
       
       setIsOpen(true);
+      conversationStartTime.current = Date.now(); // Start tracking time
       sessionStorage.setItem("ai_popup_shown", "true");
       sessionStorage.setItem("popup_shown", "true");
       trackEvent("cta_click", { event_label: "ai_popup_shown" });
@@ -143,19 +169,29 @@ export default function AIRecommendationPopup({ onShow }: AIRecommendationPopupP
     }
   }, [isOpen, hasInteracted]);
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
+    trackEngagementMetrics(); // Track before closing
     setIsOpen(false);
     if (!hasInteracted) {
       trackEvent("cta_click", { event_label: "ai_popup_closed_no_interaction" });
     }
-  };
+  }, [hasInteracted, trackEngagementMetrics]);
 
   const sendMessage = useCallback(async (text: string) => {
     if (!text.trim() || isLoading) return;
 
+    // Track first interaction time
+    if (!firstInteractionTime.current) {
+      firstInteractionTime.current = Date.now();
+    }
+    messageCount.current += 1;
+    
     setHasInteracted(true);
     setShowQuickReplies(false);
-    trackEvent("cta_click", { event_label: "ai_popup_interaction" });
+    trackEvent("ai_popup_message_sent", { 
+      event_label: "ai_popup_interaction",
+      message_number: messageCount.current,
+    });
 
     const userMsg: Message = { role: "user", content: text.trim() };
     setMessages((prev) => [...prev, userMsg]);
