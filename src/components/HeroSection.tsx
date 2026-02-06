@@ -1,6 +1,6 @@
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight, LayoutGrid, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { trackWhatsAppClick, trackNotionClick, trackCTAClick } from "@/lib/analytics";
+import { trackCTAClick } from "@/lib/analytics";
 
 const HeroSection = () => {
   return (
@@ -14,62 +14,64 @@ const HeroSection = () => {
       
       <div className="relative z-10 container-focus text-center">
         <div className="max-w-5xl mx-auto animate-fade-in">
-          {/* Badge with urgency */}
-          <div className="inline-flex items-center px-4 py-2 rounded-full border border-primary/30 bg-primary/10 backdrop-blur-sm mb-8 animate-pulse">
-            <span className="w-2 h-2 bg-primary rounded-full mr-2 animate-pulse" />
+          {/* Badge */}
+          <div className="inline-flex items-center px-4 py-2 rounded-full border border-primary/30 bg-primary/10 backdrop-blur-sm mb-8">
+            <Sparkles className="w-4 h-4 text-primary mr-2" />
             <span className="text-sm text-primary font-medium">
-              🔥 Apenas 5 vagas para consultoria este mês
+              Novo: Hub Focus Beta Gratuito
             </span>
           </div>
 
           {/* Main Title */}
           <h1 className="hero-title mb-6 animate-slide-up">
-            Gestão empresarial com eficiência e resultados
+            Gestão empresarial inteligente — simples, visual e completa
           </h1>
 
           {/* Subtitle */}
           <p className="hero-subtitle mb-12 max-w-3xl mx-auto animate-slide-up delay-200">
-            Sistemas personalizados, processos claros e produtividade real para empresas 
-            e pessoas que querem crescer com eficiência.
+            Organize finanças, projetos, clientes e equipe em um só lugar. 
+            Uma plataforma feita para pequenas empresas que querem crescer com clareza.
           </p>
 
-          {/* CTA Buttons - Simplified (1 primary + 1 secondary) */}
+          {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 animate-slide-up delay-300">
             <Button 
               className="btn-hero group text-lg px-10 py-6"
-              onClick={() => {
-                trackWhatsAppClick('hero_cta_primary');
-                trackCTAClick('Agendar consultoria gratuita', 'hero');
-                window.open('https://wa.me/5511916742443?text=Ol%C3%A1%2C%20quero%20agendar%20minha%20consultoria%20gratuita%20de%2030%20minutos!', '_blank');
-              }}
+              asChild
             >
-              Agendar Consultoria Gratuita
-              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+              <a 
+                href="https://appfocus.lovable.app/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                onClick={() => trackCTAClick('Comece Grátis', 'hero')}
+              >
+                Comece Grátis
+                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+              </a>
             </Button>
             
             <Button 
               variant="ghost" 
               className="btn-secondary group"
               onClick={() => {
-                trackNotionClick('demo', 'hero');
-                trackCTAClick('Ver sistemas gratuitos', 'hero');
-                window.location.href = '/sistemas-gratuitos';
+                trackCTAClick('Conheça os Módulos', 'hero');
+                window.location.href = '/focus-pro#modulos';
               }}
             >
-              <Play className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform duration-300" />
-              Ver Sistemas Gratuitos
+              <LayoutGrid className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform duration-300" />
+              Conheça os Módulos
             </Button>
           </div>
 
           {/* Stats */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-xl mx-auto animate-slide-up delay-500">
             <div className="text-center">
-              <div className="text-3xl font-bold text-primary mb-2">+12.000</div>
-              <div className="text-sm text-foreground-muted">Downloads de sistemas</div>
+              <div className="text-3xl font-bold text-primary mb-2">+5.000</div>
+              <div className="text-sm text-foreground-muted">Downloads na versão Notion</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-primary mb-2">+20</div>
-              <div className="text-sm text-foreground-muted">Empresas atendidas</div>
+              <div className="text-3xl font-bold text-primary mb-2">8</div>
+              <div className="text-sm text-foreground-muted">Módulos integrados</div>
             </div>
           </div>
         </div>
