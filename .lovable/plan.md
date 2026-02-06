@@ -1,225 +1,71 @@
 
 
-## Plano: Popup de IA com Recomendacao de Produtos
+# Landing Page Hub Focus MVP — Substituindo Focus Pro
 
-### Visao Geral
+## Resumo
 
-Criar um popup inteligente que aparece na homepage para iniciar uma conversa com IA. A IA faz perguntas ao visitante, entende suas necessidades e recomenda o produto mais adequado com link direto.
+Substituir a pagina Focus Pro (`/focus-pro`) por uma landing page do **Hub Focus MVP** seguindo o design system dark premium do site (fundo escuro, azul eletrico, gradientes, Inter font, glow effects).
 
----
+## Estrutura da Pagina
 
-### Fluxo do Usuario
+A pagina sera criada reescrevendo `src/pages/FocusPro.tsx` com as seguintes secoes:
 
-```text
-1. Visitante entra na homepage
-2. Apos 5-8 segundos, aparece popup com pergunta inicial
-3. Visitante responde (texto ou opcoes rapidas)
-4. IA processa e faz pergunta de follow-up se necessario
-5. IA recomenda produto especifico com link
-6. Visitante clica e vai para pagina do produto
-```
+### 1. Hero Section
+- Badge "Beta Gratuito" com borda `border-primary/30`
+- H1: "Seu negocio organizado em um so lugar"
+- Subtitulo com referencia ao template Notion (5k+ downloads)
+- Dois botoes: "Comece Gratis" (link `/auth/signup`) e "Ver Modulos" (ancora `#modulos`)
+- Background orbs com `blur-3xl` e gradiente `from-primary/5`
 
----
+### 2. Social Proof Bar
+- 3 metricas em cards horizontais: "5.000+ templates baixados", "8 modulos integrados", "100% gratuito no Beta"
+- Estilo `bg-card/50 border-border/50` com icones `text-primary`
 
-### Arquivos a Criar/Modificar
+### 3. Secao de Modulos (Features)
+- Grid 2x4 (mobile 1 coluna) com os 8 modulos: Financas, RH, Marketing, Projetos, Clientes, Atividades, Processos, Guia
+- Cards com `service-card` style (gradient-card, shadow-elegant, hover glow)
+- Badge "Mais Popular" em Financas e RH usando `Badge` do design system
 
-#### 1. Novo Componente: `src/components/AIRecommendationPopup.tsx`
+### 4. Comparacao "Antes vs Depois"
+- Layout 2 colunas
+- Esquerda: "Planilhas e Notion" com icones `XCircle` vermelhos e fundo `bg-red-500/5`
+- Direita: "Hub Focus" com icones `CheckCircle` verdes/primary e fundo `bg-primary/5`
 
-**Responsabilidades:**
-- Popup modal que aparece automaticamente apos delay
-- Interface de chat compacta integrada
-- Pergunta inicial automatica da IA
-- Streaming de respostas
-- Botoes de opcao rapida para facilitar interacao
-- Deteccao de produtos mencionados e exibicao de cards clicaveis
+### 5. FAQ Compacto
+- Reutilizar Accordion existente com perguntas relevantes para novos visitantes do MVP
+- Perguntas: "E gratuito mesmo?", "Preciso saber programar?", "Funciona no celular?", "Posso usar com minha equipe?", "Meus dados estao seguros?"
 
-**Design:**
-- Modal menor que o chat completo (max-w-md)
-- Pergunta inicial ja exibida quando abre
-- Input de texto + botoes de opcao rapida
-- Cards de produto quando IA recomenda
+### 6. CTA Final
+- Titulo: "Comece agora — e gratuito"
+- Botao "Criar Conta Gratis" (link `/auth/signup`)
+- Texto: "Sem cartao de credito. Cancele quando quiser."
+- Fundo com gradiente `from-primary/5`
 
----
+## Mudancas no Fluxo de Navegacao
 
-#### 2. Modificar Edge Function: `supabase/functions/chat/index.ts`
+- `ProtectedRoute.tsx`: redirecionar usuarios nao logados para `/focus-pro` ao inves de `/auth/login`
+- As rotas `/focus-club` e `/metodofocus` continuam funcionando (ja redirecionam para FocusPro)
 
-**Novo System Prompt especializado para recomendacoes:**
+## Detalhes Tecnicos
 
-```text
-Voce e um consultor da Focus Inteligente. Seu objetivo e entender 
-a necessidade do visitante e recomendar O PRODUTO CERTO.
+### Arquivos a modificar
 
-PRODUTOS DISPONIVEIS:
-1. Hub Empresarial PRO (/hub-empresarial) - R$349
-   Para: Pequenas empresas, MEIs que querem gestao completa
-   Inclui: CRM, projetos, financeiro, processos, dashboards
-   
-2. Controle Financeiro PRO (/controle-financeiro-pro) - R$297
-   Para: Quem precisa organizar financas da empresa
-   Inclui: Fluxo de caixa, categorias, relatorios, contratos
-   
-3. Sprint de Produtividade (/sprint-produtividade) - R$37,90
-   Para: Pessoas que querem organizar rotina pessoal
-   Inclui: Sistema de 7 dias, templates, metodologia
+1. **`src/pages/FocusPro.tsx`** — Reescrever completamente com o conteudo do Hub Focus MVP
+   - Remover WaitlistFormModal (nao e mais waitlist, e signup direto)
+   - Manter SEO/Helmet atualizado para Hub Focus
+   - Usar componentes existentes: Button, Card, Badge, Accordion
+   - Seguir classes do design system: `bg-background`, `bg-card/30`, gradientes primary, `shadow-elegant`, `animate-fade-in`
 
-4. Sistemas Gratuitos (/sistemas-gratuitos) - Gratis
-   Para: Quem quer comecar sem investir
-   Inclui: Templates basicos de varios tipos
+2. **`src/components/ProtectedRoute.tsx`** — Alterar redirect de `/auth/login` para `/focus-pro`
 
-INSTRUCOES:
-- Faca 1-2 perguntas curtas para entender a necessidade
-- Seja direto e amigavel
-- Ao recomendar, SEMPRE inclua o link no formato [Nome do Produto](/url)
-- Se a pessoa nao sabe o que quer, pergunte se e para empresa ou pessoal
-```
+3. **`src/App.tsx`** — Sem mudancas necessarias (rotas ja existem)
 
----
-
-#### 3. Modificar: `src/pages/Index.tsx`
-
-**Adicionar:**
-- Importar AIRecommendationPopup
-- Renderizar no final do componente
-- Logica para nao conflitar com outros popups (TimeBasedPopup, ExitIntentPopup)
-
----
-
-### Detalhes do Componente AIRecommendationPopup
-
-#### Estados:
-- `isOpen`: boolean - controla visibilidade
-- `messages`: Message[] - historico da conversa
-- `hasInteracted`: boolean - se usuario ja respondeu
-- `recommendedProduct`: Product | null - produto recomendado
-
-#### Opcoes Rapidas (Quick Replies):
-```typescript
-const quickReplies = [
-  "Preciso organizar minha empresa",
-  "Quero controlar minhas financas", 
-  "Preciso ser mais produtivo",
-  "Quero ver opcoes gratuitas"
-];
-```
-
-#### Deteccao de Produtos:
-- Regex para detectar links no formato `[texto](/url)`
-- Extrair e exibir card de produto clicavel
-- Produtos: Hub Empresarial, Controle Financeiro, Sprint, Gratuitos
-
-#### Timing:
-- Aparece apos 8 segundos na homepage
-- Nao aparece se TimeBasedPopup ou ExitIntent ja apareceram
-- Salva em sessionStorage se ja foi exibido
-
----
-
-### Mensagem Inicial da IA
-
-```text
-Ola! 👋 
-
-Sou o assistente da Focus. Em poucos segundos posso 
-te ajudar a encontrar a melhor solucao para organizar 
-sua gestao.
-
-O que voce esta buscando hoje?
-```
-
----
-
-### Exemplo de Fluxo de Conversa
-
-```text
-IA: Ola! O que voce esta buscando hoje?
-
-Usuario: Preciso organizar minha empresa
-
-IA: Legal! Voce ja usa alguma ferramenta de gestao 
-ou ainda esta no Excel/planilhas?
-
-Usuario: Uso planilhas mas esta uma bagunca
-
-IA: Entendi! Para empresas que querem sair das 
-planilhas, recomendo o [Hub Empresarial PRO](/hub-empresarial).
-
-Ele centraliza CRM, projetos, financeiro e processos 
-em um unico sistema no Notion. Por R$349 voce tem 
-acesso vitalicio + suporte.
-
-[Card do Produto com botao "Ver Detalhes"]
-```
-
----
-
-### Prevencao de Conflitos de Popups
-
-**Coordenacao com popups existentes:**
-- TimeBasedPopup: 30 segundos ou 50% scroll
-- ExitIntentPopup: ao mover mouse para sair
-- AIRecommendationPopup: 8 segundos
-
-**Estrategia:**
-- Usar sessionStorage compartilhado
-- Verificar se outros popups ja foram exibidos
-- AI popup tem prioridade menor (nao aparece se outros ja apareceram)
-
----
-
-### Tracking de Analytics
-
-Eventos a rastrear:
-- `ai_popup_shown`: Popup exibido
-- `ai_popup_interaction`: Usuario enviou mensagem
-- `ai_popup_product_recommended`: IA recomendou produto
-- `ai_popup_product_clicked`: Usuario clicou no produto
-- `ai_popup_closed`: Usuario fechou sem interagir
-
----
-
-### Estimativa de Codigo
-
-**AIRecommendationPopup.tsx:** ~250 linhas
-- Componente principal
-- Quick reply buttons
-- Product card detection
-- Chat interface compacta
-
-**Modificacoes Index.tsx:** ~10 linhas
-- Import e render do componente
-
-**Edge Function chat/index.ts:** ~20 linhas
-- System prompt atualizado com produtos
-
----
-
-### Resumo Visual do Popup
-
-```text
-┌─────────────────────────────────┐
-│  🤖 Assistente Focus        [X] │
-├─────────────────────────────────┤
-│                                 │
-│  Ola! O que voce esta          │
-│  buscando hoje?                │
-│                                 │
-│  [Organizar empresa]            │
-│  [Controlar financas]           │
-│  [Ser mais produtivo]           │
-│  [Ver opcoes gratuitas]         │
-│                                 │
-│  ┌─────────────────────────┐   │
-│  │ Digite sua mensagem...   │   │
-│  └─────────────────────────┘   │
-└─────────────────────────────────┘
-```
-
----
-
-### Beneficios Esperados
-
-1. **Reducao de Bounce Rate**: Engaja visitantes antes de sairem
-2. **Direcionamento Inteligente**: IA entende necessidade e direciona
-3. **Experiencia Personalizada**: Cada visitante recebe recomendacao unica
-4. **Conversao Mais Alta**: Usuario vai para pagina certa, ja qualificado
+### Padroes visuais aplicados
+- Cores: `--background: 210 15% 3%`, `--primary: 213 94% 68%`
+- Tipografia: Inter, H1 `text-4xl md:text-5xl lg:text-6xl font-bold`, gradiente no destaque
+- Cards: `bg-background/50 border-border/50 hover:border-primary/30`
+- Secoes alternadas: `bg-background` e `bg-card/30`
+- Espacamento: `py-20 px-4` por secao, `max-w-5xl` container
+- Animacoes: `animate-fade-in`, `animate-slide-up`, hover `translateY(-4px)`
+- Orbs decorativos: `bg-primary/10 rounded-full blur-3xl`
 
