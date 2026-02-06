@@ -17,11 +17,11 @@ const HubFocusCTA = () => {
         </p>
 
         <Button size="lg" className="text-lg px-10 py-7" asChild>
-          <Link to="/auth/signup">
+          <a href="https://appfocus.lovable.app/" target="_blank" rel="noopener noreferrer">
             <Sparkles className="w-5 h-5 mr-2" />
             Criar Conta Grátis
             <ArrowRight className="w-5 h-5 ml-2" />
-          </Link>
+          </a>
         </Button>
 
         <div className="flex items-center justify-center gap-2 mt-4 text-sm text-muted-foreground">
