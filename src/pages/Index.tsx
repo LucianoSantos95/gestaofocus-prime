@@ -122,7 +122,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title="Focus Gestão Empresarial | Sistemas Notion, IA e Produtividade"
+        title="Focus Gestão Empresarial"
         description="Organize sua empresa com sistemas em Notion, IA e produtividade. Sistemas prontos, templates grátis e uma área Pro para gestão empresarial inteligente."
         canonical="/"
         keywords="gestão empresarial, sistemas em Notion, Notion para empresas, produtividade empresarial, sistemas de gestão em Notion, templates Notion grátis, automação com IA, gestão inteligente"
