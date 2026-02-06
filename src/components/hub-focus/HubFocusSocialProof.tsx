@@ -1,7 +1,7 @@
 import { Download, LayoutGrid, Gift } from "lucide-react";
 
 const metrics = [
-  { icon: Download, value: "5.000+", label: "templates baixados" },
+  { icon: Download, value: "5.000+", label: "Downloads na versão Notion" },
   { icon: LayoutGrid, value: "8", label: "módulos integrados" },
   { icon: Gift, value: "100%", label: "gratuito no Beta" },
 ];
