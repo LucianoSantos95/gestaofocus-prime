@@ -1,71 +1,36 @@
 
 
-# Landing Page Hub Focus MVP — Substituindo Focus Pro
+# Atualizar Hero da Homepage para refletir a Plataforma de Gestão
 
 ## Resumo
 
-Substituir a pagina Focus Pro (`/focus-pro`) por uma landing page do **Hub Focus MVP** seguindo o design system dark premium do site (fundo escuro, azul eletrico, gradientes, Inter font, glow effects).
+Atualizar o texto e CTAs do `HeroSection.tsx` para posicionar o Focus como uma **plataforma de gestão empresarial** (app), não mais focada exclusivamente em Notion.
 
-## Estrutura da Pagina
+## Mudanças
 
-A pagina sera criada reescrevendo `src/pages/FocusPro.tsx` com as seguintes secoes:
+### Arquivo: `src/components/HeroSection.tsx`
 
-### 1. Hero Section
-- Badge "Beta Gratuito" com borda `border-primary/30`
-- H1: "Seu negocio organizado em um so lugar"
-- Subtitulo com referencia ao template Notion (5k+ downloads)
-- Dois botoes: "Comece Gratis" (link `/auth/signup`) e "Ver Modulos" (ancora `#modulos`)
-- Background orbs com `blur-3xl` e gradiente `from-primary/5`
+**Textos atualizados:**
 
-### 2. Social Proof Bar
-- 3 metricas em cards horizontais: "5.000+ templates baixados", "8 modulos integrados", "100% gratuito no Beta"
-- Estilo `bg-card/50 border-border/50` com icones `text-primary`
+| Elemento | Antes | Depois |
+|----------|-------|--------|
+| Badge | "Apenas 5 vagas para consultoria este mês" | "Novo: Hub Focus Beta Gratuito" |
+| H1 | "Gestão empresarial com eficiência e resultados" | "Gestão empresarial inteligente — simples, visual e completa" |
+| Subtítulo | "Sistemas personalizados, processos claros..." | "Organize finanças, projetos, clientes e equipe em um só lugar. Uma plataforma feita para pequenas empresas que querem crescer com clareza." |
+| CTA primário | "Agendar Consultoria Gratuita" (WhatsApp) | "Comece Grátis" (link para appfocus.lovable.app) |
+| CTA secundário | "Ver Sistemas Gratuitos" | "Conheça os Módulos" (link para /focus-pro#modulos) |
 
-### 3. Secao de Modulos (Features)
-- Grid 2x4 (mobile 1 coluna) com os 8 modulos: Financas, RH, Marketing, Projetos, Clientes, Atividades, Processos, Guia
-- Cards com `service-card` style (gradient-card, shadow-elegant, hover glow)
-- Badge "Mais Popular" em Financas e RH usando `Badge` do design system
+**Métricas atualizadas:**
 
-### 4. Comparacao "Antes vs Depois"
-- Layout 2 colunas
-- Esquerda: "Planilhas e Notion" com icones `XCircle` vermelhos e fundo `bg-red-500/5`
-- Direita: "Hub Focus" com icones `CheckCircle` verdes/primary e fundo `bg-primary/5`
+| Antes | Depois |
+|-------|--------|
+| "+12.000 Downloads de sistemas" | "+5.000 Downloads na versão Notion" |
+| "+20 Empresas atendidas" | "8 Módulos integrados" |
 
-### 5. FAQ Compacto
-- Reutilizar Accordion existente com perguntas relevantes para novos visitantes do MVP
-- Perguntas: "E gratuito mesmo?", "Preciso saber programar?", "Funciona no celular?", "Posso usar com minha equipe?", "Meus dados estao seguros?"
+### Detalhes técnicos
 
-### 6. CTA Final
-- Titulo: "Comece agora — e gratuito"
-- Botao "Criar Conta Gratis" (link `/auth/signup`)
-- Texto: "Sem cartao de credito. Cancele quando quiser."
-- Fundo com gradiente `from-primary/5`
-
-## Mudancas no Fluxo de Navegacao
-
-- `ProtectedRoute.tsx`: redirecionar usuarios nao logados para `/focus-pro` ao inves de `/auth/login`
-- As rotas `/focus-club` e `/metodofocus` continuam funcionando (ja redirecionam para FocusPro)
-
-## Detalhes Tecnicos
-
-### Arquivos a modificar
-
-1. **`src/pages/FocusPro.tsx`** — Reescrever completamente com o conteudo do Hub Focus MVP
-   - Remover WaitlistFormModal (nao e mais waitlist, e signup direto)
-   - Manter SEO/Helmet atualizado para Hub Focus
-   - Usar componentes existentes: Button, Card, Badge, Accordion
-   - Seguir classes do design system: `bg-background`, `bg-card/30`, gradientes primary, `shadow-elegant`, `animate-fade-in`
-
-2. **`src/components/ProtectedRoute.tsx`** — Alterar redirect de `/auth/login` para `/focus-pro`
-
-3. **`src/App.tsx`** — Sem mudancas necessarias (rotas ja existem)
-
-### Padroes visuais aplicados
-- Cores: `--background: 210 15% 3%`, `--primary: 213 94% 68%`
-- Tipografia: Inter, H1 `text-4xl md:text-5xl lg:text-6xl font-bold`, gradiente no destaque
-- Cards: `bg-background/50 border-border/50 hover:border-primary/30`
-- Secoes alternadas: `bg-background` e `bg-card/30`
-- Espacamento: `py-20 px-4` por secao, `max-w-5xl` container
-- Animacoes: `animate-fade-in`, `animate-slide-up`, hover `translateY(-4px)`
-- Orbs decorativos: `bg-primary/10 rounded-full blur-3xl`
-
+- O CTA primário usará `<a href="https://appfocus.lovable.app/" target="_blank">` em vez de `window.open` para WhatsApp
+- O CTA secundário usará navegação interna para `/focus-pro#modulos`
+- Badge perde o `animate-pulse` de urgência (não é mais escassez, é novidade)
+- Mantém todas as animações e efeitos visuais existentes (orbs, gradientes, scroll indicator)
+- Nenhum outro arquivo precisa ser alterado
