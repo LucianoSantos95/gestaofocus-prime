@@ -34,6 +34,7 @@ const ForgotPassword = lazy(() => import("./pages/auth/ForgotPassword"));
 
 // Dashboard
 const Dashboard = lazy(() => import("./pages/dashboard/Dashboard"));
+const Projects = lazy(() => import("./pages/dashboard/Projects"));
 const Analytics = lazy(() => import("./pages/dashboard/Analytics"));
 const Support = lazy(() => import("./pages/dashboard/Support"));
 const SettingsPage = lazy(() => import("./pages/dashboard/Settings"));
@@ -193,6 +194,7 @@ function AppLayout() {
 
             {/* Protected Dashboard Routes */}
             <Route path="/dashboard" element={<Suspense fallback={<PageLoader />}><ProtectedRoute><Dashboard /></ProtectedRoute></Suspense>} />
+            <Route path="/dashboard/projetos" element={<Suspense fallback={<PageLoader />}><ProtectedRoute><Projects /></ProtectedRoute></Suspense>} />
             <Route path="/dashboard/analytics" element={<Suspense fallback={<PageLoader />}><ProtectedRoute><Analytics /></ProtectedRoute></Suspense>} />
             <Route path="/dashboard/suporte" element={<Suspense fallback={<PageLoader />}><ProtectedRoute><Support /></ProtectedRoute></Suspense>} />
             <Route path="/dashboard/configuracoes" element={<Suspense fallback={<PageLoader />}><ProtectedRoute><SettingsPage /></ProtectedRoute></Suspense>} />

@@ -58,38 +58,47 @@ export type Database = {
       }
       client_projects: {
         Row: {
+          client_name: string | null
           cover_image_url: string | null
           created_at: string
+          current_sprint: number
           delivery_date: string | null
           description: string | null
           id: string
           progress: number
           project_name: string
           status: string
+          total_sprints: number
           updated_at: string
           user_id: string
         }
         Insert: {
+          client_name?: string | null
           cover_image_url?: string | null
           created_at?: string
+          current_sprint?: number
           delivery_date?: string | null
           description?: string | null
           id?: string
           progress?: number
           project_name: string
           status?: string
+          total_sprints?: number
           updated_at?: string
           user_id: string
         }
         Update: {
+          client_name?: string | null
           cover_image_url?: string | null
           created_at?: string
+          current_sprint?: number
           delivery_date?: string | null
           description?: string | null
           id?: string
           progress?: number
           project_name?: string
           status?: string
+          total_sprints?: number
           updated_at?: string
           user_id?: string
         }
@@ -166,6 +175,50 @@ export type Database = {
           updated_at?: string | null
         }
         Relationships: []
+      }
+      project_sprints: {
+        Row: {
+          created_at: string | null
+          description: string | null
+          end_date: string | null
+          id: string
+          project_id: string
+          sprint_number: number
+          start_date: string | null
+          status: string
+          title: string
+        }
+        Insert: {
+          created_at?: string | null
+          description?: string | null
+          end_date?: string | null
+          id?: string
+          project_id: string
+          sprint_number: number
+          start_date?: string | null
+          status?: string
+          title: string
+        }
+        Update: {
+          created_at?: string | null
+          description?: string | null
+          end_date?: string | null
+          id?: string
+          project_id?: string
+          sprint_number?: number
+          start_date?: string | null
+          status?: string
+          title?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "project_sprints_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "client_projects"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       support_tickets: {
         Row: {
