@@ -9,359 +9,570 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import SEOHead from "@/components/SEOHead";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 import {
-  CheckCircle,
   ArrowRight,
   Shield,
   Zap,
   Star,
-  Play,
   Users,
   Target,
-  Clock,
   DollarSign,
   BarChart3,
   FileText,
-  Layers,
-  AlertTriangle,
-  XCircle,
   Sparkles,
   Calendar,
   UserCheck,
-  MessagesSquare,
+  CheckCircle,
+  Clock,
+  Lock,
+  Smartphone,
+  Mail,
+  MessageCircle,
+  TrendingUp,
+  Layers,
+  LayoutDashboard,
+  Settings,
+  FolderKanban,
+  PieChart,
+  CircleDot,
 } from "lucide-react";
-import { trackStripeClick, trackCTAClick } from "@/lib/analytics";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
+import { trackCTAClick } from "@/lib/analytics";
+
+/* ─── Marquee animation via inline style (3 rows, infinite scroll) ─── */
+const marqueeStyle = (duration: number, reverse = false): React.CSSProperties => ({
+  display: "flex",
+  gap: "1.5rem",
+  animation: `marquee ${duration}s linear infinite ${reverse ? "reverse" : ""}`,
+  whiteSpace: "nowrap" as const,
+});
 
 const HubEmpresarial = () => {
-  const handlePurchaseClick = (location: string) => {
-    trackStripeClick(location);
-    trackCTAClick("Adquirir Hub Empresarial", location);
-    window.open("https://buy.stripe.com/fZu28rbs8gN73ta6F7gUM0d", "_blank");
+  const handleCTA = (label: string) => {
+    trackCTAClick(label, "hub-empresarial");
   };
 
-  const handleDemoClick = () => {
-    trackCTAClick("Ver Demonstração", "demo-section");
-    document.getElementById("demo-video")?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const painPoints = [
-    { icon: AlertTriangle, title: "Planilhas espalhadas", description: "Informações em 10 arquivos diferentes que ninguém sabe onde estão" },
-    { icon: MessagesSquare, title: "WhatsApp como CRM", description: "Leads perdidos em conversas antigas que você nem lembra mais" },
-    { icon: Clock, title: "Sempre apagando incêndio", description: "O dia acaba e você não fez nada do que planejou" },
-    { icon: XCircle, title: "Zero visão financeira", description: "Não sabe se está lucrando ou perdendo dinheiro no mês" },
-    { icon: Users, title: "Equipe desalinhada", description: "Cada um faz de um jeito, sem padrão nem processo definido" },
-    { icon: FileText, title: "Cabeça como HD", description: "Tudo guardado na memória — até o dia que você esquece algo importante" },
-  ];
-
-  const benefits = [
-    { icon: Target, title: "Nunca mais perca um lead", description: "CRM visual com funil de vendas integrado. Saiba exatamente onde cada cliente está.", highlight: "CRM Completo" },
-    { icon: Calendar, title: "Entregas sempre no prazo", description: "Gestão de projetos com cronograma, tarefas e responsáveis definidos.", highlight: "Projetos" },
-    { icon: DollarSign, title: "Previsibilidade e lucro", description: "Controle financeiro com fluxo de caixa, categorias e gráficos claros.", highlight: "Financeiro" },
-    { icon: BarChart3, title: "Visão rápida do que importa", description: "Dashboards prontos que mostram a saúde do seu negócio em segundos.", highlight: "Dashboards" },
-    { icon: Zap, title: "Fluxo diário produtivo", description: "Rotinas e processos que funcionam no piloto automático.", highlight: "Rotinas" },
-    { icon: UserCheck, title: "Equipe organizada", description: "RH estruturado com onboarding, vagas e avaliação de desempenho.", highlight: "RH" },
-  ];
-
-  const modules = [
-    { title: "Comece por Aqui", items: ["Aulas gravadas de implementação", "Tutorial passo a passo", "Dicas de configuração", "Suporte via WhatsApp"] },
-    { title: "Financeiro", items: ["Fluxo de caixa completo", "Categorias de receitas/despesas", "Controle de cartão de crédito", "Gráficos e análises", "Investimentos e economias"] },
-    { title: "CRM & Vendas", items: ["Funil de vendas visual", "Base de leads organizada", "Formulário de captação", "Histórico de negociações", "Documentos e propostas"] },
-    { title: "Projetos", items: ["Gestão completa de projetos", "Tarefas com responsáveis", "Análise de riscos", "Marcos e objetivos", "Decisões documentadas"] },
-    { title: "Marketing", items: ["Planejamento de campanhas", "Calendário de conteúdo", "Análise de concorrência", "Ideias e referências", "Post campeão"] },
-    { title: "RH", items: ["Gestão de pessoas", "Controle de vagas", "Onboarding estruturado", "Avaliação de desempenho", "Documentos de colaboradores"] },
-    { title: "Atividades", items: ["Tarefas gerais", "Reuniões organizadas", "Processos e rotinas", "Objetivos e metas", "Visualizações personalizadas"] },
+  /* ─── DATA ─── */
+  const features = [
+    {
+      icon: Target,
+      title: "CRM Inteligente",
+      description: "Funil visual de vendas, pipeline organizado e gestão de leads automatizada.",
+      stats: [
+        { label: "Conversão", value: "+34%" },
+        { label: "Leads/mês", value: "2.4k" },
+      ],
+    },
+    {
+      icon: DollarSign,
+      title: "Financeiro Completo",
+      description: "Fluxo de caixa, DRE, contas a pagar e receber com gráficos em tempo real.",
+      stats: [
+        { label: "Economia", value: "12h/sem" },
+        { label: "Precisão", value: "99.8%" },
+      ],
+    },
+    {
+      icon: FolderKanban,
+      title: "Gestão de Projetos",
+      description: "Kanban, tarefas com responsáveis, cronograma e marcos — tudo conectado.",
+      stats: [
+        { label: "Entregas", value: "+47%" },
+        { label: "On-time", value: "96%" },
+      ],
+    },
+    {
+      icon: UserCheck,
+      title: "RH & Pessoas",
+      description: "Onboarding, vagas abertas, avaliações de desempenho e documentos.",
+      stats: [
+        { label: "Onboarding", value: "3 dias" },
+        { label: "Retenção", value: "+22%" },
+      ],
+    },
+    {
+      icon: BarChart3,
+      title: "Dashboards em Tempo Real",
+      description: "Métricas, gráficos e a saúde completa do negócio em segundos.",
+      stats: [
+        { label: "Relatórios", value: "1-click" },
+        { label: "Atualização", value: "Real-time" },
+      ],
+    },
+    {
+      icon: Zap,
+      title: "Automações",
+      description: "Processos repetitivos no piloto automático. Notificações e fluxos inteligentes.",
+      stats: [
+        { label: "Processos", value: "50+" },
+        { label: "Tempo salvo", value: "8h/sem" },
+      ],
+    },
   ];
 
   const testimonials = [
-    { name: "Carla M.", role: "Dona de agência de marketing", content: "Finalmente consegui enxergar meu financeiro de verdade. Descobri gastos que nem sabia que tinha!", rating: 5 },
-    { name: "Rafael S.", role: "Freelancer de design", content: "Saí do caos das planilhas pra um sistema que realmente funciona. Meus projetos nunca mais atrasaram.", rating: 5 },
-    { name: "Amanda L.", role: "Consultora empresarial", content: "O módulo de CRM mudou minha forma de lidar com clientes. Não perco mais nenhuma oportunidade.", rating: 5 },
+    { name: "Carla M.", role: "CEO, Agência Criativa", content: "Finalmente tenho visão real do financeiro. Descobri gastos que nem sabia que tinha!" },
+    { name: "Rafael S.", role: "Fundador, TechStart", content: "Saí do caos das planilhas para um sistema que realmente funciona. Projetos nunca mais atrasaram." },
+    { name: "Amanda L.", role: "Diretora, Consultoria Plus", content: "O CRM mudou minha forma de lidar com clientes. Não perco mais nenhuma oportunidade." },
+    { name: "Lucas P.", role: "COO, Estúdio Digital", content: "O dashboard me dá confiança para tomar decisões. Antes era tudo no achismo." },
+    { name: "Fernanda R.", role: "Gerente, Loja Online", content: "Onboarding de novos funcionários reduziu de 2 semanas para 3 dias." },
+    { name: "Bruno T.", role: "Sócio, Escritório Contábil", content: "A automação de processos cortou nosso retrabalho pela metade." },
+    { name: "Juliana K.", role: "Head de Vendas, SaaS Corp", content: "Pipeline visual transformou nossa taxa de fechamento. Aumento de 34% no primeiro mês." },
+    { name: "Diego M.", role: "Founder, Startup Health", content: "Melhor investimento do ano. Centralizar tudo num lugar mudou o jogo da empresa." },
+    { name: "Patrícia S.", role: "Diretora, Agência 360", content: "Minha equipe parou de perder tempo com planilhas. Agora foca no que importa." },
+  ];
+
+  const techFeatures = [
+    {
+      icon: Clock,
+      title: "Ultra Rápido",
+      description: "Crie orçamentos em 2 min, gere relatórios em 30s.",
+      visual: (
+        <div className="flex items-center gap-3 mt-3">
+          <div className="h-2 flex-1 rounded-full bg-primary/20 overflow-hidden">
+            <div className="h-full w-[92%] rounded-full bg-gradient-to-r from-primary to-primary-glow animate-pulse" />
+          </div>
+          <span className="text-xs text-primary font-mono">92ms</span>
+        </div>
+      ),
+    },
+    {
+      icon: Layers,
+      title: "7 Módulos Prontos",
+      description: "CRM, Financeiro, Projetos, Marketing, RH, Atividades e Dashboards.",
+      visual: (
+        <div className="flex flex-wrap gap-1.5 mt-3">
+          {["CRM", "Financeiro", "Projetos", "Marketing", "RH", "Atividades", "Dashboards"].map((m) => (
+            <span key={m} className="text-[10px] px-2 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20">{m}</span>
+          ))}
+        </div>
+      ),
+    },
+    {
+      icon: PieChart,
+      title: "Inteligência de Dados",
+      description: "Gráficos e insights automáticos para decisões baseadas em dados.",
+      visual: (
+        <div className="flex items-end gap-1 mt-3 h-8">
+          {[40, 65, 45, 80, 55, 90, 70].map((h, i) => (
+            <div key={i} className="flex-1 rounded-sm bg-gradient-to-t from-primary/40 to-primary" style={{ height: `${h}%` }} />
+          ))}
+        </div>
+      ),
+    },
+    {
+      icon: Lock,
+      title: "Segurança Total",
+      description: "Dados criptografados, backup automático, controle de acessos.",
+      visual: (
+        <div className="flex items-center gap-2 mt-3">
+          <div className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
+          <span className="text-xs text-foreground-muted">Criptografia AES-256 • SSL</span>
+        </div>
+      ),
+    },
+  ];
+
+  const plans = [
+    {
+      name: "Gratuito",
+      price: "R$ 0",
+      period: "para sempre",
+      features: ["1 usuário", "Módulos básicos", "Dashboard limitado", "Suporte por email"],
+      cta: "Comece Grátis",
+      highlighted: false,
+    },
+    {
+      name: "Pro",
+      price: "R$ 97",
+      period: "/mês",
+      features: ["Usuários ilimitados", "Todos os 7 módulos", "Dashboards avançados", "Automações", "Suporte prioritário", "Integrações"],
+      cta: "Começar Agora",
+      highlighted: true,
+    },
+    {
+      name: "Enterprise",
+      price: "Sob consulta",
+      period: "",
+      features: ["Tudo do Pro", "API dedicada", "Customização completa", "Suporte dedicado", "SLA garantido", "Onboarding assistido"],
+      cta: "Fale Conosco",
+      highlighted: false,
+    },
   ];
 
   const faqs = [
-    { question: "Preciso saber usar o Notion?", answer: "Não! O módulo 'Comece por Aqui' inclui aulas gravadas que ensinam tudo do zero. Mesmo que você nunca tenha aberto o Notion, vai conseguir usar o sistema seguindo o passo a passo." },
-    { question: "Como recebo acesso ao sistema?", answer: "Imediatamente após a compra, você recebe um e-mail com o link para duplicar o template no seu Notion. O acesso é instantâneo e vitalício." },
-    { question: "Preciso pagar mensalidade?", answer: "Não! É um pagamento único de R$ 349. Você tem acesso vitalício ao sistema e a todas as atualizações futuras sem custo adicional. O Notion tem plano gratuito que já atende a maioria dos usuários." },
-    { question: "Funciona para qualquer tipo de empresa?", answer: "Sim! O sistema é flexível e funciona para freelancers, pequenas empresas, startups, agências, consultorias e diversos outros tipos de negócio. A estrutura modular se adapta à sua realidade." },
-    { question: "Posso personalizar o sistema?", answer: "Totalmente! O Notion permite personalização completa. Você pode adicionar campos, mudar cores, criar novas visualizações e adaptar tudo ao seu fluxo de trabalho." },
-    { question: "E se eu não gostar?", answer: "Oferecemos garantia de 7 dias. Se não gostar do sistema por qualquer motivo, devolvemos 100% do seu dinheiro sem perguntas. Seu risco é zero." },
+    { q: "🤔 O que é o Hub Empresarial?", a: "É uma plataforma SaaS completa de gestão para pequenas e médias empresas. Centraliza CRM, financeiro, projetos, RH e dashboards em um único lugar — sem planilhas, sem caos." },
+    { q: "💰 Quanto custa?", a: "Temos um plano gratuito para você começar. O plano Pro custa R$ 97/mês e inclui todos os módulos, usuários ilimitados e suporte prioritário. Para grandes empresas, temos planos Enterprise sob consulta." },
+    { q: "🆓 Posso testar grátis?", a: "Sim! O plano gratuito é para sempre — sem prazo, sem cartão de crédito. Você pode usar os módulos básicos quanto tempo quiser e fazer upgrade quando fizer sentido." },
+    { q: "🔒 Meus dados estão seguros?", a: "Absolutamente. Utilizamos criptografia AES-256, backups automáticos diários e infraestrutura segura. Seus dados são seus — nunca compartilhamos com terceiros." },
+    { q: "📱 Funciona no celular?", a: "Sim! A plataforma é totalmente responsiva e funciona perfeitamente em qualquer dispositivo — desktop, tablet ou celular." },
+    { q: "❌ Posso cancelar a qualquer momento?", a: "Sim, sem multas e sem burocracia. Você pode cancelar seu plano a qualquer momento diretamente na plataforma e continua com acesso até o fim do período pago." },
   ];
 
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title="Gestão Empresarial Completa em Notion | Hub Empresarial PRO - R$ 349"
-        description="Centralize clientes, tarefas, projetos e financeiro em um único sistema no Notion. 7 módulos integrados, dashboards claros e produtividade real. Acesso vitalício por R$ 349."
+        title="Hub Empresarial — Gestão Completa para PMEs | Focus"
+        description="CRM, Financeiro, Projetos e RH em uma única plataforma SaaS. Comece grátis e organize toda sua empresa em um só lugar."
         canonical="/hub-empresarial"
         image="https://focusinteligente.com.br/lovable-uploads/hub-empresarial-og.jpg"
         type="product"
-        keywords="gestão empresarial, sistemas em Notion, produtividade, CRM em Notion, dashboard, financeiro, processos, organização empresarial, Notion para empresas"
+        keywords="gestão empresarial, SaaS, CRM, financeiro, projetos, RH, PME, pequenas empresas"
       />
-
       <Navigation />
 
       {/* ── HERO ── */}
-      <section className="relative pt-32 lg:pt-44 pb-24 lg:pb-32 overflow-hidden">
-        {/* Glow radial */}
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-primary/10 rounded-full blur-[150px]" />
-        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-primary-glow/5 rounded-full blur-[120px]" />
+      <section className="relative pt-32 lg:pt-44 pb-20 lg:pb-32 overflow-hidden">
+        {/* Radial glows */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[600px] bg-primary/15 rounded-full blur-[180px] pointer-events-none" />
+        <div className="absolute top-20 right-0 w-[300px] h-[300px] bg-primary-glow/10 rounded-full blur-[120px] pointer-events-none" />
+
+        {/* Floating document icons */}
+        <div className="absolute top-32 left-[10%] opacity-20 animate-pulse">
+          <FileText className="w-10 h-10 text-primary/50" />
+        </div>
+        <div className="absolute top-40 right-[12%] opacity-20 animate-pulse" style={{ animationDelay: "1s" }}>
+          <FileText className="w-8 h-8 text-primary/50" />
+        </div>
 
         <div className="container-focus relative z-10 text-center max-w-4xl mx-auto">
-          <Badge className="mb-6 text-sm px-4 py-1.5 bg-primary/10 text-primary border-primary/20">
-            <Sparkles className="w-4 h-4 mr-2" />
-            Sistema completo para sua empresa
-          </Badge>
+          {/* Logo + name */}
+          <div className="flex items-center justify-center gap-3 mb-8">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-primary-glow flex items-center justify-center">
+              <LayoutDashboard className="w-5 h-5 text-white" />
+            </div>
+            <span className="text-xl font-bold text-foreground">Hub Empresarial</span>
+          </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-foreground leading-tight mb-6">
-            Gestão empresarial completa em Notion —{" "}
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-foreground leading-[1.1] mb-8 tracking-tight">
+            Gestão Completa para{" "}
             <span className="bg-gradient-primary bg-clip-text text-transparent">
-              organizada, visual e fácil de usar
+              Pequenas e Médias Empresas
             </span>
           </h1>
 
-          <p className="text-lg lg:text-xl text-foreground-muted max-w-3xl mx-auto mb-10 leading-relaxed">
-            Centralize clientes, tarefas, projetos e financeiro em um único sistema com dashboards claros, produtividade real e visão estratégica do seu negócio.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
-            <Button
-              onClick={() => handlePurchaseClick("hero")}
-              className="btn-hero text-lg px-10 py-5 animate-glow"
-            >
-              Quero o Hub Empresarial PRO
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-            <Button
-              variant="outline"
-              className="btn-secondary text-lg px-10 py-5"
-              onClick={handleDemoClick}
-            >
-              <Play className="mr-2 h-5 w-5" />
-              Ver Demonstração
-            </Button>
+          {/* Live badge */}
+          <div className="inline-flex items-center gap-4 bg-card/60 backdrop-blur-sm border border-card-border/30 rounded-full px-5 py-2.5 mb-8">
+            <div className="flex items-center gap-2">
+              <div className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse" />
+              <span className="text-sm font-semibold text-green-400">AO VIVO</span>
+            </div>
+            <div className="flex -space-x-2">
+              {["C", "R", "A", "L"].map((letter, i) => (
+                <div key={i} className="w-7 h-7 rounded-full bg-gradient-to-br from-primary/80 to-primary-glow/80 flex items-center justify-center text-[10px] font-bold text-white border-2 border-background">
+                  {letter}
+                </div>
+              ))}
+            </div>
+            <div>
+              <span className="text-sm font-bold text-foreground">2.847+</span>
+              <span className="text-xs text-foreground-muted ml-1">empresas ativas</span>
+            </div>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-6 text-sm text-foreground-muted">
-            {["7 módulos integrados", "Acesso vitalício", "Garantia de 7 dias"].map((t) => (
-              <div key={t} className="flex items-center gap-2">
-                <CheckCircle className="h-4 w-4 text-primary" />
-                <span>{t}</span>
+          <p className="text-lg lg:text-xl text-foreground-muted max-w-2xl mx-auto mb-10 leading-relaxed">
+            CRM, Financeiro, Projetos e RH em uma única plataforma.
+            <br />
+            Para você focar no que importa: <span className="text-primary font-medium">crescer.</span>
+          </p>
+
+          <Link to="/auth/signup" onClick={() => handleCTA("Comece Gratuitamente - Hero")}>
+            <Button className="btn-hero text-lg px-10 py-5 animate-glow">
+              Comece Gratuitamente
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </Link>
+
+          {/* Scroll dot */}
+          <div className="mt-16 flex justify-center">
+            <div className="w-1.5 h-8 rounded-full bg-foreground-muted/20 relative overflow-hidden">
+              <div className="w-full h-3 bg-primary/60 rounded-full animate-bounce" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── APP MOCKUP ── */}
+      <section className="pb-20 lg:pb-32 px-4">
+        <div className="max-w-5xl mx-auto">
+          <div className="rounded-2xl border border-card-border/30 bg-card/30 backdrop-blur-sm shadow-2xl overflow-hidden">
+            {/* Window chrome */}
+            <div className="flex items-center gap-2 px-4 py-3 border-b border-card-border/20 bg-card/50">
+              <div className="flex gap-1.5">
+                <div className="w-3 h-3 rounded-full bg-red-500/60" />
+                <div className="w-3 h-3 rounded-full bg-yellow-500/60" />
+                <div className="w-3 h-3 rounded-full bg-green-500/60" />
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+              <div className="flex-1 flex justify-center">
+                <div className="px-4 py-1 rounded-md bg-background/50 text-xs text-foreground-muted">hub.focusinteligente.com.br</div>
+              </div>
+            </div>
 
-      {/* ── PROBLEMA / AGITAÇÃO ── */}
-      <section className="section-padding bg-background-secondary">
-        <div className="container-focus max-w-5xl">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-              Você sente que está sempre correndo atrás do próprio rabo?
-            </h2>
-            <p className="text-lg text-foreground-muted">
-              Se identificou com alguma dessas situações, você não está sozinho:
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {painPoints.map((pain, i) => (
-              <Card key={i} className="p-6 bg-card/50 backdrop-blur-sm border-card-border/30 hover:border-red-500/40 transition-all group">
-                <div className="flex items-start gap-4">
-                  <div className="p-2.5 rounded-xl bg-red-500/10 group-hover:bg-red-500/20 transition-colors">
-                    <pain.icon className="h-5 w-5 text-red-400" />
+            {/* App UI */}
+            <div className="flex min-h-[400px]">
+              {/* Sidebar */}
+              <div className="w-56 border-r border-card-border/20 bg-card/40 p-4 hidden md:block">
+                <div className="flex items-center gap-2 mb-1">
+                  <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-primary to-primary-glow flex items-center justify-center">
+                    <LayoutDashboard className="w-3.5 h-3.5 text-white" />
                   </div>
-                  <div>
-                    <h3 className="font-semibold text-foreground mb-1">{pain.title}</h3>
-                    <p className="text-sm text-foreground-muted">{pain.description}</p>
-                  </div>
+                  <span className="text-sm font-bold text-foreground">Hub Empresarial</span>
                 </div>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+                <div className="text-[10px] text-foreground-muted mb-4 ml-9">v2.0</div>
+                <Badge className="mb-5 text-[10px] bg-primary/20 text-primary border-primary/30 ml-1">⭐ Premium</Badge>
 
-      {/* ── SOLUÇÃO ── */}
-      <section className="section-padding bg-background">
-        <div className="container-focus max-w-4xl">
-          <div className="text-center mb-10">
-            <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">A Solução</Badge>
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-6">
-              O Hub Empresarial PRO resolve tudo isso em um único lugar
-            </h2>
-          </div>
-
-          <Card className="p-8 md:p-12 bg-primary/5 backdrop-blur-sm border-primary/20 shadow-glow">
-            <p className="text-lg leading-relaxed text-foreground mb-6">
-              O <strong>Hub Empresarial PRO</strong> é um sistema completo de gestão empresarial desenvolvido no Notion que centraliza todas as áreas do seu negócio:{" "}
-              <span className="text-primary font-medium">financeiro, clientes, projetos, marketing, RH e rotinas</span> — tudo conectado e visual.
-            </p>
-            <p className="text-lg leading-relaxed text-foreground-muted">
-              Chega de informações espalhadas. Com dashboards claros e processos definidos, você finalmente tem controle real da sua empresa e toma decisões baseadas em dados, não em achismos.
-            </p>
-          </Card>
-
-          <div className="flex justify-center mt-10">
-            <Button onClick={() => handlePurchaseClick("solution")} className="btn-hero text-lg px-10 py-5 animate-glow">
-              Quero organizar minha empresa agora
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* ── DEMO VISUAL ── */}
-      <section id="demo-video" className="section-padding bg-background-secondary">
-        <div className="container-focus max-w-5xl text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-            Veja o sistema na prática
-          </h2>
-          <p className="text-lg text-foreground-muted mb-10">
-            Interface limpa, visual e totalmente personalizável no Notion
-          </p>
-
-          <div className="relative rounded-2xl overflow-hidden border border-primary/20 shadow-glow">
-            <video className="w-full" controls poster="/lovable-uploads/hub-empresarial-video-cover.png">
-              <source src="/videos/hub-empresarial-demo.mp4" type="video/mp4" />
-              Seu navegador não suporta vídeos.
-            </video>
-          </div>
-        </div>
-      </section>
-
-      {/* ── BENEFÍCIOS ── */}
-      <section className="section-padding bg-background">
-        <div className="container-focus max-w-5xl">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-              O que você ganha com o Hub PRO
-            </h2>
-            <p className="text-lg text-foreground-muted">
-              Cada módulo foi pensado para resolver um problema real da sua gestão
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {benefits.map((b, i) => (
-              <Card key={i} className="p-6 bg-card/50 backdrop-blur-sm border-card-border/30 hover:border-primary/30 hover:shadow-glow transition-all group hover:-translate-y-1">
-                <Badge variant="outline" className="mb-4 text-xs border-card-border/50 text-foreground-muted">{b.highlight}</Badge>
-                <div className="p-3 rounded-xl bg-primary/10 w-fit mb-4 group-hover:bg-primary/20 transition-colors">
-                  <b.icon className="h-6 w-6 text-primary" />
-                </div>
-                <h3 className="text-xl font-semibold text-foreground mb-2">{b.title}</h3>
-                <p className="text-foreground-muted text-sm">{b.description}</p>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── MÓDULOS INCLUSOS ── */}
-      <section className="section-padding bg-background-secondary">
-        <div className="container-focus max-w-6xl">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-              O que está incluso no Hub Empresarial PRO
-            </h2>
-            <p className="text-lg text-foreground-muted">
-              7 módulos completos + aulas + suporte por apenas{" "}
-              <span className="text-primary font-bold">R$ 349</span>
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {modules.map((mod, i) => (
-              <Card key={i} className="p-6 bg-card/50 backdrop-blur-sm border-card-border/30">
-                <h3 className="font-bold text-lg text-foreground mb-4 flex items-center gap-2">
-                  <Layers className="h-5 w-5 text-primary" />
-                  {mod.title}
-                </h3>
-                <ul className="space-y-2">
-                  {mod.items.map((item, j) => (
-                    <li key={j} className="flex items-start gap-2 text-sm text-foreground-muted">
-                      <CheckCircle className="h-4 w-4 text-primary mt-0.5 shrink-0" />
-                      <span>{item}</span>
-                    </li>
+                <nav className="space-y-1">
+                  {[
+                    { icon: LayoutDashboard, label: "Painel", active: true },
+                    { icon: Target, label: "CRM & Vendas", active: false },
+                    { icon: DollarSign, label: "Financeiro", active: false },
+                    { icon: FolderKanban, label: "Projetos", active: false },
+                    { icon: Calendar, label: "Marketing", active: false },
+                    { icon: Users, label: "RH & Pessoas", active: false },
+                    { icon: Settings, label: "Configurações", active: false },
+                  ].map((item) => (
+                    <div key={item.label} className={`flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm transition-colors ${item.active ? "bg-primary/10 text-primary" : "text-foreground-muted hover:text-foreground"}`}>
+                      <item.icon className="w-4 h-4" />
+                      <span>{item.label}</span>
+                    </div>
                   ))}
-                </ul>
-              </Card>
-            ))}
-          </div>
+                </nav>
+              </div>
 
-          <div className="flex justify-center mt-12">
-            <Button onClick={() => handlePurchaseClick("modules")} className="btn-hero text-lg px-10 py-5 animate-glow">
-              Quero o Hub Empresarial PRO agora
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
+              {/* Main content */}
+              <div className="flex-1 p-6">
+                <div className="mb-6">
+                  <h3 className="text-lg font-bold text-primary mb-1">Bem-vindo de volta, Empresário</h3>
+                  <p className="text-sm text-foreground-muted">O que você gostaria de fazer hoje?</p>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {/* Card 1 */}
+                  <div className="rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/20 p-5">
+                    <h4 className="text-sm font-bold text-foreground mb-1">Visão Geral</h4>
+                    <p className="text-xs text-foreground-muted mb-3">Receita, despesas e lucro do mês</p>
+                    <div className="flex items-end gap-1 h-12 mb-2">
+                      {[30, 50, 40, 70, 55, 85, 65, 90, 75, 95, 80, 88].map((h, i) => (
+                        <div key={i} className="flex-1 rounded-sm bg-gradient-to-t from-primary/30 to-primary/80" style={{ height: `${h}%` }} />
+                      ))}
+                    </div>
+                    <div className="flex justify-between text-[10px] text-foreground-muted">
+                      <span>Jan</span><span>Jun</span><span>Dez</span>
+                    </div>
+                  </div>
+
+                  {/* Card 2 */}
+                  <div className="rounded-xl bg-card/50 border border-card-border/20 p-5">
+                    <h4 className="text-sm font-bold text-foreground mb-1">Pipeline de Vendas</h4>
+                    <p className="text-xs text-foreground-muted mb-3">12 negociações abertas</p>
+                    <div className="space-y-2">
+                      {[
+                        { label: "Prospecção", w: "80%", count: 5 },
+                        { label: "Proposta", w: "55%", count: 4 },
+                        { label: "Fechamento", w: "30%", count: 3 },
+                      ].map((stage) => (
+                        <div key={stage.label}>
+                          <div className="flex justify-between text-[10px] text-foreground-muted mb-0.5">
+                            <span>{stage.label}</span><span>{stage.count}</span>
+                          </div>
+                          <div className="h-1.5 rounded-full bg-primary/10 overflow-hidden">
+                            <div className="h-full rounded-full bg-primary/60" style={{ width: stage.w }} />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Card 3 */}
+                  <div className="rounded-xl bg-card/50 border border-card-border/20 p-5 sm:col-span-2">
+                    <h4 className="text-sm font-bold text-foreground mb-3">Tarefas do Dia</h4>
+                    <div className="space-y-2">
+                      {[
+                        { task: "Enviar proposta para cliente Alpha", done: true },
+                        { task: "Reunião de alinhamento — Projeto Beta", done: true },
+                        { task: "Revisar fluxo de caixa semanal", done: false },
+                        { task: "Entrevistar candidato para vaga de dev", done: false },
+                      ].map((t, i) => (
+                        <div key={i} className="flex items-center gap-2 text-xs">
+                          <div className={`w-4 h-4 rounded border flex items-center justify-center ${t.done ? "bg-primary/20 border-primary/40" : "border-card-border/40"}`}>
+                            {t.done && <CheckCircle className="w-3 h-3 text-primary" />}
+                          </div>
+                          <span className={t.done ? "text-foreground-muted line-through" : "text-foreground"}>{t.task}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ── PROVA SOCIAL ── */}
+      {/* ── FEATURES SHOWCASE ── */}
+      <section className="section-padding bg-background">
+        <div className="container-focus max-w-6xl">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-5xl font-bold text-foreground mb-4">
+              Reimagine a Gestão da Sua Empresa
+            </h2>
+            <p className="text-lg text-foreground-muted max-w-2xl mx-auto">
+              Mais que ferramentas. Uma forma completamente nova de gerenciar seu negócio.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {features.map((f, i) => (
+              <Card key={i} className="p-6 bg-card/50 backdrop-blur-sm border-card-border/30 hover:border-primary/30 hover:shadow-glow transition-all group hover:-translate-y-1">
+                <div className="p-3 rounded-xl bg-primary/10 w-fit mb-4 group-hover:bg-primary/20 transition-colors">
+                  <f.icon className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="text-xl font-semibold text-foreground mb-2">{f.title}</h3>
+                <p className="text-sm text-foreground-muted mb-4">{f.description}</p>
+                <div className="flex gap-4">
+                  {f.stats.map((s, j) => (
+                    <div key={j}>
+                      <div className="text-lg font-bold text-primary">{s.value}</div>
+                      <div className="text-[10px] text-foreground-muted">{s.label}</div>
+                    </div>
+                  ))}
+                </div>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── SOCIAL PROOF MARQUEE ── */}
+      <section className="section-padding bg-background-secondary overflow-hidden">
+        <div className="text-center mb-12">
+          <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
+            <Users className="w-3.5 h-3.5 mr-1.5" />
+            Prova Social
+          </Badge>
+          <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-3">
+            +2.000 Empresas Já Confiam no Hub
+          </h2>
+          <p className="text-foreground-muted">Veja o que estão dizendo sobre a plataforma</p>
+        </div>
+
+        {/* Marquee CSS */}
+        <style>{`
+          @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+        `}</style>
+
+        <div className="space-y-6 max-w-[100vw]">
+          {[0, 1, 2].map((row) => {
+            const offset = row * 3;
+            const items = [...testimonials.slice(offset, offset + 3), ...testimonials.slice(offset, offset + 3)];
+            return (
+              <div key={row} className="flex overflow-hidden" style={{ maskImage: "linear-gradient(to right, transparent, black 5%, black 95%, transparent)" }}>
+                <div style={marqueeStyle(30 + row * 5, row === 1)}>
+                  {items.map((t, i) => (
+                    <div key={i} className="flex-shrink-0 w-[350px] p-5 rounded-xl bg-card/50 backdrop-blur-sm border border-card-border/30">
+                      <div className="flex gap-1 mb-3">
+                        {[...Array(5)].map((_, j) => (
+                          <Star key={j} className="h-3.5 w-3.5 fill-primary text-primary" />
+                        ))}
+                      </div>
+                      <p className="text-sm text-foreground-muted mb-4 whitespace-normal">"{t.content}"</p>
+                      <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary/60 to-primary-glow/60 flex items-center justify-center text-xs font-bold text-white">
+                          {t.name.charAt(0)}
+                        </div>
+                        <div>
+                          <p className="text-sm font-semibold text-foreground">{t.name}</p>
+                          <p className="text-[11px] text-foreground-muted">{t.role}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* ── TECH FEATURES ── */}
       <section className="section-padding bg-background">
         <div className="container-focus max-w-5xl">
           <div className="text-center mb-14">
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">Quem já usa, aprova</h2>
-            <p className="text-lg text-foreground-muted">Veja o que nossos clientes estão dizendo</p>
+            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
+              Ferramentas Profissionais. Zero Complexidade.
+            </h2>
+            <p className="text-lg text-foreground-muted">
+              Tudo que você precisa, sem a curva de aprendizado
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {techFeatures.map((f, i) => (
+              <Card key={i} className="p-6 bg-card/50 backdrop-blur-sm border-card-border/30 hover:border-primary/20 transition-all">
+                <div className="flex items-start gap-4">
+                  <div className="p-2.5 rounded-xl bg-primary/10">
+                    <f.icon className="h-5 w-5 text-primary" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-semibold text-foreground mb-1">{f.title}</h3>
+                    <p className="text-sm text-foreground-muted">{f.description}</p>
+                    {f.visual}
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── PRICING ── */}
+      <section className="relative section-padding overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-primary/8 rounded-full blur-[160px] pointer-events-none" />
+
+        <div className="container-focus relative z-10 max-w-5xl">
+          <div className="text-center mb-14">
+            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
+              Planos que Crescem com Você
+            </h2>
+            <p className="text-lg text-foreground-muted">Comece grátis. Faça upgrade quando quiser.</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            {testimonials.map((t, i) => (
-              <Card key={i} className="p-6 bg-card/50 backdrop-blur-sm border-card-border/30">
-                <div className="flex gap-1 mb-4">
-                  {[...Array(t.rating)].map((_, j) => (
-                    <Star key={j} className="h-4 w-4 fill-primary text-primary" />
+            {plans.map((plan, i) => (
+              <Card key={i} className={`p-7 backdrop-blur-sm transition-all relative ${plan.highlighted ? "bg-primary/5 border-primary/30 shadow-glow scale-[1.03]" : "bg-card/50 border-card-border/30"}`}>
+                {plan.highlighted && (
+                  <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground border-0">
+                    <Sparkles className="w-3 h-3 mr-1" /> Mais Popular
+                  </Badge>
+                )}
+                <h3 className="text-xl font-bold text-foreground mb-2">{plan.name}</h3>
+                <div className="mb-5">
+                  <span className="text-4xl font-bold text-foreground">{plan.price}</span>
+                  <span className="text-sm text-foreground-muted ml-1">{plan.period}</span>
+                </div>
+                <ul className="space-y-2.5 mb-6">
+                  {plan.features.map((f, j) => (
+                    <li key={j} className="flex items-center gap-2 text-sm text-foreground-muted">
+                      <CheckCircle className="h-4 w-4 text-primary shrink-0" />
+                      <span>{f}</span>
+                    </li>
                   ))}
-                </div>
-                <p className="text-foreground-muted mb-4 italic">"{t.content}"</p>
-                <div>
-                  <p className="font-semibold text-foreground">{t.name}</p>
-                  <p className="text-sm text-foreground-muted">{t.role}</p>
-                </div>
+                </ul>
+                <Link
+                  to={plan.name === "Enterprise" ? "/solucoes-sob-medida" : "/auth/signup"}
+                  onClick={() => handleCTA(`${plan.cta} - Pricing`)}
+                >
+                  <Button className={`w-full ${plan.highlighted ? "btn-hero animate-glow" : "btn-secondary"}`}>
+                    {plan.cta}
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
               </Card>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── ANCORAGEM DE PREÇO ── */}
-      <section className="relative section-padding overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-primary/10 rounded-full blur-[150px]" />
-
-        <div className="container-focus relative z-10 max-w-3xl text-center">
-          <Badge className="mb-6 bg-primary/20 text-primary border-primary/30">
-            <Shield className="w-4 h-4 mr-2" />
-            Garantia de 7 dias
-          </Badge>
-
-          <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-            Pronto para transformar sua gestão?
-          </h2>
-          <p className="text-lg text-foreground-muted mb-8">
-            Acesso vitalício ao sistema completo + atualizações gratuitas + suporte via WhatsApp
-          </p>
-
-          <Card className="inline-block p-8 bg-primary/5 border-primary/20 shadow-glow mb-8">
-            <div className="text-sm text-foreground-muted line-through mb-1">De R$ 497</div>
-            <div className="text-5xl font-bold text-primary mb-2">R$ 349</div>
-            <div className="text-sm text-foreground-muted">Pagamento único • Acesso vitalício</div>
-          </Card>
-
-          <div className="flex flex-col items-center gap-4">
-            <Button
-              onClick={() => handlePurchaseClick("pricing")}
-              className="btn-hero text-xl px-12 py-6 animate-glow"
-            >
-              Quero o Hub Empresarial PRO agora
-              <ArrowRight className="ml-2 h-6 w-6" />
-            </Button>
-            <p className="text-sm text-foreground-muted flex items-center gap-2">
-              <Shield className="h-4 w-4" />
-              7 dias de garantia incondicional
-            </p>
           </div>
         </div>
       </section>
@@ -371,7 +582,7 @@ const HubEmpresarial = () => {
         <div className="container-focus max-w-3xl">
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">Perguntas Frequentes</h2>
-            <p className="text-lg text-foreground-muted">Tire suas dúvidas antes de comprar</p>
+            <p className="text-lg text-foreground-muted">Tire suas dúvidas antes de começar</p>
           </div>
 
           <Accordion type="single" collapsible className="space-y-4">
@@ -382,10 +593,10 @@ const HubEmpresarial = () => {
                 className="border border-card-border/30 rounded-xl px-6 bg-card/50 backdrop-blur-sm"
               >
                 <AccordionTrigger className="text-foreground hover:no-underline py-5 text-left font-semibold">
-                  {faq.question}
+                  {faq.q}
                 </AccordionTrigger>
                 <AccordionContent className="text-foreground-muted pb-5">
-                  {faq.answer}
+                  {faq.a}
                 </AccordionContent>
               </AccordionItem>
             ))}
@@ -393,27 +604,39 @@ const HubEmpresarial = () => {
         </div>
       </section>
 
-      {/* ── CTA FINAL ── */}
+      {/* ── CTA FINAL + CONTATO ── */}
       <section className="relative section-padding overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-primary/10 rounded-full blur-[150px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-primary/10 rounded-full blur-[150px] pointer-events-none" />
 
         <div className="container-focus relative z-10 text-center max-w-3xl mx-auto">
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-            Comece agora sua gestão empresarial inteligente com Notion
+            Pronto para Transformar sua Gestão?
           </h2>
           <p className="text-foreground-muted text-lg mb-8">
-            Junte-se a dezenas de empresários que já transformaram sua gestão
+            Junte-se a milhares de empresários que já simplificaram seus negócios
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button onClick={() => handlePurchaseClick("footer")} className="btn-hero text-lg px-10 py-5 animate-glow">
-              Comprar Agora — R$ 349
-              <ArrowRight className="ml-2 h-5 w-5" />
+          <Link to="/auth/signup" onClick={() => handleCTA("Comece Gratuitamente - CTA Final")}>
+            <Button className="btn-hero text-xl px-12 py-6 animate-glow mb-12">
+              Comece Gratuitamente
+              <ArrowRight className="ml-2 h-6 w-6" />
             </Button>
-            <Button variant="outline" className="btn-secondary text-lg px-10 py-5" onClick={handleDemoClick}>
-              <Play className="mr-2 h-5 w-5" />
-              Ver Demonstrativo
-            </Button>
+          </Link>
+
+          <div className="grid sm:grid-cols-3 gap-4">
+            {[
+              { icon: Mail, label: "Email", value: "contato@focusinteligente.com.br" },
+              { icon: MessageCircle, label: "WhatsApp", value: "Fale conosco" },
+              { icon: Calendar, label: "Agendar Demo", value: "Escolha um horário" },
+            ].map((c, i) => (
+              <Card key={i} className="p-5 bg-card/50 backdrop-blur-sm border-card-border/30 text-center">
+                <div className="p-2.5 rounded-xl bg-primary/10 w-fit mx-auto mb-3">
+                  <c.icon className="h-5 w-5 text-primary" />
+                </div>
+                <p className="text-sm font-semibold text-foreground mb-1">{c.label}</p>
+                <p className="text-xs text-foreground-muted">{c.value}</p>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
