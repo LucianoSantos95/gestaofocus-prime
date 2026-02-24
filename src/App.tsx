@@ -15,6 +15,7 @@ import ScrollToTop from "./components/ScrollToTop";
 
 // Lazy load pages
 const SolucoesSobMedida = lazy(() => import("./pages/SolucoesSobMedida"));
+const HubEmpresarial = lazy(() => import("./pages/HubEmpresarial"));
 const Blog = lazy(() => import("./pages/Blog"));
 const AboutFocus = lazy(() => import("./pages/AboutFocus"));
 const Privacidade = lazy(() => import("./pages/Privacidade"));
@@ -106,7 +107,7 @@ function AppLayout() {
   const location = useLocation();
   const isDashboard = location.pathname.startsWith("/dashboard");
   const isAuth = location.pathname.startsWith("/auth");
-  const isSolucoes = location.pathname === "/solucoes-sob-medida";
+  const isSolucoes = location.pathname === "/solucoes-sob-medida" || location.pathname === "/hub-empresarial";
 
   // SolucoesSobMedida has its own Nav/Footer embedded
   const showNav = !isDashboard && !isAuth && !isSolucoes;
@@ -120,6 +121,7 @@ function AppLayout() {
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/solucoes-sob-medida" element={<SolucoesSobMedida />} />
+            <Route path="/hub-empresarial" element={<HubEmpresarial />} />
             <Route path="/blog" element={<Blog />} />
 
             {/* Blog Routes */}

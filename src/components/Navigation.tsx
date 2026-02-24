@@ -6,6 +6,7 @@ import { trackNavigationClick } from "@/lib/analytics";
 
 const navItems = [
   { name: "Soluções Sob Medida", href: "/solucoes-sob-medida" },
+  { name: "Hub Empresarial", href: "/hub-empresarial" },
   { name: "Blog", href: "/blog" },
   { name: "Sobre", href: "/sobre-focus" },
 ];
