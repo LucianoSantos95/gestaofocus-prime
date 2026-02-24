@@ -56,6 +56,45 @@ export type Database = {
         }
         Relationships: []
       }
+      client_projects: {
+        Row: {
+          cover_image_url: string | null
+          created_at: string
+          delivery_date: string | null
+          description: string | null
+          id: string
+          progress: number
+          project_name: string
+          status: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          cover_image_url?: string | null
+          created_at?: string
+          delivery_date?: string | null
+          description?: string | null
+          id?: string
+          progress?: number
+          project_name: string
+          status?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          cover_image_url?: string | null
+          created_at?: string
+          delivery_date?: string | null
+          description?: string | null
+          id?: string
+          progress?: number
+          project_name?: string
+          status?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       consultation_leads: {
         Row: {
           additional_details: string | null

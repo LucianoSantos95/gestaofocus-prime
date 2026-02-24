@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { Instagram } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -7,77 +6,73 @@ const Footer = () => {
   return (
     <footer className="bg-background-elevated border-t border-card-border">
       <div className="container-focus py-12">
-        {/* Main Links */}
-        <div className="flex flex-wrap justify-center gap-8 mb-8">
-          <Link 
-            to="/sistemas-gratuitos"
-            className="text-foreground-muted hover:text-primary transition-colors"
-          >
-            Templates
-          </Link>
-          <Link 
-            to="/blog"
-            className="text-foreground-muted hover:text-primary transition-colors"
-          >
-            Blog
-          </Link>
-          <Link 
-            to="/sobre-focus"
-            className="text-foreground-muted hover:text-primary transition-colors"
-          >
-            Sobre
-          </Link>
-          <a 
-            href="https://wa.me/5511916742443?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es."
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-foreground-muted hover:text-primary transition-colors"
-          >
-            Contato
-          </a>
-        </div>
+        <div className="grid md:grid-cols-3 gap-8 mb-8">
+          {/* Coluna 1 — Sobre */}
+          <div>
+            <img
+              src="/lovable-uploads/focus-logo.png"
+              alt="Focus Gestão Inteligente"
+              className="h-7 mb-4"
+            />
+            <p className="text-foreground-muted text-sm leading-relaxed">
+              Focus Gestão Inteligente. Especialistas em transformar processos manuais em Softwares de Alta Performance.
+            </p>
+          </div>
 
-        {/* Social */}
-        <div className="flex justify-center mb-8">
-          <a 
-            href="https://instagram.com/tudoemfocus"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 text-foreground-muted hover:text-primary transition-colors"
-          >
-            <Instagram className="w-5 h-5" />
-            @tudoemfocus
-          </a>
+          {/* Coluna 2 — Links */}
+          <div>
+            <h4 className="font-semibold text-foreground text-sm mb-4">Links</h4>
+            <ul className="space-y-2">
+              {[
+                { label: "Home", href: "/" },
+                { label: "Blog de Gestão", href: "/blog" },
+                { label: "Termos de Uso", href: "/termos-uso" },
+                { label: "Política de Privacidade", href: "/privacidade" },
+              ].map((link) => (
+                <li key={link.href}>
+                  <Link
+                    to={link.href}
+                    className="text-foreground-muted hover:text-primary text-sm transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Coluna 3 — Contato */}
+          <div>
+            <h4 className="font-semibold text-foreground text-sm mb-4">Contato</h4>
+            <ul className="space-y-2 text-sm text-foreground-muted">
+              <li>Atendimento Online — Brasil</li>
+              <li>
+                <a
+                  href="mailto:contato@focusinteligente.com.br"
+                  className="hover:text-primary transition-colors"
+                >
+                  contato@focusinteligente.com.br
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://wa.me/5511916742443"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primary transition-colors"
+                >
+                  WhatsApp
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
 
         {/* Bottom */}
         <div className="border-t border-card-border pt-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-foreground-muted text-sm">
-              © {currentYear} Focus Gestão Empresarial. Todos os direitos reservados.
-            </p>
-            
-            <div className="flex items-center gap-6">
-              <Link 
-                to="/termos" 
-                className="text-foreground-muted hover:text-primary text-sm transition-colors"
-              >
-                Termos
-              </Link>
-              <Link 
-                to="/privacidade" 
-                className="text-foreground-muted hover:text-primary text-sm transition-colors"
-              >
-                Privacidade
-              </Link>
-              <Link 
-                to="/cookies" 
-                className="text-foreground-muted hover:text-primary text-sm transition-colors"
-              >
-                Cookies
-              </Link>
-            </div>
-          </div>
+          <p className="text-foreground-muted text-sm text-center">
+            © {currentYear} Focus Gestão Inteligente. Todos os direitos reservados.
+          </p>
         </div>
       </div>
     </footer>
