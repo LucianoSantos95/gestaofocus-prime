@@ -1,55 +1,104 @@
 
-# Plano: Landing Page Hub Empresarial (Estilo ExamAI)
 
-## O que sera feito
+# Plano: Reescrever Hub Empresarial como Landing Page SaaS (Estilo ExamAI)
 
-Criar uma nova landing page para o Hub Empresarial no estilo visual do ExamAI (glassmorphism, glows radiais, tipografia bold) usando as cores do site Focus, e adiciona-la na navegacao ao lado de "Solucoes Sob Medida".
+## Contexto
+
+O Hub Empresarial **nao e mais um template de Notion**. E uma **plataforma SaaS de gestao para PMEs** construida na Lovable. A pagina atual sera completamente reescrita do zero, seguindo fielmente a estrutura e o estilo visual do ExamAI (https://examai.lovable.app/), adaptado as cores Focus (azul HSL 213 94% 68%, fundo dark).
 
 ---
 
-## Estrutura da Pagina
+## Estrutura da Nova Pagina (inspirada no ExamAI)
 
-A pagina reutilizara o conteudo ja existente no `HubEmpresarial.tsx` (pain points, beneficios, modulos, depoimentos, FAQ) mas com o visual completamente refeito no estilo ExamAI, igual ao da pagina Solucoes Sob Medida.
+### Secao 1 -- Hero (igual ao ExamAI)
+- Logo Focus + nome "Hub Empresarial" no topo
+- H1 gigante (text-5xl a text-7xl): "Gestao Completa para Pequenas e Medias Empresas"
+- Badge "AO VIVO" com avatares e contador de usuarios ativos (ex: "2.847+ empresas ativas")
+- Subtitulo: "CRM, Financeiro, Projetos e RH em uma unica plataforma. Para voce focar no que importa: crescer."
+- CTA principal: "Comece Gratuitamente" (link para /auth/signup)
+- Glow radial roxo/azul atras do titulo (estilo ExamAI)
 
-**Secoes da landing page:**
+### Secao 2 -- Mockup do App (igual ao ExamAI)
+- Screenshot/mockup flutuante do dashboard do Hub Empresarial
+- Borda arredondada com sombra e glow sutil
+- Mostra sidebar + dashboard com cards de modulos (similar ao mockup do ExamAI)
+- Construido em HTML/CSS puro (nao imagem), com cards representando o painel
 
-1. **Hero** -- Badge "Sistema completo para sua empresa", H1 grande com gradient-text, subtitulo, CTA principal "Quero o Hub Empresarial PRO" (link Stripe), glow radial de fundo
-2. **Problema/Agitacao** -- 6 cards com glassmorphism mostrando as dores (planilhas espalhadas, WhatsApp como CRM, etc.)
-3. **Solucao** -- Card destacado com glow explicando o que e o Hub PRO
-4. **Demo Visual** -- Video com poster e borda glow
-5. **Beneficios** -- 6 cards com glassmorphism, icones com glow, hover com scale
-6. **Modulos Inclusos** -- Grid de 7 modulos com listas detalhadas
-7. **Prova Social** -- 3 depoimentos em cards glassmorphism
-8. **Ancoragem de Preco** -- Card com glow: R$ 349 pagamento unico, garantia 7 dias
-9. **FAQ** -- Accordion com estilo glassmorphism
-10. **CTA Final** -- Glow radial centralizado + botao de compra
+### Secao 3 -- "Reimagine Seu Fluxo de Trabalho" (Features Showcase)
+- H2: "Reimagine a Gestao da Sua Empresa"
+- Subtitulo: "Mais que ferramentas. Uma forma completamente nova de gerenciar seu negocio."
+- 5-6 feature cards interativos no estilo ExamAI:
+  - **CRM Inteligente**: Funil visual, leads organizados, pipeline de vendas
+  - **Financeiro Completo**: Fluxo de caixa, DRE, contas a pagar/receber
+  - **Gestao de Projetos**: Kanban, tarefas, cronograma, responsaveis
+  - **RH & Pessoas**: Onboarding, vagas, avaliacoes
+  - **Dashboards em Tempo Real**: Metricas, graficos, saude do negocio
+  - **Automacoes**: Processos no piloto automatico
+- Cada card com mini-mockup visual inline (badges, barras de progresso, icones) como o ExamAI faz
 
-**Screenshot do app (referencia visual):** A imagem enviada sera usada apenas como referencia de como o Hub funciona, nao sera embutida na pagina.
+### Secao 4 -- Prova Social (Marquee de Depoimentos)
+- H2: "Confiam em nos 2.000+ Empresas"
+- Subtitulo com badge animado
+- Grid de depoimentos em marquee horizontal infinito (estilo ExamAI com 3 fileiras animadas)
+- Cada depoimento: avatar (iniciais), nome, cargo, quote
+
+### Secao 5 -- "Ferramentas Profissionais. Zero Complexidade."
+- Grid de 4-6 cards com features tecnicas:
+  - **Ultra Rapido**: Metricas de velocidade (criar orcamento 2min, gerar relatorio 30s)
+  - **Modulos Prontos**: Lista dos 7 modulos inclusos
+  - **Inteligencia de Dados**: Graficos e insights automaticos
+  - **Seguranca Total**: Backup automatico, dados blindados
+- Cada card com mini-visualizacao interativa (barras, numeros, icones)
+
+### Secao 6 -- Pricing (Planos)
+- H2: "Planos que crescem com voce"
+- 2-3 cards de planos:
+  - **Gratuito**: Ate 1 usuario, modulos basicos, "Comece Gratis"
+  - **Pro** (destaque): Usuarios ilimitados, todos os modulos, suporte prioritario, R$ 97/mes
+  - **Enterprise**: Customizacao, API, suporte dedicado, "Fale Conosco"
+- Card Pro com borda glow e badge "Mais Popular"
+
+### Secao 7 -- FAQ
+- Estilo ExamAI com emojis nos titulos
+- Perguntas adaptadas para SaaS:
+  - "O que e o Hub Empresarial?"
+  - "Quanto custa?"
+  - "Posso testar gratis?"
+  - "Meus dados estao seguros?"
+  - "Funciona no celular?"
+  - "Posso cancelar a qualquer momento?"
+
+### Secao 8 -- CTA Final + Contato
+- H2: "Pronto para transformar sua gestao?"
+- CTA grande: "Comece Gratuitamente" (link /auth/signup)
+- Cards de contato: Email, WhatsApp, Agendar Demo (estilo ExamAI)
 
 ---
 
 ## Detalhes Tecnicos
 
-### Arquivo a criar:
-- Nenhum novo -- sera reescrito `src/pages/HubEmpresarial.tsx` com o visual ExamAI (classes `container-focus`, `section-padding`, `bg-card/50 backdrop-blur-sm`, `shadow-glow`, etc.)
+### Arquivo a reescrever:
+- `src/pages/HubEmpresarial.tsx` -- Reescrita completa do zero
 
-### Arquivos a modificar:
+### Mudancas principais vs. versao atual:
+1. **Remover todas as referencias ao Notion** -- nao e mais template
+2. **Remover link Stripe de R$ 349** -- agora e SaaS com signup gratuito
+3. **CTA principal aponta para `/auth/signup`** em vez de link externo Stripe
+4. **Novo conteudo** -- textos, features, pricing adaptados para modelo SaaS
+5. **Visual ExamAI** -- mockup flutuante do app, marquee de depoimentos, feature cards com mini-visualizacoes inline, glow roxo/azul
 
-1. **`src/App.tsx`**
-   - Adicionar lazy import do `HubEmpresarial`
-   - Adicionar rota `/hub-empresarial`
-   - Adicionar `/hub-empresarial` na condicao `isSolucoes` para esconder Nav/Footer duplicados (a pagina tera seus proprios)
+### Estilo Visual (fiel ao ExamAI):
+- Fundo dark (bg-background)
+- Glow radial atras do hero (blur-3xl, primary/20)
+- Mockup do app com borda arredondada e sombra
+- Cards com bg-card/50, backdrop-blur-sm, border sutil
+- Marquee de depoimentos com animacao CSS infinita (3 fileiras)
+- Feature cards com mini-UI inline (barras de progresso, badges, numeros)
+- Tipografia hero extra-large com gradient-text
+- Botoes com gradiente e hover glow
 
-2. **`src/components/Navigation.tsx`**
-   - Adicionar "Hub Empresarial" ao array `navItems` entre "Solucoes Sob Medida" e "Blog"
+### Nenhum outro arquivo precisa ser alterado:
+- A rota `/hub-empresarial` ja existe no App.tsx
+- O item "Hub Empresarial" ja esta no Navigation.tsx
+- Apenas o conteudo da pagina muda
 
-### Estilo Visual:
-- Mesmo design system usado em `SolucoesSobMedida.tsx`:
-  - Glow radial azul Focus (blur-3xl) nos heroes
-  - Cards com `bg-card/50 backdrop-blur-sm border-card-border/30`
-  - Botoes com `btn-hero animate-glow`
-  - Separacao entre secoes com `section-padding bg-background-secondary`
-  - Tipografia hero `text-5xl lg:text-7xl font-bold` com `bg-gradient-primary bg-clip-text text-transparent`
-
-### CTA externo:
-- Botao de compra continua apontando para o link Stripe existente: `https://buy.stripe.com/fZu28rbs8gN73ta6F7gUM0d`
