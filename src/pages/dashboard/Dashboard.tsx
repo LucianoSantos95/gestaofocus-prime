@@ -25,6 +25,9 @@ interface ClientProject {
   progress: number;
   delivery_date: string | null;
   cover_image_url: string | null;
+  total_sprints: number;
+  current_sprint: number;
+  client_name: string | null;
 }
 
 export default function Dashboard() {
@@ -91,6 +94,9 @@ export default function Dashboard() {
                   progress={project.progress}
                   deliveryDate={project.delivery_date}
                   coverImageUrl={project.cover_image_url}
+                  totalSprints={project.total_sprints}
+                  currentSprint={project.current_sprint}
+                  clientName={project.client_name}
                 />
               ))}
             </div>
