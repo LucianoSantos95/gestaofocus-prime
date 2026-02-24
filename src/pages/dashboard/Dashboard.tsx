@@ -1,220 +1,120 @@
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { supabase } from '@/integrations/supabase/client';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { useUserRole } from '@/hooks/useUserRole';
-import { toast } from 'sonner';
-import { 
-  Crown, 
-  Play, 
-  Layers, 
-  BookOpen, 
-  MessageSquare, 
-  LogOut,
-  Sparkles,
-  BarChart3
-} from 'lucide-react';
+import { useEffect, useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { useUserRole } from "@/hooks/useUserRole";
+import DashboardLayout from "@/components/dashboard/DashboardLayout";
+import HeroBanner from "@/components/dashboard/HeroBanner";
+import ProjectCard from "@/components/dashboard/ProjectCard";
+import ResourceCarousel from "@/components/dashboard/ResourceCarousel";
+import { Loader2 } from "lucide-react";
+
+const libraryResources = [
+  { title: "Controle Financeiro", description: "Gerencie receitas, despesas e fluxo de caixa", href: "#", icon: "💰" },
+  { title: "CRM de Vendas", description: "Pipeline de vendas e gestão de clientes", href: "#", icon: "🤝" },
+  { title: "Gestão de Projetos", description: "Organize projetos com Kanban e prazos", href: "#", icon: "📋" },
+  { title: "RH & Equipe", description: "Gerencie colaboradores e desempenho", href: "#", icon: "👥" },
+  { title: "Marketing", description: "Planeje campanhas e conteúdo", href: "#", icon: "📢" },
+];
+
+const templateResources = [
+  { title: "Hub Empresarial Free", description: "Sistema gratuito de gestão empresarial", href: "#", icon: "🏢" },
+  { title: "Biblioteca Digital", description: "Organize livros e materiais de estudo", href: "#", icon: "📚" },
+  { title: "Easy Travel", description: "Planeje suas viagens com eficiência", href: "#", icon: "✈️" },
+  { title: "Central Social Media", description: "Gerencie suas redes sociais", href: "#", icon: "📱" },
+];
+
+interface ClientProject {
+  id: string;
+  project_name: string;
+  description: string | null;
+  status: string;
+  progress: number;
+  delivery_date: string | null;
+  cover_image_url: string | null;
+}
 
 export default function Dashboard() {
-  const { role, isLoading } = useUserRole();
-  const [profile, setProfile] = useState<any>(null);
-  const navigate = useNavigate();
+  const { role, isLoading: roleLoading } = useUserRole();
+  const [profile, setProfile] = useState<{ full_name: string | null } | null>(null);
+  const [projects, setProjects] = useState<ClientProject[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function loadProfile() {
+    async function loadData() {
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) return;
 
-      const { data } = await supabase
-        .from('profiles')
-        .select('*')
-        .eq('id', user.id)
-        .single();
+      const [profileRes, projectsRes] = await Promise.all([
+        supabase.from("profiles").select("full_name").eq("id", user.id).single(),
+        supabase.from("client_projects").select("*").eq("user_id", user.id).order("created_at", { ascending: false }),
+      ]);
 
-      setProfile(data);
+      setProfile(profileRes.data);
+      setProjects((projectsRes.data as ClientProject[]) || []);
+      setLoading(false);
     }
 
-    loadProfile();
+    loadData();
   }, []);
 
-  const handleLogout = async () => {
-    const { error } = await supabase.auth.signOut();
-    if (error) {
-      toast.error('Erro ao fazer logout');
-      return;
-    }
-    toast.success('Logout realizado com sucesso');
-    navigate('/');
-  };
-
-  if (isLoading) {
+  if (roleLoading || loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
-          <p className="text-muted-foreground">Carregando...</p>
+      <DashboardLayout>
+        <div className="flex items-center justify-center min-h-[60vh]">
+          <Loader2 className="w-8 h-8 animate-spin text-primary" />
         </div>
-      </div>
+      </DashboardLayout>
     );
   }
 
+  const firstName = profile?.full_name?.split(" ")[0] || "Membro";
+
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b border-border bg-card">
-        <div className="container max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <img 
-              src="/lovable-uploads/focus-logo.png" 
-              alt="Focus Club" 
-              className="h-8"
-            />
-            <Badge variant={role === 'pro' ? 'default' : 'secondary'}>
-              {role === 'pro' ? (
-                <><Crown className="w-3 h-3 mr-1" /> PRO</>
-              ) : 'FREE'}
-            </Badge>
-          </div>
-          
-          <div className="flex items-center gap-2">
-            {role === 'admin' && (
-              <Button variant="outline" size="sm" onClick={() => navigate('/dashboard/analytics')}>
-                <BarChart3 className="w-4 h-4 mr-2" />
-                Analytics
-              </Button>
-            )}
-            
-            <Button variant="ghost" size="sm" onClick={handleLogout}>
-              <LogOut className="w-4 h-4 mr-2" />
-              Sair
-            </Button>
-          </div>
-        </div>
-      </header>
-
-      {/* Main Content */}
-      <main className="container max-w-7xl mx-auto px-4 py-8">
-        {/* Welcome Section */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold mb-2">
-            Olá, {profile?.full_name || 'Membro'}! 👋
+    <DashboardLayout>
+      <div className="p-6 lg:p-8 max-w-6xl space-y-8">
+        {/* Welcome */}
+        <div>
+          <h1 className="text-2xl lg:text-3xl font-bold text-foreground">
+            Olá, {firstName}! 👋
           </h1>
-          <p className="text-muted-foreground">
-            Bem-vindo ao seu painel do Focus Club
-          </p>
+          <p className="text-foreground-muted mt-1">Bem-vindo ao seu painel do Focus Club</p>
         </div>
 
-        {/* Upgrade Banner for FREE users */}
-        {role === 'free' && (
-          <Card className="mb-8 border-primary/20 bg-gradient-to-r from-primary/10 to-primary/5">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Sparkles className="w-5 h-5 text-primary" />
-                Desbloqueie Todo o Conteúdo
-              </CardTitle>
-              <CardDescription>
-                Upgrade para PRO e tenha acesso ilimitado a todos os cursos, sistemas e comunidade
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <Button size="lg">
-                <Crown className="w-4 h-4 mr-2" />
-                Fazer Upgrade para PRO
-              </Button>
-            </CardContent>
-          </Card>
-        )}
+        {/* Hero Banner */}
+        <HeroBanner />
 
-        {/* Quick Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <Card>
-            <CardHeader className="pb-3">
-              <div className="flex items-center justify-between">
-                <Play className="w-5 h-5 text-primary" />
-                <Badge variant="secondary">Em breve</Badge>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold mb-1">0/0</div>
-              <p className="text-sm text-muted-foreground">Aulas Concluídas</p>
-            </CardContent>
-          </Card>
+        {/* Meus Projetos */}
+        <section>
+          <h2 className="text-xl font-semibold text-foreground mb-4">Meus Projetos</h2>
+          {projects.length > 0 ? (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {projects.map((project) => (
+                <ProjectCard
+                  key={project.id}
+                  projectName={project.project_name}
+                  description={project.description}
+                  status={project.status}
+                  progress={project.progress}
+                  deliveryDate={project.delivery_date}
+                  coverImageUrl={project.cover_image_url}
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="rounded-2xl border border-card-border bg-background-elevated p-8 text-center">
+              <p className="text-foreground-muted">
+                Nenhum projeto ativo no momento. Quando você contratar um serviço, seus projetos aparecerão aqui.
+              </p>
+            </div>
+          )}
+        </section>
 
-          <Card>
-            <CardHeader className="pb-3">
-              <div className="flex items-center justify-between">
-                <Layers className="w-5 h-5 text-primary" />
-                <Badge variant="secondary">Em breve</Badge>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold mb-1">0</div>
-              <p className="text-sm text-muted-foreground">Sistemas Disponíveis</p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader className="pb-3">
-              <div className="flex items-center justify-between">
-                <BookOpen className="w-5 h-5 text-primary" />
-                <Badge variant="secondary">Em breve</Badge>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold mb-1">0</div>
-              <p className="text-sm text-muted-foreground">Playbooks</p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader className="pb-3">
-              <div className="flex items-center justify-between">
-                <MessageSquare className="w-5 h-5 text-primary" />
-                <Badge variant="secondary">Em breve</Badge>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold mb-1">0</div>
-              <p className="text-sm text-muted-foreground">Posts na Comunidade</p>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Coming Soon Message */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Plataforma em Desenvolvimento</CardTitle>
-            <CardDescription>
-              Estamos construindo uma experiência incrível para você
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p className="text-muted-foreground mb-4">
-              O Focus Club está sendo desenvolvido com muito carinho. Em breve você terá acesso a:
-            </p>
-            <ul className="space-y-2 text-sm">
-              <li className="flex items-center gap-2">
-                <Play className="w-4 h-4 text-primary" />
-                <span>Cursos completos de produtividade e gestão</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <Layers className="w-4 h-4 text-primary" />
-                <span>Sistemas Notion prontos para usar</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <BookOpen className="w-4 h-4 text-primary" />
-                <span>Playbooks mensais com estratégias práticas</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <MessageSquare className="w-4 h-4 text-primary" />
-                <span>Comunidade exclusiva de membros</span>
-              </li>
-            </ul>
-          </CardContent>
-        </Card>
-      </main>
-    </div>
+        {/* Biblioteca */}
+        <section className="space-y-6">
+          <h2 className="text-xl font-semibold text-foreground">Biblioteca de Recursos</h2>
+          <ResourceCarousel title="Módulos do Hub" resources={libraryResources} />
+          <ResourceCarousel title="Templates Gratuitos" resources={templateResources} />
+        </section>
+      </div>
+    </DashboardLayout>
   );
 }
