@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { Home, FolderKanban, BookOpen, HeadphonesIcon, Settings, LogOut, ChevronLeft, ChevronRight } from "lucide-react";
+import { Home, Briefcase, BookOpen, HeadphonesIcon, Settings, LogOut, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
@@ -7,8 +7,8 @@ import { useNavigate } from "react-router-dom";
 
 const menuItems = [
   { icon: Home, label: "Início", href: "/dashboard" },
-  { icon: FolderKanban, label: "Meus Projetos", href: "/dashboard/projetos" },
-  { icon: BookOpen, label: "Biblioteca", href: "/dashboard/biblioteca" },
+  { icon: Briefcase, label: "Meus Projetos", href: "/dashboard/projetos" },
+  { icon: BookOpen, label: "Biblioteca", href: "/dashboard#templates" },
   { icon: HeadphonesIcon, label: "Suporte", href: "/dashboard/suporte" },
   { icon: Settings, label: "Configurações", href: "/dashboard/configuracoes" },
 ];

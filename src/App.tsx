@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import WhatsAppButton from "./components/WhatsAppButton";
+import DashboardChatButton from "./components/dashboard/DashboardChatButton";
 import Index from "./pages/Index";
 import { useAnalytics } from "./hooks/useAnalytics";
 import { usePageTracking } from "./hooks/usePageTracking";
@@ -201,7 +202,7 @@ function AppLayout() {
         </Suspense>
       </main>
       {showFooter && <Footer />}
-      <WhatsAppButton />
+      {isDashboard ? <DashboardChatButton /> : <WhatsAppButton />}
     </div>
   );
 }

@@ -4,22 +4,17 @@ import { useUserRole } from "@/hooks/useUserRole";
 import DashboardLayout from "@/components/dashboard/DashboardLayout";
 import HeroBanner from "@/components/dashboard/HeroBanner";
 import ProjectCard from "@/components/dashboard/ProjectCard";
-import ResourceCarousel from "@/components/dashboard/ResourceCarousel";
+import TemplateCard from "@/components/dashboard/TemplateCard";
 import { Loader2 } from "lucide-react";
 
-const libraryResources = [
-  { title: "Controle Financeiro", description: "Gerencie receitas, despesas e fluxo de caixa", href: "#", icon: "💰" },
-  { title: "CRM de Vendas", description: "Pipeline de vendas e gestão de clientes", href: "#", icon: "🤝" },
-  { title: "Gestão de Projetos", description: "Organize projetos com Kanban e prazos", href: "#", icon: "📋" },
-  { title: "RH & Equipe", description: "Gerencie colaboradores e desempenho", href: "#", icon: "👥" },
-  { title: "Marketing", description: "Planeje campanhas e conteúdo", href: "#", icon: "📢" },
-];
-
-const templateResources = [
-  { title: "Hub Empresarial Free", description: "Sistema gratuito de gestão empresarial", href: "#", icon: "🏢" },
-  { title: "Biblioteca Digital", description: "Organize livros e materiais de estudo", href: "#", icon: "📚" },
-  { title: "Easy Travel", description: "Planeje suas viagens com eficiência", href: "#", icon: "✈️" },
-  { title: "Central Social Media", description: "Gerencie suas redes sociais", href: "#", icon: "📱" },
+const templates = [
+  { title: "Hub Empresarial Free", image: "/lovable-uploads/hub-empresarial-free.jpg", href: "https://www.notion.com/templates/hub-empresarial-free" },
+  { title: "Controle Financeiro", image: "/lovable-uploads/controle-financeiro.jpg", href: "https://www.notion.com/templates/controle-financeiro-b-sico" },
+  { title: "Hub Vida Pessoal", image: "/lovable-uploads/hub-vida-pessoal.jpg", href: "https://www.notion.com/templates/hub-vida-pessoal" },
+  { title: "Central Social Media", image: "/lovable-uploads/central-social-media.jpg", href: "https://www.notion.com/templates/central-social-media-basic" },
+  { title: "Facilitador de Treino", image: "/lovable-uploads/facilitador-treino.jpg", href: "https://www.notion.com/templates/facilitador-de-treino-b-sico" },
+  { title: "Easy Travel", image: "/lovable-uploads/easy-travel.jpg", href: "https://www.notion.com/templates/easy-travel" },
+  { title: "Biblioteca Digital", image: "/lovable-uploads/biblioteca-digital.jpg", href: "https://www.notion.com/templates/biblioteca-digital-588" },
 ];
 
 interface ClientProject {
@@ -70,7 +65,7 @@ export default function Dashboard() {
 
   return (
     <DashboardLayout>
-      <div className="p-6 lg:p-8 max-w-6xl space-y-8">
+      <div className="p-6 lg:p-8 space-y-8">
         {/* Welcome */}
         <div>
           <h1 className="text-2xl lg:text-3xl font-bold text-foreground">
@@ -108,11 +103,14 @@ export default function Dashboard() {
           )}
         </section>
 
-        {/* Biblioteca */}
-        <section className="space-y-6">
-          <h2 className="text-xl font-semibold text-foreground">Biblioteca de Recursos</h2>
-          <ResourceCarousel title="Módulos do Hub" resources={libraryResources} />
-          <ResourceCarousel title="Templates Gratuitos" resources={templateResources} />
+        {/* Templates Gratuitos */}
+        <section id="templates">
+          <h2 className="text-xl font-semibold text-foreground mb-4">Templates Gratuitos</h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {templates.map((t) => (
+              <TemplateCard key={t.title} title={t.title} image={t.image} href={t.href} />
+            ))}
+          </div>
         </section>
       </div>
     </DashboardLayout>
