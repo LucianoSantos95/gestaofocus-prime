@@ -1,129 +1,143 @@
 
 
-# Plano Consolidado de Ajustes — 4 Paginas
+# Plano de Ajustes -- Area do Cliente (Dashboard)
 
 ## Resumo
 
-Ajustes na Pagina Inicial, Solucoes Sob Medida, Hub Empresarial, Formulario de Aplicacao e Rodape. Todas as mudancas estao detalhadas abaixo.
+Sete mudancas na area do cliente: remover modulo Hub, redesenhar templates como cards Netflix com links reais, formulario de suporte com tabela no banco, botao WhatsApp abrindo chat IA, layout full-width, e icone ajustado para Meus Projetos.
 
 ---
 
-## 1. Pagina Inicial (Index.tsx)
+## 1. Dashboard (Dashboard.tsx) -- Remover "Modulos do Hub" e Redesenhar Templates
 
-### 1.1 Barra de Escassez (linha 69-74)
-- **Mover** para logo abaixo do menu de navegacao (atualmente ja esta, mas ajustar o `pt` do hero para acomodar)
-- **Alterar texto:** "Projetos de Alta Complexidade" para **"Projetos Sob Medida"**
+### Remover
+- Eliminar o array `libraryResources` (Modulos do Hub) e o `ResourceCarousel` correspondente ("Modulos do Hub")
 
-### 1.2 Hero — Botoes (linhas 95-118)
-- **Botao primario:** "Conhecer Solucoes Sob Medida" — Link para `/solucoes-sob-medida` (nao abre modal)
-- **Botao secundario:** "Conheca o Hub Empresarial" — Link para `/hub-empresarial`
+### Redesenhar "Templates Gratuitos"
+- Substituir o `ResourceCarousel` de templates por uma grid de **cards estilo Netflix** (imagem de capa + titulo + descricao)
+- Usar as imagens ja existentes em `public/lovable-uploads/` como capa de cada card
+- Cada card abre o link Notion correspondente em nova aba
+- Ordem e dados:
 
-### 1.3 Card Focus Custom (linhas 194-233)
-- **Remover** "Entrega em ate 30 dias" da lista de beneficios
-- **Remover** o bloco de preco (R$ 4.000, pagamento unico)
-- **Substituir** por texto consultivo: "Projeto sob medida com escopo personalizado. Solicite um diagnostico gratuito."
-- Botao continua abrindo o ApplicationFormModal (sem mudanca)
+| Template | Imagem | Link |
+|---|---|---|
+| Hub Empresarial Free | hub-empresarial-free.jpg | https://www.notion.com/templates/hub-empresarial-free |
+| Controle Financeiro | controle-financeiro.jpg | https://www.notion.com/templates/controle-financeiro-b-sico |
+| Hub Vida Pessoal | hub-vida-pessoal.jpg | https://www.notion.com/templates/hub-vida-pessoal |
+| Central Social Media | central-social-media.jpg | https://www.notion.com/templates/central-social-media-basic |
+| Facilitador de Treino | facilitador-treino.jpg | https://www.notion.com/templates/facilitador-de-treino-b-sico |
+| Easy Travel | easy-travel.jpg | https://www.notion.com/templates/easy-travel |
+| Biblioteca Digital | biblioteca-digital.jpg | https://www.notion.com/templates/biblioteca-digital-588 |
 
-### 1.4 Card Hub Empresarial (linhas 236-279)
-- **Titulo:** "Hub Empresarial" (remover "PRO")
-- **Subtitulo:** Trocar "Sistema pronto em Notion" por "Plataforma de Gestao para PMEs"
-- **Lista de beneficios:** Atualizar para: Financeiro completo, Recursos Humanos, Marketing, Gestao de Projetos, e mais
-- **Preco:** Trocar "R$ 349 (acesso vitalicio)" por "A partir de R$ 119/mes"
-- **Botao:** Link interno para `/hub-empresarial` (remover link Hotmart)
-- **Texto do botao:** "Conhecer Hub Empresarial"
-
-### 1.5 CTA Final (linhas 388-429)
-- Atualizar texto para remover referencia a "Hub Empresarial PRO"
-- Manter os dois botoes mas ajustar labels para "Conhecer Solucoes Sob Medida" e "Conhecer Hub Empresarial"
-
----
-
-## 2. Formulario de Aplicacao (ApplicationFormModal.tsx)
-
-Redesign visual para ficar mais bonito e interativo, mantendo a mesma logica de 4 steps:
-
-- **Fundo com glassmorphism** — `bg-card/50 backdrop-blur-xl` no DialogContent
-- **Icone animado por step** (User, Phone, Mail, Wallet) com glow circular
-- **Titulo contextual:** "Vamos comecar!", "Como falar com voce?", "Qual seu email?", "Faixa de investimento?"
-- **Subtitulo descritivo** abaixo de cada pergunta
-- **Progress bar estilizada** com gradiente azul Focus e animacao suave
-- **Inputs maiores** com `py-4 rounded-2xl` e icone inline
-- **Opcoes de investimento** como cards maiores com hover scale e glow na selecao
-- **Tela de sucesso** com icone maior e animacao de entrada
+### Visual dos Cards Netflix
+- Grid responsiva: 2 colunas mobile, 3 tablet, 4 desktop
+- Card com imagem de capa (aspect ratio 16:9), titulo sobreposto na parte inferior com gradiente escuro
+- Hover: leve scale + borda primary
+- Scroll horizontal nao sera usado; sera grid fixa visivel
 
 ---
 
-## 3. Solucoes Sob Medida (SolucoesSobMedida.tsx)
+## 2. Icone "Meus Projetos" na Sidebar
 
-### 3.1 Barra de Aviso (linha 46-53)
-- **Alterar** "Projetos de Alta Complexidade" para **"Projetos Sob Medida"**
-
-### 3.2 Secao de Preco "Quanto custa ter paz mental na gestao?" (linhas 238-267)
-- **Remover** o card com valor "A partir de R$ 4.000"
-- **Remover** as comparacoes de custo riscadas (R$ 15.000, R$ 2.000)
-- **Substituir** por texto incentivando o preenchimento do formulario: "Cada projeto e unico. O valor depende do escopo e da complexidade. Preencha a aplicacao para receber uma proposta personalizada."
-- **Adicionar botao** "Solicitar Proposta" que abre o ApplicationFormModal
+- Trocar o icone `FolderKanban` por `Briefcase` (lucide-react), que comunica melhor "projetos do cliente" vs "kanban generico"
 
 ---
 
-## 4. Hub Empresarial (HubEmpresarial.tsx)
+## 3. Sidebar "Biblioteca"
 
-### 4.1 Hero — Logo (linha 242-244)
-- **Substituir** o icone generico (LayoutDashboard) pela imagem do logo do Hub (image-76.png) copiada para `src/assets/hub-logo.png`
-
-### 4.2 Hero — Numeros (linha 269)
-- **Reduzir** "2.847+ empresas ativas" para **"127+ empresas ativas"** (numero mais realista para um lancamento recente)
-
-### 4.3 Hero — CTA (linha 280-285)
-- **Alterar link** de `/auth/signup` para `https://app.focusinteligente.com.br/auth`
-- Manter como link externo com `target="_blank"`
-
-### 4.4 Mockup do App (secao linhas 297-411)
-- **Substituir** o mockup CSS construido manualmente pela imagem real do dashboard (image-77.png) copiada para `src/assets/hub-dashboard-mockup.png`
-- Manter o estilo visual (borda arredondada, sombra, chrome de janela com os 3 dots)
-
-### 4.5 Prova Social (linha 455)
-- **Alterar** "+2.000 Empresas Ja Confiam no Hub" para **"+100 Empresas Ja Confiam no Hub"**
-
-### 4.6 Pricing — Planos (linhas 177-202)
-- **Plano Gratuito:** Manter como esta
-- **Plano Pro renomeado para "Plus":** R$ 119/mes (era Pro R$ 97/mes)
-- **Plano Enterprise renomeado para "Pro":** R$ 249/mes com features avancadas
-- Badge "Mais Popular" fica no plano Plus
-
-Recomendacao: Manter 3 planos (Gratuito, Plus R$ 119, Pro R$ 249) em vez de incluir Enterprise a R$ 497. Tres opcoes claras com progressao de valor sao mais eficazes para conversao neste estagio do lancamento. O Enterprise pode ser adicionado futuramente quando houver demanda.
-
-### 4.7 CTA Final (linhas 619-623)
-- **Alterar link** de `/auth/signup` para `https://app.focusinteligente.com.br/auth`
-- Manter como link externo com `target="_blank"`
-
-### 4.8 FAQ — Atualizar precos
-- Ajustar resposta da pergunta "Quanto custa?" para refletir novos valores (Plus R$ 119, Pro R$ 249)
+- Manter o item "Biblioteca" no menu mas ajustar para apontar para a secao de templates no Dashboard (scroll ou rota separada)
+- Como nao ha pagina `/dashboard/biblioteca` separada, a Biblioteca sera renderizada diretamente no Dashboard. O link da sidebar apontara para `/dashboard` com scroll automatico ate a secao de templates (via anchor `#templates`)
 
 ---
 
-## 5. Rodape (Footer.tsx)
+## 4. Suporte (Support.tsx) -- Reformulacao Completa
 
-- **Remover** o item WhatsApp (linhas 57-66) da coluna de Contato
-- Manter apenas "Atendimento Online -- Brasil" e o email
+### Remover
+- Card de WhatsApp inteiro
+
+### Substituir por Formulario de Contato
+- Campos obrigatorios: **Nome**, **Email**, **Mensagem**
+- Validacao com zod
+- Ao enviar, grava na tabela `support_tickets` no banco
+- Mensagem de sucesso apos envio
+- Manter a secao de FAQ abaixo
+
+### Criar tabela `support_tickets`
+```sql
+CREATE TABLE public.support_tickets (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  user_id UUID REFERENCES public.profiles(id),
+  name TEXT NOT NULL,
+  email TEXT NOT NULL,
+  message TEXT NOT NULL,
+  status TEXT DEFAULT 'open',
+  created_at TIMESTAMPTZ DEFAULT now()
+);
+
+ALTER TABLE public.support_tickets ENABLE ROW LEVEL SECURITY;
+
+-- Usuarios autenticados podem criar tickets
+CREATE POLICY "Users can create tickets"
+  ON public.support_tickets FOR INSERT
+  TO authenticated
+  WITH CHECK (auth.uid() = user_id);
+
+-- Usuarios podem ver seus proprios tickets
+CREATE POLICY "Users can view own tickets"
+  ON public.support_tickets FOR SELECT
+  TO authenticated
+  USING (auth.uid() = user_id);
+```
+
+---
+
+## 5. Botao WhatsApp -- Abrir Chat IA
+
+### Mudanca no App.tsx
+- Na area do dashboard (`isDashboard === true`), substituir o `WhatsAppButton` pelo botao que abre um modal/drawer com o componente `AIChatBot` ja existente
+- Manter o visual do botao flutuante (circulo verde no canto inferior direito) mas com icone de chat/bot
+- Ao clicar, abre um drawer/modal com o `AIChatBot`
+- Fora do dashboard, manter o WhatsApp normal
+
+### Novo componente: `DashboardChatButton.tsx`
+- Botao flutuante (mesmo estilo do WhatsApp: canto inferior direito)
+- Icone: `MessageCircle` ou `Bot` (lucide)
+- Ao clicar, abre um Sheet/Drawer lateral com o `AIChatBot` dentro
+- Fechar com X ou clicando fora
+
+---
+
+## 6. Layout Full-Width
+
+### DashboardLayout.tsx
+- Remover qualquer `max-w-*` do container principal -- o layout ja usa `flex-1`
+
+### Dashboard.tsx
+- Remover `max-w-6xl` do container `<div className="p-6 lg:p-8 max-w-6xl space-y-8">` para ocupar 100% da largura disponivel
+
+### Support.tsx
+- Remover `max-w-3xl` para ocupar largura completa
 
 ---
 
 ## Detalhes Tecnicos
 
-### Arquivos de imagem a copiar:
-- `user-uploads://image-76.png` para `src/assets/hub-logo.png` (logo do Hub)
-- `user-uploads://image-77.png` para `src/assets/hub-dashboard-mockup.png` (screenshot do dashboard)
+### Arquivos a criar:
+| Arquivo | Descricao |
+|---|---|
+| `src/components/dashboard/DashboardChatButton.tsx` | Botao flutuante + drawer com AIChatBot |
+| `src/components/dashboard/TemplateCard.tsx` | Card Netflix para templates |
 
 ### Arquivos a modificar:
-
 | Arquivo | Mudancas |
 |---|---|
-| `src/pages/Index.tsx` | Barra escassez (texto), Hero CTAs, card Focus Custom (remover preco/30 dias), card Hub (SaaS), CTA final |
-| `src/components/ApplicationFormModal.tsx` | Redesign visual glassmorphism, icones por step, inputs maiores |
-| `src/pages/SolucoesSobMedida.tsx` | Barra escassez (texto), secao preco (remover valor, incentivar formulario) |
-| `src/pages/HubEmpresarial.tsx` | Logo Hub, numeros reduzidos, link externo CTA, mockup real, pricing atualizado |
-| `src/components/Footer.tsx` | Remover WhatsApp |
+| `src/pages/dashboard/Dashboard.tsx` | Remover libraryResources, redesenhar templates com cards Netflix, remover max-w-6xl |
+| `src/components/dashboard/DashboardSidebar.tsx` | Trocar icone FolderKanban por Briefcase, ajustar link Biblioteca |
+| `src/pages/dashboard/Support.tsx` | Remover WhatsApp, adicionar formulario com nome/email/mensagem, gravar no banco |
+| `src/App.tsx` | Renderizar DashboardChatButton em vez de WhatsAppButton quando na area do dashboard |
+| `src/components/dashboard/DashboardLayout.tsx` | Garantir full-width (sem alteracao necessaria, ja esta correto) |
 
-### Nenhum arquivo novo sera criado (apenas imagens copiadas para assets).
+### Migracao de banco:
+- Criar tabela `support_tickets` com RLS (usuarios criam e veem seus proprios tickets)
 
+### Nenhuma dependencia nova necessaria.
