@@ -25,14 +25,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://pqhpxqccsrgbdmsknppj.supabase.co" crossorigin>
     <link rel="dns-prefetch" href="https://www.googletagmanager.com">
-    <!-- dns-prefetch for AdSense removed -->
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
     
     <!-- Preload critical assets -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
     <link rel="preload" href="/lovable-uploads/focus-logo.png" as="image" type="image/png">
     
-    <link rel="icon" href="/favicon.png" type="image/png" />
-    <meta property="og:title" content="Focus - Gestão Empresarial, Produtividade e Sistemas Notion Personalizados">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+  
+  
+  
+  <meta property="og:title" content="Focus - Gestão Empresarial, Produtividade e Sistemas Notion Personalizados">
   <meta name="twitter:title" content="Focus - Gestão Empresarial, Produtividade e Sistemas Notion Personalizados">
   <meta property="og:description" content="Transforme processos, aumente eficiência e impulsione resultados.">
   <meta name="twitter:description" content="Transforme processos, aumente eficiência e impulsione resultados.">
@@ -65,6 +69,17 @@
       }
     </script>
     
-    <!-- AdSense removed for performance optimization -->
+    <!-- Google AdSense - Lazy loaded after 3 seconds -->
+    <script>
+      if (typeof window !== 'undefined') {
+        setTimeout(function() {
+          var adsenseScript = document.createElement('script');
+          adsenseScript.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2115254259011779';
+          adsenseScript.async = true;
+          adsenseScript.crossOrigin = 'anonymous';
+          document.head.appendChild(adsenseScript);
+        }, 3000);
+      }
+    </script>
   </body>
 </html>
