@@ -1,14 +1,12 @@
 import { useState } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Progress } from "@/components/ui/progress";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { trackEvent } from "@/lib/analytics";
 import { z } from "zod";
-import { ArrowRight, ArrowLeft, CheckCircle, Loader2 } from "lucide-react";
+import { ArrowRight, ArrowLeft, CheckCircle, Loader2, User, Phone, Mail, Wallet } from "lucide-react";
 
 const formSchema = z.object({
   full_name: z.string().trim().min(2, "Nome deve ter pelo menos 2 caracteres").max(100),
@@ -31,6 +29,13 @@ const investmentOptions = [
   "Quero entender primeiro",
 ];
 
+const stepConfig = [
+  { icon: User, title: "Vamos começar!", subtitle: "Como podemos te chamar?", placeholder: "Seu nome completo" },
+  { icon: Phone, title: "Como falar com você?", subtitle: "Seu WhatsApp com DDD", placeholder: "(11) 99999-9999" },
+  { icon: Mail, title: "Qual seu email?", subtitle: "Para enviarmos a proposta", placeholder: "seu@email.com" },
+  { icon: Wallet, title: "Faixa de investimento?", subtitle: "Isso nos ajuda a personalizar sua proposta", placeholder: "" },
+];
+
 export default function ApplicationFormModal({ open, onOpenChange, source = "direct" }: ApplicationFormModalProps) {
   const [step, setStep] = useState(0);
   const [loading, setLoading] = useState(false);
@@ -44,6 +49,7 @@ export default function ApplicationFormModal({ open, onOpenChange, source = "dir
 
   const totalSteps = 4;
   const progress = ((step + 1) / totalSteps) * 100;
+  const CurrentIcon = stepConfig[step].icon;
 
   const handleNext = () => {
     if (step < totalSteps - 1) setStep(step + 1);
@@ -121,13 +127,13 @@ export default function ApplicationFormModal({ open, onOpenChange, source = "dir
   if (success) {
     return (
       <Dialog open={open} onOpenChange={handleClose}>
-        <DialogContent className="sm:max-w-md bg-background-elevated border-card-border">
-          <div className="text-center py-8">
-            <div className="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-4">
-              <CheckCircle className="w-8 h-8 text-green-400" />
+        <DialogContent className="sm:max-w-md bg-card/80 backdrop-blur-xl border-card-border/30 shadow-2xl">
+          <div className="text-center py-8 animate-fade-in">
+            <div className="w-20 h-20 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-6 shadow-[0_0_40px_rgba(34,197,94,0.2)]">
+              <CheckCircle className="w-10 h-10 text-green-400" />
             </div>
-            <h3 className="text-xl font-bold text-foreground mb-2">Aplicação Enviada!</h3>
-            <p className="text-foreground-muted mb-6">
+            <h3 className="text-2xl font-bold text-foreground mb-2">Aplicação Enviada!</h3>
+            <p className="text-foreground-muted mb-8">
               Nossa equipe vai analisar seu projeto e entrar em contato em até 24h pelo WhatsApp.
             </p>
             <div className="flex flex-col gap-3">
@@ -152,98 +158,110 @@ export default function ApplicationFormModal({ open, onOpenChange, source = "dir
 
   return (
     <Dialog open={open} onOpenChange={handleClose}>
-      <DialogContent className="sm:max-w-md bg-background-elevated border-card-border">
-        <DialogHeader>
-          <DialogTitle className="text-foreground">Aplicar para Consultoria</DialogTitle>
-        </DialogHeader>
+      <DialogContent className="sm:max-w-md bg-card/80 backdrop-blur-xl border-card-border/30 shadow-2xl p-0 overflow-hidden">
+        {/* Progress bar */}
+        <div className="h-1 bg-card-border/20">
+          <div
+            className="h-full bg-gradient-to-r from-primary to-primary-glow transition-all duration-500 ease-out"
+            style={{ width: `${progress}%` }}
+          />
+        </div>
 
-        <Progress value={progress} className="h-1 mb-6" />
-
-        <div className="min-h-[160px]" onKeyDown={handleKeyDown}>
-          {step === 0 && (
-            <div className="space-y-4">
-              <Label className="text-foreground-muted">Qual é o seu nome?</Label>
-              <Input
-                autoFocus
-                placeholder="Seu nome completo"
-                value={formData.full_name}
-                onChange={(e) => setFormData({ ...formData, full_name: e.target.value })}
-                maxLength={100}
-                className="bg-background border-card-border text-foreground"
-              />
+        <div className="px-6 pt-6 pb-8">
+          {/* Step icon + titles */}
+          <div className="text-center mb-8">
+            <div className="w-14 h-14 rounded-2xl bg-primary/15 flex items-center justify-center mx-auto mb-4 shadow-[0_0_30px_rgba(59,130,246,0.15)]">
+              <CurrentIcon className="w-7 h-7 text-primary" />
             </div>
-          )}
+            <h3 className="text-xl font-bold text-foreground mb-1">{stepConfig[step].title}</h3>
+            <p className="text-foreground-muted text-sm">{stepConfig[step].subtitle}</p>
+          </div>
 
-          {step === 1 && (
-            <div className="space-y-4">
-              <Label className="text-foreground-muted">Seu WhatsApp (com DDD)</Label>
-              <Input
-                autoFocus
-                placeholder="(11) 99999-9999"
-                value={formData.phone}
-                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                maxLength={20}
-                className="bg-background border-card-border text-foreground"
-              />
-            </div>
-          )}
+          {/* Step content */}
+          <div className="min-h-[140px] animate-fade-in" key={step} onKeyDown={handleKeyDown}>
+            {step === 0 && (
+              <div className="relative">
+                <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-foreground-muted" />
+                <Input
+                  autoFocus
+                  placeholder={stepConfig[0].placeholder}
+                  value={formData.full_name}
+                  onChange={(e) => setFormData({ ...formData, full_name: e.target.value })}
+                  maxLength={100}
+                  className="pl-12 py-4 text-base rounded-2xl bg-background border-card-border/30 text-foreground focus:border-primary/50 focus:ring-primary/20"
+                />
+              </div>
+            )}
 
-          {step === 2 && (
-            <div className="space-y-4">
-              <Label className="text-foreground-muted">Seu melhor e-mail</Label>
-              <Input
-                autoFocus
-                type="email"
-                placeholder="seu@email.com"
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                maxLength={255}
-                className="bg-background border-card-border text-foreground"
-              />
-            </div>
-          )}
+            {step === 1 && (
+              <div className="relative">
+                <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-foreground-muted" />
+                <Input
+                  autoFocus
+                  placeholder={stepConfig[1].placeholder}
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  maxLength={20}
+                  className="pl-12 py-4 text-base rounded-2xl bg-background border-card-border/30 text-foreground focus:border-primary/50 focus:ring-primary/20"
+                />
+              </div>
+            )}
 
-          {step === 3 && (
-            <div className="space-y-3">
-              <Label className="text-foreground-muted">Faixa de investimento pretendida</Label>
-              <div className="space-y-2">
+            {step === 2 && (
+              <div className="relative">
+                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-foreground-muted" />
+                <Input
+                  autoFocus
+                  type="email"
+                  placeholder={stepConfig[2].placeholder}
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  maxLength={255}
+                  className="pl-12 py-4 text-base rounded-2xl bg-background border-card-border/30 text-foreground focus:border-primary/50 focus:ring-primary/20"
+                />
+              </div>
+            )}
+
+            {step === 3 && (
+              <div className="space-y-2.5">
                 {investmentOptions.map((option) => (
                   <button
                     key={option}
                     onClick={() => setFormData({ ...formData, investment_range: option })}
-                    className={`w-full text-left px-4 py-3 rounded-xl border transition-all text-sm ${
+                    className={`w-full text-left px-5 py-3.5 rounded-2xl border transition-all text-sm font-medium hover:scale-[1.01] ${
                       formData.investment_range === option
-                        ? "border-primary bg-primary/10 text-foreground"
-                        : "border-card-border bg-background text-foreground-muted hover:border-primary/30"
+                        ? "border-primary/50 bg-primary/10 text-foreground shadow-[0_0_20px_rgba(59,130,246,0.1)]"
+                        : "border-card-border/30 bg-background text-foreground-muted hover:border-primary/20"
                     }`}
                   >
                     {option}
                   </button>
                 ))}
               </div>
-            </div>
-          )}
-        </div>
+            )}
+          </div>
 
-        <div className="flex justify-between mt-4">
-          {step > 0 ? (
-            <Button variant="ghost" onClick={handleBack} className="text-foreground-muted">
-              <ArrowLeft className="w-4 h-4 mr-1" /> Voltar
-            </Button>
-          ) : (
-            <div />
-          )}
+          {/* Navigation */}
+          <div className="flex justify-between mt-6">
+            {step > 0 ? (
+              <Button variant="ghost" onClick={handleBack} className="text-foreground-muted">
+                <ArrowLeft className="w-4 h-4 mr-1" /> Voltar
+              </Button>
+            ) : (
+              <div />
+            )}
 
-          {step < totalSteps - 1 ? (
-            <Button onClick={handleNext} disabled={!isStepValid()} className="btn-hero">
-              Continuar <ArrowRight className="w-4 h-4 ml-1" />
-            </Button>
-          ) : (
-            <Button onClick={handleSubmit} disabled={!isStepValid() || loading} className="btn-hero">
-              {loading ? <Loader2 className="w-4 h-4 animate-spin mr-1" /> : null}
-              {loading ? "Enviando..." : "Enviar Aplicação"}
-            </Button>
-          )}
+            {step < totalSteps - 1 ? (
+              <Button onClick={handleNext} disabled={!isStepValid()} className="btn-hero">
+                Continuar <ArrowRight className="w-4 h-4 ml-1" />
+              </Button>
+            ) : (
+              <Button onClick={handleSubmit} disabled={!isStepValid() || loading} className="btn-hero">
+                {loading ? <Loader2 className="w-4 h-4 animate-spin mr-1" /> : null}
+                {loading ? "Enviando..." : "Enviar Aplicação"}
+              </Button>
+            )}
+          </div>
         </div>
       </DialogContent>
     </Dialog>

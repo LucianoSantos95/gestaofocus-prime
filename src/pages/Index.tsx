@@ -69,7 +69,7 @@ const Index = () => {
       <div className="bg-primary/10 border-b border-primary/20 py-2.5 text-center">
         <p className="text-sm font-medium text-primary">
           <AlertTriangle className="w-4 h-4 inline mr-1.5 -mt-0.5" />
-          AGENDA MARÇO/2026: Restam apenas <span className="font-bold">2 vagas</span> para Projetos de Alta Complexidade.
+          AGENDA MARÇO/2026: Restam apenas <span className="font-bold">2 vagas</span> para Projetos Sob Medida.
         </p>
       </div>
 
@@ -95,23 +95,25 @@ const Index = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
               <Button
                 className="btn-hero group"
-                onClick={() => {
-                  handleCTAClick("hero_aplicar_consultoria", "/solucoes-sob-medida");
-                  setIsApplicationOpen(true);
-                }}
+                asChild
               >
-                Aplicar para Consultoria
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                <Link
+                  to="/solucoes-sob-medida"
+                  onClick={() => handleCTAClick("hero_solucoes_sob_medida", "/solucoes-sob-medida")}
+                >
+                  Conhecer Soluções Sob Medida
+                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Link>
               </Button>
               <Button
                 className="btn-secondary group"
                 asChild
               >
                 <Link
-                  to="/solucoes-sob-medida"
-                  onClick={() => handleCTAClick("hero_ver_solucoes", "/solucoes-sob-medida")}
+                  to="/hub-empresarial"
+                  onClick={() => handleCTAClick("hero_hub_empresarial", "/hub-empresarial")}
                 >
-                  Conhecer Soluções Sob Medida
+                  Conheça o Hub Empresarial
                   <ChevronRight className="w-5 h-5 ml-1" />
                 </Link>
               </Button>
@@ -207,7 +209,6 @@ const Index = () => {
                   "Dashboard exclusivo com seus KPIs",
                   "CRM personalizado para seu processo",
                   "Portal do cliente com sua marca",
-                  "Entrega em até 30 dias",
                   "Suporte dedicado pós-entrega",
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-2 text-foreground-muted text-sm">
@@ -217,8 +218,7 @@ const Index = () => {
                 ))}
               </ul>
               <p className="text-foreground-muted text-sm mb-4">
-                A partir de <span className="text-foreground font-bold text-lg">R$ 4.000</span>{" "}
-                <span className="text-foreground-muted">(pagamento único)</span>
+                Projeto sob medida com escopo personalizado. Solicite um diagnóstico gratuito.
               </p>
               <Button
                 className="btn-hero w-full group"
@@ -242,15 +242,15 @@ const Index = () => {
                   <LayoutDashboard className="w-7 h-7 text-emerald-400" />
                 </div>
               </div>
-              <h3 className="text-2xl font-bold text-foreground mb-3">Hub Empresarial PRO</h3>
-              <p className="text-emerald-400 text-sm font-medium mb-4">Sistema pronto em Notion</p>
+              <h3 className="text-2xl font-bold text-foreground mb-3">Hub Empresarial</h3>
+              <p className="text-emerald-400 text-sm font-medium mb-4">Plataforma de Gestão para PMEs</p>
               <ul className="space-y-3 mb-8">
                 {[
-                  "CRM completo com funil de vendas",
-                  "Controle financeiro integrado",
-                  "Gestão de projetos com Kanban",
-                  "Processos e SOPs documentados",
-                  "Dashboards prontos para usar",
+                  "Financeiro completo",
+                  "Recursos Humanos",
+                  "Marketing",
+                  "Gestão de Projetos",
+                  "Dashboards e relatórios",
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-2 text-foreground-muted text-sm">
                     <CheckCircle className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
@@ -259,22 +259,20 @@ const Index = () => {
                 ))}
               </ul>
               <p className="text-foreground-muted text-sm mb-4">
-                Por apenas <span className="text-foreground font-bold text-lg">R$ 349</span>{" "}
-                <span className="text-foreground-muted">(acesso vitalício)</span>
+                A partir de <span className="text-foreground font-bold text-lg">R$ 119</span>{" "}
+                <span className="text-foreground-muted">/mês</span>
               </p>
               <Button
                 className="btn-secondary w-full group"
                 asChild
               >
-                <a
-                  href="https://pay.hotmart.com/hub-empresarial"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => handleCTAClick("card_hub_empresarial", "hotmart")}
+                <Link
+                  to="/hub-empresarial"
+                  onClick={() => handleCTAClick("card_hub_empresarial", "/hub-empresarial")}
                 >
-                  Acessar Hub Empresarial
+                  Conhecer Hub Empresarial
                   <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                </a>
+                </Link>
               </Button>
             </Card>
           </div>
@@ -399,27 +397,26 @@ const Index = () => {
                 Abrimos apenas <span className="text-primary font-semibold">3 vagas por mês</span> para projetos sob medida. Garanta a sua antes que feche.
               </p>
               <p className="text-foreground-muted text-sm mb-8">
-                Ou comece agora com o Hub Empresarial PRO — acesso imediato, sem fila.
+                Ou comece agora com o Hub Empresarial — acesso imediato, sem fila.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
                   className="btn-hero group text-base"
-                  onClick={() => {
-                    handleCTAClick("cta_final_aplicar", "/solucoes-sob-medida");
-                    setIsApplicationOpen(true);
-                  }}
+                  asChild
                 >
-                  <Sparkles className="w-5 h-5 mr-2" />
-                  Preencher Aplicação
-                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                  <Link to="/solucoes-sob-medida" onClick={() => handleCTAClick("cta_final_solucoes", "/solucoes-sob-medida")}>
+                    <Sparkles className="w-5 h-5 mr-2" />
+                    Conhecer Soluções Sob Medida
+                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                  </Link>
                 </Button>
                 <Button
                   className="btn-secondary group text-base"
                   asChild
                 >
-                  <Link to="/solucoes-sob-medida" onClick={() => handleCTAClick("cta_final_solucoes", "/solucoes-sob-medida")}>
-                    Ver Soluções Sob Medida
+                  <Link to="/hub-empresarial" onClick={() => handleCTAClick("cta_final_hub", "/hub-empresarial")}>
+                    Conhecer Hub Empresarial
                   </Link>
                 </Button>
               </div>

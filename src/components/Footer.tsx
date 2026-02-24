@@ -54,16 +54,6 @@ const Footer = () => {
                   contato@focusinteligente.com.br
                 </a>
               </li>
-              <li>
-                <a
-                  href="https://wa.me/5511916742443"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-primary transition-colors"
-                >
-                  WhatsApp
-                </a>
-              </li>
             </ul>
           </div>
         </div>
