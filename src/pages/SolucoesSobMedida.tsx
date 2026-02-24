@@ -47,7 +47,7 @@ const SolucoesSobMedida = () => {
         <div className="container-focus py-2 text-center">
           <p className="text-sm font-medium text-red-100">
             <span className="inline-block w-2 h-2 rounded-full bg-red-400 animate-pulse mr-2" />
-            AGENDA MARÇO/2026: Restam apenas <strong>2 vagas</strong> para Projetos de Alta Complexidade.
+            AGENDA MARÇO/2026: Restam apenas <strong>2 vagas</strong> para Projetos Sob Medida.
           </p>
         </div>
       </div>
@@ -242,28 +242,15 @@ const SolucoesSobMedida = () => {
             Quanto custa ter paz mental na gestão?
           </h2>
 
-          <div className="space-y-4 mb-8">
-            <p className="text-foreground-muted">
-              Contratar um programador sênior custaria <span className="text-foreground font-semibold line-through">R$ 15.000/mês</span>.
-            </p>
-            <p className="text-foreground-muted">
-              Assinar 5 softwares diferentes custaria <span className="text-foreground font-semibold line-through">R$ 2.000/mês para sempre</span>.
-            </p>
-            <p className="text-foreground-muted">
-              Na Focus Custom, você investe <strong className="text-foreground">uma única vez</strong> no desenvolvimento do <strong className="text-foreground">SEU ativo</strong>.
-            </p>
-          </div>
+          <p className="text-foreground-muted text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
+            Cada projeto é único. O valor depende do escopo e da complexidade.
+            Preencha a aplicação para receber uma proposta personalizada.
+          </p>
 
-          <Card className="inline-block p-8 bg-primary/5 border-primary/20 shadow-glow">
-            <DollarSign className="w-8 h-8 text-primary mx-auto mb-3" />
-            <p className="text-2xl lg:text-3xl font-bold text-foreground mb-2">
-              A partir de R$ 4.000
-            </p>
-            <p className="text-primary font-medium">(Pagamento Único)</p>
-            <p className="text-foreground-muted text-sm mt-3">
-              *Parcelamento disponível para empresas (CNPJ).
-            </p>
-          </Card>
+          <Button onClick={() => setFormOpen(true)} className="btn-hero text-lg px-10 py-5 animate-glow">
+            Solicitar Proposta
+            <ArrowRight className="w-5 h-5 ml-2" />
+          </Button>
         </div>
       </section>
 

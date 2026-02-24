@@ -39,6 +39,8 @@ import {
   CircleDot,
 } from "lucide-react";
 import { trackCTAClick } from "@/lib/analytics";
+import hubLogo from "@/assets/hub-logo.png";
+import hubDashboardMockup from "@/assets/hub-dashboard-mockup.png";
 
 /* ─── Marquee animation via inline style (3 rows, infinite scroll) ─── */
 const marqueeStyle = (duration: number, reverse = false): React.CSSProperties => ({
@@ -184,26 +186,26 @@ const HubEmpresarial = () => {
       highlighted: false,
     },
     {
-      name: "Pro",
-      price: "R$ 97",
+      name: "Plus",
+      price: "R$ 119",
       period: "/mês",
       features: ["Usuários ilimitados", "Todos os 7 módulos", "Dashboards avançados", "Automações", "Suporte prioritário", "Integrações"],
       cta: "Começar Agora",
       highlighted: true,
     },
     {
-      name: "Enterprise",
-      price: "Sob consulta",
-      period: "",
-      features: ["Tudo do Pro", "API dedicada", "Customização completa", "Suporte dedicado", "SLA garantido", "Onboarding assistido"],
-      cta: "Fale Conosco",
+      name: "Pro",
+      price: "R$ 249",
+      period: "/mês",
+      features: ["Tudo do Plus", "API dedicada", "Customização completa", "Suporte dedicado", "SLA garantido", "Onboarding assistido"],
+      cta: "Começar Agora",
       highlighted: false,
     },
   ];
 
   const faqs = [
     { q: "🤔 O que é o Hub Empresarial?", a: "É uma plataforma SaaS completa de gestão para pequenas e médias empresas. Centraliza CRM, financeiro, projetos, RH e dashboards em um único lugar — sem planilhas, sem caos." },
-    { q: "💰 Quanto custa?", a: "Temos um plano gratuito para você começar. O plano Pro custa R$ 97/mês e inclui todos os módulos, usuários ilimitados e suporte prioritário. Para grandes empresas, temos planos Enterprise sob consulta." },
+    { q: "💰 Quanto custa?", a: "Temos um plano gratuito para você começar. O plano Plus custa R$ 119/mês e inclui todos os módulos, usuários ilimitados e suporte prioritário. O plano Pro custa R$ 249/mês com API dedicada, customização completa e suporte dedicado." },
     { q: "🆓 Posso testar grátis?", a: "Sim! O plano gratuito é para sempre — sem prazo, sem cartão de crédito. Você pode usar os módulos básicos quanto tempo quiser e fazer upgrade quando fizer sentido." },
     { q: "🔒 Meus dados estão seguros?", a: "Absolutamente. Utilizamos criptografia AES-256, backups automáticos diários e infraestrutura segura. Seus dados são seus — nunca compartilhamos com terceiros." },
     { q: "📱 Funciona no celular?", a: "Sim! A plataforma é totalmente responsiva e funciona perfeitamente em qualquer dispositivo — desktop, tablet ou celular." },
@@ -239,9 +241,7 @@ const HubEmpresarial = () => {
         <div className="container-focus relative z-10 text-center max-w-4xl mx-auto">
           {/* Logo + name */}
           <div className="flex items-center justify-center gap-3 mb-8">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-primary-glow flex items-center justify-center">
-              <LayoutDashboard className="w-5 h-5 text-white" />
-            </div>
+            <img src={hubLogo} alt="Hub Empresarial" className="w-10 h-10 rounded-xl" />
             <span className="text-xl font-bold text-foreground">Hub Empresarial</span>
           </div>
 
@@ -266,7 +266,7 @@ const HubEmpresarial = () => {
               ))}
             </div>
             <div>
-              <span className="text-sm font-bold text-foreground">2.847+</span>
+              <span className="text-sm font-bold text-foreground">127+</span>
               <span className="text-xs text-foreground-muted ml-1">empresas ativas</span>
             </div>
           </div>
@@ -277,12 +277,12 @@ const HubEmpresarial = () => {
             Para você focar no que importa: <span className="text-primary font-medium">crescer.</span>
           </p>
 
-          <Link to="/auth/signup" onClick={() => handleCTA("Comece Gratuitamente - Hero")}>
+          <a href="https://app.focusinteligente.com.br/auth" target="_blank" rel="noopener noreferrer" onClick={() => handleCTA("Comece Gratuitamente - Hero")}>
             <Button className="btn-hero text-lg px-10 py-5 animate-glow">
               Comece Gratuitamente
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
-          </Link>
+          </a>
 
           {/* Scroll dot */}
           <div className="mt-16 flex justify-center">
@@ -309,103 +309,13 @@ const HubEmpresarial = () => {
               </div>
             </div>
 
-            {/* App UI */}
-            <div className="flex min-h-[400px]">
-              {/* Sidebar */}
-              <div className="w-56 border-r border-card-border/20 bg-card/40 p-4 hidden md:block">
-                <div className="flex items-center gap-2 mb-1">
-                  <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-primary to-primary-glow flex items-center justify-center">
-                    <LayoutDashboard className="w-3.5 h-3.5 text-white" />
-                  </div>
-                  <span className="text-sm font-bold text-foreground">Hub Empresarial</span>
-                </div>
-                <div className="text-[10px] text-foreground-muted mb-4 ml-9">v2.0</div>
-                <Badge className="mb-5 text-[10px] bg-primary/20 text-primary border-primary/30 ml-1">⭐ Premium</Badge>
-
-                <nav className="space-y-1">
-                  {[
-                    { icon: LayoutDashboard, label: "Painel", active: true },
-                    { icon: Target, label: "CRM & Vendas", active: false },
-                    { icon: DollarSign, label: "Financeiro", active: false },
-                    { icon: FolderKanban, label: "Projetos", active: false },
-                    { icon: Calendar, label: "Marketing", active: false },
-                    { icon: Users, label: "RH & Pessoas", active: false },
-                    { icon: Settings, label: "Configurações", active: false },
-                  ].map((item) => (
-                    <div key={item.label} className={`flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm transition-colors ${item.active ? "bg-primary/10 text-primary" : "text-foreground-muted hover:text-foreground"}`}>
-                      <item.icon className="w-4 h-4" />
-                      <span>{item.label}</span>
-                    </div>
-                  ))}
-                </nav>
-              </div>
-
-              {/* Main content */}
-              <div className="flex-1 p-6">
-                <div className="mb-6">
-                  <h3 className="text-lg font-bold text-primary mb-1">Bem-vindo de volta, Empresário</h3>
-                  <p className="text-sm text-foreground-muted">O que você gostaria de fazer hoje?</p>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {/* Card 1 */}
-                  <div className="rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/20 p-5">
-                    <h4 className="text-sm font-bold text-foreground mb-1">Visão Geral</h4>
-                    <p className="text-xs text-foreground-muted mb-3">Receita, despesas e lucro do mês</p>
-                    <div className="flex items-end gap-1 h-12 mb-2">
-                      {[30, 50, 40, 70, 55, 85, 65, 90, 75, 95, 80, 88].map((h, i) => (
-                        <div key={i} className="flex-1 rounded-sm bg-gradient-to-t from-primary/30 to-primary/80" style={{ height: `${h}%` }} />
-                      ))}
-                    </div>
-                    <div className="flex justify-between text-[10px] text-foreground-muted">
-                      <span>Jan</span><span>Jun</span><span>Dez</span>
-                    </div>
-                  </div>
-
-                  {/* Card 2 */}
-                  <div className="rounded-xl bg-card/50 border border-card-border/20 p-5">
-                    <h4 className="text-sm font-bold text-foreground mb-1">Pipeline de Vendas</h4>
-                    <p className="text-xs text-foreground-muted mb-3">12 negociações abertas</p>
-                    <div className="space-y-2">
-                      {[
-                        { label: "Prospecção", w: "80%", count: 5 },
-                        { label: "Proposta", w: "55%", count: 4 },
-                        { label: "Fechamento", w: "30%", count: 3 },
-                      ].map((stage) => (
-                        <div key={stage.label}>
-                          <div className="flex justify-between text-[10px] text-foreground-muted mb-0.5">
-                            <span>{stage.label}</span><span>{stage.count}</span>
-                          </div>
-                          <div className="h-1.5 rounded-full bg-primary/10 overflow-hidden">
-                            <div className="h-full rounded-full bg-primary/60" style={{ width: stage.w }} />
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Card 3 */}
-                  <div className="rounded-xl bg-card/50 border border-card-border/20 p-5 sm:col-span-2">
-                    <h4 className="text-sm font-bold text-foreground mb-3">Tarefas do Dia</h4>
-                    <div className="space-y-2">
-                      {[
-                        { task: "Enviar proposta para cliente Alpha", done: true },
-                        { task: "Reunião de alinhamento — Projeto Beta", done: true },
-                        { task: "Revisar fluxo de caixa semanal", done: false },
-                        { task: "Entrevistar candidato para vaga de dev", done: false },
-                      ].map((t, i) => (
-                        <div key={i} className="flex items-center gap-2 text-xs">
-                          <div className={`w-4 h-4 rounded border flex items-center justify-center ${t.done ? "bg-primary/20 border-primary/40" : "border-card-border/40"}`}>
-                            {t.done && <CheckCircle className="w-3 h-3 text-primary" />}
-                          </div>
-                          <span className={t.done ? "text-foreground-muted line-through" : "text-foreground"}>{t.task}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {/* Dashboard screenshot */}
+            <img
+              src={hubDashboardMockup}
+              alt="Dashboard do Hub Empresarial - Gestão completa para PMEs"
+              className="w-full h-auto object-cover"
+              loading="eager"
+            />
           </div>
         </div>
       </section>
@@ -452,7 +362,7 @@ const HubEmpresarial = () => {
             Prova Social
           </Badge>
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-3">
-            +2.000 Empresas Já Confiam no Hub
+            +100 Empresas Já Confiam no Hub
           </h2>
           <p className="text-foreground-muted">Veja o que estão dizendo sobre a plataforma</p>
         </div>
@@ -562,15 +472,17 @@ const HubEmpresarial = () => {
                     </li>
                   ))}
                 </ul>
-                <Link
-                  to={plan.name === "Enterprise" ? "/solucoes-sob-medida" : "/auth/signup"}
+                <a
+                  href={plan.name === "Gratuito" ? "https://app.focusinteligente.com.br/auth" : "https://app.focusinteligente.com.br/auth"}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={() => handleCTA(`${plan.cta} - Pricing`)}
                 >
                   <Button className={`w-full ${plan.highlighted ? "btn-hero animate-glow" : "btn-secondary"}`}>
                     {plan.cta}
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
-                </Link>
+                </a>
               </Card>
             ))}
           </div>
@@ -616,12 +528,12 @@ const HubEmpresarial = () => {
             Junte-se a milhares de empresários que já simplificaram seus negócios
           </p>
 
-          <Link to="/auth/signup" onClick={() => handleCTA("Comece Gratuitamente - CTA Final")}>
+          <a href="https://app.focusinteligente.com.br/auth" target="_blank" rel="noopener noreferrer" onClick={() => handleCTA("Comece Gratuitamente - CTA Final")}>
             <Button className="btn-hero text-xl px-12 py-6 animate-glow mb-12">
               Comece Gratuitamente
               <ArrowRight className="ml-2 h-6 w-6" />
             </Button>
-          </Link>
+          </a>
 
           <div className="grid sm:grid-cols-3 gap-4">
             {[
