@@ -24,6 +24,7 @@ import {
 import { trackEvent } from "@/lib/analytics";
 
 import hubEmpresarialPro from "@/assets/hub-empresarial-pro.png";
+import hubLogo from "@/assets/hub-logo.png";
 
 const blogArticles = [
   {
@@ -66,7 +67,7 @@ const Index = () => {
       {/* ===========================
           BARRA DE ESCASSEZ
       =========================== */}
-      <div className="bg-primary/10 border-b border-primary/20 py-2.5 text-center">
+      <div className="bg-primary/10 border-b border-primary/20 py-2.5 text-center pt-20">
         <p className="text-sm font-medium text-primary">
           <AlertTriangle className="w-4 h-4 inline mr-1.5 -mt-0.5" />
           AGENDA MARÇO/2026: Restam apenas <span className="font-bold">2 vagas</span> para Projetos Sob Medida.
@@ -238,8 +239,8 @@ const Index = () => {
                 ACESSO IMEDIATO
               </div>
               <div className="mb-6">
-                <div className="w-14 h-14 rounded-xl bg-emerald-500/15 flex items-center justify-center">
-                  <LayoutDashboard className="w-7 h-7 text-emerald-400" />
+                <div className="w-14 h-14 rounded-xl bg-emerald-500/15 flex items-center justify-center overflow-hidden">
+                  <img src={hubLogo} alt="Hub Empresarial" className="w-10 h-10 object-contain" />
                 </div>
               </div>
               <h3 className="text-2xl font-bold text-foreground mb-3">Hub Empresarial</h3>
