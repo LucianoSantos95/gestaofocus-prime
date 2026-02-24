@@ -1,45 +1,30 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import HubFocusPopup from "@/components/HubFocusPopup";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import SEOHead from "@/components/SEOHead";
+import ApplicationFormModal from "@/components/ApplicationFormModal";
 import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import { 
-  ArrowRight, 
-  Briefcase, 
-  Building2, 
-  Users, 
-  Download,
+  ArrowRight,
+  AlertTriangle,
   CheckCircle,
-  ChevronRight,
+  XCircle,
+  Code2,
+  LayoutDashboard,
   Sparkles,
-  Target,
   Clock,
-  Layers,
-  Zap,
-  BookOpen,
+  TrendingUp,
+  Shield,
+  Users,
+  ChevronRight,
+  Building2,
+  Briefcase,
   Star,
-  DollarSign,
-  Megaphone,
-  FolderKanban,
-  UserCheck,
-  ListChecks,
-  Settings,
-  LayoutGrid
 } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 
-// Importar imagens dos produtos
 import hubEmpresarialPro from "@/assets/hub-empresarial-pro.png";
-import controleFinanceiroPro from "@/assets/controle-financeiro-pro.png";
-import sprintProdutividade from "@/assets/sprint-produtividade.png";
 
-// Blog articles data (últimos 3 artigos)
 const blogArticles = [
   {
     title: "Produtividade não é fazer mais, é fazer o que importa",
@@ -55,24 +40,15 @@ const blogArticles = [
     title: "Como usar o Notion para ter clareza total nos seus projetos",
     description: "Um guia prático para organizar projetos no Notion de forma simples e eficiente.",
     slug: "clareza-projetos-notion",
-  }
-];
-
-// Templates gratuitos
-const freeTemplates = [
-  { name: "Controle Financeiro Básico", description: "Organize receitas e despesas de forma simples" },
-  { name: "Hub Empresarial Free", description: "Versão gratuita do sistema de gestão empresarial" },
-  { name: "Biblioteca Digital", description: "Organize livros, cursos e materiais de estudo" },
-  { name: "Easy Travel", description: "Planeje suas viagens com eficiência" },
-  { name: "Central Social Media", description: "Gerencie suas redes sociais em um só lugar" },
-  { name: "Hub Vida Pessoal", description: "Organize metas, hábitos e rotinas pessoais" },
-  { name: "Facilitador de Treino", description: "Acompanhe seus treinos e evolução física" },
+  },
 ];
 
 const Index = () => {
+  const [isApplicationOpen, setIsApplicationOpen] = useState(false);
+
   const handleCTAClick = (ctaName: string, destination: string) => {
-    trackEvent('cta_click', {
-      event_category: 'conversion',
+    trackEvent("cta_click", {
+      event_category: "conversion",
       event_label: ctaName,
     });
   };
@@ -80,461 +56,299 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title="Focus Gestão Empresarial"
-        description="Plataforma de gestão empresarial com IA. Organize finanças, projetos, clientes e equipe. Templates em Notion, sistemas prontos e o Hub Focus Beta gratuito."
+        title="Focus Gestão | Sistemas Sob Medida e Plataforma de Gestão"
+        description="Transforme suas planilhas em um software próprio. Desenvolvimento de sistemas exclusivos com vagas limitadas ou acesso imediato ao Hub Empresarial."
         canonical="/"
-        keywords="gestão empresarial, plataforma de gestão, software gestão empresarial, gestão online, hub focus, SaaS gestão, sistemas em Notion, Notion para empresas, produtividade empresarial, templates Notion grátis, automação com IA, gestão inteligente"
+        keywords="sistemas sob medida, software gestão empresarial, desenvolvimento software, hub empresarial, gestão inteligente, CRM, dashboard, automação empresarial"
         type="website"
       />
 
-      {/* =========================== */}
-      {/* SEÇÃO 1 — HERO (H1) */}
-      {/* =========================== */}
-      <section className="relative pt-28 pb-16 lg:pt-32 lg:pb-20 overflow-hidden">
+      {/* ===========================
+          BARRA DE ESCASSEZ
+      =========================== */}
+      <div className="bg-primary/10 border-b border-primary/20 py-2.5 text-center">
+        <p className="text-sm font-medium text-primary">
+          <AlertTriangle className="w-4 h-4 inline mr-1.5 -mt-0.5" />
+          AGENDA MARÇO/2026: Restam apenas <span className="font-bold">2 vagas</span> para Projetos de Alta Complexidade.
+        </p>
+      </div>
+
+      {/* ===========================
+          SEÇÃO 1 — HERO
+      =========================== */}
+      <section className="relative pt-24 pb-16 lg:pt-28 lg:pb-24 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-background-secondary" />
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-primary/8 rounded-full blur-[100px]" />
-        
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-primary/8 rounded-full blur-[120px]" />
+
         <div className="container-focus relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div className="animate-fade-in">
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-5">
-                Gestão empresarial inteligente com{" "}
-                <span className="bg-gradient-primary bg-clip-text text-transparent">
-                  IA
-                </span>
-              </h1>
-              <p className="text-base lg:text-lg text-foreground-muted mb-6 leading-relaxed max-w-xl">
-                Plataforma de gestão para pequenas empresas. Organize finanças, projetos e processos com mais produtividade — com templates em Notion e o Hub Focus.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-3 mb-5">
-                <Button 
-                  className="btn-hero group"
-                  asChild
+          <div className="max-w-4xl mx-auto text-center animate-fade-in">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-6">
+              Transforme suas planilhas em um{" "}
+              <span className="bg-gradient-primary bg-clip-text text-transparent">
+                software próprio
+              </span>
+            </h1>
+            <p className="text-base lg:text-lg text-foreground-muted mb-8 leading-relaxed max-w-2xl mx-auto">
+              Desenvolvimento de sistemas exclusivos para sua empresa — dashboards, CRM, portais — com entrega em até 30 dias. Ou acesse agora o Hub Empresarial, pronto para usar.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
+              <Button
+                className="btn-hero group"
+                onClick={() => {
+                  handleCTAClick("hero_aplicar_consultoria", "/solucoes-sob-medida");
+                  setIsApplicationOpen(true);
+                }}
+              >
+                Aplicar para Consultoria
+                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Button>
+              <Button
+                className="btn-secondary group"
+                asChild
+              >
+                <Link
+                  to="/solucoes-sob-medida"
+                  onClick={() => handleCTAClick("hero_ver_solucoes", "/solucoes-sob-medida")}
                 >
-                  <a 
-                    href="https://appfocus.lovable.app/" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    onClick={() => handleCTAClick('hero_comece_gratis', 'appfocus.lovable.app')}
-                  >
-                    Comece Grátis
-                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                  </a>
-                </Button>
-                <Button 
-                  className="btn-secondary group"
-                  onClick={() => {
-                    handleCTAClick('hero_templates_notion', '/sistemas-gratuitos');
-                    window.location.href = '/sistemas-gratuitos';
-                  }}
-                >
-                  <Download className="w-5 h-5 mr-2" />
-                  Ver templates em Notion
-                </Button>
-              </div>
-              
-              <div className="flex items-center gap-2 text-foreground-muted text-sm">
-                <Star className="w-4 h-4 text-primary fill-primary" />
-                <span>Criador destaque no marketplace oficial do Notion Brasil</span>
-              </div>
+                  Conhecer Soluções Sob Medida
+                  <ChevronRight className="w-5 h-5 ml-1" />
+                </Link>
+              </Button>
             </div>
 
-            {/* Dashboard Mockup */}
-            <div className="relative animate-slide-up hidden lg:block">
-              <div className="relative rounded-xl overflow-hidden border border-card-border/50 shadow-elegant bg-background-elevated">
-                <img 
-                  src={hubEmpresarialPro} 
-                  alt="Dashboard de gestão empresarial em Notion - Hub Empresarial PRO Focus" 
-                  className="w-full h-auto object-cover"
-                  loading="eager"
-                  fetchPriority="high"
-                  width={574}
-                  height={260}
-                />
-              </div>
-              <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-primary/15 rounded-full blur-[50px]" />
-              <div className="absolute -top-4 -left-4 w-20 h-20 bg-primary/10 rounded-full blur-[40px]" />
+            <p className="text-foreground-muted text-sm">
+              <Shield className="w-4 h-4 inline mr-1 -mt-0.5" />
+              Análise gratuita de viabilidade do projeto
+            </p>
+          </div>
+
+          {/* Dashboard Mockup */}
+          <div className="relative mt-12 max-w-3xl mx-auto animate-slide-up hidden lg:block">
+            <div className="relative rounded-xl overflow-hidden border border-card-border/50 shadow-elegant bg-background-elevated">
+              <img
+                src={hubEmpresarialPro}
+                alt="Dashboard de gestão empresarial - Focus Gestão Inteligente"
+                className="w-full h-auto object-cover"
+                loading="eager"
+                fetchPriority="high"
+                width={574}
+                height={260}
+              />
             </div>
+            <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-primary/15 rounded-full blur-[60px]" />
+            <div className="absolute -top-6 -left-6 w-24 h-24 bg-primary/10 rounded-full blur-[50px]" />
           </div>
         </div>
       </section>
 
-      {/* =========================== */}
-      {/* SEÇÃO 2 — PARA QUEM A FOCUS FOI CRIADA (H2) */}
-      {/* =========================== */}
+      {/* ===========================
+          SEÇÃO 2 — O PROBLEMA
+      =========================== */}
+      <section className="section-padding bg-background-secondary">
+        <div className="container-focus">
+          <div className="max-w-3xl mx-auto text-center mb-16">
+            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
+              Sua empresa ainda depende de planilhas?
+            </h2>
+            <p className="text-foreground-muted text-lg">
+              A maioria das empresas perde tempo, dinheiro e clareza por não ter sistemas adequados.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { icon: Clock, title: "Horas desperdiçadas", description: "Retrabalho constante procurando dados em planilhas desatualizadas." },
+              { icon: AlertTriangle, title: "Decisões no escuro", description: "Sem dashboards, você decide com base em achismo, não em dados." },
+              { icon: XCircle, title: "Processos informais", description: "Cada pessoa faz de um jeito. Sem padrão, sem escala." },
+              { icon: TrendingUp, title: "Crescimento travado", description: "A operação manual impede sua empresa de crescer com consistência." },
+            ].map((problem, index) => (
+              <Card key={index} className="service-card text-center">
+                <div className="w-12 h-12 rounded-xl bg-red-500/15 flex items-center justify-center mx-auto mb-4">
+                  <problem.icon className="w-6 h-6 text-red-400" />
+                </div>
+                <h3 className="text-lg font-bold text-foreground mb-2">{problem.title}</h3>
+                <p className="text-foreground-muted text-sm">{problem.description}</p>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===========================
+          SEÇÃO 3 — NOSSAS SOLUÇÕES
+      =========================== */}
+      <section className="section-padding bg-background">
+        <div className="container-focus">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
+              Duas formas de profissionalizar sua gestão
+            </h2>
+            <p className="text-foreground-muted text-lg max-w-2xl mx-auto">
+              Escolha o caminho ideal para o momento da sua empresa
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {/* Focus Custom */}
+            <Card className="service-card relative overflow-hidden">
+              <div className="absolute top-0 right-0 bg-primary/20 text-primary text-xs font-bold px-3 py-1 rounded-bl-xl">
+                VAGAS LIMITADAS
+              </div>
+              <div className="mb-6">
+                <div className="w-14 h-14 rounded-xl bg-primary/15 flex items-center justify-center">
+                  <Code2 className="w-7 h-7 text-primary" />
+                </div>
+              </div>
+              <h3 className="text-2xl font-bold text-foreground mb-3">Focus Custom</h3>
+              <p className="text-primary text-sm font-medium mb-4">Software sob medida para sua empresa</p>
+              <ul className="space-y-3 mb-8">
+                {[
+                  "Dashboard exclusivo com seus KPIs",
+                  "CRM personalizado para seu processo",
+                  "Portal do cliente com sua marca",
+                  "Entrega em até 30 dias",
+                  "Suporte dedicado pós-entrega",
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-2 text-foreground-muted text-sm">
+                    <CheckCircle className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <p className="text-foreground-muted text-sm mb-4">
+                A partir de <span className="text-foreground font-bold text-lg">R$ 4.000</span>{" "}
+                <span className="text-foreground-muted">(pagamento único)</span>
+              </p>
+              <Button
+                className="btn-hero w-full group"
+                onClick={() => {
+                  handleCTAClick("card_focus_custom", "/solucoes-sob-medida");
+                  setIsApplicationOpen(true);
+                }}
+              >
+                Aplicar para Consultoria
+                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Card>
+
+            {/* Hub Empresarial */}
+            <Card className="service-card relative overflow-hidden">
+              <div className="absolute top-0 right-0 bg-emerald-500/20 text-emerald-400 text-xs font-bold px-3 py-1 rounded-bl-xl">
+                ACESSO IMEDIATO
+              </div>
+              <div className="mb-6">
+                <div className="w-14 h-14 rounded-xl bg-emerald-500/15 flex items-center justify-center">
+                  <LayoutDashboard className="w-7 h-7 text-emerald-400" />
+                </div>
+              </div>
+              <h3 className="text-2xl font-bold text-foreground mb-3">Hub Empresarial PRO</h3>
+              <p className="text-emerald-400 text-sm font-medium mb-4">Sistema pronto em Notion</p>
+              <ul className="space-y-3 mb-8">
+                {[
+                  "CRM completo com funil de vendas",
+                  "Controle financeiro integrado",
+                  "Gestão de projetos com Kanban",
+                  "Processos e SOPs documentados",
+                  "Dashboards prontos para usar",
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-2 text-foreground-muted text-sm">
+                    <CheckCircle className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <p className="text-foreground-muted text-sm mb-4">
+                Por apenas <span className="text-foreground font-bold text-lg">R$ 349</span>{" "}
+                <span className="text-foreground-muted">(acesso vitalício)</span>
+              </p>
+              <Button
+                className="btn-secondary w-full group"
+                asChild
+              >
+                <a
+                  href="https://pay.hotmart.com/hub-empresarial"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => handleCTAClick("card_hub_empresarial", "hotmart")}
+                >
+                  Acessar Hub Empresarial
+                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                </a>
+              </Button>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* ===========================
+          SEÇÃO 4 — PROVA SOCIAL
+      =========================== */}
       <section className="section-padding bg-background-secondary">
         <div className="container-focus">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-              Para quem a Focus foi criada
+              Empresas que já transformaram sua gestão
             </h2>
-            <p className="text-foreground-muted text-lg max-w-2xl mx-auto">
-              Ferramentas e sistemas para quem quer organizar a gestão do negócio de forma simples
-            </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Card 1 - Pequenas empresas e MEIs */}
-            <Card className="service-card group">
-              <div className="mb-6">
-                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center">
-                  <Building2 className="w-7 h-7 text-white" />
-                </div>
-              </div>
-              <h3 className="text-xl font-bold text-foreground mb-3">Pequenas empresas e MEIs</h3>
-              <p className="text-foreground-muted mb-6">
-                Centralize clientes, projetos e finanças em um único sistema. Nossas ferramentas ajudam você a ter clareza sobre o que está acontecendo no seu negócio, sem planilhas confusas.
-              </p>
-              <Link 
-                to="/hub-empresarial"
-                className="inline-flex items-center text-primary hover:text-primary-glow transition-colors font-medium"
-                onClick={() => handleCTAClick('card_pequenas_empresas', '/hub-empresarial')}
-              >
-                Ver soluções para empresas
-                <ChevronRight className="w-4 h-4 ml-1" />
-              </Link>
-            </Card>
-
-            {/* Card 2 - Prestadores de serviço */}
-            <Card className="service-card group">
-              <div className="mb-6">
-                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center">
-                  <Briefcase className="w-7 h-7 text-white" />
-                </div>
-              </div>
-              <h3 className="text-xl font-bold text-foreground mb-3">Prestadores de serviço e consultores</h3>
-              <p className="text-foreground-muted mb-6">
-                Organize suas entregas, controle financeiro e relacionamento com clientes. Aumente a produtividade empresarial com templates prontos que funcionam desde o primeiro dia.
-              </p>
-              <Link 
-                to="/sistemas-notion"
-                className="inline-flex items-center text-primary hover:text-primary-glow transition-colors font-medium"
-                onClick={() => handleCTAClick('card_prestadores', '/sistemas-notion')}
-              >
-                Ver sistemas de gestão
-                <ChevronRight className="w-4 h-4 ml-1" />
-              </Link>
-            </Card>
-
-            {/* Card 3 - Empreendedores digitais */}
-            <Card className="service-card group">
-              <div className="mb-6">
-                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-pink-500 to-violet-500 flex items-center justify-center">
-                  <Users className="w-7 h-7 text-white" />
-                </div>
-              </div>
-              <h3 className="text-xl font-bold text-foreground mb-3">Empreendedores digitais e criadores</h3>
-              <p className="text-foreground-muted mb-6">
-                Gerencie conteúdo, agenda editorial e processos criativos. As soluções da Focus foram pensadas para quem precisa de organização sem burocracia.
-              </p>
-              <Link 
-                to="/sistemas-notion"
-                className="inline-flex items-center text-primary hover:text-primary-glow transition-colors font-medium"
-                onClick={() => handleCTAClick('card_criadores', '/sistemas-notion')}
-              >
-                Ver templates
-                <ChevronRight className="w-4 h-4 ml-1" />
-              </Link>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* =========================== */}
-      {/* SEÇÃO 3 — SOLUÇÕES DIGITAIS EM NOTION (H2) */}
-      {/* =========================== */}
-      <section className="section-padding bg-background">
-        <div className="container-focus">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-              Soluções digitais para gestão empresarial
-            </h2>
-            <p className="text-foreground-muted text-lg max-w-3xl mx-auto">
-              A Focus oferece sistemas e ferramentas pensados para pequenas empresas que querem gestão inteligente, com foco em produtividade e clareza. Sem complexidade, sem consultoria — apenas produtos digitais que funcionam.
-            </p>
-          </div>
-
-          <h3 className="text-2xl font-bold text-foreground mb-8 text-center">
-            Sistemas empresariais (produtos pagos)
-          </h3>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Hub Empresarial PRO */}
-            <Card className="service-card group h-full flex flex-col">
-              <div className="mb-4">
-                <img 
-                  src={hubEmpresarialPro} 
-                  alt="Hub Empresarial PRO - Sistema de gestão empresarial em Notion" 
-                  className="w-full h-48 object-contain rounded-xl bg-background-elevated"
-                  loading="lazy"
-                />
-              </div>
-              <h4 className="text-xl font-bold text-foreground mb-3">Hub Empresarial PRO</h4>
-              <p className="text-foreground-muted mb-6 flex-grow">
-                Sistema completo de gestão empresarial com CRM, controle de projetos, processos internos e dashboards. Ideal para quem quer centralizar toda a operação do negócio em um só lugar.
-              </p>
-              <Button 
-                className="btn-secondary w-full"
-                onClick={() => {
-                  handleCTAClick('produto_hub_empresarial', '/hub-empresarial');
-                  window.location.href = '/hub-empresarial';
-                }}
-              >
-                Saiba mais
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-            </Card>
-
-            {/* Controle Financeiro PRO */}
-            <Card className="service-card group h-full flex flex-col">
-              <div className="mb-4">
-                <img 
-                  src={controleFinanceiroPro} 
-                  alt="Controle Financeiro PRO - Sistema financeiro em Notion" 
-                  className="w-full h-48 object-contain rounded-xl bg-background-elevated"
-                  loading="lazy"
-                />
-              </div>
-              <h4 className="text-xl font-bold text-foreground mb-3">Controle Financeiro PRO</h4>
-              <p className="text-foreground-muted mb-6 flex-grow">
-                Sistema de controle financeiro em Notion para empresas e profissionais. Gerencie receitas, despesas, fluxo de caixa e categorias de forma visual e intuitiva.
-              </p>
-              <Button 
-                className="btn-secondary w-full"
-                onClick={() => {
-                  handleCTAClick('produto_financeiro', '/sistemas-notion');
-                  window.location.href = '/sistemas-notion';
-                }}
-              >
-                Ver detalhes
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-            </Card>
-
-            {/* Sprint de Produtividade */}
-            <Card className="service-card group h-full flex flex-col">
-              <div className="mb-4">
-                <img 
-                  src={sprintProdutividade} 
-                  alt="Sprint de Produtividade - Sistema de rotinas e foco em Notion" 
-                  className="w-full h-48 object-contain rounded-xl bg-background-elevated"
-                  loading="lazy"
-                />
-              </div>
-              <h4 className="text-xl font-bold text-foreground mb-3">Sprint de Produtividade</h4>
-              <p className="text-foreground-muted mb-6 flex-grow">
-                Programa de 7 dias para transformar sua rotina com metodologias práticas. Foco em produtividade empresarial, gestão de tempo e construção de hábitos que geram resultados.
-              </p>
-              <Button 
-                className="btn-secondary w-full"
-                onClick={() => {
-                  handleCTAClick('produto_sprint', '/sprint-produtividade');
-                  window.location.href = '/sprint-produtividade';
-                }}
-              >
-                Ver programa
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* =========================== */}
-      {/* SEÇÃO 4 — TEMPLATES E SISTEMAS GRÁTIS (H2) */}
-      {/* =========================== */}
-      <section className="section-padding bg-background-secondary">
-        <div className="container-focus">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-              Templates e sistemas grátis para começar hoje
-            </h2>
-            <p className="text-foreground-muted text-lg max-w-2xl mx-auto">
-              Você pode começar agora mesmo com a versão gratuita dos nossos templates. Teste a lógica da Focus e veja como sistemas organizados podem transformar sua gestão.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-10">
-            {freeTemplates.map((template, index) => (
-              <div 
-                key={index}
-                className="flex items-start gap-3 p-4 rounded-xl bg-background-elevated border border-card-border hover:border-primary/30 transition-colors"
-              >
-                <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                <div>
-                  <p className="font-medium text-foreground text-sm">{template.name}</p>
-                  <p className="text-foreground-muted text-xs">{template.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center">
-            <Button 
-              className="btn-hero group"
-              onClick={() => {
-                handleCTAClick('ver_templates_gratis', '/sistemas-gratuitos');
-                window.location.href = '/sistemas-gratuitos';
-              }}
-            >
-              <Download className="w-5 h-5 mr-2" />
-              Acessar todos os templates e sistemas grátis
-              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* =========================== */}
-      {/* SEÇÃO 5 — HUB FOCUS (H2) */}
-      {/* =========================== */}
-      <section className="section-padding bg-background">
-        <div className="container-focus">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 bg-primary/20 text-primary text-sm font-medium px-4 py-2 rounded-full mb-6">
-              <Sparkles className="w-4 h-4" />
-              Beta Gratuito
-            </div>
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-              Hub Focus — sua plataforma de gestão completa
-            </h2>
-            <p className="text-foreground-muted text-lg max-w-3xl mx-auto">
-              Organize finanças, projetos, clientes e equipe em um só lugar. 8 módulos integrados, acesso gratuito durante o Beta.
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-12">
             {[
-              { icon: DollarSign, title: "Finanças", description: "Controle receitas, despesas e fluxo de caixa" },
-              { icon: FolderKanban, title: "Projetos", description: "Organize projetos com Kanban e prazos" },
-              { icon: UserCheck, title: "Clientes (CRM)", description: "Cadastre clientes e acompanhe negociações" },
-              { icon: Users, title: "RH & Equipe", description: "Gerencie colaboradores e desempenho" },
-              { icon: Megaphone, title: "Marketing", description: "Planeje campanhas e gerencie conteúdo" },
-              { icon: ListChecks, title: "Atividades", description: "Gerencie tarefas diárias e checklists" },
-              { icon: Settings, title: "Processos", description: "Documente e padronize processos internos" },
-              { icon: BookOpen, title: "Guia Inicial", description: "Passo a passo para começar em minutos" },
-            ].map((mod, index) => (
-              <div
-                key={index}
-                className="flex flex-col items-center text-center p-5 rounded-xl bg-background-elevated border border-card-border hover:border-primary/30 transition-colors"
-              >
-                <div className="w-12 h-12 rounded-xl bg-primary/15 flex items-center justify-center mb-3">
-                  <mod.icon className="w-6 h-6 text-primary" />
+              {
+                quote: "Saímos de 5 planilhas para um sistema único. A equipe agora tem clareza total do que precisa fazer.",
+                name: "Rafael M.",
+                role: "CEO, Agência Digital",
+                icon: Building2,
+              },
+              {
+                quote: "O controle financeiro mudou completamente. Hoje sei exatamente o fluxo de caixa e posso planejar com segurança.",
+                name: "Camila S.",
+                role: "Consultora Financeira",
+                icon: Briefcase,
+              },
+              {
+                quote: "Em 3 semanas, tínhamos um portal do cliente funcionando. Profissionalizou totalmente nossa entrega.",
+                name: "Lucas A.",
+                role: "Founder, Tech Startup",
+                icon: Users,
+              },
+            ].map((testimonial, index) => (
+              <Card key={index} className="service-card">
+                <div className="flex items-center gap-1 mb-4">
+                  {Array(5).fill(0).map((_, i) => (
+                    <Star key={i} className="w-4 h-4 text-primary fill-primary" />
+                  ))}
                 </div>
-                <p className="font-semibold text-foreground text-sm mb-1">{mod.title}</p>
-                <p className="text-foreground-muted text-xs">{mod.description}</p>
-              </div>
+                <p className="text-foreground-muted text-sm mb-6 italic">"{testimonial.quote}"</p>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-primary/15 flex items-center justify-center">
+                    <testimonial.icon className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <p className="text-foreground font-semibold text-sm">{testimonial.name}</p>
+                    <p className="text-foreground-muted text-xs">{testimonial.role}</p>
+                  </div>
+                </div>
+              </Card>
             ))}
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
-              className="btn-hero group"
-              asChild
-            >
-              <a 
-                href="https://appfocus.lovable.app/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                onClick={() => handleCTAClick('hub_focus_comece_gratis', 'appfocus.lovable.app')}
-              >
-                <Sparkles className="w-5 h-5 mr-2" />
-                Comece Grátis
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-              </a>
-            </Button>
-            <Button 
-              className="btn-secondary group"
-              onClick={() => {
-                handleCTAClick('hub_focus_ver_modulos', '/focus-pro');
-                window.location.href = '/focus-pro#modulos';
-              }}
-            >
-              <LayoutGrid className="w-5 h-5 mr-2" />
-              Ver todos os módulos
-            </Button>
+          <div className="flex items-center justify-center gap-2 text-foreground-muted text-sm">
+            <Star className="w-4 h-4 text-primary fill-primary" />
+            <span>Criador destaque no marketplace oficial do Notion Brasil</span>
           </div>
         </div>
       </section>
 
-      {/* =========================== */}
-      {/* SEÇÃO 6 — POR QUE USAR NOTION E IA (H2) */}
-      {/* =========================== */}
-      <section className="section-padding bg-background-secondary">
-        <div className="container-focus">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-8 text-center">
-              Por que usar ferramentas inteligentes na gestão da sua empresa
-            </h2>
-
-            <div className="space-y-6">
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
-                  <CheckCircle className="w-5 h-5 text-primary" />
-                </div>
-                <div>
-                  <p className="font-medium text-foreground mb-1">Centralize todas as informações em um único lugar</p>
-                  <p className="text-foreground-muted">Chega de procurar dados em planilhas, e-mails e aplicativos diferentes. Com as ferramentas certas, tudo fica organizado e acessível.</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
-                  <CheckCircle className="w-5 h-5 text-primary" />
-                </div>
-                <div>
-                  <p className="font-medium text-foreground mb-1">Crie rotinas claras e processos padronizados</p>
-                  <p className="text-foreground-muted">A gestão empresarial inteligente começa com processos bem definidos. Ferramentas de gestão permitem criar fluxos de trabalho que sua equipe consegue seguir.</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
-                  <CheckCircle className="w-5 h-5 text-primary" />
-                </div>
-                <div>
-                  <p className="font-medium text-foreground mb-1">Automatize partes do trabalho com IA</p>
-                  <p className="text-foreground-muted">Automação com IA reduz trabalho repetitivo e libera tempo para o que realmente importa no seu negócio.</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
-                  <CheckCircle className="w-5 h-5 text-primary" />
-                </div>
-                <div>
-                  <p className="font-medium text-foreground mb-1">Reduza retrabalho e aumente a produtividade</p>
-                  <p className="text-foreground-muted">Sistemas de gestão bem estruturados eliminam a necessidade de refazer tarefas e melhoram a produtividade empresarial da equipe.</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
-                  <CheckCircle className="w-5 h-5 text-primary" />
-                </div>
-                <div>
-                  <p className="font-medium text-foreground mb-1">Tenha clareza sobre o que está acontecendo</p>
-                  <p className="text-foreground-muted">Dashboards e visões organizadas mostram exatamente onde seu negócio está e para onde precisa ir.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* =========================== */}
-      {/* SEÇÃO 7 — BLOG (H2) */}
-      {/* =========================== */}
+      {/* ===========================
+          SEÇÃO 5 — BLOG
+      =========================== */}
       <section className="section-padding bg-background">
         <div className="container-focus">
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-              Conteúdos sobre gestão empresarial e produtividade
+              Conteúdos sobre gestão e produtividade
             </h2>
-            <p className="text-foreground-muted text-lg max-w-2xl mx-auto">
-              Artigos práticos para ajudar você a organizar melhor seu negócio
-            </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 mb-10">
@@ -542,7 +356,7 @@ const Index = () => {
               <Card key={index} className="service-card group h-full flex flex-col">
                 <h3 className="text-lg font-bold text-foreground mb-3">{article.title}</h3>
                 <p className="text-foreground-muted text-sm mb-6 flex-grow">{article.description}</p>
-                <Link 
+                <Link
                   to={`/blog/${article.slug}`}
                   className="inline-flex items-center text-primary hover:text-primary-glow transition-colors font-medium"
                   onClick={() => handleCTAClick(`blog_${article.slug}`, `/blog/${article.slug}`)}
@@ -555,112 +369,58 @@ const Index = () => {
           </div>
 
           <div className="text-center">
-            <Button 
+            <Button
               className="btn-secondary group"
-              onClick={() => {
-                handleCTAClick('ver_todos_artigos', '/blog');
-                window.location.href = '/blog';
-              }}
+              asChild
             >
-              Ver todos os artigos do blog
-              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+              <Link to="/blog" onClick={() => handleCTAClick("ver_todos_artigos", "/blog")}>
+                Ver todos os artigos
+                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Link>
             </Button>
           </div>
         </div>
       </section>
 
-      {/* =========================== */}
-      {/* SEÇÃO 8 — FAQ (H2) */}
-      {/* =========================== */}
+      {/* ===========================
+          SEÇÃO 6 — CTA FINAL
+      =========================== */}
       <section className="section-padding bg-background-secondary">
-        <div className="container-focus">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-12 text-center">
-              Perguntas frequentes sobre a Focus
-            </h2>
-
-            <Accordion type="single" collapsible className="space-y-4">
-              <AccordionItem value="item-1" className="border border-card-border rounded-xl px-6 bg-background-elevated">
-                <AccordionTrigger className="text-foreground hover:no-underline py-6">
-                  Preciso de conhecimento técnico para usar as soluções da Focus?
-                </AccordionTrigger>
-                <AccordionContent className="text-foreground-muted pb-6">
-                  Não. Tanto os templates em Notion quanto a plataforma Hub Focus foram pensados para serem intuitivos. Você não precisa ser especialista — basta acessar e começar a usar. Incluímos tutoriais e guias para facilitar o início.
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="item-2" className="border border-card-border rounded-xl px-6 bg-background-elevated">
-                <AccordionTrigger className="text-foreground hover:no-underline py-6">
-                  A Focus oferece consultoria personalizada?
-                </AccordionTrigger>
-                <AccordionContent className="text-foreground-muted pb-6">
-                  Não. A Focus é uma empresa de produtos digitais. Trabalhamos com templates em Notion, a plataforma Hub Focus e conteúdos sobre gestão. Nosso foco é entregar soluções prontas que você mesmo pode implementar, sem depender de atendimento individual.
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="item-3" className="border border-card-border rounded-xl px-6 bg-background-elevated">
-                <AccordionTrigger className="text-foreground hover:no-underline py-6">
-                  Qual a diferença entre os sistemas pagos e os templates grátis?
-                </AccordionTrigger>
-                <AccordionContent className="text-foreground-muted pb-6">
-                  Os templates grátis são versões simplificadas, ótimas para quem quer começar. Os sistemas pagos são mais completos, com mais funcionalidades, dashboards avançados e estruturas profissionais para gestão empresarial de verdade.
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="item-4" className="border border-card-border rounded-xl px-6 bg-background-elevated">
-                <AccordionTrigger className="text-foreground hover:no-underline py-6">
-                  O que é o Hub Focus?
-                </AccordionTrigger>
-                <AccordionContent className="text-foreground-muted pb-6">
-                  O Hub Focus é a plataforma de gestão empresarial da Focus, com 8 módulos integrados: Finanças, Projetos, CRM, RH, Marketing, Atividades, Processos e um Guia Inicial. Atualmente está em Beta Gratuito — você pode acessar todos os módulos sem custo.
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
-          </div>
-        </div>
-      </section>
-
-      {/* =========================== */}
-      {/* SEÇÃO 9 — CTA FINAL */}
-      {/* =========================== */}
-      <section className="section-padding bg-background">
         <div className="container-focus">
           <div className="relative bg-gradient-to-r from-primary/10 to-primary-glow/10 border border-primary/20 rounded-3xl p-10 lg:p-16 overflow-hidden text-center">
             <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[100px]" />
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary-glow/10 rounded-full blur-[100px]" />
-            
+
             <div className="relative z-10 max-w-2xl mx-auto">
               <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-                Comece hoje a organizar a gestão do seu negócio
+                Pronto para profissionalizar sua empresa?
               </h2>
-              <p className="text-foreground-muted text-lg mb-8">
-                Pequenas empresas podem ter uma gestão profissional, organizada e inteligente — sem consultoria complexa. Escolha por onde começar:
+              <p className="text-foreground-muted text-lg mb-4">
+                Abrimos apenas <span className="text-primary font-semibold">3 vagas por mês</span> para projetos sob medida. Garanta a sua antes que feche.
               </p>
-              
+              <p className="text-foreground-muted text-sm mb-8">
+                Ou comece agora com o Hub Empresarial PRO — acesso imediato, sem fila.
+              </p>
+
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button 
+                <Button
                   className="btn-hero group text-base"
-                  asChild
-                >
-                  <a 
-                    href="https://appfocus.lovable.app/" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    onClick={() => handleCTAClick('cta_final_hub_focus', 'appfocus.lovable.app')}
-                  >
-                    Comece Grátis no Hub Focus
-                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                  </a>
-                </Button>
-                <Button 
-                  className="btn-secondary group text-base"
                   onClick={() => {
-                    handleCTAClick('cta_final_gratis', '/sistemas-gratuitos');
-                    window.location.href = '/sistemas-gratuitos';
+                    handleCTAClick("cta_final_aplicar", "/solucoes-sob-medida");
+                    setIsApplicationOpen(true);
                   }}
                 >
-                  <Download className="w-5 h-5 mr-2" />
-                  Ver templates grátis
+                  <Sparkles className="w-5 h-5 mr-2" />
+                  Preencher Aplicação
+                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Button>
+                <Button
+                  className="btn-secondary group text-base"
+                  asChild
+                >
+                  <Link to="/solucoes-sob-medida" onClick={() => handleCTAClick("cta_final_solucoes", "/solucoes-sob-medida")}>
+                    Ver Soluções Sob Medida
+                  </Link>
                 </Button>
               </div>
             </div>
@@ -668,8 +428,12 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Hub Focus Popup */}
-      <HubFocusPopup />
+      {/* Application Form Modal */}
+      <ApplicationFormModal
+        open={isApplicationOpen}
+        onOpenChange={setIsApplicationOpen}
+        source="homepage"
+      />
     </div>
   );
 };
