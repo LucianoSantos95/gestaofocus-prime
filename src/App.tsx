@@ -204,7 +204,7 @@ function AppLayout() {
         </Suspense>
       </main>
       {showFooter && <Footer />}
-      {isDashboard ? <DashboardChatButton /> : <WhatsAppButton />}
+      {isDashboard ? <DashboardChatButton /> : <ChatWidget />}
     </div>
   );
 }
