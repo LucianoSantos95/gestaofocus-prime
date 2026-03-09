@@ -6,7 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
-import WhatsAppButton from "./components/WhatsAppButton";
+import ChatWidget from "./components/ChatWidget";
 import DashboardChatButton from "./components/dashboard/DashboardChatButton";
 import Index from "./pages/Index";
 import { useAnalytics } from "./hooks/useAnalytics";
