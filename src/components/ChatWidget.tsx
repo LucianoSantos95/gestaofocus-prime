@@ -44,7 +44,7 @@ export default function ChatWidget() {
     if (conversation.status === "connected") return true;
     setIsConnecting(true);
     try {
-      await conversation.startSession({
+      await (conversation as any).startSession({
         agentId: "agent_9501kk9r0zfheky84nztakprz3n2",
       });
       return true;
