@@ -60,20 +60,21 @@ const SolucoesSobMedida = () => {
 
         <div className="container-focus relative z-10 text-center max-w-4xl mx-auto">
           <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-foreground leading-tight mb-6">
-            Pare de adaptar sua empresa ao software.{" "}
+            Do Caos na Gestão ao Seu{" "}
             <span className="bg-gradient-primary bg-clip-text text-transparent">
-              Nós criamos o software perfeito para a sua empresa.
+              Software Exclusivo em Recorde de Tempo.
             </span>
           </h1>
           <p className="text-lg lg:text-xl text-foreground-muted max-w-3xl mx-auto mb-8 leading-relaxed">
-            Transformamos processos manuais, planilhas complexas e sistemas lentos em um{" "}
-            <strong className="text-foreground">Aplicativo Próprio (Web & Mobile)</strong>. Tenha controle total da sua operação em até 30 dias, sem depender de "gambiarras".
+            Esqueça planilhas limitadas ou sistemas genéricos. Criamos{" "}
+            <strong className="text-foreground">soluções robustas sob medida</strong> para sua PME.
+            Descreva seu desafio abaixo e receba um protótipo visual do seu sistema em até 24h, sem custo.
           </p>
           <Button onClick={() => setFormOpen(true)} className="btn-hero text-lg px-10 py-5 animate-glow">
-            APLICAR PARA CONSULTORIA
+            QUERO MEU PROTÓTIPO GRATUITO
             <ArrowRight className="w-5 h-5 ml-2" />
           </Button>
-          <p className="text-foreground-muted text-sm mt-4">Análise gratuita de viabilidade do projeto</p>
+          <p className="text-foreground-muted text-sm mt-4">Sem compromisso</p>
         </div>
       </section>
 

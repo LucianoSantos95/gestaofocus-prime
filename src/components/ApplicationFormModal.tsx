@@ -2,16 +2,19 @@ import { useState } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { trackEvent } from "@/lib/analytics";
 import { z } from "zod";
-import { ArrowRight, ArrowLeft, CheckCircle, Loader2, User, Phone, Mail, Wallet } from "lucide-react";
+import { ArrowRight, ArrowLeft, CheckCircle, Loader2, User, Phone, Mail, Building2, MessageSquareText, Wallet } from "lucide-react";
 
 const formSchema = z.object({
   full_name: z.string().trim().min(2, "Nome deve ter pelo menos 2 caracteres").max(100),
-  phone: z.string().trim().min(10, "WhatsApp inválido").max(20),
   email: z.string().trim().email("Email inválido").max(255),
+  phone: z.string().trim().min(10, "WhatsApp inválido").max(20),
+  company_name: z.string().trim().min(2, "Nome da empresa deve ter pelo menos 2 caracteres").max(100),
+  challenge: z.string().trim().min(10, "Descreva com mais detalhes (mínimo 10 caracteres)").max(1000),
   investment_range: z.string().min(1, "Selecione uma opção"),
 });
 
@@ -23,31 +26,35 @@ interface ApplicationFormModalProps {
 
 const investmentOptions = [
   "Até R$ 3.000",
-  "R$ 3.000 — R$ 6.000",
-  "R$ 6.000 — R$ 10.000",
-  "Acima de R$ 10.000",
-  "Quero entender primeiro",
+  "R$ 3.000 a R$ 7.000",
+  "Acima de R$ 7.000",
+  "Outro",
 ];
 
 const stepConfig = [
-  { icon: User, title: "Vamos começar!", subtitle: "Como podemos te chamar?", placeholder: "Seu nome completo" },
-  { icon: Phone, title: "Como falar com você?", subtitle: "Seu WhatsApp com DDD", placeholder: "(11) 99999-9999" },
-  { icon: Mail, title: "Qual seu email?", subtitle: "Para enviarmos a proposta", placeholder: "seu@email.com" },
-  { icon: Wallet, title: "Faixa de investimento?", subtitle: "Isso nos ajuda a personalizar sua proposta", placeholder: "" },
+  { icon: User, title: "Qual o seu nome?", subtitle: "Vamos começar!", placeholder: "Seu nome completo" },
+  { icon: Mail, title: "Qual seu e-mail?", subtitle: "Para enviarmos o link do seu protótipo", placeholder: "seu@email.com" },
+  { icon: Phone, title: "Seu WhatsApp?", subtitle: "Para enviarmos o link do seu protótipo", placeholder: "(11) 99999-9999" },
+  { icon: Building2, title: "Nome da empresa/projeto?", subtitle: "Nos ajuda a entender seu contexto", placeholder: "Ex: Loja do João, Projeto Alpha" },
+  { icon: MessageSquareText, title: "Qual o principal desafio?", subtitle: "Descreva o problema de gestão que quer resolver", placeholder: "Ex: Controle de estoque integrado, CRM de vendas, Dashboard financeiro automático" },
+  { icon: Wallet, title: "Estimativa de investimento?", subtitle: "Isso nos ajuda a personalizar sua proposta", placeholder: "" },
 ];
 
 export default function ApplicationFormModal({ open, onOpenChange, source = "direct" }: ApplicationFormModalProps) {
   const [step, setStep] = useState(0);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [customInvestment, setCustomInvestment] = useState("");
   const [formData, setFormData] = useState({
     full_name: "",
-    phone: "",
     email: "",
+    phone: "",
+    company_name: "",
+    challenge: "",
     investment_range: "",
   });
 
-  const totalSteps = 4;
+  const totalSteps = 6;
   const progress = ((step + 1) / totalSteps) * 100;
   const CurrentIcon = stepConfig[step].icon;
 
@@ -62,16 +69,25 @@ export default function ApplicationFormModal({ open, onOpenChange, source = "dir
   const isStepValid = () => {
     switch (step) {
       case 0: return formData.full_name.trim().length >= 2;
-      case 1: return formData.phone.trim().length >= 10;
-      case 2: return z.string().email().safeParse(formData.email.trim()).success;
-      case 3: return formData.investment_range.length > 0;
+      case 1: return z.string().email().safeParse(formData.email.trim()).success;
+      case 2: return formData.phone.trim().length >= 10;
+      case 3: return formData.company_name.trim().length >= 2;
+      case 4: return formData.challenge.trim().length >= 10;
+      case 5: {
+        if (formData.investment_range === "Outro") return customInvestment.trim().length > 0;
+        return formData.investment_range.length > 0;
+      }
       default: return false;
     }
   };
 
   const handleSubmit = async () => {
+    const finalInvestment = formData.investment_range === "Outro"
+      ? `Outro: ${customInvestment.trim()}`
+      : formData.investment_range;
+
     try {
-      formSchema.parse(formData);
+      formSchema.parse({ ...formData, investment_range: finalInvestment });
     } catch (error) {
       if (error instanceof z.ZodError) {
         toast.error(error.errors[0].message);
@@ -83,10 +99,11 @@ export default function ApplicationFormModal({ open, onOpenChange, source = "dir
 
     const { error } = await supabase.from("consultation_leads").insert({
       full_name: formData.full_name.trim(),
-      phone: formData.phone.trim(),
       email: formData.email.trim().toLowerCase(),
-      investment_range: formData.investment_range,
-      business_type: "a_definir",
+      phone: formData.phone.trim(),
+      business_type: formData.company_name.trim(),
+      additional_details: formData.challenge.trim(),
+      investment_range: finalInvestment,
       uses_notion: "a_definir",
       main_objective: "software_sob_medida",
       looking_for: source,
@@ -113,7 +130,8 @@ export default function ApplicationFormModal({ open, onOpenChange, source = "dir
     setTimeout(() => {
       setStep(0);
       setSuccess(false);
-      setFormData({ full_name: "", phone: "", email: "", investment_range: "" });
+      setCustomInvestment("");
+      setFormData({ full_name: "", email: "", phone: "", company_name: "", challenge: "", investment_range: "" });
     }, 300);
   };
 
@@ -132,9 +150,9 @@ export default function ApplicationFormModal({ open, onOpenChange, source = "dir
             <div className="w-20 h-20 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-6 shadow-[0_0_40px_rgba(34,197,94,0.2)]">
               <CheckCircle className="w-10 h-10 text-green-400" />
             </div>
-            <h3 className="text-2xl font-bold text-foreground mb-2">Aplicação Enviada!</h3>
+            <h3 className="text-2xl font-bold text-foreground mb-2">Recebemos sua aplicação!</h3>
             <p className="text-foreground-muted mb-8">
-              Nossa equipe vai analisar seu projeto e entrar em contato em até 24h pelo WhatsApp.
+              Nosso time vai analisar seu desafio e enviar o <strong className="text-foreground">protótipo visual em até 24h</strong> pelo WhatsApp e e-mail.
             </p>
             <div className="flex flex-col gap-3">
               <Button asChild className="btn-hero">
@@ -195,25 +213,11 @@ export default function ApplicationFormModal({ open, onOpenChange, source = "dir
 
             {step === 1 && (
               <div className="relative">
-                <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-foreground-muted" />
-                <Input
-                  autoFocus
-                  placeholder={stepConfig[1].placeholder}
-                  value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  maxLength={20}
-                  className="pl-12 py-4 text-base rounded-2xl bg-background border-card-border/30 text-foreground focus:border-primary/50 focus:ring-primary/20"
-                />
-              </div>
-            )}
-
-            {step === 2 && (
-              <div className="relative">
                 <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-foreground-muted" />
                 <Input
                   autoFocus
                   type="email"
-                  placeholder={stepConfig[2].placeholder}
+                  placeholder={stepConfig[1].placeholder}
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   maxLength={255}
@@ -222,7 +226,47 @@ export default function ApplicationFormModal({ open, onOpenChange, source = "dir
               </div>
             )}
 
+            {step === 2 && (
+              <div className="relative">
+                <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-foreground-muted" />
+                <Input
+                  autoFocus
+                  placeholder={stepConfig[2].placeholder}
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  maxLength={20}
+                  className="pl-12 py-4 text-base rounded-2xl bg-background border-card-border/30 text-foreground focus:border-primary/50 focus:ring-primary/20"
+                />
+              </div>
+            )}
+
             {step === 3 && (
+              <div className="relative">
+                <Building2 className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-foreground-muted" />
+                <Input
+                  autoFocus
+                  placeholder={stepConfig[3].placeholder}
+                  value={formData.company_name}
+                  onChange={(e) => setFormData({ ...formData, company_name: e.target.value })}
+                  maxLength={100}
+                  className="pl-12 py-4 text-base rounded-2xl bg-background border-card-border/30 text-foreground focus:border-primary/50 focus:ring-primary/20"
+                />
+              </div>
+            )}
+
+            {step === 4 && (
+              <Textarea
+                autoFocus
+                placeholder={stepConfig[4].placeholder}
+                value={formData.challenge}
+                onChange={(e) => setFormData({ ...formData, challenge: e.target.value })}
+                maxLength={1000}
+                rows={4}
+                className="text-base rounded-2xl bg-background border-card-border/30 text-foreground focus:border-primary/50 focus:ring-primary/20 resize-none"
+              />
+            )}
+
+            {step === 5 && (
               <div className="space-y-2.5">
                 {investmentOptions.map((option) => (
                   <button
@@ -237,6 +281,16 @@ export default function ApplicationFormModal({ open, onOpenChange, source = "dir
                     {option}
                   </button>
                 ))}
+                {formData.investment_range === "Outro" && (
+                  <Input
+                    autoFocus
+                    placeholder="Digite o valor estimado"
+                    value={customInvestment}
+                    onChange={(e) => setCustomInvestment(e.target.value)}
+                    maxLength={50}
+                    className="mt-2 py-4 text-base rounded-2xl bg-background border-card-border/30 text-foreground focus:border-primary/50 focus:ring-primary/20"
+                  />
+                )}
               </div>
             )}
           </div>
