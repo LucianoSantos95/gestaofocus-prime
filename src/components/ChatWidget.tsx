@@ -44,10 +44,11 @@ const getGreeting = (source: string): Message => {
 
 const FOLLOW_UP: Message = {
   role: "assistant",
-  content: "Me conta: qual é o maior desafio do seu negócio hoje? Organização, processos, financeiro, equipe...? Assim consigo te indicar o caminho certo 👇",
+  content: "Pra te ajudar melhor, escolhe o que mais combina com você 👇",
   buttons: [
-    { label: "Quero um sistema pronto (Hub Empresarial)", href: "/hub-empresarial" },
-    { label: "Preciso de algo sob medida", href: "/solucoes-sob-medida" },
+    { label: "🏢 Quero um sistema completo de gestão", href: "/hub-empresarial" },
+    { label: "🛠️ Preciso de um software sob medida", href: "/solucoes-sob-medida" },
+    { label: "💬 Quero conversar e entender melhor", href: "" },
   ],
 };
 
