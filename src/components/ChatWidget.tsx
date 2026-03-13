@@ -246,16 +246,29 @@ export default function ChatWidget() {
                   </div>
                   {msg.buttons && (
                     <div className="flex flex-col gap-2 mt-2">
-                      {msg.buttons.map((btn) => (
-                        <a
-                          key={btn.href}
-                          href={btn.href}
-                          className="flex items-center justify-between px-4 py-2.5 rounded-xl border border-primary/20 bg-primary/5 text-sm font-medium text-primary hover:bg-primary/10 transition-colors"
-                        >
-                          {btn.label}
-                          <ArrowRight className="w-4 h-4 ml-2 shrink-0" />
-                        </a>
-                      ))}
+                      {msg.buttons.map((btn) =>
+                        btn.href ? (
+                          <a
+                            key={btn.label}
+                            href={btn.href}
+                            className="flex items-center justify-between px-4 py-2.5 rounded-xl border border-primary/20 bg-primary/5 text-sm font-medium text-primary hover:bg-primary/10 transition-colors"
+                          >
+                            {btn.label}
+                            <ArrowRight className="w-4 h-4 ml-2 shrink-0" />
+                          </a>
+                        ) : (
+                          <button
+                            key={btn.label}
+                            onClick={() => {
+                              inputRef.current?.focus();
+                            }}
+                            className="flex items-center justify-between px-4 py-2.5 rounded-xl border border-primary/20 bg-primary/5 text-sm font-medium text-primary hover:bg-primary/10 transition-colors text-left"
+                          >
+                            {btn.label}
+                            <ArrowRight className="w-4 h-4 ml-2 shrink-0" />
+                          </button>
+                        )
+                      )}
                     </div>
                   )}
                 </div>
