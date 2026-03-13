@@ -24,18 +24,16 @@ const detectSource = (): string => {
 };
 
 const getGreeting = (source: string): Message => {
-  const base = "Posso te ajudar a encontrar a solução certa pra organizar e escalar seu negócio. 🚀";
-
   const greetings: Record<string, string> = {
-    notion: `Ei! Vi que você veio do Notion — massa! 😎 Você já conhece o poder do Notion, e a gente leva isso a outro nível com sistemas prontos e automações. ${base}`,
-    facebook: `Opa! Vi que você veio pelo Facebook. Legal ter você aqui! 👋 ${base}`,
-    instagram: `Que bom que veio do Instagram! 📸 ${base}`,
-    google: `Bom te ver por aqui! Vi que encontrou a gente pelo Google — ótima pesquisa! 🔍 ${base}`,
-    linkedin: `Ei, profissional! Vi que veio do LinkedIn. 💼 ${base}`,
-    tiktok: `Opa! Veio do TikTok, né? 🎵 ${base}`,
-    twitter: `Legal, veio do X/Twitter! 🐦 ${base}`,
-    direct: `Olá! 👋 Bem-vindo à Focus! ${base}`,
-    other: `Olá! 👋 Que bom ter você aqui! ${base}`,
+    notion: `Ei! Vi que você veio direto do Notion — isso mostra que você já entende o poder dessa ferramenta! 😎 A gente transforma o Notion em um sistema de gestão completo pro seu negócio: CRM, financeiro, projetos, tudo integrado e automatizado. Quer ver como funciona na prática?`,
+    facebook: `Opa! Que bom que clicou no nosso anúncio! 👋 Você sabia que mais de 500 empresas já saíram do caos e organizaram toda a gestão com nossos sistemas? Me conta: qual o maior desafio do seu negócio hoje?`,
+    instagram: `Ei! Vi que veio do Instagram! 📸 Se você tá aqui, provavelmente tá buscando uma forma mais inteligente de organizar seu negócio, certo? Eu posso te mostrar o caminho mais rápido pra isso — me conta o que você precisa resolver!`,
+    google: `Boa pesquisa! 🔍 Se você chegou até aqui pelo Google, provavelmente tá buscando uma solução séria pra organizar a gestão do seu negócio. Você veio ao lugar certo — me conta o que tá precisando e eu te mostro a melhor solução!`,
+    linkedin: `Ei, profissional! Vi que veio do LinkedIn. 💼 Aqui na Focus a gente ajuda empresas a sair do caos operacional com sistemas inteligentes de gestão. Qual é o maior gargalo do seu negócio hoje?`,
+    tiktok: `Opa! Veio do TikTok, né? 🎵 Legal! Aqui a gente transforma aquelas dicas de produtividade em sistemas reais que funcionam no dia a dia. Me conta: o que tá travando seu negócio?`,
+    twitter: `Legal, veio do X/Twitter! 🐦 Aqui na Focus criamos sistemas que transformam o caos da gestão em clareza total. Me conta o que você precisa resolver!`,
+    direct: `Olá! 👋 Que bom ter você aqui na Focus! A gente ajuda empresas e profissionais a saírem do caos operacional com sistemas inteligentes de gestão no Notion. Me conta: o que te trouxe aqui hoje?`,
+    other: `Olá! 👋 Bem-vindo à Focus! Somos especialistas em transformar a gestão do seu negócio com sistemas inteligentes. Me conta: qual o maior desafio que você enfrenta hoje na organização da sua empresa?`,
   };
 
   return {
