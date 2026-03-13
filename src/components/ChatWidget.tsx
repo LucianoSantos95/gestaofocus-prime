@@ -25,15 +25,15 @@ const detectSource = (): string => {
 
 const getGreeting = (source: string): Message => {
   const greetings: Record<string, string> = {
-    notion: `Ei! Vi que você veio direto do Notion — isso mostra que você já entende o poder dessa ferramenta! 😎 A gente transforma o Notion em um sistema de gestão completo pro seu negócio: CRM, financeiro, projetos, tudo integrado e automatizado. Quer ver como funciona na prática?`,
-    facebook: `Opa! Que bom que clicou no nosso anúncio! 👋 Você sabia que mais de 500 empresas já saíram do caos e organizaram toda a gestão com nossos sistemas? Me conta: qual o maior desafio do seu negócio hoje?`,
-    instagram: `Ei! Vi que veio do Instagram! 📸 Se você tá aqui, provavelmente tá buscando uma forma mais inteligente de organizar seu negócio, certo? Eu posso te mostrar o caminho mais rápido pra isso — me conta o que você precisa resolver!`,
-    google: `Boa pesquisa! 🔍 Se você chegou até aqui pelo Google, provavelmente tá buscando uma solução séria pra organizar a gestão do seu negócio. Você veio ao lugar certo — me conta o que tá precisando e eu te mostro a melhor solução!`,
-    linkedin: `Ei, profissional! Vi que veio do LinkedIn. 💼 Aqui na Focus a gente ajuda empresas a sair do caos operacional com sistemas inteligentes de gestão. Qual é o maior gargalo do seu negócio hoje?`,
-    tiktok: `Opa! Veio do TikTok, né? 🎵 Legal! Aqui a gente transforma aquelas dicas de produtividade em sistemas reais que funcionam no dia a dia. Me conta: o que tá travando seu negócio?`,
-    twitter: `Legal, veio do X/Twitter! 🐦 Aqui na Focus criamos sistemas que transformam o caos da gestão em clareza total. Me conta o que você precisa resolver!`,
-    direct: `Olá! 👋 Que bom ter você aqui na Focus! A gente ajuda empresas e profissionais a saírem do caos operacional com sistemas inteligentes de gestão no Notion. Me conta: o que te trouxe aqui hoje?`,
-    other: `Olá! 👋 Bem-vindo à Focus! Somos especialistas em transformar a gestão do seu negócio com sistemas inteligentes. Me conta: qual o maior desafio que você enfrenta hoje na organização da sua empresa?`,
+    notion: `Ei! Vi que você veio do Notion 👀 Se você já usa e sente que ele não dá conta da gestão do seu negócio, imagina ter um software próprio, feito sob medida pra sua operação — com CRM, financeiro, dashboards, tudo do seu jeito. A gente cria isso pra você em tempo recorde. Quer saber como?`,
+    facebook: `Ei! Parou no anúncio certo 🔥 Sua empresa ainda roda em planilhas ou sistemas que não encaixam? A Focus cria softwares sob medida e tem uma plataforma de gestão completa pra PMEs. Me conta: qual problema te tira o sono na gestão?`,
+    instagram: `Ei! Que bom que veio do Insta! 🚀 Se você tá aqui, aposto que tá cansado(a) de improvisar a gestão do negócio. A gente resolve isso com software próprio ou acesso imediato a uma plataforma de gestão completa. Qual é o maior caos aí hoje?`,
+    google: `Achei que você ia chegar 🔍 Se pesquisou e veio parar aqui, é porque tá precisando de uma solução real. Criamos softwares exclusivos pra PMEs e temos uma plataforma de gestão pronta pra usar. Me conta o que tá buscando — te mostro o caminho mais rápido.`,
+    linkedin: `Fala, profissional! 💼 Aqui na Focus, a gente tira PMEs do caos operacional de duas formas: com software sob medida ou com o Hub Empresarial, nossa plataforma completa de gestão. Qual é o gargalo que tá travando sua empresa?`,
+    tiktok: `Opa! Saiu do scroll e veio pro lugar certo 🎯 Aqui a gente não faz só conteúdo — cria softwares de verdade pra empresas que querem sair do caos. Me conta: o que tá travando seu negócio hoje?`,
+    twitter: `Ei! Veio do X — gosto de gente objetiva 🐦 Aqui na Focus criamos softwares sob medida e temos uma plataforma de gestão pronta. Qual problema você quer resolver?`,
+    direct: `Ei! 👋 Que bom que chegou aqui. A Focus cria softwares exclusivos pra empresas que estão cansadas de planilhas e sistemas genéricos. Também temos o Hub Empresarial, uma plataforma completa de gestão. Me conta: o que te trouxe aqui?`,
+    other: `Ei! 👋 Bem-vindo à Focus! Criamos softwares sob medida e temos uma plataforma de gestão completa pra PMEs. Se sua empresa ainda vive no improviso, eu posso te mostrar o caminho pra sair disso. Qual é o maior desafio da sua gestão hoje?`,
   };
 
   return {
