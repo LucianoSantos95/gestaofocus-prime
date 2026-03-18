@@ -4,6 +4,14 @@
 /robots.txt
   Content-Type: text/plain
 
+# Security headers
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://www.clarity.ms https://elevenlabs.io; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://pqhpxqccsrgbdmsknppj.supabase.co https://*.supabase.co https://www.google-analytics.com https://www.clarity.ms https://ai.gateway.lovable.dev; frame-src 'self' https://elevenlabs.io; media-src 'self' blob:; object-src 'none'; base-uri 'self'
+
 # Cache static assets with content hashes for 1 year
 /assets/*
   Cache-Control: public, max-age=31536000, immutable

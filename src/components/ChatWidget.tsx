@@ -9,6 +9,7 @@ type Message = {
 };
 
 const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/chat`;
+const MAX_MESSAGE_LENGTH = 500;
 
 const detectSource = (): string => {
   const ref = document.referrer.toLowerCase();
