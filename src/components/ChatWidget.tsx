@@ -289,7 +289,8 @@ export default function ChatWidget() {
             <input
               ref={inputRef}
               value={input}
-              onChange={(e) => setInput(e.target.value)}
+              onChange={(e) => setInput(e.target.value.slice(0, MAX_MESSAGE_LENGTH))}
+              maxLength={MAX_MESSAGE_LENGTH}
               onKeyDown={handleKeyDown}
               placeholder="Digite sua mensagem..."
               className="flex-1 rounded-full border border-input bg-background px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
