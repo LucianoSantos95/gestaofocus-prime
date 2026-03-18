@@ -97,7 +97,7 @@ export default function ChatWidget() {
   }, [isOpen]);
 
   const handleSend = useCallback(async () => {
-    const text = input.trim();
+    const text = input.trim().slice(0, MAX_MESSAGE_LENGTH);
     if (!text || isLoading) return;
 
     const userMsg: Message = { role: "user", content: text };
