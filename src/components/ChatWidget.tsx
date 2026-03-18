@@ -9,6 +9,7 @@ type Message = {
 };
 
 const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/chat`;
+const MAX_MESSAGE_LENGTH = 500;
 
 const detectSource = (): string => {
   const ref = document.referrer.toLowerCase();
@@ -96,7 +97,7 @@ export default function ChatWidget() {
   }, [isOpen]);
 
   const handleSend = useCallback(async () => {
-    const text = input.trim();
+    const text = input.trim().slice(0, MAX_MESSAGE_LENGTH);
     if (!text || isLoading) return;
 
     const userMsg: Message = { role: "user", content: text };
@@ -288,7 +289,8 @@ export default function ChatWidget() {
             <input
               ref={inputRef}
               value={input}
-              onChange={(e) => setInput(e.target.value)}
+              onChange={(e) => setInput(e.target.value.slice(0, MAX_MESSAGE_LENGTH))}
+              maxLength={MAX_MESSAGE_LENGTH}
               onKeyDown={handleKeyDown}
               placeholder="Digite sua mensagem..."
               className="flex-1 rounded-full border border-input bg-background px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
