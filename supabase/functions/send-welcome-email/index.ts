@@ -1,9 +1,54 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
-const corsHeaders = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers":
-    "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
+const ALLOWED_ORIGINS = [
+  "https://focusinteligente.com.br",
+  "https://www.focusinteligente.com.br",
+  "https://gestaofocus-prime.lovable.app",
+];
+
+function getCorsHeaders(req: Request) {
+  const origin = req.headers.get("origin") || "";
+  const isAllowed = ALLOWED_ORIGINS.some((o) => origin === o) || origin.includes("lovable.app");
+  return {
+    "Access-Control-Allow-Origin": isAllowed ? origin : ALLOWED_ORIGINS[0],
+    "Access-Control-Allow-Headers":
+      "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
+  };
+}
+
+// HTML escape to prevent injection
+const escapeHtml = (str: string): string => {
+  return str.replace(/[&<>"']/g, (match) => {
+    const escapeMap: Record<string, string> = {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;'
+    };
+    return escapeMap[match] || match;
+  });
+};
+
+// Validate input for suspicious patterns
+const validateInput = (str: string): boolean => {
+  const suspiciousPatterns = [
+    /<script/i, /javascript:/i, /onclick/i, /onerror/i,
+    /onload/i, /onmouseover/i, /<iframe/i, /<object/i, /<embed/i,
+  ];
+  return !suspiciousPatterns.some(pattern => pattern.test(str));
+};
+
+// Get client IP
+const getClientIP = (req: Request): string => {
+  const forwardedFor = req.headers.get("x-forwarded-for");
+  if (forwardedFor) return forwardedFor.split(",")[0].trim();
+  const realIP = req.headers.get("x-real-ip");
+  if (realIP) return realIP.trim();
+  const cfIP = req.headers.get("cf-connecting-ip");
+  if (cfIP) return cfIP.trim();
+  return "unknown";
 };
 
 interface WelcomeEmailRequest {
@@ -12,16 +57,89 @@ interface WelcomeEmailRequest {
 }
 
 serve(async (req) => {
+  const corsHeaders = getCorsHeaders(req);
+
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
 
+  if (req.method !== "POST") {
+    return new Response(
+      JSON.stringify({ error: "Method not allowed" }),
+      { status: 405, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+    );
+  }
+
   try {
+    // Verify JWT - only authenticated users can trigger welcome emails
+    const authHeader = req.headers.get("authorization");
+    if (!authHeader) {
+      return new Response(
+        JSON.stringify({ error: "Authorization required" }),
+        { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
+    const supabaseAnonKey = Deno.env.get("SUPABASE_ANON_KEY")!;
+    const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+
+    const supabaseAuth = createClient(supabaseUrl, supabaseAnonKey, {
+      global: { headers: { Authorization: authHeader } },
+    });
+
+    const { data: { user }, error: authError } = await supabaseAuth.auth.getUser();
+    if (authError || !user) {
+      return new Response(
+        JSON.stringify({ error: "Invalid or expired token" }),
+        { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    // Rate limiting
+    const supabase = createClient(supabaseUrl, supabaseServiceKey);
+    const clientIP = getClientIP(req);
+
+    const { data: rateLimitAllowed, error: rateLimitError } = await supabase.rpc(
+      "check_rate_limit",
+      { p_ip_address: clientIP, p_endpoint: "send-welcome-email", p_max_requests: 5, p_window_minutes: 60 }
+    );
+
+    if (!rateLimitError && rateLimitAllowed === false) {
+      return new Response(
+        JSON.stringify({ error: "Too many requests. Try again later." }),
+        { status: 429, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
     const { email, fullName } = (await req.json()) as WelcomeEmailRequest;
 
     if (!email || !fullName) {
       return new Response(
         JSON.stringify({ error: "Email and fullName are required" }),
+        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    // Ensure the authenticated user can only send to their own email
+    if (email.trim().toLowerCase() !== user.email?.toLowerCase()) {
+      return new Response(
+        JSON.stringify({ error: "You can only send welcome emails to your own address" }),
+        { status: 403, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    // Validate input
+    if (!validateInput(fullName)) {
+      return new Response(
+        JSON.stringify({ error: "Name contains invalid characters" }),
+        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    if (fullName.length > 100) {
+      return new Response(
+        JSON.stringify({ error: "Name too long" }),
         { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
@@ -35,7 +153,9 @@ serve(async (req) => {
       );
     }
 
-    const firstName = fullName.split(" ")[0];
+    // Sanitize before embedding in HTML
+    const sanitizedFirstName = escapeHtml(fullName.split(" ")[0].trim());
+    const sanitizedSubjectName = fullName.split(" ")[0].trim().replace(/[<>"'&]/g, '');
 
     const htmlContent = `
 <!DOCTYPE html>
@@ -49,15 +169,13 @@ serve(async (req) => {
     <tr>
       <td align="center">
         <table width="600" cellpadding="0" cellspacing="0" style="background-color:#111827;border-radius:16px;border:1px solid #1e293b;overflow:hidden;">
-          <!-- Header -->
           <tr>
             <td style="padding:32px 40px 24px;text-align:center;background:linear-gradient(135deg,rgba(96,165,250,0.1),rgba(147,197,253,0.05));">
               <h1 style="margin:0;font-size:24px;font-weight:700;color:#e8ecf4;">
-                Bem-vindo à Focus, ${firstName}! 🚀
+                Bem-vindo à Focus, ${sanitizedFirstName}! 🚀
               </h1>
             </td>
           </tr>
-          <!-- Body -->
           <tr>
             <td style="padding:24px 40px 32px;">
               <p style="margin:0 0 16px;font-size:16px;line-height:1.6;color:#94a3b8;">
@@ -96,7 +214,6 @@ serve(async (req) => {
               </table>
             </td>
           </tr>
-          <!-- Footer -->
           <tr>
             <td style="padding:24px 40px;border-top:1px solid #1e293b;text-align:center;">
               <p style="margin:0;font-size:12px;color:#64748b;">
@@ -120,7 +237,7 @@ serve(async (req) => {
       body: JSON.stringify({
         from: "Focus Gestão <onboarding@resend.dev>",
         to: [email],
-        subject: `Bem-vindo à Focus, ${firstName}! 🚀`,
+        subject: `Bem-vindo à Focus, ${sanitizedSubjectName}! 🚀`,
         html: htmlContent,
       }),
     });
@@ -130,7 +247,7 @@ serve(async (req) => {
     if (!res.ok) {
       console.error("Resend API error:", data);
       return new Response(
-        JSON.stringify({ error: "Failed to send email", details: data }),
+        JSON.stringify({ error: "Failed to send email" }),
         { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
