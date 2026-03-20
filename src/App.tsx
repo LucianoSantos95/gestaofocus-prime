@@ -25,6 +25,8 @@ const Cookies = lazy(() => import("./pages/Cookies"));
 const CentralAjuda = lazy(() => import("./pages/CentralAjuda"));
 const Documentacao = lazy(() => import("./pages/Documentacao"));
 const StatusPlataforma = lazy(() => import("./pages/StatusPlataforma"));
+const Contato = lazy(() => import("./pages/Contato"));
+const SistemasGratuitos = lazy(() => import("./pages/SistemasGratuitos"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 // Auth
@@ -186,6 +188,8 @@ function AppLayout() {
             <Route path="/ajuda" element={<CentralAjuda />} />
             <Route path="/docs" element={<Documentacao />} />
             <Route path="/status" element={<StatusPlataforma />} />
+            <Route path="/contato" element={<Contato />} />
+            <Route path="/sistemas-gratuitos" element={<SistemasGratuitos />} />
 
             {/* Auth Routes */}
             <Route path="/auth/signup" element={<SignUp />} />
