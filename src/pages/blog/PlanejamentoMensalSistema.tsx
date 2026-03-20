@@ -1,43 +1,84 @@
-import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
-import planejamentoImage from "@/assets/blog/planejamento-mensal-sistema.jpg";
+import SEOHead from "@/components/SEOHead";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import BlogBreadcrumb from "@/components/BlogBreadcrumb";
+import ReadingProgressBar from "@/components/blog/ReadingProgressBar";
+import TableOfContents from "@/components/blog/TableOfContents";
+import KeyTakeaways from "@/components/blog/KeyTakeaways";
+import ArticleEngagement from "@/components/blog/ArticleEngagement";
+import AuthorBio from "@/components/blog/AuthorBio";
+import BlogCTA from "@/components/BlogCTA";
+import RelatedArticles from "@/components/RelatedArticles";
+import planejamentoImage from "@/assets/blog/planejamento-mensal-sistema.jpg";
 
 const PlanejamentoMensalSistema = () => {
-  const publishDate = "2025-01-19";
-  const articleUrl = "https://focusinteligente.com/blog/planejamento-mensal-sistema";
+  const imageUrl = "https://focusinteligente.com.br" + planejamentoImage;
+  const articleUrl = "https://focusinteligente.com.br/blog/planejamento-mensal-sistema";
+
+  const tocItems = [
+    { id: "intervalo-ideal", text: "Por Que Mensal é o Intervalo Ideal", level: 2 },
+    { id: "framework-4-pilares", text: "O Framework dos 4 Pilares", level: 2 },
+    { id: "tracking", text: "Sistema de Tracking Mensal", level: 2 },
+    { id: "erros-fatais", text: "Os 5 Erros Fatais do Planejamento Mensal", level: 2 },
+  ];
+
+  const keyTakeaways = [
+    "Planejamento mensal é o equilíbrio perfeito entre visão estratégica e flexibilidade",
+    "Use o Framework dos 4 Pilares: Revisão, Tema, Objetivos e Distribuição Semanal",
+    "Defina no máximo 3-5 objetivos SMART por mês",
+    "Faça check-ins semanais e revisão mid-month para ajustar a rota",
+    "Celebrar conquistas reforça o comportamento e mantém a motivação",
+  ];
 
   return (
     <>
-      <Helmet>
-        <title>Planejamento Mensal: Como Criar Um Sistema Que Realmente Funciona | Focus Inteligente</title>
-        <meta name="description" content="Aprenda a criar um sistema de planejamento mensal eficaz. Método prático para alcançar suas metas todos os meses." />
-        <meta name="keywords" content="planejamento mensal, metas mensais, organização mensal, produtividade, gestão tempo" />
-        <link rel="canonical" href={articleUrl} />
-      </Helmet>
+      <ReadingProgressBar />
+      <SEOHead
+        title="Planejamento Mensal: Como Criar Um Sistema Que Realmente Funciona | Focus Inteligente"
+        description="Aprenda a criar um sistema de planejamento mensal eficaz. Método prático com 4 pilares para alcançar suas metas todos os meses."
+        canonical="/blog/planejamento-mensal-sistema"
+        image={imageUrl}
+        type="article"
+        publishedTime="2025-01-19"
+        modifiedTime="2025-01-19"
+        keywords="planejamento mensal, metas mensais, organização mensal, produtividade, gestão tempo"
+      />
 
       <div className="min-h-screen flex flex-col bg-background">
         <Navigation />
         <main className="flex-grow">
           <article className="container mx-auto px-4 py-12 max-w-4xl">
-            <nav className="text-sm mb-8">
-              <ol className="flex items-center space-x-2 text-muted-foreground">
-                <li><Link to="/">Início</Link></li>
-                <li>/</li>
-                <li><Link to="/blog">Blog</Link></li>
-                <li>/</li>
-                <li className="text-foreground">Planejamento Mensal</li>
-              </ol>
-            </nav>
-
-            <img src={planejamentoImage} alt="Sistema de planejamento mensal que funciona - Método completo passo a passo" width="1200" height="400" className="w-full h-[400px] object-cover rounded-lg mb-8" loading="lazy" />
+            <BlogBreadcrumb
+              articleTitle="Planejamento Mensal"
+              articleSlug="planejamento-mensal-sistema"
+            />
 
             <header className="mb-8">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">Planejamento Mensal: Como Criar Um Sistema Que Realmente Funciona</h1>
-              <p className="text-xl text-muted-foreground">O método completo para planejar e executar suas metas mensais com consistência</p>
-              <time className="text-sm text-muted-foreground" dateTime={publishDate}>19 de janeiro de 2025 • 10 min</time>
+              <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
+                Planejamento Mensal: Como Criar Um Sistema Que Realmente Funciona
+              </h1>
+              <p className="text-xl text-muted-foreground">
+                O método completo para planejar e executar suas metas mensais com consistência
+              </p>
             </header>
+
+            <ArticleEngagement
+              publishDate="19 de janeiro de 2025"
+              readTime="10 min"
+              articleUrl={articleUrl}
+              articleTitle="Planejamento Mensal: Como Criar Um Sistema Que Realmente Funciona"
+            />
+
+            <img
+              src={planejamentoImage}
+              alt="Sistema de planejamento mensal que funciona - Método completo passo a passo"
+              className="w-full h-[400px] object-cover rounded-lg mb-8"
+            />
+
+            <KeyTakeaways items={keyTakeaways} readTime="10 min" />
+
+            <TableOfContents items={tocItems} />
 
             <div className="prose prose-lg max-w-none">
               <p className="text-lg leading-relaxed mb-6">
@@ -48,7 +89,7 @@ const PlanejamentoMensalSistema = () => {
                 Um sistema de planejamento mensal eficaz não é sobre preencher planilhas bonitas. É sobre criar um mapa claro do mês, saber exatamente onde você está investindo seu tempo e ajustar a rota quando necessário.
               </p>
 
-              <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
+              <h2 id="intervalo-ideal" className="text-3xl font-bold mt-12 mb-6 text-foreground">
                 Por Que Mensal é o Intervalo Ideal
               </h2>
 
@@ -63,7 +104,7 @@ const PlanejamentoMensalSistema = () => {
                 <li><strong>Momentum construído:</strong> 12 meses bem executados = ano transformador</li>
               </ul>
 
-              <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
+              <h2 id="framework-4-pilares" className="text-3xl font-bold mt-12 mb-6 text-foreground">
                 O Framework dos 4 Pilares
               </h2>
 
@@ -179,7 +220,11 @@ SEMANA 4 (dias 22-30):
                 </pre>
               </div>
 
-              <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
+              <div className="my-12">
+                <BlogCTA variant="download" location="planejamento_mensal_mid" />
+              </div>
+
+              <h2 id="tracking" className="text-3xl font-bold mt-12 mb-6 text-foreground">
                 Sistema de Tracking Mensal
               </h2>
 
@@ -206,7 +251,7 @@ SEMANA 4 (dias 22-30):
                 No dia 15, faça uma revisão profunda. Ainda dá tempo de corrigir a rota se necessário.
               </p>
 
-              <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
+              <h2 id="erros-fatais" className="text-3xl font-bold mt-12 mb-6 text-foreground">
                 Os 5 Erros Fatais do Planejamento Mensal
               </h2>
 
@@ -245,48 +290,40 @@ SEMANA 4 (dias 22-30):
                 Objetivos atingidos merecem celebração. Isso reforça o comportamento e mantém motivação alta.
               </p>
 
-              <div className="bg-muted p-8 rounded-lg my-12 text-center">
-                <h3 className="text-2xl font-bold mb-4">
-                  Sistema Completo de Planejamento Mensal no Notion
-                </h3>
-                <p className="text-lg text-muted-foreground mb-6">
-                  Templates prontos com revisão, objetivos, tracking semanal e dashboards visuais.
-                </p>
-                <Link 
-                  to="/sistemas-notion" 
-                  className="inline-block bg-primary text-primary-foreground px-8 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors"
-                >
-                  Ver Sistemas de Planejamento
-                </Link>
+              <div className="my-12">
+                <BlogCTA variant="whatsapp" location="planejamento_mensal_end" />
               </div>
+
+              <AuthorBio />
             </div>
 
-            <div className="mt-16 pt-8 border-t border-border">
-              <h3 className="text-2xl font-bold mb-6">Artigos Relacionados</h3>
-              <div className="grid md:grid-cols-3 gap-6">
-                <Link to="/blog/organizar-rotina-semanal" className="group">
-                  <div className="bg-muted rounded-lg p-4 hover:bg-muted/80 transition-colors">
-                    <h4 className="font-semibold group-hover:text-primary transition-colors">
-                      Como organizar sua rotina semanal para ter mais foco
-                    </h4>
-                  </div>
-                </Link>
-                <Link to="/blog/metas-inteligentes-smart" className="group">
-                  <div className="bg-muted rounded-lg p-4 hover:bg-muted/80 transition-colors">
-                    <h4 className="font-semibold group-hover:text-primary transition-colors">
-                      Como criar metas inteligentes (SMART)
-                    </h4>
-                  </div>
-                </Link>
-                <Link to="/blog/checklist-diario-produtividade" className="group">
-                  <div className="bg-muted rounded-lg p-4 hover:bg-muted/80 transition-colors">
-                    <h4 className="font-semibold group-hover:text-primary transition-colors">
-                      Checklist diário: método simples que aumenta produtividade
-                    </h4>
-                  </div>
-                </Link>
-              </div>
-            </div>
+            <RelatedArticles
+              currentSlug="planejamento-mensal-sistema"
+              category="Produtividade"
+              allArticles={[
+                {
+                  title: "Como Organizar Sua Rotina Semanal Para Ter Mais Foco",
+                  excerpt: "O método completo de planejamento semanal que elimina decisões desnecessárias.",
+                  slug: "organizar-rotina-semanal",
+                  readTime: "9 min",
+                  category: "Organização"
+                },
+                {
+                  title: "Metas Inteligentes SMART: Como Definir e Alcançar",
+                  excerpt: "Aprenda a criar metas que realmente funcionam com o método SMART.",
+                  slug: "metas-inteligentes-smart",
+                  readTime: "8 min",
+                  category: "Produtividade"
+                },
+                {
+                  title: "Checklist Diário: O Método Simples Que Aumenta Produtividade",
+                  excerpt: "Descubra o sistema de checklist que profissionais de alta performance usam.",
+                  slug: "checklist-diario-produtividade",
+                  readTime: "8 min",
+                  category: "Produtividade"
+                }
+              ]}
+            />
           </article>
         </main>
         <Footer />
