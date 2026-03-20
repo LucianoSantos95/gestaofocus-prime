@@ -264,7 +264,6 @@ const RotinaMatinalPoderosa = () => {
         </main>
 
         <Footer />
-        <RelatedArticles articles={allArticles} currentSlug="rotina-matinal-poderosa-15-minutos" />
       </div>
     </>
   );
