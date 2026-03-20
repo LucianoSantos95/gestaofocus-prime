@@ -25,7 +25,7 @@ export default function BlogCTA({ variant = 'default', location }: BlogCTAProps)
       event_label: `download_${location}`,
       variant: variant,
     });
-    window.location.href = '/sistemas-gratuitos';
+    window.location.href = '/solucoes-sob-medida';
   };
 
   if (variant === 'download') {
