@@ -1,134 +1,113 @@
 
 
-# Plano: Area "Meus Projetos" com Sprints
+## Avaliação Completa do Blog — Aprovação Google AdSense
 
-## Resumo
-
-Criar uma pagina dedicada `/dashboard/projetos` onde o cliente ve seus projetos contratados com andamento por sprints. Voce (admin) informa os dados do projeto e atualizacoes de sprint diretamente pelo chat, e eu atualizo o banco de dados. A barra de progresso sobe automaticamente conforme as sprints sao concluidas.
+### Diagnóstico
 
 ---
 
-## Fluxo de Trabalho
+### 1. INCONSISTÊNCIA DE ESTRUTURA (Problema Grave para AdSense)
+
+Dos 48 artigos, existem **dois padrões completamente diferentes**:
+
+**Padrão Novo (10 artigos)** — usa `SEOHead`, `ReadingProgressBar`, `TableOfContents`, `KeyTakeaways`, `ArticleEngagement`, `AuthorBio`, `InlineRelatedArticles`:
+- ChecklistDiarioProdutividade, OrganizarRotinaSemanal, MetodoGTDGuia, MatrizEisenhower, ReunioesProdutivas, OrganizarTarefasDiaDia, PlanejamentoSemanalPassoPasso, MetodoPessoalProdutividade, OrganizacaoPessoalProfissional, ReduzirEstresseTrabalhoOrganizacao
+
+**Padrão Antigo (18 artigos)** — usa `Helmet` diretamente, sem componentes de engajamento, sem `AuthorBio`, sem `ReadingProgressBar`, sem `TableOfContents` padronizado:
+- PoderNotionEmpresas, TarefasVsIncendios, ProdutividadeFazerOqueImporta, PerdaTempoProfissionais, ProdutividadeAutonomosFreelancers, PararApagarIncendiosEmpresa, ProcessosInteligentesAutonomos, PararProcrastinarSistemasVisuais, SistemaProdutividadePassoPasso, PlanejamentoMensalSistema, TarefasSoltasEmResultados, SistemasNotionPequenasEmpresas, SistemaEstudosEficiente, OrganizarVidaDigital, RotinaMatinalPoderosa, SistemaCompletoNotion, PlanejamentoAnualZero, 150SistemasNotion
+
+**Impacto AdSense:** Google avalia consistência e profissionalismo. Ter metade dos artigos com layout diferente sinaliza baixa qualidade editorial.
+
+---
+
+### 2. LINK QUEBRADO CONFIRMADO
+
+- **BlogCTA (variant "download")** redireciona para `/sistemas-gratuitos` — essa rota **NÃO EXISTE** no `App.tsx`. É um link morto em todos os artigos que usam esse CTA. Isso é um fator de rejeição do AdSense.
+
+---
+
+### 3. PROBLEMAS DE SEO NOS ARTIGOS ANTIGOS
+
+- **Sem Schema.org Article padronizado** — os artigos antigos usam `BlogPosting` manual, alguns com dados inconsistentes (ex: `PoderNotionEmpresas` usa "Focus Gestão Empresarial" como autor, outros usam "Focus Inteligente")
+- **OG:image com caminho errado** — `RotinaMatinalPoderosa` usa `https://focusinteligente.com.br/assets/blog/rotina-matinal-poderosa.jpg` (caminho estático que não existe após build do Vite — deveria ser o hash do asset)
+- **Canonical inconsistente** — alguns artigos definem canonical como URL completa, outros como path relativo
+
+---
+
+### 4. CONTEÚDO — AVALIAÇÃO DE PROFUNDIDADE
+
+| Aspecto | Avaliação |
+|---|---|
+| Volume | 48 artigos — suficiente para AdSense |
+| Tamanho médio | 300-500 linhas de TSX — bom (equivale a ~1500-2500 palavras) |
+| Originalidade | Conteúdo parece original, não genérico |
+| Profundidade | Artigos novos são bons (H2/H3, listas, exemplos). Artigos antigos são mais rasos |
+| CTAs | Presente, mas link quebrado `/sistemas-gratuitos` prejudica |
+| Categorização | 4 categorias bem definidas |
+
+**Artigos de baixo valor:** Os artigos mais antigos sobre Notion especificamente (PoderNotionEmpresas, SistemaCompletoNotion, etc.) podem ser problemáticos pois você **não trabalha mais com Notion** — contradizem o posicionamento atual do site.
+
+---
+
+### 5. LINKS INTERNOS — VERIFICAÇÃO
+
+- Links entre artigos (InlineRelatedArticles e RelatedArticles) usam slugs que correspondem às rotas no App.tsx — **corretos**
+- Link `/blog` no breadcrumb — **correto**
+- Link `/sistemas-gratuitos` no BlogCTA — **QUEBRADO**
+- Links para `/produtos` mencionados na memória — rota **NÃO EXISTE** no App.tsx
+
+---
+
+### 6. SITEMAP vs ROTAS
+
+O sitemap tem 48 artigos que correspondem às rotas do App.tsx — **consistente**.
+
+---
+
+## Plano de Melhoria para Aprovação AdSense
+
+### Etapa 1 — Correções Críticas (Bloqueadoras)
+
+1. **Corrigir link quebrado do BlogCTA** — mudar `/sistemas-gratuitos` para uma rota válida (ex: `/hub-empresarial` ou `/solucoes-sob-medida`)
+
+2. **Migrar os 18 artigos antigos para o padrão novo** — trocar `Helmet` por `SEOHead`, adicionar `ReadingProgressBar`, `TableOfContents`, `KeyTakeaways`, `ArticleEngagement`, `AuthorBio`. Isso garante consistência editorial que o Google valoriza.
+
+### Etapa 2 — SEO Técnico
+
+3. **Corrigir OG:image nos artigos antigos** — usar import do asset (como os novos fazem) em vez de URLs estáticas hardcoded
+
+4. **Padronizar nome do autor** — decidir entre "Focus Inteligente" ou "Focus Gestão Inteligente" e aplicar em todos
+
+5. **Adicionar página "Sobre o Autor/Empresa"** — AdSense valoriza transparência. A página `/sobre-focus` já existe, mas verificar se tem informações de contato, CNPJ/responsável, e-mail.
+
+### Etapa 3 — Conteúdo
+
+6. **Revisar artigos sobre Notion** — como você não trabalha mais com Notion, os ~9 artigos da categoria "Notion para Empresas" contradizem seu posicionamento. Opções:
+   - (a) Atualizar o conteúdo para falar de gestão empresarial de forma genérica
+   - (b) Manter mas redirecionar os CTAs para seus serviços atuais
+   - (c) Remover a categoria "Notion para Empresas" e recategorizar
+
+7. **Adicionar página de Contato dedicada** — AdSense exige formas claras de contato
+
+### Etapa 4 — Requisitos AdSense Técnicos
+
+8. **Verificar páginas obrigatórias existem e estão completas:**
+   - Política de Privacidade (`/privacidade`) — existe
+   - Termos de Uso (`/termos`) — existe
+   - Cookies (`/cookies`) — existe
+   - Sobre (`/sobre-focus`) — existe
+   - Contato — **verificar se existe formulário de contato**
+
+### Resumo de Prioridades
 
 ```text
-1. Voce me avisa: "Crie o projeto CRM para o Flavio, 5 sprints"
-   -> Eu insiro no banco: client_projects + 5 registros em project_sprints
-
-2. Voce me avisa: "Sprint 1 do CRM do Flavio foi concluida"
-   -> Eu atualizo: sprint 1 = concluida, sprint 2 = em_andamento, current_sprint = 2
-   -> Progresso sobe automaticamente: 1/5 = 20%
-
-3. Voce me avisa: "Sprint 2 concluida"
-   -> Atualizo: sprint 2 = concluida, sprint 3 = em_andamento, current_sprint = 3
-   -> Progresso: 2/5 = 40%
-
-... e assim por diante ate 100%
+PRIORIDADE    AÇÃO                                      IMPACTO
+─────────────────────────────────────────────────────────────
+CRÍTICA       Corrigir link /sistemas-gratuitos          Link morto = rejeição
+CRÍTICA       Migrar 18 artigos para padrão novo         Consistência editorial
+ALTA          Corrigir OG:image hardcoded                SEO + compartilhamento
+ALTA          Padronizar nome do autor                   Credibilidade
+MÉDIA         Revisar artigos sobre Notion               Alinhamento de marca
+MÉDIA         Página de contato dedicada                 Requisito AdSense
 ```
-
-O campo `progress` sera calculado automaticamente: `(sprints concluidas / total de sprints) * 100`.
-
----
-
-## Modelo de Dados
-
-### Tabela existente: `client_projects` -- Novas colunas
-
-- `total_sprints` (integer, default 1)
-- `current_sprint` (integer, default 1)
-- `client_name` (text) -- nome do cliente exibido no card
-
-### Nova tabela: `project_sprints`
-
-| Coluna | Tipo | Descricao |
-|---|---|---|
-| id | UUID PK | Identificador |
-| project_id | UUID FK | Referencia ao client_projects |
-| sprint_number | INTEGER | Numero da sprint (1, 2, 3...) |
-| title | TEXT | Ex: "Sprint 1 - Estrutura do CRM" |
-| description | TEXT | O que sera feito nessa sprint |
-| status | TEXT | `pendente`, `em_andamento`, `concluida` |
-| start_date | DATE | Data de inicio |
-| end_date | DATE | Data de fim |
-
-### RLS
-- Cliente ve apenas sprints dos seus projetos
-- Somente admin insere/atualiza/deleta
-
----
-
-## Frontend
-
-### 1. Pagina `/dashboard/projetos`
-
-- Lista os projetos do cliente em cards
-- Cada card mostra: nome do projeto, nome do cliente, status, barra de progresso
-- Ao expandir: **timeline vertical de sprints**
-  - Sprint concluida: check verde
-  - Sprint ativa: indicador pulsante roxo
-  - Sprint pendente: circulo cinza
-  - Cada sprint mostra titulo, descricao e datas
-
-### 2. Dashboard (tela inicial)
-
-- Secao "Meus Projetos" mostra cards resumidos
-- Cada card exibe: nome do projeto + "Sprint 2 de 5" + barra de progresso
-- Clicar no card navega para `/dashboard/projetos`
-
-### 3. Calculo automatico do progresso
-
-Quando eu atualizar as sprints no banco, o campo `progress` sera recalculado:
-
-```text
-progress = (sprints concluidas / total de sprints) * 100
-```
-
-Exemplo com 5 sprints:
-- 0 concluidas = 0%
-- 1 concluida = 20%
-- 3 concluidas = 60%
-- 5 concluidas = 100%
-
----
-
-## Detalhes Tecnicos
-
-### Migracao de banco:
-
-```sql
-ALTER TABLE public.client_projects
-  ADD COLUMN total_sprints INTEGER NOT NULL DEFAULT 1,
-  ADD COLUMN current_sprint INTEGER NOT NULL DEFAULT 1,
-  ADD COLUMN client_name TEXT;
-
-CREATE TABLE public.project_sprints (
-  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
-  project_id UUID NOT NULL REFERENCES public.client_projects(id) ON DELETE CASCADE,
-  sprint_number INTEGER NOT NULL,
-  title TEXT NOT NULL,
-  description TEXT,
-  status TEXT NOT NULL DEFAULT 'pendente',
-  start_date DATE,
-  end_date DATE,
-  created_at TIMESTAMPTZ DEFAULT now(),
-  UNIQUE(project_id, sprint_number)
-);
-
--- RLS: cliente ve sprints dos seus projetos, admin gerencia tudo
-```
-
-### Arquivos a criar:
-
-| Arquivo | Descricao |
-|---|---|
-| `src/pages/dashboard/Projects.tsx` | Pagina com timeline de sprints |
-
-### Arquivos a modificar:
-
-| Arquivo | Mudanca |
-|---|---|
-| `src/pages/dashboard/Dashboard.tsx` | Cards clicaveis com info de sprint |
-| `src/components/dashboard/ProjectCard.tsx` | Exibir "Sprint X de Y", tornar clicavel |
-| `src/App.tsx` | Rota `/dashboard/projetos` |
-
-### Nenhuma dependencia nova necessaria.
 
