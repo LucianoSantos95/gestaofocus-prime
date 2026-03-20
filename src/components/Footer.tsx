@@ -28,6 +28,7 @@ const Footer = () => {
                 { label: "Blog de Gestão", href: "/blog" },
                 { label: "Termos de Uso", href: "/termos-uso" },
                 { label: "Política de Privacidade", href: "/privacidade" },
+                { label: "Contato", href: "/contato" },
               ].map((link) => (
                 <li key={link.href}>
                   <Link
