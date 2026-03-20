@@ -1,74 +1,60 @@
-import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
+import SEOHead from "@/components/SEOHead";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import BlogBreadcrumb from "@/components/BlogBreadcrumb";
+import ReadingProgressBar from "@/components/blog/ReadingProgressBar";
+import TableOfContents from "@/components/blog/TableOfContents";
+import KeyTakeaways from "@/components/blog/KeyTakeaways";
+import ArticleEngagement from "@/components/blog/ArticleEngagement";
+import AuthorBio from "@/components/blog/AuthorBio";
+import BlogCTA from "@/components/BlogCTA";
+import RelatedArticles from "@/components/RelatedArticles";
 import articleImage from "@/assets/blog/organizar-vida-digital.jpg";
 
 const OrganizarVidaDigital = () => {
-  const articleUrl = "https://focusinteligente.com.br/blog/organizar-vida-digital";
   const imageUrl = "https://focusinteligente.com.br" + articleImage;
+  const articleUrl = "https://focusinteligente.com.br/blog/organizar-vida-digital";
+
+  const tocItems = [
+    { id: "custo-desordem", text: "O Custo Real da Desordem Digital", level: 2 },
+    { id: "4-pilares", text: "O Sistema de 4 Pilares para Organizar Sua Vida Digital", level: 2 },
+    { id: "habitos", text: "Mantendo a Organização: Hábitos Semanais", level: 2 },
+    { id: "ferramentas", text: "Ferramentas e Apps Recomendados", level: 2 },
+    { id: "erros", text: "Erros Comuns ao Organizar a Vida Digital", level: 2 },
+    { id: "conclusao", text: "Conclusão: Organize Agora, Agradeça Depois", level: 2 },
+  ];
+
+  const keyTakeaways = [
+    "Profissionais perdem em média 2,5 horas por dia com desordem digital",
+    "Use o sistema P.A.R.A: Projetos, Áreas, Recursos e Arquivo",
+    "Aplique a regra dos 2 minutos para e-mails — responda ou mova imediatamente",
+    "Mantenha hábitos semanais de manutenção: 10-20 min, 3x por semana",
+    "Escolha UM sistema de nuvem principal e centralize tudo nele",
+  ];
 
   return (
     <>
-      <Helmet>
-        <title>Como Organizar Sua Vida Digital: E-mails, Arquivos e Fotos em 2025</title>
-        <meta name="description" content="Guia completo para organizar e-mails, arquivos, fotos e toda sua vida digital. Pare de perder tempo procurando documentos e tenha tudo sob controle." />
-        <meta name="keywords" content="organizar vida digital, organizar e-mails, organizar arquivos, gestão de documentos digitais, produtividade digital" />
-        <link rel="canonical" href={articleUrl} />
-        
-        <meta property="og:title" content="Como Organizar Sua Vida Digital: E-mails, Arquivos e Fotos" />
-        <meta property="og:description" content="Guia completo para organizar e-mails, arquivos, fotos e toda sua vida digital. Pare de perder tempo procurando documentos." />
-        <meta property="og:image" content={imageUrl} />
-        <meta property="og:url" content={articleUrl} />
-        <meta property="og:type" content="article" />
-        
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Como Organizar Sua Vida Digital: E-mails, Arquivos e Fotos" />
-        <meta name="twitter:description" content="Guia completo para organizar sua vida digital e parar de perder tempo." />
-        <meta name="twitter:image" content={imageUrl} />
+      <ReadingProgressBar />
+      <SEOHead
+        title="Como Organizar Sua Vida Digital: E-mails, Arquivos e Fotos | Focus Inteligente"
+        description="Guia completo para organizar e-mails, arquivos, fotos e toda sua vida digital. Pare de perder tempo procurando documentos e tenha tudo sob controle."
+        canonical="/blog/organizar-vida-digital"
+        image={imageUrl}
+        type="article"
+        publishedTime="2025-01-19"
+        modifiedTime="2025-01-19"
+        keywords="organizar vida digital, organizar e-mails, organizar arquivos, gestão de documentos digitais, produtividade digital"
+      />
 
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            "headline": "Como Organizar Sua Vida Digital: E-mails, Arquivos e Fotos em 2025",
-            "image": imageUrl,
-            "datePublished": "2025-01-19",
-            "dateModified": "2025-01-19",
-            "author": {
-              "@type": "Organization",
-              "name": "Focus Inteligente"
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "Focus Inteligente",
-              "logo": {
-                "@type": "ImageObject",
-                "url": "https://focusinteligente.com.br/lovable-uploads/focus-logo.png"
-              }
-            },
-            "description": "Guia completo para organizar e-mails, arquivos, fotos e toda sua vida digital. Pare de perder tempo procurando documentos e tenha tudo sob controle."
-          })}
-        </script>
-      </Helmet>
-
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen flex flex-col bg-background">
         <Navigation />
-        
-        <article className="pt-32 pb-20">
-          <div className="container mx-auto px-4 max-w-4xl">
-            {/* Breadcrumbs */}
-            <nav className="mb-8 text-sm text-muted-foreground">
-              <Link to="/" className="hover:text-foreground transition-colors">Início</Link>
-              <span className="mx-2">/</span>
-              <Link to="/blog" className="hover:text-foreground transition-colors">Blog</Link>
-              <span className="mx-2">/</span>
-              <span className="text-foreground">Organizar Vida Digital</span>
-            </nav>
+        <main className="flex-grow">
+          <article className="container mx-auto px-4 py-12 max-w-4xl">
+            <BlogBreadcrumb articleTitle="Organizar Vida Digital" articleSlug="organizar-vida-digital" />
 
-            {/* Título e Subtítulo */}
             <header className="mb-8">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground leading-tight">
+              <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
                 Como Organizar Sua Vida Digital: E-mails, Arquivos, Fotos e Tudo Que Vira Bagunça
               </h1>
               <p className="text-xl text-muted-foreground">
@@ -76,36 +62,26 @@ const OrganizarVidaDigital = () => {
               </p>
             </header>
 
-            {/* Imagem de Capa */}
-            <div className="mb-12 rounded-xl overflow-hidden">
-              <img 
-                src={articleImage} 
-                alt="Organização digital com e-mails, arquivos e documentos organizados"
-                className="w-full h-auto"
-              />
-            </div>
+            <ArticleEngagement publishDate="19 de janeiro de 2025" readTime="11 min" articleUrl={articleUrl} articleTitle="Como Organizar Sua Vida Digital" />
 
-            {/* Conteúdo do Artigo */}
+            <img src={articleImage} alt="Organização digital com e-mails, arquivos e documentos organizados" className="w-full h-[400px] object-cover rounded-lg mb-8" />
+
+            <KeyTakeaways items={keyTakeaways} readTime="11 min" />
+            <TableOfContents items={tocItems} />
+
             <div className="prose prose-lg max-w-none">
               <p className="text-lg leading-relaxed mb-6">
                 Você já perdeu 10 minutos procurando aquele arquivo que "jurava" que estava salvo? Ou passou a manhã tentando encontrar um e-mail importante no meio de milhares de mensagens?
               </p>
 
               <p className="text-lg leading-relaxed mb-6">
-                Se você respondeu "sim" para alguma dessas perguntas, este artigo foi feito para você. A verdade é: <strong>o caos digital está custando muito mais do que você imagina</strong> — tempo, dinheiro, oportunidades e principalmente sua paz mental.
+                A verdade é: <strong>o caos digital está custando muito mais do que você imagina</strong> — tempo, dinheiro, oportunidades e principalmente sua paz mental.
               </p>
 
-              <p className="text-lg leading-relaxed mb-8">
-                Neste guia completo, você vai aprender exatamente como organizar toda sua vida digital de uma vez por todas.
-              </p>
+              <h2 id="custo-desordem" className="text-3xl font-bold mt-12 mb-6 text-foreground">O Custo Real da Desordem Digital</h2>
 
-              {/* Seção 1 */}
-              <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
-                O Custo Real da Desordem Digital
-              </h2>
-
-              <p className="mb-4">
-                Estudos mostram que profissionais perdem em média <strong>2,5 horas por dia</strong> procurando informações ou lidando com distrações digitais. Isso representa:
+              <p className="text-lg leading-relaxed mb-4">
+                Profissionais perdem em média <strong>2,5 horas por dia</strong> procurando informações ou lidando com distrações digitais:
               </p>
 
               <ul className="space-y-3 mb-6">
@@ -114,41 +90,27 @@ const OrganizarVidaDigital = () => {
                 <li>✗ Mais de 600 horas por ano de trabalho improdutivo</li>
               </ul>
 
-              <p className="mb-6">
-                E não é só o tempo: a desorganização digital causa estresse, ansiedade, perda de oportunidades e até problemas de saúde mental.
-              </p>
+              <h3 className="text-2xl font-semibold mt-8 mb-4 text-foreground">Os 3 Maiores Vilões</h3>
 
-              <h3 className="text-2xl font-semibold mt-8 mb-4 text-foreground">
-                Os 3 Maiores Vilões da Desordem Digital
-              </h3>
-
-              <div className="bg-muted/50 p-6 rounded-lg mb-8">
-                <p className="mb-4"><strong>1. E-mails desorganizados:</strong> Caixa de entrada com milhares de mensagens não lidas, spam misturado com assuntos importantes, anexos perdidos.</p>
-                
-                <p className="mb-4"><strong>2. Arquivos espalhados:</strong> Documentos salvos na área de trabalho, downloads acumulados, pastas sem critério, arquivos duplicados.</p>
-                
-                <p className="mb-0"><strong>3. Fotos e mídias:</strong> Milhares de fotos sem organização, vídeos ocupando espaço, prints de WhatsApp misturados com memórias importantes.</p>
+              <div className="bg-muted p-6 rounded-lg mb-8">
+                <p className="mb-4"><strong>1. E-mails desorganizados:</strong> Caixa de entrada com milhares de mensagens não lidas, spam misturado com assuntos importantes.</p>
+                <p className="mb-4"><strong>2. Arquivos espalhados:</strong> Documentos na área de trabalho, downloads acumulados, pastas sem critério.</p>
+                <p className="mb-0"><strong>3. Fotos e mídias:</strong> Milhares de fotos sem organização, prints misturados com memórias importantes.</p>
               </div>
 
-              {/* Seção 2 */}
-              <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
-                O Sistema de 4 Pilares para Organizar Sua Vida Digital
-              </h2>
+              <h2 id="4-pilares" className="text-3xl font-bold mt-12 mb-6 text-foreground">O Sistema de 4 Pilares para Organizar Sua Vida Digital</h2>
 
-              <h3 className="text-2xl font-semibold mt-8 mb-4 text-foreground">
-                Pilar 1: Organize Seus E-mails (De Uma Vez Por Todas)
-              </h3>
+              <h3 className="text-2xl font-semibold mt-8 mb-4 text-foreground">Pilar 1: Organize Seus E-mails</h3>
 
-              <p className="mb-4"><strong>Passo 1: A Grande Limpeza</strong></p>
+              <p className="text-lg leading-relaxed mb-4"><strong>Passo 1: A Grande Limpeza</strong></p>
               <ul className="space-y-2 mb-6">
-                <li>• Cancele newsletters que você nunca lê (use Unroll.me ou CleanEmail)</li>
-                <li>• Delete e-mails com mais de 1 ano que não têm valor</li>
+                <li>• Cancele newsletters que você nunca lê</li>
+                <li>• Delete e-mails com mais de 1 ano sem valor</li>
                 <li>• Archive mensagens antigas mas importantes</li>
-                <li>• Marque como lido tudo que não é urgente</li>
               </ul>
 
-              <p className="mb-4"><strong>Passo 2: Crie um Sistema de Pastas Inteligente</strong></p>
-              <div className="bg-muted/50 p-6 rounded-lg mb-6">
+              <p className="text-lg leading-relaxed mb-4"><strong>Passo 2: Sistema de Pastas Inteligente</strong></p>
+              <div className="bg-muted p-6 rounded-lg mb-6">
                 <p className="mb-2">📁 <strong>Estrutura sugerida:</strong></p>
                 <ul className="space-y-1 ml-4">
                   <li>→ 1. Ação Imediata (responder hoje)</li>
@@ -159,220 +121,119 @@ const OrganizarVidaDigital = () => {
                 </ul>
               </div>
 
-              <p className="mb-4"><strong>Passo 3: Aplique a Regra dos 2 Minutos</strong></p>
-              <p className="mb-6">
-                Se um e-mail pode ser respondido em menos de 2 minutos, responda imediatamente. Se não, mova para "Ação Imediata" e defina um horário específico para lidar com ele.
+              <p className="text-lg leading-relaxed mb-6">
+                <strong>Passo 3: Regra dos 2 Minutos</strong> — Se pode ser respondido em menos de 2 minutos, responda imediatamente. Senão, mova para "Ação Imediata".
               </p>
 
-              <h3 className="text-2xl font-semibold mt-8 mb-4 text-foreground">
-                Pilar 2: Organize Seus Arquivos e Documentos
-              </h3>
+              <h3 className="text-2xl font-semibold mt-8 mb-4 text-foreground">Pilar 2: Organize Seus Arquivos (Método P.A.R.A)</h3>
 
-              <p className="mb-4"><strong>A Estrutura de Pastas P.A.R.A (Recomendada por Especialistas)</strong></p>
-              
-              <div className="bg-muted/50 p-6 rounded-lg mb-6">
-                <p className="mb-4"><strong>P - Projetos:</strong> Tudo relacionado a projetos ativos (prazo definido, objetivo claro)</p>
+              <div className="bg-muted p-6 rounded-lg mb-6">
+                <p className="mb-4"><strong>P - Projetos:</strong> Tudo relacionado a projetos ativos (prazo definido)</p>
                 <p className="mb-4"><strong>A - Áreas:</strong> Responsabilidades contínuas (Finanças, Saúde, Carreira)</p>
                 <p className="mb-4"><strong>R - Recursos:</strong> Materiais de referência, aprendizado, inspiração</p>
                 <p className="mb-0"><strong>A - Arquivo:</strong> Projetos concluídos e documentos inativos</p>
               </div>
 
-              <p className="mb-4"><strong>Regras de Ouro para Arquivos:</strong></p>
+              <p className="text-lg leading-relaxed mb-4"><strong>Regras de Ouro:</strong></p>
               <ul className="space-y-2 mb-6">
-                <li>✓ Use nomes descritivos: "contrato-focus-jan2025.pdf" em vez de "contrato-final-v3.pdf"</li>
+                <li>✓ Nomes descritivos: "contrato-focus-jan2025.pdf"</li>
                 <li>✓ Máximo de 3 níveis de subpastas</li>
-                <li>✓ Delete duplicatas (use ferramentas como Gemini ou CloneSpy)</li>
                 <li>✓ Limpe a área de trabalho semanalmente</li>
-                <li>✓ Esvazia a pasta Downloads quinzenalmente</li>
+                <li>✓ Esvazie Downloads quinzenalmente</li>
               </ul>
 
-              <h3 className="text-2xl font-semibold mt-8 mb-4 text-foreground">
-                Pilar 3: Organize Fotos e Mídias
-              </h3>
+              <div className="my-12">
+                <BlogCTA variant="download" location="vida_digital_mid" />
+              </div>
 
-              <p className="mb-4"><strong>Sistema de Organização por Data + Evento:</strong></p>
-              <div className="bg-muted/50 p-6 rounded-lg mb-6">
-                <p className="mb-2">Estrutura sugerida:</p>
+              <h3 className="text-2xl font-semibold mt-8 mb-4 text-foreground">Pilar 3: Organize Fotos e Mídias</h3>
+
+              <div className="bg-muted p-6 rounded-lg mb-6">
+                <p className="mb-2">Estrutura por Data + Evento:</p>
                 <ul className="space-y-1 ml-4">
-                  <li>→ 2025/</li>
-                  <li>&nbsp;&nbsp;→ 01-Janeiro/</li>
-                  <li>&nbsp;&nbsp;&nbsp;&nbsp;→ Viagem-Praia/</li>
-                  <li>&nbsp;&nbsp;&nbsp;&nbsp;→ Aniversário-João/</li>
-                  <li>&nbsp;&nbsp;→ 02-Fevereiro/</li>
+                  <li>→ 2025/ → 01-Janeiro/ → Viagem-Praia/</li>
+                  <li>→ 2025/ → 02-Fevereiro/ → Aniversário/</li>
                 </ul>
               </div>
 
-              <p className="mb-4"><strong>Ferramentas recomendadas:</strong></p>
-              <ul className="space-y-2 mb-6">
-                <li>• <strong>Google Photos:</strong> Organização automática por data, rosto e localização</li>
-                <li>• <strong>Apple Photos:</strong> Para usuários do ecossistema Apple</li>
-                <li>• <strong>Amazon Photos:</strong> Armazenamento ilimitado para fotos (Prime members)</li>
-              </ul>
-
-              <p className="mb-6">
-                <strong>Dica profissional:</strong> Delete fotos ruins imediatamente após tirar. Evite acumular screenshots e memes que você nunca mais vai ver.
+              <p className="text-lg leading-relaxed mb-6">
+                <strong>Dica:</strong> Delete fotos ruins imediatamente após tirar. Evite acumular screenshots e memes.
               </p>
 
-              <h3 className="text-2xl font-semibold mt-8 mb-4 text-foreground">
-                Pilar 4: Sistema de Nuvem Centralizado
-              </h3>
+              <h3 className="text-2xl font-semibold mt-8 mb-4 text-foreground">Pilar 4: Sistema de Nuvem Centralizado</h3>
 
-              <p className="mb-4">
-                Em vez de ter arquivos espalhados em vários lugares (Google Drive, Dropbox, OneDrive, computador local), escolha <strong>um sistema principal</strong> e sincronize tudo lá.
+              <p className="text-lg leading-relaxed mb-6">
+                Escolha <strong>um sistema principal</strong> e sincronize tudo lá. Google Drive, OneDrive, ou Dropbox — o importante é centralizar.
               </p>
 
-              <p className="mb-4"><strong>Comparativo rápido:</strong></p>
-              <ul className="space-y-3 mb-8">
-                <li>• <strong>Google Drive:</strong> Melhor para colaboração e integração com Gmail</li>
-                <li>• <strong>OneDrive:</strong> Ideal para usuários Microsoft/Windows</li>
-                <li>• <strong>Dropbox:</strong> Sincronização mais rápida e confiável</li>
-                <li>• <strong>Notion:</strong> Para quem quer tudo em um só lugar (notas + arquivos + projetos)</li>
-              </ul>
+              <h2 id="habitos" className="text-3xl font-bold mt-12 mb-6 text-foreground">Mantendo a Organização: Hábitos Semanais</h2>
 
-              {/* Seção 3 */}
-              <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
-                Mantendo a Organização: Hábitos Semanais
-              </h2>
-
-              <p className="mb-4">
-                Organizar uma vez não resolve. Você precisa de <strong>rituais de manutenção</strong>:
-              </p>
-
-              <div className="bg-muted/50 p-6 rounded-lg mb-8">
-                <p className="mb-4"><strong>Segunda-feira (10 min):</strong></p>
-                <ul className="space-y-2 mb-6">
-                  <li>→ Limpe caixa de entrada do e-mail</li>
-                  <li>→ Revise pastas de "Ação Imediata"</li>
-                </ul>
-
-                <p className="mb-4"><strong>Quarta-feira (15 min):</strong></p>
-                <ul className="space-y-2 mb-6">
-                  <li>→ Organize downloads da semana</li>
-                  <li>→ Delete arquivos duplicados</li>
-                </ul>
-
-                <p className="mb-4"><strong>Sexta-feira (20 min):</strong></p>
-                <ul className="space-y-2 mb-0">
-                  <li>→ Limpe área de trabalho</li>
-                  <li>→ Archive projetos concluídos</li>
-                  <li>→ Backup de arquivos importantes</li>
-                </ul>
+              <div className="bg-muted p-6 rounded-lg mb-8">
+                <p className="mb-4"><strong>Segunda (10 min):</strong> Limpe caixa de entrada, revise "Ação Imediata"</p>
+                <p className="mb-4"><strong>Quarta (15 min):</strong> Organize downloads, delete duplicados</p>
+                <p className="mb-0"><strong>Sexta (20 min):</strong> Limpe desktop, archive projetos concluídos, backup</p>
               </div>
 
-              {/* Seção 4 */}
-              <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
-                Ferramentas e Apps Recomendados
-              </h2>
+              <h2 id="ferramentas" className="text-3xl font-bold mt-12 mb-6 text-foreground">Ferramentas e Apps Recomendados</h2>
 
-              <h3 className="text-2xl font-semibold mt-8 mb-4 text-foreground">
-                Para E-mails:
-              </h3>
+              <h3 className="text-2xl font-semibold mt-8 mb-4 text-foreground">Para E-mails:</h3>
               <ul className="space-y-2 mb-6">
-                <li>• <strong>Spark:</strong> Cliente de e-mail inteligente com recursos de organização</li>
+                <li>• <strong>Spark:</strong> Cliente inteligente com organização</li>
                 <li>• <strong>Unroll.me:</strong> Cancela newsletters em massa</li>
-                <li>• <strong>SaneBox:</strong> Filtra e-mails não importantes automaticamente</li>
+                <li>• <strong>SaneBox:</strong> Filtra e-mails automaticamente</li>
               </ul>
 
-              <h3 className="text-2xl font-semibold mt-8 mb-4 text-foreground">
-                Para Arquivos:
-              </h3>
+              <h3 className="text-2xl font-semibold mt-8 mb-4 text-foreground">Para Arquivos:</h3>
               <ul className="space-y-2 mb-6">
-                <li>• <strong>Everything (Windows):</strong> Busca instantânea de arquivos</li>
+                <li>• <strong>Everything (Windows):</strong> Busca instantânea</li>
                 <li>• <strong>Alfred (Mac):</strong> Busca e organização poderosa</li>
-                <li>• <strong>Gemini:</strong> Remove duplicatas automaticamente</li>
               </ul>
 
-              <h3 className="text-2xl font-semibold mt-8 mb-4 text-foreground">
-                Para Organização Geral:
-              </h3>
-              <ul className="space-y-2 mb-8">
-                <li>• <strong>Notion:</strong> Hub central para documentos, projetos e conhecimento</li>
-                <li>• <strong>Evernote:</strong> Captura e organização de informações</li>
-                <li>• <strong>Raindrop.io:</strong> Gerenciador de favoritos e links</li>
-              </ul>
-
-              {/* Seção 5 */}
-              <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
-                Erros Comuns ao Organizar a Vida Digital
-              </h2>
+              <h2 id="erros" className="text-3xl font-bold mt-12 mb-6 text-foreground">Erros Comuns</h2>
 
               <div className="space-y-6 mb-8">
                 <div className="border-l-4 border-destructive pl-4">
                   <p className="font-semibold mb-2">❌ Criar pastas demais</p>
-                  <p className="text-muted-foreground">Mantenha simples. 5-7 pastas principais são suficientes.</p>
+                  <p className="text-muted-foreground">5-7 pastas principais são suficientes.</p>
                 </div>
-
-                <div className="border-l-4 border-destructive pl-4">
-                  <p className="font-semibold mb-2">❌ Não ter critério de nomenclatura</p>
-                  <p className="text-muted-foreground">Defina um padrão e siga sempre (ex: data-projeto-versão)</p>
-                </div>
-
                 <div className="border-l-4 border-destructive pl-4">
                   <p className="font-semibold mb-2">❌ Guardar tudo "por precaução"</p>
-                  <p className="text-muted-foreground">Delete o que não tem valor. Minimalismo digital funciona.</p>
+                  <p className="text-muted-foreground">Minimalismo digital funciona.</p>
                 </div>
-
                 <div className="border-l-4 border-destructive pl-4">
                   <p className="font-semibold mb-2">❌ Não fazer backup</p>
-                  <p className="text-muted-foreground">Use regra 3-2-1: 3 cópias, 2 locais diferentes, 1 fora de casa</p>
+                  <p className="text-muted-foreground">Regra 3-2-1: 3 cópias, 2 locais, 1 fora de casa.</p>
                 </div>
               </div>
 
-              {/* CTA */}
-              <div className="bg-primary/10 border border-primary/20 rounded-xl p-8 my-12">
-                <h3 className="text-2xl font-bold mb-4 text-foreground">
-                  Quer um Sistema Completo de Organização?
-                </h3>
-                <p className="text-lg mb-6">
-                  Nossos sistemas no Notion já vêm com tudo estruturado para você organizar vida pessoal, projetos, finanças e muito mais. Basta duplicar e começar a usar.
-                </p>
-                <Link 
-                  to="/sistemas-notion"
-                  className="inline-block bg-primary text-primary-foreground px-8 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors"
-                >
-                  Ver Sistemas Profissionais →
-                </Link>
-              </div>
+              <h2 id="conclusao" className="text-3xl font-bold mt-12 mb-6 text-foreground">Conclusão: Organize Agora, Agradeça Depois</h2>
 
-              {/* Conclusão */}
-              <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
-                Conclusão: Organize Agora, Agradeça Depois
-              </h2>
-
-              <p className="mb-4">
+              <p className="text-lg leading-relaxed mb-6">
                 Organizar sua vida digital não é sobre perfeição — é sobre <strong>ter controle</strong> sobre suas informações e <strong>recuperar seu tempo</strong>.
               </p>
 
-              <p className="mb-4">
-                Comece pequeno: escolha um pilar (e-mails, arquivos ou fotos) e dedique 1 hora essa semana para organizar. Os resultados vão te motivar a continuar.
+              <p className="text-lg leading-relaxed mb-6">
+                Comece pequeno: escolha um pilar e dedique 1 hora essa semana. Cada minuto investido em organização te devolve horas de produtividade e paz mental.
               </p>
 
-              <p className="mb-8">
-                Lembre-se: cada minuto investido em organização te devolve horas de produtividade e paz mental no futuro.
-              </p>
-            </div>
-
-            {/* Artigos Relacionados */}
-            <div className="mt-16 pt-8 border-t border-border">
-              <h3 className="text-2xl font-bold mb-6 text-foreground">Artigos Relacionados</h3>
-              <div className="grid md:grid-cols-3 gap-6">
-                <Link to="/blog/organizacao-pessoal-tecnologia" className="block p-6 bg-muted/50 rounded-lg hover:bg-muted transition-colors">
-                  <h4 className="font-semibold mb-2 text-foreground">Organização Pessoal com Tecnologia</h4>
-                  <p className="text-sm text-muted-foreground">Como usar apps e ferramentas para organizar sua vida</p>
-                </Link>
-                <Link to="/blog/sistema-produtividade-passo-passo" className="block p-6 bg-muted/50 rounded-lg hover:bg-muted transition-colors">
-                  <h4 className="font-semibold mb-2 text-foreground">Sistema de Produtividade Passo a Passo</h4>
-                  <p className="text-sm text-muted-foreground">Construa seu sistema personalizado de organização</p>
-                </Link>
-                <Link to="/blog/organizar-documentos-empresa" className="block p-6 bg-muted/50 rounded-lg hover:bg-muted transition-colors">
-                  <h4 className="font-semibold mb-2 text-foreground">Como Organizar Documentos da Empresa</h4>
-                  <p className="text-sm text-muted-foreground">Gestão documental para negócios</p>
-                </Link>
+              <div className="my-12">
+                <BlogCTA variant="whatsapp" location="vida_digital_end" />
               </div>
-            </div>
-          </div>
-        </article>
 
+              <AuthorBio />
+            </div>
+
+            <RelatedArticles
+              currentSlug="organizar-vida-digital"
+              category="Organização"
+              allArticles={[
+                { title: "Organização Pessoal com Tecnologia", excerpt: "Como usar apps e ferramentas para organizar sua vida.", slug: "organizacao-pessoal-tecnologia", readTime: "9 min", category: "Organização" },
+                { title: "Sistema de Produtividade Passo a Passo", excerpt: "Construa seu sistema personalizado de organização.", slug: "sistema-produtividade-passo-passo", readTime: "10 min", category: "Produtividade" },
+                { title: "Como Organizar Documentos da Empresa", excerpt: "Gestão documental para negócios.", slug: "organizar-documentos-empresa", readTime: "8 min", category: "Organização" },
+              ]}
+            />
+          </article>
+        </main>
         <Footer />
       </div>
     </>

@@ -1,64 +1,60 @@
-import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
-import sistemasVisuaisImage from "@/assets/blog/parar-procrastinar-sistemas-visuais.jpg";
+import SEOHead from "@/components/SEOHead";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import BlogBreadcrumb from "@/components/BlogBreadcrumb";
+import ReadingProgressBar from "@/components/blog/ReadingProgressBar";
+import TableOfContents from "@/components/blog/TableOfContents";
+import KeyTakeaways from "@/components/blog/KeyTakeaways";
+import ArticleEngagement from "@/components/blog/ArticleEngagement";
+import AuthorBio from "@/components/blog/AuthorBio";
+import BlogCTA from "@/components/BlogCTA";
+import RelatedArticles from "@/components/RelatedArticles";
+import sistemasVisuaisImage from "@/assets/blog/parar-procrastinar-sistemas-visuais.jpg";
 
 const PararProcrastinarSistemasVisuais = () => {
-  const publishDate = "2025-01-18";
-  const modifiedDate = "2025-01-18";
-  const articleUrl = "https://focusinteligente.com/blog/parar-procrastinar-sistemas-visuais";
-  const imageUrl = "https://focusinteligente.com" + sistemasVisuaisImage;
+  const imageUrl = "https://focusinteligente.com.br" + sistemasVisuaisImage;
+  const articleUrl = "https://focusinteligente.com.br/blog/parar-procrastinar-sistemas-visuais";
+
+  const tocItems = [
+    { id: "por-que-visuais", text: "Por Que Sistemas Visuais Vencem a Procrastinação", level: 2 },
+    { id: "kanban", text: "O Método Kanban Simplificado", level: 2 },
+    { id: "cores", text: "Sistema Visual de Cores Anti-Procrastinação", level: 2 },
+    { id: "proximo-passo", text: "A Técnica do Próximo Passo Visível", level: 2 },
+    { id: "gatilhos", text: "O Método dos Gatilhos Visuais", level: 2 },
+    { id: "erros", text: "Os 5 Erros Fatais em Sistemas Visuais", level: 2 },
+  ];
+
+  const keyTakeaways = [
+    "Procrastinação não é preguiça — é resposta emocional à incerteza ou sobrecarga",
+    "O cérebro processa informações visuais 60.000x mais rápido que texto",
+    "Use Kanban com máximo 3 tarefas em progresso simultâneo",
+    "Cada tarefa precisa ter um próximo passo específico e acionável",
+    "Revise seu quadro visual 2x por dia: manhã e tarde",
+  ];
 
   return (
     <>
-      <Helmet>
-        <title>Como Parar de Procrastinar Usando Sistemas Visuais (Sem Depender de Motivação) | Focus</title>
-        <meta name="description" content="Aprenda a vencer a procrastinação usando sistemas visuais ao invés de depender de motivação. Método prático e comprovado." />
-        <meta name="keywords" content="parar procrastinar, procrastinação, sistemas visuais, kanban, produtividade visual, vencer procrastinação" />
-        <link rel="canonical" href={articleUrl} />
-        
-        <meta property="og:title" content="Como Parar de Procrastinar Usando Sistemas Visuais" />
-        <meta property="og:description" content="Aprenda a vencer a procrastinação usando sistemas visuais ao invés de depender de motivação. Método prático e comprovado." />
-        <meta property="og:image" content={imageUrl} />
-        <meta property="og:url" content={articleUrl} />
-        <meta property="og:type" content="article" />
-        
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            "headline": "Como Parar de Procrastinar Usando Sistemas Visuais",
-            "image": imageUrl,
-            "datePublished": publishDate,
-            "dateModified": modifiedDate,
-            "author": {
-              "@type": "Organization",
-              "name": "Focus Inteligente"
-            }
-          })}
-        </script>
-      </Helmet>
+      <ReadingProgressBar />
+      <SEOHead
+        title="Como Parar de Procrastinar Usando Sistemas Visuais | Focus Inteligente"
+        description="Aprenda a vencer a procrastinação usando sistemas visuais ao invés de depender de motivação. Método Kanban prático e comprovado."
+        canonical="/blog/parar-procrastinar-sistemas-visuais"
+        image={imageUrl}
+        type="article"
+        publishedTime="2025-01-18"
+        modifiedTime="2025-01-18"
+        keywords="parar procrastinar, procrastinação, sistemas visuais, kanban, produtividade visual, vencer procrastinação"
+      />
 
       <div className="min-h-screen flex flex-col bg-background">
         <Navigation />
-        
+
         <main className="flex-grow">
           <article className="container mx-auto px-4 py-12 max-w-4xl">
-            <nav className="text-sm mb-8">
-              <ol className="flex items-center space-x-2 text-muted-foreground">
-                <li><Link to="/" className="hover:text-primary transition-colors">Início</Link></li>
-                <li>/</li>
-                <li><Link to="/blog" className="hover:text-primary transition-colors">Blog</Link></li>
-                <li>/</li>
-                <li className="text-foreground">Como Parar de Procrastinar Usando Sistemas Visuais</li>
-              </ol>
-            </nav>
-
-            <img 
-              src={sistemasVisuaisImage} 
-              alt="Sistema visual kanban com colunas coloridas organizadas" 
-              className="w-full h-[400px] object-cover rounded-lg mb-8"
+            <BlogBreadcrumb
+              articleTitle="Como Parar de Procrastinar"
+              articleSlug="parar-procrastinar-sistemas-visuais"
             />
 
             <header className="mb-8">
@@ -68,12 +64,23 @@ const PararProcrastinarSistemasVisuais = () => {
               <p className="text-xl text-muted-foreground">
                 O método definitivo para vencer a procrastinação sem depender de motivação ou força de vontade
               </p>
-              <div className="flex items-center gap-4 mt-4 text-sm text-muted-foreground">
-                <time dateTime={publishDate}>18 de janeiro de 2025</time>
-                <span>•</span>
-                <span>9 min de leitura</span>
-              </div>
             </header>
+
+            <ArticleEngagement
+              publishDate="18 de janeiro de 2025"
+              readTime="9 min"
+              articleUrl={articleUrl}
+              articleTitle="Como Parar de Procrastinar Usando Sistemas Visuais"
+            />
+
+            <img
+              src={sistemasVisuaisImage}
+              alt="Sistema visual kanban com colunas coloridas organizadas"
+              className="w-full h-[400px] object-cover rounded-lg mb-8"
+            />
+
+            <KeyTakeaways items={keyTakeaways} readTime="9 min" />
+            <TableOfContents items={tocItems} />
 
             <div className="prose prose-lg max-w-none">
               <p className="text-lg leading-relaxed mb-6">
@@ -84,7 +91,7 @@ const PararProcrastinarSistemasVisuais = () => {
                 Motivação é como o clima: às vezes está lá, às vezes não. Depender dela para ser produtivo é uma receita para o fracasso. Você precisa de um sistema que funcione mesmo quando você não está "com vontade".
               </p>
 
-              <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
+              <h2 id="por-que-visuais" className="text-3xl font-bold mt-12 mb-6 text-foreground">
                 Por Que Sistemas Visuais Vencem a Procrastinação
               </h2>
 
@@ -104,7 +111,7 @@ const PararProcrastinarSistemasVisuais = () => {
                 </p>
               </div>
 
-              <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
+              <h2 id="kanban" className="text-3xl font-bold mt-12 mb-6 text-foreground">
                 O Método Kanban Simplificado
               </h2>
 
@@ -145,7 +152,11 @@ const PararProcrastinarSistemasVisuais = () => {
                 <li><strong>Regra 5:</strong> Revise seu quadro 2x por dia: manhã e tarde</li>
               </ol>
 
-              <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
+              <div className="my-12">
+                <BlogCTA variant="download" location="procrastinar_visuais_mid" />
+              </div>
+
+              <h2 id="cores" className="text-3xl font-bold mt-12 mb-6 text-foreground">
                 Sistema Visual de Cores Anti-Procrastinação
               </h2>
 
@@ -155,38 +166,28 @@ const PararProcrastinarSistemasVisuais = () => {
 
               <div className="space-y-4 mb-6">
                 <div className="flex items-start gap-3">
-                  <span className="inline-block w-6 h-6 bg-red-500 rounded mt-1"></span>
-                  <div>
-                    <strong>Vermelho - Urgente e Importante:</strong> Precisa ser feito hoje, impacto alto
-                  </div>
+                  <span className="inline-block w-6 h-6 bg-destructive rounded mt-1"></span>
+                  <div><strong>Vermelho - Urgente e Importante:</strong> Precisa ser feito hoje, impacto alto</div>
                 </div>
                 <div className="flex items-start gap-3">
                   <span className="inline-block w-6 h-6 bg-orange-500 rounded mt-1"></span>
-                  <div>
-                    <strong>Laranja - Importante mas não urgente:</strong> Projetos estratégicos
-                  </div>
+                  <div><strong>Laranja - Importante mas não urgente:</strong> Projetos estratégicos</div>
                 </div>
                 <div className="flex items-start gap-3">
                   <span className="inline-block w-6 h-6 bg-yellow-500 rounded mt-1"></span>
-                  <div>
-                    <strong>Amarelo - Rápidas e Fáceis:</strong> Menos de 15 minutos
-                  </div>
+                  <div><strong>Amarelo - Rápidas e Fáceis:</strong> Menos de 15 minutos</div>
                 </div>
                 <div className="flex items-start gap-3">
                   <span className="inline-block w-6 h-6 bg-blue-500 rounded mt-1"></span>
-                  <div>
-                    <strong>Azul - Rotineiras:</strong> Tarefas recorrentes e previsíveis
-                  </div>
+                  <div><strong>Azul - Rotineiras:</strong> Tarefas recorrentes e previsíveis</div>
                 </div>
                 <div className="flex items-start gap-3">
                   <span className="inline-block w-6 h-6 bg-green-500 rounded mt-1"></span>
-                  <div>
-                    <strong>Verde - Aprendizado:</strong> Desenvolvimento pessoal e profissional
-                  </div>
+                  <div><strong>Verde - Aprendizado:</strong> Desenvolvimento pessoal e profissional</div>
                 </div>
               </div>
 
-              <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
+              <h2 id="proximo-passo" className="text-3xl font-bold mt-12 mb-6 text-foreground">
                 A Técnica do "Próximo Passo Visível"
               </h2>
 
@@ -212,7 +213,7 @@ const PararProcrastinarSistemasVisuais = () => {
                 </div>
               </div>
 
-              <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
+              <h2 id="gatilhos" className="text-3xl font-bold mt-12 mb-6 text-foreground">
                 O Método dos Gatilhos Visuais
               </h2>
 
@@ -227,124 +228,69 @@ const PararProcrastinarSistemasVisuais = () => {
                 <li><strong>🌙 Final do dia:</strong> Revise quadro e prepare amanhã</li>
               </ul>
 
-              <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
-                Implementando No Notion
-              </h2>
-
-              <p className="text-lg leading-relaxed mb-6">
-                O Notion é perfeito para sistemas visuais porque oferece:
-              </p>
-
-              <ol className="space-y-4 mb-6">
-                <li><strong>Visualização Kanban nativa:</strong> Arraste e solte com facilidade</li>
-                <li><strong>Propriedades personalizadas:</strong> Cores, prioridades, tempo estimado</li>
-                <li><strong>Filtros inteligentes:</strong> Veja apenas o que importa agora</li>
-                <li><strong>Templates reutilizáveis:</strong> Configure uma vez, use sempre</li>
-              </ol>
-
-              <div className="bg-muted p-6 rounded-lg my-8">
-                <h3 className="text-xl font-semibold mb-4">Template Básico de Kanban Anti-Procrastinação</h3>
-                <pre className="text-sm overflow-x-auto whitespace-pre-wrap">
-{`📊 MEU KANBAN
-
-Propriedades de cada tarefa:
-• Nome da tarefa
-• Próxima ação específica
-• Cor/Prioridade
-• Tempo estimado
-• Data limite
-• Projeto relacionado
-
-Colunas:
-📋 INBOX (ideias e tarefas novas)
-🎯 PRONTO PARA COMEÇAR (próxima ação clara)
-⚡ EM PROGRESSO (máximo 3)
-⏸️ AGUARDANDO (bloqueadas)
-✅ CONCLUÍDO (últimos 7 dias)`}
-                </pre>
-              </div>
-
-              <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
+              <h2 id="erros" className="text-3xl font-bold mt-12 mb-6 text-foreground">
                 Os 5 Erros Fatais em Sistemas Visuais
               </h2>
 
-              <h3 className="text-2xl font-semibold mt-8 mb-4 text-foreground">
-                1. Quadro Bagunçado
-              </h3>
+              <h3 className="text-2xl font-semibold mt-8 mb-4 text-foreground">1. Quadro Bagunçado</h3>
               <p className="text-lg leading-relaxed mb-6">
                 Se está tudo lá, nada se destaca. Mantenha máximo 15 tarefas visíveis por vez.
               </p>
 
-              <h3 className="text-2xl font-semibold mt-8 mb-4 text-foreground">
-                2. Tarefas Sem Próxima Ação
-              </h3>
+              <h3 className="text-2xl font-semibold mt-8 mb-4 text-foreground">2. Tarefas Sem Próxima Ação</h3>
               <p className="text-lg leading-relaxed mb-6">
                 "Organizar casa" não é uma tarefa. "Separar roupas para doar" é.
               </p>
 
-              <h3 className="text-2xl font-semibold mt-8 mb-4 text-foreground">
-                3. Não Limpar Coluna "Feito"
-              </h3>
+              <h3 className="text-2xl font-semibold mt-8 mb-4 text-foreground">3. Não Limpar Coluna "Feito"</h3>
               <p className="text-lg leading-relaxed mb-6">
                 Archive tarefas antigas semanalmente. Quadro limpo = mente limpa.
               </p>
 
-              <h3 className="text-2xl font-semibold mt-8 mb-4 text-foreground">
-                4. Múltiplos Sistemas
-              </h3>
+              <h3 className="text-2xl font-semibold mt-8 mb-4 text-foreground">4. Múltiplos Sistemas</h3>
               <p className="text-lg leading-relaxed mb-6">
                 Um sistema visual funciona. Cinco sistemas matam a produtividade.
               </p>
 
-              <h3 className="text-2xl font-semibold mt-8 mb-4 text-foreground">
-                5. Não Revisar Diariamente
-              </h3>
+              <h3 className="text-2xl font-semibold mt-8 mb-4 text-foreground">5. Não Revisar Diariamente</h3>
               <p className="text-lg leading-relaxed mb-6">
                 Sistema visual ignorado vira decoração. Revise 2x por dia: manhã e tarde.
               </p>
 
-              <div className="bg-muted p-8 rounded-lg my-12 text-center">
-                <h3 className="text-2xl font-bold mb-4">
-                  Sistema Visual Completo No Notion
-                </h3>
-                <p className="text-lg text-muted-foreground mb-6">
-                  Templates prontos de Kanban integrados com gestão de projetos e revisões.
-                </p>
-                <Link 
-                  to="/sistemas-notion" 
-                  className="inline-block bg-primary text-primary-foreground px-8 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors"
-                >
-                  Ver Sistemas Visuais
-                </Link>
+              <div className="my-12">
+                <BlogCTA variant="whatsapp" location="procrastinar_visuais_end" />
               </div>
+
+              <AuthorBio />
             </div>
 
-            <div className="mt-16 pt-8 border-t border-border">
-              <h3 className="text-2xl font-bold mb-6">Artigos Relacionados</h3>
-              <div className="grid md:grid-cols-3 gap-6">
-                <Link to="/blog/checklist-diario-produtividade" className="group">
-                  <div className="bg-muted rounded-lg p-4 hover:bg-muted/80 transition-colors">
-                    <h4 className="font-semibold group-hover:text-primary transition-colors">
-                      Checklist diário: método simples que aumenta produtividade
-                    </h4>
-                  </div>
-                </Link>
-                <Link to="/blog/guia-foco-evitar-distracoes" className="group">
-                  <div className="bg-muted rounded-lg p-4 hover:bg-muted/80 transition-colors">
-                    <h4 className="font-semibold group-hover:text-primary transition-colors">
-                      Guia definitivo do foco: como evitar distrações
-                    </h4>
-                  </div>
-                </Link>
-                <Link to="/blog/metodos-produtividade-2025" className="group">
-                  <div className="bg-muted rounded-lg p-4 hover:bg-muted/80 transition-colors">
-                    <h4 className="font-semibold group-hover:text-primary transition-colors">
-                      Métodos de produtividade que realmente funcionam em 2025
-                    </h4>
-                  </div>
-                </Link>
-              </div>
-            </div>
+            <RelatedArticles
+              currentSlug="parar-procrastinar-sistemas-visuais"
+              category="Produtividade"
+              allArticles={[
+                {
+                  title: "Checklist Diário: O Método Simples Que Aumenta Produtividade",
+                  excerpt: "Descubra o sistema de checklist que profissionais de alta performance usam.",
+                  slug: "checklist-diario-produtividade",
+                  readTime: "8 min",
+                  category: "Produtividade"
+                },
+                {
+                  title: "Guia Definitivo do Foco: Como Evitar Distrações",
+                  excerpt: "Aprenda técnicas comprovadas para manter o foco e evitar distrações.",
+                  slug: "guia-foco-evitar-distracoes",
+                  readTime: "10 min",
+                  category: "Produtividade"
+                },
+                {
+                  title: "Métodos de Produtividade Que Funcionam em 2025",
+                  excerpt: "Os melhores métodos de produtividade testados e aprovados.",
+                  slug: "metodos-produtividade-2025",
+                  readTime: "12 min",
+                  category: "Produtividade"
+                }
+              ]}
+            />
           </article>
         </main>
 
