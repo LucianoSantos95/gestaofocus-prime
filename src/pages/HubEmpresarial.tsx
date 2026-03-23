@@ -55,6 +55,36 @@ const marqueeStyle = (duration: number, reverse = false): React.CSSProperties =>
 });
 
 const HubEmpresarial = () => {
+  const heroRef = useRef<HTMLElement>(null);
+  const mockupRef = useRef<HTMLElement>(null);
+  const pricingRef = useRef<HTMLElement>(null);
+
+  // Section visibility tracking
+  useEffect(() => {
+    const sections = [
+      { ref: heroRef, event: "hero_view" },
+      { ref: mockupRef, event: "mockup_visible" },
+      { ref: pricingRef, event: "pricing_visible" },
+    ];
+    const tracked = new Set<string>();
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const event = sections.find((s) => s.ref.current === entry.target)?.event;
+          if (entry.isIntersecting && event && !tracked.has(event)) {
+            tracked.add(event);
+            trackEvent(event, { event_category: "hub_funnel", page_path: "/hub-empresarial" });
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    sections.forEach((s) => { if (s.ref.current) observer.observe(s.ref.current); });
+    return () => observer.disconnect();
+  }, []);
+
   const handleCTA = (label: string) => {
     trackCTAClick(label, "hub-empresarial");
   };
