@@ -518,17 +518,13 @@ const HubEmpresarial = () => {
                     </li>
                   ))}
                 </ul>
-                <a
-                  href={plan.name === "Gratuito" ? "https://app.focusinteligente.com.br/auth" : "https://app.focusinteligente.com.br/auth"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => handleCTA(`${plan.cta} - Pricing`)}
+                <Button
+                  className={`w-full ${plan.highlighted ? "btn-hero animate-glow" : "btn-secondary"}`}
+                  onClick={() => openLeadModal(`Pricing-${plan.name}`)}
                 >
-                  <Button className={`w-full ${plan.highlighted ? "btn-hero animate-glow" : "btn-secondary"}`}>
-                    {plan.cta}
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </a>
+                  {plan.cta}
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
               </Card>
             ))}
           </div>
