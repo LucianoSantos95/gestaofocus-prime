@@ -280,10 +280,10 @@ const HubEmpresarial = () => {
             <span className="text-xl font-bold text-foreground">Hub Empresarial</span>
           </div>
 
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-foreground leading-[1.1] mb-8 tracking-tight">
-            Gestão Completa para{" "}
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-[1.1] mb-8 tracking-tight">
+            Pare de Gerenciar no Caos.{" "}
             <span className="bg-gradient-primary bg-clip-text text-transparent">
-              Pequenas e Médias Empresas
+              Comece a Crescer.
             </span>
           </h1>
 
@@ -307,17 +307,18 @@ const HubEmpresarial = () => {
           </div>
 
           <p className="text-lg lg:text-xl text-foreground-muted max-w-2xl mx-auto mb-10 leading-relaxed">
-            CRM, Financeiro, Projetos e RH em uma única plataforma.
+            Em 5 minutos, toda sua empresa organizada: vendas, financeiro, projetos e equipe.
             <br />
-            Para você focar no que importa: <span className="text-primary font-medium">crescer.</span>
+            <span className="text-primary font-medium">Sem planilhas. Sem caos. Sem cartão.</span>
           </p>
 
-          <a href="https://app.focusinteligente.com.br/auth" target="_blank" rel="noopener noreferrer" onClick={() => handleCTA("Comece Gratuitamente - Hero")}>
+          <a href="https://app.focusinteligente.com.br/auth" target="_blank" rel="noopener noreferrer" onClick={() => handleCTA("Criar Conta Grátis - Hero")}>
             <Button className="btn-hero text-lg px-10 py-5 animate-glow">
-              Comece Gratuitamente
+              Criar Conta Grátis — Sem Cartão
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </a>
+          <p className="text-xs text-foreground-muted mt-3">Setup em 2 minutos • Cancele quando quiser</p>
 
           {/* Scroll dot */}
           <div className="mt-16 flex justify-center">
