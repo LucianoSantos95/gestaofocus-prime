@@ -15,6 +15,7 @@ import Footer from "@/components/Footer";
 import StickyMobileCTA from "@/components/hub/StickyMobileCTA";
 import NotionReferrerBanner from "@/components/hub/NotionReferrerBanner";
 import HowItWorks from "@/components/hub/HowItWorks";
+import HubLeadModal from "@/components/hub/HubLeadModal";
 import {
   ArrowRight,
   Shield,
