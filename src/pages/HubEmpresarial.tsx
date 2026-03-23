@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -11,6 +12,9 @@ import {
 import SEOHead from "@/components/SEOHead";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import StickyMobileCTA from "@/components/hub/StickyMobileCTA";
+import NotionReferrerBanner from "@/components/hub/NotionReferrerBanner";
+import HowItWorks from "@/components/hub/HowItWorks";
 import {
   ArrowRight,
   Shield,
@@ -38,7 +42,7 @@ import {
   PieChart,
   CircleDot,
 } from "lucide-react";
-import { trackCTAClick } from "@/lib/analytics";
+import { trackCTAClick, trackEvent } from "@/lib/analytics";
 import hubLogo from "@/assets/hub-logo.png";
 import hubDashboardMockup from "@/assets/hub-dashboard-mockup.png";
 
