@@ -330,7 +330,7 @@ const HubEmpresarial = () => {
       </section>
 
       {/* ── APP MOCKUP ── */}
-      <section className="pb-20 lg:pb-32 px-4">
+      <section ref={mockupRef} className="pb-20 lg:pb-32 px-4">
         <div className="max-w-5xl mx-auto">
           <div className="rounded-2xl border border-card-border/30 bg-card/30 backdrop-blur-sm shadow-2xl overflow-hidden">
             {/* Window chrome */}
