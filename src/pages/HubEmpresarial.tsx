@@ -570,12 +570,10 @@ const HubEmpresarial = () => {
             Junte-se a milhares de empresários que já simplificaram seus negócios
           </p>
 
-          <a href="https://app.focusinteligente.com.br/auth" target="_blank" rel="noopener noreferrer" onClick={() => handleCTA("Comece Gratuitamente - CTA Final")}>
-            <Button className="btn-hero text-xl px-12 py-6 animate-glow mb-12">
-              Comece Gratuitamente
-              <ArrowRight className="ml-2 h-6 w-6" />
-            </Button>
-          </a>
+          <Button className="btn-hero text-xl px-12 py-6 animate-glow mb-12" onClick={() => openLeadModal("CTA Final")}>
+            Comece Gratuitamente
+            <ArrowRight className="ml-2 h-6 w-6" />
+          </Button>
 
           <div className="grid sm:grid-cols-3 gap-4">
             {[
