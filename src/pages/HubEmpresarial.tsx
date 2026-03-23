@@ -256,10 +256,11 @@ const HubEmpresarial = () => {
         type="product"
         keywords="gestão empresarial, SaaS, CRM, financeiro, projetos, RH, PME, pequenas empresas"
       />
+      <NotionReferrerBanner />
       <Navigation />
 
       {/* ── HERO ── */}
-      <section className="relative pt-32 lg:pt-44 pb-20 lg:pb-32 overflow-hidden">
+      <section ref={heroRef} className="relative pt-32 lg:pt-44 pb-20 lg:pb-32 overflow-hidden">
         {/* Radial glows */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[600px] bg-primary/15 rounded-full blur-[180px] pointer-events-none" />
         <div className="absolute top-20 right-0 w-[300px] h-[300px] bg-primary-glow/10 rounded-full blur-[120px] pointer-events-none" />
