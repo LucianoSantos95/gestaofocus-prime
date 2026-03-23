@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -15,6 +15,7 @@ import Footer from "@/components/Footer";
 import StickyMobileCTA from "@/components/hub/StickyMobileCTA";
 import NotionReferrerBanner from "@/components/hub/NotionReferrerBanner";
 import HowItWorks from "@/components/hub/HowItWorks";
+import HubLeadModal from "@/components/hub/HubLeadModal";
 import {
   ArrowRight,
   Shield,
@@ -58,6 +59,14 @@ const HubEmpresarial = () => {
   const heroRef = useRef<HTMLElement>(null);
   const mockupRef = useRef<HTMLElement>(null);
   const pricingRef = useRef<HTMLElement>(null);
+  const [leadModalOpen, setLeadModalOpen] = useState(false);
+  const [leadModalOrigin, setLeadModalOrigin] = useState("hero");
+
+  const openLeadModal = (origin: string) => {
+    setLeadModalOrigin(origin);
+    setLeadModalOpen(true);
+    handleCTA(`${origin} - Lead Modal`);
+  };
 
   // Section visibility tracking
   useEffect(() => {
@@ -312,12 +321,10 @@ const HubEmpresarial = () => {
             <span className="text-primary font-medium">Sem planilhas. Sem caos. Sem cartão.</span>
           </p>
 
-          <a href="https://app.focusinteligente.com.br/auth" target="_blank" rel="noopener noreferrer" onClick={() => handleCTA("Criar Conta Grátis - Hero")}>
-            <Button className="btn-hero text-lg px-10 py-5 animate-glow">
-              Criar Conta Grátis — Sem Cartão
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-          </a>
+          <Button className="btn-hero text-lg px-10 py-5 animate-glow" onClick={() => openLeadModal("Hero")}>
+            Criar Conta Grátis — Sem Cartão
+            <ArrowRight className="ml-2 h-5 w-5" />
+          </Button>
           <p className="text-xs text-foreground-muted mt-3">Setup em 2 minutos • Cancele quando quiser</p>
 
           {/* Scroll dot */}
@@ -511,17 +518,13 @@ const HubEmpresarial = () => {
                     </li>
                   ))}
                 </ul>
-                <a
-                  href={plan.name === "Gratuito" ? "https://app.focusinteligente.com.br/auth" : "https://app.focusinteligente.com.br/auth"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => handleCTA(`${plan.cta} - Pricing`)}
+                <Button
+                  className={`w-full ${plan.highlighted ? "btn-hero animate-glow" : "btn-secondary"}`}
+                  onClick={() => openLeadModal(`Pricing-${plan.name}`)}
                 >
-                  <Button className={`w-full ${plan.highlighted ? "btn-hero animate-glow" : "btn-secondary"}`}>
-                    {plan.cta}
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </a>
+                  {plan.cta}
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
               </Card>
             ))}
           </div>
@@ -567,12 +570,10 @@ const HubEmpresarial = () => {
             Junte-se a milhares de empresários que já simplificaram seus negócios
           </p>
 
-          <a href="https://app.focusinteligente.com.br/auth" target="_blank" rel="noopener noreferrer" onClick={() => handleCTA("Comece Gratuitamente - CTA Final")}>
-            <Button className="btn-hero text-xl px-12 py-6 animate-glow mb-12">
-              Comece Gratuitamente
-              <ArrowRight className="ml-2 h-6 w-6" />
-            </Button>
-          </a>
+          <Button className="btn-hero text-xl px-12 py-6 animate-glow mb-12" onClick={() => openLeadModal("CTA Final")}>
+            Comece Gratuitamente
+            <ArrowRight className="ml-2 h-6 w-6" />
+          </Button>
 
           <div className="grid sm:grid-cols-3 gap-4">
             {[
@@ -593,7 +594,8 @@ const HubEmpresarial = () => {
       </section>
 
       <Footer />
-      <StickyMobileCTA />
+      <StickyMobileCTA onOpenLeadModal={() => openLeadModal("Sticky Mobile")} />
+      <HubLeadModal open={leadModalOpen} onOpenChange={setLeadModalOpen} ctaOrigin={leadModalOrigin} />
     </div>
   );
 };
