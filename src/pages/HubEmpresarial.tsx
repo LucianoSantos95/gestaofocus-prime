@@ -356,6 +356,9 @@ const HubEmpresarial = () => {
         </div>
       </section>
 
+      {/* ── COMO FUNCIONA ── */}
+      <HowItWorks />
+
       {/* ── FEATURES SHOWCASE ── */}
       <section className="section-padding bg-background">
         <div className="container-focus max-w-6xl">
