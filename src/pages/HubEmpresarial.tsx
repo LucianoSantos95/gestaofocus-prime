@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -11,6 +12,9 @@ import {
 import SEOHead from "@/components/SEOHead";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import StickyMobileCTA from "@/components/hub/StickyMobileCTA";
+import NotionReferrerBanner from "@/components/hub/NotionReferrerBanner";
+import HowItWorks from "@/components/hub/HowItWorks";
 import {
   ArrowRight,
   Shield,
@@ -38,7 +42,7 @@ import {
   PieChart,
   CircleDot,
 } from "lucide-react";
-import { trackCTAClick } from "@/lib/analytics";
+import { trackCTAClick, trackEvent } from "@/lib/analytics";
 import hubLogo from "@/assets/hub-logo.png";
 import hubDashboardMockup from "@/assets/hub-dashboard-mockup.png";
 
@@ -51,6 +55,36 @@ const marqueeStyle = (duration: number, reverse = false): React.CSSProperties =>
 });
 
 const HubEmpresarial = () => {
+  const heroRef = useRef<HTMLElement>(null);
+  const mockupRef = useRef<HTMLElement>(null);
+  const pricingRef = useRef<HTMLElement>(null);
+
+  // Section visibility tracking
+  useEffect(() => {
+    const sections = [
+      { ref: heroRef, event: "hero_view" },
+      { ref: mockupRef, event: "mockup_visible" },
+      { ref: pricingRef, event: "pricing_visible" },
+    ];
+    const tracked = new Set<string>();
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const event = sections.find((s) => s.ref.current === entry.target)?.event;
+          if (entry.isIntersecting && event && !tracked.has(event)) {
+            tracked.add(event);
+            trackEvent(event, { event_category: "hub_funnel", page_path: "/hub-empresarial" });
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    sections.forEach((s) => { if (s.ref.current) observer.observe(s.ref.current); });
+    return () => observer.disconnect();
+  }, []);
+
   const handleCTA = (label: string) => {
     trackCTAClick(label, "hub-empresarial");
   };
@@ -222,10 +256,11 @@ const HubEmpresarial = () => {
         type="product"
         keywords="gestão empresarial, SaaS, CRM, financeiro, projetos, RH, PME, pequenas empresas"
       />
+      <NotionReferrerBanner />
       <Navigation />
 
       {/* ── HERO ── */}
-      <section className="relative pt-32 lg:pt-44 pb-20 lg:pb-32 overflow-hidden">
+      <section ref={heroRef} className="relative pt-32 lg:pt-44 pb-20 lg:pb-32 overflow-hidden">
         {/* Radial glows */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[600px] bg-primary/15 rounded-full blur-[180px] pointer-events-none" />
         <div className="absolute top-20 right-0 w-[300px] h-[300px] bg-primary-glow/10 rounded-full blur-[120px] pointer-events-none" />
@@ -245,10 +280,10 @@ const HubEmpresarial = () => {
             <span className="text-xl font-bold text-foreground">Hub Empresarial</span>
           </div>
 
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-foreground leading-[1.1] mb-8 tracking-tight">
-            Gestão Completa para{" "}
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-[1.1] mb-8 tracking-tight">
+            Pare de Gerenciar no Caos.{" "}
             <span className="bg-gradient-primary bg-clip-text text-transparent">
-              Pequenas e Médias Empresas
+              Comece a Crescer.
             </span>
           </h1>
 
@@ -272,17 +307,18 @@ const HubEmpresarial = () => {
           </div>
 
           <p className="text-lg lg:text-xl text-foreground-muted max-w-2xl mx-auto mb-10 leading-relaxed">
-            CRM, Financeiro, Projetos e RH em uma única plataforma.
+            Em 5 minutos, toda sua empresa organizada: vendas, financeiro, projetos e equipe.
             <br />
-            Para você focar no que importa: <span className="text-primary font-medium">crescer.</span>
+            <span className="text-primary font-medium">Sem planilhas. Sem caos. Sem cartão.</span>
           </p>
 
-          <a href="https://app.focusinteligente.com.br/auth" target="_blank" rel="noopener noreferrer" onClick={() => handleCTA("Comece Gratuitamente - Hero")}>
+          <a href="https://app.focusinteligente.com.br/auth" target="_blank" rel="noopener noreferrer" onClick={() => handleCTA("Criar Conta Grátis - Hero")}>
             <Button className="btn-hero text-lg px-10 py-5 animate-glow">
-              Comece Gratuitamente
+              Criar Conta Grátis — Sem Cartão
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </a>
+          <p className="text-xs text-foreground-muted mt-3">Setup em 2 minutos • Cancele quando quiser</p>
 
           {/* Scroll dot */}
           <div className="mt-16 flex justify-center">
@@ -294,7 +330,7 @@ const HubEmpresarial = () => {
       </section>
 
       {/* ── APP MOCKUP ── */}
-      <section className="pb-20 lg:pb-32 px-4">
+      <section ref={mockupRef} className="pb-20 lg:pb-32 px-4">
         <div className="max-w-5xl mx-auto">
           <div className="rounded-2xl border border-card-border/30 bg-card/30 backdrop-blur-sm shadow-2xl overflow-hidden">
             {/* Window chrome */}
@@ -319,6 +355,9 @@ const HubEmpresarial = () => {
           </div>
         </div>
       </section>
+
+      {/* ── COMO FUNCIONA ── */}
+      <HowItWorks />
 
       {/* ── FEATURES SHOWCASE ── */}
       <section className="section-padding bg-background">
@@ -440,7 +479,7 @@ const HubEmpresarial = () => {
       </section>
 
       {/* ── PRICING ── */}
-      <section className="relative section-padding overflow-hidden">
+      <section ref={pricingRef} className="relative section-padding overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-primary/8 rounded-full blur-[160px] pointer-events-none" />
 
         <div className="container-focus relative z-10 max-w-5xl">
@@ -554,6 +593,7 @@ const HubEmpresarial = () => {
       </section>
 
       <Footer />
+      <StickyMobileCTA />
     </div>
   );
 };
