@@ -479,7 +479,7 @@ const HubEmpresarial = () => {
       </section>
 
       {/* ── PRICING ── */}
-      <section className="relative section-padding overflow-hidden">
+      <section ref={pricingRef} className="relative section-padding overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-primary/8 rounded-full blur-[160px] pointer-events-none" />
 
         <div className="container-focus relative z-10 max-w-5xl">
