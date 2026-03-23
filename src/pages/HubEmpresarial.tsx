@@ -321,12 +321,10 @@ const HubEmpresarial = () => {
             <span className="text-primary font-medium">Sem planilhas. Sem caos. Sem cartão.</span>
           </p>
 
-          <a href="https://app.focusinteligente.com.br/auth" target="_blank" rel="noopener noreferrer" onClick={() => handleCTA("Criar Conta Grátis - Hero")}>
-            <Button className="btn-hero text-lg px-10 py-5 animate-glow">
-              Criar Conta Grátis — Sem Cartão
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-          </a>
+          <Button className="btn-hero text-lg px-10 py-5 animate-glow" onClick={() => openLeadModal("Hero")}>
+            Criar Conta Grátis — Sem Cartão
+            <ArrowRight className="ml-2 h-5 w-5" />
+          </Button>
           <p className="text-xs text-foreground-muted mt-3">Setup em 2 minutos • Cancele quando quiser</p>
 
           {/* Scroll dot */}
