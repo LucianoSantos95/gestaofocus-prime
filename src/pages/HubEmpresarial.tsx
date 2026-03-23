@@ -59,6 +59,14 @@ const HubEmpresarial = () => {
   const heroRef = useRef<HTMLElement>(null);
   const mockupRef = useRef<HTMLElement>(null);
   const pricingRef = useRef<HTMLElement>(null);
+  const [leadModalOpen, setLeadModalOpen] = useState(false);
+  const [leadModalOrigin, setLeadModalOrigin] = useState("hero");
+
+  const openLeadModal = (origin: string) => {
+    setLeadModalOrigin(origin);
+    setLeadModalOpen(true);
+    handleCTA(`${origin} - Lead Modal`);
+  };
 
   // Section visibility tracking
   useEffect(() => {
