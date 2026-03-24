@@ -528,10 +528,12 @@ const HubEmpresarial = () => {
                 </ul>
                 <Button
                   className={`w-full ${plan.highlighted ? "btn-hero animate-glow" : "btn-secondary"}`}
-                  onClick={() => openLeadModal(`Pricing-${plan.name}`)}
+                  asChild
                 >
-                  {plan.cta}
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  <a href="https://appfocus.lovable.app/auth" target="_blank" rel="noopener noreferrer" onClick={() => handleCTA(`Pricing-${plan.name}`)}>
+                    Começar Grátis
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </a>
                 </Button>
               </Card>
             ))}
