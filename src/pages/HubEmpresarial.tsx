@@ -213,34 +213,37 @@ const HubEmpresarial = () => {
 
   const plans = [
     {
-      name: "Gratuito",
-      price: "R$ 0",
-      period: "para sempre",
-      features: ["1 usuário", "Módulos básicos", "Dashboard limitado", "Suporte por email"],
-      cta: "Comece Grátis",
+      name: "Plus",
+      description: "Para pequenas empresas que precisam de gestão completa",
+      price: "R$ 69",
+      period: "/mês",
+      features: ["Criar e editar dados em todos os módulos", "Até 5 usuários", "Suporte por email", "Guia de Uso Completo"],
+      cta: "Assinar",
       highlighted: false,
     },
     {
-      name: "Plus",
-      price: "R$ 119",
+      name: "Pro",
+      description: "Para empresas em crescimento com necessidades avançadas",
+      price: "R$ 149",
       period: "/mês",
-      features: ["Usuários ilimitados", "Todos os 7 módulos", "Dashboards avançados", "Automações", "Suporte prioritário", "Integrações"],
-      cta: "Começar Agora",
+      features: ["Tudo do Plus", "Exportar relatórios", "Análise de IA (Clientes)", "Até 10 usuários", "Suporte prioritário"],
+      cta: "Assinar",
       highlighted: true,
     },
     {
-      name: "Pro",
-      price: "R$ 249",
+      name: "Enterprise",
+      description: "Para grandes empresas com necessidades customizadas",
+      price: "R$ 297",
       period: "/mês",
-      features: ["Tudo do Plus", "API dedicada", "Customização completa", "Suporte dedicado", "SLA garantido", "Onboarding assistido"],
-      cta: "Começar Agora",
+      features: ["Tudo do Pro", "Integração API/Zapier", "Usuários ilimitados", "Suporte dedicado", "Onboarding personalizado"],
+      cta: "Assinar",
       highlighted: false,
     },
   ];
 
   const faqs = [
     { q: "🤔 O que é o Hub Empresarial?", a: "É uma plataforma SaaS completa de gestão para pequenas e médias empresas. Centraliza CRM, financeiro, projetos, RH e dashboards em um único lugar — sem planilhas, sem caos." },
-    { q: "💰 Quanto custa?", a: "Temos um plano gratuito para você começar. O plano Plus custa R$ 119/mês e inclui todos os módulos, usuários ilimitados e suporte prioritário. O plano Pro custa R$ 249/mês com API dedicada, customização completa e suporte dedicado." },
+    { q: "💰 Quanto custa?", a: "O plano Plus custa R$ 69/mês para até 5 usuários. O plano Pro custa R$ 149/mês com IA e até 10 usuários. O plano Enterprise custa R$ 297/mês com usuários ilimitados, API e suporte dedicado." },
     { q: "🆓 Posso testar grátis?", a: "Sim! O plano gratuito é para sempre — sem prazo, sem cartão de crédito. Você pode usar os módulos básicos quanto tempo quiser e fazer upgrade quando fizer sentido." },
     { q: "🔒 Meus dados estão seguros?", a: "Absolutamente. Utilizamos criptografia AES-256, backups automáticos diários e infraestrutura segura. Seus dados são seus — nunca compartilhamos com terceiros." },
     { q: "📱 Funciona no celular?", a: "Sim! A plataforma é totalmente responsiva e funciona perfeitamente em qualquer dispositivo — desktop, tablet ou celular." },
@@ -494,7 +497,7 @@ const HubEmpresarial = () => {
             <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
               Planos que Crescem com Você
             </h2>
-            <p className="text-lg text-foreground-muted">Comece grátis. Faça upgrade quando quiser.</p>
+            <p className="text-lg text-foreground-muted">Planos a partir de R$69/mês</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
@@ -505,7 +508,8 @@ const HubEmpresarial = () => {
                     <Sparkles className="w-3 h-3 mr-1" /> Mais Popular
                   </Badge>
                 )}
-                <h3 className="text-xl font-bold text-foreground mb-2">{plan.name}</h3>
+                <h3 className="text-xl font-bold text-foreground mb-1">{plan.name}</h3>
+                <p className="text-xs text-foreground-muted mb-3">{plan.description}</p>
                 <div className="mb-5">
                   <span className="text-4xl font-bold text-foreground">{plan.price}</span>
                   <span className="text-sm text-foreground-muted ml-1">{plan.period}</span>
@@ -523,7 +527,7 @@ const HubEmpresarial = () => {
                   asChild
                 >
                   <a href="https://appfocus.lovable.app/auth" target="_blank" rel="noopener noreferrer" onClick={() => handleCTA(`Pricing-${plan.name}`)}>
-                    Começar Grátis
+                    {plan.cta}
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </a>
                 </Button>
