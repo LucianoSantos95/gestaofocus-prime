@@ -416,7 +416,7 @@ const HubEmpresarial = () => {
             Prova Social
           </Badge>
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-3">
-            +100 Empresas Já Confiam no Hub
+            43 Empresas Já Utilizam o AppFocus
           </h2>
           <p className="text-foreground-muted">Veja o que estão dizendo sobre a plataforma</p>
         </div>
