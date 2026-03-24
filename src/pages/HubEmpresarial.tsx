@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -15,7 +15,7 @@ import Footer from "@/components/Footer";
 import StickyMobileCTA from "@/components/hub/StickyMobileCTA";
 import NotionReferrerBanner from "@/components/hub/NotionReferrerBanner";
 import HowItWorks from "@/components/hub/HowItWorks";
-import HubLeadModal from "@/components/hub/HubLeadModal";
+
 import {
   ArrowRight,
   Shield,
@@ -59,14 +59,6 @@ const HubEmpresarial = () => {
   const heroRef = useRef<HTMLElement>(null);
   const mockupRef = useRef<HTMLElement>(null);
   const pricingRef = useRef<HTMLElement>(null);
-  const [leadModalOpen, setLeadModalOpen] = useState(false);
-  const [leadModalOrigin, setLeadModalOrigin] = useState("hero");
-
-  const openLeadModal = (origin: string) => {
-    setLeadModalOrigin(origin);
-    setLeadModalOpen(true);
-    handleCTA(`${origin} - Lead Modal`);
-  };
 
   // Section visibility tracking
   useEffect(() => {
@@ -290,9 +282,9 @@ const HubEmpresarial = () => {
           </div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-[1.1] mb-8 tracking-tight">
-            Pare de Gerenciar no Caos.{" "}
+            Substitua 7 ferramentas por uma só.{" "}
             <span className="bg-gradient-primary bg-clip-text text-transparent">
-              Comece a Crescer.
+              Gestão completa com IA.
             </span>
           </h1>
 
@@ -310,22 +302,30 @@ const HubEmpresarial = () => {
               ))}
             </div>
             <div>
-              <span className="text-sm font-bold text-foreground">127+</span>
-              <span className="text-xs text-foreground-muted ml-1">empresas ativas</span>
+              <span className="text-sm font-bold text-foreground">43</span>
+              <span className="text-xs text-foreground-muted ml-1">empresas já utilizam</span>
             </div>
           </div>
 
           <p className="text-lg lg:text-xl text-foreground-muted max-w-2xl mx-auto mb-10 leading-relaxed">
-            Em 5 minutos, toda sua empresa organizada: vendas, financeiro, projetos e equipe.
+            Finanças, CRM, Projetos, RH, Marketing, Tarefas e Processos — tudo integrado em um único sistema com IA.
             <br />
-            <span className="text-primary font-medium">Sem planilhas. Sem caos. Sem cartão.</span>
+            <span className="text-primary font-medium">Grátis para começar. Planos a partir de R$69/mês.</span>
           </p>
 
-          <Button className="btn-hero text-lg px-10 py-5 animate-glow" onClick={() => openLeadModal("Hero")}>
-            Criar Conta Grátis — Sem Cartão
-            <ArrowRight className="ml-2 h-5 w-5" />
+          <Button className="btn-hero text-lg px-10 py-5 animate-glow" asChild>
+            <a href="https://appfocus.lovable.app/auth" target="_blank" rel="noopener noreferrer" onClick={() => handleCTA("Hero - Testar Grátis")}>
+              Testar Grátis por 30 dias
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </a>
           </Button>
-          <p className="text-xs text-foreground-muted mt-3">Setup em 2 minutos • Cancele quando quiser</p>
+          <p className="text-xs text-foreground-muted mt-3">Sem cartão de crédito • Cancele quando quiser</p>
+          
+          {/* Urgência sutil */}
+          <div className="mt-6 inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-2">
+            <Sparkles className="w-4 h-4 text-primary" />
+            <span className="text-sm text-primary font-medium">Primeiros 100 usuários ganham acesso antecipado a funcionalidades exclusivas</span>
+          </div>
 
           {/* Scroll dot */}
           <div className="mt-16 flex justify-center">
@@ -408,7 +408,7 @@ const HubEmpresarial = () => {
             Prova Social
           </Badge>
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-3">
-            +100 Empresas Já Confiam no Hub
+            43 Empresas Já Utilizam o AppFocus
           </h2>
           <p className="text-foreground-muted">Veja o que estão dizendo sobre a plataforma</p>
         </div>
@@ -520,10 +520,12 @@ const HubEmpresarial = () => {
                 </ul>
                 <Button
                   className={`w-full ${plan.highlighted ? "btn-hero animate-glow" : "btn-secondary"}`}
-                  onClick={() => openLeadModal(`Pricing-${plan.name}`)}
+                  asChild
                 >
-                  {plan.cta}
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  <a href="https://appfocus.lovable.app/auth" target="_blank" rel="noopener noreferrer" onClick={() => handleCTA(`Pricing-${plan.name}`)}>
+                    Começar Grátis
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </a>
                 </Button>
               </Card>
             ))}
@@ -567,13 +569,16 @@ const HubEmpresarial = () => {
             Pronto para Transformar sua Gestão?
           </h2>
           <p className="text-foreground-muted text-lg mb-8">
-            Junte-se a milhares de empresários que já simplificaram seus negócios
+            Junte-se às 43 empresas que já simplificaram sua gestão com o AppFocus
           </p>
 
-          <Button className="btn-hero text-xl px-12 py-6 animate-glow mb-12" onClick={() => openLeadModal("CTA Final")}>
-            Comece Gratuitamente
-            <ArrowRight className="ml-2 h-6 w-6" />
+          <Button className="btn-hero text-xl px-12 py-6 animate-glow mb-4" asChild>
+            <a href="https://appfocus.lovable.app/auth" target="_blank" rel="noopener noreferrer" onClick={() => handleCTA("CTA Final")}>
+              Testar Grátis por 30 dias
+              <ArrowRight className="ml-2 h-6 w-6" />
+            </a>
           </Button>
+          <p className="text-sm text-foreground-muted mb-12">Sem cartão de crédito • Cancele quando quiser</p>
 
           <div className="grid sm:grid-cols-3 gap-4">
             {[
@@ -594,8 +599,7 @@ const HubEmpresarial = () => {
       </section>
 
       <Footer />
-      <StickyMobileCTA onOpenLeadModal={() => openLeadModal("Sticky Mobile")} />
-      <HubLeadModal open={leadModalOpen} onOpenChange={setLeadModalOpen} ctaOrigin={leadModalOrigin} />
+      <StickyMobileCTA />
     </div>
   );
 };
