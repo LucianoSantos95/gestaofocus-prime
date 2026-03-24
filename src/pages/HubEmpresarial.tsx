@@ -527,7 +527,7 @@ const HubEmpresarial = () => {
                   asChild
                 >
                   <a href="https://appfocus.lovable.app/auth" target="_blank" rel="noopener noreferrer" onClick={() => handleCTA(`Pricing-${plan.name}`)}>
-                    Começar Grátis
+                    {plan.cta}
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </a>
                 </Button>
