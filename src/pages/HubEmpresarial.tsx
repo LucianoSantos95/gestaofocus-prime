@@ -508,7 +508,8 @@ const HubEmpresarial = () => {
                     <Sparkles className="w-3 h-3 mr-1" /> Mais Popular
                   </Badge>
                 )}
-                <h3 className="text-xl font-bold text-foreground mb-2">{plan.name}</h3>
+                <h3 className="text-xl font-bold text-foreground mb-1">{plan.name}</h3>
+                <p className="text-xs text-foreground-muted mb-3">{plan.description}</p>
                 <div className="mb-5">
                   <span className="text-4xl font-bold text-foreground">{plan.price}</span>
                   <span className="text-sm text-foreground-muted ml-1">{plan.period}</span>
