@@ -321,11 +321,19 @@ const HubEmpresarial = () => {
             <span className="text-primary font-medium">Grátis para começar. Planos a partir de R$69/mês.</span>
           </p>
 
-          <Button className="btn-hero text-lg px-10 py-5 animate-glow" onClick={() => openLeadModal("Hero")}>
-            Criar Conta Grátis — Sem Cartão
-            <ArrowRight className="ml-2 h-5 w-5" />
+          <Button className="btn-hero text-lg px-10 py-5 animate-glow" asChild>
+            <a href="https://appfocus.lovable.app/auth" target="_blank" rel="noopener noreferrer" onClick={() => handleCTA("Hero - Testar Grátis")}>
+              Testar Grátis por 30 dias
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </a>
           </Button>
-          <p className="text-xs text-foreground-muted mt-3">Setup em 2 minutos • Cancele quando quiser</p>
+          <p className="text-xs text-foreground-muted mt-3">Sem cartão de crédito • Cancele quando quiser</p>
+          
+          {/* Urgência sutil */}
+          <div className="mt-6 inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-2">
+            <Sparkles className="w-4 h-4 text-primary" />
+            <span className="text-sm text-primary font-medium">Primeiros 100 usuários ganham acesso antecipado a funcionalidades exclusivas</span>
+          </div>
 
           {/* Scroll dot */}
           <div className="mt-16 flex justify-center">
