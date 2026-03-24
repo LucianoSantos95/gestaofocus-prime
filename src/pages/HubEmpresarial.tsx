@@ -158,15 +158,15 @@ const HubEmpresarial = () => {
   ];
 
   const testimonials = [
-    { name: "Carla M.", role: "CEO, Agência Criativa", content: "Finalmente tenho visão real do financeiro. Descobri gastos que nem sabia que tinha!" },
-    { name: "Rafael S.", role: "Fundador, TechStart", content: "Saí do caos das planilhas para um sistema que realmente funciona. Projetos nunca mais atrasaram." },
-    { name: "Amanda L.", role: "Diretora, Consultoria Plus", content: "O CRM mudou minha forma de lidar com clientes. Não perco mais nenhuma oportunidade." },
-    { name: "Lucas P.", role: "COO, Estúdio Digital", content: "O dashboard me dá confiança para tomar decisões. Antes era tudo no achismo." },
-    { name: "Fernanda R.", role: "Gerente, Loja Online", content: "Onboarding de novos funcionários reduziu de 2 semanas para 3 dias." },
-    { name: "Bruno T.", role: "Sócio, Escritório Contábil", content: "A automação de processos cortou nosso retrabalho pela metade." },
-    { name: "Juliana K.", role: "Head de Vendas, SaaS Corp", content: "Pipeline visual transformou nossa taxa de fechamento. Aumento de 34% no primeiro mês." },
-    { name: "Diego M.", role: "Founder, Startup Health", content: "Melhor investimento do ano. Centralizar tudo num lugar mudou o jogo da empresa." },
-    { name: "Patrícia S.", role: "Diretora, Agência 360", content: "Minha equipe parou de perder tempo com planilhas. Agora foca no que importa." },
+    { name: "Carla Mendonça", role: "CEO, Agência Órbita Digital", photo: carlaPhoto, content: "Finalmente tenho visão real do financeiro. Descobri gastos que nem sabia que tinha!" },
+    { name: "Rafael Souza", role: "Fundador, TechBridge Solutions", photo: rafaelPhoto, content: "Saí do caos das planilhas para um sistema que realmente funciona. Projetos nunca mais atrasaram." },
+    { name: "Amanda Lopes", role: "Diretora, Vértice Consultoria", photo: amandaPhoto, content: "O CRM mudou minha forma de lidar com clientes. Não perco mais nenhuma oportunidade." },
+    { name: "Lucas Pereira", role: "COO, Estúdio Nuvem", photo: lucasPhoto, content: "O dashboard me dá confiança para tomar decisões. Antes era tudo no achismo." },
+    { name: "Fernanda Rocha", role: "Gerente, Lótus E-commerce", photo: fernandaPhoto, content: "Onboarding de novos funcionários reduziu de 2 semanas para 3 dias." },
+    { name: "Bruno Torres", role: "Sócio, Contábil Horizonte", photo: brunoPhoto, content: "A automação de processos cortou nosso retrabalho pela metade." },
+    { name: "Juliana Keller", role: "Head de Vendas, Impulso Digital", photo: julianaPhoto, content: "Pipeline visual transformou nossa taxa de fechamento. Aumento de 34% no primeiro mês." },
+    { name: "Diego Martins", role: "Founder, Saúde em Foco", photo: diegoPhoto, content: "Melhor investimento do ano. Centralizar tudo num lugar mudou o jogo da empresa." },
+    { name: "Patrícia Silva", role: "Diretora, Conecta 360", photo: patriciaPhoto, content: "Minha equipe parou de perder tempo com planilhas. Agora foca no que importa." },
   ];
 
   const techFeatures = [
