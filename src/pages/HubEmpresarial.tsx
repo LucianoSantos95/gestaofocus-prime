@@ -310,8 +310,8 @@ const HubEmpresarial = () => {
               ))}
             </div>
             <div>
-              <span className="text-sm font-bold text-foreground">127+</span>
-              <span className="text-xs text-foreground-muted ml-1">empresas ativas</span>
+              <span className="text-sm font-bold text-foreground">43</span>
+              <span className="text-xs text-foreground-muted ml-1">empresas já utilizam</span>
             </div>
           </div>
 
