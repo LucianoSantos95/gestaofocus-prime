@@ -316,9 +316,9 @@ const HubEmpresarial = () => {
           </div>
 
           <p className="text-lg lg:text-xl text-foreground-muted max-w-2xl mx-auto mb-10 leading-relaxed">
-            Em 5 minutos, toda sua empresa organizada: vendas, financeiro, projetos e equipe.
+            Finanças, CRM, Projetos, RH, Marketing, Tarefas e Processos — tudo integrado em um único sistema com IA.
             <br />
-            <span className="text-primary font-medium">Sem planilhas. Sem caos. Sem cartão.</span>
+            <span className="text-primary font-medium">Grátis para começar. Planos a partir de R$69/mês.</span>
           </p>
 
           <Button className="btn-hero text-lg px-10 py-5 animate-glow" onClick={() => openLeadModal("Hero")}>
