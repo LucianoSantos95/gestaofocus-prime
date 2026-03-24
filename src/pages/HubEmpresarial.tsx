@@ -46,6 +46,15 @@ import {
 import { trackCTAClick, trackEvent } from "@/lib/analytics";
 import hubLogo from "@/assets/hub-logo.png";
 import hubDashboardMockup from "@/assets/hub-dashboard-mockup.png";
+import carlaPhoto from "@/assets/testimonials/carla.jpg";
+import rafaelPhoto from "@/assets/testimonials/rafael.jpg";
+import amandaPhoto from "@/assets/testimonials/amanda.jpg";
+import lucasPhoto from "@/assets/testimonials/lucas.jpg";
+import fernandaPhoto from "@/assets/testimonials/fernanda.jpg";
+import brunoPhoto from "@/assets/testimonials/bruno.jpg";
+import julianaPhoto from "@/assets/testimonials/juliana.jpg";
+import diegoPhoto from "@/assets/testimonials/diego.jpg";
+import patriciaPhoto from "@/assets/testimonials/patricia.jpg";
 
 /* ─── Marquee animation via inline style (3 rows, infinite scroll) ─── */
 const marqueeStyle = (duration: number, reverse = false): React.CSSProperties => ({
