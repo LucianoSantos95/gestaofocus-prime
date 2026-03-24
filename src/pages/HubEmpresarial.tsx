@@ -577,13 +577,16 @@ const HubEmpresarial = () => {
             Pronto para Transformar sua Gestão?
           </h2>
           <p className="text-foreground-muted text-lg mb-8">
-            Junte-se a milhares de empresários que já simplificaram seus negócios
+            Junte-se às 43 empresas que já simplificaram sua gestão com o AppFocus
           </p>
 
-          <Button className="btn-hero text-xl px-12 py-6 animate-glow mb-12" onClick={() => openLeadModal("CTA Final")}>
-            Comece Gratuitamente
-            <ArrowRight className="ml-2 h-6 w-6" />
+          <Button className="btn-hero text-xl px-12 py-6 animate-glow mb-4" asChild>
+            <a href="https://appfocus.lovable.app/auth" target="_blank" rel="noopener noreferrer" onClick={() => handleCTA("CTA Final")}>
+              Testar Grátis por 30 dias
+              <ArrowRight className="ml-2 h-6 w-6" />
+            </a>
           </Button>
+          <p className="text-sm text-foreground-muted mb-12">Sem cartão de crédito • Cancele quando quiser</p>
 
           <div className="grid sm:grid-cols-3 gap-4">
             {[
