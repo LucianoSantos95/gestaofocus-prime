@@ -607,8 +607,7 @@ const HubEmpresarial = () => {
       </section>
 
       <Footer />
-      <StickyMobileCTA onOpenLeadModal={() => openLeadModal("Sticky Mobile")} />
-      <HubLeadModal open={leadModalOpen} onOpenChange={setLeadModalOpen} ctaOrigin={leadModalOrigin} />
+      <StickyMobileCTA />
     </div>
   );
 };

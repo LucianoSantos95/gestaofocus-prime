@@ -5,19 +5,19 @@ const steps = [
     icon: UserPlus,
     number: "01",
     title: "Crie sua conta grátis",
-    description: "Sem cartão de crédito. Em menos de 2 minutos você já está dentro.",
+    description: "Sem cartão de crédito. Em 2 minutos você já está dentro.",
   },
   {
     icon: LayoutGrid,
     number: "02",
-    title: "Escolha os módulos",
-    description: "CRM, Financeiro, Projetos, RH — ative só o que precisa.",
+    title: "Siga o guia interativo",
+    description: "Configure seus módulos: CRM, Financeiro, Projetos, RH e mais.",
   },
   {
     icon: Rocket,
     number: "03",
-    title: "Gerencie tudo em um lugar",
-    description: "Dashboard unificado. Dados em tempo real. Sem planilhas.",
+    title: "Gerencie tudo com IA",
+    description: "Dashboard unificado. Dados em tempo real. Assistente inteligente.",
   },
 ];
 
