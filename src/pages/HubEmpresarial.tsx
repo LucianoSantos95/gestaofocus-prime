@@ -449,9 +449,7 @@ const HubEmpresarial = () => {
                       </div>
                       <p className="text-sm text-foreground-muted mb-4 whitespace-normal">"{t.content}"</p>
                       <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary/60 to-primary-glow/60 flex items-center justify-center text-xs font-bold text-white">
-                          {t.name.charAt(0)}
-                        </div>
+                        <img src={t.photo} alt={t.name} className="w-9 h-9 rounded-full object-cover border-2 border-primary/20" loading="lazy" width={36} height={36} />
                         <div>
                           <p className="text-sm font-semibold text-foreground">{t.name}</p>
                           <p className="text-[11px] text-foreground-muted">{t.role}</p>
