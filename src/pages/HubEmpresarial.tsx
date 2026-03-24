@@ -290,9 +290,9 @@ const HubEmpresarial = () => {
           </div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-[1.1] mb-8 tracking-tight">
-            Pare de Gerenciar no Caos.{" "}
+            Substitua 7 ferramentas por uma só.{" "}
             <span className="bg-gradient-primary bg-clip-text text-transparent">
-              Comece a Crescer.
+              Gestão completa com IA.
             </span>
           </h1>
 
