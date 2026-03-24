@@ -243,7 +243,7 @@ const HubEmpresarial = () => {
 
   const faqs = [
     { q: "🤔 O que é o Hub Empresarial?", a: "É uma plataforma SaaS completa de gestão para pequenas e médias empresas. Centraliza CRM, financeiro, projetos, RH e dashboards em um único lugar — sem planilhas, sem caos." },
-    { q: "💰 Quanto custa?", a: "Temos um plano gratuito para você começar. O plano Plus custa R$ 119/mês e inclui todos os módulos, usuários ilimitados e suporte prioritário. O plano Pro custa R$ 249/mês com API dedicada, customização completa e suporte dedicado." },
+    { q: "💰 Quanto custa?", a: "O plano Plus custa R$ 69/mês para até 5 usuários. O plano Pro custa R$ 149/mês com IA e até 10 usuários. O plano Enterprise custa R$ 297/mês com usuários ilimitados, API e suporte dedicado." },
     { q: "🆓 Posso testar grátis?", a: "Sim! O plano gratuito é para sempre — sem prazo, sem cartão de crédito. Você pode usar os módulos básicos quanto tempo quiser e fazer upgrade quando fizer sentido." },
     { q: "🔒 Meus dados estão seguros?", a: "Absolutamente. Utilizamos criptografia AES-256, backups automáticos diários e infraestrutura segura. Seus dados são seus — nunca compartilhamos com terceiros." },
     { q: "📱 Funciona no celular?", a: "Sim! A plataforma é totalmente responsiva e funciona perfeitamente em qualquer dispositivo — desktop, tablet ou celular." },
