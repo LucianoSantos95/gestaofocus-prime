@@ -2,11 +2,7 @@ import { useState, useEffect } from "react";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-interface StickyMobileCTAProps {
-  onOpenLeadModal?: () => void;
-}
-
-const StickyMobileCTA = ({ onOpenLeadModal }: StickyMobileCTAProps) => {
+const StickyMobileCTA = () => {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
