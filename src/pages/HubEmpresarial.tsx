@@ -46,6 +46,15 @@ import {
 import { trackCTAClick, trackEvent } from "@/lib/analytics";
 import hubLogo from "@/assets/hub-logo.png";
 import hubDashboardMockup from "@/assets/hub-dashboard-mockup.png";
+import carlaPhoto from "@/assets/testimonials/carla.jpg";
+import rafaelPhoto from "@/assets/testimonials/rafael.jpg";
+import amandaPhoto from "@/assets/testimonials/amanda.jpg";
+import lucasPhoto from "@/assets/testimonials/lucas.jpg";
+import fernandaPhoto from "@/assets/testimonials/fernanda.jpg";
+import brunoPhoto from "@/assets/testimonials/bruno.jpg";
+import julianaPhoto from "@/assets/testimonials/juliana.jpg";
+import diegoPhoto from "@/assets/testimonials/diego.jpg";
+import patriciaPhoto from "@/assets/testimonials/patricia.jpg";
 
 /* ─── Marquee animation via inline style (3 rows, infinite scroll) ─── */
 const marqueeStyle = (duration: number, reverse = false): React.CSSProperties => ({
@@ -149,15 +158,15 @@ const HubEmpresarial = () => {
   ];
 
   const testimonials = [
-    { name: "Carla M.", role: "CEO, Agência Criativa", content: "Finalmente tenho visão real do financeiro. Descobri gastos que nem sabia que tinha!" },
-    { name: "Rafael S.", role: "Fundador, TechStart", content: "Saí do caos das planilhas para um sistema que realmente funciona. Projetos nunca mais atrasaram." },
-    { name: "Amanda L.", role: "Diretora, Consultoria Plus", content: "O CRM mudou minha forma de lidar com clientes. Não perco mais nenhuma oportunidade." },
-    { name: "Lucas P.", role: "COO, Estúdio Digital", content: "O dashboard me dá confiança para tomar decisões. Antes era tudo no achismo." },
-    { name: "Fernanda R.", role: "Gerente, Loja Online", content: "Onboarding de novos funcionários reduziu de 2 semanas para 3 dias." },
-    { name: "Bruno T.", role: "Sócio, Escritório Contábil", content: "A automação de processos cortou nosso retrabalho pela metade." },
-    { name: "Juliana K.", role: "Head de Vendas, SaaS Corp", content: "Pipeline visual transformou nossa taxa de fechamento. Aumento de 34% no primeiro mês." },
-    { name: "Diego M.", role: "Founder, Startup Health", content: "Melhor investimento do ano. Centralizar tudo num lugar mudou o jogo da empresa." },
-    { name: "Patrícia S.", role: "Diretora, Agência 360", content: "Minha equipe parou de perder tempo com planilhas. Agora foca no que importa." },
+    { name: "Carla Mendonça", role: "CEO, Agência Órbita Digital", photo: carlaPhoto, content: "Finalmente tenho visão real do financeiro. Descobri gastos que nem sabia que tinha!" },
+    { name: "Rafael Souza", role: "Fundador, TechBridge Solutions", photo: rafaelPhoto, content: "Saí do caos das planilhas para um sistema que realmente funciona. Projetos nunca mais atrasaram." },
+    { name: "Amanda Lopes", role: "Diretora, Vértice Consultoria", photo: amandaPhoto, content: "O CRM mudou minha forma de lidar com clientes. Não perco mais nenhuma oportunidade." },
+    { name: "Lucas Pereira", role: "COO, Estúdio Nuvem", photo: lucasPhoto, content: "O dashboard me dá confiança para tomar decisões. Antes era tudo no achismo." },
+    { name: "Fernanda Rocha", role: "Gerente, Lótus E-commerce", photo: fernandaPhoto, content: "Onboarding de novos funcionários reduziu de 2 semanas para 3 dias." },
+    { name: "Bruno Torres", role: "Sócio, Contábil Horizonte", photo: brunoPhoto, content: "A automação de processos cortou nosso retrabalho pela metade." },
+    { name: "Juliana Keller", role: "Head de Vendas, Impulso Digital", photo: julianaPhoto, content: "Pipeline visual transformou nossa taxa de fechamento. Aumento de 34% no primeiro mês." },
+    { name: "Diego Martins", role: "Founder, Saúde em Foco", photo: diegoPhoto, content: "Melhor investimento do ano. Centralizar tudo num lugar mudou o jogo da empresa." },
+    { name: "Patrícia Silva", role: "Diretora, Conecta 360", photo: patriciaPhoto, content: "Minha equipe parou de perder tempo com planilhas. Agora foca no que importa." },
   ];
 
   const techFeatures = [
@@ -440,9 +449,7 @@ const HubEmpresarial = () => {
                       </div>
                       <p className="text-sm text-foreground-muted mb-4 whitespace-normal">"{t.content}"</p>
                       <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary/60 to-primary-glow/60 flex items-center justify-center text-xs font-bold text-white">
-                          {t.name.charAt(0)}
-                        </div>
+                        <img src={t.photo} alt={t.name} className="w-9 h-9 rounded-full object-cover border-2 border-primary/20" loading="lazy" width={36} height={36} />
                         <div>
                           <p className="text-sm font-semibold text-foreground">{t.name}</p>
                           <p className="text-[11px] text-foreground-muted">{t.role}</p>
