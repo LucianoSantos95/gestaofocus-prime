@@ -11,14 +11,14 @@ const MetasInteligentesSmart = () => {
   return (
     <>
       <SEOHead
-        title="Como Criar Metas Inteligentes (SMART) Sem Complicar — Com Exemplos Reais | Focus"
-        description="Aprenda a criar metas SMART de forma simples e prática. Exemplos reais e template pronto para usar."
+        title="Metas SMART Para Agências: Objetivos Por Projeto e Cliente | Focus"
+        description="Como criar metas SMART para agências e consultorias. Defina objetivos claros por projeto, cliente e trimestre com exemplos reais."
         canonical="/blog/metas-inteligentes-smart"
         image={imageUrl}
         type="article"
         publishedTime="2025-01-20"
         modifiedTime="2025-01-20"
-        keywords="metas SMART, objetivos inteligentes, planejamento de metas, metodologia SMART, produtividade"
+        keywords="metas SMART agência, objetivos consultoria, planejamento metas prestadores serviço, metodologia SMART agências"
       />
       <div className="min-h-screen flex flex-col bg-background">
         <Navigation />
@@ -28,8 +28,8 @@ const MetasInteligentesSmart = () => {
               articleTitle="Metas SMART" 
               articleSlug="metas-inteligentes-smart" 
             />
-            <img src={metasImage} alt="Como criar metas SMART inteligentes para aumentar sua produtividade" width="1200" height="400" className="w-full h-[400px] object-cover rounded-lg mb-8" loading="lazy" />
-            <h1 className="text-4xl font-bold mb-8">Como Criar Metas Inteligentes (SMART) Sem Complicar</h1>
+            <img src={metasImage} alt="Como criar metas SMART para agências e consultorias com exemplos por projeto" width="1200" height="400" className="w-full h-[400px] object-cover rounded-lg mb-8" loading="lazy" />
+            <h1 className="text-4xl font-bold mb-8">Metas SMART Para Agências: Como Definir Objetivos Claros Por Projeto e Cliente</h1>
             <div className="prose prose-lg max-w-none">
               <p className="text-lg mb-6 leading-relaxed">
                 "Quero ter sucesso profissional." Soa familiar? Esse tipo de desejo vago é o principal motivo pelo qual 92% das pessoas abandonam suas metas nos primeiros três meses. A diferença entre quem realiza e quem apenas sonha está na clareza e estrutura do planejamento.

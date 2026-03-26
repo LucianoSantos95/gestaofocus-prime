@@ -35,14 +35,14 @@ const PlanejamentoAnualZero = () => {
     <>
       <ReadingProgressBar />
       <SEOHead
-        title="Como Montar um Planejamento Anual do Zero: Passos Simples e Exemplos Reais | Focus Inteligente"
-        description="Guia completo para criar seu planejamento anual passo a passo. Metodologia testada, templates prontos e exemplos reais para atingir suas metas."
+        title="Planejamento Anual Para Agências e Consultorias | Focus"
+        description="Guia para agências e consultorias criarem planejamento anual estratégico. Sprints trimestrais, metas por cliente e revisões práticas."
         canonical="/blog/planejamento-anual-do-zero"
         image={imageUrl}
         type="article"
         publishedTime="2025-01-19"
         modifiedTime="2025-01-19"
-        keywords="planejamento anual, como planejar o ano, metas anuais, objetivos 2025, planejamento estratégico pessoal"
+        keywords="planejamento anual agência, metas anuais consultoria, planejamento estratégico prestadores serviço"
       />
 
       <div className="min-h-screen flex flex-col bg-background">
@@ -54,10 +54,10 @@ const PlanejamentoAnualZero = () => {
 
             <header className="mb-8">
               <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground leading-tight">
-                Como Montar um Planejamento Anual do Zero (Com Passos Simples e Exemplos Reais)
+                Planejamento Anual Para Agências e Consultorias: Do Zero ao Plano Estratégico
               </h1>
               <p className="text-xl text-muted-foreground">
-                O método completo para planejar seu ano com clareza e realizar seus objetivos (sem ficar só no papel)
+                O método para gestores de agências planejarem o ano com sprints trimestrais e metas por cliente
               </p>
             </header>
 
@@ -71,7 +71,7 @@ const PlanejamentoAnualZero = () => {
             <div className="mb-8 rounded-xl overflow-hidden">
               <img
                 src={articleImage}
-                alt="Planejamento anual com calendário, metas e organização estratégica"
+                alt="Planejamento anual estratégico para agências e consultorias com metas por trimestre"
                 className="w-full h-[400px] object-cover rounded-lg"
               />
             </div>

@@ -38,14 +38,14 @@ export default function OrganizacaoFinanceiraPessoal() {
   return (
     <>
       <SEOHead
-        title="Organização Financeira Pessoal: Sistema Simples Para Controlar Gastos | Focus"
-        description="Aprenda o método prático de organização financeira pessoal que te ajuda a controlar gastos sem planilhas complexas. Sistema simples que funciona."
+        title="Gestão Financeira Para Agências: Controle Por Projeto | Focus"
+        description="Sistema prático para agências e consultorias controlarem receitas, custos por cliente e fluxo de caixa sem planilhas complexas."
         canonical="/blog/organizacao-financeira-pessoal-sistema-simples"
         image={imageUrl}
         type="article"
         publishedTime="2025-02-20"
         modifiedTime="2025-02-20"
-        keywords="organização financeira, controle de gastos, finanças pessoais, orçamento pessoal, gestão financeira, notion finanças"
+        keywords="gestão financeira agência, controle custos consultoria, financeiro prestadores serviço, fluxo caixa agência"
       />
 
       <Navigation />
@@ -73,16 +73,16 @@ export default function OrganizacaoFinanceiraPessoal() {
 
             <div className="mb-6">
               <span className="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">
-                Finanças Pessoais
+                Gestão Financeira para Agências
               </span>
             </div>
 
             <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-              Organização Financeira Pessoal: Como Controlar Seus Gastos Usando Um Sistema Simples
+              Gestão Financeira Para Agências: Controle Receitas e Custos Por Projeto
             </h1>
 
             <p className="text-xl text-foreground-muted mb-8">
-              O método prático que elimina a bagunça financeira sem precisar de planilhas complexas ou aplicativos complicados
+              Sistema prático para agências e consultorias controlarem financeiro por cliente sem planilhas complexas
             </p>
 
             <div className="flex flex-wrap items-center gap-6 text-sm text-foreground-muted mb-8">

@@ -12,9 +12,9 @@ const ReunioesProdutivas = () => {
   return (
     <>
       <Helmet>
-        <title>Como Fazer Reuniões Produtivas e Parar de Perder Tempo no Trabalho</title>
-        <meta name="description" content="Aprenda a transformar reuniões improdutivas em encontros eficientes. Passo a passo para planejar, conduzir e documentar reuniões que geram resultados." />
-        <meta name="keywords" content="reuniões produtivas, como fazer reuniões eficientes, parar de perder tempo em reuniões, produtividade no trabalho, gestão de reuniões" />
+        <title>Reuniões Produtivas Para Agências e Consultorias | Focus</title>
+        <meta name="description" content="Transforme reuniões improdutivas em alinhamentos rápidos na sua agência. Passo a passo para agências e consultorias que precisam de agilidade." />
+        <meta name="keywords" content="reuniões produtivas agência, reuniões eficientes consultoria, gestão reuniões prestadores serviço, alinhamento equipe agência" />
         <link rel="canonical" href={articleUrl} />
         
         <meta property="og:title" content="Como Fazer Reuniões Produtivas e Parar de Perder Tempo no Trabalho" />
@@ -70,10 +70,10 @@ const ReunioesProdutivas = () => {
             {/* Título e Subtítulo */}
             <header className="mb-8">
               <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground leading-tight">
-                Como Fazer Reuniões Produtivas e Parar de Perder Tempo no Trabalho
+                Reuniões Produtivas Para Agências: O Guia Para Parar de Perder Tempo em Alinhamentos
               </h1>
               <p className="text-xl text-muted-foreground">
-                O guia completo para transformar encontros improdutivos em momentos decisivos para sua equipe
+                Transforme reuniões improdutivas em alinhamentos rápidos e eficientes para sua agência ou consultoria
               </p>
             </header>
 

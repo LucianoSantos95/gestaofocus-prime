@@ -18,14 +18,14 @@ const OrganizarDocumentosEmpresa = () => {
   return (
     <>
       <SEOHead
-        title="Como Organizar Documentos, Ideias e Informações da Empresa em Um Só Lugar | Focus"
-        description="Sistema completo para centralizar e organizar todos os documentos e informações da sua empresa. Elimine informação espalhada e aumente eficiência."
+        title="Centralize Documentos e Processos da Sua Agência | Focus"
+        description="Sistema para centralizar SOPs, briefings, contratos e processos da sua agência ou consultoria em um só lugar. Acabe com informação espalhada."
         canonical="/blog/organizar-documentos-empresa"
         image={imageUrl}
         type="article"
         publishedTime="2025-01-15"
         modifiedTime="2025-01-15"
-        keywords="organizar documentos empresa, base conhecimento, gestão documentos, centralizar informações, knowledge base"
+        keywords="organizar documentos agência, base conhecimento consultoria, centralizar processos prestadores serviço, gestão documentos agência"
       />
       <div className="min-h-screen flex flex-col bg-background">
         <Navigation />
@@ -53,7 +53,7 @@ const OrganizarDocumentosEmpresa = () => {
 
             <header className="mb-8">
               <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
-                Como Organizar Documentos, Ideias e Informações da Empresa em Um Só Lugar
+                Como Centralizar Documentos, SOPs e Processos da Sua Agência em Um Só Lugar
               </h1>
               <p className="text-xl text-muted-foreground mb-4">
                 Informação espalhada é conhecimento perdido. Aprenda a criar um hub central onde toda equipe encontra o que precisa em segundos, não em horas.
@@ -66,7 +66,7 @@ const OrganizarDocumentosEmpresa = () => {
 
             <img 
               src={documentosImage} 
-              alt="Sistema organizado de documentos e informações empresariais em uma base de conhecimento centralizada" 
+              alt="Sistema centralizado de documentos e processos para agências e consultorias organizadas" 
               className="w-full h-[400px] object-cover rounded-lg mb-12 shadow-lg" 
             />
 

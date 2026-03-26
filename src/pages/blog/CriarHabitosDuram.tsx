@@ -12,14 +12,14 @@ const CriarHabitosDuram = () => {
   return (
     <>
       <SEOHead
-        title="Como Criar Hábitos Que Duram: O Método das Pessoas Altamente Produtivas"
-        description="Aprenda o método científico para criar hábitos duradouros. Framework completo usado por pessoas produtivas para transformar comportamentos em automatismos."
+        title="Hábitos de Alta Performance Para Gestores de Agências | Focus"
+        description="Método para gestores de agências e consultorias criarem hábitos duradouros de produtividade e gestão. Framework para equipes de serviço."
         canonical="/blog/criar-habitos-que-duram"
         image={imageUrl}
         type="article"
         publishedTime="2025-01-19"
         modifiedTime="2025-01-19"
-        keywords="criar hábitos, hábitos produtivos, como criar hábitos duradouros, formação de hábitos, mudança de comportamento"
+        keywords="hábitos gestores agência, produtividade consultoria, hábitos equipes serviço, alta performance prestadores"
       />
 
       <div className="min-h-screen bg-background">
@@ -39,10 +39,10 @@ const CriarHabitosDuram = () => {
             {/* Título e Subtítulo */}
             <header className="mb-8">
               <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground leading-tight">
-                Como Criar Hábitos Que Duram: O Método Mais Usado Por Pessoas Altamente Produtivas
+                Hábitos de Alta Performance Para Gestores de Agências e Consultorias
               </h1>
               <p className="text-xl text-muted-foreground">
-                O guia científico completo para transformar qualquer comportamento em automatismo (sem depender de força de vontade)
+                O método para gestores de agências criarem hábitos duradouros de gestão e produtividade (sem depender de força de vontade)
               </p>
             </header>
 
