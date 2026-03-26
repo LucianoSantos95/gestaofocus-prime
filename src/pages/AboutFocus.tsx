@@ -1,8 +1,16 @@
 import { Button } from "@/components/ui/button";
+import SEOHead from "@/components/SEOHead";
 
 const AboutFocus = () => {
   return (
     <div className="min-h-screen">
+      <SEOHead
+        title="Sobre a Focus | Gestão para Agências e Consultorias"
+        description="Especialistas em gestão inteligente para agências, consultorias e prestadores de serviço. Sistemas sob medida e plataforma pronta para usar."
+        canonical="/sobre-focus"
+        keywords="gestão para agências, consultoria gestão empresarial, sistemas para prestadores de serviço"
+      />
+
       {/* Hero Section */}
       <section className="section-padding bg-gradient-to-br from-background via-background to-primary/5">
         <div className="container-focus">
@@ -11,22 +19,22 @@ const AboutFocus = () => {
               Sobre a Focus
             </h1>
             <p className="hero-subtitle max-w-3xl mx-auto">
-              Transformando empresas em organizações mais eficientes e estratégicas
+              Especialistas em gestão inteligente para agências, consultorias e prestadores de serviço
             </p>
           </div>
 
           {/* Content */}
           <div className="max-w-4xl mx-auto space-y-8 text-lg leading-relaxed animate-fade-in">
             <p className="text-foreground/90">
-              Focus Gestão Empresarial é uma consultoria dedicada a transformar empresas em organizações mais eficientes, estratégicas e preparadas para crescer de forma sustentável.
+              A Focus Gestão Inteligente nasceu para resolver um problema claro: agências, consultorias e prestadores de serviço que crescem, mas continuam gerenciando tudo no WhatsApp, planilhas e e-mails soltos.
             </p>
 
             <p className="text-foreground/90">
-              Nosso propósito é simplificar a gestão e potencializar resultados, ajudando líderes e equipes a ganhar clareza, organização e controle sobre seus processos e operações.
+              Nosso propósito é dar clareza, organização e controle para empresas de serviço que precisam profissionalizar sua operação — sem perder agilidade.
             </p>
 
             <p className="text-foreground/90">
-              Acreditamos que uma empresa bem estruturada cria espaço para inovação e crescimento. Por isso, unimos metodologias de gestão consolidadas e tecnologia no-code para entregar soluções que tornam o dia a dia mais ágil e estratégico.
+              Trabalhamos de duas formas: criamos sistemas sob medida para operações complexas (CRM, financeiro, portais do cliente) ou oferecemos o Hub Empresarial, uma plataforma completa pronta para usar. Em ambos os casos, entregamos em semanas o que levaria meses com desenvolvimento tradicional.
             </p>
 
             <p className="text-foreground/90">
