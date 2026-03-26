@@ -38,14 +38,14 @@ export default function OrganizacaoFinanceiraPessoal() {
   return (
     <>
       <SEOHead
-        title="Organização Financeira Pessoal: Sistema Simples Para Controlar Gastos | Focus"
-        description="Aprenda o método prático de organização financeira pessoal que te ajuda a controlar gastos sem planilhas complexas. Sistema simples que funciona."
+        title="Gestão Financeira Para Agências: Controle Por Projeto | Focus"
+        description="Sistema prático para agências e consultorias controlarem receitas, custos por cliente e fluxo de caixa sem planilhas complexas."
         canonical="/blog/organizacao-financeira-pessoal-sistema-simples"
         image={imageUrl}
         type="article"
         publishedTime="2025-02-20"
         modifiedTime="2025-02-20"
-        keywords="organização financeira, controle de gastos, finanças pessoais, orçamento pessoal, gestão financeira, notion finanças"
+        keywords="gestão financeira agência, controle custos consultoria, financeiro prestadores serviço, fluxo caixa agência"
       />
 
       <Navigation />

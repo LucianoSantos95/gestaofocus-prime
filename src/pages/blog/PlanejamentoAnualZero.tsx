@@ -35,14 +35,14 @@ const PlanejamentoAnualZero = () => {
     <>
       <ReadingProgressBar />
       <SEOHead
-        title="Como Montar um Planejamento Anual do Zero: Passos Simples e Exemplos Reais | Focus Inteligente"
-        description="Guia completo para criar seu planejamento anual passo a passo. Metodologia testada, templates prontos e exemplos reais para atingir suas metas."
+        title="Planejamento Anual Para Agências e Consultorias | Focus"
+        description="Guia para agências e consultorias criarem planejamento anual estratégico. Sprints trimestrais, metas por cliente e revisões práticas."
         canonical="/blog/planejamento-anual-do-zero"
         image={imageUrl}
         type="article"
         publishedTime="2025-01-19"
         modifiedTime="2025-01-19"
-        keywords="planejamento anual, como planejar o ano, metas anuais, objetivos 2025, planejamento estratégico pessoal"
+        keywords="planejamento anual agência, metas anuais consultoria, planejamento estratégico prestadores serviço"
       />
 
       <div className="min-h-screen flex flex-col bg-background">

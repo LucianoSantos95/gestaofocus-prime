@@ -37,14 +37,14 @@ const TarefasVsIncendios = () => {
     <>
       <ReadingProgressBar />
       <SEOHead
-        title="Você Está Gerenciando Tarefas… ou Apenas Apagando Incêndios? | Focus Inteligente"
-        description="Descubra a diferença entre gestão proativa e reativa, identifique se você está preso no modo urgência e aprenda a construir um sistema que previne crises."
-        canonical="/blog/tarefas-vs-incendios"
+        title="Sua Agência Gerencia Tarefas ou Apaga Incêndios? | Focus"
+        description="Gestão proativa vs reativa em agências e consultorias. Identifique se sua equipe está no modo urgência e construa um sistema preventivo."
+        canonical="/blog/gerenciando-tarefas-ou-apagando-incendios"
         image={imageUrl}
         type="article"
         publishedTime="2025-01-28"
         modifiedTime="2025-01-28"
-        keywords="gestão de tarefas, gestão reativa, produtividade, apagar incêndios, gestão proativa, organização empresarial"
+        keywords="gestão tarefas agência, gestão reativa consultoria, apagar incêndios prestadores serviço, gestão proativa agências"
       />
 
       <div className="min-h-screen flex flex-col bg-background">
@@ -56,10 +56,10 @@ const TarefasVsIncendios = () => {
 
             <header className="mb-8">
               <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
-                Você Está Gerenciando Tarefas… ou Apenas Apagando Incêndios?
+                Sua Agência Está Gerenciando Tarefas… ou Apenas Apagando Incêndios?
               </h1>
               <p className="text-xl text-muted-foreground">
-                A diferença entre gestão proativa e reativa pode ser a linha entre crescimento sustentável e estagnação disfarçada de produtividade.
+                A diferença entre gestão proativa e reativa em agências e consultorias pode ser a linha entre crescimento e estagnação.
               </p>
             </header>
 
@@ -70,7 +70,7 @@ const TarefasVsIncendios = () => {
               articleTitle="Tarefas vs. Incêndios: Gestão Proativa"
             />
 
-            <img src={coverImage} alt="Gestão proativa vs reativa - diferença entre organizar tarefas e apagar incêndios" className="w-full h-[400px] object-cover rounded-lg mb-8" />
+            <img src={coverImage} alt="Gestão proativa vs reativa em agências e consultorias - organizar tarefas ou apagar incêndios" className="w-full h-[400px] object-cover rounded-lg mb-8" />
 
             <KeyTakeaways items={keyTakeaways} readTime="8 min" />
             <TableOfContents items={tocItems} />

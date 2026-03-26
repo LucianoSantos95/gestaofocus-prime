@@ -37,14 +37,14 @@ const PararApagarIncendiosEmpresa = () => {
     <>
       <ReadingProgressBar />
       <SEOHead
-        title="Por que sua empresa está sempre apagando incêndios e como parar | Focus Inteligente"
-        description="Descubra as causas raiz do modo bombeiro e aprenda o método para sair do ciclo de urgências e trabalhar de forma estratégica e proativa."
+        title="Sua Agência Vive Apagando Incêndios? Como Parar | Focus"
+        description="Descubra por que agências e consultorias vivem no modo bombeiro e o método de 4 passos para sair do ciclo de urgências e crescer."
         canonical="/blog/parar-apagar-incendios-empresa"
         image={imageUrl}
         type="article"
         publishedTime="2025-02-04"
         modifiedTime="2025-02-04"
-        keywords="gestão crise, apagar incêndios, modo reativo, gestão proativa, planejamento estratégico, processos empresa"
+        keywords="gestão agência, apagar incêndios consultoria, modo reativo agência, gestão proativa prestadores de serviço"
       />
 
       <div className="min-h-screen flex flex-col bg-background">
@@ -59,10 +59,10 @@ const PararApagarIncendiosEmpresa = () => {
 
             <header className="mb-8">
               <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
-                Por que sua empresa está sempre apagando incêndios — e como parar com isso de uma vez
+                Sua agência está sempre apagando incêndios — e como parar com isso de uma vez
               </h1>
               <p className="text-xl text-muted-foreground">
-                O ciclo vicioso do modo bombeiro está matando empresas promissoras. Descubra como quebrar esse padrão.
+                O ciclo vicioso do modo bombeiro está matando agências e consultorias promissoras. Descubra como quebrar esse padrão.
               </p>
             </header>
 
@@ -75,7 +75,7 @@ const PararApagarIncendiosEmpresa = () => {
 
             <img
               src={articleImage}
-              alt="Equipe empresarial enfrentando crises constantes no ambiente de trabalho"
+              alt="Equipe de agência enfrentando crises operacionais e modo bombeiro no trabalho"
               className="w-full h-[400px] object-cover rounded-lg mb-8"
             />
 

@@ -114,14 +114,14 @@ const ErroSilenciosoProdutividade = () => {
   return (
     <>
       <SEOHead
-        title="O Erro Silencioso que Destrói a Produtividade de Qualquer Equipe | Focus"
-        description="Descubra o erro invisível que está custando horas de produtividade da sua equipe todos os dias e aprenda o método prático para eliminá-lo."
-        canonical="/blog/erro-produtividade-equipe"
-        image={`https://focusinteligente.com${coverImage}`}
+        title="O Erro Que Destrói a Produtividade em Agências | Focus"
+        description="O erro invisível que custa horas de produtividade em agências e consultorias. Método prático para equipes de serviço eliminá-lo."
+        canonical="/blog/erro-silencioso-produtividade-equipe"
+        image={`https://focusinteligente.com.br${coverImage}`}
         type="article"
         publishedTime={publishDate}
         modifiedTime={publishDate}
-        keywords="produtividade equipe, erro produtividade, gestão equipes, sistema centralizado, notion equipe, eficiência empresarial"
+        keywords="produtividade agência, erro produtividade consultoria, gestão equipes serviço, sistema centralizado agência"
       />
 
       <article className="min-h-screen pt-24 pb-16">
@@ -153,7 +153,7 @@ const ErroSilenciosoProdutividade = () => {
             </div>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              O Erro Silencioso que Destrói a Produtividade de Qualquer Equipe (e Como Evitar)
+              O Erro Silencioso Que Destrói a Produtividade em Agências e Consultorias
             </h1>
 
             <p className="text-xl text-foreground-muted mb-8">
@@ -179,7 +179,7 @@ const ErroSilenciosoProdutividade = () => {
 
             <img 
               src={coverImage} 
-              alt="Gestão de equipes - Focus Inteligente mostra erro de produtividade em reunião empresarial desorganizada" 
+              alt="Erro de produtividade em equipe de agência com informações desorganizadas e reuniões improdutivas" 
               className="w-full rounded-lg shadow-xl mb-8"
             />
           </div>

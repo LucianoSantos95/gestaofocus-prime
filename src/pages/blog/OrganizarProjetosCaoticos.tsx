@@ -15,14 +15,14 @@ const OrganizarProjetosCaoticos = () => {
   return (
     <>
       <SEOHead
-        title="O Método Para Organizar Projetos Caóticos e Dobrar a Eficiência | Focus"
-        description="Descubra o método testado que transforma projetos caóticos em sistemas organizados, dobrando a eficiência da equipe em 30 dias."
+        title="Organizar Projetos Caóticos em Agências: Método Testado | Focus"
+        description="Método testado em agências e consultorias para organizar projetos de clientes e dobrar a eficiência da equipe em 30 dias."
         canonical="/blog/organizar-projetos-caoticos"
         image={imageUrl}
         type="article"
         publishedTime="2025-01-20"
         modifiedTime="2025-01-20"
-        keywords="organização de projetos, gestão de projetos, projetos caóticos, eficiência de equipe, metodologia de projetos, organização empresarial"
+        keywords="organizar projetos agência, gestão projetos consultoria, projetos caóticos prestadores serviço, eficiência equipe agência"
       />
 
       <article className="min-h-screen bg-background py-20">
@@ -35,17 +35,17 @@ const OrganizarProjetosCaoticos = () => {
             <span className="text-foreground">Organizar Projetos Caóticos</span>
           </nav>
 
-          <img src={organizarProjetosImage} alt="Como organizar projetos caóticos e recuperar o controle da sua gestão" width="1200" height="400" className="w-full h-[400px] object-cover rounded-lg mb-8" loading="lazy" />
+          <img src={organizarProjetosImage} alt="Como organizar projetos caóticos em agências e consultorias para dobrar eficiência" width="1200" height="400" className="w-full h-[400px] object-cover rounded-lg mb-8" loading="lazy" />
 
           <header className="mb-12">
             <div className="inline-block px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">
               Gestão de Projetos
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-tight">
-              O método que usei para organizar projetos caóticos e dobrar a eficiência do time
+              Como organizamos projetos caóticos em agências e dobramos a eficiência da equipe
             </h1>
             <p className="text-xl text-muted-foreground mb-6">
-              De caos total a sistema organizado em 30 dias: o framework testado em dezenas de empresas
+              De caos total a sistema organizado em 30 dias: o framework testado em dezenas de agências e consultorias
             </p>
             <div className="flex items-center gap-6 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">

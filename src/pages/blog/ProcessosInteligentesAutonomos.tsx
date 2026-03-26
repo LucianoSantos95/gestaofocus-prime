@@ -36,14 +36,14 @@ const ProcessosInteligentesAutonomos = () => {
     <>
       <ReadingProgressBar />
       <SEOHead
-        title="Como Criar Processos Inteligentes que Funcionam Sozinhos | Focus Inteligente"
-        description="Aprenda a criar processos autônomos que funcionam mesmo quando você não está presente, liberando seu tempo para crescimento estratégico."
+        title="Automatize a Operação da Sua Agência com Processos Inteligentes | Focus"
+        description="Framework para agências e consultorias criarem processos autônomos que funcionam no piloto automático, liberando a equipe para entregas estratégicas."
         canonical="/blog/processos-inteligentes-autonomos"
         image={imageUrl}
         type="article"
         publishedTime="2025-01-20"
         modifiedTime="2025-01-20"
-        keywords="processos autônomos, automação de processos, processos inteligentes, gestão de processos, automação empresarial"
+        keywords="automação processos agência, processos inteligentes consultoria, automação operação prestadores serviço"
       />
 
       <div className="min-h-screen flex flex-col bg-background">

@@ -28,14 +28,14 @@ const MapeamentoProcessos = () => {
   return (
     <>
       <SEOHead
-        title="Mapeamento de Processos: Como Destravar o Crescimento [Guia 2025] | Focus"
-        description="Aprenda como fazer mapeamento de processos empresariais com BPMN, identificar gargalos, eliminar retrabalho e criar workflow eficiente. Guia completo de gestão de processos para crescimento."
+        title="Mapeamento de Processos Para Agências e Consultorias | Focus"
+        description="Guia de mapeamento de processos para agências e consultorias. Identifique gargalos, elimine retrabalho e escale sua operação de serviços."
         canonical="/blog/mapeamento-processos-crescimento"
         image={imageUrl}
         type="article"
         publishedTime={publishDate}
         modifiedTime={modifiedDate}
-        keywords="mapeamento de processos, gestão de processos, otimização empresarial, fluxo de trabalho, workflow, BPMN, fluxograma, lean, kaizen, crescimento empresarial, como mapear processos, melhoria de processos, diagrama de processos"
+        keywords="mapeamento processos agência, gestão processos consultoria, workflow agência, otimização processos prestadores serviço"
       />
 
       <article className="min-h-screen pt-24 pb-16">
@@ -53,7 +53,7 @@ const MapeamentoProcessos = () => {
           <div className="aspect-video overflow-hidden rounded-2xl">
             <img 
               src={mapeamentoImage} 
-              alt="Diagrama BPMN de mapeamento de processos empresariais mostrando workflow, fluxograma de gestão de processos com identificação de gargalos, otimização de fluxo de trabalho e melhoria contínua usando metodologia Lean"
+              alt="Mapeamento de processos para agências e consultorias com workflow e identificação de gargalos operacionais"
               title="Mapeamento de processos para crescimento empresarial"
               width="1200"
               height="675"
@@ -80,7 +80,7 @@ const MapeamentoProcessos = () => {
             </div>
 
             <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-              Seu negócio está travado? Veja como o mapeamento de processos pode destravar seu crescimento
+              Sua agência está travada? Mapeamento de processos para destravar o crescimento
             </h1>
 
             <p className="text-xl text-foreground-muted leading-relaxed">
