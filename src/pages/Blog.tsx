@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Calendar, Clock, ArrowRight, BookOpen, Search, X, Building2, Zap, Layout, Brain, Sparkles } from "lucide-react";
+import { Calendar, Clock, ArrowRight, BookOpen, Search, X, Building2, Zap, Layout, TrendingUp } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -70,441 +70,441 @@ const Blog = () => {
   const blogPosts = [
     {
       id: -7,
-      title: "Como Reduzir o Estresse no Trabalho Usando Organização e Planejamento",
-      excerpt: "Descubra como organização e planejamento podem reduzir o estresse no trabalho e melhorar sua qualidade de vida. Técnicas práticas para mais equilíbrio.",
+      title: "Como Reduzir o Estresse Operacional na Sua Agência com Organização",
+      excerpt: "Técnicas práticas de organização e planejamento para reduzir o estresse da equipe em agências, consultorias e prestadores de serviço.",
       date: "2026-01-06",
       readTime: "13 min",
-      category: "Bem-estar",
+      category: "Produtividade Operacional",
       slug: "reduzir-estresse-trabalho-organizacao",
       image: reduzirEstresseImage
     },
     {
       id: -6,
-      title: "Organização Pessoal e Profissional: Como Equilibrar Rotina e Trabalho",
-      excerpt: "Aprenda como organizar vida pessoal e profissional sem conflito. Estratégias práticas para integrar rotina e trabalho de forma equilibrada.",
+      title: "Como Equilibrar Operação e Estratégia na Sua Consultoria",
+      excerpt: "Estratégias para gestores de agências e consultorias equilibrarem a rotina operacional com o planejamento estratégico do negócio.",
       date: "2026-01-06",
       readTime: "11 min",
-      category: "Organização",
+      category: "Gestão para Agências",
       slug: "organizacao-pessoal-profissional",
       image: organizacaoPessoalProfissionalImage
     },
     {
       id: -5,
-      title: "Como Criar um Método Pessoal de Produtividade Que Funcione Para Você",
-      excerpt: "Aprenda a criar um método de produtividade personalizado que funcione para você. Descubra seu perfil e monte um sistema que se adapta à sua rotina.",
+      title: "Como Criar um Sistema de Produtividade Sob Medida Para Sua Operação",
+      excerpt: "Monte um método de produtividade personalizado para a realidade da sua agência ou consultoria — sem depender de fórmulas genéricas.",
       date: "2026-01-06",
       readTime: "12 min",
-      category: "Produtividade",
+      category: "Sistemas e Processos",
       slug: "metodo-pessoal-produtividade",
       image: metodoPessoalImage
     },
     {
       id: -4,
-      title: "Planejamento Semanal Passo a Passo para Quem Vive Sem Tempo",
-      excerpt: "Aprenda a planejar sua semana de forma prática e eficiente, mesmo com uma rotina corrida. Guia completo com passo a passo.",
+      title: "Planejamento Semanal Para Gestores de Agências e Consultorias",
+      excerpt: "Guia passo a passo para planejar a semana da sua equipe de forma estratégica, mesmo com uma rotina cheia de entregas e demandas de clientes.",
       date: "2026-01-06",
       readTime: "10 min",
-      category: "Organização",
+      category: "Produtividade Operacional",
       slug: "planejamento-semanal-passo-passo",
       image: planejamentoSemanalImage
     },
     {
       id: -3,
-      title: "Como Organizar Tarefas no Dia a Dia Sem Se Sentir Sobrecarregado",
-      excerpt: "Aprenda a organizar tarefas de forma simples, reduzir a sobrecarga mental e melhorar sua produtividade diária com dicas práticas.",
+      title: "Como Organizar as Demandas Diárias da Sua Agência Sem Sobrecarga",
+      excerpt: "Sistema prático para gestores organizarem tarefas e demandas de clientes sem se sentirem sobrecarregados no dia a dia.",
       date: "2026-01-06",
       readTime: "10 min",
-      category: "Produtividade",
+      category: "Produtividade Operacional",
       slug: "organizar-tarefas-dia-dia",
       image: organizarTarefasImage
     },
     {
       id: -2,
-      title: "Matriz de Eisenhower: Como Definir Prioridades e Focar no Que Importa",
-      excerpt: "Aprenda a usar a Matriz de Eisenhower para organizar prioridades, tomar melhores decisões e focar no que realmente importa no trabalho.",
+      title: "Matriz de Eisenhower: Priorize Entregas e Projetos na Sua Agência",
+      excerpt: "Use a Matriz de Eisenhower para definir prioridades entre projetos de clientes, tarefas internas e demandas urgentes na sua agência.",
       date: "2025-12-22",
       readTime: "11 min",
-      category: "Produtividade",
+      category: "Gestão para Agências",
       slug: "matriz-eisenhower-prioridades",
       image: matrizEisenhowerImage
     },
     {
       id: -1,
-      title: "Método GTD: O Que É, Como Funciona e Como Aplicar na Prática",
-      excerpt: "Aprenda o método GTD (Getting Things Done) de David Allen. Guia completo com os 5 passos, exemplos práticos e dicas para organizar suas tarefas.",
+      title: "Método GTD Para Gestores: Organize Projetos e Entregas de Clientes",
+      excerpt: "Aplique o método GTD (Getting Things Done) na gestão da sua agência ou consultoria. Guia completo com exemplos para equipes de serviço.",
       date: "2025-12-22",
       readTime: "14 min",
-      category: "Produtividade",
+      category: "Sistemas e Processos",
       slug: "metodo-gtd-guia-completo",
       image: metodoGtdImage
     },
     {
       id: 0,
-      title: "Como Fazer Reuniões Produtivas e Parar de Perder Tempo no Trabalho",
-      excerpt: "Aprenda a transformar reuniões improdutivas em encontros eficientes. Passo a passo para planejar, conduzir e documentar reuniões que geram resultados.",
+      title: "Reuniões Produtivas: O Guia Para Agências Que Perdem Tempo em Alinhamentos",
+      excerpt: "Transforme reuniões improdutivas em alinhamentos rápidos e eficientes. Passo a passo para agências e consultorias que precisam de agilidade.",
       date: "2025-12-22",
       readTime: "12 min",
-      category: "Produtividade",
+      category: "Gestão para Agências",
       slug: "reunioes-produtivas-parar-perder-tempo",
       image: reunioesProdutavasImage
     },
     {
       id: 1,
-      title: "Como Criar uma Rotina Matinal Poderosa Que Melhora Seu Dia em 15 Minutos",
-      excerpt: "O método simples e comprovado que transforma suas manhãs e multiplica sua produtividade diária em apenas 15 minutos.",
+      title: "Rotina Matinal Para Gestores: 15 Minutos Que Transformam Seu Dia",
+      excerpt: "O método simples que gestores de agências e consultorias usam para começar o dia com clareza e foco nas prioridades certas.",
       date: "2025-02-20",
       readTime: "8 min",
-      category: "Produtividade",
+      category: "Produtividade Operacional",
       slug: "rotina-matinal-poderosa-15-minutos",
       image: rotinaMatinalImage
     },
     {
       id: 2,
-      title: "Organização Financeira Pessoal: Como Controlar Seus Gastos Usando Um Sistema Simples",
-      excerpt: "O método prático que elimina a bagunça financeira sem precisar de planilhas complexas ou aplicativos complicados.",
+      title: "Gestão Financeira Para Agências: Controle Receitas e Custos Por Projeto",
+      excerpt: "Sistema prático para agências e consultorias controlarem receitas, custos por cliente e fluxo de caixa sem planilhas complexas.",
       date: "2025-02-20",
       readTime: "10 min",
-      category: "Gestão Empresarial",
+      category: "Gestão para Agências",
       slug: "organizacao-financeira-pessoal-sistema-simples",
       image: organizacaoFinanceiraImage
     },
     {
       id: 3,
-      title: "Como Melhorar Sua Concentração em Um Mundo Cheio de Distrações (Guia Prático)",
-      excerpt: "7 técnicas comprovadas para alcançar estado de foco profundo mesmo com notificações, redes sociais e interrupções constantes.",
+      title: "Como Manter o Foco da Equipe em Um Ambiente de Agência Cheio de Distrações",
+      excerpt: "7 técnicas comprovadas para equipes de agências e consultorias alcançarem foco profundo mesmo com múltiplos projetos simultâneos.",
       date: "2025-02-20",
       readTime: "12 min",
-      category: "Produtividade",
+      category: "Produtividade Operacional",
       slug: "melhorar-concentracao-mundo-distracoes",
       image: concentracaoImage
     },
     {
       id: 4,
-      title: "Como Usar Mapas Mentais para Organizar Ideias e Aumentar a Produtividade",
-      excerpt: "Transforme ideias complexas em visualizações simples que aceleram decisões e aumentam sua clareza mental.",
+      title: "Mapas Mentais Para Planejamento de Projetos em Agências",
+      excerpt: "Use mapas mentais para planejar campanhas, escopos de projetos e brainstorms com sua equipe de forma visual e organizada.",
       date: "2025-02-20",
       readTime: "8 min",
-      category: "Produtividade",
+      category: "Sistemas e Processos",
       slug: "mapas-mentais-organizar-ideias-produtividade",
       image: mapasMentaisImage
     },
     {
       id: 5,
-      title: "Gestão do Tempo para Quem Vive Ocupado: Estratégias Simples que Realmente Funcionam",
-      excerpt: "Recupere o controle da sua agenda com técnicas práticas que cabem na rotina de quem tem pouco tempo.",
+      title: "Gestão do Tempo Para Gestores de Agências Que Vivem Apagando Incêndios",
+      excerpt: "Recupere o controle da sua agenda com técnicas práticas para gestores de agências e consultorias sobrecarregados.",
       date: "2025-02-20",
       readTime: "9 min",
-      category: "Produtividade",
+      category: "Produtividade Operacional",
       slug: "gestao-tempo-ocupado-estrategias-funcionam",
       image: gestaoTempoImage
     },
     {
       id: 6,
-      title: "Como Criar um Sistema de Estudos Eficiente Usando Técnicas Modernas de Aprendizagem",
-      excerpt: "Transforme sua forma de estudar com métodos científicos que maximizam retenção e economizam tempo.",
+      title: "Como Estruturar Treinamentos Internos na Sua Agência ou Consultoria",
+      excerpt: "Monte um sistema de capacitação para sua equipe usando técnicas modernas de aprendizagem e onboarding eficiente.",
       date: "2025-02-20",
       readTime: "10 min",
-      category: "Produtividade",
+      category: "Crescimento e Escala",
       slug: "sistema-estudos-eficiente-tecnicas-modernas",
       image: sistemaEstudosImage
     },
     {
       id: 7,
-      title: "Checklist Diário: O Método Simples Que Aumenta Sua Produtividade em Até 40%",
-      excerpt: "Descubra o sistema de checklist que profissionais de alta performance usam para maximizar resultados e reduzir stress diário.",
+      title: "Checklist Diário Para Agências: Aumente a Produtividade da Equipe em 40%",
+      excerpt: "O sistema de checklist que agências de alta performance usam para garantir entregas no prazo e reduzir retrabalho.",
       date: "2025-02-15",
       readTime: "8 min",
-      category: "Produtividade",
+      category: "Produtividade Operacional",
       slug: "checklist-diario-produtividade",
       image: checklistDiarioImage
     },
     {
       id: 8,
-      title: "Como Organizar Sua Rotina Semanal Para Ter Mais Foco (Modelo Pronto Incluso)",
-      excerpt: "O método completo de planejamento semanal que elimina decisões desnecessárias e multiplica seu foco nas tarefas que importam.",
+      title: "Planejamento Semanal Para Equipes de Agência: Modelo Pronto Incluso",
+      excerpt: "O método completo de planejamento semanal para equipes que gerenciam múltiplos clientes e projetos simultâneos.",
       date: "2025-02-14",
       readTime: "9 min",
-      category: "Produtividade",
+      category: "Gestão para Agências",
       slug: "organizar-rotina-semanal",
       image: organizarRotinaImage
     },
     {
       id: 9,
-      title: "Produtividade Para Quem Trabalha Sozinho: O Guia Essencial Para Autônomos e Freelancers",
-      excerpt: "Estrutura completa para autônomos e freelancers criarem sistemas de produtividade sem depender de equipe ou estrutura corporativa.",
+      title: "Produtividade Para Consultores Independentes e Freelancers",
+      excerpt: "Estrutura completa para consultores e freelancers criarem sistemas de produtividade profissional sem depender de equipe.",
       date: "2025-02-13",
       readTime: "10 min",
-      category: "Produtividade",
+      category: "Produtividade Operacional",
       slug: "produtividade-autonomos-freelancers",
       image: produtividadeAutonomosImage
     },
     {
       id: 10,
-      title: "Como Parar de Procrastinar Usando Sistemas Visuais (Sem Depender de Motivação)",
-      excerpt: "O método baseado em gatilhos visuais que elimina procrastinação sem precisar de força de vontade ou motivação externa.",
+      title: "Sistemas Visuais Para Agências: Elimine a Procrastinação da Equipe",
+      excerpt: "O método baseado em dashboards visuais que elimina procrastinação em equipes de agências sem depender de cobranças.",
       date: "2025-02-12",
       readTime: "7 min",
-      category: "Produtividade",
+      category: "Sistemas e Processos",
       slug: "parar-procrastinar-sistemas-visuais",
       image: pararProcrastinarImage
     },
     {
       id: 11,
-      title: "Planejamento Mensal: Como Criar Um Sistema Que Realmente Funciona",
-      excerpt: "Framework prático de 4 pilares para planejar seu mês de forma estratégica e executar com consistência.",
+      title: "Planejamento Mensal Para Agências: Framework de 4 Pilares",
+      excerpt: "Framework prático para planejar o mês da sua agência de forma estratégica, com metas claras para cada projeto e cliente.",
       date: "2025-02-11",
       readTime: "9 min",
-      category: "Produtividade",
+      category: "Gestão para Agências",
       slug: "planejamento-mensal-sistema",
       image: planejamentoMensalImage
     },
     {
       id: 12,
-      title: "Organização Pessoal 2.0: Como Usar Tecnologia Para Ter Mais Clareza Mental",
-      excerpt: "Como construir seu Second Brain usando ferramentas digitais para liberar espaço mental e aumentar sua capacidade criativa.",
+      title: "Second Brain Para Agências: Centralize Conhecimento e Processos",
+      excerpt: "Como construir um repositório digital centralizado para sua agência, eliminando informações perdidas em chats e e-mails.",
       date: "2025-02-10",
       readTime: "8 min",
-      category: "Notion para Empresas",
+      category: "Sistemas e Processos",
       slug: "organizacao-pessoal-tecnologia",
       image: organizacaoPessoalImage
     },
     {
       id: 13,
-      title: "Como Criar Metas Inteligentes (SMART) Sem Complicar — Com Exemplos Reais",
-      excerpt: "Aprenda a transformar desejos vagos em metas SMART acionáveis com exemplos práticos e template pronto para usar.",
+      title: "Metas SMART Para Agências: Defina Objetivos Claros Por Projeto e Cliente",
+      excerpt: "Aprenda a transformar metas vagas em objetivos SMART acionáveis para cada projeto, cliente e trimestre da sua agência.",
       date: "2025-02-09",
       readTime: "7 min",
-      category: "Gestão Empresarial",
+      category: "Crescimento e Escala",
       slug: "metas-inteligentes-smart",
       image: metasSmartImage
     },
     {
       id: 14,
-      title: "Guia Definitivo do Foco: Como Evitar Distrações no Trabalho e em Casa",
-      excerpt: "Técnicas práticas e comprovadas para eliminar distrações digitais e criar ambientes de foco profundo.",
+      title: "Como Evitar Distrações em Ambientes de Agência e Consultoria",
+      excerpt: "Técnicas práticas para equipes de serviço eliminarem distrações digitais e criarem ambientes de foco profundo.",
       date: "2025-02-08",
       readTime: "10 min",
-      category: "Produtividade",
+      category: "Produtividade Operacional",
       slug: "guia-foco-evitar-distracoes",
       image: guiaFocoImage
     },
     {
       id: 15,
-      title: "Métodos de Produtividade Que Realmente Funcionam em 2025 (E Quais Evitar)",
-      excerpt: "Análise completa dos métodos de produtividade mais eficazes em 2025. Saiba quais funcionam e quais são apenas hype.",
+      title: "Métodos de Produtividade Que Funcionam Para Agências em 2025",
+      excerpt: "Análise dos métodos de produtividade mais eficazes para equipes de agências e consultorias. Quais adotar e quais evitar.",
       date: "2025-02-07",
       readTime: "11 min",
-      category: "Produtividade",
+      category: "Produtividade Operacional",
       slug: "metodos-produtividade-2025",
       image: metodosProdutividadeImage
     },
     {
       id: 16,
-      title: "Como Organizar Documentos, Ideias e Informações da Empresa em Um Só Lugar",
-      excerpt: "Sistema completo para centralizar conhecimento empresarial e acabar com informações perdidas em e-mails e chats.",
+      title: "Como Centralizar Documentos e Processos da Sua Agência em Um Só Lugar",
+      excerpt: "Sistema completo para centralizar SOPs, briefings, contratos e documentos da agência, acabando com informações perdidas.",
       date: "2025-02-06",
       readTime: "8 min",
-      category: "Gestão Empresarial",
+      category: "Sistemas e Processos",
       slug: "organizar-documentos-empresa",
       image: organizarDocumentosImage
     },
     {
       id: 17,
-      title: "Como usar o Notion para ter clareza total nos seus projetos (mesmo com pouco tempo)",
-      excerpt: "O método completo para configurar o Notion e ter visão 360° dos seus projetos em minutos — não em horas de organização.",
+      title: "Visão 360° dos Projetos da Sua Agência: Como Ter Clareza Total com Sistemas",
+      excerpt: "O método para configurar dashboards e ter visão completa de todos os projetos e entregas da sua agência em minutos.",
       date: "2025-02-05",
       readTime: "9 min",
-      category: "Notion para Empresas",
+      category: "Sistemas e Processos",
       slug: "clareza-projetos-notion",
       image: clarezaNotionImage
     },
     {
       id: 18,
-      title: "Por que sua empresa está sempre apagando incêndios — e como parar com isso de uma vez",
-      excerpt: "O ciclo vicioso do modo bombeiro está matando empresas promissoras. Descubra como quebrar esse padrão e construir uma operação verdadeiramente estratégica.",
+      title: "Sua Agência Está Sempre Apagando Incêndios? Veja Como Parar Com Isso",
+      excerpt: "O ciclo vicioso do modo bombeiro está matando agências promissoras. Descubra como construir uma operação estratégica e previsível.",
       date: "2025-02-04",
       readTime: "11 min",
-      category: "Gestão Empresarial",
+      category: "Gestão para Agências",
       slug: "parar-apagar-incendios-empresa",
       image: pararIncendiosImage
     },
     {
       id: 19,
-      title: "A fórmula que uso para transformar tarefas soltas em resultados consistentes",
-      excerpt: "O método testado que transforma sua lista caótica de tarefas em um sistema previsível de execução e resultados.",
+      title: "Como Transformar Demandas Soltas em Entregas Consistentes na Sua Agência",
+      excerpt: "O método testado para transformar demandas desorganizadas de clientes em um fluxo previsível de entregas e resultados.",
       date: "2025-02-03",
       readTime: "10 min",
-      category: "Produtividade",
+      category: "Gestão para Agências",
       slug: "tarefas-soltas-em-resultados",
       image: tarefasResultadosImage
     },
     {
       id: 20,
-      title: "O que acontece quando você para de confiar na sua memória e começa a confiar em sistemas",
-      excerpt: "Sua mente não foi feita para armazenar informações — foi feita para processar ideias. Descubra como sistemas externos podem liberar seu potencial criativo.",
+      title: "Pare de Confiar na Memória: Sistemas Que Escalam Sua Consultoria",
+      excerpt: "Sua consultoria não pode depender da memória dos sócios. Descubra como sistemas externos liberam o potencial da equipe.",
       date: "2025-02-02",
       readTime: "9 min",
-      category: "Notion para Empresas",
+      category: "Sistemas e Processos",
       slug: "confiar-sistemas-producao",
       image: confiarSistemasImage
     },
     {
       id: 21,
-      title: "Produtividade não é fazer mais — é fazer o que importa (e o Notion pode provar)",
-      excerpt: "Pare de medir seu sucesso pela quantidade de tarefas completadas. Descubra como focar no que realmente move a agulha dos seus resultados.",
+      title: "Produtividade em Agências: Pare de Fazer Mais e Foque no Que Gera Resultado",
+      excerpt: "Sua agência está ocupada ou produtiva? Descubra como focar nas entregas que realmente movem a agulha dos resultados.",
       date: "2025-02-01",
       readTime: "8 min",
-      category: "Produtividade",
+      category: "Produtividade Operacional",
       slug: "produtividade-fazer-o-que-importa",
       image: produtividadeFazerImage
     },
     {
       id: 22,
-      title: "O erro silencioso que destrói a produtividade de qualquer equipe (e como evitar)",
-      excerpt: "Descubra o erro invisível que está custando horas de produtividade da sua equipe todos os dias e aprenda o método prático para eliminá-lo.",
+      title: "O Erro Silencioso Que Destrói a Produtividade em Agências e Consultorias",
+      excerpt: "Descubra o erro invisível que custa horas de produtividade nas equipes de agências e o método prático para eliminá-lo.",
       date: "2025-01-29",
       readTime: "12 min",
-      category: "Gestão Empresarial",
+      category: "Gestão para Agências",
       slug: "erro-silencioso-produtividade-equipe",
       image: erroSilenciosoImage
     },
     {
       id: 23,
-      title: "Como transformar o caos do seu dia em uma rotina leve e produtiva — usando o Notion",
-      excerpt: "Aprenda o método prático para transformar dias caóticos em uma rotina organizada e produtiva usando o Notion como seu sistema de gestão pessoal.",
+      title: "Do Caos à Rotina Produtiva: Organize a Operação da Sua Agência",
+      excerpt: "Método prático para transformar dias caóticos em uma operação organizada e produtiva na sua agência ou consultoria.",
       date: "2025-01-28",
       readTime: "10 min",
-      category: "Notion para Empresas",
+      category: "Sistemas e Processos",
       slug: "transformar-caos-rotina-produtiva-notion",
       image: caosRotinaImage
     },
     {
       id: 24,
-      title: "Você está gerenciando tarefas… ou apenas apagando incêndios?",
-      excerpt: "Descubra a diferença entre gestão proativa e reatividade constante e aprenda como sair do modo bombeiro para se tornar um gestor estratégico.",
+      title: "Gestão Proativa vs. Modo Bombeiro: Sua Agência Está em Qual?",
+      excerpt: "A diferença entre gestão proativa e reatividade constante em agências. Saia do modo bombeiro e torne-se um gestor estratégico.",
       date: "2025-01-27",
       readTime: "9 min",
-      category: "Gestão Empresarial",
+      category: "Gestão para Agências",
       slug: "gerenciando-tarefas-ou-apagando-incendios",
       image: tarefasIncendiosImage
     },
     {
       id: 25,
-      title: "O passo a passo para criar um sistema de produtividade que realmente funciona (sem complicar)",
-      excerpt: "Guia completo e prático para criar um sistema de produtividade simples, funcional e sustentável que transforma sua forma de trabalhar.",
+      title: "Sistema de Produtividade Para Agências: Passo a Passo Sem Complicar",
+      excerpt: "Guia completo para criar um sistema de produtividade simples e funcional que se adapta à realidade de agências e consultorias.",
       date: "2025-01-26",
       readTime: "11 min",
-      category: "Produtividade",
+      category: "Sistemas e Processos",
       slug: "criar-sistema-produtividade-funciona",
       image: sistemaProdutividadeImage
     },
     {
       id: 26,
-      title: "O que aprendi organizando mais de 150 sistemas no Notion (e o que ninguém te conta sobre isso)",
-      excerpt: "Lições práticas e insights valiosos de quem já organizou mais de 150 sistemas empresariais no Notion - o que funciona de verdade e o que evitar.",
+      title: "Lições de +150 Sistemas Criados Para Agências e Consultorias",
+      excerpt: "Insights valiosos de quem já organizou mais de 150 sistemas para empresas de serviço. O que funciona e o que evitar.",
       date: "2025-01-25",
       readTime: "13 min",
-      category: "Notion para Empresas",
+      category: "Sistemas e Processos",
       slug: "150-sistemas-notion-licoes-praticas",
       image: sistemas150Image
     },
     {
       id: 27,
-      title: "Por que 80% dos Profissionais Perdem Tempo Todos os Dias (e Como Resolver Isso)",
-      excerpt: "Descubra os principais vilões da produtividade que consomem 2-3 horas por dia e aprenda o método prático para recuperar esse tempo perdido.",
+      title: "Por Que 80% das Agências Perdem Tempo Todo Dia (e Como Resolver)",
+      excerpt: "Os principais vilões da produtividade que consomem 2-3 horas por dia em agências e o método para recuperar esse tempo.",
       date: "2025-01-22",
       readTime: "8 min",
-      category: "Produtividade",
+      category: "Produtividade Operacional",
       slug: "perda-tempo-profissionais",
       image: perdaTempoImage
     },
     {
       id: 28,
-      title: "Notion vs Planilhas: O Que as Empresas Modernas Estão Usando Para Crescer Mais Rápido",
-      excerpt: "Compare as duas ferramentas e descubra por que 73% das empresas em crescimento estão migrando para o Notion em 2025.",
+      title: "Sistemas Integrados vs. Planilhas: O Que Agências Modernas Estão Usando",
+      excerpt: "Compare planilhas com sistemas integrados e descubra por que agências em crescimento estão migrando para plataformas unificadas.",
       date: "2025-01-21",
       readTime: "9 min",
-      category: "Notion para Empresas",
+      category: "Sistemas e Processos",
       slug: "notion-vs-planilhas",
       image: notionVsPlanilhasImage
     },
     {
       id: 29,
-      title: "O Método Para Organizar Projetos Caóticos e Dobrar a Eficiência",
-      excerpt: "Descubra o método testado que transforma projetos caóticos em sistemas organizados, dobrando a eficiência da equipe em 30 dias.",
+      title: "Como Organizar Projetos Caóticos e Dobrar a Eficiência da Sua Agência",
+      excerpt: "O método testado que transforma projetos de clientes caóticos em fluxos organizados, dobrando a eficiência da equipe em 30 dias.",
       date: "2025-01-20",
       readTime: "9 min",
-      category: "Gestão Empresarial",
+      category: "Gestão para Agências",
       slug: "organizar-projetos-caoticos",
       image: organizarProjetosImage
     },
     {
       id: 30,
-      title: "Como Criar Processos Inteligentes que Funcionam Sozinhos",
-      excerpt: "Aprenda o framework para criar processos que funcionam no piloto automático, mesmo quando você não está presente.",
+      title: "Processos Inteligentes: Automatize a Operação da Sua Agência",
+      excerpt: "Framework para criar processos que funcionam no piloto automático, liberando sua equipe para focar em entregas estratégicas.",
       date: "2025-01-20",
       readTime: "10 min",
-      category: "Inteligência Artificial",
+      category: "Sistemas e Processos",
       slug: "processos-inteligentes-autonomos",
       image: processosInteligentesImage
     },
     {
       id: 31,
-      title: "3 Sistemas Prontos no Notion Que Toda Pequena Empresa Deveria Ter",
-      excerpt: "Conheça os 3 sistemas essenciais que transformam pequenas empresas em operações profissionais e escaláveis.",
+      title: "3 Sistemas Essenciais Que Toda Agência ou Consultoria Deveria Ter",
+      excerpt: "Conheça os 3 sistemas que transformam agências e consultorias desorganizadas em operações profissionais e escaláveis.",
       date: "2025-01-20",
       readTime: "7 min",
-      category: "Notion para Empresas",
+      category: "Sistemas e Processos",
       slug: "sistemas-notion-pequenas-empresas",
       image: sistemasNotionPequenasImage
     },
     {
       id: 32,
-      title: "O segredo que as empresas produtivas usam (e ninguém te contou): o poder do Notion",
-      excerpt: "Descubra como o Notion se tornou a ferramenta preferida de empresas que multiplicam sua produtividade e organize seu negócio de forma inteligente.",
+      title: "O Segredo Das Agências Produtivas: Sistemas de Gestão Que Realmente Funcionam",
+      excerpt: "Descubra como agências de alta performance usam sistemas de gestão para multiplicar produtividade e organizar o negócio.",
       date: "2025-01-20",
       readTime: "7 min",
-      category: "Notion para Empresas",
+      category: "Gestão para Agências",
       slug: "poder-do-notion-empresas-produtivas",
       image: notionPoderImage
     },
     {
       id: 33,
-      title: "Seu negócio está travado? Veja como o mapeamento de processos pode destravar seu crescimento",
-      excerpt: "Aprenda como identificar gargalos, eliminar retrabalho e criar um fluxo de trabalho que realmente funciona para sua empresa crescer.",
+      title: "Mapeamento de Processos: Desbloqueie o Crescimento da Sua Agência",
+      excerpt: "Identifique gargalos, elimine retrabalho e crie fluxos de trabalho que realmente funcionam para sua agência escalar.",
       date: "2025-01-18",
       readTime: "8 min",
-      category: "Gestão Empresarial",
+      category: "Crescimento e Escala",
       slug: "mapeamento-processos-crescimento",
       image: mapeamentoImage
     },
     {
       id: 34,
-      title: "Você comete esses 5 erros de produtividade sem perceber? Descubra agora como evitá-los",
-      excerpt: "Identifique os erros mais comuns que sabotam sua produtividade e aprenda técnicas práticas para corrigi-los imediatamente.",
+      title: "5 Erros de Produtividade Que Agências Cometem Sem Perceber",
+      excerpt: "Identifique os erros mais comuns que sabotam a produtividade em agências e consultorias e aprenda a corrigi-los.",
       date: "2025-01-15",
       readTime: "6 min",
-      category: "Produtividade",
+      category: "Produtividade Operacional",
       slug: "5-erros-produtividade",
       image: errosImage
     },
     {
       id: 35,
-      title: "Gestão de projetos no Notion: o passo a passo para parar de perder tempo e ganhar resultados",
-      excerpt: "Monte um sistema completo de gestão de projetos no Notion e transforme a forma como sua equipe trabalha com eficiência comprovada.",
+      title: "Gestão de Projetos Para Agências: Do Briefing à Entrega Sem Perder Tempo",
+      excerpt: "Monte um sistema completo de gestão de projetos para sua agência e transforme a forma como sua equipe entrega resultados.",
       date: "2025-01-12",
       readTime: "9 min",
-      category: "Notion para Empresas",
+      category: "Gestão para Agências",
       slug: "gestao-projetos-notion",
       image: gestaoProjetosImage
     },
     {
       id: 36,
-      title: "Como montar um sistema completo no Notion e fazer sua empresa funcionar no piloto automático",
-      excerpt: "Crie automações inteligentes e processos integrados que fazem sua empresa operar sozinha enquanto você foca no estratégico.",
+      title: "Como Montar Uma Operação Que Funciona No Piloto Automático Para Agências",
+      excerpt: "Crie automações e processos integrados que fazem sua agência operar com previsibilidade enquanto você foca no estratégico.",
       date: "2025-01-10",
       readTime: "10 min",
-      category: "Inteligência Artificial",
+      category: "Crescimento e Escala",
       slug: "sistema-completo-notion-automacao",
       image: sistemaCompletoImage
     }
@@ -512,17 +512,17 @@ const Blog = () => {
 
   // Main categories for filtering
   const mainCategories = [
-    { name: "Gestão Empresarial", icon: Building2, color: "from-blue-500 to-blue-600" },
-    { name: "Produtividade", icon: Zap, color: "from-yellow-500 to-orange-500" },
-    { name: "Notion para Empresas", icon: Layout, color: "from-primary to-accent" },
-    { name: "Inteligência Artificial", icon: Brain, color: "from-purple-500 to-pink-500" }
+    { name: "Gestão para Agências", icon: Building2, color: "from-blue-500 to-blue-600" },
+    { name: "Produtividade Operacional", icon: Zap, color: "from-yellow-500 to-orange-500" },
+    { name: "Sistemas e Processos", icon: Layout, color: "from-primary to-accent" },
+    { name: "Crescimento e Escala", icon: TrendingUp, color: "from-purple-500 to-pink-500" }
   ];
 
-  // Featured articles (first 3 most important)
+  // Featured articles - most relevant for the niche
   const featuredSlugs = [
-    "150-sistemas-notion-licoes-praticas",
     "parar-apagar-incendios-empresa",
-    "gestao-projetos-notion"
+    "150-sistemas-notion-licoes-praticas",
+    "organizar-projetos-caoticos"
   ];
   const featuredPosts = blogPosts.filter(post => featuredSlugs.includes(post.slug));
 
@@ -549,10 +549,10 @@ const Blog = () => {
   return (
     <>
       <SEOHead
-        title="Blog Focus — Gestão Empresarial, Produtividade e Notion na Prática"
-        description="Conteúdos diretos para quem deseja organizar o negócio, aumentar produtividade e usar Notion e IA de forma inteligente. Artigos práticos e aplicáveis."
+        title="Blog Focus | Gestão para Agências, Consultorias e Prestadores de Serviço"
+        description="Artigos práticos sobre gestão de projetos, financeiro, CRM e produtividade para agências, consultorias e prestadores de serviço."
         canonical="/blog"
-        keywords="blog gestão empresarial, produtividade, notion para empresas, inteligência artificial, sistemas notion, organização empresarial"
+        keywords="gestão para agências, sistema para consultoria, produtividade prestadores de serviço, gestão de projetos agências"
         type="website"
       />
 
@@ -577,11 +577,11 @@ const Blog = () => {
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              Blog Focus — Gestão empresarial, produtividade e Notion na prática
+              Blog Focus — Gestão para Agências, Consultorias e Prestadores de Serviço
             </h1>
             
             <p className="text-xl text-foreground-muted leading-relaxed">
-              Conteúdos diretos para quem deseja organizar o negócio, aumentar produtividade e usar Notion e IA de forma inteligente.
+              Artigos práticos sobre gestão de projetos, produtividade operacional e sistemas para escalar sua agência ou consultoria.
             </p>
           </div>
         </section>
@@ -675,7 +675,7 @@ const Blog = () => {
                     <div className={`aspect-video ${index === 0 ? "md:aspect-[16/10]" : ""} overflow-hidden`}>
                       <img 
                         src={post.image} 
-                        alt={post.title}
+                        alt={`Artigo sobre ${post.title.toLowerCase()} para agências e consultorias`}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         loading="lazy"
                       />
@@ -728,7 +728,7 @@ const Blog = () => {
                     <Link to={`/blog/${post.slug}`} className="block aspect-video overflow-hidden">
                       <img 
                         src={post.image} 
-                        alt={post.title}
+                        alt={`Artigo sobre ${post.title.toLowerCase()} para agências e consultorias`}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         loading="lazy"
                       />
