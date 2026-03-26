@@ -78,11 +78,11 @@ export default function OrganizacaoFinanceiraPessoal() {
             </div>
 
             <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-              Organização Financeira Pessoal: Como Controlar Seus Gastos Usando Um Sistema Simples
+              Gestão Financeira Para Agências: Controle Receitas e Custos Por Projeto
             </h1>
 
             <p className="text-xl text-foreground-muted mb-8">
-              O método prático que elimina a bagunça financeira sem precisar de planilhas complexas ou aplicativos complicados
+              Sistema prático para agências e consultorias controlarem financeiro por cliente sem planilhas complexas
             </p>
 
             <div className="flex flex-wrap items-center gap-6 text-sm text-foreground-muted mb-8">
