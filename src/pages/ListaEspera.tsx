@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import { WaitlistForm } from "@/components/WaitlistForm";
 import { Card } from "@/components/ui/card";
 import { CheckCircle, Rocket, Sparkles, Users, Gift } from "lucide-react";
