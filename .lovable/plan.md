@@ -1,73 +1,120 @@
 
 
-## Diagnóstico: Por que Instagram Pago não converte
+# Plano: Reposicionamento para PMEs de Serviço + SEO Técnico
 
-### O Problema Central
+## Resumo
 
-Hoje: 27 visitas do Instagram, 41 mobile, 43 pageviews no Hub, **0 conversões**.
-
-O funil está quebrado em um ponto específico: **todos os CTAs mandam o usuário direto para uma URL externa** (`app.focusinteligente.com.br/auth`). Isso causa:
-
-1. **Perda de confiança** — o usuário do Instagram acabou de te conhecer, não está pronto para criar conta em outro site
-2. **Perda do lead** — se ele não cria a conta, você perde o contato para sempre
-3. **Sem aquecimento** — tráfego pago (Instagram) é tráfego frio. Pessoas não criam conta em SaaS na primeira visita
-
-### O que falta: uma etapa intermediária de captura
-
-```text
-FUNIL ATUAL (quebrado):
-  Instagram Ad → Hub Page → [CTA] → Site externo → PERDEU
-
-FUNIL PROPOSTO:
-  Instagram Ad → Hub Page → [CTA] → Modal de Lead → WhatsApp/Email capturado
-                                                   → DEPOIS redireciona para auth
-```
+Reescrever o copy de 5 arquivos principais (Home, Hub Empresarial, Soluções Sob Medida, Sobre, Footer/Navigation) para falar diretamente com **agências, consultorias e prestadores de serviço**. Simultaneamente, migrar de `react-helmet` para `react-helmet-async`, garantir SEO técnico completo e atualizar sitemap/robots.
 
 ---
 
-## Plano de Implementação
+## Mudanças por Página
 
-### 1. Criar Modal de Captura de Lead no Hub (Prioridade Máxima)
+### 1. Home (`src/pages/Index.tsx`)
 
-Em vez de mandar direto para `app.focusinteligente.com.br/auth`, os CTAs do Hub devem abrir um modal rápido que:
-- Pede **nome** e **WhatsApp** (2 campos apenas — baixa fricção)
-- Salva na tabela `consultation_leads` (já existe)
-- **Depois** redireciona para a auth externa
-- Tracking: `hub_lead_captured`
+**Hero (H1):**
+- De: "Transforme suas planilhas em um software próprio"
+- Para: "Sua agência ou consultoria ainda gerencia tudo no WhatsApp e planilhas?"
 
-Novo componente: `src/components/hub/HubLeadModal.tsx`
+**Subtítulo:** "Criamos sistemas sob medida para agências, consultorias e prestadores de serviço — ou acesse o Hub Empresarial, pronto para usar."
 
-### 2. Aplicar o Modal em todos os CTAs do Hub
+**Seção Problema:** Reescrever os 4 cards com dores específicas do nicho:
+- "Projetos atrasados porque ninguém sabe o status real"
+- "Financeiro no Excel — você descobre o prejuízo tarde demais"
+- "Cada colaborador usa um método diferente"
+- "Clientes cobrando atualização por WhatsApp"
 
-Modificar `src/pages/HubEmpresarial.tsx`:
-- Hero CTA → abre modal em vez de link direto
-- Pricing CTAs → abre modal
-- CTA Final → abre modal
-- StickyMobileCTA → abre modal
+**Depoimentos:** Padronizar todos para agências/consultorias (remover "Tech Startup")
 
-### 3. WhatsApp Follow-up Automático
+**SEO:** Keywords focadas em "gestão para agências", "sistema para consultoria", "software para prestadores de serviço"
 
-Após o lead ser capturado, exibir mensagem de sucesso com:
-- Link direto para criar conta
-- Botão WhatsApp pré-preenchido para iniciar conversa
+### 2. Hub Empresarial (`src/pages/HubEmpresarial.tsx`)
 
-### 4. UTM Tracking para Instagram
+**Hero (H1):**
+- De: "Pare de Gerenciar no Caos. Comece a Crescer."
+- Para: "O sistema de gestão feito para agências e consultorias que querem escalar"
 
-Adicionar detecção de `utm_source` na URL para saber exatamente quais leads vieram do Instagram pago vs orgânico. Salvar na tabela junto com o lead.
+**Subtítulo:** Manter "Substitua 7 ferramentas" mas contextualizar: "Tudo que sua agência precisa — Financeiro, CRM, Projetos, RH, Marketing, Tarefas e Processos — em um único sistema com IA."
+
+**Features:** Adicionar contexto do nicho nas descrições (ex: "Pipeline de vendas para consultorias", "Gestão de projetos com entregas para clientes")
+
+**Testimonials:** Ajustar roles para focar em agências/consultorias/prestadores
+
+**SEO:** Keywords: "plataforma gestão agências", "sistema para consultoria", "software gestão PME serviços"
+
+### 3. Soluções Sob Medida (`src/pages/SolucoesSobMedida.tsx`)
+
+**Hero (H1):**
+- De: "Do Caos na Gestão ao Seu Software Exclusivo em Recorde de Tempo"
+- Para: "Software exclusivo para agências e consultorias — do diagnóstico à entrega em 30 dias"
+
+**Seção "Para quem é":** Reescrever com exemplos específicos:
+- "Agências que gerenciam 10+ projetos simultâneos no WhatsApp"
+- "Consultorias que precisam de portal do cliente profissional"
+- "Prestadores de serviço que querem CRM + financeiro integrado"
+
+**Reframing no-code:** Remover menções a "no-code". Substituir por "tecnologia de ponta que entrega em semanas o que levaria meses"
+
+**SEO:** Keywords: "software sob medida agência", "sistema exclusivo consultoria", "desenvolvimento software prestadores serviço"
+
+### 4. Sobre (`src/pages/AboutFocus.tsx`)
+
+- Remover menção a "no-code" (linha 29)
+- Reposicionar como especialista em gestão para empresas de serviço
+- Adicionar SEOHead (não tem atualmente)
+
+### 5. Componentes Globais
+
+**Navigation:** Sem mudança estrutural (os nomes de menu já funcionam)
+
+**Footer:** Atualizar tagline de "transformar processos manuais em Softwares" para "Gestão inteligente para agências, consultorias e prestadores de serviço"
 
 ---
 
-### Arquivos a criar/modificar
+## SEO Técnico
 
-| Arquivo | Ação |
+### Migração react-helmet → react-helmet-async
+1. Instalar `react-helmet-async`
+2. Adicionar `<HelmetProvider>` no `src/main.tsx`
+3. Atualizar `SEOHead.tsx`: trocar import de `react-helmet` para `react-helmet-async`
+4. Funciona como drop-in replacement — mesma API
+
+### Checklist por página
+- H1 único e com keyword do nicho
+- Alt text em todas as imagens (auditar imgs existentes)
+- Meta title ≤ 60 chars, meta description ≤ 155 chars
+- Canonical URL correta
+- Structured data (já existe no SEOHead, manter)
+
+### Sitemap (`public/sitemap.xml`)
+- Atualizar `lastmod` de todas as páginas principais para data atual
+- Manter estrutura existente
+
+### Robots.txt
+- Já está correto, sem mudanças necessárias
+
+---
+
+## Arquivos Modificados
+
+| Arquivo | Tipo de mudança |
 |---|---|
-| `src/components/hub/HubLeadModal.tsx` | Criar — modal 2 campos (nome + WhatsApp) |
-| `src/pages/HubEmpresarial.tsx` | Modificar — CTAs abrem modal |
-| `src/components/hub/StickyMobileCTA.tsx` | Modificar — CTA abre modal |
+| `package.json` | Adicionar `react-helmet-async` |
+| `src/main.tsx` | Wrap com `HelmetProvider` |
+| `src/components/SEOHead.tsx` | Migrar para `react-helmet-async`, atualizar keywords padrão |
+| `src/pages/Index.tsx` | Reescrever copy + SEO para nicho |
+| `src/pages/HubEmpresarial.tsx` | Reescrever copy + SEO para nicho |
+| `src/pages/SolucoesSobMedida.tsx` | Reescrever copy + SEO para nicho |
+| `src/pages/AboutFocus.tsx` | Reescrever copy + adicionar SEOHead |
+| `src/components/Footer.tsx` | Atualizar tagline |
+| `public/sitemap.xml` | Atualizar datas |
 
-### Impacto Esperado
+---
 
-- **Capturar leads mesmo sem conversão em conta** — você mantém o contato para follow-up
-- **Reduzir fricção** — nome + WhatsApp é mais fácil que criar conta num site desconhecido
-- **Habilitar remarketing** — com WhatsApp capturado, você pode fazer follow-up manual ou automatizado
+## O que NÃO muda
+- Estrutura visual/layout das páginas (mantém seções, cards, grids)
+- Lógica de CTAs (links diretos para auth do AppFocus)
+- Componentes de UI (botões, cards, modais)
+- Preços do Hub
+- Blog (pode ser atualizado depois com conteúdo nichado)
 
