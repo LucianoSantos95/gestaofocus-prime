@@ -70,10 +70,10 @@ const ReunioesProdutivas = () => {
             {/* Título e Subtítulo */}
             <header className="mb-8">
               <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground leading-tight">
-                Como Fazer Reuniões Produtivas e Parar de Perder Tempo no Trabalho
+                Reuniões Produtivas Para Agências: O Guia Para Parar de Perder Tempo em Alinhamentos
               </h1>
               <p className="text-xl text-muted-foreground">
-                O guia completo para transformar encontros improdutivos em momentos decisivos para sua equipe
+                Transforme reuniões improdutivas em alinhamentos rápidos e eficientes para sua agência ou consultoria
               </p>
             </header>
 

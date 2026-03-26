@@ -73,7 +73,7 @@ export default function OrganizacaoFinanceiraPessoal() {
 
             <div className="mb-6">
               <span className="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">
-                Finanças Pessoais
+                Gestão Financeira para Agências
               </span>
             </div>
 

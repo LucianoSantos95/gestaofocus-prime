@@ -54,10 +54,10 @@ const PlanejamentoAnualZero = () => {
 
             <header className="mb-8">
               <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground leading-tight">
-                Como Montar um Planejamento Anual do Zero (Com Passos Simples e Exemplos Reais)
+                Planejamento Anual Para Agências e Consultorias: Do Zero ao Plano Estratégico
               </h1>
               <p className="text-xl text-muted-foreground">
-                O método completo para planejar seu ano com clareza e realizar seus objetivos (sem ficar só no papel)
+                O método para gestores de agências planejarem o ano com sprints trimestrais e metas por cliente
               </p>
             </header>
 
@@ -71,7 +71,7 @@ const PlanejamentoAnualZero = () => {
             <div className="mb-8 rounded-xl overflow-hidden">
               <img
                 src={articleImage}
-                alt="Planejamento anual com calendário, metas e organização estratégica"
+                alt="Planejamento anual estratégico para agências e consultorias com metas por trimestre"
                 className="w-full h-[400px] object-cover rounded-lg"
               />
             </div>

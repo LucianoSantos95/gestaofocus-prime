@@ -55,10 +55,10 @@ const ProcessosInteligentesAutonomos = () => {
 
             <header className="mb-8">
               <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground leading-tight">
-                Como criar processos inteligentes que funcionam mesmo quando você não está por perto
+                Processos inteligentes para agências: automatize sua operação e libere a equipe
               </h1>
               <p className="text-xl text-muted-foreground">
-                O guia definitivo para construir sistemas que operam no piloto automático
+                O framework para agências e consultorias criarem sistemas que operam no piloto automático
               </p>
             </header>
 
@@ -69,7 +69,7 @@ const ProcessosInteligentesAutonomos = () => {
               articleTitle="Processos Inteligentes que Funcionam Sozinhos"
             />
 
-            <img src={processosImage} alt="Como criar processos inteligentes e autônomos para sua empresa" className="w-full h-[400px] object-cover rounded-lg mb-8" />
+            <img src={processosImage} alt="Processos inteligentes e automação para agências e consultorias" className="w-full h-[400px] object-cover rounded-lg mb-8" />
 
             <KeyTakeaways items={keyTakeaways} readTime="10 min" />
             <TableOfContents items={tocItems} />
