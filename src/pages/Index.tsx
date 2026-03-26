@@ -260,7 +260,7 @@ const Index = () => {
                 ))}
               </ul>
               <p className="text-foreground-muted text-sm mb-4">
-                A partir de <span className="text-foreground font-bold text-lg">R$ 119</span>{" "}
+                A partir de <span className="text-foreground font-bold text-lg">R$ 69</span>{" "}
                 <span className="text-foreground-muted">/mês</span>
               </p>
               <Button
