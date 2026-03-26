@@ -35,9 +35,10 @@ const SolucoesSobMedida = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title="Desenvolvimento de Software Sob Medida | Focus Custom"
-        description="Pare de adaptar sua empresa ao software. Criamos sistemas exclusivos — dashboards, CRM, portais — com entrega em até 30 dias. Vagas limitadas."
+        title="Software Sob Medida para Agências e Consultorias | Focus"
+        description="Software exclusivo para agências, consultorias e prestadores de serviço. Do diagnóstico à entrega em 30 dias. Dashboards, CRM e portais do cliente."
         canonical="/solucoes-sob-medida"
+        keywords="software sob medida agência, sistema exclusivo consultoria, desenvolvimento software prestadores serviço, CRM personalizado, portal do cliente"
       />
 
       <Navigation />
@@ -60,15 +61,15 @@ const SolucoesSobMedida = () => {
 
         <div className="container-focus relative z-10 text-center max-w-4xl mx-auto">
           <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-foreground leading-tight mb-6">
-            Do Caos na Gestão ao Seu{" "}
+            Software exclusivo para{" "}
             <span className="bg-gradient-primary bg-clip-text text-transparent">
-              Software Exclusivo em Recorde de Tempo.
+              agências e consultorias — do diagnóstico à entrega em 30 dias.
             </span>
           </h1>
           <p className="text-lg lg:text-xl text-foreground-muted max-w-3xl mx-auto mb-8 leading-relaxed">
-            Esqueça planilhas limitadas ou sistemas genéricos. Criamos{" "}
-            <strong className="text-foreground">soluções robustas sob medida</strong> para sua PME.
-            Descreva seu desafio abaixo e receba um protótipo visual do seu sistema em até 24h, sem custo.
+            Pare de adaptar sua agência a sistemas genéricos. Criamos{" "}
+            <strong className="text-foreground">soluções sob medida</strong> para prestadores de serviço.
+            Descreva seu desafio e receba um protótipo visual do seu sistema em até 24h, sem custo.
           </p>
           <Button onClick={() => setFormOpen(true)} className="btn-hero text-lg px-10 py-5 animate-glow">
             QUERO MEU PROTÓTIPO GRATUITO
@@ -89,9 +90,9 @@ const SolucoesSobMedida = () => {
             {/* É para você */}
             <div className="space-y-4">
               {[
-                { title: "Empresas em Crescimento", desc: "Que faturam bem, mas a gestão virou um caos de planilhas." },
-                { title: "Operações Complexas", desc: "Que têm regras de comissão, logística ou aprovação que nenhum sistema pronto (SaaS) atende." },
-                { title: "Prestadores de Serviço", desc: "Que querem oferecer um Portal do Cliente profissional para agregar valor e cobrar mais caro." },
+                { title: "Agências Digitais", desc: "Que gerenciam 10+ projetos simultâneos no WhatsApp e precisam de um sistema profissional." },
+                { title: "Consultorias em Crescimento", desc: "Que precisam de portal do cliente, CRM e financeiro integrado para escalar." },
+                { title: "Prestadores de Serviço", desc: "Que querem profissionalizar a entrega, controlar comissões e ter dashboard com KPIs." },
               ].map((item, i) => (
                 <Card key={i} className="p-5 bg-card/50 backdrop-blur-sm border-card-border/30 hover:border-primary/30 transition-all">
                   <div className="flex items-start gap-3">
@@ -189,7 +190,7 @@ const SolucoesSobMedida = () => {
             {[
               { icon: Search, title: "O Diagnóstico (Deep Dive)", desc: "Entendemos sua dor, desenhamos o fluxo atual e identificamos onde você está perdendo dinheiro.", color: "from-blue-500 to-cyan-500" },
               { icon: Ruler, title: "O Arquiteto (Prototipagem)", desc: "Antes de escrever uma linha de código, desenhamos a solução. Você aprova o layout e as funcionalidades. Nada de surpresas.", color: "from-purple-500 to-pink-500" },
-              { icon: Hammer, title: "A Construção (Sprint Ágil)", desc: "Nossa equipe desenvolve seu sistema usando tecnologia de ponta. O que demoraria 6 meses, entregamos em semanas.", color: "from-orange-500 to-amber-500" },
+              { icon: Hammer, title: "A Construção (Sprint Ágil)", desc: "Nossa equipe desenvolve seu sistema com tecnologia de ponta. O que demoraria 6 meses com desenvolvimento tradicional, entregamos em semanas.", color: "from-orange-500 to-amber-500" },
               { icon: Rocket, title: "A Entrega & Treinamento", desc: "Você recebe o acesso, o código e o treinamento gravado para sua equipe operar o sistema.", color: "from-green-500 to-emerald-500" },
             ].map((step, i) => (
               <div key={i} className="flex items-start gap-5">
@@ -220,9 +221,9 @@ const SolucoesSobMedida = () => {
 
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { icon: ShieldCheck, title: "Financeiro Blindado", desc: "Fluxo de Caixa, DRE, Contas a Pagar/Receber e Emissão de Notas em um clique." },
-              { icon: Users, title: "CRM & Vendas", desc: "Pipeline de vendas personalizado, disparo de propostas e gestão de comissões." },
-              { icon: UserCheck, title: "Portal do Cliente", desc: "Uma área exclusiva onde seu cliente faz login para ver o andamento do projeto, baixar boletos e aprovar demandas." },
+              { icon: ShieldCheck, title: "Financeiro para Agências", desc: "Fluxo de Caixa, DRE, Contas a Pagar/Receber e controle de comissões por projeto." },
+              { icon: Users, title: "CRM para Consultorias", desc: "Pipeline de vendas personalizado, propostas automáticas e gestão de carteira de clientes." },
+              { icon: UserCheck, title: "Portal do Cliente", desc: "Área exclusiva onde seu cliente acompanha projetos, aprova demandas e acessa relatórios." },
             ].map((item, i) => (
               <Card key={i} className="p-6 bg-card/50 backdrop-blur-sm border-card-border/30 hover:border-primary/30 hover:shadow-glow transition-all group">
                 <div className="w-12 h-12 rounded-xl bg-primary/15 flex items-center justify-center mb-4 group-hover:bg-primary/25 transition-colors">
@@ -299,10 +300,10 @@ const SolucoesSobMedida = () => {
 
         <div className="container-focus relative z-10 text-center max-w-3xl mx-auto">
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-            Pronto para profissionalizar sua empresa?
+            Pronto para profissionalizar sua agência ou consultoria?
           </h2>
           <p className="text-foreground-muted text-lg mb-8">
-            Devido à alta complexidade e dedicação exclusiva da nossa equipe sênior, abrimos apenas{" "}
+            Devido à alta complexidade e dedicação exclusiva da nossa equipe, abrimos apenas{" "}
             <strong className="text-foreground">3 vagas por mês</strong>. Garanta a sua agora.
           </p>
           <Button onClick={() => setFormOpen(true)} className="btn-hero text-lg px-10 py-5 animate-glow">
