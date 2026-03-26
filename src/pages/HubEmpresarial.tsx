@@ -104,7 +104,7 @@ const HubEmpresarial = () => {
     {
       icon: Target,
       title: "CRM Inteligente",
-      description: "Funil visual de vendas, pipeline organizado e gestão de leads automatizada.",
+      description: "Pipeline de vendas para consultorias e agências. Funil visual e gestão de leads automatizada.",
       stats: [
         { label: "Conversão", value: "+34%" },
         { label: "Leads/mês", value: "2.4k" },
@@ -122,7 +122,7 @@ const HubEmpresarial = () => {
     {
       icon: FolderKanban,
       title: "Gestão de Projetos",
-      description: "Kanban, tarefas com responsáveis, cronograma e marcos — tudo conectado.",
+      description: "Gestão de projetos com entregas para clientes. Kanban, responsáveis, cronograma e marcos.",
       stats: [
         { label: "Entregas", value: "+47%" },
         { label: "On-time", value: "96%" },
@@ -158,15 +158,15 @@ const HubEmpresarial = () => {
   ];
 
   const testimonials = [
-    { name: "Carla Mendonça", role: "CEO, Agência Órbita Digital", photo: carlaPhoto, content: "Finalmente tenho visão real do financeiro. Descobri gastos que nem sabia que tinha!" },
-    { name: "Rafael Souza", role: "Fundador, TechBridge Solutions", photo: rafaelPhoto, content: "Saí do caos das planilhas para um sistema que realmente funciona. Projetos nunca mais atrasaram." },
+    { name: "Carla Mendonça", role: "CEO, Agência Órbita Digital", photo: carlaPhoto, content: "Finalmente tenho visão real do financeiro da agência. Descobri gastos que nem sabia que tinha!" },
+    { name: "Rafael Souza", role: "Sócio, Consultoria Estratégica", photo: rafaelPhoto, content: "Saí do caos das planilhas para um sistema que realmente funciona. Projetos dos clientes nunca mais atrasaram." },
     { name: "Amanda Lopes", role: "Diretora, Vértice Consultoria", photo: amandaPhoto, content: "O CRM mudou minha forma de lidar com clientes. Não perco mais nenhuma oportunidade." },
-    { name: "Lucas Pereira", role: "COO, Estúdio Nuvem", photo: lucasPhoto, content: "O dashboard me dá confiança para tomar decisões. Antes era tudo no achismo." },
-    { name: "Fernanda Rocha", role: "Gerente, Lótus E-commerce", photo: fernandaPhoto, content: "Onboarding de novos funcionários reduziu de 2 semanas para 3 dias." },
-    { name: "Bruno Torres", role: "Sócio, Contábil Horizonte", photo: brunoPhoto, content: "A automação de processos cortou nosso retrabalho pela metade." },
-    { name: "Juliana Keller", role: "Head de Vendas, Impulso Digital", photo: julianaPhoto, content: "Pipeline visual transformou nossa taxa de fechamento. Aumento de 34% no primeiro mês." },
-    { name: "Diego Martins", role: "Founder, Saúde em Foco", photo: diegoPhoto, content: "Melhor investimento do ano. Centralizar tudo num lugar mudou o jogo da empresa." },
-    { name: "Patrícia Silva", role: "Diretora, Conecta 360", photo: patriciaPhoto, content: "Minha equipe parou de perder tempo com planilhas. Agora foca no que importa." },
+    { name: "Lucas Pereira", role: "COO, Agência Nuvem Criativa", photo: lucasPhoto, content: "O dashboard me dá confiança para tomar decisões. Antes era tudo no achismo." },
+    { name: "Fernanda Rocha", role: "Gerente, Consultoria de Marketing", photo: fernandaPhoto, content: "Onboarding de novos funcionários reduziu de 2 semanas para 3 dias." },
+    { name: "Bruno Torres", role: "Sócio, Escritório Contábil Horizonte", photo: brunoPhoto, content: "A automação de processos cortou nosso retrabalho pela metade." },
+    { name: "Juliana Keller", role: "Head de Vendas, Agência Impulso Digital", photo: julianaPhoto, content: "Pipeline visual transformou nossa taxa de fechamento. Aumento de 34% no primeiro mês." },
+    { name: "Diego Martins", role: "Fundador, Consultoria em Saúde", photo: diegoPhoto, content: "Melhor investimento do ano. Centralizar tudo num lugar mudou o jogo da consultoria." },
+    { name: "Patrícia Silva", role: "Diretora, Agência Conecta 360", photo: patriciaPhoto, content: "Minha equipe parou de perder tempo com planilhas. Agora foca no que importa." },
   ];
 
   const techFeatures = [
@@ -223,7 +223,7 @@ const HubEmpresarial = () => {
   const plans = [
     {
       name: "Plus",
-      description: "Para pequenas empresas que precisam de gestão completa",
+      description: "Para agências e consultorias que precisam de gestão completa",
       price: "R$ 69",
       period: "/mês",
       features: ["Criar e editar dados em todos os módulos", "Até 5 usuários", "Suporte por email", "Guia de Uso Completo"],
@@ -232,7 +232,7 @@ const HubEmpresarial = () => {
     },
     {
       name: "Pro",
-      description: "Para empresas em crescimento com necessidades avançadas",
+      description: "Para agências e consultorias em crescimento com necessidades avançadas",
       price: "R$ 149",
       period: "/mês",
       features: ["Tudo do Plus", "Exportar relatórios", "Análise de IA (Clientes)", "Até 10 usuários", "Suporte prioritário"],
@@ -241,7 +241,7 @@ const HubEmpresarial = () => {
     },
     {
       name: "Enterprise",
-      description: "Para grandes empresas com necessidades customizadas",
+      description: "Para consultorias e agências com operações complexas",
       price: "R$ 297",
       period: "/mês",
       features: ["Tudo do Pro", "Integração API/Zapier", "Usuários ilimitados", "Suporte dedicado", "Onboarding personalizado"],
@@ -262,12 +262,12 @@ const HubEmpresarial = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title="Hub Empresarial — Gestão Completa para PMEs | Focus"
-        description="CRM, Financeiro, Projetos e RH em uma única plataforma SaaS. Comece grátis e organize toda sua empresa em um só lugar."
+        title="Hub Empresarial — Gestão para Agências e Consultorias | Focus"
+        description="Plataforma de gestão completa para agências, consultorias e prestadores de serviço. CRM, Financeiro, Projetos e RH em um só lugar."
         canonical="/hub-empresarial"
         image="https://focusinteligente.com.br/lovable-uploads/hub-empresarial-og.jpg"
         type="product"
-        keywords="gestão empresarial, SaaS, CRM, financeiro, projetos, RH, PME, pequenas empresas"
+        keywords="plataforma gestão agências, sistema para consultoria, software gestão PME serviços, CRM agência, financeiro consultoria"
       />
       <NotionReferrerBanner />
       <Navigation />
@@ -294,9 +294,9 @@ const HubEmpresarial = () => {
           </div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-[1.1] mb-8 tracking-tight">
-            Substitua 7 ferramentas por uma só.{" "}
+            O sistema de gestão feito para{" "}
             <span className="bg-gradient-primary bg-clip-text text-transparent">
-              Gestão completa com IA.
+              agências e consultorias que querem escalar.
             </span>
           </h1>
 
@@ -320,7 +320,7 @@ const HubEmpresarial = () => {
           </div>
 
           <p className="text-lg lg:text-xl text-foreground-muted max-w-2xl mx-auto mb-10 leading-relaxed">
-            Finanças, CRM, Projetos, RH, Marketing, Tarefas e Processos — tudo integrado em um único sistema com IA.
+            Tudo que sua agência ou consultoria precisa — Financeiro, CRM, Projetos, RH, Marketing, Tarefas e Processos — em um único sistema com IA.
             <br />
             <span className="text-primary font-medium">Grátis para começar. Planos a partir de R$69/mês.</span>
           </p>
@@ -383,10 +383,10 @@ const HubEmpresarial = () => {
         <div className="container-focus max-w-6xl">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-5xl font-bold text-foreground mb-4">
-              Reimagine a Gestão da Sua Empresa
+              Tudo que sua agência ou consultoria precisa
             </h2>
             <p className="text-lg text-foreground-muted max-w-2xl mx-auto">
-              Mais que ferramentas. Uma forma completamente nova de gerenciar seu negócio.
+              Módulos pensados para o dia a dia de prestadores de serviço que querem escalar.
             </p>
           </div>
 
@@ -419,8 +419,8 @@ const HubEmpresarial = () => {
             <Users className="w-3.5 h-3.5 mr-1.5" />
             Prova Social
           </Badge>
-          <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-3">
-            43 Empresas Já Utilizam o AppFocus
+           <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-3">
+             43 Agências e Consultorias Já Utilizam o Hub
           </h2>
           <p className="text-foreground-muted">Veja o que estão dizendo sobre a plataforma</p>
         </div>
@@ -577,10 +577,10 @@ const HubEmpresarial = () => {
 
         <div className="container-focus relative z-10 text-center max-w-3xl mx-auto">
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-            Pronto para Transformar sua Gestão?
+            Pronto para profissionalizar sua agência ou consultoria?
           </h2>
           <p className="text-foreground-muted text-lg mb-8">
-            Junte-se às 43 empresas que já simplificaram sua gestão com o AppFocus
+            Junte-se às 43 agências e consultorias que já simplificaram sua gestão com o Hub Empresarial
           </p>
 
           <Button className="btn-hero text-xl px-12 py-6 animate-glow mb-4" asChild>
