@@ -57,10 +57,10 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title="Focus Gestão | Sistemas Sob Medida e Plataforma de Gestão"
-        description="Transforme suas planilhas em um software próprio. Desenvolvimento de sistemas exclusivos com vagas limitadas ou acesso imediato ao Hub Empresarial."
+        title="Focus Gestão | Software para Agências e Consultorias"
+        description="Sistemas sob medida para agências, consultorias e prestadores de serviço. Pare de gerenciar no WhatsApp e planilhas. Entrega em até 30 dias."
         canonical="/"
-        keywords="sistemas sob medida, software gestão empresarial, desenvolvimento software, hub empresarial, gestão inteligente, CRM, dashboard, automação empresarial"
+        keywords="gestão para agências, sistema para consultoria, software para prestadores de serviço, gestão empresarial, CRM agência, dashboard consultoria"
         type="website"
       />
 
@@ -84,13 +84,13 @@ const Index = () => {
         <div className="container-focus relative z-10">
           <div className="max-w-4xl mx-auto text-center animate-fade-in">
             <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-6">
-              Transforme suas planilhas em um{" "}
+              Sua agência ou consultoria ainda gerencia tudo no{" "}
               <span className="bg-gradient-primary bg-clip-text text-transparent">
-                software próprio
+                WhatsApp e planilhas?
               </span>
             </h1>
             <p className="text-base lg:text-lg text-foreground-muted mb-8 leading-relaxed max-w-2xl mx-auto">
-              Desenvolvimento de sistemas exclusivos para sua empresa — dashboards, CRM, portais — com entrega em até 30 dias. Ou acesse agora o Hub Empresarial, pronto para usar.
+              Criamos sistemas sob medida para agências, consultorias e prestadores de serviço — ou acesse o Hub Empresarial, pronto para usar.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
@@ -131,7 +131,7 @@ const Index = () => {
             <div className="relative rounded-xl overflow-hidden border border-card-border/50 shadow-elegant bg-background-elevated">
               <img
                 src={hubEmpresarialPro}
-                alt="Dashboard de gestão empresarial - Focus Gestão Inteligente"
+                alt="Dashboard de gestão para agências e consultorias - Focus Gestão Inteligente"
                 className="w-full h-auto object-cover"
                 loading="eager"
                 fetchPriority="high"
@@ -152,19 +152,19 @@ const Index = () => {
         <div className="container-focus">
           <div className="max-w-3xl mx-auto text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-              Sua empresa ainda depende de planilhas?
+              Isso é o dia a dia da sua agência ou consultoria?
             </h2>
             <p className="text-foreground-muted text-lg">
-              A maioria das empresas perde tempo, dinheiro e clareza por não ter sistemas adequados.
+              Problemas que travam o crescimento de prestadores de serviço como você.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { icon: Clock, title: "Horas desperdiçadas", description: "Retrabalho constante procurando dados em planilhas desatualizadas." },
-              { icon: AlertTriangle, title: "Decisões no escuro", description: "Sem dashboards, você decide com base em achismo, não em dados." },
-              { icon: XCircle, title: "Processos informais", description: "Cada pessoa faz de um jeito. Sem padrão, sem escala." },
-              { icon: TrendingUp, title: "Crescimento travado", description: "A operação manual impede sua empresa de crescer com consistência." },
+              { icon: Clock, title: "Projetos atrasados", description: "Ninguém sabe o status real. Clientes cobram atualização por WhatsApp o tempo todo." },
+              { icon: AlertTriangle, title: "Financeiro no Excel", description: "Você descobre o prejuízo tarde demais. Sem fluxo de caixa confiável." },
+              { icon: XCircle, title: "Cada um faz de um jeito", description: "Sem processo padrão, cada colaborador usa um método diferente." },
+              { icon: TrendingUp, title: "Crescimento travado", description: "A operação manual impede sua agência ou consultoria de escalar." },
             ].map((problem, index) => (
               <Card key={index} className="service-card text-center">
                 <div className="w-12 h-12 rounded-xl bg-red-500/15 flex items-center justify-center mx-auto mb-4">
@@ -244,7 +244,7 @@ const Index = () => {
                 </div>
               </div>
               <h3 className="text-2xl font-bold text-foreground mb-3">Hub Empresarial</h3>
-              <p className="text-emerald-400 text-sm font-medium mb-4">Plataforma de Gestão para PMEs</p>
+              <p className="text-emerald-400 text-sm font-medium mb-4">Plataforma de gestão para agências e consultorias</p>
               <ul className="space-y-3 mb-8">
                 {[
                   "Financeiro completo",
@@ -302,13 +302,13 @@ const Index = () => {
               {
                 quote: "O controle financeiro mudou completamente. Hoje sei exatamente o fluxo de caixa e posso planejar com segurança.",
                 name: "Camila S.",
-                role: "Consultora Financeira",
+                role: "Sócia, Consultoria de RH",
                 icon: Briefcase,
               },
               {
                 quote: "Em 3 semanas, tínhamos um portal do cliente funcionando. Profissionalizou totalmente nossa entrega.",
                 name: "Lucas A.",
-                role: "Founder, Tech Startup",
+                role: "Diretor, Escritório de Contabilidade",
                 icon: Users,
               },
             ].map((testimonial, index) => (
