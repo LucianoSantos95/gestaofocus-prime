@@ -18,14 +18,14 @@ const OrganizacaoPessoalTecnologia = () => {
   return (
     <>
       <SEOHead
-        title="Organização Pessoal 2.0: Como Usar Tecnologia Para Ter Mais Clareza Mental | Focus"
-        description="Descubra como usar tecnologia de forma inteligente para organizar sua vida e ter mais clareza mental. Guia completo do segundo cérebro digital."
+        title="Tecnologia para Organizar Agências e Consultorias | Focus"
+        description="Como agências e consultorias usam tecnologia para organizar operações e ter clareza mental. Segundo cérebro digital para prestadores de serviço."
         canonical="/blog/organizacao-pessoal-tecnologia"
         image={imageUrl}
         type="article"
         publishedTime="2025-01-15"
         modifiedTime="2025-01-15"
-        keywords="organização pessoal, segundo cérebro, clareza mental, GTD, produtividade pessoal, ferramentas produtividade"
+        keywords="tecnologia organização agência, segundo cérebro consultoria, clareza mental prestadores serviço, produtividade operacional"
       />
       <div className="min-h-screen flex flex-col bg-background">
         <Navigation />
@@ -53,10 +53,10 @@ const OrganizacaoPessoalTecnologia = () => {
 
             <header className="mb-8">
               <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
-                Organização Pessoal 2.0: Como Usar Tecnologia Para Ter Mais Clareza Mental
+                Como usar tecnologia para organizar sua agência ou consultoria e ter clareza operacional
               </h1>
               <p className="text-xl text-muted-foreground mb-4">
-                Tecnologia pode simplificar ou complicar sua vida. Tudo depende de como você usa. Descubra como criar um segundo cérebro digital que libera sua mente.
+                Tecnologia pode simplificar ou complicar a operação. Descubra como criar um segundo cérebro digital que libera a mente de quem presta serviço.
               </p>
               <div className="flex items-center gap-4 text-sm text-muted-foreground">
                 <span>📚 Tempo de leitura: 12 min</span>
@@ -66,7 +66,7 @@ const OrganizacaoPessoalTecnologia = () => {
 
             <img 
               src={tecnologiaImage} 
-              alt="Pessoa usando tecnologia de forma organizada para ter clareza mental e produtividade" 
+              alt="Profissional de agência usando tecnologia para organizar operações e ter clareza na gestão de clientes" 
               className="w-full h-[400px] object-cover rounded-lg mb-12 shadow-lg" 
             />
 

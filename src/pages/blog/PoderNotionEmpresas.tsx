@@ -36,14 +36,14 @@ const PoderNotionEmpresas = () => {
     <>
       <ReadingProgressBar />
       <SEOHead
-        title="O Poder do Notion para Empresas Produtivas: Guia Completo 2025 | Focus Inteligente"
-        description="Descubra como empresas produtivas usam o Notion para gestão empresarial. Guia completo com templates, automações e estratégias para aumentar produtividade em até 40%."
+        title="Notion para Agências e Consultorias: Guia 2025 | Focus"
+        description="Como agências e consultorias usam o Notion para centralizar projetos, clientes e processos. Aumente a produtividade da sua operação em até 40%."
         canonical="/blog/poder-do-notion-empresas-produtivas"
         image={imageUrl}
         type="article"
         publishedTime="2025-01-20"
         modifiedTime="2025-01-20"
-        keywords="notion empresas, produtividade empresarial, gestão notion, workspace notion, colaboração equipe, templates notion empresariais"
+        keywords="notion agências, notion consultorias, gestão projetos clientes, workspace notion, produtividade prestadores de serviço"
       />
 
       <div className="min-h-screen flex flex-col bg-background">
@@ -55,10 +55,10 @@ const PoderNotionEmpresas = () => {
 
             <header className="mb-8">
               <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground leading-tight">
-                O segredo que as empresas produtivas usam (e ninguém te contou): o poder do Notion
+                O poder do Notion para agências e consultorias que querem escalar sem caos
               </h1>
               <p className="text-xl text-muted-foreground">
-                Descubra como o Notion se tornou a ferramenta preferida de empresas que multiplicam sua produtividade empresarial
+                Como agências e consultorias usam o Notion para centralizar projetos de clientes, processos e equipe em um único lugar
               </p>
             </header>
 
@@ -72,7 +72,7 @@ const PoderNotionEmpresas = () => {
             <div className="aspect-video overflow-hidden rounded-lg mb-8">
               <img
                 src={notionPoderImage}
-                alt="Workspace do Notion mostrando sistema completo de gestão empresarial"
+                alt="Workspace do Notion para gestão de agências e consultorias com projetos de clientes organizados"
                 className="w-full h-full object-cover"
               />
             </div>
