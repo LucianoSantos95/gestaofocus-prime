@@ -15,7 +15,7 @@ const Footer = () => {
               className="h-7 mb-4"
             />
             <p className="text-foreground-muted text-sm leading-relaxed">
-              Focus Gestão Inteligente. Especialistas em transformar processos manuais em Softwares de Alta Performance.
+              Gestão inteligente para agências, consultorias e prestadores de serviço. Sistemas sob medida ou plataforma pronta para usar.
             </p>
           </div>
 
