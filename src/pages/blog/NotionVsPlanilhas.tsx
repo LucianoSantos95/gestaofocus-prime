@@ -15,14 +15,14 @@ const NotionVsPlanilhas = () => {
   return (
     <>
       <SEOHead
-        title="Notion vs Planilhas: O que Empresas Modernas Usam Para Crescer | Focus"
-        description="Descubra por que empresas em crescimento estão migrando de planilhas para Notion e como essa mudança pode acelerar resultados em até 3x."
+        title="Notion vs Planilhas para Agências e Consultorias | Focus"
+        description="Agências e consultorias que migram de planilhas para Notion crescem até 3x mais rápido. Veja a comparação completa e guia de migração."
         canonical="/blog/notion-vs-planilhas"
         image={imageUrl}
         type="article"
         publishedTime="2025-01-20"
         modifiedTime="2025-01-20"
-        keywords="notion vs excel, notion vs planilhas, gestão empresarial, ferramentas de gestão, produtividade empresarial, sistemas de gestão, notion para empresas"
+        keywords="notion vs planilhas agência, notion vs excel consultoria, gestão agência, ferramentas prestadores serviço, notion para agências"
       />
 
       <article className="min-h-screen bg-background py-20">
@@ -37,7 +37,7 @@ const NotionVsPlanilhas = () => {
 
           <img 
             src={notionVsPlanilhasImage} 
-            alt="Comparação visual entre Notion e planilhas Excel mostrando vantagens de gestão empresarial moderna" 
+            alt="Comparação entre Notion e planilhas para gestão de agências e consultorias" 
             width="1200"
             height="400"
             className="w-full h-[400px] object-cover rounded-lg mb-8"
@@ -46,10 +46,10 @@ const NotionVsPlanilhas = () => {
 
           <header className="mb-12">
             <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-tight">
-              Notion vs Planilhas: o que as empresas modernas estão usando para crescer mais rápido
+              Notion vs Planilhas: por que agências e consultorias estão migrando para crescer mais rápido
             </h1>
             <p className="text-xl text-muted-foreground mb-6">
-              A comparação definitiva entre ferramentas tradicionais e a nova geração de sistemas empresariais
+              A comparação definitiva para prestadores de serviço que querem sair das planilhas e escalar a operação
             </p>
             <div className="flex items-center gap-6 text-sm text-muted-foreground">
               <span className="px-3 py-1 bg-primary/10 text-primary rounded-full">Gestão Empresarial</span>

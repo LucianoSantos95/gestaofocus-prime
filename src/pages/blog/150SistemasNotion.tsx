@@ -38,14 +38,14 @@ const OneFiftySystemsNotion = () => {
     <>
       <ReadingProgressBar />
       <SEOHead
-        title="O Que Aprendi Organizando Mais de 150 Sistemas no Notion | Focus Inteligente"
-        description="Lições práticas, armadilhas comuns e verdades brutais sobre criar sistemas no Notion. Experiência real de quem já organizou centenas de workspaces."
+        title="150 Sistemas Notion para Agências: Lições Reais | Focus"
+        description="Lições de quem organizou 150+ workspaces Notion para agências e consultorias. Armadilhas, erros comuns e o que realmente funciona."
         canonical="/blog/150-sistemas-notion"
         image={imageUrl}
         type="article"
         publishedTime="2025-01-30"
         modifiedTime="2025-01-30"
-        keywords="notion, sistemas notion, organização notion, produtividade notion, workspace notion, templates notion"
+        keywords="sistemas notion agências, workspace notion consultoria, organização prestadores serviço, templates notion empresas serviço"
       />
 
       <div className="min-h-screen flex flex-col bg-background">
@@ -57,10 +57,10 @@ const OneFiftySystemsNotion = () => {
 
             <header className="mb-8">
               <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
-                O Que Aprendi Organizando Mais de 150 Sistemas no Notion (e o que ninguém te conta sobre isso)
+                O que aprendi organizando 150+ sistemas Notion para agências e consultorias
               </h1>
               <p className="text-xl text-muted-foreground">
-                Lições práticas, armadilhas comuns e verdades brutais sobre criar sistemas que realmente funcionam
+                Lições reais, armadilhas comuns e o que ninguém conta sobre criar sistemas que funcionam para prestadores de serviço
               </p>
             </header>
 
@@ -71,7 +71,7 @@ const OneFiftySystemsNotion = () => {
               articleTitle="150 Sistemas no Notion: Lições e Armadilhas"
             />
 
-            <img src={coverImage} alt="150 sistemas Notion - experiência organizando workspaces empresariais" className="w-full h-[400px] object-cover rounded-lg mb-8" />
+            <img src={coverImage} alt="Experiência organizando 150+ workspaces Notion para agências e consultorias" className="w-full h-[400px] object-cover rounded-lg mb-8" />
 
             <KeyTakeaways items={keyTakeaways} readTime="10 min" />
             <TableOfContents items={tocItems} />

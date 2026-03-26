@@ -37,14 +37,14 @@ const SistemaProdutividadePassoPasso = () => {
     <>
       <ReadingProgressBar />
       <SEOHead
-        title="Sistema de Produtividade Passo a Passo (Sem Complicação) | Focus Inteligente"
-        description="Aprenda a construir um sistema de produtividade eficaz do zero. Guia prático com os 4 pilares essenciais e implementação passo a passo."
+        title="Sistema de Produtividade para Agências e Consultorias | Focus"
+        description="Monte um sistema de produtividade para sua agência ou consultoria em 4 passos. Guia prático para prestadores de serviço organizarem a operação."
         canonical="/blog/sistema-produtividade-passo-passo"
         image={imageUrl}
         type="article"
         publishedTime="2025-01-29"
         modifiedTime="2025-01-29"
-        keywords="sistema de produtividade, produtividade pessoal, organização pessoal, gestão de tarefas, gtd"
+        keywords="sistema produtividade agência, produtividade consultoria, gestão tarefas prestadores serviço, organização operacional"
       />
 
       <div className="min-h-screen flex flex-col bg-background">
@@ -56,10 +56,10 @@ const SistemaProdutividadePassoPasso = () => {
 
             <header className="mb-8">
               <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
-                O Passo a Passo para Criar um Sistema de Produtividade que Realmente Funciona (Sem Complicar)
+                Como criar um sistema de produtividade para sua agência ou consultoria (sem complicar)
               </h1>
               <p className="text-xl text-muted-foreground">
-                Um sistema simples, prático e eficaz que você pode implementar hoje
+                Um sistema simples e prático para prestadores de serviço organizarem entregas, prazos e equipe
               </p>
             </header>
 
@@ -70,7 +70,7 @@ const SistemaProdutividadePassoPasso = () => {
               articleTitle="Sistema de Produtividade Passo a Passo"
             />
 
-            <img src={coverImage} alt="Sistema de produtividade organizado e funcional" className="w-full h-[400px] object-cover rounded-lg mb-8" />
+            <img src={coverImage} alt="Sistema de produtividade para agências e consultorias organizado e funcional" className="w-full h-[400px] object-cover rounded-lg mb-8" />
 
             <KeyTakeaways items={keyTakeaways} readTime="9 min" />
             <TableOfContents items={tocItems} />

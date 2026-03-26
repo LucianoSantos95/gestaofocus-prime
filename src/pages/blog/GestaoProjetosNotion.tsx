@@ -29,14 +29,14 @@ const GestaoProjetosNotion = () => {
   return (
     <>
       <SEOHead
-        title="Gestão de Projetos no Notion: Guia Completo Passo a Passo [2025] | Focus"
-        description="Monte um sistema completo de gestão de projetos no Notion com kanban, sprint, roadmap e templates prontos. Guia passo a passo para gerenciamento de projetos eficiente."
+        title="Gestão de Projetos no Notion para Agências [2025] | Focus"
+        description="Monte um sistema de gestão de projetos no Notion para sua agência ou consultoria. Kanban, sprints e roadmap para entregas de clientes."
         canonical="/blog/gestao-projetos-notion"
         image={imageUrl}
         type="article"
         publishedTime={publishDate}
         modifiedTime={modifiedDate}
-        keywords="gestão projetos notion, gerenciamento projetos, notion templates, kanban notion, sprint notion, roadmap, backlog, produtividade equipe, organização projetos, como usar notion para projetos, projeto notion template, sistema gestão projetos"
+        keywords="gestão projetos notion agência, gerenciamento projetos consultoria, kanban notion, sprint notion, roadmap clientes, produtividade prestadores serviço"
       />
 
       <article className="min-h-screen pt-24 pb-16">
@@ -51,8 +51,8 @@ const GestaoProjetosNotion = () => {
           <div className="aspect-video overflow-hidden rounded-2xl">
             <img 
               src={gestaoProjetosImage} 
-              alt="Sistema completo de gestão de projetos no Notion mostrando kanban board, sprint planning, roadmap em timeline, backlog de tarefas, templates de projetos e gerenciamento de equipe com visualizações múltiplas"
-              title="Gestão de projetos no Notion com kanban e sprint"
+              alt="Sistema de gestão de projetos no Notion para agências e consultorias com kanban, sprints e roadmap de clientes"
+              title="Gestão de projetos no Notion para agências"
               width="1200"
               height="675"
               className="w-full h-full object-cover"
@@ -78,11 +78,11 @@ const GestaoProjetosNotion = () => {
             </div>
 
             <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-              Gestão de projetos no Notion: o passo a passo para parar de perder tempo e ganhar resultados
+              Gestão de projetos no Notion para agências e consultorias: passo a passo completo
             </h1>
 
             <p className="text-xl text-foreground-muted leading-relaxed">
-              Monte um sistema completo de <strong>gestão de projetos no Notion</strong> com <strong>kanban</strong>, <strong>sprint</strong>, <strong>roadmap</strong> e <strong>templates</strong> prontos. Transforme a forma como sua equipe trabalha com <strong>gerenciamento de projetos</strong> eficiente.
+              Monte um sistema de <strong>gestão de projetos no Notion</strong> para sua agência ou consultoria com <strong>kanban</strong>, <strong>sprints</strong> e <strong>roadmap</strong> de entregas de clientes.
             </p>
           </div>
 

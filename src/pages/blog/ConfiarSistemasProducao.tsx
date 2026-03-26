@@ -26,14 +26,14 @@ const ConfiarSistemasProducao = () => {
   return (
     <>
       <SEOHead
-        title="O que acontece quando você confia em sistemas ao invés da memória | Focus"
-        description="Descubra por que confiar na memória está sabotando sua produtividade e como sistemas externos podem multiplicar seus resultados."
+        title="Sistemas vs Memória: Gestão para Agências e Consultorias | Focus"
+        description="Por que agências e consultorias que confiam em sistemas — e não na memória — entregam mais e melhor. Método prático para prestadores de serviço."
         canonical="/blog/confiar-sistemas-producao"
         image={imageUrl}
         type="article"
         publishedTime="2025-02-02"
         modifiedTime="2025-02-02"
-        keywords="sistemas produtividade, gestão conhecimento, notion, memória externa, organização, second brain, gestão informação, produtividade"
+        keywords="sistemas gestão agência, organização consultoria, segundo cérebro prestadores serviço, produtividade agências, notion gestão"
       />
 
       <article className="min-h-screen pt-24 pb-16">
@@ -48,8 +48,8 @@ const ConfiarSistemasProducao = () => {
           <div className="aspect-video overflow-hidden rounded-2xl">
             <img 
               src={articleImage} 
-              alt="Cérebro conectado a sistemas digitais mostrando gestão de conhecimento externo"
-              title="Sistemas externos vs memória humana"
+              alt="Sistemas de gestão para agências e consultorias substituindo memória por processos confiáveis"
+              title="Sistemas confiáveis para prestadores de serviço"
               className="w-full h-full object-cover"
             />
           </div>
@@ -72,11 +72,11 @@ const ConfiarSistemasProducao = () => {
             </div>
 
             <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-              O que acontece quando você para de confiar na sua memória e começa a confiar em sistemas
+              Por que agências e consultorias que confiam em sistemas entregam mais e melhor
             </h1>
 
             <p className="text-xl text-foreground-muted leading-relaxed">
-              Sua mente não foi feita para armazenar informações — foi feita para processar ideias. Descubra como sistemas externos podem liberar seu potencial criativo.
+              Sua mente não foi feita para lembrar prazos de clientes — foi feita para resolver problemas. Veja como sistemas externos transformam a operação de prestadores de serviço.
             </p>
           </div>
 

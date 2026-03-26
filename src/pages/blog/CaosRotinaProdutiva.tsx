@@ -115,14 +115,14 @@ const CaosRotinaProdutiva = () => {
   return (
     <>
       <SEOHead
-        title="Como Transformar o Caos do Seu Dia em uma Rotina Leve e Produtiva | Focus"
-        description="Descubra o método prático para transformar dias caóticos em uma rotina organizada e produtiva usando o Notion como seu sistema de gestão pessoal."
+        title="Do Caos à Rotina Produtiva em Agências e Consultorias | Focus"
+        description="Método prático para agências e consultorias saírem do caos diário e criarem rotinas produtivas com Notion. Pare de apagar incêndios."
         canonical="/blog/caos-rotina-produtiva"
         image={`https://focusinteligente.com${coverImage}`}
         type="article"
         publishedTime={publishDate}
         modifiedTime={publishDate}
-        keywords="rotina produtiva, organizar dia, caos produtividade, notion rotina, gestão pessoal, sistema produtividade"
+        keywords="rotina produtiva agência, organizar dia consultoria, caos prestadores serviço, notion rotina, gestão operacional"
       />
 
       <article className="min-h-screen pt-24 pb-16">
@@ -152,11 +152,11 @@ const CaosRotinaProdutiva = () => {
             </div>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              Como Transformar o Caos do Seu Dia em uma Rotina Leve e Produtiva — Usando o Notion
+              Como agências e consultorias saem do caos diário e criam rotinas leves e produtivas
             </h1>
 
             <p className="text-xl text-foreground-muted mb-8">
-              Descubra o método prático para transformar dias caóticos em uma rotina organizada e produtiva usando o Notion como seu sistema de gestão pessoal.
+              O método prático para prestadores de serviço transformarem dias caóticos em rotinas organizadas usando o Notion como sistema de gestão operacional.
             </p>
 
             <div className="flex items-center gap-6 text-sm text-foreground-muted mb-8">
@@ -178,7 +178,7 @@ const CaosRotinaProdutiva = () => {
 
             <img 
               src={coverImage} 
-              alt="Rotina produtiva Focus Inteligente - transformação de workspace caótico em organizado com Notion" 
+              alt="Transformação de rotina caótica em produtiva para agências e consultorias com Notion" 
               className="w-full rounded-lg shadow-xl mb-8"
             />
           </div>

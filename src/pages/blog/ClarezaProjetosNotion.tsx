@@ -26,14 +26,14 @@ const ClarezaProjetosNotion = () => {
   return (
     <>
       <SEOHead
-        title="Como usar o Notion para ter clareza total nos projetos | Focus"
-        description="Guia prático para usar o Notion e ter visão completa dos seus projetos mesmo com pouco tempo. Templates, estratégias e método testado."
+        title="Clareza em Projetos de Clientes com Notion | Focus"
+        description="Guia prático para agências e consultorias terem visão 360° dos projetos de clientes no Notion. Dashboards, status e entregas organizadas."
         canonical="/blog/clareza-projetos-notion"
         image={imageUrl}
         type="article"
         publishedTime="2025-02-05"
         modifiedTime="2025-02-05"
-        keywords="notion projetos, gestão projetos notion, clareza projetos, organização notion, dashboard projetos, produtividade notion"
+        keywords="clareza projetos clientes, notion agências, dashboard projetos consultoria, gestão entregas, produtividade prestadores serviço"
       />
 
       <article className="min-h-screen pt-24 pb-16">
@@ -48,8 +48,8 @@ const ClarezaProjetosNotion = () => {
           <div className="aspect-video overflow-hidden rounded-2xl">
             <img 
               src={articleImage} 
-              alt="Profissional usando Notion para gerenciar projetos com clareza e organização"
-              title="Gestão clara de projetos no Notion"
+              alt="Gestão clara de projetos de clientes no Notion para agências e consultorias"
+              title="Clareza em projetos de clientes no Notion"
               className="w-full h-full object-cover"
             />
           </div>
@@ -72,11 +72,11 @@ const ClarezaProjetosNotion = () => {
             </div>
 
             <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-              Como usar o Notion para ter clareza total nos seus projetos (mesmo com pouco tempo)
+              Como ter clareza total nos projetos de clientes da sua agência ou consultoria com o Notion
             </h1>
 
             <p className="text-xl text-foreground-muted leading-relaxed">
-              O método completo para configurar o Notion e ter visão 360° dos seus projetos em minutos — não em horas de organização.
+              O método para configurar o Notion e ter visão 360° das entregas de clientes em minutos — mesmo com agenda lotada.
             </p>
           </div>
 

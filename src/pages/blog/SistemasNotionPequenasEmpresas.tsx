@@ -35,14 +35,14 @@ const SistemasNotionPequenasEmpresas = () => {
     <>
       <ReadingProgressBar />
       <SEOHead
-        title="3 Sistemas Prontos no Notion que Toda Pequena Empresa Deveria Ter | Focus Inteligente"
-        description="Descubra os 3 sistemas essenciais no Notion que toda pequena empresa precisa para crescer de forma organizada e escalável."
+        title="3 Sistemas Notion para Agências e Consultorias | Focus"
+        description="Os 3 sistemas essenciais no Notion que toda agência, consultoria e prestador de serviço precisa para escalar de forma organizada."
         canonical="/blog/sistemas-notion-pequenas-empresas"
         image={imageUrl}
         type="article"
         publishedTime="2025-01-20"
         modifiedTime="2025-01-20"
-        keywords="sistemas notion, pequenas empresas, notion para empresas, templates notion, gestão empresarial"
+        keywords="sistemas notion agência, notion consultoria, templates notion prestadores serviço, gestão agências, CRM notion"
       />
 
       <div className="min-h-screen flex flex-col bg-background">
@@ -54,10 +54,10 @@ const SistemasNotionPequenasEmpresas = () => {
 
             <header className="mb-8">
               <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground leading-tight">
-                3 sistemas prontos no Notion que toda pequena empresa deveria ter
+                3 sistemas prontos no Notion que toda agência e consultoria deveria ter
               </h1>
               <p className="text-xl text-muted-foreground">
-                Os sistemas essenciais que transformam pequenas empresas em organizações escaláveis
+                Os sistemas essenciais que transformam agências e consultorias em operações escaláveis e organizadas
               </p>
             </header>
 
@@ -68,7 +68,7 @@ const SistemasNotionPequenasEmpresas = () => {
               articleTitle="3 Sistemas Notion para Pequenas Empresas"
             />
 
-            <img src={sistemasNotionImage} alt="3 sistemas Notion essenciais para pequenas empresas" className="w-full h-[400px] object-cover rounded-lg mb-8" />
+            <img src={sistemasNotionImage} alt="3 sistemas Notion essenciais para agências e consultorias" className="w-full h-[400px] object-cover rounded-lg mb-8" />
 
             <KeyTakeaways items={keyTakeaways} readTime="10 min" />
             <TableOfContents items={tocItems} />

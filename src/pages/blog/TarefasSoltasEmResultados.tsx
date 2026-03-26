@@ -36,14 +36,14 @@ const TarefasSoltasEmResultados = () => {
     <>
       <ReadingProgressBar />
       <SEOHead
-        title="A fórmula para transformar tarefas soltas em resultados consistentes | Focus Inteligente"
-        description="Descubra o método COAR passo a passo para organizar tarefas dispersas e transformá-las em um sistema que gera resultados previsíveis."
+        title="Tarefas Soltas em Resultados para Agências | Focus"
+        description="O método COAR para agências e consultorias transformarem tarefas dispersas em resultados previsíveis. Organização para prestadores de serviço."
         canonical="/blog/tarefas-soltas-em-resultados"
         image={imageUrl}
         type="article"
         publishedTime="2025-02-03"
         modifiedTime="2025-02-03"
-        keywords="organização tarefas, gestão resultados, produtividade, metodologia, execução, planejamento, sistemas trabalho"
+        keywords="organização tarefas agência, resultados consultoria, produtividade prestadores serviço, método COAR, gestão entregas"
       />
 
       <div className="min-h-screen flex flex-col bg-background">
@@ -54,16 +54,16 @@ const TarefasSoltasEmResultados = () => {
 
             <header className="mb-8">
               <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
-                A fórmula que uso para transformar tarefas soltas em resultados consistentes
+                Como agências e consultorias transformam tarefas soltas em resultados consistentes
               </h1>
               <p className="text-xl text-muted-foreground">
-                O método testado que transforma sua lista caótica de tarefas em um sistema previsível de execução e resultados.
+                O método COAR que transforma a lista caótica de entregas da sua agência em um sistema previsível de execução e resultados.
               </p>
             </header>
 
             <ArticleEngagement publishDate="3 de fevereiro de 2025" readTime="10 min" articleUrl={articleUrl} articleTitle="Transformar tarefas soltas em resultados consistentes" />
 
-            <img src={articleImage} alt="Visualização de tarefas transformando-se em resultados organizados" className="w-full h-[400px] object-cover rounded-lg mb-8" />
+            <img src={articleImage} alt="Tarefas de agências e consultorias transformando-se em resultados organizados com método COAR" className="w-full h-[400px] object-cover rounded-lg mb-8" />
 
             <KeyTakeaways items={keyTakeaways} readTime="10 min" />
             <TableOfContents items={tocItems} />

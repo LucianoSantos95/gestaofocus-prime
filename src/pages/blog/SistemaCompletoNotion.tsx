@@ -36,14 +36,14 @@ const SistemaCompletoNotion = () => {
     <>
       <ReadingProgressBar />
       <SEOHead
-        title="Sistema Completo no Notion: Automação Empresarial no Piloto Automático | Focus Inteligente"
-        description="Descubra como criar um sistema completo de automação no Notion: integre CRM, projetos e processos com Zapier, Make e API. Economia de 15h/semana."
+        title="Sistema Notion para Agências: Automação Completa | Focus"
+        description="Crie um sistema completo no Notion para sua agência ou consultoria. Integre CRM, projetos de clientes e processos com automações."
         canonical="/blog/sistema-completo-notion-automacao"
         image={imageUrl}
         type="article"
         publishedTime="2025-01-10"
         modifiedTime="2025-01-10"
-        keywords="automação notion, sistema notion completo, API notion, zapier notion, make notion, integração notion"
+        keywords="sistema notion agência, automação consultoria, CRM notion, gestão clientes notion, processos prestadores serviço"
       />
 
       <div className="min-h-screen flex flex-col bg-background">
@@ -55,10 +55,10 @@ const SistemaCompletoNotion = () => {
 
             <header className="mb-8">
               <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground leading-tight">
-                Como montar um sistema completo no Notion e fazer sua empresa funcionar no piloto automático
+                Como montar um sistema completo no Notion para sua agência ou consultoria funcionar no automático
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
-                Um sistema completo de automação no Notion integra CRM, projetos, processos e equipe. Economia de até 15 horas semanais.
+                Integre CRM de clientes, projetos, processos e equipe em um único sistema no Notion. Economia de até 15 horas semanais para prestadores de serviço.
               </p>
             </header>
 
@@ -72,7 +72,7 @@ const SistemaCompletoNotion = () => {
             <div className="aspect-video overflow-hidden rounded-lg mb-8">
               <img
                 src={sistemaCompletoImage}
-                alt="Dashboard integrado de automação empresarial no Notion"
+                alt="Dashboard integrado no Notion para gestão de agências e consultorias com CRM e projetos"
                 className="w-full h-full object-cover"
               />
             </div>
