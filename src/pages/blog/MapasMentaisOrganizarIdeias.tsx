@@ -14,14 +14,14 @@ const MapasMentaisOrganizarIdeias = () => {
   return (
     <>
       <SEOHead
-        title="Como Usar Mapas Mentais para Organizar Ideias e Aumentar a Produtividade | Focus Inteligente"
-        description="Descubra como usar mapas mentais para organizar suas ideias de forma visual, tomar decisões mais rápidas e aumentar sua produtividade no dia a dia."
+        title="Mapas Mentais para Agências: Organize Projetos Visualmente"
+        description="Use mapas mentais para organizar briefings, brainstorms e projetos de clientes na sua agência. Tome decisões mais rápidas com pensamento visual."
         canonical="/blog/mapas-mentais-organizar-ideias"
         image={`https://focusinteligente.com.br${heroImage}`}
         type="article"
         publishedTime="2025-02-20"
         modifiedTime="2025-02-20"
-        keywords="mapas mentais, organizar ideias, produtividade, brainstorming, pensamento visual, mind mapping"
+        keywords="mapas mentais agência, organizar projetos visual, brainstorming consultoria, pensamento visual, mind mapping gestão"
       />
 
       <div className="min-h-screen bg-background">
@@ -44,10 +44,10 @@ const MapasMentaisOrganizarIdeias = () => {
 
           <header className="mb-12">
             <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-              Como Usar Mapas Mentais para Organizar Ideias e Aumentar a Produtividade
+              Mapas Mentais para Agências: Organize Projetos e Briefings Visualmente
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
-              Transforme ideias complexas em visualizações simples que aceleram decisões e aumentam sua clareza mental
+              Transforme briefings complexos em visualizações claras que aceleram decisões e alinham sua equipe
             </p>
             <img 
               src={heroImage}

@@ -12,14 +12,14 @@ const MatrizEisenhower = () => {
   return (
     <>
       <SEOHead
-        title="Matriz de Eisenhower: Como Definir Prioridades e Focar no Que Importa"
-        description="Aprenda a usar a Matriz de Eisenhower para organizar prioridades, tomar melhores decisões e focar no que realmente importa no trabalho."
+        title="Matriz de Eisenhower para Agências: Priorize Demandas"
+        description="Use a Matriz de Eisenhower para priorizar demandas de clientes na sua agência ou consultoria. Separe urgente de importante e foque no que gera resultado."
         canonical="/blog/matriz-eisenhower-prioridades"
         image={imageUrl}
         type="article"
         publishedTime="2025-12-22"
         modifiedTime="2025-12-22"
-        keywords="matriz de eisenhower, priorização de tarefas, urgente vs importante, produtividade, gestão de tempo, foco"
+        keywords="matriz eisenhower agência, priorização demandas clientes, urgente vs importante, gestão agência, consultoria produtividade"
       />
 
       <div className="min-h-screen bg-background">
@@ -39,10 +39,10 @@ const MatrizEisenhower = () => {
             {/* Título e Subtítulo */}
             <header className="mb-8">
               <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground leading-tight">
-                Matriz de Eisenhower: Como Definir Prioridades e Focar no Que Realmente Importa
+                Matriz de Eisenhower para Agências: Como Priorizar Demandas de Clientes
               </h1>
               <p className="text-xl text-muted-foreground">
-                O método simples que separa o urgente do importante e transforma sua produtividade
+                O método que separa o urgente do importante e transforma a produtividade da sua operação
               </p>
             </header>
 

@@ -13,7 +13,7 @@ const ReduzirEstresseTrabalhoOrganizacao = () => {
   
   const handleShare = (platform: string) => {
     const url = encodeURIComponent(window.location.href);
-    const title = encodeURIComponent("Como Reduzir o Estresse no Trabalho Usando Organização e Planejamento");
+    const title = encodeURIComponent("Como Reduzir o Estresse na Gestão de Agências com Organização e Processos");
     
     const urls: Record<string, string> = {
       linkedin: `https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${title}`,

@@ -43,8 +43,8 @@ const PlanejamentoSemanalPassoPasso = () => {
   return (
     <>
       <SEOHead
-        title="Planejamento Semanal Passo a Passo para Quem Vive Sem Tempo | Focus Inteligente"
-        description="Aprenda a planejar sua semana de forma prática e eficiente, mesmo com uma rotina corrida. Guia completo com passo a passo."
+        title="Planejamento Semanal para Agências: Passo a Passo"
+        description="Planeje a semana da sua agência ou consultoria de forma prática. Guia passo a passo para alinhar equipe, priorizar entregas e evitar atrasos."
         canonical="https://focusinteligente.com.br/blog/planejamento-semanal-passo-passo"
         type="article"
         image={`https://focusinteligente.com.br${articleImage}`}
