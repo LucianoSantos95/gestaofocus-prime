@@ -51,14 +51,14 @@ const ReduzirEstresseTrabalhoOrganizacao = () => {
   return (
     <>
       <SEOHead
-        title="Como Reduzir o Estresse no Trabalho com Organização e Planejamento"
-        description="Descubra como organização e planejamento podem reduzir o estresse no trabalho e melhorar sua qualidade de vida. Técnicas práticas para mais equilíbrio."
+        title="Reduza o Estresse na Gestão de Agências com Processos"
+        description="Como donos de agência e consultoria reduzem estresse com organização e processos claros. Técnicas práticas para equilibrar operação e bem-estar."
         canonical="/blog/reduzir-estresse-trabalho-organizacao"
         type="article"
         publishedTime={publishDate}
         modifiedTime={modifiedDate}
         image={heroImage}
-        keywords="reduzir estresse trabalho, organização trabalho, planejamento anti-estresse, bem-estar profissional, qualidade de vida, produtividade saudável"
+        keywords="estresse gestor agência, burnout consultoria, organização operacional, bem-estar prestador serviços, processos anti-estresse"
       />
       
       <article className="min-h-screen bg-background">
