@@ -41,14 +41,14 @@ const TecnicaPomodoroGuia = () => {
     <>
       <ReadingProgressBar />
       <SEOHead
-        title="Técnica Pomodoro Funciona? Guia Definitivo para Aumentar o Foco em 2025"
-        description="Descubra se a Técnica Pomodoro realmente funciona. Guia completo com passo a passo, apps recomendados e como aplicar o método para triplicar seu foco."
+        title="Técnica Pomodoro para Equipes de Agência e Consultoria"
+        description="Aplique a Técnica Pomodoro na sua agência ou consultoria. Guia com variações, apps e como aumentar o foco da equipe em entregas de clientes."
         canonical="/blog/tecnica-pomodoro-guia-definitivo"
         image={imageUrl}
         type="article"
         publishedTime="2025-01-19"
         modifiedTime="2025-01-19"
-        keywords="técnica pomodoro, pomodoro funciona, como usar pomodoro, foco e produtividade, gestão de tempo, método pomodoro"
+        keywords="técnica pomodoro agência, pomodoro equipe consultoria, foco produtividade serviços, gestão tempo prestadores"
       />
 
       <div className="min-h-screen bg-background">
@@ -63,10 +63,10 @@ const TecnicaPomodoroGuia = () => {
 
             <header className="mb-8">
               <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground leading-tight">
-                Técnica Pomodoro: Funciona Mesmo? Guia Definitivo para Aumentar o Foco em 2025
+                Técnica Pomodoro para Agências: Como Aumentar o Foco da Equipe em Entregas
               </h1>
               <p className="text-xl text-muted-foreground">
-                A verdade sobre o método mais famoso de produtividade (com ciência, apps e erros que ninguém conta)
+                O método de produtividade mais famoso aplicado à realidade de agências e consultorias
               </p>
             </header>
 

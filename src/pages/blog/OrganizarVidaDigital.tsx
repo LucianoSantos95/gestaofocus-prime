@@ -37,14 +37,14 @@ const OrganizarVidaDigital = () => {
     <>
       <ReadingProgressBar />
       <SEOHead
-        title="Como Organizar Sua Vida Digital: E-mails, Arquivos e Fotos | Focus Inteligente"
-        description="Guia completo para organizar e-mails, arquivos, fotos e toda sua vida digital. Pare de perder tempo procurando documentos e tenha tudo sob controle."
+        title="Organize Arquivos e E-mails da Sua Agência ou Consultoria"
+        description="Guia para organizar e-mails, arquivos e documentos de clientes na sua agência. Pare de perder tempo procurando e centralize tudo num sistema."
         canonical="/blog/organizar-vida-digital"
         image={imageUrl}
         type="article"
         publishedTime="2025-01-19"
         modifiedTime="2025-01-19"
-        keywords="organizar vida digital, organizar e-mails, organizar arquivos, gestão de documentos digitais, produtividade digital"
+        keywords="organizar arquivos agência, gestão documentos consultoria, e-mails clientes, produtividade digital prestadores"
       />
 
       <div className="min-h-screen flex flex-col bg-background">

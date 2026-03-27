@@ -41,8 +41,8 @@ const MetodoGTDGuia = () => {
     <>
       <ReadingProgressBar />
       <SEOHead
-        title="Método GTD: O Que É, Como Funciona e Como Aplicar na Prática"
-        description="Aprenda o método GTD (Getting Things Done) de David Allen. Guia completo com os 5 passos, exemplos práticos e dicas para organizar suas tarefas."
+        title="Método GTD para Agências: Organize Demandas e Projetos"
+        description="Aplique o método GTD na sua agência ou consultoria. Guia com os 5 passos para organizar demandas de clientes e projetos simultâneos."
         canonical="/blog/metodo-gtd-guia-completo"
         image={imageUrl}
         type="article"

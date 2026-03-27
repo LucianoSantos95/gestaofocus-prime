@@ -46,8 +46,8 @@ const GestaoTempoQuemViveOcupado = () => {
     <>
       <ReadingProgressBar />
       <SEOHead
-        title="Gestão do Tempo para Quem Vive Ocupado: Estratégias Simples que Funcionam | Focus Inteligente"
-        description="Descubra estratégias práticas de gestão do tempo para pessoas ocupadas. Aprenda a priorizar, eliminar desperdiçadores de tempo e recuperar o controle da sua agenda."
+        title="Gestão do Tempo para Gestores de Agência Sobrecarregados"
+        description="Estratégias de gestão do tempo para donos de agência e consultoria. Priorize demandas, elimine desperdiçadores e recupere o controle da sua operação."
         canonical="/blog/gestao-tempo-quem-vive-ocupado"
         image={imageUrl}
         type="article"

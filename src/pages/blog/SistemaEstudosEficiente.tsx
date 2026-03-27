@@ -36,14 +36,14 @@ const SistemaEstudosEficiente = () => {
     <>
       <ReadingProgressBar />
       <SEOHead
-        title="Como Criar um Sistema de Estudos Eficiente Usando Técnicas Modernas | Focus Inteligente"
-        description="Aprenda a criar um sistema de estudos eficiente com técnicas modernas de aprendizagem. Aumente sua retenção, produtividade e resultados acadêmicos."
+        title="Sistema de Capacitação para Equipes de Agência e Consultoria"
+        description="Crie um sistema de aprendizagem eficiente para capacitar equipes de agência e consultoria. Técnicas modernas para reter conhecimento e acelerar resultados."
         canonical="/blog/sistema-estudos-eficiente"
         image={imageUrl}
         type="article"
         publishedTime="2025-02-20"
         modifiedTime="2025-02-20"
-        keywords="sistema de estudos, técnicas de estudo, aprendizagem eficiente, recuperação ativa, repetição espaçada, técnica feynman"
+        keywords="capacitação equipe agência, treinamento consultoria, aprendizagem eficiente, gestão conhecimento, desenvolvimento equipe"
       />
 
       <div className="min-h-screen flex flex-col bg-background">

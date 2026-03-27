@@ -44,8 +44,8 @@ const MetodoPessoalProdutividade = () => {
   return (
     <>
       <SEOHead
-        title="Como Criar um Método Pessoal de Produtividade | Focus Inteligente"
-        description="Aprenda a criar um método de produtividade personalizado que funcione para você. Descubra seu perfil e monte um sistema que se adapta à sua rotina."
+        title="Método de Produtividade para Gestores de Agência"
+        description="Crie um método de produtividade personalizado para sua agência ou consultoria. Monte um sistema que se adapta ao ritmo da sua operação."
         canonical="/blog/metodo-pessoal-produtividade"
         type="article"
         image={heroImage}

@@ -36,14 +36,14 @@ const OrganizacaoPessoalProfissional = () => {
   return (
     <article className="min-h-screen bg-background">
       <SEOHead
-        title="Organização Pessoal e Profissional: Como Equilibrar Rotina e Trabalho | Focus"
-        description="Aprenda como organizar vida pessoal e profissional sem conflito. Estratégias práticas para integrar rotina e trabalho de forma equilibrada."
+        title="Organização para Donos de Agência: Equilibre Operação e Vida"
+        description="Como donos de agência e consultoria organizam rotina pessoal e profissional. Estratégias para equilibrar operação, clientes e qualidade de vida."
         canonical="/blog/organizacao-pessoal-profissional"
         type="article"
         publishedTime={publishDate}
         modifiedTime={modifiedDate}
         image={articleImage}
-        keywords="organização pessoal, organização profissional, equilíbrio vida trabalho, produtividade, gestão do tempo, rotina equilibrada"
+        keywords="organização dono agência, equilíbrio gestor consultoria, rotina profissional serviços, produtividade prestador"
       />
 
       {/* Hero Section */}

@@ -10,14 +10,14 @@ const OrganizarTarefasDiaDia = () => {
   return (
     <>
       <SEOHead
-        title="Como Organizar Tarefas no Dia a Dia Sem Se Sentir Sobrecarregado"
-        description="Aprenda a organizar tarefas de forma simples, reduzir a sobrecarga mental e melhorar sua produtividade diária com dicas práticas."
+        title="Organize Tarefas na Agência Sem Sobrecarga Operacional"
+        description="Organize demandas diárias da sua agência ou consultoria sem sobrecarga. Reduza o caos operacional e aumente a produtividade da equipe."
         canonical="/blog/organizar-tarefas-dia-dia"
         image={imageUrl}
         type="article"
         publishedTime="2026-01-06"
         modifiedTime="2026-01-06"
-        keywords="organizar tarefas, produtividade, sobrecarga mental, gestão de tempo, rotina produtiva, clareza mental"
+        keywords="organizar tarefas agência, gestão demandas consultoria, sobrecarga operacional, produtividade equipe serviços"
       />
 
       <div className="min-h-screen bg-background">
@@ -43,10 +43,10 @@ const OrganizarTarefasDiaDia = () => {
             {/* Título e Subtítulo */}
             <header className="mb-8">
               <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground leading-tight">
-                Como Organizar Tarefas no Dia a Dia Sem Se Sentir Sobrecarregado
+                Como Organizar Demandas na Agência Sem Sobrecarga Operacional
               </h1>
               <p className="text-xl text-muted-foreground">
-                Um guia prático para sair do caos, ganhar clareza e fazer o que importa — sem esgotamento
+                Um guia prático para sair do caos, dar clareza à equipe e entregar o que importa — sem esgotamento
               </p>
             </header>
 
