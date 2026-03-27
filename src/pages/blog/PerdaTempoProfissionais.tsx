@@ -37,14 +37,14 @@ const PerdaTempoProfissionais = () => {
     <>
       <ReadingProgressBar />
       <SEOHead
-        title="Por que 80% dos Profissionais Perdem Tempo Todos os Dias | Focus Inteligente"
-        description="Descubra por que 80% dos profissionais perdem até 3 horas por dia com tarefas improdutivas e como um sistema organizado pode recuperar esse tempo perdido."
+        title="Perda de Tempo em Agências: Como Recuperar 3h/Dia | Focus"
+        description="Descubra por que equipes de agências e consultorias perdem até 3 horas por dia e como um sistema organizado recupera esse tempo."
         canonical="/blog/perda-tempo-profissionais"
         image={imageUrl}
         type="article"
         publishedTime="2025-01-20"
         modifiedTime="2025-01-20"
-        keywords="perda de tempo no trabalho, produtividade profissional, desperdício de tempo, gestão de tempo, sistemas de produtividade"
+        keywords="perda de tempo agência, produtividade consultoria, desperdício tempo equipe, gestão tempo prestadores de serviço"
       />
 
       <div className="min-h-screen flex flex-col bg-background">
@@ -55,16 +55,16 @@ const PerdaTempoProfissionais = () => {
 
             <header className="mb-8">
               <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
-                Por que 80% dos Profissionais Perdem Tempo Todos os Dias (e como resolver isso)
+                Por Que Equipes de Agências Perdem Tempo Todos os Dias (e como resolver)
               </h1>
               <p className="text-xl text-muted-foreground">
-                Descubra os principais vilões da produtividade e a solução que pode recuperar até 3 horas do seu dia
+                Os principais vilões da produtividade operacional e como recuperar até 3 horas por dia na sua agência ou consultoria
               </p>
             </header>
 
             <ArticleEngagement publishDate="20 de janeiro de 2025" readTime="8 min" articleUrl={articleUrl} articleTitle="Por que 80% dos Profissionais Perdem Tempo" />
 
-            <img src={perdaTempoImage} alt="Relógio em escritório representando perda de tempo no trabalho" className="w-full h-[400px] object-cover rounded-lg mb-8" />
+            <img src={perdaTempoImage} alt="Equipe de agência analisando desperdício de tempo em processos operacionais" className="w-full h-[400px] object-cover rounded-lg mb-8" />
 
             <KeyTakeaways items={keyTakeaways} readTime="8 min" />
             <TableOfContents items={tocItems} />

@@ -35,14 +35,14 @@ const PlanejamentoMensalSistema = () => {
     <>
       <ReadingProgressBar />
       <SEOHead
-        title="Planejamento Mensal: Como Criar Um Sistema Que Realmente Funciona | Focus Inteligente"
-        description="Aprenda a criar um sistema de planejamento mensal eficaz. Método prático com 4 pilares para alcançar suas metas todos os meses."
+        title="Planejamento Mensal Para Agências e Consultorias | Focus"
+        description="Sistema de planejamento mensal para agências e consultorias. Organize metas, entregas e pipeline de clientes com 4 pilares."
         canonical="/blog/planejamento-mensal-sistema"
         image={imageUrl}
         type="article"
         publishedTime="2025-01-19"
         modifiedTime="2025-01-19"
-        keywords="planejamento mensal, metas mensais, organização mensal, produtividade, gestão tempo"
+        keywords="planejamento mensal agência, metas consultoria, organização mensal equipe, gestão prestadores de serviço"
       />
 
       <div className="min-h-screen flex flex-col bg-background">
@@ -56,10 +56,10 @@ const PlanejamentoMensalSistema = () => {
 
             <header className="mb-8">
               <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
-                Planejamento Mensal: Como Criar Um Sistema Que Realmente Funciona
+                Planejamento Mensal Para Agências: Sistema Que Funciona de Verdade
               </h1>
               <p className="text-xl text-muted-foreground">
-                O método completo para planejar e executar suas metas mensais com consistência
+                O método completo para planejar entregas, metas e pipeline da sua agência ou consultoria mês a mês
               </p>
             </header>
 
@@ -72,7 +72,7 @@ const PlanejamentoMensalSistema = () => {
 
             <img
               src={planejamentoImage}
-              alt="Sistema de planejamento mensal que funciona - Método completo passo a passo"
+              alt="Sistema de planejamento mensal para agência com pipeline de entregas e metas"
               className="w-full h-[400px] object-cover rounded-lg mb-8"
             />
 

@@ -35,14 +35,14 @@ const ProdutividadeFazerOqueImporta = () => {
     <>
       <ReadingProgressBar />
       <SEOHead
-        title="Produtividade não é fazer mais — é fazer o que importa | Focus Inteligente"
-        description="Descubra por que produtividade real não significa fazer mais tarefas, mas sim focar no que realmente importa. Veja como priorizar melhor."
+        title="Produtividade em Agências: Faça o Que Importa | Focus"
+        description="Produtividade real para agências e consultorias não é fazer mais — é priorizar entregas de alto impacto para clientes."
         canonical="/blog/produtividade-fazer-o-que-importa"
         image={imageUrl}
         type="article"
         publishedTime="2025-02-01"
         modifiedTime="2025-02-01"
-        keywords="produtividade, priorização, foco, gestão tempo, fazer o que importa, eficiência, tarefas importantes, objetivos, resultados"
+        keywords="produtividade agência, priorização consultoria, foco entregas, gestão tempo prestadores de serviço"
       />
 
       <div className="min-h-screen flex flex-col bg-background">
@@ -57,10 +57,10 @@ const ProdutividadeFazerOqueImporta = () => {
 
             <header className="mb-8">
               <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
-                Produtividade não é fazer mais — é fazer o que importa (e como provar isso)
+                Produtividade em Agências: Pare de Fazer Mais e Foque no Que Importa
               </h1>
               <p className="text-xl text-muted-foreground">
-                Pare de medir seu sucesso pela quantidade de tarefas completadas. Descubra como focar no que realmente move a agulha dos seus resultados.
+                Sua agência mede sucesso por tarefas entregues? Descubra como priorizar o que realmente move resultados para seus clientes.
               </p>
             </header>
 
@@ -73,7 +73,7 @@ const ProdutividadeFazerOqueImporta = () => {
 
             <img
               src={articleImage}
-              alt="Profissional focado trabalhando no que realmente importa, mostrando produtividade estratégica"
+              alt="Gestor de agência priorizando entregas de alto impacto para clientes"
               className="w-full h-[400px] object-cover rounded-lg mb-8"
             />
 

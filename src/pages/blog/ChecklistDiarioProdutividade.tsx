@@ -42,14 +42,14 @@ const ChecklistDiarioProdutividade = () => {
     <>
       <ReadingProgressBar />
       <SEOHead
-        title="Checklist Diário: O Método Simples Que Aumenta Sua Produtividade em Até 40% | Focus Inteligente"
-        description="Descubra como um checklist diário estruturado pode aumentar sua produtividade em até 40%. Método prático e comprovado para organizar sua rotina."
+        title="Checklist Diário Para Agências e Consultorias | Focus"
+        description="Checklist diário estruturado para agências e consultorias. Aumente a produtividade da equipe em até 40% com o método dos 3 blocos."
         canonical="/blog/checklist-diario-produtividade"
         image={imageUrl}
         type="article"
         publishedTime="2025-01-15"
         modifiedTime="2025-01-15"
-        keywords="checklist diário, produtividade, organização pessoal, rotina produtiva, gestão de tarefas, checklist notion, produtividade 40%"
+        keywords="checklist diário agência, produtividade consultoria, gestão tarefas equipe, rotina produtiva prestadores de serviço"
       />
 
       <div className="min-h-screen flex flex-col bg-background">
@@ -64,10 +64,10 @@ const ChecklistDiarioProdutividade = () => {
 
             <header className="mb-8">
               <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
-                Checklist Diário: O Método Simples Que Aumenta Sua Produtividade em Até 40%
+                Checklist Diário Para Agências: O Método Que Aumenta Entregas em 40%
               </h1>
               <p className="text-xl text-muted-foreground">
-                Descubra como um sistema de checklist diário pode transformar sua rotina e multiplicar seus resultados
+                Como um checklist diário estruturado transforma a operação da sua agência ou consultoria e multiplica resultados
               </p>
             </header>
 
@@ -80,7 +80,7 @@ const ChecklistDiarioProdutividade = () => {
 
             <img 
               src={checklistImage} 
-              alt="Checklist diário em tablet digital em workspace organizado" 
+              alt="Checklist diário de produtividade para equipe de agência em tablet digital" 
               className="w-full h-[400px] object-cover rounded-lg mb-8"
             />
 
