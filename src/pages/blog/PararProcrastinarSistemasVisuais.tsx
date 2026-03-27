@@ -37,14 +37,14 @@ const PararProcrastinarSistemasVisuais = () => {
     <>
       <ReadingProgressBar />
       <SEOHead
-        title="Como Parar de Procrastinar Usando Sistemas Visuais | Focus Inteligente"
-        description="Aprenda a vencer a procrastinação usando sistemas visuais ao invés de depender de motivação. Método Kanban prático e comprovado."
+        title="Sistemas Visuais Para Agências: Elimine Atrasos | Focus"
+        description="Como agências e consultorias usam Kanban e sistemas visuais para eliminar atrasos em entregas e manter a equipe alinhada."
         canonical="/blog/parar-procrastinar-sistemas-visuais"
         image={imageUrl}
         type="article"
         publishedTime="2025-01-18"
         modifiedTime="2025-01-18"
-        keywords="parar procrastinar, procrastinação, sistemas visuais, kanban, produtividade visual, vencer procrastinação"
+        keywords="kanban agência, sistemas visuais consultoria, gestão visual equipe, eliminar atrasos entregas"
       />
 
       <div className="min-h-screen flex flex-col bg-background">
@@ -59,10 +59,10 @@ const PararProcrastinarSistemasVisuais = () => {
 
             <header className="mb-8">
               <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
-                Como Parar de Procrastinar Usando Sistemas Visuais
+                Sistemas Visuais Para Agências: Como Eliminar Atrasos nas Entregas
               </h1>
               <p className="text-xl text-muted-foreground">
-                O método definitivo para vencer a procrastinação sem depender de motivação ou força de vontade
+                O método Kanban que agências e consultorias usam para manter a equipe alinhada e as entregas em dia
               </p>
             </header>
 
@@ -75,7 +75,7 @@ const PararProcrastinarSistemasVisuais = () => {
 
             <img
               src={sistemasVisuaisImage}
-              alt="Sistema visual kanban com colunas coloridas organizadas"
+              alt="Quadro Kanban visual de agência com colunas de entregas por cliente"
               className="w-full h-[400px] object-cover rounded-lg mb-8"
             />
 

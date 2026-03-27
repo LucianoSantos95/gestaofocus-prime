@@ -11,14 +11,14 @@ const MetodosProdutividade2025 = () => {
   return (
     <>
       <SEOHead
-        title="Métodos de Produtividade Que Realmente Funcionam em 2025 (E Quais Evitar) | Focus"
-        description="Análise completa dos métodos de produtividade mais eficazes em 2025. Saiba quais funcionam e quais são apenas hype."
+        title="Métodos de Produtividade Para Agências em 2025 | Focus"
+        description="Os métodos de produtividade que funcionam para agências e consultorias em 2025. Kanban, Time Blocking e GTD aplicados a equipes de serviço."
         canonical="/blog/metodos-produtividade-2025"
         image={imageUrl}
         type="article"
         publishedTime="2025-01-20"
         modifiedTime="2025-01-20"
-        keywords="métodos produtividade, produtividade 2025, time blocking, GTD, pomodoro, kanban, produtividade eficaz"
+        keywords="métodos produtividade agência, produtividade consultoria 2025, kanban equipe, time blocking serviço"
       />
       <div className="min-h-screen flex flex-col bg-background">
         <Navigation />
@@ -28,8 +28,8 @@ const MetodosProdutividade2025 = () => {
               articleTitle="Métodos de Produtividade 2025" 
               articleSlug="metodos-produtividade-2025" 
             />
-            <img src={metodosImage} alt="Métodos de produtividade que realmente funcionam em 2025 - Guia completo" width="1200" height="400" className="w-full h-[400px] object-cover rounded-lg mb-8" loading="lazy" />
-            <h1 className="text-4xl font-bold mb-8">Métodos de Produtividade Que Realmente Funcionam em 2025</h1>
+            <img src={metodosImage} alt="Métodos de produtividade para agências e consultorias em 2025" width="1200" height="400" className="w-full h-[400px] object-cover rounded-lg mb-8" loading="lazy" />
+            <h1 className="text-4xl font-bold mb-8">Métodos de Produtividade Para Agências e Consultorias em 2025</h1>
             <div className="prose prose-lg max-w-none">
               <p className="text-lg mb-6 leading-relaxed">
                 Você já testou três métodos de produtividade diferentes este ano e nenhum "pegou"? Não é culpa sua. O problema é que muitos métodos viraram hype sem substância, enquanto os realmente eficazes ficam escondidos em meio ao barulho.

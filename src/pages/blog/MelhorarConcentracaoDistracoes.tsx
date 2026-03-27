@@ -38,14 +38,14 @@ export default function MelhorarConcentracaoDistracoes() {
   return (
     <>
       <SEOHead
-        title="Como Melhorar Concentração em Mundo de Distrações | Guia Prático Focus"
-        description="Guia prático com 7 técnicas comprovadas para melhorar sua concentração, eliminar distrações e alcançar estado de foco profundo no trabalho e estudos."
+        title="Concentração Para Equipes de Agências e Consultorias | Focus"
+        description="7 técnicas para melhorar a concentração de equipes em agências e consultorias. Elimine distrações e aumente a qualidade das entregas."
         canonical="/blog/melhorar-concentracao-mundo-distracoes"
         image={imageUrl}
         type="article"
         publishedTime="2025-02-20"
         modifiedTime="2025-02-20"
-        keywords="melhorar concentração, foco profundo, eliminar distrações, produtividade, técnicas de concentração, deep work"
+        keywords="concentração equipe agência, foco consultoria, eliminar distrações operacionais, produtividade prestadores de serviço"
       />
 
       <Navigation />
@@ -71,11 +71,11 @@ export default function MelhorarConcentracaoDistracoes() {
             <span className="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">Foco</span>
 
             <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-              Como Melhorar Sua Concentração em Um Mundo Cheio de Distrações (Guia Prático)
+              Como Melhorar a Concentração da Sua Equipe em Agências e Consultorias
             </h1>
 
             <p className="text-xl text-foreground-muted mb-8">
-              7 técnicas comprovadas para alcançar estado de foco profundo mesmo com notificações, redes sociais e interrupções constantes
+              7 técnicas comprovadas para equipes de serviço alcançarem foco profundo e entregarem com mais qualidade
             </p>
 
             <div className="flex flex-wrap items-center gap-6 text-sm text-foreground-muted mb-8">
@@ -91,7 +91,7 @@ export default function MelhorarConcentracaoDistracoes() {
 
             <img 
               src={concentracaoImage} 
-              alt="Pessoa concentrada trabalhando com foco profundo sem distrações" 
+              alt="Equipe de consultoria concentrada em entregas de alto impacto para clientes" 
               className="w-full h-[400px] object-cover rounded-lg mb-12"
               width={1200}
               height={675}

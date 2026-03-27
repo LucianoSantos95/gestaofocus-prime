@@ -29,14 +29,14 @@ const ErrosProdutividade = () => {
   return (
     <>
       <SEOHead
-        title="5 Erros de Produtividade que Você Comete Sem Perceber [Guia 2025] | Focus"
-        description="Identifique os 5 erros mais comuns que sabotam sua produtividade no trabalho e aprenda técnicas práticas de gestão de tempo para corrigi-los imediatamente e aumentar sua eficiência."
+        title="5 Erros de Produtividade em Agências e Consultorias | Focus"
+        description="Os 5 erros que mais sabotam a produtividade em agências e consultorias. Técnicas práticas para corrigir gargalos operacionais."
         canonical="/blog/5-erros-produtividade"
         image={imageUrl}
         type="article"
         publishedTime={publishDate}
         modifiedTime={modifiedDate}
-        keywords="erros produtividade, dicas produtividade, gestão tempo, técnicas produtividade, eficiência trabalho, organização pessoal, pomodoro, deep work, time blocking, foco trabalho, como ser mais produtivo, melhorar produtividade"
+        keywords="erros produtividade agência, gestão tempo consultoria, produtividade prestadores de serviço, eficiência operacional"
       />
 
       <article className="min-h-screen pt-24 pb-16">
@@ -49,10 +49,10 @@ const ErrosProdutividade = () => {
 
         <div className="container-focus mb-8">
           <div className="aspect-video overflow-hidden rounded-2xl">
-            <img 
+              <img 
               src={errosImage} 
-              alt="Profissional analisando erros de produtividade no trabalho, mostrando técnicas de gestão de tempo, pomodoro, deep work e time blocking para melhorar eficiência e foco"
-              title="5 erros de produtividade mais comuns no trabalho"
+              alt="Gestor de agência analisando erros de produtividade operacional da equipe"
+              title="5 erros de produtividade em agências e consultorias"
               width="1200"
               height="675"
               className="w-full h-full object-cover"
@@ -65,7 +65,7 @@ const ErrosProdutividade = () => {
           <div className="mb-8">
             <div className="flex items-center gap-4 mb-4 text-sm text-foreground-muted flex-wrap">
               <span className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary font-medium">
-                Produtividade
+                Produtividade Operacional
               </span>
               <div className="flex items-center gap-2">
                 <Calendar className="w-4 h-4" />
@@ -78,11 +78,11 @@ const ErrosProdutividade = () => {
             </div>
 
             <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-              Você comete esses 5 erros de produtividade sem perceber? Descubra agora como evitá-los
+              5 Erros de Produtividade Que Travam Agências e Consultorias
             </h1>
 
             <p className="text-xl text-foreground-muted leading-relaxed">
-              Identifique os <strong>erros de produtividade</strong> mais comuns que sabotam sua eficiência no trabalho e aprenda <strong>técnicas de produtividade</strong> práticas para corrigi-los imediatamente.
+              Identifique os <strong>erros operacionais</strong> mais comuns em agências e consultorias e aprenda <strong>técnicas práticas</strong> para destravar entregas e resultados.
             </p>
           </div>
 

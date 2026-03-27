@@ -39,14 +39,14 @@ const OrganizarRotinaSemanal = () => {
     <>
       <ReadingProgressBar />
       <SEOHead
-        title="Como Organizar Sua Rotina Semanal Para Ter Mais Foco (Modelo Pronto Incluso) | Focus Inteligente"
-        description="Aprenda a organizar sua rotina semanal com um método prático e eficaz. Modelo pronto para download e implementação imediata."
+        title="Rotina Semanal Para Agências e Consultorias | Focus"
+        description="Organize a rotina semanal da sua agência ou consultoria com um método prático. Modelo pronto para equipes de serviço."
         canonical="/blog/organizar-rotina-semanal"
         image={imageUrl}
         type="article"
         publishedTime="2025-01-16"
         modifiedTime="2025-01-16"
-        keywords="rotina semanal, planejamento semanal, organização pessoal, foco, produtividade semanal, modelo planejamento"
+        keywords="rotina semanal agência, planejamento semanal consultoria, organização equipe, produtividade prestadores de serviço"
       />
 
       <div className="min-h-screen flex flex-col bg-background">
@@ -61,10 +61,10 @@ const OrganizarRotinaSemanal = () => {
 
             <header className="mb-8">
               <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
-                Como Organizar Sua Rotina Semanal Para Ter Mais Foco
+                Rotina Semanal Para Agências: Como Organizar Entregas e Foco
               </h1>
               <p className="text-xl text-muted-foreground">
-                O método completo para planejar sua semana e alcançar seus objetivos sem estresse
+                O método completo para planejar a semana da sua agência ou consultoria e entregar sem estresse
               </p>
             </header>
 
@@ -77,7 +77,7 @@ const OrganizarRotinaSemanal = () => {
 
             <img 
               src={rotinaImage} 
-              alt="Planejamento semanal organizado em quadros coloridos" 
+              alt="Planejamento semanal de agência organizado em quadros de entregas por cliente" 
               className="w-full h-[400px] object-cover rounded-lg mb-8"
             />
 

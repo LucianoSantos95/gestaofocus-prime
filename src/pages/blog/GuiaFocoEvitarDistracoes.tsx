@@ -9,14 +9,14 @@ const GuiaFocoEvitarDistracoes = () => {
   return (
     <>
       <SEOHead
-        title="Guia Definitivo do Foco: Como Evitar Distrações no Trabalho e em Casa | Focus"
-        description="Descubra técnicas práticas e comprovadas para manter o foco profundo e eliminar distrações. Guia completo com métodos aplicáveis hoje mesmo."
+        title="Foco Para Equipes de Agências e Consultorias | Focus"
+        description="Técnicas práticas para equipes de agências e consultorias manterem foco profundo e eliminarem distrações operacionais."
         canonical="/blog/guia-foco-evitar-distracoes"
         image={`https://focusinteligente.com.br${focoImage}`}
         type="article"
         publishedTime="2025-01-15"
         modifiedTime="2025-01-15"
-        keywords="foco profundo, evitar distrações, concentração, produtividade, deep work, flow state"
+        keywords="foco equipe agência, evitar distrações consultoria, concentração prestadores de serviço, deep work equipe"
       />
       <div className="min-h-screen flex flex-col bg-background">
         <Navigation />
@@ -29,10 +29,10 @@ const GuiaFocoEvitarDistracoes = () => {
 
             <header className="mb-8">
               <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
-                Guia Definitivo do Foco: Como Evitar Distrações no Trabalho e em Casa
+                Foco Para Equipes de Agências: Como Eliminar Distrações Operacionais
               </h1>
               <p className="text-xl text-muted-foreground mb-4">
-                Foco não é talento nato - é habilidade treinável. Descubra como eliminar distrações e alcançar concentração profunda com técnicas comprovadas.
+                Técnicas comprovadas para equipes de agências e consultorias manterem concentração profunda e entregarem mais.
               </p>
               <div className="flex items-center gap-4 text-sm text-muted-foreground">
                 <span>📚 Tempo de leitura: 10 min</span>
@@ -42,7 +42,7 @@ const GuiaFocoEvitarDistracoes = () => {
 
             <img 
               src={focoImage} 
-              alt="Pessoa em estado de foco profundo trabalhando sem distrações" 
+              alt="Equipe de agência em estado de foco profundo trabalhando em entregas de clientes" 
               className="w-full h-[400px] object-cover rounded-lg mb-12 shadow-lg" 
             />
 

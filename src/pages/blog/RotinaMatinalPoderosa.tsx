@@ -61,14 +61,14 @@ const RotinaMatinalPoderosa = () => {
     <>
       <ReadingProgressBar />
       <SEOHead
-        title="Como Criar uma Rotina Matinal Poderosa em 15 Minutos | Focus Inteligente"
-        description="Descubra o método simples e comprovado para criar uma rotina matinal que transforma seu dia em apenas 15 minutos. Comece bem, termine melhor."
+        title="Rotina Matinal Para Donos de Agências e Consultores | Focus"
+        description="Rotina matinal de 15 minutos para gestores de agências e consultores. Comece o dia com clareza e priorize entregas de impacto."
         canonical="/blog/rotina-matinal-poderosa-15-minutos"
         image={imageUrl}
         type="article"
         publishedTime="2025-02-20"
         modifiedTime="2025-02-20"
-        keywords="rotina matinal, produtividade matinal, hábitos matinais, morning routine, produtividade, organização pessoal"
+        keywords="rotina matinal gestor agência, produtividade matinal consultoria, hábitos prestadores de serviço"
       />
 
       <div className="min-h-screen flex flex-col bg-background">
@@ -83,10 +83,10 @@ const RotinaMatinalPoderosa = () => {
 
             <header className="mb-8">
               <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
-                Como Criar uma Rotina Matinal Poderosa Que Melhora Seu Dia em 15 Minutos
+                Rotina Matinal de 15 Minutos Para Donos de Agências e Consultores
               </h1>
               <p className="text-xl text-muted-foreground">
-                O método simples e comprovado que transforma suas manhãs e multiplica sua produtividade diária
+                O método que gestores de agências usam para começar o dia com clareza e priorizar entregas de alto impacto
               </p>
             </header>
 
@@ -99,7 +99,7 @@ const RotinaMatinalPoderosa = () => {
 
             <img
               src={rotinaMatinalImage}
-              alt="Rotina matinal produtiva com café e journal ao amanhecer"
+              alt="Gestor de agência iniciando rotina matinal produtiva com planejamento do dia"
               className="w-full h-[400px] object-cover rounded-lg mb-8"
               width={1200}
               height={675}

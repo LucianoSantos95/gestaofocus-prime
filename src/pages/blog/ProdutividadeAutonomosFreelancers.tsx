@@ -36,14 +36,14 @@ const ProdutividadeAutonomosFreelancers = () => {
     <>
       <ReadingProgressBar />
       <SEOHead
-        title="Produtividade Para Autônomos e Freelancers: Guia Essencial | Focus Inteligente"
-        description="O guia completo de produtividade para autônomos e freelancers. Aprenda a se organizar, manter foco e crescer trabalhando por conta própria."
+        title="Produtividade Para Prestadores de Serviço | Focus"
+        description="Guia de produtividade para prestadores de serviço, consultores e freelancers. Organize entregas, gerencie clientes e escale."
         canonical="/blog/produtividade-autonomos-freelancers"
         image={imageUrl}
         type="article"
         publishedTime="2025-01-17"
         modifiedTime="2025-01-17"
-        keywords="produtividade freelancer, autônomo produtivo, trabalho remoto, home office, gestão tempo freelancer, organização freelancer"
+        keywords="produtividade prestador de serviço, consultor produtivo, freelancer organizado, gestão tempo consultoria"
       />
 
       <div className="min-h-screen flex flex-col bg-background">
@@ -58,10 +58,10 @@ const ProdutividadeAutonomosFreelancers = () => {
 
             <header className="mb-8">
               <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
-                Produtividade Para Quem Trabalha Sozinho
+                Produtividade Para Prestadores de Serviço e Consultores
               </h1>
               <p className="text-xl text-muted-foreground">
-                O guia essencial para autônomos e freelancers que querem crescer sem perder a sanidade
+                O guia essencial para consultores e prestadores de serviço que querem escalar sem perder qualidade
               </p>
             </header>
 
@@ -74,7 +74,7 @@ const ProdutividadeAutonomosFreelancers = () => {
 
             <img
               src={autonomosImage}
-              alt="Freelancer focado trabalhando em home office moderno"
+              alt="Consultor prestador de serviço organizado trabalhando em home office"
               className="w-full h-[400px] object-cover rounded-lg mb-8"
             />
 
