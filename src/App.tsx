@@ -13,6 +13,7 @@ import { useAnalytics } from "./hooks/useAnalytics";
 import { usePageTracking } from "./hooks/usePageTracking";
 import CookieConsent from "./components/CookieConsent";
 import ScrollToTop from "./components/ScrollToTop";
+import ActionPlanPopup from "./components/ActionPlanPopup";
 
 // Lazy load pages
 const SolucoesSobMedida = lazy(() => import("./pages/SolucoesSobMedida"));
@@ -112,6 +113,7 @@ function AppLayout() {
   const isDashboard = location.pathname.startsWith("/dashboard");
   const isAuth = location.pathname.startsWith("/auth");
   const isSolucoes = location.pathname === "/solucoes-sob-medida" || location.pathname === "/hub-empresarial";
+  const isHomepage = location.pathname === "/";
 
   // SolucoesSobMedida has its own Nav/Footer embedded
   const showNav = !isDashboard && !isAuth && !isSolucoes;
@@ -209,6 +211,7 @@ function AppLayout() {
       </main>
       {showFooter && <Footer />}
       {isDashboard ? <DashboardChatButton /> : <ChatWidget />}
+      {isHomepage && <ActionPlanPopup />}
     </div>
   );
 }

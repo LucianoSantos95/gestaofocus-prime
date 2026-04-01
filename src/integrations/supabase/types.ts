@@ -149,6 +149,39 @@ export type Database = {
         }
         Relationships: []
       }
+      diagnosis_leads: {
+        Row: {
+          challenges: string[]
+          created_at: string
+          diagnosis_result: Json | null
+          email: string
+          id: string
+          recommended_product: string | null
+          segment: string
+          team_size: string
+        }
+        Insert: {
+          challenges?: string[]
+          created_at?: string
+          diagnosis_result?: Json | null
+          email: string
+          id?: string
+          recommended_product?: string | null
+          segment: string
+          team_size: string
+        }
+        Update: {
+          challenges?: string[]
+          created_at?: string
+          diagnosis_result?: Json | null
+          email?: string
+          id?: string
+          recommended_product?: string | null
+          segment?: string
+          team_size?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null
