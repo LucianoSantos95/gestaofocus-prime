@@ -2,9 +2,11 @@ import { useState, useEffect, useCallback } from "react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Sparkles, Download, ArrowRight, Clock, Users, Zap, X, ChevronRight, BarChart3, CheckCircle2, Loader2 } from "lucide-react";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { Sparkles, Download, ArrowRight, Clock, Zap, ChevronRight, ChevronDown, BarChart3, CheckCircle2, Loader2, User, Phone, Mail, MessageSquareText } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
 
@@ -12,8 +14,9 @@ const POPUP_DELAY_MS = 15000;
 const SESSION_KEY = "action_plan_popup_shown";
 
 interface DiagnosisResult {
+  greeting: string;
   scores: { projetos: number; financeiro: number; processos: number; equipe: number };
-  actions: { title: string; description: string; timeframe: string }[];
+  actions: { title: string; description: string; timeframe: string; steps: string[] }[];
   projection: string;
   recommended_product: string;
 }
@@ -43,18 +46,21 @@ const CHALLENGES = [
 export default function ActionPlanPopup() {
   const [open, setOpen] = useState(false);
   const [step, setStep] = useState<"form" | "loading" | "result">("form");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [segment, setSegment] = useState("");
   const [teamSize, setTeamSize] = useState("");
   const [challenges, setChallenges] = useState<string[]>([]);
-  const [email, setEmail] = useState("");
+  const [problemDescription, setProblemDescription] = useState("");
   const [result, setResult] = useState<DiagnosisResult | null>(null);
   const [submitting, setSubmitting] = useState(false);
+  const [expandedAction, setExpandedAction] = useState<number | null>(null);
 
   useEffect(() => {
     if (sessionStorage.getItem(SESSION_KEY)) return;
 
     const timer = setTimeout(() => {
-      // Don't show if other popups are active
       if (
         sessionStorage.getItem("exit_intent_shown") ||
         sessionStorage.getItem("time_popup_shown") ||
@@ -73,9 +79,11 @@ export default function ActionPlanPopup() {
     );
   };
 
+  const isFormValid = name.trim().length >= 2 && email && segment && teamSize && challenges.length > 0;
+
   const handleSubmit = useCallback(async () => {
-    if (!segment || !teamSize || challenges.length === 0 || !email) {
-      toast({ title: "Preencha todos os campos", variant: "destructive" });
+    if (!isFormValid) {
+      toast({ title: "Preencha pelo menos nome, email, segmento, equipe e dores", variant: "destructive" });
       return;
     }
     if (!/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(email)) {
@@ -88,7 +96,7 @@ export default function ActionPlanPopup() {
 
     try {
       const { data, error } = await supabase.functions.invoke("generate-action-plan", {
-        body: { email, segment, team_size: teamSize, challenges },
+        body: { name, email, phone, segment, team_size: teamSize, challenges, problem_description: problemDescription },
       });
 
       if (error) throw error;
@@ -101,73 +109,94 @@ export default function ActionPlanPopup() {
     } finally {
       setSubmitting(false);
     }
-  }, [segment, teamSize, challenges, email]);
+  }, [name, email, phone, segment, teamSize, challenges, problemDescription, isFormValid]);
 
   const handleDownloadPDF = useCallback(async () => {
     if (!result) return;
     const { jsPDF } = await import("jspdf");
     const doc = new jsPDF();
     const w = doc.internal.pageSize.getWidth();
+    const firstName = name.split(" ")[0];
 
     // Header
     doc.setFillColor(15, 23, 42);
     doc.rect(0, 0, w, 45, "F");
     doc.setTextColor(255, 255, 255);
     doc.setFontSize(22);
-    doc.text("Plano de Ação Operacional", 20, 25);
+    doc.text(`Plano de Ação — ${firstName}`, 20, 25);
     doc.setFontSize(11);
     doc.text("Gerado por Focus — gestão inteligente para sua empresa", 20, 35);
 
-    // Scores
+    // Greeting
     doc.setTextColor(30, 41, 59);
+    doc.setFontSize(12);
+    const greetLines = doc.splitTextToSize(result.greeting, w - 40);
+    doc.text(greetLines, 20, 55);
+
+    // Scores
+    let y = 55 + greetLines.length * 6 + 10;
     doc.setFontSize(16);
-    doc.text("Diagnóstico por Área", 20, 60);
+    doc.text("Diagnóstico por Área", 20, y);
 
     const scoreLabels: Record<string, string> = {
-      projetos: "Projetos",
-      financeiro: "Financeiro",
-      processos: "Processos",
-      equipe: "Equipe",
+      projetos: "Projetos", financeiro: "Financeiro",
+      processos: "Processos", equipe: "Equipe",
     };
 
-    let y = 72;
+    y += 12;
     Object.entries(result.scores).forEach(([key, value]) => {
       doc.setFontSize(11);
       doc.setTextColor(30, 41, 59);
       doc.text(`${scoreLabels[key]}: ${value}/100`, 20, y);
-      // Bar background
       doc.setFillColor(226, 232, 240);
       doc.roundedRect(20, y + 2, 120, 6, 3, 3, "F");
-      // Bar fill
       const color = value >= 70 ? [34, 197, 94] : value >= 40 ? [250, 204, 21] : [239, 68, 68];
       doc.setFillColor(color[0], color[1], color[2]);
       doc.roundedRect(20, y + 2, (value / 100) * 120, 6, 3, 3, "F");
       y += 18;
     });
 
-    // Actions
+    // Actions with steps
     y += 10;
     doc.setFontSize(16);
     doc.setTextColor(30, 41, 59);
-    doc.text("3 Ações Imediatas", 20, y);
+    doc.text("Ações Imediatas + Passo a Passo", 20, y);
     y += 12;
 
     result.actions.forEach((action, i) => {
+      if (y > 250) { doc.addPage(); y = 20; }
       doc.setFontSize(12);
       doc.setTextColor(37, 99, 235);
       doc.text(`${i + 1}. ${action.title}`, 20, y);
       y += 7;
       doc.setFontSize(10);
       doc.setTextColor(71, 85, 105);
-      const lines = doc.splitTextToSize(action.description, w - 40);
-      doc.text(lines, 25, y);
-      y += lines.length * 5 + 3;
+      const descLines = doc.splitTextToSize(action.description, w - 40);
+      doc.text(descLines, 25, y);
+      y += descLines.length * 5 + 3;
       doc.setTextColor(100, 116, 139);
       doc.text(`Prazo: ${action.timeframe}`, 25, y);
-      y += 12;
+      y += 8;
+
+      // Steps
+      if (action.steps?.length) {
+        doc.setFontSize(10);
+        doc.setTextColor(30, 41, 59);
+        doc.text("Como implementar:", 25, y);
+        y += 6;
+        action.steps.forEach((step, si) => {
+          if (y > 270) { doc.addPage(); y = 20; }
+          doc.setTextColor(71, 85, 105);
+          const stepLines = doc.splitTextToSize(`${si + 1}. ${step}`, w - 50);
+          doc.text(stepLines, 30, y);
+          y += stepLines.length * 5 + 2;
+        });
+      }
+      y += 6;
     });
 
     // Projection
+    if (y > 250) { doc.addPage(); y = 20; }
     y += 5;
     doc.setFontSize(14);
     doc.setTextColor(30, 41, 59);
@@ -186,8 +215,8 @@ export default function ActionPlanPopup() {
     doc.setFontSize(9);
     doc.text("focus.com.br — Transforme sua operação com sistemas inteligentes", 20, h - 8);
 
-    doc.save("plano-de-acao-focus.pdf");
-  }, [result]);
+    doc.save(`plano-de-acao-${firstName.toLowerCase()}.pdf`);
+  }, [result, name]);
 
   const getScoreColor = (score: number) => {
     if (score >= 70) return "bg-green-500";
@@ -201,59 +230,103 @@ export default function ActionPlanPopup() {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent className="sm:max-w-[520px] max-h-[90vh] overflow-y-auto bg-background/95 backdrop-blur-xl border-primary/20 shadow-[0_0_60px_-12px_hsl(213_94%_68%/0.3)] p-0">
+      <DialogContent className="sm:max-w-[540px] max-h-[90vh] overflow-y-auto bg-background/95 backdrop-blur-xl border-primary/20 shadow-[0_0_60px_-12px_hsl(213_94%_68%/0.3)] p-0">
         <DialogTitle className="sr-only">Plano de Ação Gratuito</DialogTitle>
 
         {/* FORM STEP */}
         {step === "form" && (
-          <div className="p-6 space-y-5">
+          <div className="p-6 space-y-4">
             {/* Header */}
             <div className="text-center space-y-2">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-medium">
                 <Sparkles className="w-3 h-3" />
-                100% gratuito • Leva 1 minuto
+                100% gratuito • Diagnóstico com IA
               </div>
               <h2 className="text-xl font-bold text-foreground">
                 Descubra o que está travando sua empresa
               </h2>
               <p className="text-sm text-foreground-muted">
-                Responda 4 perguntas rápidas e nossa IA gera um plano de ação personalizado para o seu negócio.
+                Preencha os campos abaixo e nossa IA gera um plano de ação profundo e personalizado.
               </p>
             </div>
 
-            {/* Segment */}
-            <div className="space-y-1.5">
-              <label className="text-sm font-medium text-foreground">Segmento</label>
-              <Select value={segment} onValueChange={setSegment}>
-                <SelectTrigger className="bg-background-elevated border-border">
-                  <SelectValue placeholder="Selecione seu segmento" />
-                </SelectTrigger>
-                <SelectContent>
-                  {SEGMENTS.map(s => (
-                    <SelectItem key={s.value} value={s.value}>{s.label}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+            {/* Name + Phone row */}
+            <div className="grid grid-cols-2 gap-3">
+              <div className="space-y-1.5">
+                <label className="text-sm font-medium text-foreground flex items-center gap-1.5">
+                  <User className="w-3.5 h-3.5 text-primary" />
+                  Seu nome *
+                </label>
+                <Input
+                  placeholder="Ex: João Silva"
+                  value={name}
+                  onChange={e => setName(e.target.value)}
+                  className="bg-background-elevated border-border"
+                />
+              </div>
+              <div className="space-y-1.5">
+                <label className="text-sm font-medium text-foreground flex items-center gap-1.5">
+                  <Phone className="w-3.5 h-3.5 text-primary" />
+                  WhatsApp
+                </label>
+                <Input
+                  type="tel"
+                  placeholder="(11) 99999-9999"
+                  value={phone}
+                  onChange={e => setPhone(e.target.value)}
+                  className="bg-background-elevated border-border"
+                />
+              </div>
             </div>
 
-            {/* Team Size */}
+            {/* Email */}
             <div className="space-y-1.5">
-              <label className="text-sm font-medium text-foreground">Tamanho da equipe</label>
-              <Select value={teamSize} onValueChange={setTeamSize}>
-                <SelectTrigger className="bg-background-elevated border-border">
-                  <SelectValue placeholder="Quantas pessoas" />
-                </SelectTrigger>
-                <SelectContent>
-                  {TEAM_SIZES.map(t => (
-                    <SelectItem key={t.value} value={t.value}>{t.label}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+              <label className="text-sm font-medium text-foreground flex items-center gap-1.5">
+                <Mail className="w-3.5 h-3.5 text-primary" />
+                Seu email *
+              </label>
+              <Input
+                type="email"
+                placeholder="seu@email.com"
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+                className="bg-background-elevated border-border"
+              />
+            </div>
+
+            {/* Segment + Team row */}
+            <div className="grid grid-cols-2 gap-3">
+              <div className="space-y-1.5">
+                <label className="text-sm font-medium text-foreground">Segmento *</label>
+                <Select value={segment} onValueChange={setSegment}>
+                  <SelectTrigger className="bg-background-elevated border-border">
+                    <SelectValue placeholder="Selecione" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {SEGMENTS.map(s => (
+                      <SelectItem key={s.value} value={s.value}>{s.label}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="space-y-1.5">
+                <label className="text-sm font-medium text-foreground">Equipe *</label>
+                <Select value={teamSize} onValueChange={setTeamSize}>
+                  <SelectTrigger className="bg-background-elevated border-border">
+                    <SelectValue placeholder="Tamanho" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {TEAM_SIZES.map(t => (
+                      <SelectItem key={t.value} value={t.value}>{t.label}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
             </div>
 
             {/* Challenges */}
             <div className="space-y-2">
-              <label className="text-sm font-medium text-foreground">Maiores dores (selecione)</label>
+              <label className="text-sm font-medium text-foreground">Maiores dores (selecione) *</label>
               <div className="grid grid-cols-2 gap-2">
                 {CHALLENGES.map(c => (
                   <label
@@ -275,22 +348,26 @@ export default function ActionPlanPopup() {
               </div>
             </div>
 
-            {/* Email */}
+            {/* Problem description */}
             <div className="space-y-1.5">
-              <label className="text-sm font-medium text-foreground">Seu email</label>
-              <Input
-                type="email"
-                placeholder="seu@email.com"
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-                className="bg-background-elevated border-border"
+              <label className="text-sm font-medium text-foreground flex items-center gap-1.5">
+                <MessageSquareText className="w-3.5 h-3.5 text-primary" />
+                Descreva seus problemas
+              </label>
+              <Textarea
+                placeholder="Conte com detalhes os maiores desafios do seu negócio. Quanto mais informação, mais preciso será o seu plano de ação..."
+                value={problemDescription}
+                onChange={e => setProblemDescription(e.target.value)}
+                className="bg-background-elevated border-border min-h-[80px] resize-none"
+                maxLength={1000}
               />
+              <p className="text-xs text-foreground-muted text-right">{problemDescription.length}/1000</p>
             </div>
 
             {/* Submit */}
             <Button
               onClick={handleSubmit}
-              disabled={!segment || !teamSize || challenges.length === 0 || !email}
+              disabled={!isFormValid}
               className="w-full h-12 text-base font-semibold bg-gradient-to-r from-primary to-[hsl(var(--primary-glow))] hover:opacity-90 transition-opacity"
             >
               Gerar Meu Plano de Ação Gratuito
@@ -313,11 +390,13 @@ export default function ActionPlanPopup() {
               <div className="absolute inset-0 w-16 h-16 rounded-full bg-primary/10 animate-ping" />
             </div>
             <div className="text-center space-y-2">
-              <h3 className="text-lg font-semibold text-foreground">Analisando seu negócio...</h3>
-              <p className="text-sm text-foreground-muted">Nossa IA está criando um plano personalizado para o seu perfil</p>
+              <h3 className="text-lg font-semibold text-foreground">
+                {name ? `Analisando seu negócio, ${name.split(" ")[0]}...` : "Analisando seu negócio..."}
+              </h3>
+              <p className="text-sm text-foreground-muted">Nossa IA está criando um plano personalizado com base nas suas respostas</p>
             </div>
             <div className="w-full max-w-[200px] h-1.5 bg-background-elevated rounded-full overflow-hidden">
-              <div className="h-full bg-gradient-to-r from-primary to-[hsl(var(--primary-glow))] rounded-full animate-[progress_3s_ease-in-out_infinite]" 
+              <div className="h-full bg-gradient-to-r from-primary to-[hsl(var(--primary-glow))] rounded-full animate-[progress_3s_ease-in-out_infinite]"
                 style={{ width: "70%", animation: "progress 2.5s ease-in-out infinite" }} />
             </div>
           </div>
@@ -333,6 +412,9 @@ export default function ActionPlanPopup() {
                 Plano gerado com sucesso
               </div>
               <h2 className="text-xl font-bold text-foreground">Seu Plano de Ação</h2>
+              {result.greeting && (
+                <p className="text-sm text-foreground-muted">{result.greeting}</p>
+              )}
             </div>
 
             {/* Scores */}
@@ -365,29 +447,58 @@ export default function ActionPlanPopup() {
               </div>
             </div>
 
-            {/* Actions */}
+            {/* Actions — expandable with steps */}
             <div className="space-y-3">
               <h3 className="text-sm font-semibold text-foreground flex items-center gap-2">
                 <Zap className="w-4 h-4 text-yellow-400" />
-                3 Ações Imediatas
+                Ações Imediatas
               </h3>
               <div className="space-y-2">
                 {result.actions.map((action, i) => (
-                  <div key={i} className="p-3 rounded-lg bg-background-elevated border border-border space-y-1">
-                    <div className="flex items-start gap-2">
-                      <span className="flex-shrink-0 w-5 h-5 rounded-full bg-primary/20 text-primary text-xs font-bold flex items-center justify-center mt-0.5">
-                        {i + 1}
-                      </span>
-                      <div>
-                        <p className="text-sm font-medium text-foreground">{action.title}</p>
-                        <p className="text-xs text-foreground-muted mt-0.5">{action.description}</p>
-                        <div className="flex items-center gap-1 mt-1 text-xs text-primary/70">
-                          <Clock className="w-3 h-3" />
-                          {action.timeframe}
+                  <Collapsible
+                    key={i}
+                    open={expandedAction === i}
+                    onOpenChange={() => setExpandedAction(expandedAction === i ? null : i)}
+                  >
+                    <div className="rounded-lg bg-background-elevated border border-border overflow-hidden">
+                      <CollapsibleTrigger className="w-full p-3 text-left">
+                        <div className="flex items-start gap-2">
+                          <span className="flex-shrink-0 w-5 h-5 rounded-full bg-primary/20 text-primary text-xs font-bold flex items-center justify-center mt-0.5">
+                            {i + 1}
+                          </span>
+                          <div className="flex-1">
+                            <p className="text-sm font-medium text-foreground">{action.title}</p>
+                            <p className="text-xs text-foreground-muted mt-0.5">{action.description}</p>
+                            <div className="flex items-center gap-2 mt-1">
+                              <div className="flex items-center gap-1 text-xs text-primary/70">
+                                <Clock className="w-3 h-3" />
+                                {action.timeframe}
+                              </div>
+                              <span className="text-xs text-primary font-medium flex items-center gap-0.5">
+                                {expandedAction === i ? "Fechar" : "Ver passo a passo"}
+                                <ChevronDown className={`w-3 h-3 transition-transform ${expandedAction === i ? "rotate-180" : ""}`} />
+                              </span>
+                            </div>
+                          </div>
                         </div>
-                      </div>
+                      </CollapsibleTrigger>
+                      <CollapsibleContent>
+                        <div className="px-3 pb-3 pt-0 border-t border-border/50">
+                          <p className="text-xs font-semibold text-foreground mt-2 mb-2">Como implementar:</p>
+                          <ol className="space-y-1.5">
+                            {action.steps?.map((s, si) => (
+                              <li key={si} className="flex gap-2 text-xs text-foreground-muted">
+                                <span className="flex-shrink-0 w-4 h-4 rounded-full bg-primary/10 text-primary text-[10px] font-bold flex items-center justify-center mt-0.5">
+                                  {si + 1}
+                                </span>
+                                <span>{s}</span>
+                              </li>
+                            ))}
+                          </ol>
+                        </div>
+                      </CollapsibleContent>
                     </div>
-                  </div>
+                  </Collapsible>
                 ))}
               </div>
             </div>
@@ -402,7 +513,7 @@ export default function ActionPlanPopup() {
             <div className="flex flex-col gap-2">
               <Button onClick={handleDownloadPDF} variant="outline" className="w-full gap-2">
                 <Download className="w-4 h-4" />
-                Baixar Plano em PDF
+                Baixar Plano Completo em PDF
               </Button>
               <Button
                 onClick={() => { setOpen(false); window.location.href = productCTA.href; }}

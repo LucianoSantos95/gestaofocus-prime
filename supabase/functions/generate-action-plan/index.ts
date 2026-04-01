@@ -13,10 +13,9 @@ serve(async (req) => {
   }
 
   try {
-    const { email, segment, team_size, challenges } = await req.json();
+    const { name, email, phone, segment, team_size, challenges, problem_description } = await req.json();
 
-    // Validate inputs
-    if (!email || !segment || !team_size || !challenges || !Array.isArray(challenges) || challenges.length === 0) {
+    if (!name || !email || !segment || !team_size || !challenges || !Array.isArray(challenges) || challenges.length === 0) {
       return new Response(
         JSON.stringify({ error: "Todos os campos são obrigatórios." }),
         { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
@@ -41,24 +40,30 @@ serve(async (req) => {
     };
 
     const challengeText = challenges.map((c: string) => challengeLabels[c] || c).join(", ");
+    const firstName = name.split(" ")[0];
 
-    const systemPrompt = `Você é um consultor especialista em gestão empresarial e produtividade operacional. Gere um diagnóstico preciso e ações práticas para empresas.
+    const systemPrompt = `Você é um consultor especialista em gestão empresarial e produtividade operacional. Gere um diagnóstico PROFUNDO e ações práticas para empresas.
 
 REGRAS:
 - Responda APENAS com o JSON solicitado, sem markdown
-- As ações devem ser ESPECÍFICAS para o segmento e tamanho da equipe
-- Cada ação deve ser implementável em até 7 dias sem ferramentas pagas
-- O score deve refletir a gravidade real dos problemas
-- A projeção deve ser realista e conservadora
-- recommended_product deve ser "hub-empresarial" para equipes de 2+ pessoas ou "solucoes-sob-medida" para casos complexos`;
+- Use o nome "${firstName}" ao longo do diagnóstico para personalizar
+- As ações devem ser ESPECÍFICAS para o segmento, tamanho da equipe E os problemas descritos pelo usuário
+- Cada ação deve ter um passo-a-passo detalhado de implementação (5-7 etapas claras)
+- O score deve refletir a gravidade real dos problemas baseado tanto nos desafios selecionados quanto na descrição livre
+- A projeção deve ser realista e conservadora, mencionando o nome da pessoa
+- recommended_product deve ser "hub-empresarial" para equipes de 2+ pessoas ou "solucoes-sob-medida" para casos complexos
+- O campo greeting deve ser uma frase personalizada e empática para ${firstName}`;
 
-    const userPrompt = `Gere um plano de ação para:
+    const userPrompt = `Gere um plano de ação profundo para:
+- Nome: ${name}
 - Segmento: ${segment}
 - Equipe: ${team_size} pessoas
-- Desafios: ${challengeText}
+- Desafios selecionados: ${challengeText}
+- Descrição detalhada dos problemas: ${problem_description || "Não informado"}
 
 Retorne EXATAMENTE este JSON:
 {
+  "greeting": "<frase personalizada para ${firstName}, ex: '${firstName}, identifiquei pontos críticos que estão travando sua operação.'>",
   "scores": {
     "projetos": <0-100>,
     "financeiro": <0-100>,
@@ -68,21 +73,30 @@ Retorne EXATAMENTE este JSON:
   "actions": [
     {
       "title": "<ação específica>",
-      "description": "<como implementar em 1-2 frases>",
-      "timeframe": "<prazo: ex: 2 dias>"
+      "description": "<resumo em 1-2 frases>",
+      "timeframe": "<prazo: ex: 2 dias>",
+      "steps": [
+        "<passo 1 detalhado>",
+        "<passo 2 detalhado>",
+        "<passo 3 detalhado>",
+        "<passo 4 detalhado>",
+        "<passo 5 detalhado>"
+      ]
     },
     {
       "title": "<ação específica>",
-      "description": "<como implementar>",
-      "timeframe": "<prazo>"
+      "description": "<resumo>",
+      "timeframe": "<prazo>",
+      "steps": ["<passo 1>", "<passo 2>", "<passo 3>", "<passo 4>", "<passo 5>"]
     },
     {
       "title": "<ação específica>",
-      "description": "<como implementar>",
-      "timeframe": "<prazo>"
+      "description": "<resumo>",
+      "timeframe": "<prazo>",
+      "steps": ["<passo 1>", "<passo 2>", "<passo 3>", "<passo 4>", "<passo 5>"]
     }
   ],
-  "projection": "<resultado esperado em 30 dias, 1 frase>",
+  "projection": "<resultado esperado em 30 dias, mencionando ${firstName} pelo nome>",
   "recommended_product": "<hub-empresarial ou solucoes-sob-medida>"
 }`;
 
@@ -103,10 +117,11 @@ Retorne EXATAMENTE este JSON:
             type: "function",
             function: {
               name: "generate_action_plan",
-              description: "Generate a structured business action plan",
+              description: "Generate a structured business action plan with detailed steps",
               parameters: {
                 type: "object",
                 properties: {
+                  greeting: { type: "string" },
                   scores: {
                     type: "object",
                     properties: {
@@ -125,14 +140,15 @@ Retorne EXATAMENTE este JSON:
                         title: { type: "string" },
                         description: { type: "string" },
                         timeframe: { type: "string" },
+                        steps: { type: "array", items: { type: "string" } },
                       },
-                      required: ["title", "description", "timeframe"],
+                      required: ["title", "description", "timeframe", "steps"],
                     },
                   },
                   projection: { type: "string" },
                   recommended_product: { type: "string", enum: ["hub-empresarial", "solucoes-sob-medida"] },
                 },
-                required: ["scores", "actions", "projection", "recommended_product"],
+                required: ["greeting", "scores", "actions", "projection", "recommended_product"],
                 additionalProperties: false,
               },
             },
@@ -168,7 +184,6 @@ Retorne EXATAMENTE este JSON:
         ? JSON.parse(toolCall.function.arguments)
         : toolCall.function.arguments;
     } else {
-      // Fallback: try parsing content directly
       const content = aiData.choices?.[0]?.message?.content || "";
       diagnosisResult = JSON.parse(content);
     }
@@ -179,10 +194,13 @@ Retorne EXATAMENTE este JSON:
     const supabase = createClient(supabaseUrl, supabaseKey);
 
     await supabase.from("diagnosis_leads").insert({
+      name,
       email,
+      phone: phone || null,
       segment,
       team_size,
       challenges,
+      problem_description: problem_description || null,
       diagnosis_result: diagnosisResult,
       recommended_product: diagnosisResult.recommended_product,
     });
