@@ -156,6 +156,9 @@ export type Database = {
           diagnosis_result: Json | null
           email: string
           id: string
+          name: string | null
+          phone: string | null
+          problem_description: string | null
           recommended_product: string | null
           segment: string
           team_size: string
@@ -166,6 +169,9 @@ export type Database = {
           diagnosis_result?: Json | null
           email: string
           id?: string
+          name?: string | null
+          phone?: string | null
+          problem_description?: string | null
           recommended_product?: string | null
           segment: string
           team_size: string
@@ -176,6 +182,9 @@ export type Database = {
           diagnosis_result?: Json | null
           email?: string
           id?: string
+          name?: string | null
+          phone?: string | null
+          problem_description?: string | null
           recommended_product?: string | null
           segment?: string
           team_size?: string
