@@ -13,6 +13,7 @@ import { useAnalytics } from "./hooks/useAnalytics";
 import { usePageTracking } from "./hooks/usePageTracking";
 import CookieConsent from "./components/CookieConsent";
 import ScrollToTop from "./components/ScrollToTop";
+import ActionPlanPopup from "./components/ActionPlanPopup";
 
 // Lazy load pages
 const SolucoesSobMedida = lazy(() => import("./pages/SolucoesSobMedida"));
