@@ -49,6 +49,10 @@ export default {
 					foreground: 'hsl(var(--card-foreground))',
 					border: 'hsl(var(--card-border))',
 				},
+				popover: {
+					DEFAULT: 'hsl(var(--popover))',
+					foreground: 'hsl(var(--popover-foreground))',
+				},
 				button: {
 					secondary: 'hsl(var(--button-secondary))',
 					'secondary-hover': 'hsl(var(--button-secondary-hover))',
