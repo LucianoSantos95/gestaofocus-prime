@@ -1,0 +1,200 @@
+import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2.49.1";
+
+const corsHeaders = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Headers":
+    "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
+};
+
+serve(async (req) => {
+  if (req.method === "OPTIONS") {
+    return new Response(null, { headers: corsHeaders });
+  }
+
+  try {
+    const { email, segment, team_size, challenges } = await req.json();
+
+    // Validate inputs
+    if (!email || !segment || !team_size || !challenges || !Array.isArray(challenges) || challenges.length === 0) {
+      return new Response(
+        JSON.stringify({ error: "Todos os campos são obrigatórios." }),
+        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    if (!/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(email)) {
+      return new Response(
+        JSON.stringify({ error: "Email inválido." }),
+        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
+    if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY not configured");
+
+    const challengeLabels: Record<string, string> = {
+      projetos_atrasados: "Projetos atrasados e sem visibilidade",
+      financeiro_baguncado: "Financeiro desorganizado",
+      sem_processos: "Falta de processos definidos",
+      equipe_desalinhada: "Equipe desalinhada e sem padrão",
+    };
+
+    const challengeText = challenges.map((c: string) => challengeLabels[c] || c).join(", ");
+
+    const systemPrompt = `Você é um consultor especialista em gestão empresarial e produtividade operacional. Gere um diagnóstico preciso e ações práticas para empresas.
+
+REGRAS:
+- Responda APENAS com o JSON solicitado, sem markdown
+- As ações devem ser ESPECÍFICAS para o segmento e tamanho da equipe
+- Cada ação deve ser implementável em até 7 dias sem ferramentas pagas
+- O score deve refletir a gravidade real dos problemas
+- A projeção deve ser realista e conservadora
+- recommended_product deve ser "hub-empresarial" para equipes de 2+ pessoas ou "solucoes-sob-medida" para casos complexos`;
+
+    const userPrompt = `Gere um plano de ação para:
+- Segmento: ${segment}
+- Equipe: ${team_size} pessoas
+- Desafios: ${challengeText}
+
+Retorne EXATAMENTE este JSON:
+{
+  "scores": {
+    "projetos": <0-100>,
+    "financeiro": <0-100>,
+    "processos": <0-100>,
+    "equipe": <0-100>
+  },
+  "actions": [
+    {
+      "title": "<ação específica>",
+      "description": "<como implementar em 1-2 frases>",
+      "timeframe": "<prazo: ex: 2 dias>"
+    },
+    {
+      "title": "<ação específica>",
+      "description": "<como implementar>",
+      "timeframe": "<prazo>"
+    },
+    {
+      "title": "<ação específica>",
+      "description": "<como implementar>",
+      "timeframe": "<prazo>"
+    }
+  ],
+  "projection": "<resultado esperado em 30 dias, 1 frase>",
+  "recommended_product": "<hub-empresarial ou solucoes-sob-medida>"
+}`;
+
+    const aiResponse = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${LOVABLE_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        model: "google/gemini-2.5-flash",
+        messages: [
+          { role: "system", content: systemPrompt },
+          { role: "user", content: userPrompt },
+        ],
+        tools: [
+          {
+            type: "function",
+            function: {
+              name: "generate_action_plan",
+              description: "Generate a structured business action plan",
+              parameters: {
+                type: "object",
+                properties: {
+                  scores: {
+                    type: "object",
+                    properties: {
+                      projetos: { type: "number" },
+                      financeiro: { type: "number" },
+                      processos: { type: "number" },
+                      equipe: { type: "number" },
+                    },
+                    required: ["projetos", "financeiro", "processos", "equipe"],
+                  },
+                  actions: {
+                    type: "array",
+                    items: {
+                      type: "object",
+                      properties: {
+                        title: { type: "string" },
+                        description: { type: "string" },
+                        timeframe: { type: "string" },
+                      },
+                      required: ["title", "description", "timeframe"],
+                    },
+                  },
+                  projection: { type: "string" },
+                  recommended_product: { type: "string", enum: ["hub-empresarial", "solucoes-sob-medida"] },
+                },
+                required: ["scores", "actions", "projection", "recommended_product"],
+                additionalProperties: false,
+              },
+            },
+          },
+        ],
+        tool_choice: { type: "function", function: { name: "generate_action_plan" } },
+      }),
+    });
+
+    if (!aiResponse.ok) {
+      const status = aiResponse.status;
+      if (status === 429) {
+        return new Response(JSON.stringify({ error: "Muitas solicitações. Tente novamente em instantes." }), {
+          status: 429, headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+      if (status === 402) {
+        return new Response(JSON.stringify({ error: "Serviço temporariamente indisponível." }), {
+          status: 402, headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+      const errText = await aiResponse.text();
+      console.error("AI gateway error:", status, errText);
+      throw new Error("AI gateway error");
+    }
+
+    const aiData = await aiResponse.json();
+    const toolCall = aiData.choices?.[0]?.message?.tool_calls?.[0];
+    
+    let diagnosisResult;
+    if (toolCall?.function?.arguments) {
+      diagnosisResult = typeof toolCall.function.arguments === "string"
+        ? JSON.parse(toolCall.function.arguments)
+        : toolCall.function.arguments;
+    } else {
+      // Fallback: try parsing content directly
+      const content = aiData.choices?.[0]?.message?.content || "";
+      diagnosisResult = JSON.parse(content);
+    }
+
+    // Save lead to database
+    const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
+    const supabaseKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+    const supabase = createClient(supabaseUrl, supabaseKey);
+
+    await supabase.from("diagnosis_leads").insert({
+      email,
+      segment,
+      team_size,
+      challenges,
+      diagnosis_result: diagnosisResult,
+      recommended_product: diagnosisResult.recommended_product,
+    });
+
+    return new Response(JSON.stringify(diagnosisResult), {
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
+    });
+  } catch (e) {
+    console.error("generate-action-plan error:", e);
+    return new Response(
+      JSON.stringify({ error: "Erro ao gerar o plano. Tente novamente." }),
+      { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+    );
+  }
+});
