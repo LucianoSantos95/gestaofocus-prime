@@ -113,6 +113,7 @@ function AppLayout() {
   const isDashboard = location.pathname.startsWith("/dashboard");
   const isAuth = location.pathname.startsWith("/auth");
   const isSolucoes = location.pathname === "/solucoes-sob-medida" || location.pathname === "/hub-empresarial";
+  const isHomepage = location.pathname === "/";
 
   // SolucoesSobMedida has its own Nav/Footer embedded
   const showNav = !isDashboard && !isAuth && !isSolucoes;
@@ -210,6 +211,7 @@ function AppLayout() {
       </main>
       {showFooter && <Footer />}
       {isDashboard ? <DashboardChatButton /> : <ChatWidget />}
+      {isHomepage && <ActionPlanPopup />}
     </div>
   );
 }
