@@ -211,7 +211,7 @@ function AppLayout() {
       </main>
       {showFooter && <Footer />}
       {isDashboard ? <DashboardChatButton /> : <ChatWidget />}
-      {isHomepage && <ActionPlanPopup />}
+      {!isDashboard && !isAuth && <ActionPlanPopup />}
     </div>
   );
 }
