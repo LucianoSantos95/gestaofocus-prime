@@ -192,6 +192,7 @@ function AppLayout() {
             <Route path="/docs" element={<Documentacao />} />
             <Route path="/status" element={<StatusPlataforma />} />
             <Route path="/contato" element={<Contato />} />
+            <Route path="/faq" element={<FAQ />} />
             <Route path="/sistemas-gratuitos" element={<SistemasGratuitos />} />
 
             {/* Auth Routes */}

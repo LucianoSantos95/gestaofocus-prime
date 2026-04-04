@@ -9,6 +9,7 @@ const navItems = [
   { name: "Hub Empresarial", href: "/hub-empresarial" },
   { name: "Blog", href: "/blog" },
   { name: "Sobre", href: "/sobre-focus" },
+  { name: "Contato", href: "/contato" },
 ];
 
 const Navigation = () => {
