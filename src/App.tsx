@@ -27,6 +27,7 @@ const CentralAjuda = lazy(() => import("./pages/CentralAjuda"));
 const Documentacao = lazy(() => import("./pages/Documentacao"));
 const StatusPlataforma = lazy(() => import("./pages/StatusPlataforma"));
 const Contato = lazy(() => import("./pages/Contato"));
+const FAQ = lazy(() => import("./pages/FAQ"));
 const SistemasGratuitos = lazy(() => import("./pages/SistemasGratuitos"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
