@@ -340,7 +340,27 @@ const Index = () => {
       </section>
 
       {/* ===========================
-          SEÇÃO 5 — BLOG
+          SEÇÃO 4.5 — NÚMEROS
+      =========================== */}
+      <section className="py-16 bg-background">
+        <div className="container-focus">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto text-center">
+            {[
+              { number: "43+", label: "Empresas atendidas" },
+              { number: "150+", label: "Sistemas entregues" },
+              { number: "98%", label: "Satisfação dos clientes" },
+              { number: "30", label: "Dias de entrega média" },
+            ].map((stat, index) => (
+              <div key={index} className="animate-fade-in">
+                <div className="text-3xl lg:text-4xl font-bold text-primary mb-1">{stat.number}</div>
+                <p className="text-foreground-muted text-sm">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===========================
       =========================== */}
       <section className="section-padding bg-background">
         <div className="container-focus">
