@@ -1,90 +1,117 @@
+## Plano: Melhorias Completas de SEO, UX, UI, Performance e Trust
 
+Este é um projeto grande. Para manter qualidade, vou dividir em **3 fases** executáveis em sequência.
 
-## Plano: Popup Automático de Plano de Ação com IA
+---
 
-### Dados de sessão (base para o timing)
-- **Mediana de sessão**: 28.4 segundos
-- **P25 (25% saem antes)**: 5.4 segundos
-- **Média**: 106 segundos
+### FASE 1 — SEO e Schema Markup (Prioridade Alta)
 
-**Decisão**: O popup aparecerá após **15 segundos** — tempo suficiente para o visitante ter visto o conteúdo, mas antes de metade deles saírem (mediana 28s). Não aparecerá se o usuário já viu neste session.
+**1.1 Schema JSON-LD global (Organization + LocalBusiness)**
 
-### O que será construído
+- Adicionar no `SEOHead.tsx` um schema `Organization` para todas as páginas
+- Adicionar schema `Service` nas páginas de produto (Soluções Sob Medida, Hub Empresarial)
+- Adicionar schema `FAQPage` na Central de Ajuda e na nova página FAQ
 
-Um popup com visual impactante que aparece automaticamente após 15 segundos na homepage. O visitante preenche 4 campos rápidos, a IA gera um plano de ação personalizado, e ele recebe o resultado na tela com opção de download em PDF.
+**1.2 Meta descriptions ausentes**
 
-### Fluxo do usuário
+- `CentralAjuda.tsx` — não tem SEOHead, adicionar
+- `Documentacao.tsx`, `StatusPlataforma.tsx` — verificar e corrigir
 
-```text
-Visitante entra na homepage
-        │
-   [15 segundos]
-        │
-        ▼
-  Popup abre automaticamente
-  "Descubra o que está travando sua empresa"
-  "Responda 4 perguntas e receba um plano gratuito"
-        │
-        ▼
-  Formulário (4 campos):
-  • Segmento (Agência / Consultoria / Escritório / Outro)
-  • Tamanho da equipe (Só eu / 2-5 / 6-15 / 16+)
-  • Maior dor (checkboxes: Projetos atrasados, Financeiro bagunçado, Sem processos, Equipe desalinhada)
-  • Email (para receber o plano)
-        │
-        ▼
-  [Loading: "Analisando seu negócio..."]
-        │
-        ▼
-  Edge Function generate-action-plan:
-  • IA gera diagnóstico + ações imediatas
-  • Salva lead na tabela diagnosis_leads
-  • Retorna resultado em JSON
-        │
-        ▼
-  Tela de resultado no próprio popup:
-  • Score por área (barras visuais)
-  • 3 ações imediatas
-  • Botão: "Baixar PDF completo" (gera PDF no client com jsPDF)
-  • CTA: "Quer automatizar tudo isso? Conheça [produto recomendado]"
-```
+**1.3 Hierarquia de headings**
 
-### Implementação técnica
+- Auditar todas as páginas para garantir H1 único + hierarquia correta (H2 > H3)
+- Footer: trocar `<h4>` por `<p className="font-semibold">`
 
-#### 1. Tabela `diagnosis_leads` (migration)
-- id, email, segment, team_size, challenges (text[]), diagnosis_result (jsonb), recommended_product (text), created_at
-- RLS: insert público, select apenas admin
+**1.4 Sitemap atualizado**
 
-#### 2. Edge Function `generate-action-plan`
-- Recebe: segment, team_size, challenges
-- Chama Lovable AI (gemini-2.5-flash) com prompt estruturado
-- Retorna JSON com: score por área, 3 ações imediatas, recomendação de produto, projeção de resultado
-- Salva lead no banco
+- Adicionar `/contato` e qualquer rota faltante ao sitemap.xml
+- Atualizar `lastmod` para data atual
 
-#### 3. Componente `ActionPlanPopup.tsx`
-- Popup com glassmorphism e animações (estilo similar ao ApplicationFormModal)
-- Timer de 15 segundos + controle via sessionStorage
-- Formulário step-by-step (2 steps: dados + loading/resultado)
-- Geração de PDF no client usando jsPDF (instalação do pacote)
-- Não aparece se o ExitIntentPopup ou TimeBasedPopup já foram exibidos
+---
 
-#### 4. Integração no `App.tsx`
-- Renderizar `ActionPlanPopup` apenas na rota `/` (homepage)
-- Coordenar com popups existentes via sessionStorage
+### FASE 2 — UX: FAQ, Breadcrumbs, Formulário e Navegação
+
+**2.1 Página FAQ dedicada (`/faq`)**
+
+- Criar `src/pages/FAQ.tsx` com perguntas organizadas por categoria
+- Schema `FAQPage` integrado
+- Categorias: Soluções Sob Medida, Hub Empresarial, Preços, Suporte
+
+**2.2 Breadcrumbs nas páginas internas**
+
+- Criar componente `PageBreadcrumb.tsx` reutilizável (já existe `BlogBreadcrumb`)
+- Adicionar em: Soluções, Hub, Sobre, Contato, FAQ, Sistemas Gratuitos
+
+**2.3 Simplificar navegação**
+
+- Menu atual tem 4 itens + CTA — já está bom, mas adicionar "Contato" como 5o item
+- Mobile: manter igual
+
+**2.4 Formulário de contato**
+
+- Já existe em `/contato` com 3 campos — adicionar campo "Telefone" e integrar com a tabela `diagnosis_leads` ou criar tabela `contact_messages`
+- Enviar dados para o banco ao invés de simular
+
+**2.5 Seção "Números" na homepage**
+
+- Adicionar entre Prova Social e Blog: contadores animados (43+ empresas, 150+ sistemas, 98% satisfação, 30 dias entrega)
+
+---
+
+### FASE 3 — UI, Performance e Trust
+
+**3.1 Melhorias de tipografia e espaçamento**
+
+- Garantir `text-base` (16px) como mínimo no corpo
+- Aumentar padding entre seções: `py-20 md:py-28` (padrão atual) → `py-24 md:py-32`
+
+**3.2 CTAs mais visíveis**
+
+- Criar variante `btn-cta` com cor emerald/verde para CTAs secundários
+- Garantir contraste WCAG AA em todos os botões
+
+**3.3 Seção "Logos de Clientes" na homepage**
+
+- Adicionar faixa de logos entre Hero e Problema (estilo "Trusted by")
+- Usar ícones representativos de setores (já tem TrustedBySection/TrustedByMini)
+
+**3.4 Performance**
+
+- Lazy loading já está implementado para imagens e páginas
+- Adicionar `loading="lazy"` em imagens do Footer e seções abaixo do fold
+- Cache headers já configurados em `_headers`
+
+**3.5 Schema Organization no index.html**
+
+- Adicionar schema `Organization` estático no `<head>` do index.html para crawlers
+
+---
 
 ### Arquivos envolvidos
 
-| Arquivo | Ação |
-|---|---|
-| `supabase/migrations/` | Criar tabela `diagnosis_leads` |
-| `supabase/functions/generate-action-plan/index.ts` | Edge Function com IA |
-| `src/components/ActionPlanPopup.tsx` | Novo componente principal |
-| `src/App.tsx` | Adicionar popup na homepage |
-| `package.json` | Adicionar `jspdf` para geração de PDF no client |
 
-### Coordenação de popups
-O popup NÃO aparece se:
-- Já foi exibido nesta sessão (`sessionStorage`)
-- O ExitIntentPopup ou TimeBasedPopup já estão abertos
-- O visitante está preenchendo o ApplicationFormModal
+| Arquivo                             | Ação                                          |
+| ----------------------------------- | --------------------------------------------- |
+| `src/components/SEOHead.tsx`        | Adicionar schema Organization global          |
+| `src/pages/FAQ.tsx`                 | Nova página FAQ com schema FAQPage            |
+| `src/components/PageBreadcrumb.tsx` | Novo componente breadcrumb reutilizável       |
+| `src/pages/Index.tsx`               | Seção números, logos de clientes, espaçamento |
+| `src/pages/CentralAjuda.tsx`        | Adicionar SEOHead                             |
+| `src/components/Navigation.tsx`     | Adicionar "Contato" ao menu                   |
+| `src/components/Footer.tsx`         | Semântica de headings                         |
+| `src/App.tsx`                       | Rota `/faq`                                   |
+| `src/index.css`                     | Ajustes de tipografia e espaçamento           |
+| `src/pages/Contato.tsx`             | Campo telefone + salvar no banco              |
+| `public/sitemap.xml`                | Adicionar `/faq`, atualizar datas             |
+| `index.html`                        | Schema Organization estático                  |
+| `supabase/migrations/`              | Tabela `contact_messages`                     |
 
+
+### O que NÃO muda
+
+- Paleta de cores (já coerente com 3 cores: navy/dark, azul primary, emerald)
+- Imagens de produto (já são mockups profissionais)
+- Lazy loading e code splitting (já implementados)
+- Cache headers (já configurados)  
+  
+Quando finalizar uma fase indique um apalavra chave para seguirmos para a próxima, podeos usar "Próxima Fase''
