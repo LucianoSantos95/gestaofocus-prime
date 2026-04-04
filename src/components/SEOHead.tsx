@@ -11,7 +11,25 @@ interface SEOHeadProps {
   author?: string;
   keywords?: string;
   noindex?: boolean;
+  faqItems?: { question: string; answer: string }[];
 }
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Focus Gestão Inteligente',
+  url: 'https://focusinteligente.com.br',
+  logo: 'https://focusinteligente.com.br/lovable-uploads/focus-logo.png',
+  description: 'Sistemas sob medida e plataforma de gestão para agências, consultorias e prestadores de serviço.',
+  email: 'contato@focusinteligente.com.br',
+  sameAs: [],
+  contactPoint: {
+    '@type': 'ContactPoint',
+    email: 'contato@focusinteligente.com.br',
+    contactType: 'customer service',
+    availableLanguage: 'Portuguese',
+  },
+};
 
 const SEOHead = ({
   title,
@@ -24,52 +42,52 @@ const SEOHead = ({
   author = 'Focus Gestão Inteligente',
   keywords,
   noindex = false,
+  faqItems,
 }: SEOHeadProps) => {
   const fullCanonical = canonical.startsWith('http') 
     ? canonical 
     : `https://focusinteligente.com.br${canonical}`;
 
-  const structuredData = type === 'article' ? {
+  const pageSchema = type === 'article' ? {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: title,
-    description: description,
-    image: image,
-    author: {
-      '@type': 'Organization',
-      name: author,
-    },
+    description,
+    image,
+    author: { '@type': 'Organization', name: author },
     publisher: {
       '@type': 'Organization',
       name: 'Focus Gestão Inteligente',
-      logo: {
-        '@type': 'ImageObject',
-        url: 'https://focusinteligente.com.br/lovable-uploads/focus-logo.png',
-      },
+      logo: { '@type': 'ImageObject', url: 'https://focusinteligente.com.br/lovable-uploads/focus-logo.png' },
     },
     datePublished: publishedTime,
     dateModified: modifiedTime || publishedTime,
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': fullCanonical,
-    },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': fullCanonical },
   } : type === 'product' ? {
     '@context': 'https://schema.org',
-    '@type': 'Product',
+    '@type': 'Service',
     name: title,
-    description: description,
-    image: image,
-    brand: {
-      '@type': 'Organization',
-      name: 'Focus Gestão Inteligente',
-    },
+    description,
+    image,
+    provider: { '@type': 'Organization', name: 'Focus Gestão Inteligente' },
+    areaServed: { '@type': 'Country', name: 'BR' },
   } : {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'Focus Gestão Inteligente',
     url: 'https://focusinteligente.com.br',
-    description: description,
+    description,
   };
+
+  const faqSchema = faqItems && faqItems.length > 0 ? {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqItems.map(item => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: { '@type': 'Answer', text: item.answer },
+    })),
+  } : null;
 
   return (
     <Helmet>
@@ -81,7 +99,6 @@ const SEOHead = ({
       
       {noindex && <meta name="robots" content="noindex, nofollow" />}
       
-      {/* Open Graph */}
       <meta property="og:type" content={type} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
@@ -90,13 +107,11 @@ const SEOHead = ({
       <meta property="og:locale" content="pt_BR" />
       <meta property="og:site_name" content="Focus Gestão Inteligente" />
       
-      {/* Twitter Card */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
       
-      {/* Article specific */}
       {type === 'article' && publishedTime && (
         <meta property="article:published_time" content={publishedTime} />
       )}
@@ -107,10 +122,17 @@ const SEOHead = ({
         <meta property="article:author" content={author} />
       )}
       
-      {/* Structured Data */}
       <script type="application/ld+json">
-        {JSON.stringify(structuredData)}
+        {JSON.stringify(organizationSchema)}
       </script>
+      <script type="application/ld+json">
+        {JSON.stringify(pageSchema)}
+      </script>
+      {faqSchema && (
+        <script type="application/ld+json">
+          {JSON.stringify(faqSchema)}
+        </script>
+      )}
     </Helmet>
   );
 };
