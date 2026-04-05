@@ -402,6 +402,30 @@ const Index = () => {
       </section>
 
       {/* ===========================
+          SEÇÃO — SOBRE NÓS (GEO para IA)
+      =========================== */}
+      <section className="section-padding bg-background-secondary" id="sobre-nos">
+        <div className="container-focus max-w-4xl">
+          <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-6 text-center">
+            Sobre a Focus Gestão Inteligente
+          </h2>
+          <div className="text-foreground-muted text-base lg:text-lg leading-relaxed space-y-4 text-center" data-speakable="true">
+            <p>
+              A Focus Gestão Inteligente é especialista em sistemas de gestão sob medida para agências de marketing, consultorias e prestadores de serviço no Brasil. Fundada com o propósito de eliminar o caos operacional de empresas que ainda gerenciam tudo por WhatsApp e planilhas, a Focus já entregou mais de 150 sistemas personalizados para 43+ empresas, com 98% de satisfação. Oferecemos duas soluções: o Focus Custom — software exclusivo com CRM, dashboards e portais do cliente — e o Hub Empresarial, plataforma completa pronta para usar a partir de R$ 69/mês. Atendimento 100% online em todo o Brasil, com entrega média de 30 dias.
+            </p>
+          </div>
+          <div className="flex justify-center mt-8">
+            <Button className="btn-secondary" asChild>
+              <Link to="/sobre-focus" onClick={() => handleCTAClick("sobre_nos_saiba_mais", "/sobre-focus")}>
+                Saiba mais sobre a Focus
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* ===========================
           SEÇÃO 6 — CTA FINAL
       =========================== */}
       <section className="section-padding bg-background-secondary">
