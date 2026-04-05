@@ -12,14 +12,18 @@ interface SEOHeadProps {
   keywords?: string;
   noindex?: boolean;
   faqItems?: { question: string; answer: string }[];
+  breadcrumbItems?: { name: string; url: string }[];
+  speakable?: string[];
 }
+
+const DOMAIN = 'https://focusinteligente.com.br';
 
 const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'Focus Gestão Inteligente',
-  url: 'https://focusinteligente.com.br',
-  logo: 'https://focusinteligente.com.br/lovable-uploads/focus-logo.png',
+  url: DOMAIN,
+  logo: `${DOMAIN}/lovable-uploads/focus-logo.png`,
   description: 'Sistemas sob medida e plataforma de gestão para agências, consultorias e prestadores de serviço.',
   email: 'contato@focusinteligente.com.br',
   sameAs: [],
@@ -35,7 +39,7 @@ const SEOHead = ({
   title,
   description,
   canonical,
-  image = 'https://focusinteligente.com.br/lovable-uploads/focus-logo.png',
+  image = `${DOMAIN}/lovable-uploads/focus-logo.png`,
   type = 'website',
   publishedTime,
   modifiedTime,
@@ -43,10 +47,12 @@ const SEOHead = ({
   keywords,
   noindex = false,
   faqItems,
+  breadcrumbItems,
+  speakable,
 }: SEOHeadProps) => {
   const fullCanonical = canonical.startsWith('http') 
     ? canonical 
-    : `https://focusinteligente.com.br${canonical}`;
+    : `${DOMAIN}${canonical}`;
 
   const pageSchema = type === 'article' ? {
     '@context': 'https://schema.org',
@@ -58,7 +64,7 @@ const SEOHead = ({
     publisher: {
       '@type': 'Organization',
       name: 'Focus Gestão Inteligente',
-      logo: { '@type': 'ImageObject', url: 'https://focusinteligente.com.br/lovable-uploads/focus-logo.png' },
+      logo: { '@type': 'ImageObject', url: `${DOMAIN}/lovable-uploads/focus-logo.png` },
     },
     datePublished: publishedTime,
     dateModified: modifiedTime || publishedTime,
@@ -75,7 +81,7 @@ const SEOHead = ({
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'Focus Gestão Inteligente',
-    url: 'https://focusinteligente.com.br',
+    url: DOMAIN,
     description,
   };
 
@@ -89,6 +95,31 @@ const SEOHead = ({
     })),
   } : null;
 
+  const breadcrumbSchema = breadcrumbItems && breadcrumbItems.length > 0 ? {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: DOMAIN },
+      ...breadcrumbItems.map((item, i) => ({
+        '@type': 'ListItem',
+        position: i + 2,
+        name: item.name,
+        item: item.url.startsWith('http') ? item.url : `${DOMAIN}${item.url}`,
+      })),
+    ],
+  } : null;
+
+  const speakableSchema = speakable && speakable.length > 0 ? {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: title,
+    speakable: {
+      '@type': 'SpeakableSpecification',
+      cssSelector: speakable,
+    },
+    url: fullCanonical,
+  } : null;
+
   return (
     <Helmet>
       <html lang="pt-BR" />
@@ -96,6 +127,8 @@ const SEOHead = ({
       <meta name="description" content={description} />
       {keywords && <meta name="keywords" content={keywords} />}
       <link rel="canonical" href={fullCanonical} />
+      <link rel="alternate" hrefLang="pt-BR" href={fullCanonical} />
+      <link rel="alternate" hrefLang="x-default" href={fullCanonical} />
       
       {noindex && <meta name="robots" content="noindex, nofollow" />}
       
@@ -131,6 +164,16 @@ const SEOHead = ({
       {faqSchema && (
         <script type="application/ld+json">
           {JSON.stringify(faqSchema)}
+        </script>
+      )}
+      {breadcrumbSchema && (
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbSchema)}
+        </script>
+      )}
+      {speakableSchema && (
+        <script type="application/ld+json">
+          {JSON.stringify(speakableSchema)}
         </script>
       )}
     </Helmet>

@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="container-focus py-12">
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           <div>
-            <img src="/lovable-uploads/focus-logo.png" alt="Focus Gestão Inteligente" className="h-7 mb-4" loading="lazy" />
+            <img src="/lovable-uploads/focus-logo.png" alt="Focus Gestão Inteligente — sistemas sob medida para agências e consultorias" width="120" height="32" className="h-7 mb-4" loading="lazy" />
             <p className="text-foreground-muted text-sm leading-relaxed">
               Gestão inteligente para agências, consultorias e prestadores de serviço. Sistemas sob medida ou plataforma pronta para usar.
             </p>
