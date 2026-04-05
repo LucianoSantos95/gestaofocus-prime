@@ -55,6 +55,8 @@ const FAQ = () => {
         canonical="/faq"
         keywords="FAQ gestão empresarial, perguntas frequentes Focus, dúvidas sistemas Notion"
         faqItems={allFaqItems}
+        breadcrumbItems={[{ name: 'FAQ', url: '/faq' }]}
+        speakable={['h1', '.text-foreground-muted']}
       />
       <PageBreadcrumb items={[{ label: "FAQ" }]} />
 

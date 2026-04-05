@@ -62,6 +62,7 @@ const Index = () => {
         canonical="/"
         keywords="gestão para agências, sistema para consultoria, software para prestadores de serviço, gestão empresarial, CRM agência, dashboard consultoria"
         type="website"
+        speakable={['[data-speakable]', 'h1', '.hero-subtitle']}
       />
 
       {/* ===========================
