@@ -57,14 +57,6 @@ export default {
 					secondary: 'hsl(var(--button-secondary))',
 					'secondary-hover': 'hsl(var(--button-secondary-hover))',
 				},
-				cta: {
-					DEFAULT: 'hsl(var(--cta))',
-					hover: 'hsl(var(--cta-hover))',
-				},
-				destructive: {
-					DEFAULT: 'hsl(var(--destructive))',
-					foreground: 'hsl(var(--destructive-foreground))',
-				},
 			},
 			backgroundImage: {
 				'gradient-primary': 'var(--gradient-primary)',
