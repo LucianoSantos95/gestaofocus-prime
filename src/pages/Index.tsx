@@ -144,7 +144,7 @@ const Index = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => handleCTAClick("hero_fale_especialista", "whatsapp")}
-                  className="inline-flex items-center justify-center gap-2 rounded-xl px-8 py-4 font-semibold text-white bg-[#EF4444] hover:bg-[#DC2626] transition-all hover:-translate-y-0.5 shadow-lg hover:shadow-xl min-h-[48px] text-base"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl px-8 py-4 font-semibold text-white btn-cta-red transition-all hover:-translate-y-0.5 shadow-lg hover:shadow-xl min-h-[48px] text-base"
                 >
                   <Phone className="w-5 h-5" />
                   Fale com Especialista
@@ -509,7 +509,7 @@ const Index = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => handleCTAClick("cta_final_especialista", "whatsapp")}
-                  className="inline-flex items-center justify-center gap-2 rounded-xl px-8 py-4 font-semibold text-white bg-[#EF4444] hover:bg-[#DC2626] transition-all hover:-translate-y-0.5 min-h-[48px] text-base"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl px-8 py-4 font-semibold text-white btn-cta-red transition-all hover:-translate-y-0.5 min-h-[48px] text-base"
                 >
                   <Phone className="w-5 h-5" />
                   Fale com Especialista

@@ -20,7 +20,7 @@ const StickyMobileCTA = () => {
         target="_blank"
         rel="noopener noreferrer"
         onClick={() => trackEvent("cta_click", { event_category: "conversion", event_label: "sticky_mobile_cta" })}
-        className="flex items-center justify-center gap-2 w-full py-4 rounded-xl bg-[#EF4444] hover:bg-[#DC2626] text-white font-semibold text-base transition-colors min-h-[48px]"
+        className="flex items-center justify-center gap-2 w-full py-4 rounded-xl btn-cta-red text-white font-semibold text-base transition-colors min-h-[48px]"
       >
         <Phone className="w-5 h-5" />
         Fale com Especialista Agora

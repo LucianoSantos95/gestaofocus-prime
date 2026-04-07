@@ -89,7 +89,7 @@ const QuickLeadForm = () => {
       <Button
         onClick={handleNext}
         disabled={isSubmitting}
-        className="w-full h-12 text-base font-semibold bg-[#EF4444] hover:bg-[#DC2626] text-white rounded-xl"
+        className="w-full h-12 text-base font-semibold btn-cta-red text-white rounded-xl"
       >
         {isSubmitting ? "Enviando..." : step < fields.length - 1 ? "Próximo →" : (
           <>
