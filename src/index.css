@@ -33,6 +33,14 @@ Todas as cores DEVEM ser HSL para consistência.
     --accent-foreground: 210 40% 98%;
     --accent-hover: 210 10% 15%;
     
+    /* CTA Red */
+    --cta: 0 84% 60%;
+    --cta-hover: 0 84% 52%;
+    
+    /* Destructive */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    
     /* UI Elements */
     --card: 210 10% 9%;
     --card-foreground: 210 40% 98%;
@@ -142,6 +150,24 @@ Todas as cores DEVEM ser HSL para consistência.
   .btn-cta:hover {
     transform: translateY(-2px);
     box-shadow: 0 0 30px hsl(160 84% 39% / 0.3);
+  }
+
+  /* CTA Red for conversion */
+  .btn-cta-red {
+    @apply relative overflow-hidden rounded-xl px-8 py-4 font-semibold text-white min-h-[48px];
+    background: hsl(var(--cta));
+    transition: var(--transition-smooth);
+  }
+  
+  .btn-cta-red:hover {
+    background: hsl(var(--cta-hover));
+    transform: translateY(-2px);
+    box-shadow: 0 0 30px hsl(var(--cta) / 0.4);
+  }
+
+  /* Safe area for sticky mobile CTA */
+  .safe-area-bottom {
+    padding-bottom: max(12px, env(safe-area-inset-bottom));
   }
   
   /* Section spacing */

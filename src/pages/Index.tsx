@@ -4,6 +4,10 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import SEOHead from "@/components/SEOHead";
 import ApplicationFormModal from "@/components/ApplicationFormModal";
+import QuickLeadForm from "@/components/QuickLeadForm";
+import ResultadosReais from "@/components/ResultadosReais";
+import StickyMobileCTA from "@/components/StickyMobileCTA";
+import PageBreadcrumb from "@/components/PageBreadcrumb";
 import {
   ArrowRight,
   AlertTriangle,
@@ -20,8 +24,16 @@ import {
   Building2,
   Briefcase,
   Star,
+  Phone,
+  ChevronDown,
 } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 import hubEmpresarialPro from "@/assets/hub-empresarial-pro.png";
 import hubLogo from "@/assets/hub-logo.png";
@@ -44,6 +56,29 @@ const blogArticles = [
   },
 ];
 
+const homeFaqs = [
+  {
+    q: "Quanto tempo leva para ter meu sistema funcionando?",
+    a: "Projetos sob medida são entregues em até 30 dias. O Hub Empresarial tem acesso imediato após a assinatura.",
+  },
+  {
+    q: "Preciso saber programar para usar?",
+    a: "Não. Todas as soluções Focus são visuais e intuitivas. Oferecemos treinamento completo na entrega.",
+  },
+  {
+    q: "E se eu não gostar do resultado?",
+    a: "Oferecemos garantia de satisfação. Se o sistema não atender suas expectativas em 30 dias, devolvemos seu investimento.",
+  },
+  {
+    q: "Funciona para empresas pequenas?",
+    a: "Sim! A maioria dos nossos clientes são empresas de 1 a 20 colaboradores que precisam profissionalizar a gestão.",
+  },
+  {
+    q: "Qual a diferença entre Focus Custom e Hub Empresarial?",
+    a: "O Focus Custom é um software 100% personalizado para sua empresa. O Hub Empresarial é uma plataforma pronta com módulos pré-configurados a partir de R$ 69/mês.",
+  },
+];
+
 const Index = () => {
   const [isApplicationOpen, setIsApplicationOpen] = useState(false);
 
@@ -57,91 +92,90 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title="Focus Gestão | Software para Agências e Consultorias"
-        description="Sistemas sob medida para agências, consultorias e prestadores de serviço. Pare de gerenciar no WhatsApp e planilhas. Entrega em até 30 dias."
+        title="Leads Qualificados em 30 Dias | Focus Gestão Inteligente"
+        description="Google Ads + SEO Local = Clientes pagantes. Sistemas de gestão sob medida para agências e consultorias. 200+ empresas atendidas. Fale com um especialista."
         canonical="/"
-        keywords="gestão para agências, sistema para consultoria, software para prestadores de serviço, gestão empresarial, CRM agência, dashboard consultoria"
+        keywords="gestão para agências, sistema para consultoria, software para prestadores de serviço, gestão empresarial, CRM agência, leads qualificados"
         type="website"
         speakable={['[data-speakable]', 'h1', '.hero-subtitle']}
       />
 
-      {/* ===========================
-          BARRA DE ESCASSEZ
-      =========================== */}
-      <div className="bg-primary/10 border-b border-primary/20 py-2.5 text-center pt-20">
-        <p className="text-sm font-medium text-primary">
-          <AlertTriangle className="w-4 h-4 inline mr-1.5 -mt-0.5" />
-          AGENDA ABRIL/2026: Restam apenas <span className="font-bold">2 vagas</span> para Projetos Sob Medida.
-        </p>
-      </div>
+      <StickyMobileCTA />
 
       {/* ===========================
-          SEÇÃO 1 — HERO
+          SEÇÃO 1 — HERO (Conversão 10X)
       =========================== */}
-      <section className="relative pt-24 pb-16 lg:pt-28 lg:pb-24 overflow-hidden">
+      <section className="relative pt-20 pb-16 lg:pt-24 lg:pb-24 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-background-secondary" />
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-primary/8 rounded-full blur-[120px]" />
 
         <div className="container-focus relative z-10">
-          <div className="max-w-4xl mx-auto text-center animate-fade-in">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-6">
-              Sua agência ou consultoria ainda gerencia tudo no{" "}
-              <span className="bg-gradient-primary bg-clip-text text-transparent">
-                WhatsApp e planilhas?
-              </span>
-            </h1>
-            <p className="text-base lg:text-lg text-foreground-muted mb-8 leading-relaxed max-w-2xl mx-auto">
-              Criamos sistemas sob medida para agências, consultorias e prestadores de serviço — ou acesse o Hub Empresarial, pronto para usar.
-            </p>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left — Copy */}
+            <div className="animate-fade-in">
+              {/* Social proof mini */}
+              <div className="flex items-center gap-3 mb-6">
+                <div className="flex -space-x-2">
+                  {[Building2, Briefcase, Users].map((Icon, i) => (
+                    <div key={i} className="w-8 h-8 rounded-full bg-primary/20 border-2 border-background flex items-center justify-center">
+                      <Icon className="w-4 h-4 text-primary" />
+                    </div>
+                  ))}
+                </div>
+                <span className="text-sm text-foreground-muted">
+                  <span className="text-primary font-semibold">200+</span> empresas atendidas
+                </span>
+              </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
-              <Button
-                className="btn-hero group"
-                asChild
-              >
-                <Link
-                  to="/solucoes-sob-medida"
-                  onClick={() => handleCTAClick("hero_solucoes_sob_medida", "/solucoes-sob-medida")}
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-[3.5rem] font-bold text-foreground leading-[1.1] mb-6">
+                Leads Qualificados em 30 Dias{" "}
+                <span className="bg-gradient-primary bg-clip-text text-transparent">
+                  ou Devolvemos Seu Dinheiro
+                </span>
+              </h1>
+
+              <p className="text-base lg:text-lg text-foreground-muted mb-8 leading-relaxed max-w-xl">
+                Google Ads + SEO Local = Clientes Pagantes. Sistemas sob medida para agências, consultorias e prestadores de serviço que querem escalar.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4 mb-6">
+                <a
+                  href="https://wa.me/5511916742443?text=Ol%C3%A1%2C%20quero%20falar%20com%20um%20especialista%20Focus"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => handleCTAClick("hero_fale_especialista", "whatsapp")}
+                  className="inline-flex items-center justify-center gap-2 rounded-xl px-8 py-4 font-semibold text-white btn-cta-red transition-all hover:-translate-y-0.5 shadow-lg hover:shadow-xl min-h-[48px] text-base"
                 >
-                  Conhecer Soluções Sob Medida
-                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </Button>
-              <Button
-                className="btn-secondary group"
-                asChild
-              >
-                <Link
-                  to="/hub-empresarial"
-                  onClick={() => handleCTAClick("hero_hub_empresarial", "/hub-empresarial")}
-                >
-                  Conheça o Hub Empresarial
-                  <ChevronRight className="w-5 h-5 ml-1" />
-                </Link>
-              </Button>
+                  <Phone className="w-5 h-5" />
+                  Fale com Especialista
+                </a>
+                <Button className="btn-secondary group min-h-[48px]" asChild>
+                  <Link
+                    to="/hub-empresarial"
+                    onClick={() => handleCTAClick("hero_hub_empresarial", "/hub-empresarial")}
+                  >
+                    Conheça o Hub Empresarial
+                    <ChevronRight className="w-5 h-5 ml-1" />
+                  </Link>
+                </Button>
+              </div>
+
+              <div className="flex items-center gap-4 text-foreground-muted text-sm">
+                <span className="flex items-center gap-1">
+                  <Shield className="w-4 h-4 text-emerald-400" />
+                  Garantia 30 dias
+                </span>
+                <span className="flex items-center gap-1">
+                  <CheckCircle className="w-4 h-4 text-emerald-400" />
+                  Sem fidelidade
+                </span>
+              </div>
             </div>
 
-            <p className="text-foreground-muted text-sm">
-              <Shield className="w-4 h-4 inline mr-1 -mt-0.5" />
-              Análise gratuita de viabilidade do projeto
-            </p>
-          </div>
-
-          {/* Dashboard Mockup */}
-          <div className="relative mt-12 max-w-3xl mx-auto animate-slide-up hidden lg:block">
-            <div className="relative rounded-xl overflow-hidden border border-card-border/50 shadow-elegant bg-background-elevated">
-              <img
-                src={hubEmpresarialPro}
-                alt="Dashboard de gestão para agências e consultorias - Focus Gestão Inteligente"
-                className="w-full h-auto object-cover"
-                loading="eager"
-                fetchPriority="high"
-                width={574}
-                height={260}
-              />
+            {/* Right — Lead Form */}
+            <div className="animate-slide-up">
+              <QuickLeadForm />
             </div>
-            <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-primary/15 rounded-full blur-[60px]" />
-            <div className="absolute -top-6 -left-6 w-24 h-24 bg-primary/10 rounded-full blur-[50px]" />
           </div>
         </div>
       </section>
@@ -168,8 +202,8 @@ const Index = () => {
               { icon: TrendingUp, title: "Crescimento travado", description: "A operação manual impede sua agência ou consultoria de escalar." },
             ].map((problem, index) => (
               <Card key={index} className="service-card text-center">
-                <div className="w-12 h-12 rounded-xl bg-red-500/15 flex items-center justify-center mx-auto mb-4">
-                  <problem.icon className="w-6 h-6 text-red-400" />
+                <div className="w-12 h-12 rounded-xl bg-destructive/15 flex items-center justify-center mx-auto mb-4">
+                  <problem.icon className="w-6 h-6 text-destructive" />
                 </div>
                 <h3 className="text-lg font-bold text-foreground mb-2">{problem.title}</h3>
                 <p className="text-foreground-muted text-sm">{problem.description}</p>
@@ -180,9 +214,14 @@ const Index = () => {
       </section>
 
       {/* ===========================
+          SEÇÃO — RESULTADOS REAIS
+      =========================== */}
+      <ResultadosReais />
+
+      {/* ===========================
           SEÇÃO 3 — NOSSAS SOLUÇÕES
       =========================== */}
-      <section className="section-padding bg-background">
+      <section className="section-padding bg-background-secondary">
         <div className="container-focus">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
@@ -241,7 +280,7 @@ const Index = () => {
               </div>
               <div className="mb-6">
                 <div className="w-14 h-14 rounded-xl bg-emerald-500/15 flex items-center justify-center overflow-hidden">
-                  <img src={hubLogo} alt="Hub Empresarial" className="w-10 h-10 object-contain" />
+                  <img src={hubLogo} alt="Hub Empresarial" className="w-10 h-10 object-contain" loading="lazy" width={40} height={40} />
                 </div>
               </div>
               <h3 className="text-2xl font-bold text-foreground mb-3">Hub Empresarial</h3>
@@ -264,10 +303,7 @@ const Index = () => {
                 A partir de <span className="text-foreground font-bold text-lg">R$ 69</span>{" "}
                 <span className="text-foreground-muted">/mês</span>
               </p>
-              <Button
-                className="btn-secondary w-full group"
-                asChild
-              >
+              <Button className="btn-secondary w-full group" asChild>
                 <Link
                   to="/hub-empresarial"
                   onClick={() => handleCTAClick("card_hub_empresarial", "/hub-empresarial")}
@@ -284,7 +320,7 @@ const Index = () => {
       {/* ===========================
           SEÇÃO 4 — PROVA SOCIAL
       =========================== */}
-      <section className="section-padding bg-background-secondary">
+      <section className="section-padding bg-background">
         <div className="container-focus">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
@@ -341,13 +377,13 @@ const Index = () => {
       </section>
 
       {/* ===========================
-          SEÇÃO 4.5 — NÚMEROS
+          SEÇÃO — NÚMEROS
       =========================== */}
-      <section className="py-16 bg-background">
+      <section className="py-16 bg-background-secondary">
         <div className="container-focus">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto text-center">
             {[
-              { number: "43+", label: "Empresas atendidas" },
+              { number: "200+", label: "Empresas atendidas" },
               { number: "150+", label: "Sistemas entregues" },
               { number: "98%", label: "Satisfação dos clientes" },
               { number: "30", label: "Dias de entrega média" },
@@ -362,8 +398,32 @@ const Index = () => {
       </section>
 
       {/* ===========================
+          SEÇÃO — FAQ COLAPSÍVEL
       =========================== */}
       <section className="section-padding bg-background">
+        <div className="container-focus max-w-3xl">
+          <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-12 text-center">
+            Perguntas Frequentes
+          </h2>
+          <Accordion type="single" collapsible className="space-y-3">
+            {homeFaqs.map((faq, i) => (
+              <AccordionItem key={i} value={`faq-${i}`} className="border border-card-border rounded-xl px-6 bg-background-elevated">
+                <AccordionTrigger className="text-foreground text-left text-base font-medium hover:no-underline py-5">
+                  {faq.q}
+                </AccordionTrigger>
+                <AccordionContent className="text-foreground-muted text-sm leading-relaxed">
+                  {faq.a}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
+      </section>
+
+      {/* ===========================
+          SEÇÃO — BLOG
+      =========================== */}
+      <section className="section-padding bg-background-secondary">
         <div className="container-focus">
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
@@ -389,10 +449,7 @@ const Index = () => {
           </div>
 
           <div className="text-center">
-            <Button
-              className="btn-secondary group"
-              asChild
-            >
+            <Button className="btn-secondary group" asChild>
               <Link to="/blog" onClick={() => handleCTAClick("ver_todos_artigos", "/blog")}>
                 Ver todos os artigos
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -405,14 +462,14 @@ const Index = () => {
       {/* ===========================
           SEÇÃO — SOBRE NÓS (GEO para IA)
       =========================== */}
-      <section className="section-padding bg-background-secondary" id="sobre-nos">
+      <section className="section-padding bg-background" id="sobre-nos">
         <div className="container-focus max-w-4xl">
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-6 text-center">
             Sobre a Focus Gestão Inteligente
           </h2>
           <div className="text-foreground-muted text-base lg:text-lg leading-relaxed space-y-4 text-center" data-speakable="true">
             <p>
-              A Focus Gestão Inteligente é especialista em sistemas de gestão sob medida para agências de marketing, consultorias e prestadores de serviço no Brasil. Fundada com o propósito de eliminar o caos operacional de empresas que ainda gerenciam tudo por WhatsApp e planilhas, a Focus já entregou mais de 150 sistemas personalizados para 43+ empresas, com 98% de satisfação. Oferecemos duas soluções: o Focus Custom — software exclusivo com CRM, dashboards e portais do cliente — e o Hub Empresarial, plataforma completa pronta para usar a partir de R$ 69/mês. Atendimento 100% online em todo o Brasil, com entrega média de 30 dias.
+              A Focus Gestão Inteligente é especialista em sistemas de gestão sob medida para agências de marketing, consultorias e prestadores de serviço no Brasil. Fundada com o propósito de eliminar o caos operacional de empresas que ainda gerenciam tudo por WhatsApp e planilhas, a Focus já entregou mais de 150 sistemas personalizados para 200+ empresas, com 98% de satisfação. Oferecemos duas soluções: o Focus Custom — software exclusivo com CRM, dashboards e portais do cliente — e o Hub Empresarial, plataforma completa pronta para usar a partir de R$ 69/mês. Atendimento 100% online em todo o Brasil, com entrega média de 30 dias.
             </p>
           </div>
           <div className="flex justify-center mt-8">
@@ -427,9 +484,9 @@ const Index = () => {
       </section>
 
       {/* ===========================
-          SEÇÃO 6 — CTA FINAL
+          SEÇÃO — CTA FINAL
       =========================== */}
-      <section className="section-padding bg-background-secondary">
+      <section className="section-padding bg-background-secondary mb-16 md:mb-0">
         <div className="container-focus">
           <div className="relative bg-gradient-to-r from-primary/10 to-primary-glow/10 border border-primary/20 rounded-3xl p-10 lg:p-16 overflow-hidden text-center">
             <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[100px]" />
@@ -447,20 +504,17 @@ const Index = () => {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button
-                  className="btn-hero group text-base"
-                  asChild
+                <a
+                  href="https://wa.me/5511916742443?text=Ol%C3%A1%2C%20quero%20falar%20com%20um%20especialista%20Focus"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => handleCTAClick("cta_final_especialista", "whatsapp")}
+                  className="inline-flex items-center justify-center gap-2 rounded-xl px-8 py-4 font-semibold text-white btn-cta-red transition-all hover:-translate-y-0.5 min-h-[48px] text-base"
                 >
-                  <Link to="/solucoes-sob-medida" onClick={() => handleCTAClick("cta_final_solucoes", "/solucoes-sob-medida")}>
-                    <Sparkles className="w-5 h-5 mr-2" />
-                    Conhecer Soluções Sob Medida
-                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                </Button>
-                <Button
-                  className="btn-secondary group text-base"
-                  asChild
-                >
+                  <Phone className="w-5 h-5" />
+                  Fale com Especialista
+                </a>
+                <Button className="btn-secondary group text-base min-h-[48px]" asChild>
                   <Link to="/hub-empresarial" onClick={() => handleCTAClick("cta_final_hub", "/hub-empresarial")}>
                     Conhecer Hub Empresarial
                   </Link>
