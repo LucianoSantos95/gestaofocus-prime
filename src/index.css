@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 /* Font display swap for better loading performance */
 @font-face {
@@ -10,8 +10,8 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Design system para site de gestão empresarial - Estilo ORDEM.cc 
-Todas as cores DEVEM ser HSL para consistência.
+/* Design system — Focus Gestão Inteligente
+   Todas as cores DEVEM ser HSL para consistência.
 */
 
 @layer base {
@@ -23,15 +23,23 @@ Todas as cores DEVEM ser HSL para consistência.
     --foreground: 210 40% 98%;
     --foreground-muted: 210 20% 75%;
     
-    /* Brand Colors */
-    --primary: 213 94% 68%;
-    --primary-foreground: 210 40% 98%;
-    --primary-glow: 213 100% 85%;
+    /* Brand Colors — Primary: Deep Blue */
+    --primary: 224 80% 40%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 224 90% 60%;
     
-    /* Accent Colors */
-    --accent: 210 10% 12%;
-    --accent-foreground: 210 40% 98%;
-    --accent-hover: 210 10% 15%;
+    /* CTA Red — Conversão */
+    --cta: 0 84% 60%;
+    --cta-foreground: 0 0% 100%;
+    
+    /* Accent Amber */
+    --accent: 38 92% 50%;
+    --accent-foreground: 0 0% 100%;
+    --accent-hover: 38 92% 55%;
+    
+    /* Success Green */
+    --success: 160 84% 39%;
+    --success-foreground: 0 0% 100%;
     
     /* UI Elements */
     --card: 210 10% 9%;
@@ -46,16 +54,31 @@ Todas as cores DEVEM ser HSL para consistência.
     
     --border: 210 15% 15%;
     --input: 210 10% 9%;
-    --ring: 213 94% 68%;
+    --ring: 224 80% 40%;
+    
+    /* Muted */
+    --muted: 210 10% 12%;
+    --muted-foreground: 210 20% 65%;
+    
+    /* Destructive */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    /* Secondary */
+    --secondary: 210 10% 12%;
+    --secondary-foreground: 210 40% 98%;
     
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(213 94% 68%) 0%, hsl(213 100% 85%) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(224 80% 40%) 0%, hsl(224 90% 60%) 100%);
+    --gradient-cta: linear-gradient(135deg, hsl(0 84% 60%) 0%, hsl(0 84% 50%) 100%);
     --gradient-dark: linear-gradient(180deg, hsl(210 15% 3%) 0%, hsl(210 12% 6%) 100%);
     --gradient-card: linear-gradient(145deg, hsl(210 10% 9%) 0%, hsl(210 12% 6%) 100%);
     
     /* Shadows */
     --shadow-elegant: 0 20px 25px -5px hsl(210 40% 1% / 0.5), 0 10px 10px -5px hsl(210 40% 1% / 0.2);
-    --shadow-glow: 0 0 50px hsl(213 94% 68% / 0.15);
+    --shadow-glow: 0 0 50px hsl(224 80% 40% / 0.15);
+    --shadow-cta: 0 0 40px hsl(0 84% 60% / 0.25);
+    --shadow-card-hover: 0 25px 50px -12px hsl(224 80% 40% / 0.2), 0 0 30px hsl(224 80% 40% / 0.1);
     
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -71,53 +94,70 @@ Todas as cores DEVEM ser HSL para consistência.
 
   body {
     @apply bg-background text-foreground font-['Inter',_sans-serif] antialiased;
+    font-size: 16px;
+    line-height: 1.6;
   }
 
   html {
     scroll-behavior: smooth;
+  }
+
+  /* Typography Hierarchy */
+  h1 {
+    @apply text-[32px] md:text-[40px] lg:text-[48px] font-bold leading-tight tracking-tight;
+  }
+  h2 {
+    @apply text-[24px] md:text-[28px] lg:text-[32px] font-semibold leading-tight;
+  }
+  h3 {
+    @apply text-[20px] md:text-[22px] lg:text-[24px] font-medium leading-snug;
+  }
+  p, li, span, a {
+    line-height: 1.6;
   }
 }
 
 @layer components {
   /* Hero text styles */
   .hero-title {
-    @apply text-5xl lg:text-7xl font-bold tracking-tight;
+    @apply text-[32px] md:text-[40px] lg:text-[48px] xl:text-[56px] font-extrabold tracking-tight;
     background: var(--gradient-primary);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 40px hsl(213 94% 68% / 0.3);
+    text-shadow: 0 0 40px hsl(224 80% 40% / 0.3);
   }
   
   .hero-subtitle {
-    @apply text-xl lg:text-2xl text-foreground-muted font-light leading-relaxed;
+    @apply text-lg lg:text-xl text-foreground-muted font-light leading-relaxed;
   }
   
-  /* Service card styles */
+  /* Service card styles — premium hover */
   .service-card {
     @apply relative overflow-hidden rounded-2xl p-8;
     background: var(--gradient-card);
     border: 1px solid hsl(var(--card-border));
     box-shadow: var(--shadow-elegant);
-    transition: var(--transition-smooth);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   .service-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-elegant), var(--shadow-glow);
-    border-color: hsl(var(--primary) / 0.3);
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-card-hover);
+    border-color: hsl(var(--primary) / 0.4);
   }
   
   /* Button variants */
   .btn-hero {
-    @apply relative overflow-hidden rounded-xl px-8 py-4 font-semibold;
+    @apply relative overflow-hidden rounded-xl px-8 py-4 font-semibold text-primary-foreground;
     background: var(--gradient-primary);
-    transition: var(--transition-smooth);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   .btn-hero:hover {
     transform: translateY(-2px);
     box-shadow: var(--shadow-glow);
+    filter: brightness(1.1);
   }
   
   .btn-secondary {
@@ -132,26 +172,77 @@ Todas as cores DEVEM ser HSL para consistência.
     border-color: hsl(var(--primary) / 0.3);
   }
 
-  /* CTA verde para ações de conversão */
+  /* CTA vermelho para ações de conversão alta */
   .btn-cta {
-    @apply relative overflow-hidden rounded-xl px-8 py-4 font-semibold text-white;
-    background: linear-gradient(135deg, hsl(160 84% 39%) 0%, hsl(160 84% 50%) 100%);
-    transition: var(--transition-smooth);
+    @apply relative overflow-hidden rounded-xl px-8 py-4 font-bold text-white;
+    background: var(--gradient-cta);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   .btn-cta:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: var(--shadow-cta);
+    filter: brightness(1.1);
+  }
+
+  /* CTA verde para ações de sucesso */
+  .btn-success {
+    @apply relative overflow-hidden rounded-xl px-8 py-4 font-semibold text-white;
+    background: linear-gradient(135deg, hsl(160 84% 39%) 0%, hsl(160 84% 50%) 100%);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .btn-success:hover {
     transform: translateY(-2px);
     box-shadow: 0 0 30px hsl(160 84% 39% / 0.3);
   }
   
-  /* Section spacing */
+  /* Section spacing — 64px between sections */
   .section-padding {
-    @apply py-24 lg:py-32;
+    @apply py-16 lg:py-16;
+    padding-top: 64px;
+    padding-bottom: 64px;
   }
   
-  /* Container */
+  /* Container — max-width 1200px */
   .container-focus {
-    @apply max-w-7xl mx-auto px-6 lg:px-8;
+    @apply mx-auto px-6 lg:px-8;
+    max-width: 1200px;
+  }
+
+  /* Progress bar animated */
+  .progress-animated .progress-fill {
+    transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Card hover micro-animation */
+  .card-premium {
+    @apply relative overflow-hidden rounded-2xl p-8;
+    background: var(--gradient-card);
+    border: 1px solid hsl(var(--card-border));
+    box-shadow: var(--shadow-elegant);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .card-premium::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, hsl(224 80% 40% / 0.05), transparent);
+    transition: left 0.6s ease;
+  }
+
+  .card-premium:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-card-hover);
+    border-color: hsl(var(--primary) / 0.4);
+  }
+
+  .card-premium:hover::before {
+    left: 100%;
   }
 }
 
@@ -180,11 +271,25 @@ Todas as cores DEVEM ser HSL para consistência.
 
 @keyframes glow {
   0%, 100% {
-    box-shadow: 0 0 20px hsl(213 94% 68% / 0.2);
+    box-shadow: 0 0 20px hsl(224 80% 40% / 0.2);
   }
   50% {
-    box-shadow: 0 0 40px hsl(213 94% 68% / 0.4);
+    box-shadow: 0 0 40px hsl(224 80% 40% / 0.4);
   }
+}
+
+@keyframes pulse-cta {
+  0%, 100% {
+    box-shadow: 0 0 15px hsl(0 84% 60% / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px hsl(0 84% 60% / 0.5);
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
 }
 
 .animate-fade-in {
@@ -197,4 +302,13 @@ Todas as cores DEVEM ser HSL para consistência.
 
 .animate-glow {
   animation: glow 3s ease-in-out infinite;
+}
+
+.animate-pulse-cta {
+  animation: pulse-cta 2s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background-size: 200% 100%;
+  animation: shimmer 3s linear infinite;
 }

@@ -14,7 +14,7 @@ export default {
 			center: true,
 			padding: '2rem',
 			screens: {
-				'2xl': '1400px'
+				'2xl': '1200px'
 			}
 		},
 		extend: {
@@ -39,6 +39,14 @@ export default {
 					foreground: 'hsl(var(--primary-foreground))',
 					glow: 'hsl(var(--primary-glow))',
 				},
+				cta: {
+					DEFAULT: 'hsl(var(--cta))',
+					foreground: 'hsl(var(--cta-foreground))',
+				},
+				success: {
+					DEFAULT: 'hsl(var(--success))',
+					foreground: 'hsl(var(--success-foreground))',
+				},
 				accent: {
 					DEFAULT: 'hsl(var(--accent))',
 					foreground: 'hsl(var(--accent-foreground))',
@@ -57,15 +65,30 @@ export default {
 					secondary: 'hsl(var(--button-secondary))',
 					'secondary-hover': 'hsl(var(--button-secondary-hover))',
 				},
+				muted: {
+					DEFAULT: 'hsl(var(--muted))',
+					foreground: 'hsl(var(--muted-foreground))',
+				},
+				destructive: {
+					DEFAULT: 'hsl(var(--destructive))',
+					foreground: 'hsl(var(--destructive-foreground))',
+				},
+				secondary: {
+					DEFAULT: 'hsl(var(--secondary))',
+					foreground: 'hsl(var(--secondary-foreground))',
+				},
 			},
 			backgroundImage: {
 				'gradient-primary': 'var(--gradient-primary)',
+				'gradient-cta': 'var(--gradient-cta)',
 				'gradient-dark': 'var(--gradient-dark)',
 				'gradient-card': 'var(--gradient-card)',
 			},
 			boxShadow: {
 				elegant: 'var(--shadow-elegant)',
 				glow: 'var(--shadow-glow)',
+				cta: 'var(--shadow-cta)',
+				'card-hover': 'var(--shadow-card-hover)',
 			},
 			transitionTimingFunction: {
 				smooth: 'cubic-bezier(0.4, 0, 0.2, 1)',
@@ -77,20 +100,12 @@ export default {
 			},
 			keyframes: {
 				'accordion-down': {
-					from: {
-						height: '0'
-					},
-					to: {
-						height: 'var(--radix-accordion-content-height)'
-					}
+					from: { height: '0' },
+					to: { height: 'var(--radix-accordion-content-height)' }
 				},
 				'accordion-up': {
-					from: {
-						height: 'var(--radix-accordion-content-height)'
-					},
-					to: {
-						height: '0'
-					}
+					from: { height: 'var(--radix-accordion-content-height)' },
+					to: { height: '0' }
 				}
 			},
 			animation: {
