@@ -236,16 +236,16 @@ const Index = () => {
 
             {/* Hub Empresarial */}
             <Card className="service-card relative overflow-hidden">
-              <div className="absolute top-0 right-0 bg-emerald-500/20 text-emerald-400 text-xs font-bold px-3 py-1 rounded-bl-xl">
+              <div className="absolute top-0 right-0 bg-success/20 text-success text-xs font-bold px-3 py-1 rounded-bl-xl">
                 ACESSO IMEDIATO
               </div>
               <div className="mb-6">
-                <div className="w-14 h-14 rounded-xl bg-emerald-500/15 flex items-center justify-center overflow-hidden">
+                <div className="w-14 h-14 rounded-xl bg-success/15 flex items-center justify-center overflow-hidden">
                   <img src={hubLogo} alt="Hub Empresarial" className="w-10 h-10 object-contain" />
                 </div>
               </div>
               <h3 className="text-2xl font-bold text-foreground mb-3">Hub Empresarial</h3>
-              <p className="text-emerald-400 text-sm font-medium mb-4">Plataforma de gestão para agências e consultorias</p>
+              <p className="text-success text-sm font-medium mb-4">Plataforma de gestão para agências e consultorias</p>
               <ul className="space-y-3 mb-8">
                 {[
                   "Financeiro completo",
@@ -255,7 +255,7 @@ const Index = () => {
                   "Dashboards e relatórios",
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-2 text-foreground-muted text-sm">
-                    <CheckCircle className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
                     {item}
                   </li>
                 ))}
