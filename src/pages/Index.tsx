@@ -96,7 +96,7 @@ const Index = () => {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
               <Button
-                className="btn-hero group"
+                className="btn-cta group animate-pulse-cta"
                 asChild
               >
                 <Link
@@ -167,13 +167,13 @@ const Index = () => {
               { icon: XCircle, title: "Cada um faz de um jeito", description: "Sem processo padrão, cada colaborador usa um método diferente." },
               { icon: TrendingUp, title: "Crescimento travado", description: "A operação manual impede sua agência ou consultoria de escalar." },
             ].map((problem, index) => (
-              <Card key={index} className="service-card text-center">
-                <div className="w-12 h-12 rounded-xl bg-red-500/15 flex items-center justify-center mx-auto mb-4">
-                  <problem.icon className="w-6 h-6 text-red-400" />
+            <div key={index} className="card-premium text-center">
+                <div className="w-12 h-12 rounded-xl bg-cta/15 flex items-center justify-center mx-auto mb-4">
+                  <problem.icon className="w-6 h-6 text-cta" />
                 </div>
                 <h3 className="text-lg font-bold text-foreground mb-2">{problem.title}</h3>
                 <p className="text-foreground-muted text-sm">{problem.description}</p>
-              </Card>
+              </div>
             ))}
           </div>
         </div>
@@ -448,7 +448,7 @@ const Index = () => {
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
-                  className="btn-hero group text-base"
+                  className="btn-cta group text-base animate-pulse-cta"
                   asChild
                 >
                   <Link to="/solucoes-sob-medida" onClick={() => handleCTAClick("cta_final_solucoes", "/solucoes-sob-medida")}>
