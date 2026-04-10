@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { Home, Briefcase, BookOpen, HeadphonesIcon, Settings, LogOut, ChevronLeft, ChevronRight } from "lucide-react";
+import { Home, Briefcase, BookOpen, HeadphonesIcon, Settings, LogOut, ChevronLeft, ChevronRight, Gauge } from "lucide-react";
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
@@ -10,6 +10,7 @@ const menuItems = [
   { icon: Briefcase, label: "Meus Projetos", href: "/dashboard/projetos" },
   { icon: BookOpen, label: "Biblioteca", href: "/dashboard#templates" },
   { icon: HeadphonesIcon, label: "Suporte", href: "/dashboard/suporte" },
+  { icon: Gauge, label: "Lighthouse", href: "/dashboard/lighthouse" },
   { icon: Settings, label: "Configurações", href: "/dashboard/configuracoes" },
 ];
 
