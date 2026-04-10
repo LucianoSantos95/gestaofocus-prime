@@ -44,6 +44,7 @@ const Support = lazy(() => import("./pages/dashboard/Support"));
 const SettingsPage = lazy(() => import("./pages/dashboard/Settings"));
 const LighthousePage = lazy(() => import("./pages/dashboard/Lighthouse"));
 const ProtectedRoute = lazy(() => import("./components/ProtectedRoute").then(m => ({ default: m.ProtectedRoute })));
+const AdminRoute = lazy(() => import("./components/AdminRoute").then(m => ({ default: m.AdminRoute })));
 
 // Blog posts
 const PoderNotionEmpresas = lazy(() => import("./pages/blog/PoderNotionEmpresas"));
@@ -207,7 +208,7 @@ function AppLayout() {
             <Route path="/dashboard/analytics" element={<Suspense fallback={<PageLoader />}><ProtectedRoute><Analytics /></ProtectedRoute></Suspense>} />
             <Route path="/dashboard/suporte" element={<Suspense fallback={<PageLoader />}><ProtectedRoute><Support /></ProtectedRoute></Suspense>} />
             <Route path="/dashboard/configuracoes" element={<Suspense fallback={<PageLoader />}><ProtectedRoute><SettingsPage /></ProtectedRoute></Suspense>} />
-            <Route path="/dashboard/lighthouse" element={<Suspense fallback={<PageLoader />}><ProtectedRoute><LighthousePage /></ProtectedRoute></Suspense>} />
+            <Route path="/dashboard/lighthouse" element={<Suspense fallback={<PageLoader />}><AdminRoute><LighthousePage /></AdminRoute></Suspense>} />
 
             <Route path="*" element={<NotFound />} />
           </Routes>

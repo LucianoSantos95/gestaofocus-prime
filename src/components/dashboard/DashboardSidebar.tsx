@@ -4,20 +4,29 @@ import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
+import { useUserRole } from "@/hooks/useUserRole";
 
 const menuItems = [
   { icon: Home, label: "Início", href: "/dashboard" },
   { icon: Briefcase, label: "Meus Projetos", href: "/dashboard/projetos" },
   { icon: BookOpen, label: "Biblioteca", href: "/dashboard#templates" },
   { icon: HeadphonesIcon, label: "Suporte", href: "/dashboard/suporte" },
-  { icon: Gauge, label: "Lighthouse", href: "/dashboard/lighthouse" },
   { icon: Settings, label: "Configurações", href: "/dashboard/configuracoes" },
+];
+
+const adminMenuItems = [
+  { icon: Gauge, label: "Lighthouse", href: "/dashboard/lighthouse" },
 ];
 
 export default function DashboardSidebar() {
   const [collapsed, setCollapsed] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const { role } = useUserRole();
+
+  const visibleItems = role === 'admin'
+    ? [...menuItems, ...adminMenuItems]
+    : menuItems;
 
   const handleLogout = async () => {
     const { error } = await supabase.auth.signOut();
@@ -52,7 +61,7 @@ export default function DashboardSidebar() {
 
       {/* Nav */}
       <nav className="flex-1 py-4 space-y-1 px-2">
-        {menuItems.map((item) => {
+        {visibleItems.map((item) => {
           const isActive = location.pathname === item.href;
           return (
             <Link
