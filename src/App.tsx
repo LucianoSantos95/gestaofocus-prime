@@ -116,7 +116,7 @@ function AppLayout() {
   const location = useLocation();
   const isDashboard = location.pathname.startsWith("/dashboard");
   const isAuth = location.pathname.startsWith("/auth");
-  const isSolucoes = location.pathname === "/solucoes-sob-medida" || location.pathname === "/hub-empresarial";
+  const isSolucoes = location.pathname === "/solucoes-sob-medida" || location.pathname === "/hub-empresarial" || location.pathname === "/cases";
   const isHomepage = location.pathname === "/";
 
   // SolucoesSobMedida has its own Nav/Footer embedded
