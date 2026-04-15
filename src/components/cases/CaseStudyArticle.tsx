@@ -63,6 +63,7 @@ const CaseStudyArticle = ({ caseStudy: cs, index, isLast }: Props) => {
             Seu navegador não suporta vídeos.
           </video>
         </div>
+        </div>
 
         {/* Toggle button */}
         <button
