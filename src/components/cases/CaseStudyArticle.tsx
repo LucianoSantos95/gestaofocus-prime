@@ -33,24 +33,25 @@ const CaseStudyArticle = ({ caseStudy: cs, index, isLast }: Props) => {
 
       {/* Screenshot / Video carousel */}
       <div className="relative rounded-xl overflow-hidden border border-card-border/30 shadow-glow">
-        {/* Image */}
-        <div
-          className={`transition-opacity duration-300 ${showVideo ? "opacity-0 pointer-events-none absolute inset-0" : "opacity-100 relative"}`}
-        >
-          <img
-            src={cs.image}
-            alt={`Dashboard do sistema ${cs.company}`}
-            className="w-full h-auto"
-            loading="lazy"
-            width={1280}
-            height={720}
-          />
-        </div>
+        <div className="relative overflow-hidden">
+          {/* Image */}
+          <div
+            className={`transition-all duration-500 ease-in-out ${showVideo ? "-translate-x-full opacity-0 absolute inset-0" : "translate-x-0 opacity-100 relative"}`}
+          >
+            <img
+              src={cs.image}
+              alt={`Dashboard do sistema ${cs.company}`}
+              className="w-full h-auto"
+              loading="lazy"
+              width={1280}
+              height={720}
+            />
+          </div>
 
-        {/* Video */}
-        <div
-          className={`transition-opacity duration-300 ${showVideo ? "opacity-100 relative" : "opacity-0 pointer-events-none absolute inset-0"}`}
-        >
+          {/* Video */}
+          <div
+            className={`transition-all duration-500 ease-in-out ${showVideo ? "translate-x-0 opacity-100 relative" : "translate-x-full opacity-0 absolute inset-0"}`}
+          >
           <video
             className="w-full aspect-video bg-muted/20"
             controls
