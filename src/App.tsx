@@ -17,6 +17,7 @@ import ActionPlanPopup from "./components/ActionPlanPopup";
 
 // Lazy load pages
 const SolucoesSobMedida = lazy(() => import("./pages/SolucoesSobMedida"));
+const Cases = lazy(() => import("./pages/Cases"));
 const HubEmpresarial = lazy(() => import("./pages/HubEmpresarial"));
 const Blog = lazy(() => import("./pages/Blog"));
 const AboutFocus = lazy(() => import("./pages/AboutFocus"));
@@ -130,6 +131,7 @@ function AppLayout() {
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/solucoes-sob-medida" element={<SolucoesSobMedida />} />
+            <Route path="/cases" element={<Cases />} />
             <Route path="/hub-empresarial" element={<HubEmpresarial />} />
             <Route path="/blog" element={<Blog />} />
 
