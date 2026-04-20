@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { Home, Briefcase, BookOpen, HeadphonesIcon, Settings, LogOut, ChevronLeft, ChevronRight, Gauge } from "lucide-react";
+import { Home, Briefcase, BookOpen, HeadphonesIcon, Settings, LogOut, ChevronLeft, ChevronRight, Gauge, Send } from "lucide-react";
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
@@ -15,6 +15,7 @@ const menuItems = [
 ];
 
 const adminMenuItems = [
+  { icon: Send, label: "Prospecção", href: "/dashboard/prospeccao" },
   { icon: Gauge, label: "Lighthouse", href: "/dashboard/lighthouse" },
 ];
 
