@@ -289,6 +289,278 @@ export type Database = {
           },
         ]
       }
+      prospect_campaigns: {
+        Row: {
+          calendly_url: string
+          created_at: string
+          daily_send_limit: number
+          email_1_delay_hours: number
+          email_2_delay_hours: number
+          email_3_delay_hours: number
+          icp_description: string
+          id: string
+          name: string
+          search_query: string | null
+          sender_email: string
+          sender_name: string
+          status: string
+          tone_of_voice: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          calendly_url: string
+          created_at?: string
+          daily_send_limit?: number
+          email_1_delay_hours?: number
+          email_2_delay_hours?: number
+          email_3_delay_hours?: number
+          icp_description: string
+          id?: string
+          name: string
+          search_query?: string | null
+          sender_email: string
+          sender_name: string
+          status?: string
+          tone_of_voice?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          calendly_url?: string
+          created_at?: string
+          daily_send_limit?: number
+          email_1_delay_hours?: number
+          email_2_delay_hours?: number
+          email_3_delay_hours?: number
+          icp_description?: string
+          id?: string
+          name?: string
+          search_query?: string | null
+          sender_email?: string
+          sender_name?: string
+          status?: string
+          tone_of_voice?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      prospect_leads: {
+        Row: {
+          campaign_id: string
+          company_name: string
+          contact_name: string | null
+          contact_role: string | null
+          created_at: string
+          current_sequence_step: number
+          email: string | null
+          enriched_data: Json | null
+          id: string
+          industry: string | null
+          last_contacted_at: string | null
+          location: string | null
+          next_action_at: string | null
+          notes: string | null
+          pain_points: string[] | null
+          personalized_hook: string | null
+          score: number | null
+          source: string
+          status: string
+          updated_at: string
+          website: string | null
+        }
+        Insert: {
+          campaign_id: string
+          company_name: string
+          contact_name?: string | null
+          contact_role?: string | null
+          created_at?: string
+          current_sequence_step?: number
+          email?: string | null
+          enriched_data?: Json | null
+          id?: string
+          industry?: string | null
+          last_contacted_at?: string | null
+          location?: string | null
+          next_action_at?: string | null
+          notes?: string | null
+          pain_points?: string[] | null
+          personalized_hook?: string | null
+          score?: number | null
+          source?: string
+          status?: string
+          updated_at?: string
+          website?: string | null
+        }
+        Update: {
+          campaign_id?: string
+          company_name?: string
+          contact_name?: string | null
+          contact_role?: string | null
+          created_at?: string
+          current_sequence_step?: number
+          email?: string | null
+          enriched_data?: Json | null
+          id?: string
+          industry?: string | null
+          last_contacted_at?: string | null
+          location?: string | null
+          next_action_at?: string | null
+          notes?: string | null
+          pain_points?: string[] | null
+          personalized_hook?: string | null
+          score?: number | null
+          source?: string
+          status?: string
+          updated_at?: string
+          website?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "prospect_leads_campaign_id_fkey"
+            columns: ["campaign_id"]
+            isOneToOne: false
+            referencedRelation: "prospect_campaigns"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      prospect_messages: {
+        Row: {
+          ai_classification: Json | null
+          body_html: string | null
+          body_text: string | null
+          campaign_id: string
+          created_at: string
+          delivered_at: string | null
+          direction: string
+          error_message: string | null
+          external_id: string | null
+          from_email: string | null
+          id: string
+          lead_id: string
+          opened_at: string | null
+          replied_at: string | null
+          sent_at: string | null
+          sequence_step: number | null
+          status: string
+          subject: string | null
+          to_email: string | null
+        }
+        Insert: {
+          ai_classification?: Json | null
+          body_html?: string | null
+          body_text?: string | null
+          campaign_id: string
+          created_at?: string
+          delivered_at?: string | null
+          direction: string
+          error_message?: string | null
+          external_id?: string | null
+          from_email?: string | null
+          id?: string
+          lead_id: string
+          opened_at?: string | null
+          replied_at?: string | null
+          sent_at?: string | null
+          sequence_step?: number | null
+          status?: string
+          subject?: string | null
+          to_email?: string | null
+        }
+        Update: {
+          ai_classification?: Json | null
+          body_html?: string | null
+          body_text?: string | null
+          campaign_id?: string
+          created_at?: string
+          delivered_at?: string | null
+          direction?: string
+          error_message?: string | null
+          external_id?: string | null
+          from_email?: string | null
+          id?: string
+          lead_id?: string
+          opened_at?: string | null
+          replied_at?: string | null
+          sent_at?: string | null
+          sequence_step?: number | null
+          status?: string
+          subject?: string | null
+          to_email?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "prospect_messages_campaign_id_fkey"
+            columns: ["campaign_id"]
+            isOneToOne: false
+            referencedRelation: "prospect_campaigns"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "prospect_messages_lead_id_fkey"
+            columns: ["lead_id"]
+            isOneToOne: false
+            referencedRelation: "prospect_leads"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      prospect_sequence_jobs: {
+        Row: {
+          attempts: number
+          campaign_id: string
+          created_at: string
+          id: string
+          last_error: string | null
+          lead_id: string
+          processed_at: string | null
+          scheduled_for: string
+          sequence_step: number
+          status: string
+        }
+        Insert: {
+          attempts?: number
+          campaign_id: string
+          created_at?: string
+          id?: string
+          last_error?: string | null
+          lead_id: string
+          processed_at?: string | null
+          scheduled_for: string
+          sequence_step: number
+          status?: string
+        }
+        Update: {
+          attempts?: number
+          campaign_id?: string
+          created_at?: string
+          id?: string
+          last_error?: string | null
+          lead_id?: string
+          processed_at?: string | null
+          scheduled_for?: string
+          sequence_step?: number
+          status?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "prospect_sequence_jobs_campaign_id_fkey"
+            columns: ["campaign_id"]
+            isOneToOne: false
+            referencedRelation: "prospect_campaigns"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "prospect_sequence_jobs_lead_id_fkey"
+            columns: ["lead_id"]
+            isOneToOne: false
+            referencedRelation: "prospect_leads"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       support_tickets: {
         Row: {
           created_at: string
