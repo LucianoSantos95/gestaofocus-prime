@@ -11,3 +11,24 @@ verify_jwt = false
 
 [functions.pagespeed]
 verify_jwt = false
+
+[functions.prospect-search]
+verify_jwt = false
+
+[functions.prospect-enrich]
+verify_jwt = false
+
+[functions.prospect-import-csv]
+verify_jwt = false
+
+[functions.prospect-send-email]
+verify_jwt = false
+
+[functions.prospect-queue-cadence]
+verify_jwt = false
+
+[functions.prospect-process-jobs]
+verify_jwt = false
+
+[functions.prospect-resend-webhook]
+verify_jwt = false
