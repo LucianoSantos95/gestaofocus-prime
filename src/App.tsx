@@ -31,6 +31,7 @@ const Contato = lazy(() => import("./pages/Contato"));
 const FAQ = lazy(() => import("./pages/FAQ"));
 const SistemasGratuitos = lazy(() => import("./pages/SistemasGratuitos"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+const ParaIAs = lazy(() => import("./pages/ParaIAs"));
 
 // Auth
 const SignUp = lazy(() => import("./pages/auth/SignUp"));
@@ -199,6 +200,8 @@ function AppLayout() {
             <Route path="/contato" element={<Contato />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/sistemas-gratuitos" element={<SistemasGratuitos />} />
+            <Route path="/para-ias" element={<ParaIAs />} />
+            <Route path="/llms" element={<ParaIAs />} />
 
             {/* Auth Routes */}
             <Route path="/auth/signup" element={<SignUp />} />
