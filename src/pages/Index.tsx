@@ -23,8 +23,8 @@ import {
 } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 
-import hubEmpresarialPro from "@/assets/hub-empresarial-pro.png";
-import hubLogo from "@/assets/hub-logo.png";
+import hubEmpresarialPro from "@/assets/hub-empresarial-pro.webp";
+import hubLogo from "@/assets/hub-logo.webp";
 
 const blogArticles = [
   {
