@@ -6,14 +6,16 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
-import ChatWidget from "./components/ChatWidget";
-import DashboardChatButton from "./components/dashboard/DashboardChatButton";
 import Index from "./pages/Index";
 import { useAnalytics } from "./hooks/useAnalytics";
 import { usePageTracking } from "./hooks/usePageTracking";
-import CookieConsent from "./components/CookieConsent";
 import ScrollToTop from "./components/ScrollToTop";
-import ActionPlanPopup from "./components/ActionPlanPopup";
+
+// Defer non-critical UI to keep the initial bundle (and TBT) small
+const ChatWidget = lazy(() => import("./components/ChatWidget"));
+const DashboardChatButton = lazy(() => import("./components/dashboard/DashboardChatButton"));
+const CookieConsent = lazy(() => import("./components/CookieConsent"));
+const ActionPlanPopup = lazy(() => import("./components/ActionPlanPopup"));
 
 // Lazy load pages
 const SolucoesSobMedida = lazy(() => import("./pages/SolucoesSobMedida"));
