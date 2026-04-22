@@ -224,8 +224,14 @@ function AppLayout() {
         </Suspense>
       </main>
       {showFooter && <Footer />}
-      {isDashboard ? <DashboardChatButton /> : <ChatWidget />}
-      {!isDashboard && !isAuth && <ActionPlanPopup />}
+      <Suspense fallback={null}>
+        {isDashboard ? <DashboardChatButton /> : <ChatWidget />}
+      </Suspense>
+      {!isDashboard && !isAuth && (
+        <Suspense fallback={null}>
+          <ActionPlanPopup />
+        </Suspense>
+      )}
     </div>
   );
 }
@@ -238,7 +244,9 @@ const App = () => (
       <BrowserRouter>
         <AnalyticsProvider />
         <ScrollToTop />
-        <CookieConsent />
+        <Suspense fallback={null}>
+          <CookieConsent />
+        </Suspense>
         <AppLayout />
       </BrowserRouter>
     </TooltipProvider>
