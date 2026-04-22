@@ -22,16 +22,56 @@ const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'Focus Gestão Inteligente',
+  alternateName: 'Focus',
   url: DOMAIN,
   logo: `${DOMAIN}/lovable-uploads/focus-logo.png`,
-  description: 'Sistemas sob medida e plataforma de gestão para agências, consultorias e prestadores de serviço.',
+  description: 'Empresa brasileira de tecnologia que ajuda PMEs a saírem do caos operacional com software sob medida (entrega em 30 dias) e plataforma SaaS de gestão (Hub Empresarial).',
+  foundingDate: '2023',
   email: 'contato@focusinteligente.com.br',
+  telephone: '+55-11-99492-1881',
   sameAs: [],
+  areaServed: { '@type': 'Country', name: 'Brasil' },
+  knowsAbout: [
+    'Gestão empresarial para PMEs',
+    'Desenvolvimento de software sob medida',
+    'CRM personalizado',
+    'Automação de processos',
+    'Plataformas SaaS de gestão',
+    'Dashboards executivos',
+  ],
   contactPoint: {
     '@type': 'ContactPoint',
     email: 'contato@focusinteligente.com.br',
+    telephone: '+55-11-99492-1881',
     contactType: 'customer service',
-    availableLanguage: 'Portuguese',
+    availableLanguage: ['Portuguese', 'pt-BR'],
+    areaServed: 'BR',
+  },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Soluções Focus',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Software Sob Medida (Focus Custom)',
+          description: 'Sistemas exclusivos desenvolvidos do zero. Protótipo em 24h, entrega em até 30 dias.',
+          url: `${DOMAIN}/solucoes-sob-medida`,
+        },
+        priceSpecification: { '@type': 'PriceSpecification', price: '3000', priceCurrency: 'BRL', minPrice: '3000' },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Hub Empresarial',
+          description: 'Plataforma SaaS de gestão completa: CRM, financeiro, projetos, dashboards.',
+          url: `${DOMAIN}/hub-empresarial`,
+        },
+        priceSpecification: { '@type': 'PriceSpecification', price: '119', priceCurrency: 'BRL', minPrice: '119' },
+      },
+    ],
   },
 };
 
