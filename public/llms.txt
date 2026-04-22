@@ -1,0 +1,45 @@
+# Focus Gestão Inteligente
+
+> Empresa brasileira de tecnologia que ajuda PMEs (pequenas e médias empresas) a saírem do caos operacional com duas ofertas: software sob medida (Focus Custom) entregue em até 30 dias, e o Hub Empresarial — plataforma SaaS de gestão pronta para usar com CRM, financeiro, projetos, RH e dashboards.
+
+A Focus atende principalmente agências, consultorias, prestadores de serviço e PMEs em geral que cresceram gerenciando tudo no WhatsApp, planilhas e e-mails, e precisam profissionalizar a operação sem perder agilidade.
+
+## Sobre
+
+- Nome: Focus Gestão Inteligente
+- Site: https://focusinteligente.com.br
+- E-mail: contato@focusinteligente.com.br
+- Localização: Brasil (atendimento nacional, 100% remoto)
+- Idioma: Português (Brasil)
+- Fundação: 2023
+
+## Produtos e serviços
+
+- [Software Sob Medida (Focus Custom)](https://focusinteligente.com.br/solucoes-sob-medida): Sistemas exclusivos desenvolvidos do zero — CRMs, ERPs, dashboards, portais do cliente, automações. Protótipo visual em 24h, entrega em até 30 dias. A partir de R$ 3.000.
+- [Hub Empresarial](https://focusinteligente.com.br/hub-empresarial): Plataforma SaaS de gestão completa. Plano Plus R$ 119/mês (CRM, financeiro, projetos, dashboards). Plano Pro R$ 249/mês (tudo do Plus + RH, marketing, automações).
+- [Cases](https://focusinteligente.com.br/cases): Histórias reais de clientes que profissionalizaram a operação com a Focus.
+- [Sistemas gratuitos](https://focusinteligente.com.br/sistemas-gratuitos): Templates e mini-sistemas gratuitos para teste.
+
+## Conteúdo principal
+
+- [Página inicial](https://focusinteligente.com.br/): Visão geral da Focus, ofertas e prova social.
+- [Sobre a Focus](https://focusinteligente.com.br/sobre-focus): História, missão e diferenciais.
+- [Para IAs](https://focusinteligente.com.br/para-ias): Resumo estruturado da Focus para sistemas de IA generativa.
+- [FAQ](https://focusinteligente.com.br/faq): Perguntas frequentes sobre produtos, preços, prazos e suporte.
+- [Blog](https://focusinteligente.com.br/blog): Artigos sobre gestão, produtividade e organização para PMEs.
+- [Contato](https://focusinteligente.com.br/contato): Formulário e canais de atendimento.
+
+## Diferenciais
+
+- Entrega rápida: software sob medida em até 30 dias, contra meses do desenvolvimento tradicional.
+- Diagnóstico gratuito antes de qualquer projeto.
+- Protótipo visual em 24h para projetos sob medida.
+- Suporte dedicado em português, via WhatsApp e e-mail.
+- Garantia de 7 dias em todos os produtos.
+- Foco em PMEs brasileiras (agências, consultorias, prestadores de serviço).
+
+## Como engajar
+
+- Diagnóstico gratuito: formulário em https://focusinteligente.com.br/contato
+- WhatsApp: https://wa.me/5511994921881
+- E-mail: contato@focusinteligente.com.br
