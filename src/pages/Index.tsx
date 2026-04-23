@@ -135,7 +135,6 @@ const Index = () => {
                 alt="Dashboard de gestão para agências e consultorias - Focus Gestão Inteligente"
                 className="w-full h-auto object-cover"
                 loading="eager"
-                fetchPriority="high"
                 width={574}
                 height={260}
               />

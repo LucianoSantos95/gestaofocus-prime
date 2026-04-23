@@ -10,6 +10,7 @@ import Index from "./pages/Index";
 import { useAnalytics } from "./hooks/useAnalytics";
 import { usePageTracking } from "./hooks/usePageTracking";
 import ScrollToTop from "./components/ScrollToTop";
+import OptionalFeatureBoundary from "./components/OptionalFeatureBoundary";
 
 // Defer non-critical UI to keep the initial bundle (and TBT) small
 const ChatWidget = lazy(() => import("./components/ChatWidget"));
@@ -224,13 +225,17 @@ function AppLayout() {
         </Suspense>
       </main>
       {showFooter && <Footer />}
-      <Suspense fallback={null}>
-        {isDashboard ? <DashboardChatButton /> : <ChatWidget />}
-      </Suspense>
-      {!isDashboard && !isAuth && (
+      <OptionalFeatureBoundary featureName={isDashboard ? "dashboard chat" : "chat widget"}>
         <Suspense fallback={null}>
-          <ActionPlanPopup />
+          {isDashboard ? <DashboardChatButton /> : <ChatWidget />}
         </Suspense>
+      </OptionalFeatureBoundary>
+      {!isDashboard && !isAuth && (
+        <OptionalFeatureBoundary featureName="action plan popup">
+          <Suspense fallback={null}>
+            <ActionPlanPopup />
+          </Suspense>
+        </OptionalFeatureBoundary>
       )}
     </div>
   );
@@ -244,9 +249,11 @@ const App = () => (
       <BrowserRouter>
         <AnalyticsProvider />
         <ScrollToTop />
-        <Suspense fallback={null}>
-          <CookieConsent />
-        </Suspense>
+        <OptionalFeatureBoundary featureName="cookie consent">
+          <Suspense fallback={null}>
+            <CookieConsent />
+          </Suspense>
+        </OptionalFeatureBoundary>
         <AppLayout />
       </BrowserRouter>
     </TooltipProvider>
