@@ -36,7 +36,6 @@ export default defineConfig(({ mode }) => ({
           if (id.includes('react-helmet-async')) return 'helmet';
           if (id.includes('framer-motion')) return 'motion';
           if (id.includes('papaparse')) return 'csv';
-          if (id.includes('recharts') || id.includes('d3-')) return 'charts';
           return 'vendor';
         },
       },
