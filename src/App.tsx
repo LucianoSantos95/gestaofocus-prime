@@ -48,7 +48,7 @@ const Analytics = lazy(() => import("./pages/dashboard/Analytics"));
 const Support = lazy(() => import("./pages/dashboard/Support"));
 const SettingsPage = lazy(() => import("./pages/dashboard/Settings"));
 const LighthousePage = lazy(() => import("./pages/dashboard/Lighthouse"));
-const Prospeccao = lazy(() => import("./pages/dashboard/Prospeccao"));
+
 const ProtectedRoute = lazy(() => import("./components/ProtectedRoute").then(m => ({ default: m.ProtectedRoute })));
 const AdminRoute = lazy(() => import("./components/AdminRoute").then(m => ({ default: m.AdminRoute })));
 
@@ -218,7 +218,7 @@ function AppLayout() {
             <Route path="/dashboard/suporte" element={<Suspense fallback={<PageLoader />}><ProtectedRoute><Support /></ProtectedRoute></Suspense>} />
             <Route path="/dashboard/configuracoes" element={<Suspense fallback={<PageLoader />}><ProtectedRoute><SettingsPage /></ProtectedRoute></Suspense>} />
             <Route path="/dashboard/lighthouse" element={<Suspense fallback={<PageLoader />}><AdminRoute><LighthousePage /></AdminRoute></Suspense>} />
-            <Route path="/dashboard/prospeccao" element={<Suspense fallback={<PageLoader />}><AdminRoute><Prospeccao /></AdminRoute></Suspense>} />
+            
 
             <Route path="*" element={<NotFound />} />
           </Routes>
