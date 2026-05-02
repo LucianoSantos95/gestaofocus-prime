@@ -71,7 +71,7 @@ const Index = () => {
       <div className="bg-primary/10 border-b border-primary/20 py-2.5 text-center pt-20">
         <p className="text-sm font-medium text-primary">
           <AlertTriangle className="w-4 h-4 inline mr-1.5 -mt-0.5" />
-          AGENDA ABRIL/2026: Resta apenas <span className="font-bold">1 vaga</span> para Projetos Sob Medida.
+          AGENDA MAIO/2026: Resta apenas <span className="font-bold">1 vaga</span> para Projetos Sob Medida.
         </p>
       </div>
 
