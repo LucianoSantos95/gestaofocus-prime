@@ -48,7 +48,7 @@ const SolucoesSobMedida = () => {
         <div className="container-focus py-2 text-center">
           <p className="text-sm font-medium text-red-100">
             <span className="inline-block w-2 h-2 rounded-full bg-red-400 animate-pulse mr-2" />
-            AGENDA ABRIL/2026: Resta apenas <strong>1 vaga</strong> para Projetos Sob Medida.
+            AGENDA MAIO/2026: Resta apenas <strong>1 vaga</strong> para Projetos Sob Medida.
           </p>
         </div>
       </div>
