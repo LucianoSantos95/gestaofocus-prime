@@ -203,6 +203,7 @@ function AppLayout() {
             <Route path="/contato" element={<Contato />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/sistemas-gratuitos" element={<SistemasGratuitos />} />
+            <Route path="/proximo-passo" element={<ProximoPasso />} />
             <Route path="/para-ias" element={<ParaIAs />} />
             <Route path="/llms" element={<ParaIAs />} />
 
