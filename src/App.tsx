@@ -22,6 +22,7 @@ const ActionPlanPopup = lazy(() => import("./components/ActionPlanPopup"));
 const SolucoesSobMedida = lazy(() => import("./pages/SolucoesSobMedida"));
 const Cases = lazy(() => import("./pages/Cases"));
 const HubEmpresarial = lazy(() => import("./pages/HubEmpresarial"));
+const ProximoPasso = lazy(() => import("./pages/ProximoPasso"));
 const Blog = lazy(() => import("./pages/Blog"));
 const AboutFocus = lazy(() => import("./pages/AboutFocus"));
 const Privacidade = lazy(() => import("./pages/Privacidade"));
