@@ -5,6 +5,7 @@ import DashboardLayout from "@/components/dashboard/DashboardLayout";
 import HeroBanner from "@/components/dashboard/HeroBanner";
 import ProjectCard from "@/components/dashboard/ProjectCard";
 import TemplateCard from "@/components/dashboard/TemplateCard";
+import IdeaCanvas from "@/components/mindmap/IdeaCanvas";
 import { Loader2 } from "lucide-react";
 
 const templates = [
