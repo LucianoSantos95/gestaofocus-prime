@@ -41,6 +41,13 @@ export default function Dashboard() {
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) return;
 
+      // Claim anonymous MVP simulation if exists (covers Google OAuth signup)
+      const anonId = localStorage.getItem("mvp_anon_session_id");
+      if (anonId) {
+        supabase.functions.invoke("claim-simulation", { body: { anon_session_id: anonId } })
+          .catch(console.error);
+      }
+
       const [profileRes, projectsRes] = await Promise.all([
         supabase.from("profiles").select("full_name").eq("id", user.id).single(),
         supabase.from("client_projects").select("*").eq("user_id", user.id).order("created_at", { ascending: false }),

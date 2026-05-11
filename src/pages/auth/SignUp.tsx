@@ -8,6 +8,7 @@ import { toast } from 'sonner';
 import { z } from 'zod';
 import { trackEvent } from '@/lib/analytics';
 import { Loader2 } from 'lucide-react';
+import GoogleSignInButton from '@/components/auth/GoogleSignInButton';
 
 const signupSchema = z.object({
   fullName: z.string().trim().min(2, 'Nome deve ter pelo menos 2 caracteres').max(100),
@@ -62,6 +63,13 @@ export default function SignUp() {
     supabase.functions.invoke('send-welcome-email', {
       body: { email: email.trim().toLowerCase(), fullName: fullName.trim() },
     }).catch(console.error);
+
+    // Claim anonymous MVP simulation if exists
+    const anonId = localStorage.getItem('mvp_anon_session_id');
+    if (anonId) {
+      supabase.functions.invoke('claim-simulation', { body: { anon_session_id: anonId } })
+        .catch(console.error);
+    }
 
     trackEvent('signup', { event_category: 'authentication', event_label: 'email_signup' });
 
@@ -142,6 +150,13 @@ export default function SignUp() {
               {loading ? 'Criando conta...' : 'Criar Conta Gratuita'}
             </Button>
           </form>
+
+          <div className="my-4 flex items-center gap-3">
+            <div className="h-px flex-1 bg-card-border" />
+            <span className="text-xs text-foreground-muted">ou</span>
+            <div className="h-px flex-1 bg-card-border" />
+          </div>
+          <GoogleSignInButton redirectAfterAuth="/dashboard" />
 
           <div className="mt-6 text-center text-sm">
             <p className="text-foreground-muted">
