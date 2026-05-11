@@ -32,3 +32,9 @@ verify_jwt = false
 
 [functions.prospect-resend-webhook]
 verify_jwt = false
+
+[functions.generate-mvp-plan]
+verify_jwt = false
+
+[functions.claim-simulation]
+verify_jwt = false
