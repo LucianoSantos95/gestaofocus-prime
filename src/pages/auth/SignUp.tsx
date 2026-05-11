@@ -151,6 +151,13 @@ export default function SignUp() {
             </Button>
           </form>
 
+          <div className="my-4 flex items-center gap-3">
+            <div className="h-px flex-1 bg-card-border" />
+            <span className="text-xs text-foreground-muted">ou</span>
+            <div className="h-px flex-1 bg-card-border" />
+          </div>
+          <GoogleSignInButton redirectAfterAuth="/dashboard" />
+
           <div className="mt-6 text-center text-sm">
             <p className="text-foreground-muted">
               Já tem uma conta?{' '}
