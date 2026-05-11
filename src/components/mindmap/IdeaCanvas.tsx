@@ -10,7 +10,6 @@ import ReactFlow, {
   useNodesState,
   useEdgesState,
   NodeChange,
-  applyNodeChanges,
   Handle,
   Position,
   BackgroundVariant,
@@ -18,7 +17,7 @@ import ReactFlow, {
 import "reactflow/dist/style.css";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
-import { Plus, Tag, Loader2, Trash2, X } from "lucide-react";
+import { Plus, Tag, Loader2, Trash2 } from "lucide-react";
 import {
   Dialog,
   DialogContent,
