@@ -88,6 +88,17 @@ export default function Dashboard() {
         {/* Hero Banner */}
         <HeroBanner />
 
+        {/* Mapa de Ideias */}
+        <section>
+          <div className="mb-4">
+            <h2 className="text-xl font-semibold text-foreground">Mapa de Ideias</h2>
+            <p className="text-sm text-foreground-muted mt-1">
+              Organize suas ideias em um mapa visual estilo Obsidian. Clique em "Nova ideia", arraste os nós e conecte-os.
+            </p>
+          </div>
+          <IdeaCanvas />
+        </section>
+
         {/* Meus Projetos */}
         <section>
           <h2 className="text-xl font-semibold text-foreground mb-4">Meus Projetos</h2>
