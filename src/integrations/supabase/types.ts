@@ -218,6 +218,60 @@ export type Database = {
         }
         Relationships: []
       }
+      mvp_simulations: {
+        Row: {
+          ai_result: Json | null
+          anon_session_id: string
+          answers: Json
+          business_description: string
+          business_name: string | null
+          created_at: string
+          id: string
+          niche: string
+          profile: string
+          revenue_range: string
+          score: number
+          time_in_market: string
+          updated_at: string
+          user_id: string | null
+          utm_source: string | null
+        }
+        Insert: {
+          ai_result?: Json | null
+          anon_session_id: string
+          answers?: Json
+          business_description: string
+          business_name?: string | null
+          created_at?: string
+          id?: string
+          niche: string
+          profile: string
+          revenue_range: string
+          score?: number
+          time_in_market: string
+          updated_at?: string
+          user_id?: string | null
+          utm_source?: string | null
+        }
+        Update: {
+          ai_result?: Json | null
+          anon_session_id?: string
+          answers?: Json
+          business_description?: string
+          business_name?: string | null
+          created_at?: string
+          id?: string
+          niche?: string
+          profile?: string
+          revenue_range?: string
+          score?: number
+          time_in_market?: string
+          updated_at?: string
+          user_id?: string | null
+          utm_source?: string | null
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null

@@ -1,117 +1,152 @@
-## Plano: Melhorias Completas de SEO, UX, UI, Performance e Trust
 
-Este é um projeto grande. Para manter qualidade, vou dividir em **3 fases** executáveis em sequência.
+# Simulador de MVP + Mapa Mental Obsidian-Style
 
----
+Construir o "Simulador de MVP com IA" como **porta de entrada da área de cliente** (gate antes do login), e adicionar um **mapa mental interativo estilo Obsidian** dentro do dashboard após o login.
 
-### FASE 1 — SEO e Schema Markup (Prioridade Alta)
+## Estratégia do funil
 
-**1.1 Schema JSON-LD global (Organization + LocalBusiness)**
+```text
+TOPO  →  Simulador MVP (gratuito, gate de entrada)   /area-cliente
+MEIO  →  Hub Empresarial (SaaS)                       /hub-empresarial
+FIM   →  Solução Sob Medida (consultoria)             /solucoes-sob-medida
+```
 
-- Adicionar no `SEOHead.tsx` um schema `Organization` para todas as páginas
-- Adicionar schema `Service` nas páginas de produto (Soluções Sob Medida, Hub Empresarial)
-- Adicionar schema `FAQPage` na Central de Ajuda e na nova página FAQ
+A página inicial (`/`) **continua intocada**. O simulador vive exclusivamente no fluxo da área de cliente.
 
-**1.2 Meta descriptions ausentes**
+## Decisões aprovadas
 
-- `CentralAjuda.tsx` — não tem SEOHead, adicionar
-- `Documentacao.tsx`, `StatusPlataforma.tsx` — verificar e corrigir
+- **Posicionamento:** simulador aparece **antes do login**, como gate da área de cliente. Quem clica em "Área do cliente" cai no simulador. Quem já tem conta clica em "Já tenho conta" e vai direto para o dashboard.
+- **Acesso:** Telas 1–4 do Simulador são públicas. O **resultado completo** fica atrás de paywall de signup (Google ou email/senha).
+- **Login social:** habilitar Google OAuth gerenciado pela Lovable Cloud.
+- **Pós-login:** dashboard mostra (1) resultado da última simulação e (2) **mapa mental interativo Obsidian-style** logo abaixo.
+- **Fase 1 (Simulador):** fluxo completo + IA + mapa mental Markmap do plano + salvar simulação. Sem PDF, sem sequência de emails.
+- **Fase 2 (Mapa de ideias do usuário):** canvas interativo de nós + sidebar de tickets/tags.
 
-**1.3 Hierarquia de headings**
+## Fluxo do usuário
 
-- Auditar todas as páginas para garantir H1 único + hierarquia correta (H2 > H3)
-- Footer: trocar `<h4>` por `<p className="font-semibold">`
+```text
+[Site / Notion / Banner "Área do cliente"]
+              ↓
+[/area-cliente — público, gate de entrada]
+   ├─ Hero: "Antes de entrar, descubra qual MVP cabe no seu negócio"
+   ├─ CTA principal: "Começar simulação gratuita (5 min)"
+   └─ Link discreto: "Já tenho conta → Entrar"
+              ↓
+[Simulador — 4 telas públicas]
+   1. Descreva seu negócio
+   2. Diagnóstico SIM/NÃO (15 perguntas)
+   3. Loading + IA (gemini-3-flash-preview)
+   4. Veredito parcial + paywall
+              ↓
+[Paywall: criar conta para liberar plano completo]
+   ├─ Google (1 clique)
+   └─ Email + senha
+              ↓
+[/dashboard — área de cliente reformulada]
+   ├─ Welcome
+   ├─ Resultado da simulação (veredito + cronograma + mapa do plano via Markmap)
+   ├─ ⭐ Mapa Mental de Ideias (canvas Obsidian-style)
+   │     ├─ Nós ancorados nos blocos do plano (Problema, Cliente, Oferta, Canal, Métricas, Riscos)
+   │     ├─ Clicar em nó vazio → popup para adicionar ideia
+   │     ├─ Arrastar nós livremente, criar ligações
+   │     ├─ Adicionar tickets/tags coloridas a cada ideia
+   │     └─ Sidebar lateral: lista de tickets → expandir → ver ideias daquele ticket
+   ├─ Próximos passos: Hub Empresarial (card upsell) / Solução Sob Medida
+   └─ Meus Projetos (mantém área existente para clientes ativos)
+```
 
-**1.4 Sitemap atualizado**
+## Arquitetura técnica
 
-- Adicionar `/contato` e qualquer rota faltante ao sitemap.xml
-- Atualizar `lastmod` para data atual
+### Banco de dados
 
----
+**Migration 1 — Simulador:**
+- `mvp_simulations`: descrição, nicho, faturamento, respostas (jsonb), pontuação, perfil, resultado IA (jsonb), `anon_session_id` para casar simulação anônima → user pós-signup, `user_id` (nullable).
+- RLS: INSERT público com `anon_session_id`; SELECT só do próprio user; UPDATE via service role no claim.
+- Trigger de validação de tamanhos (padrão das outras tabelas).
 
-### FASE 2 — UX: FAQ, Breadcrumbs, Formulário e Navegação
+**Migration 2 — Mapa mental:**
+- `mind_map_nodes`: `user_id`, `simulation_id`, `parent_id` (nullable, autoref), `label`, `note` (texto livre da ideia), `category` (Problema | Cliente | Oferta | Canal | Métricas | Riscos | custom), `position_x`, `position_y`, `color`.
+- `mind_map_edges`: `user_id`, `source_node_id`, `target_node_id`.
+- `mind_map_tickets`: `user_id`, `name`, `color`, `description`.
+- `node_tickets`: tabela de junção `node_id` ↔ `ticket_id`.
+- RLS: tudo restrito a `auth.uid() = user_id`.
 
-**2.1 Página FAQ dedicada (`/faq`)**
+### Edge functions
 
-- Criar `src/pages/FAQ.tsx` com perguntas organizadas por categoria
-- Schema `FAQPage` integrado
-- Categorias: Soluções Sob Medida, Hub Empresarial, Preços, Suporte
+1. **`generate-mvp-plan`** — recebe respostas, chama Lovable AI (Gemini Flash) com tool calling → JSON estruturado (veredito, mapa markdown, cronograma, tempos). Persiste na simulação.
+2. **`claim-simulation`** — após signup, vincula `anon_session_id` → `user_id`. Cria os 6 nós-raiz iniciais do mapa mental a partir do resultado da IA (Problema, Cliente, Oferta, Canal, Métricas, Riscos).
 
-**2.2 Breadcrumbs nas páginas internas**
+### Frontend
 
-- Criar componente `PageBreadcrumb.tsx` reutilizável (já existe `BlogBreadcrumb`)
-- Adicionar em: Soluções, Hub, Sobre, Contato, FAQ, Sistemas Gratuitos
+**Rota pública `/area-cliente`** (substitui o redirecionamento atual da "área de cliente"):
+- Não exige auth.
+- Hero + simulador embutido (state machine das 5 telas).
+- Botão "Já tenho conta" no canto → `/auth/login`.
 
-**2.3 Simplificar navegação**
+**Rota pública `/auth/login` e `/auth/signup`:**
+- Adicionar botão "Continuar com Google" (via `supabase--configure_social_auth`).
+- Após signup com `anon_session_id` na URL/localStorage → chama `claim-simulation`.
 
-- Menu atual tem 4 itens + CTA — já está bom, mas adicionar "Contato" como 5o item
-- Mobile: manter igual
+**`/dashboard` reformulado:**
+1. Bloco "Seu plano de MVP" (resultado da última simulação) com Markmap embutido.
+2. **Mapa Mental Interativo (componente `IdeaCanvas`)** — usa **React Flow** (`reactflow`):
+   - Nós customizados: círculos coloridos por categoria/ticket (estilo Obsidian).
+   - Click em nó vazio (com `+`) → modal para escrever ideia.
+   - Click em nó preenchido → modal de edição (texto, tickets, cor).
+   - Drag livre, criar conexões arrastando handle.
+   - Mini-map e zoom controls.
+   - Salvar posições com debounce em `mind_map_nodes.position_x/y`.
+3. **Sidebar de Tickets** (drawer lateral à direita do canvas):
+   - Lista de tickets do usuário com cor.
+   - Clique no ticket → expande lista de ideias (nós) marcadas com ele.
+   - Botão "+ Novo ticket" → modal (nome + cor).
+4. CTAs: "Próximo passo: Hub Empresarial" e "Quero ajuda do Luciano (Solução sob medida)".
+5. Seção "Meus Projetos" mantida ao final para clientes ativos.
 
-**2.4 Formulário de contato**
+### Bibliotecas a instalar
 
-- Já existe em `/contato` com 3 campos — adicionar campo "Telefone" e integrar com a tabela `diagnosis_leads` ou criar tabela `contact_messages`
-- Enviar dados para o banco ao invés de simular
+- `reactflow` (canvas de mapa mental, suporta drag, conexões, mini-map)
+- `markmap-lib` + `markmap-view` (visualização do plano gerado pela IA)
+- Já temos: `zod`, `framer-motion`, `lucide-react`, shadcn (Drawer, Dialog, Popover)
 
-**2.5 Seção "Números" na homepage**
+### Atualizações de rotas e navegação
 
-- Adicionar entre Prova Social e Blog: contadores animados (43+ empresas, 150+ sistemas, 98% satisfação, 30 dias entrega)
+- `App.tsx`: adicionar rota pública `/area-cliente`.
+- Sidebar do dashboard: adicionar item "Mapa de Ideias" e "Meu Plano MVP".
+- `NotionReferrerBanner` e `/proximo-passo`: passar a apontar para `/area-cliente`.
+- Botões de "Login/Área do cliente" no header do site: redirecionar para `/area-cliente` (não direto ao `/auth/login`).
 
----
+## Etapas de implementação
 
-### FASE 3 — UI, Performance e Trust
+### Fase A — Simulador (gate de entrada)
+1. Migration `mvp_simulations` + RLS + trigger de validação.
+2. Edge function `generate-mvp-plan` (Lovable AI + tool calling).
+3. Habilitar Google OAuth + botão "Continuar com Google" no signup/login.
+4. Página `/area-cliente` com 4 telas + paywall.
+5. Edge function `claim-simulation` + redirect pós-signup.
+6. Atualizar Banner Notion e Próximo Passo para apontar para `/area-cliente`.
 
-**3.1 Melhorias de tipografia e espaçamento**
+### Fase B — Pós-login no Dashboard
+7. Reformular `/dashboard`: bloco "Seu Plano MVP" com Markmap do resultado.
+8. Migrations `mind_map_nodes`, `mind_map_edges`, `mind_map_tickets`, `node_tickets` + RLS.
+9. Componente `IdeaCanvas` com React Flow (nós, drag, conexões, mini-map).
+10. Modais de criar/editar ideia + atribuir tickets.
+11. Sidebar de Tickets (Drawer) com lista expandível de ideias por ticket.
+12. CTAs de upsell para Hub Empresarial e Solução Sob Medida.
+13. Instrumentar analytics: `simulador_iniciado`, `simulador_concluido`, `paywall_visto`, `signup_pos_simulador`, `mapa_no_criado`, `ticket_criado`.
 
-- Garantir `text-base` (16px) como mínimo no corpo
-- Aumentar padding entre seções: `py-20 md:py-28` (padrão atual) → `py-24 md:py-32`
+## Não entra agora (futuras fases)
+- Geração de PDF
+- Sequência de emails (D+1, D+3, D+7)
+- LinkedIn OAuth (não suportado nativamente)
+- Webhook WhatsApp para Luciano
+- Compartilhamento público do mapa mental
+- Confetti / gamificação
 
-**3.2 CTAs mais visíveis**
+## Riscos e mitigações
+- **Performance do canvas com muitos nós:** React Flow lida bem até centenas de nós; usar `nodesDraggable` controlado e debounced save.
+- **Custo IA:** Gemini Flash é barato; cachear por `anon_session_id`.
+- **Quebrar fluxo de clientes existentes:** Dashboard mantém "Meus Projetos" intacto.
+- **Atrito no paywall:** Google 1-clique reduz; veredito parcial cria curiosidade.
 
-- Criar variante `btn-cta` com cor emerald/verde para CTAs secundários
-- Garantir contraste WCAG AA em todos os botões
-
-**3.3 Seção "Logos de Clientes" na homepage**
-
-- Adicionar faixa de logos entre Hero e Problema (estilo "Trusted by")
-- Usar ícones representativos de setores (já tem TrustedBySection/TrustedByMini)
-
-**3.4 Performance**
-
-- Lazy loading já está implementado para imagens e páginas
-- Adicionar `loading="lazy"` em imagens do Footer e seções abaixo do fold
-- Cache headers já configurados em `_headers`
-
-**3.5 Schema Organization no index.html**
-
-- Adicionar schema `Organization` estático no `<head>` do index.html para crawlers
-
----
-
-### Arquivos envolvidos
-
-
-| Arquivo                             | Ação                                          |
-| ----------------------------------- | --------------------------------------------- |
-| `src/components/SEOHead.tsx`        | Adicionar schema Organization global          |
-| `src/pages/FAQ.tsx`                 | Nova página FAQ com schema FAQPage            |
-| `src/components/PageBreadcrumb.tsx` | Novo componente breadcrumb reutilizável       |
-| `src/pages/Index.tsx`               | Seção números, logos de clientes, espaçamento |
-| `src/pages/CentralAjuda.tsx`        | Adicionar SEOHead                             |
-| `src/components/Navigation.tsx`     | Adicionar "Contato" ao menu                   |
-| `src/components/Footer.tsx`         | Semântica de headings                         |
-| `src/App.tsx`                       | Rota `/faq`                                   |
-| `src/index.css`                     | Ajustes de tipografia e espaçamento           |
-| `src/pages/Contato.tsx`             | Campo telefone + salvar no banco              |
-| `public/sitemap.xml`                | Adicionar `/faq`, atualizar datas             |
-| `index.html`                        | Schema Organization estático                  |
-| `supabase/migrations/`              | Tabela `contact_messages`                     |
-
-
-### O que NÃO muda
-
-- Paleta de cores (já coerente com 3 cores: navy/dark, azul primary, emerald)
-- Imagens de produto (já são mockups profissionais)
-- Lazy loading e code splitting (já implementados)
-- Cache headers (já configurados)  
-  
-Quando finalizar uma fase indique um apalavra chave para seguirmos para a próxima, podeos usar "Próxima Fase''
+Confirma esse plano para eu começar pela Fase A?
