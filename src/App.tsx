@@ -23,6 +23,7 @@ const SolucoesSobMedida = lazy(() => import("./pages/SolucoesSobMedida"));
 const Cases = lazy(() => import("./pages/Cases"));
 const HubEmpresarial = lazy(() => import("./pages/HubEmpresarial"));
 const ProximoPasso = lazy(() => import("./pages/ProximoPasso"));
+const AreaCliente = lazy(() => import("./pages/AreaCliente"));
 const Blog = lazy(() => import("./pages/Blog"));
 const AboutFocus = lazy(() => import("./pages/AboutFocus"));
 const Privacidade = lazy(() => import("./pages/Privacidade"));
@@ -205,6 +206,7 @@ function AppLayout() {
             <Route path="/faq" element={<FAQ />} />
             <Route path="/sistemas-gratuitos" element={<SistemasGratuitos />} />
             <Route path="/proximo-passo" element={<ProximoPasso />} />
+            <Route path="/area-cliente" element={<AreaCliente />} />
             <Route path="/para-ias" element={<ParaIAs />} />
             <Route path="/llms" element={<ParaIAs />} />
 
