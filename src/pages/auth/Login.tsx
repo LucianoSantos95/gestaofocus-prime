@@ -8,6 +8,7 @@ import { toast } from 'sonner';
 import { z } from 'zod';
 import { trackEvent } from '@/lib/analytics';
 import { Loader2 } from 'lucide-react';
+import GoogleSignInButton from '@/components/auth/GoogleSignInButton';
 
 const loginSchema = z.object({
   email: z.string().trim().email('Email inválido').max(255),
