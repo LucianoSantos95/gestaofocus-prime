@@ -353,11 +353,13 @@ export default function IdeaCanvas() {
         nodeTypes={nodeTypes}
         fitView
         proOptions={{ hideAttribution: true }}
+        style={{ background: "transparent" }}
       >
-        <Background variant={BackgroundVariant.Dots} gap={24} size={1} color="hsl(var(--card-border))" />
-        <Controls className="!bg-background-elevated !border-card-border" />
+        <Background variant={BackgroundVariant.Dots} gap={32} size={1} color="rgba(255,255,255,0.06)" />
+        <Controls className="!bg-background-elevated/80 !border-card-border !backdrop-blur-sm" />
         <MiniMap
-          className="!bg-background-elevated !border !border-card-border"
+          className="!bg-background-elevated/80 !border !border-card-border !backdrop-blur-sm"
+          maskColor="rgba(0,0,0,0.6)"
           nodeColor={(n) => (n.data as NodeData).ticket?.color || "hsl(var(--primary))"}
         />
       </ReactFlow>
