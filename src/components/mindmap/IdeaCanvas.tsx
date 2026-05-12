@@ -286,7 +286,7 @@ export default function IdeaCanvas() {
   }
 
   return (
-    <div className="relative w-full h-[640px] rounded-2xl border border-card-border bg-background-elevated overflow-hidden">
+    <div className="cosmic-canvas relative w-full h-[640px] rounded-2xl border border-card-border overflow-hidden">
       {/* Toolbar */}
       <div className="absolute top-4 left-4 z-10 flex gap-2">
         <Button
