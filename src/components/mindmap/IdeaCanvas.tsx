@@ -65,12 +65,13 @@ function IdeaNode({ data }: { data: NodeData }) {
     >
       <Handle type="target" position={Position.Top} className="!bg-primary !w-2 !h-2" />
       <div
-        className="rounded-full bg-background-elevated border-2 shadow-lg backdrop-blur-sm flex items-center justify-center text-center p-3 hover:scale-110 transition-transform"
+        className="rounded-full border-2 backdrop-blur-md flex items-center justify-center text-center p-3 hover:scale-110 transition-transform"
         style={{
           width: 110,
           height: 110,
+          background: "rgba(15, 23, 42, 0.7)",
           borderColor: data.ticket?.color || "hsl(var(--primary))",
-          boxShadow: `0 0 24px ${data.ticket?.color || "hsl(var(--primary))"}40`,
+          boxShadow: `0 0 32px ${data.ticket?.color || "#1E40AF"}66, inset 0 0 20px rgba(255,255,255,0.04)`,
         }}
       >
         <div className="text-xs font-medium text-foreground line-clamp-3 leading-tight">
