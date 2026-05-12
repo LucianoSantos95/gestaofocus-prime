@@ -229,11 +229,13 @@ function AppLayout() {
         </Suspense>
       </main>
       {showFooter && <Footer />}
-      <OptionalFeatureBoundary featureName={isDashboard ? "dashboard chat" : "chat widget"}>
-        <Suspense fallback={null}>
-          {isDashboard ? <DashboardChatButton /> : <ChatWidget />}
-        </Suspense>
-      </OptionalFeatureBoundary>
+      {!isDashboard && (
+        <OptionalFeatureBoundary featureName="chat widget">
+          <Suspense fallback={null}>
+            <ChatWidget />
+          </Suspense>
+        </OptionalFeatureBoundary>
+      )}
       {!isDashboard && !isAuth && (
         <OptionalFeatureBoundary featureName="action plan popup">
           <Suspense fallback={null}>
