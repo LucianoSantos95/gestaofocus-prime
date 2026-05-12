@@ -8,15 +8,11 @@ import { useUserRole } from "@/hooks/useUserRole";
 
 const menuItems = [
   { icon: Home, label: "Início", href: "/dashboard" },
-  { icon: Briefcase, label: "Meus Projetos", href: "/dashboard/projetos" },
-  { icon: BookOpen, label: "Biblioteca", href: "/dashboard#templates" },
   { icon: HeadphonesIcon, label: "Suporte", href: "/dashboard/suporte" },
   { icon: Settings, label: "Configurações", href: "/dashboard/configuracoes" },
 ];
 
-const adminMenuItems = [
-  { icon: Gauge, label: "Lighthouse", href: "/dashboard/lighthouse" },
-];
+const adminMenuItems: { icon: typeof Home; label: string; href: string }[] = [];
 
 export default function DashboardSidebar() {
   const [collapsed, setCollapsed] = useState(false);
