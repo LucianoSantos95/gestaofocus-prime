@@ -65,12 +65,13 @@ function IdeaNode({ data }: { data: NodeData }) {
     >
       <Handle type="target" position={Position.Top} className="!bg-primary !w-2 !h-2" />
       <div
-        className="rounded-full bg-background-elevated border-2 shadow-lg backdrop-blur-sm flex items-center justify-center text-center p-3 hover:scale-110 transition-transform"
+        className="rounded-full border-2 backdrop-blur-md flex items-center justify-center text-center p-3 hover:scale-110 transition-transform"
         style={{
           width: 110,
           height: 110,
+          background: "rgba(15, 23, 42, 0.7)",
           borderColor: data.ticket?.color || "hsl(var(--primary))",
-          boxShadow: `0 0 24px ${data.ticket?.color || "hsl(var(--primary))"}40`,
+          boxShadow: `0 0 32px ${data.ticket?.color || "#1E40AF"}66, inset 0 0 20px rgba(255,255,255,0.04)`,
         }}
       >
         <div className="text-xs font-medium text-foreground line-clamp-3 leading-tight">
@@ -286,7 +287,7 @@ export default function IdeaCanvas() {
   }
 
   return (
-    <div className="relative w-full h-[640px] rounded-2xl border border-card-border bg-background-elevated overflow-hidden">
+    <div className="cosmic-canvas relative w-full h-[640px] rounded-2xl border border-card-border overflow-hidden">
       {/* Toolbar */}
       <div className="absolute top-4 left-4 z-10 flex gap-2">
         <Button
@@ -353,11 +354,13 @@ export default function IdeaCanvas() {
         nodeTypes={nodeTypes}
         fitView
         proOptions={{ hideAttribution: true }}
+        style={{ background: "transparent" }}
       >
-        <Background variant={BackgroundVariant.Dots} gap={24} size={1} color="hsl(var(--card-border))" />
-        <Controls className="!bg-background-elevated !border-card-border" />
+        <Background variant={BackgroundVariant.Dots} gap={32} size={1} color="rgba(255,255,255,0.06)" />
+        <Controls className="!bg-background-elevated/80 !border-card-border !backdrop-blur-sm" />
         <MiniMap
-          className="!bg-background-elevated !border !border-card-border"
+          className="!bg-background-elevated/80 !border !border-card-border !backdrop-blur-sm"
+          maskColor="rgba(0,0,0,0.6)"
           nodeColor={(n) => (n.data as NodeData).ticket?.color || "hsl(var(--primary))"}
         />
       </ReactFlow>
