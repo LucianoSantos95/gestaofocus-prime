@@ -16,6 +16,8 @@ import {
   REVENUE_OPTIONS,
   generateAnonSessionId,
 } from "@/lib/mvpSimulator";
+import MvpResultStructured from "./MvpResultStructured";
+import TalkToProBubble from "./TalkToProBubble";
 
 type Step = "intro" | "business" | "questions" | "loading" | "result";
 
