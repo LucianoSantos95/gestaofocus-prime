@@ -1,61 +1,103 @@
 ## Objetivo
-Reformular a área do cliente para focar no funil de topo (MVP gratuito), removendo seções não essenciais e tornando o Mapa de Ideias mais imersivo.
 
-## Mudanças
+Reestruturar a tela de resultado do **Simulador de MVP** dentro do dashboard para:
+1. Calibrar o perfil às faixas de pontuação corretamente.
+2. Apresentar foco e cronograma de forma clara e expansível.
+3. Permitir baixar o plano em PDF.
+4. Capturar leads de acompanhamento pago via CTA fixo "Fale com um profissional".
 
-### 1. Sidebar (`DashboardSidebar.tsx`)
-Remover itens do menu:
-- "Meus Projetos" (`/dashboard/projetos`)
-- "Biblioteca" (`/dashboard#templates`)
-- "Lighthouse" (admin)
+---
 
-Manter apenas: **Início**, **Suporte**, **Configurações**.
+## 1. Calibração perfil × pontuação
 
-### 2. Dashboard (`Dashboard.tsx`)
-Reorganizar para mostrar somente:
-- Saudação ("Olá, {nome}")
-- **Simulador de MVP** (componente novo embutido — mesmo fluxo de `AreaCliente.tsx`, mas já dentro do dashboard pós-login; se o usuário já tem simulação salva, mostra o resultado direto)
-- **Mapa de Ideias** (com novo fundo imersivo)
+Faixas (com a trava existente preservada):
 
-Remover:
-- `HeroBanner`
-- Seção "Meus Projetos"
-- Seção "Templates Gratuitos"
+| Pontuação | Perfil |
+|---|---|
+| 0–5 | Concierge Manual |
+| 6–10 | Estruturado |
+| 11–15 | Escalável |
 
-### 3. Simulador embutido pós-login
-Criar `src/components/dashboard/MVPSimulatorPanel.tsx`:
-- Ao montar, busca a última simulação do usuário em `mvp_simulations`
-- Se existe → mostra resultado (markdown, timeline, custos)
-- Se não existe → renderiza o mesmo state machine de `AreaCliente.tsx` (info do negócio → 15 perguntas → loading → resultado)
-- Reaproveita `generate-mvp-plan` edge function e `mvpSimulator.ts`
+**Trava**: se `q1` (caixa ≥ R$1.000) **OU** `q2` (≥10 h/semana) for `false`, força **Concierge** independentemente do score.
 
-### 4. Mapa de Ideias imersivo (`IdeaCanvas.tsx`)
-Criar fundo espacial alinhado à paleta (deep navy `hsl(210 15% 3%)` + acentos azul `#1E40AF`):
-- Background com gradient radial deep navy → preto + camada de "estrelas" (CSS puro: múltiplos `box-shadow` em pseudo-elemento, ou SVG com pontos aleatórios)
-- Sutil nebulosa azul (radial-gradient com baixa opacidade do primary)
-- Animação suave de parallax/twinkle (CSS keyframes)
-- Substituir o `background` padrão do React Flow (`<Background />`) ou customizar via CSS sobre o container
-- Nós com leve glow para destacar contra o fundo escuro
-- Manter performance (sem libs pesadas; CSS + SVG)
+Local: `supabase/functions/generate-mvp-plan/index.ts → calcProfile()`. Já está nesta lógica — apenas reforçar a documentação inline e refletir os limites no UI (badge mostra "X/15 → faixa Y") para o usuário entender o porquê.
 
-Atualizar copy da seção no Dashboard: remover menção "estilo Obsidian".
+## 2. Entrega estruturada do MVP (tela de resultado)
 
-### 5. Remover Assistente Focus
-- Remover `<DashboardChatButton />` de onde estiver renderizado (verificar `DashboardLayout` ou `Dashboard`)
-- Manter o componente no repo (não usado) ou deletar o import
+Substituir o resultado atual (markdown solto) por blocos visuais:
 
-### 6. Rotas
-Manter `/dashboard/projetos` e `/dashboard/lighthouse` registradas (caso acessadas direto), apenas removidas da navegação. Confirmar com usuário se prefere remover as rotas também.
+### 2.1 Tabela "Onde focar e como"
+Vem de um novo campo na resposta da IA: `foco_tabela: { area, por_que, como_fazer }[]` (4–6 linhas).
+Renderizar como `<Table>` shadcn com colunas: **Área de foco | Por que importa | Como fazer**.
 
-## Arquivos afetados
-- `src/components/dashboard/DashboardSidebar.tsx` — remover itens do menu
-- `src/components/dashboard/DashboardLayout.tsx` — remover ChatButton se estiver aqui
-- `src/pages/dashboard/Dashboard.tsx` — reestruturar conteúdo
-- `src/components/dashboard/MVPSimulatorPanel.tsx` — **novo**
-- `src/components/mindmap/IdeaCanvas.tsx` — fundo espacial + glow nos nós
-- `src/index.css` — keyframes/utilitário para estrelas e nebulosa (se necessário)
+### 2.2 Cronograma expansível
+Reaproveita `cronograma[]` (já tem `semana, tarefa, criterio_sucesso, custo_rs`).
+Pedir à IA também: `passo_a_passo: string[]` (3–6 itens) por semana.
+Renderizar como `<Accordion>` shadcn:
+- Header: `Semana N — {tarefa}`
+- Conteúdo: passo a passo numerado + critério de sucesso + custo estimado.
 
-## Fora do escopo
-- Mudanças no banco de dados
-- Edge functions (reaproveita `generate-mvp-plan` e `claim-simulation`)
-- Página pública `/area-cliente` (continua igual para topo de funil pré-login)
+### 2.3 Botão "Baixar MVP em PDF"
+Client-side com **jsPDF + html2canvas** (sem custo, sem edge function).
+- Adicionar `bun add jspdf html2canvas`.
+- Helper `src/lib/exportMvpPdf.ts` que pega o container `#mvp-result` e gera PDF A4 paginado.
+- Inclui cabeçalho com perfil, score, veredito, tabela de foco e cronograma completo.
+
+## 3. CTA "Fale com um profissional"
+
+### 3.1 UI
+Botão fixo no canto inferior esquerdo da tela do dashboard (apenas quando o painel está em `step === "result"`), cor de destaque (vermelho `--primary` do CTA, hsl `0 84% 60%`), com leve pulse.
+
+### 3.2 Popover
+Ao clicar abre `<Popover>` shadcn ancorado ao botão com:
+- Headline: "Quer que eu implante seu MVP com você?"
+- Subhead curto: 2 frases sobre acompanhamento 1:1 (definição de escopo, execução semanal, ajustes com IA).
+- Bullet points (3): "Diagnóstico aprofundado", "Roadmap semanal comigo", "Suporte direto via WhatsApp".
+- Faixa de investimento: "A partir de R$ 1.997 / sprint de 30 dias" (placeholder editável).
+- **CTA primário**: botão WhatsApp com mensagem pré-preenchida contendo perfil + score + nome do negócio do usuário.
+- **CTA secundário**: "Quero que entrem em contato" → grava em tabela nova `mvp_consulting_leads`.
+
+### 3.3 Tabela nova `mvp_consulting_leads`
+Campos: `id, user_id (nullable), simulation_id, full_name, email, phone, profile, score, business_description, created_at`.
+RLS:
+- INSERT público com check: `length(email) <= 255 AND email regex válido`.
+- SELECT só admin (`has_role(auth.uid(),'admin')`).
+- Trigger de validação (lengths + regex de email/telefone) e UPDATE/DELETE bloqueados.
+
+WhatsApp: número placeholder `5511999999999` → coloco TODO bem visível pra você trocar.
+
+## 4. Mudanças no edge function
+
+`supabase/functions/generate-mvp-plan/index.ts`:
+- Adicionar ao schema da tool `deliver_mvp_plan`:
+  - `foco_tabela: { area, por_que, como_fazer }[]` (required, min 3 max 6).
+  - Em cada item de `cronograma`: `passo_a_passo: string[]` (3–6).
+- Reforçar no `SYSTEM_PROMPT` que cada semana precisa ter passo a passo executável e que `foco_tabela` é prioridade de execução por ordem de impacto.
+
+## 5. Arquivos a criar / editar
+
+**Criar**
+- `src/components/dashboard/MvpResultStructured.tsx` (tabela de foco + cronograma accordion + botões)
+- `src/components/dashboard/TalkToProBubble.tsx` (botão fixo + popover + form)
+- `src/lib/exportMvpPdf.ts` (PDF client-side)
+- Migration: tabela `mvp_consulting_leads` + trigger + RLS.
+
+**Editar**
+- `src/components/dashboard/MVPSimulatorPanel.tsx` — usar novo `MvpResultStructured` no `step === "result"`; renderizar `TalkToProBubble` quando há resultado; mostrar badge "Score X/15 · Faixa Y–Z".
+- `supabase/functions/generate-mvp-plan/index.ts` — campos novos no schema + prompt.
+
+**Dependências**: `bun add jspdf html2canvas`.
+
+## Detalhes técnicos
+
+- PDF: `html2canvas(element, { backgroundColor: '#0a0f1c', scale: 2 })` → `jsPDF('p','mm','a4')`, paginação por altura.
+- Backwards compat: se uma simulação antiga não tiver `foco_tabela` ou `passo_a_passo`, mostrar fallback amigável ("Refaça a simulação para ver o plano estruturado").
+- WhatsApp link: `https://wa.me/55XXXXXXXXXXX?text=${encodeURIComponent(...)}`.
+- Sem mudanças em rotas, sidebar, mapa de ideias.
+
+## Decisões assumidas (você pulou as perguntas)
+
+- Faixas **0–5 / 6–10 / 11–15** com a trava de caixa/tempo já existente.
+- CTA com **WhatsApp + formulário backup**, valor exibido como "a partir de R$ 1.997 / sprint" (placeholder).
+- PDF **client-side** com jsPDF + html2canvas.
+- Número de WhatsApp e valor ficam como TODO destacado no código pra você ajustar rapidinho.
