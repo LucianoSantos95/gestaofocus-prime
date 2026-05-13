@@ -15,7 +15,8 @@ Regras absolutas:
 - Se caixa < R$1.000 ou horas/semana < 10, FORÇAR perfil Concierge mesmo que pontos sejam altos.
 - Nunca recomendar App, marca registrada ou tráfego pago para perfis Concierge.
 - Mapa mental: máximo 5 ramos principais, máximo 3 sub-nós por ramo.
-- Cronograma: cada tarefa tem critério de sucesso mensurável e custo em R$.`;
+- Cronograma: cada tarefa tem critério de sucesso mensurável, custo em R$ e PASSO A PASSO executável (3 a 6 passos).
+- Tabela de foco: 4 a 6 áreas prioritárias, em ordem de impacto, com "por que importa" (1 frase) e "como fazer" (ação concreta).`;
 
 interface RequestBody {
   anon_session_id: string;
@@ -105,11 +106,30 @@ Deno.serve(async (req) => {
                       type: "object",
                       properties: {
                         semana: { type: "integer" },
-                        tarefa: { type: "string" },
+                        tarefa: { type: "string", description: "Nome curto da ação principal da semana" },
                         criterio_sucesso: { type: "string" },
                         custo_rs: { type: "number" },
+                        passo_a_passo: {
+                          type: "array",
+                          description: "3 a 6 passos executáveis para concluir a ação da semana",
+                          items: { type: "string" },
+                        },
                       },
-                      required: ["semana", "tarefa", "criterio_sucesso", "custo_rs"],
+                      required: ["semana", "tarefa", "criterio_sucesso", "custo_rs", "passo_a_passo"],
+                      additionalProperties: false,
+                    },
+                  },
+                  foco_tabela: {
+                    type: "array",
+                    description: "4 a 6 áreas prioritárias de foco em ordem de impacto",
+                    items: {
+                      type: "object",
+                      properties: {
+                        area: { type: "string", description: "Nome curto da área" },
+                        por_que: { type: "string", description: "1 frase: por que essa área importa" },
+                        como_fazer: { type: "string", description: "Ação concreta" },
+                      },
+                      required: ["area", "por_que", "como_fazer"],
                       additionalProperties: false,
                     },
                   },
@@ -137,6 +157,7 @@ Deno.serve(async (req) => {
                   "veredito",
                   "mapa_mental_markdown",
                   "cronograma",
+                  "foco_tabela",
                   "tempo_implementacao_semanas",
                   "lucratividade_pessimista_rs",
                   "lucratividade_realista_rs",

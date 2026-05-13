@@ -331,6 +331,45 @@ export type Database = {
         }
         Relationships: []
       }
+      mvp_consulting_leads: {
+        Row: {
+          business_description: string | null
+          created_at: string
+          email: string
+          full_name: string
+          id: string
+          phone: string | null
+          profile: string | null
+          score: number | null
+          simulation_id: string | null
+          user_id: string | null
+        }
+        Insert: {
+          business_description?: string | null
+          created_at?: string
+          email: string
+          full_name: string
+          id?: string
+          phone?: string | null
+          profile?: string | null
+          score?: number | null
+          simulation_id?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          business_description?: string | null
+          created_at?: string
+          email?: string
+          full_name?: string
+          id?: string
+          phone?: string | null
+          profile?: string | null
+          score?: number | null
+          simulation_id?: string | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       mvp_simulations: {
         Row: {
           ai_result: Json | null
