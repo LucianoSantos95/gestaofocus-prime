@@ -15,7 +15,8 @@ Regras absolutas:
 - Se caixa < R$1.000 ou horas/semana < 10, FORÇAR perfil Concierge mesmo que pontos sejam altos.
 - Nunca recomendar App, marca registrada ou tráfego pago para perfis Concierge.
 - Mapa mental: máximo 5 ramos principais, máximo 3 sub-nós por ramo.
-- Cronograma: cada tarefa tem critério de sucesso mensurável e custo em R$.`;
+- Cronograma: cada tarefa tem critério de sucesso mensurável, custo em R$ e PASSO A PASSO executável (3 a 6 passos).
+- Tabela de foco: 4 a 6 áreas prioritárias, em ordem de impacto, com "por que importa" (1 frase) e "como fazer" (ação concreta).`;
 
 interface RequestBody {
   anon_session_id: string;
