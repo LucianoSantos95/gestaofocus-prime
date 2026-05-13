@@ -277,7 +277,7 @@ export default function MVPSimulatorPanel() {
 
           {step === "result" && result && (
             <motion.div key="result" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
-              <ResultView result={result} />
+              <MvpResultStructured result={result} businessName={businessName || result.business_name} />
               <div className="flex justify-center pt-2">
                 <Button variant="outline" size="sm" onClick={restart}>
                   <RotateCcw className="w-4 h-4 mr-1" /> Refazer simulação
@@ -287,61 +287,17 @@ export default function MVPSimulatorPanel() {
           )}
         </AnimatePresence>
       </div>
-    </div>
-  );
-}
 
-function ResultView({ result }: { result: any }) {
-  const profile = PROFILE_LABELS[result.profile] || PROFILE_LABELS.estruturado;
-  const ai = result.ai_result || {};
-
-  return (
-    <div className="space-y-6">
-      <div className="space-y-3">
-        <div className={`inline-flex items-center gap-2 rounded-full bg-gradient-to-r ${profile.color} px-4 py-1.5 text-sm font-semibold text-white`}>
-          <CheckCircle2 className="w-4 h-4" /> Perfil: {profile.name}
-        </div>
-        <h3 className="text-xl md:text-2xl font-bold text-foreground">Seu plano de MVP personalizado</h3>
-        <p className="text-foreground-muted text-sm">{profile.tagline} · Pontuação {result.score}/15</p>
-        {ai.veredito && <p className="text-foreground leading-relaxed">{ai.veredito}</p>}
-      </div>
-
-      {ai.plano_markdown && (
-        <div className="rounded-xl border border-card-border bg-background p-5">
-          <h4 className="font-semibold text-foreground mb-3">Plano completo</h4>
-          <div className="prose prose-invert prose-sm max-w-none text-foreground-muted whitespace-pre-wrap">
-            {ai.plano_markdown}
-          </div>
-        </div>
-      )}
-
-      {Array.isArray(ai.cronograma) && ai.cronograma.length > 0 && (
-        <div className="rounded-xl border border-card-border bg-background p-5">
-          <h4 className="font-semibold text-foreground mb-3">Cronograma</h4>
-          <ul className="space-y-2">
-            {ai.cronograma.map((item: any, idx: number) => (
-              <li key={idx} className="flex gap-3 text-sm">
-                <span className="text-primary font-mono shrink-0">{item.semana || `S${idx + 1}`}</span>
-                <span className="text-foreground-muted">{item.atividade || item.descricao || JSON.stringify(item)}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-
-      {Array.isArray(ai.custos) && ai.custos.length > 0 && (
-        <div className="rounded-xl border border-card-border bg-background p-5">
-          <h4 className="font-semibold text-foreground mb-3">Custos estimados</h4>
-          <ul className="space-y-1 text-sm">
-            {ai.custos.map((c: any, idx: number) => (
-              <li key={idx} className="flex justify-between text-foreground-muted">
-                <span>{c.item || c.nome}</span>
-                <span className="text-foreground font-medium">{c.valor}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+      {step === "result" && result && (
+        <TalkToProBubble
+          profile={result.profile}
+          score={result.score}
+          businessName={businessName || result.business_name}
+          businessDescription={description || result.business_description}
+          simulationId={result.simulation_id}
+        />
       )}
     </div>
   );
 }
+
