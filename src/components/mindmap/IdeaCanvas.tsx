@@ -38,6 +38,7 @@ import {
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { toast } from "sonner";
 import { Badge } from "@/components/ui/badge";
+import CosmicParticles from "./CosmicParticles";
 
 interface Ticket {
   id: string;
@@ -288,6 +289,7 @@ export default function IdeaCanvas() {
 
   return (
     <div className="cosmic-canvas relative w-full h-[640px] rounded-2xl border border-card-border overflow-hidden">
+      <CosmicParticles />
       {/* Toolbar */}
       <div className="absolute top-4 left-4 z-10 flex gap-2">
         <Button
