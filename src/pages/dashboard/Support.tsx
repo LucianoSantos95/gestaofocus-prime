@@ -126,25 +126,6 @@ export default function Support() {
           )}
         </Card>
 
-        {/* FAQ */}
-        <div className="max-w-2xl">
-          <div className="flex items-center gap-2 mb-4">
-            <HelpCircle className="w-5 h-5 text-primary" />
-            <h2 className="text-lg font-semibold text-foreground">Perguntas Frequentes</h2>
-          </div>
-          <Accordion type="single" collapsible className="space-y-3">
-            {faqs.map((faq, i) => (
-              <AccordionItem key={i} value={`faq-${i}`} className="border border-card-border rounded-xl px-5 bg-background-elevated">
-                <AccordionTrigger className="text-foreground hover:no-underline py-4 text-sm">
-                  {faq.q}
-                </AccordionTrigger>
-                <AccordionContent className="text-foreground-muted pb-4 text-sm">
-                  {faq.a}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </div>
       </div>
     </DashboardLayout>
   );
