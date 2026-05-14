@@ -4,13 +4,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import { Mail, HelpCircle, CheckCircle2, Loader2 } from "lucide-react";
+import { Mail, CheckCircle2, Loader2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { z } from "zod";
@@ -20,25 +14,6 @@ const supportSchema = z.object({
   email: z.string().trim().email("E-mail inválido").max(255),
   message: z.string().trim().min(1, "Mensagem é obrigatória").max(2000),
 });
-
-const faqs = [
-  {
-    q: "Como acompanho o andamento do meu projeto?",
-    a: "Acesse a seção 'Meus Projetos' no painel. Lá você verá a barra de progresso, status e data de entrega estimada.",
-  },
-  {
-    q: "Preciso pagar mensalidade pelo sistema?",
-    a: "Apenas a hospedagem do sistema (valor baixo, direto ao provedor). O desenvolvimento é pagamento único.",
-  },
-  {
-    q: "E se eu precisar de alterações depois da entrega?",
-    a: "O software é seu. Oferecemos pacotes de suporte ou horas avulsas para evoluir o sistema quando sua empresa crescer.",
-  },
-  {
-    q: "Qual o horário de atendimento?",
-    a: "Nosso suporte funciona de segunda a sexta, das 9h às 18h (horário de Brasília).",
-  },
-];
 
 export default function Support() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -151,25 +126,6 @@ export default function Support() {
           )}
         </Card>
 
-        {/* FAQ */}
-        <div className="max-w-2xl">
-          <div className="flex items-center gap-2 mb-4">
-            <HelpCircle className="w-5 h-5 text-primary" />
-            <h2 className="text-lg font-semibold text-foreground">Perguntas Frequentes</h2>
-          </div>
-          <Accordion type="single" collapsible className="space-y-3">
-            {faqs.map((faq, i) => (
-              <AccordionItem key={i} value={`faq-${i}`} className="border border-card-border rounded-xl px-5 bg-background-elevated">
-                <AccordionTrigger className="text-foreground hover:no-underline py-4 text-sm">
-                  {faq.q}
-                </AccordionTrigger>
-                <AccordionContent className="text-foreground-muted pb-4 text-sm">
-                  {faq.a}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </div>
       </div>
     </DashboardLayout>
   );

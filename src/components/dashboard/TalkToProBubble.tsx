@@ -10,7 +10,7 @@ import { z } from "zod";
 
 // TODO: ajuste seu WhatsApp e valor abaixo
 const WHATSAPP_NUMBER = "5511999999999";
-const PRICE_LABEL = "A partir de R$ 1.997 / sprint de 30 dias";
+const PRICE_LABEL = "Investimento entre R$ 500 e R$ 1.200";
 
 const leadSchema = z.object({
   full_name: z.string().trim().min(2, "Informe seu nome").max(100),

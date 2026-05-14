@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { toast } from "sonner";
-import { exportMvpPdf } from "@/lib/exportMvpPdf";
+import { exportStructuredMvpPdf } from "@/lib/exportMvpPdf";
 
 const PROFILE_LABELS: Record<string, { name: string; range: string; tagline: string; color: string }> = {
   concierge: { name: "Concierge Manual", range: "0–5", tagline: "MVP de 30 dias, 100% manual", color: "from-amber-500 to-orange-500" },
@@ -27,7 +27,22 @@ export default function MvpResultStructured({ result, businessName }: Props) {
   const handleDownload = async () => {
     try {
       setDownloading(true);
-      await exportMvpPdf("mvp-result", `plano-mvp-${profile.name.toLowerCase().replace(/\s/g, "-")}.pdf`);
+      await exportStructuredMvpPdf(
+        {
+          businessName,
+          profile: { name: profile.name, range: profile.range, tagline: profile.tagline },
+          score: result.score,
+          veredito: ai.veredito,
+          focoTabela,
+          cronograma,
+          lucratividade: {
+            pessimista: ai.lucratividade_pessimista_rs,
+            realista: ai.lucratividade_realista_rs,
+            otimista: ai.lucratividade_otimista_rs,
+          },
+        },
+        `plano-mvp-${profile.name.toLowerCase().replace(/\s/g, "-")}.pdf`,
+      );
       toast.success("PDF gerado!");
     } catch (e: any) {
       toast.error("Erro ao gerar PDF");
