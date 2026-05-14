@@ -13,12 +13,23 @@ const OUTPUT_FILE = path.join(__dirname, '../public/sitemap.xml');
 // Páginas estáticas principais
 const staticPages = [
   { loc: '/', priority: '1.0', changefreq: 'weekly' },
-  { loc: '/sistemas-notion', priority: '0.8', changefreq: 'weekly' },
-  { loc: '/sprint-produtividade', priority: '0.8', changefreq: 'weekly' },
-  { loc: '/hub-empresarial', priority: '0.8', changefreq: 'weekly' },
-  { loc: '/focus-club', priority: '0.8', changefreq: 'weekly' },
+  { loc: '/solucoes-sob-medida', priority: '0.9', changefreq: 'weekly' },
+  { loc: '/hub-empresarial', priority: '0.9', changefreq: 'weekly' },
+  { loc: '/cases', priority: '0.8', changefreq: 'weekly' },
   { loc: '/sistemas-gratuitos', priority: '0.8', changefreq: 'weekly' },
   { loc: '/blog', priority: '0.9', changefreq: 'weekly' },
+  { loc: '/sobre', priority: '0.7', changefreq: 'monthly' },
+  { loc: '/contato', priority: '0.7', changefreq: 'monthly' },
+  { loc: '/faq', priority: '0.7', changefreq: 'monthly' },
+  { loc: '/proximo-passo', priority: '0.7', changefreq: 'monthly' },
+  { loc: '/area-cliente', priority: '0.6', changefreq: 'monthly' },
+  { loc: '/ajuda', priority: '0.5', changefreq: 'monthly' },
+  { loc: '/docs', priority: '0.5', changefreq: 'monthly' },
+  { loc: '/status', priority: '0.4', changefreq: 'weekly' },
+  { loc: '/para-ias', priority: '0.4', changefreq: 'monthly' },
+  { loc: '/privacidade', priority: '0.3', changefreq: 'yearly' },
+  { loc: '/termos', priority: '0.3', changefreq: 'yearly' },
+  { loc: '/cookies', priority: '0.3', changefreq: 'yearly' },
 ];
 
 // Função para converter nome de arquivo para slug
