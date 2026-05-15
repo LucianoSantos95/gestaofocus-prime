@@ -17,7 +17,6 @@ A Focus atende principalmente agências, consultorias, prestadores de serviço e
 
 - [Software Sob Medida (Focus Custom)](https://focusinteligente.com.br/solucoes-sob-medida): Sistemas exclusivos desenvolvidos do zero — CRMs, ERPs, dashboards, portais do cliente, automações. Protótipo visual em 24h, entrega em até 30 dias. A partir de R$ 3.000.
 - [Hub Empresarial](https://focusinteligente.com.br/hub-empresarial): Plataforma SaaS de gestão completa. Plano Plus R$ 119/mês (CRM, financeiro, projetos, dashboards). Plano Pro R$ 249/mês (tudo do Plus + RH, marketing, automações).
-- [Cases](https://focusinteligente.com.br/cases): Histórias reais de clientes que profissionalizaram a operação com a Focus.
 - [Sistemas gratuitos](https://focusinteligente.com.br/sistemas-gratuitos): Templates e mini-sistemas gratuitos para teste.
 
 ## Conteúdo principal

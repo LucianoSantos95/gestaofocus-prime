@@ -15,7 +15,6 @@ const staticPages = [
   { loc: '/', priority: '1.0', changefreq: 'weekly' },
   { loc: '/solucoes-sob-medida', priority: '0.9', changefreq: 'weekly' },
   { loc: '/hub-empresarial', priority: '0.9', changefreq: 'weekly' },
-  { loc: '/cases', priority: '0.8', changefreq: 'weekly' },
   { loc: '/sistemas-gratuitos', priority: '0.8', changefreq: 'weekly' },
   { loc: '/blog', priority: '0.9', changefreq: 'weekly' },
   { loc: '/sobre', priority: '0.7', changefreq: 'monthly' },
