@@ -54,8 +54,8 @@ export default function ForgotPassword() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 bg-gradient-to-br from-background to-muted/30">
-      <Card className="w-full max-w-md">
+    <div className="min-h-[100dvh] flex items-center justify-center px-4 py-8 md:py-12 bg-gradient-to-br from-background to-muted/30">
+      <Card className="w-full max-w-md md:max-w-lg">
         <CardHeader className="text-center">
           <Link to="/" className="flex justify-center mb-4">
             <img 

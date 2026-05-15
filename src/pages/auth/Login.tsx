@@ -58,7 +58,7 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 relative overflow-hidden" style={{ background: 'var(--gradient-dark)' }}>
+    <div className="min-h-[100dvh] flex items-center justify-center px-4 py-8 md:py-12 relative overflow-hidden" style={{ background: 'var(--gradient-dark)' }}>
       {/* Grid pattern overlay */}
       <div
         className="absolute inset-0 opacity-[0.08] pointer-events-none"
@@ -71,9 +71,9 @@ export default function Login() {
       {/* Glow */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-primary/15 rounded-full blur-[140px] pointer-events-none" />
 
-      <div className="relative z-10 w-full max-w-md">
-        <div className="text-center mb-8">
-          <Link to="/" className="inline-block mb-6">
+      <div className="relative z-10 w-full max-w-md md:max-w-lg">
+        <div className="text-center mb-6 md:mb-8">
+          <Link to="/" className="inline-block mb-4 md:mb-6">
             <img src="/lovable-uploads/focus-logo.png" alt="Focus" className="h-10 mx-auto" />
           </Link>
           <h1 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight">
@@ -84,7 +84,7 @@ export default function Login() {
           </p>
         </div>
 
-        <div className="rounded-2xl border border-card-border bg-background-elevated p-8">
+        <div className="rounded-2xl border border-card-border bg-background-elevated p-6 md:p-8">
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
               <Label className="text-foreground-muted">Email</Label>

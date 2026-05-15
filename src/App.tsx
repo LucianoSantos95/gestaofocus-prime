@@ -20,7 +20,6 @@ const ActionPlanPopup = lazy(() => import("./components/ActionPlanPopup"));
 
 // Lazy load pages
 const SolucoesSobMedida = lazy(() => import("./pages/SolucoesSobMedida"));
-const Cases = lazy(() => import("./pages/Cases"));
 const HubEmpresarial = lazy(() => import("./pages/HubEmpresarial"));
 const ProximoPasso = lazy(() => import("./pages/ProximoPasso"));
 const AreaCliente = lazy(() => import("./pages/AreaCliente"));
@@ -123,7 +122,7 @@ function AppLayout() {
   const location = useLocation();
   const isDashboard = location.pathname.startsWith("/dashboard");
   const isAuth = location.pathname.startsWith("/auth");
-  const isSolucoes = location.pathname === "/solucoes-sob-medida" || location.pathname === "/hub-empresarial" || location.pathname === "/cases";
+  const isSolucoes = location.pathname === "/solucoes-sob-medida" || location.pathname === "/hub-empresarial";
   const isHomepage = location.pathname === "/";
 
   // SolucoesSobMedida has its own Nav/Footer embedded
@@ -138,7 +137,6 @@ function AppLayout() {
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/solucoes-sob-medida" element={<SolucoesSobMedida />} />
-            <Route path="/cases" element={<Cases />} />
             <Route path="/hub-empresarial" element={<HubEmpresarial />} />
             <Route path="/blog" element={<Blog />} />
 

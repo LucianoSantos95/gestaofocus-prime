@@ -1,103 +1,33 @@
-## Objetivo
+## 1. Remover permanentemente a página de Cases
 
-Reestruturar a tela de resultado do **Simulador de MVP** dentro do dashboard para:
-1. Calibrar o perfil às faixas de pontuação corretamente.
-2. Apresentar foco e cronograma de forma clara e expansível.
-3. Permitir baixar o plano em PDF.
-4. Capturar leads de acompanhamento pago via CTA fixo "Fale com um profissional".
+Como os cases atuais são fictícios, removemos a rota e todas as referências públicas. Quando você tiver cases reais, basta restaurar o arquivo (mantenho `caseStudiesData.ts` e `CaseStudyArticle.tsx` versionados, sem rota ativa, para reutilizar depois — ou removo tudo, se preferir; me avise).
 
----
+**Arquivos a editar:**
+- `src/App.tsx` — remover `import Cases` e a `<Route path="/cases" ... />`. Também remover `/cases` da condição `isSolucoes` que esconde nav/footer.
+- `src/components/Navigation.tsx` — remover o item `{ name: "Cases", href: "/cases" }` do menu.
+- `scripts/generate-sitemap.js` — remover entrada `/cases`.
+- `public/sitemap.xml` — remover bloco `<url>` do `/cases` (será regenerado, mas atualizo manualmente também).
+- `public/llms.txt` e `public/llms-full.txt` — remover linhas que mencionam `/cases`.
+- `src/pages/Cases.tsx` — excluir arquivo.
 
-## 1. Calibração perfil × pontuação
+Mantém-se `src/components/cases/*` no repositório (sem rota) para reuso futuro. Posso excluir tudo se preferir — me diga.
 
-Faixas (com a trava existente preservada):
+## 2. Ajustar tamanho da tela de login
 
-| Pontuação | Perfil |
-|---|---|
-| 0–5 | Concierge Manual |
-| 6–10 | Estruturado |
-| 11–15 | Escalável |
+Hoje o card de login tem largura fixa `max-w-md` (~448px) e fica visualmente pequeno em telas grandes, e em telas baixas pode cortar. Vou torná-lo responsivo:
 
-**Trava**: se `q1` (caixa ≥ R$1.000) **OU** `q2` (≥10 h/semana) for `false`, força **Concierge** independentemente do score.
+- Container externo: trocar `min-h-screen flex items-center` por layout que respeita o viewport — `min-h-[100dvh]` (corrige o problema de altura em mobile com barra do navegador) e padding vertical adaptável (`py-8 md:py-12`).
+- Card de login: largura adaptativa — `max-w-md` em mobile, `max-w-lg` em telas ≥ md (570px). Padding interno também responsivo (`p-6 md:p-8`).
+- Espaçamento entre logo/título/card escala suavemente (`mb-6 md:mb-8`).
+- Aplico as mesmas mudanças em `src/pages/auth/SignUp.tsx` e `src/pages/auth/ForgotPassword.tsx` para manter coerência visual entre as três telas de auth.
 
-Local: `supabase/functions/generate-mvp-plan/index.ts → calcProfile()`. Já está nesta lógica — apenas reforçar a documentação inline e refletir os limites no UI (badge mostra "X/15 → faixa Y") para o usuário entender o porquê.
-
-## 2. Entrega estruturada do MVP (tela de resultado)
-
-Substituir o resultado atual (markdown solto) por blocos visuais:
-
-### 2.1 Tabela "Onde focar e como"
-Vem de um novo campo na resposta da IA: `foco_tabela: { area, por_que, como_fazer }[]` (4–6 linhas).
-Renderizar como `<Table>` shadcn com colunas: **Área de foco | Por que importa | Como fazer**.
-
-### 2.2 Cronograma expansível
-Reaproveita `cronograma[]` (já tem `semana, tarefa, criterio_sucesso, custo_rs`).
-Pedir à IA também: `passo_a_passo: string[]` (3–6 itens) por semana.
-Renderizar como `<Accordion>` shadcn:
-- Header: `Semana N — {tarefa}`
-- Conteúdo: passo a passo numerado + critério de sucesso + custo estimado.
-
-### 2.3 Botão "Baixar MVP em PDF"
-Client-side com **jsPDF + html2canvas** (sem custo, sem edge function).
-- Adicionar `bun add jspdf html2canvas`.
-- Helper `src/lib/exportMvpPdf.ts` que pega o container `#mvp-result` e gera PDF A4 paginado.
-- Inclui cabeçalho com perfil, score, veredito, tabela de foco e cronograma completo.
-
-## 3. CTA "Fale com um profissional"
-
-### 3.1 UI
-Botão fixo no canto inferior esquerdo da tela do dashboard (apenas quando o painel está em `step === "result"`), cor de destaque (vermelho `--primary` do CTA, hsl `0 84% 60%`), com leve pulse.
-
-### 3.2 Popover
-Ao clicar abre `<Popover>` shadcn ancorado ao botão com:
-- Headline: "Quer que eu implante seu MVP com você?"
-- Subhead curto: 2 frases sobre acompanhamento 1:1 (definição de escopo, execução semanal, ajustes com IA).
-- Bullet points (3): "Diagnóstico aprofundado", "Roadmap semanal comigo", "Suporte direto via WhatsApp".
-- Faixa de investimento: "A partir de R$ 1.997 / sprint de 30 dias" (placeholder editável).
-- **CTA primário**: botão WhatsApp com mensagem pré-preenchida contendo perfil + score + nome do negócio do usuário.
-- **CTA secundário**: "Quero que entrem em contato" → grava em tabela nova `mvp_consulting_leads`.
-
-### 3.3 Tabela nova `mvp_consulting_leads`
-Campos: `id, user_id (nullable), simulation_id, full_name, email, phone, profile, score, business_description, created_at`.
-RLS:
-- INSERT público com check: `length(email) <= 255 AND email regex válido`.
-- SELECT só admin (`has_role(auth.uid(),'admin')`).
-- Trigger de validação (lengths + regex de email/telefone) e UPDATE/DELETE bloqueados.
-
-WhatsApp: número placeholder `5511999999999` → coloco TODO bem visível pra você trocar.
-
-## 4. Mudanças no edge function
-
-`supabase/functions/generate-mvp-plan/index.ts`:
-- Adicionar ao schema da tool `deliver_mvp_plan`:
-  - `foco_tabela: { area, por_que, como_fazer }[]` (required, min 3 max 6).
-  - Em cada item de `cronograma`: `passo_a_passo: string[]` (3–6).
-- Reforçar no `SYSTEM_PROMPT` que cada semana precisa ter passo a passo executável e que `foco_tabela` é prioridade de execução por ordem de impacto.
-
-## 5. Arquivos a criar / editar
-
-**Criar**
-- `src/components/dashboard/MvpResultStructured.tsx` (tabela de foco + cronograma accordion + botões)
-- `src/components/dashboard/TalkToProBubble.tsx` (botão fixo + popover + form)
-- `src/lib/exportMvpPdf.ts` (PDF client-side)
-- Migration: tabela `mvp_consulting_leads` + trigger + RLS.
-
-**Editar**
-- `src/components/dashboard/MVPSimulatorPanel.tsx` — usar novo `MvpResultStructured` no `step === "result"`; renderizar `TalkToProBubble` quando há resultado; mostrar badge "Score X/15 · Faixa Y–Z".
-- `supabase/functions/generate-mvp-plan/index.ts` — campos novos no schema + prompt.
-
-**Dependências**: `bun add jspdf html2canvas`.
+**Arquivos a editar:**
+- `src/pages/auth/Login.tsx`
+- `src/pages/auth/SignUp.tsx`
+- `src/pages/auth/ForgotPassword.tsx`
 
 ## Detalhes técnicos
 
-- PDF: `html2canvas(element, { backgroundColor: '#0a0f1c', scale: 2 })` → `jsPDF('p','mm','a4')`, paginação por altura.
-- Backwards compat: se uma simulação antiga não tiver `foco_tabela` ou `passo_a_passo`, mostrar fallback amigável ("Refaça a simulação para ver o plano estruturado").
-- WhatsApp link: `https://wa.me/55XXXXXXXXXXX?text=${encodeURIComponent(...)}`.
-- Sem mudanças em rotas, sidebar, mapa de ideias.
-
-## Decisões assumidas (você pulou as perguntas)
-
-- Faixas **0–5 / 6–10 / 11–15** com a trava de caixa/tempo já existente.
-- CTA com **WhatsApp + formulário backup**, valor exibido como "a partir de R$ 1.997 / sprint" (placeholder).
-- PDF **client-side** com jsPDF + html2canvas.
-- Número de WhatsApp e valor ficam como TODO destacado no código pra você ajustar rapidinho.
+- `100dvh` (dynamic viewport height) evita o "corte" da tela em mobile que `100vh` causa quando a barra do Safari aparece/some.
+- A rota `/cases` já some do sitemap antes do próximo build; o Google leva alguns dias para reindexar — opcionalmente posso adicionar redirect 301 de `/cases` para `/` via `public/_headers`, mas para uma página com pouco tráfego não é crítico.
+- Nenhuma mudança em backend, banco de dados ou autenticação.
