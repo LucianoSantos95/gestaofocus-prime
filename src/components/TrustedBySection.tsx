@@ -40,13 +40,13 @@ const TrustedBySection = () => {
               className="card-hover p-6 flex items-center justify-center border-card-border transition-all duration-300 hover:scale-105 hover:border-primary/20 animate-slide-up"
               style={{ animationDelay: `${index * 50}ms` }}
             >
-              <div className="grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100">
+              <div className="grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100 aspect-[3/2] w-full max-w-[120px]">
                 <img 
                   src={company.logo} 
                   alt={`Logo ${company.name}`}
                   width="120"
                   height="80"
-                  className="h-20 w-auto object-contain"
+                  className="size-full object-contain"
                   loading="lazy"
                 />
               </div>

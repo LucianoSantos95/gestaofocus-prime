@@ -121,8 +121,8 @@ const ServicesComparison = () => {
                       </>
                     ) : (
                       <>
-                        <X className="w-5 h-5 text-foreground-muted/30 mr-3 flex-shrink-0 mt-0.5" />
-                        <span className="text-foreground-muted/50">{feature.name}</span>
+                        <X className="w-5 h-5 text-foreground-muted mr-3 flex-shrink-0 mt-0.5" />
+                        <span className="text-foreground-muted">{feature.name}</span>
                       </>
                     )}
                   </li>
