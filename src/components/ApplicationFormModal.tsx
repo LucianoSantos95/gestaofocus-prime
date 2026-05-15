@@ -451,7 +451,7 @@ export default function ApplicationFormModal({ open, onOpenChange, source = "dir
               </div>
 
               {/* Step counter */}
-              <p className="text-center text-xs text-foreground-muted/50 mt-4">
+              <p className="text-center text-xs text-foreground-muted mt-4">
                 Passo {step + 1} de {totalSteps}
               </p>
             </div>

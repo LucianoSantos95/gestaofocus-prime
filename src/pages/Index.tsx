@@ -240,7 +240,7 @@ const Index = () => {
               </div>
               <div className="mb-6">
                 <div className="w-14 h-14 rounded-xl bg-success/15 flex items-center justify-center overflow-hidden">
-                  <img src={hubLogo} alt="Hub Empresarial" className="w-10 h-10 object-contain" />
+                  <img src={hubLogo} alt="Hub Empresarial" width="40" height="40" className="w-10 h-10 object-contain" />
                 </div>
               </div>
               <h3 className="text-2xl font-bold text-foreground mb-3">Hub Empresarial</h3>
