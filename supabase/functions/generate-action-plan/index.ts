@@ -29,6 +29,31 @@ serve(async (req) => {
       );
     }
 
+    // Input length & type validation to prevent prompt injection / token abuse
+    const isStr = (v: unknown, max: number) => typeof v === "string" && v.length > 0 && v.length <= max;
+    if (
+      !isStr(name, 100) ||
+      !isStr(email, 255) ||
+      !isStr(segment, 100) ||
+      !isStr(team_size, 50) ||
+      (phone !== undefined && phone !== null && phone !== "" && (typeof phone !== "string" || phone.length > 20)) ||
+      (problem_description !== undefined && problem_description !== null && problem_description !== "" && (typeof problem_description !== "string" || problem_description.length > 2000)) ||
+      challenges.length > 10 ||
+      !challenges.every((c: unknown) => typeof c === "string" && c.length <= 100)
+    ) {
+      return new Response(
+        JSON.stringify({ error: "Entrada inválida." }),
+        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    // Strip control chars that could break prompt structure
+    const sanitize = (s: string) => s.replace(/[\u0000-\u001F\u007F]/g, " ").trim();
+    const safeName = sanitize(name);
+    const safeSegment = sanitize(segment);
+    const safeTeamSize = sanitize(team_size);
+    const safeProblem = problem_description ? sanitize(problem_description) : "";
+
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY not configured");
 
