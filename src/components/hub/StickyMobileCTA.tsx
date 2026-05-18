@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { trackCTAClick, trackEvent } from "@/lib/analytics";
 
 const StickyMobileCTA = () => {
   const [visible, setVisible] = useState(false);
@@ -13,6 +14,14 @@ const StickyMobileCTA = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const handleClick = () => {
+    trackCTAClick("Sticky-Mobile", "hub-empresarial");
+    trackEvent("hub_signup_intent", {
+      event_category: "conversion",
+      event_label: "hub_empresarial_Sticky-Mobile",
+    });
+  };
+
   if (!visible) return null;
 
   return (
@@ -21,13 +30,18 @@ const StickyMobileCTA = () => {
         className="btn-hero w-full py-4 text-base animate-glow"
         asChild
       >
-        <a href="https://appfocus.lovable.app/auth" target="_blank" rel="noopener noreferrer">
+        <a
+          href="https://app.focusinteligente.com.br"
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={handleClick}
+        >
           Começar Grátis
           <ArrowRight className="ml-2 h-4 w-4" />
         </a>
       </Button>
       <p className="text-[10px] text-foreground-muted text-center mt-1">
-        Sem cartão de crédito • Cancele quando quiser
+        Grátis até o limite da aba • Sem cartão
       </p>
     </div>
   );
