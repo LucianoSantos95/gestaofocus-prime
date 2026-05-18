@@ -97,7 +97,13 @@ const HubEmpresarial = () => {
 
   const handleCTA = (label: string) => {
     trackCTAClick(label, "hub-empresarial");
+    trackEvent("hub_signup_intent", {
+      event_category: "conversion",
+      event_label: `hub_empresarial_${label}`,
+    });
   };
+
+  const APP_URL = "https://app.focusinteligente.com.br";
 
   /* ─── DATA ─── */
   const features = [
@@ -222,11 +228,25 @@ const HubEmpresarial = () => {
 
   const plans = [
     {
+      name: "Free",
+      description: "Para conhecer a plataforma sem compromisso",
+      price: "R$ 0",
+      period: "/sempre",
+      features: [
+        "Acesso aos módulos principais",
+        "Uso gratuito até o limite da aba",
+        "Ao atingir o limite, é necessário assinar um plano para continuar",
+        "Sem cartão de crédito",
+      ],
+      cta: "Começar Grátis",
+      highlighted: false,
+    },
+    {
       name: "Plus",
       description: "Para agências e consultorias que precisam de gestão completa",
       price: "R$ 69",
       period: "/mês",
-      features: ["Criar e editar dados em todos os módulos", "Até 5 usuários", "Suporte por email", "Guia de Uso Completo"],
+      features: ["Uso ilimitado em todos os módulos", "Até 5 usuários", "Suporte por email", "Guia de Uso Completo"],
       cta: "Assinar",
       highlighted: false,
     },
@@ -252,8 +272,8 @@ const HubEmpresarial = () => {
 
   const faqs = [
     { q: "🤔 O que é o Hub Empresarial?", a: "É uma plataforma SaaS completa de gestão para pequenas e médias empresas. Centraliza CRM, financeiro, projetos, RH e dashboards em um único lugar — sem planilhas, sem caos." },
-    { q: "💰 Quanto custa?", a: "O plano Plus custa R$ 69/mês para até 5 usuários. O plano Pro custa R$ 149/mês com IA e até 10 usuários. O plano Enterprise custa R$ 297/mês com usuários ilimitados, API e suporte dedicado." },
-    { q: "🆓 Posso testar grátis?", a: "Sim! O plano gratuito é para sempre — sem prazo, sem cartão de crédito. Você pode usar os módulos básicos quanto tempo quiser e fazer upgrade quando fizer sentido." },
+    { q: "💰 Quanto custa?", a: "Você pode começar grátis com uso limitado por aba. O plano Plus custa R$ 69/mês para até 5 usuários. O plano Pro custa R$ 149/mês com IA e até 10 usuários. O plano Enterprise custa R$ 297/mês com usuários ilimitados, API e suporte dedicado." },
+    { q: "🆓 Posso testar grátis?", a: "Sim. Você usa a plataforma gratuitamente até atingir o limite de uso por aba. A partir desse ponto o acesso é bloqueado, e para continuar usando é necessário assinar um plano. Sem cartão de crédito para começar." },
     { q: "🔒 Meus dados estão seguros?", a: "Absolutamente. Utilizamos criptografia AES-256, backups automáticos diários e infraestrutura segura. Seus dados são seus — nunca compartilhamos com terceiros." },
     { q: "📱 Funciona no celular?", a: "Sim! A plataforma é totalmente responsiva e funciona perfeitamente em qualquer dispositivo — desktop, tablet ou celular." },
     { q: "❌ Posso cancelar a qualquer momento?", a: "Sim, sem multas e sem burocracia. Você pode cancelar seu plano a qualquer momento diretamente na plataforma e continua com acesso até o fim do período pago." },
@@ -322,16 +342,16 @@ const HubEmpresarial = () => {
           <p className="text-lg lg:text-xl text-foreground-muted max-w-2xl mx-auto mb-10 leading-relaxed">
             Tudo que sua agência ou consultoria precisa — Financeiro, CRM, Projetos, RH, Marketing, Tarefas e Processos — em um único sistema com IA.
             <br />
-            <span className="text-primary font-medium">Grátis para começar. Planos a partir de R$69/mês.</span>
+            <span className="text-primary font-medium">Comece grátis (uso limitado por aba). Planos completos a partir de R$ 69/mês.</span>
           </p>
 
           <Button className="btn-hero text-lg px-10 py-5 animate-glow" asChild>
-            <a href="https://appfocus.lovable.app/auth" target="_blank" rel="noopener noreferrer" onClick={() => handleCTA("Hero - Testar Grátis")}>
-              Testar Grátis por 30 dias
+            <a href={APP_URL} target="_blank" rel="noopener noreferrer" onClick={() => handleCTA("Hero")}>
+              Começar Grátis Agora
               <ArrowRight className="ml-2 h-5 w-5" />
             </a>
           </Button>
-          <p className="text-xs text-foreground-muted mt-3">Sem cartão de crédito • Cancele quando quiser</p>
+          <p className="text-xs text-foreground-muted mt-3">Sem cartão de crédito • Uso gratuito até o limite da aba</p>
           
           {/* Urgência sutil */}
           <div className="mt-6 inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-2">
@@ -504,10 +524,10 @@ const HubEmpresarial = () => {
             <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
               Planos que Crescem com Você
             </h2>
-            <p className="text-lg text-foreground-muted">Planos a partir de R$69/mês</p>
+            <p className="text-lg text-foreground-muted">Comece grátis. Planos completos a partir de R$ 69/mês.</p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {plans.map((plan, i) => (
               <Card key={i} className={`p-7 backdrop-blur-sm transition-all relative ${plan.highlighted ? "bg-primary/5 border-primary/30 shadow-glow scale-[1.03]" : "bg-card/50 border-card-border/30"}`}>
                 {plan.highlighted && (
@@ -533,7 +553,7 @@ const HubEmpresarial = () => {
                   className={`w-full ${plan.highlighted ? "btn-hero animate-glow" : "btn-secondary"}`}
                   asChild
                 >
-                  <a href="https://appfocus.lovable.app/auth" target="_blank" rel="noopener noreferrer" onClick={() => handleCTA(`Pricing-${plan.name}`)}>
+                  <a href={APP_URL} target="_blank" rel="noopener noreferrer" onClick={() => handleCTA(`Pricing-${plan.name}`)}>
                     {plan.cta}
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </a>
@@ -584,12 +604,12 @@ const HubEmpresarial = () => {
           </p>
 
           <Button className="btn-hero text-xl px-12 py-6 animate-glow mb-4" asChild>
-            <a href="https://appfocus.lovable.app/auth" target="_blank" rel="noopener noreferrer" onClick={() => handleCTA("CTA Final")}>
-              Testar Grátis por 30 dias
+            <a href={APP_URL} target="_blank" rel="noopener noreferrer" onClick={() => handleCTA("CTA-Final")}>
+              Começar Grátis Agora
               <ArrowRight className="ml-2 h-6 w-6" />
             </a>
           </Button>
-          <p className="text-sm text-foreground-muted mb-12">Sem cartão de crédito • Cancele quando quiser</p>
+          <p className="text-sm text-foreground-muted mb-12">Sem cartão de crédito • Uso gratuito até o limite da aba</p>
 
           <div className="grid sm:grid-cols-3 gap-4">
             {[

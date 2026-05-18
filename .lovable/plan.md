@@ -1,33 +1,39 @@
-## 1. Remover permanentemente a página de Cases
+## Objetivo
+Subir a página `/hub-empresarial` de **6.5 → 8.5/10** para tráfego pago, mantendo o CTA apontando para `https://app.focusinteligente.com.br` e sem incluir vídeo.
 
-Como os cases atuais são fictícios, removemos a rota e todas as referências públicas. Quando você tiver cases reais, basta restaurar o arquivo (mantenho `caseStudiesData.ts` e `CaseStudyArticle.tsx` versionados, sem rota ativa, para reutilizar depois — ou removo tudo, se preferir; me avise).
+## Mudanças
 
-**Arquivos a editar:**
-- `src/App.tsx` — remover `import Cases` e a `<Route path="/cases" ... />`. Também remover `/cases` da condição `isSolucoes` que esconde nav/footer.
-- `src/components/Navigation.tsx` — remover o item `{ name: "Cases", href: "/cases" }` do menu.
-- `scripts/generate-sitemap.js` — remover entrada `/cases`.
-- `public/sitemap.xml` — remover bloco `<url>` do `/cases` (será regenerado, mas atualizo manualmente também).
-- `public/llms.txt` e `public/llms-full.txt` — remover linhas que mencionam `/cases`.
-- `src/pages/Cases.tsx` — excluir arquivo.
+### 1. Alinhar a mensagem do "Grátis" (crítico)
+Hoje a página promete "grátis para sempre" mas a tabela começa em R$ 69 — quebra confiança no primeiro scroll. Vamos reposicionar como **"Free com limite de uso por aba"**, refletindo a regra real: o usuário usa até atingir o limite, depois é bloqueado e só libera assinando um plano.
 
-Mantém-se `src/components/cases/*` no repositório (sem rota) para reuso futuro. Posso excluir tudo se preferir — me diga.
+Arquivos:
+- `src/pages/HubEmpresarial.tsx`
+  - Hero subtítulo: trocar `"Grátis para começar. Planos a partir de R$69/mês."` por algo como `"Comece grátis (uso limitado por aba). Planos completos a partir de R$ 69/mês."`
+  - Botão hero: trocar `"Testar Grátis por 30 dias"` por `"Começar Grátis Agora"`.
+  - Microcopy abaixo do botão: trocar `"Sem cartão de crédito • Cancele quando quiser"` por `"Sem cartão de crédito • Uso gratuito até o limite da aba"`.
+  - Adicionar um 4º plano **"Free"** (R$ 0) na tabela `plans[]` com a descrição real do limite por aba, CTA "Começar Grátis" apontando para o mesmo link externo, e listando claramente o que está incluso até o bloqueio.
+  - FAQ "🆓 Posso testar grátis?": reescrever para refletir a regra: uso gratuito até atingir o limite por aba; depois é necessário assinar para continuar. Remover "plano gratuito para sempre".
+  - FAQ "❌ Posso cancelar...": remover menção a "30 dias" se existir; manter cancelamento sem multa.
+- `src/components/hub/StickyMobileCTA.tsx`
+  - Microcopy: trocar `"Sem cartão de crédito • Cancele quando quiser"` por `"Grátis até o limite da aba • Sem cartão"`.
 
-## 2. Ajustar tamanho da tela de login
+### 2. Manter o link externo (decisão do usuário)
+Sem alteração no `href`. Continua `https://app.focusinteligente.com.br` (corrigir também o `StickyMobileCTA.tsx` que aponta para `appfocus.lovable.app/auth` → trocar para `https://app.focusinteligente.com.br` para padronizar atribuição/branding). `target="_blank"` mantido.
 
-Hoje o card de login tem largura fixa `max-w-md` (~448px) e fica visualmente pequeno em telas grandes, e em telas baixas pode cortar. Vou torná-lo responsivo:
+### 3. Pixel de conversão de signup (crítico)
+Hoje só rastreamos o clique no CTA; não sabemos quem efetivamente criou conta. Vamos disparar um evento `hub_signup_intent` no clique do CTA externo (já existe `trackCTAClick`, mas vamos adicionar um evento dedicado de conversão com `event_category: "conversion"` e label `hub_empresarial_cta`) em **todos** os CTAs da página: hero, sticky mobile, pricing cards, e qualquer CTA secundário. Isso permite plugar como Conversion Event no Google Ads / Meta Ads via GTM lendo o `gtag` que `trackEvent` já dispara.
 
-- Container externo: trocar `min-h-screen flex items-center` por layout que respeita o viewport — `min-h-[100dvh]` (corrige o problema de altura em mobile com barra do navegador) e padding vertical adaptável (`py-8 md:py-12`).
-- Card de login: largura adaptativa — `max-w-md` em mobile, `max-w-lg` em telas ≥ md (570px). Padding interno também responsivo (`p-6 md:p-8`).
-- Espaçamento entre logo/título/card escala suavemente (`mb-6 md:mb-8`).
-- Aplico as mesmas mudanças em `src/pages/auth/SignUp.tsx` e `src/pages/auth/ForgotPassword.tsx` para manter coerência visual entre as três telas de auth.
+Arquivos:
+- `src/pages/HubEmpresarial.tsx`: substituir `handleCTA` por uma função que chama `trackEvent("hub_signup_intent", { event_category: "conversion", event_label: label })` além do `trackCTAClick`.
+- `src/components/hub/StickyMobileCTA.tsx`: adicionar `onClick` disparando o mesmo evento.
 
-**Arquivos a editar:**
-- `src/pages/auth/Login.tsx`
-- `src/pages/auth/SignUp.tsx`
-- `src/pages/auth/ForgotPassword.tsx`
+### 4. Itens explicitamente fora do escopo
+- ❌ Trocar o link/domínio do CTA (usuário pediu manter)
+- ❌ Adicionar vídeo/demo (usuário pediu não incluir agora)
+- ❌ Mexer no banner Notion Referrer, depoimentos, garantia, comparativos vs concorrente (ficam para iteração futura)
 
-## Detalhes técnicos
-
-- `100dvh` (dynamic viewport height) evita o "corte" da tela em mobile que `100vh` causa quando a barra do Safari aparece/some.
-- A rota `/cases` já some do sitemap antes do próximo build; o Google leva alguns dias para reindexar — opcionalmente posso adicionar redirect 301 de `/cases` para `/` via `public/_headers`, mas para uma página com pouco tráfego não é crítico.
-- Nenhuma mudança em backend, banco de dados ou autenticação.
+## Resultado esperado
+- Mensagem coerente do começo ao fim (sem contradição grátis vs R$ 69).
+- Tráfego pago com criativo "Grátis" para de vazar por inconsistência.
+- Conversões de signup mensuráveis no GA/Ads via evento `hub_signup_intent`.
+- Nota estimada: **8.5/10** para tráfego frio.
