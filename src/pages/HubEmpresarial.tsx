@@ -313,10 +313,10 @@ const HubEmpresarial = () => {
             <span className="text-xl font-bold text-foreground">Hub Empresarial</span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-[1.1] mb-8 tracking-tight">
-            O sistema de gestão feito para{" "}
-            <span className="bg-gradient-primary bg-clip-text text-transparent">
-              agências e consultorias que querem escalar.
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-[1.1] mb-8 tracking-tight" style={{ perspective: "800px" }}>
+            O sistema de gestão feito para agências e consultorias que querem{" "}
+            <span className="bg-gradient-primary bg-clip-text text-transparent inline-block animate-rotate-word-in origin-bottom">
+              escalar.
             </span>
           </h1>
 
