@@ -604,12 +604,12 @@ const HubEmpresarial = () => {
           </p>
 
           <Button className="btn-hero text-xl px-12 py-6 animate-glow mb-4" asChild>
-            <a href="https://appfocus.lovable.app/auth" target="_blank" rel="noopener noreferrer" onClick={() => handleCTA("CTA Final")}>
-              Testar Grátis por 30 dias
+            <a href={APP_URL} target="_blank" rel="noopener noreferrer" onClick={() => handleCTA("CTA-Final")}>
+              Começar Grátis Agora
               <ArrowRight className="ml-2 h-6 w-6" />
             </a>
           </Button>
-          <p className="text-sm text-foreground-muted mb-12">Sem cartão de crédito • Cancele quando quiser</p>
+          <p className="text-sm text-foreground-muted mb-12">Sem cartão de crédito • Uso gratuito até o limite da aba</p>
 
           <div className="grid sm:grid-cols-3 gap-4">
             {[
