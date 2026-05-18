@@ -97,7 +97,13 @@ const HubEmpresarial = () => {
 
   const handleCTA = (label: string) => {
     trackCTAClick(label, "hub-empresarial");
+    trackEvent("hub_signup_intent", {
+      event_category: "conversion",
+      event_label: `hub_empresarial_${label}`,
+    });
   };
+
+  const APP_URL = "https://app.focusinteligente.com.br";
 
   /* ─── DATA ─── */
   const features = [
