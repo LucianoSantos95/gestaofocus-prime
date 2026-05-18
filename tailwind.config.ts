@@ -106,11 +106,17 @@ export default {
 				'accordion-up': {
 					from: { height: 'var(--radix-accordion-content-height)' },
 					to: { height: '0' }
+				},
+				'rotate-word-in': {
+					'0%':   { opacity: '0', transform: 'rotateX(-90deg) translateY(20px)' },
+					'60%':  { opacity: '1', transform: 'rotateX(15deg) translateY(0)' },
+					'100%': { opacity: '1', transform: 'rotateX(0deg) translateY(0)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'rotate-word-in': 'rotate-word-in 0.9s cubic-bezier(0.34,1.56,0.64,1) both'
 			}
 		}
 	},

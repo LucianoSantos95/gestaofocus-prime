@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -68,6 +68,7 @@ const HubEmpresarial = () => {
   const heroRef = useRef<HTMLElement>(null);
   const mockupRef = useRef<HTMLElement>(null);
   const pricingRef = useRef<HTMLElement>(null);
+  const [billing, setBilling] = useState<"mensal" | "anual">("mensal");
 
   // Section visibility tracking
   useEffect(() => {
@@ -228,43 +229,45 @@ const HubEmpresarial = () => {
 
   const plans = [
     {
-      name: "Free",
-      description: "Para conhecer a plataforma sem compromisso",
-      price: "R$ 0",
-      period: "/sempre",
-      features: [
-        "Acesso aos módulos principais",
-        "Uso gratuito até o limite da aba",
-        "Ao atingir o limite, é necessário assinar um plano para continuar",
-        "Sem cartão de crédito",
-      ],
-      cta: "Começar Grátis",
-      highlighted: false,
-    },
-    {
       name: "Plus",
       description: "Para agências e consultorias que precisam de gestão completa",
-      price: "R$ 69",
-      period: "/mês",
-      features: ["Uso ilimitado em todos os módulos", "Até 5 usuários", "Suporte por email", "Guia de Uso Completo"],
+      monthly: 69,
+      features: [
+        "Criar e editar dados em todos os módulos",
+        "Até 5 usuários por conta",
+        "Importação de planilhas (Excel/CSV/OFX)",
+        "Guia de Uso completo",
+        "Suporte por email",
+      ],
       cta: "Assinar",
       highlighted: false,
     },
     {
       name: "Pro",
-      description: "Para agências e consultorias em crescimento com necessidades avançadas",
-      price: "R$ 149",
-      period: "/mês",
-      features: ["Tudo do Plus", "Exportar relatórios", "Análise de IA (Clientes)", "Até 10 usuários", "Suporte prioritário"],
+      description: "Para operações em crescimento com necessidades avançadas",
+      monthly: 149,
+      features: [
+        "Tudo do Plus",
+        "Exportar relatórios (PDF/Excel)",
+        "Análise de IA para Clientes",
+        "Assistente de IA integrado",
+        "Até 10 usuários por conta",
+        "Suporte prioritário",
+      ],
       cta: "Assinar",
       highlighted: true,
     },
     {
       name: "Enterprise",
-      description: "Para consultorias e agências com operações complexas",
-      price: "R$ 297",
-      period: "/mês",
-      features: ["Tudo do Pro", "Integração API/Zapier", "Usuários ilimitados", "Suporte dedicado", "Onboarding personalizado"],
+      description: "Para agências com múltiplos times e clientes",
+      monthly: 297,
+      features: [
+        "Tudo do Pro",
+        "Integração Google Workspace",
+        "Automação WhatsApp (lembretes)",
+        "Usuários ilimitados",
+        "Suporte dedicado + onboarding",
+      ],
       cta: "Assinar",
       highlighted: false,
     },
@@ -313,10 +316,10 @@ const HubEmpresarial = () => {
             <span className="text-xl font-bold text-foreground">Hub Empresarial</span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-[1.1] mb-8 tracking-tight">
-            O sistema de gestão feito para{" "}
-            <span className="bg-gradient-primary bg-clip-text text-transparent">
-              agências e consultorias que querem escalar.
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-[1.1] mb-8 tracking-tight" style={{ perspective: "800px" }}>
+            O sistema de gestão feito para agências e consultorias que querem{" "}
+            <span className="bg-gradient-primary bg-clip-text text-transparent inline-block animate-rotate-word-in origin-bottom">
+              escalar.
             </span>
           </h1>
 
@@ -520,46 +523,96 @@ const HubEmpresarial = () => {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-primary/8 rounded-full blur-[160px] pointer-events-none" />
 
         <div className="container-focus relative z-10 max-w-5xl">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-              Planos que Crescem com Você
+          <div className="text-center mb-10">
+            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-3">
+              Escolha o plano ideal
             </h2>
-            <p className="text-lg text-foreground-muted">Comece grátis. Planos completos a partir de R$ 69/mês.</p>
+            <p className="text-lg text-foreground-muted">
+              Desbloqueie todo o potencial da sua operação
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {plans.map((plan, i) => (
-              <Card key={i} className={`p-7 backdrop-blur-sm transition-all relative ${plan.highlighted ? "bg-primary/5 border-primary/30 shadow-glow scale-[1.03]" : "bg-card/50 border-card-border/30"}`}>
-                {plan.highlighted && (
-                  <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground border-0">
-                    <Sparkles className="w-3 h-3 mr-1" /> Mais Popular
-                  </Badge>
-                )}
-                <h3 className="text-xl font-bold text-foreground mb-1">{plan.name}</h3>
-                <p className="text-xs text-foreground-muted mb-3">{plan.description}</p>
-                <div className="mb-5">
-                  <span className="text-4xl font-bold text-foreground">{plan.price}</span>
-                  <span className="text-sm text-foreground-muted ml-1">{plan.period}</span>
-                </div>
-                <ul className="space-y-2.5 mb-6">
-                  {plan.features.map((f, j) => (
-                    <li key={j} className="flex items-center gap-2 text-sm text-foreground-muted">
-                      <CheckCircle className="h-4 w-4 text-primary shrink-0" />
-                      <span>{f}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Button
-                  className={`w-full ${plan.highlighted ? "btn-hero animate-glow" : "btn-secondary"}`}
-                  asChild
+          {/* Billing toggle */}
+          <div className="flex items-center justify-center gap-3 mb-12">
+            <button
+              type="button"
+              onClick={() => setBilling("mensal")}
+              className={`text-sm font-semibold transition-colors ${billing === "mensal" ? "text-foreground" : "text-foreground-muted hover:text-foreground"}`}
+            >
+              Mensal
+            </button>
+            <button
+              type="button"
+              role="switch"
+              aria-checked={billing === "anual"}
+              onClick={() => setBilling((b) => (b === "mensal" ? "anual" : "mensal"))}
+              className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${billing === "anual" ? "bg-primary" : "bg-card-border/60"}`}
+            >
+              <span
+                className={`inline-block h-5 w-5 transform rounded-full bg-background shadow transition-transform ${billing === "anual" ? "translate-x-5" : "translate-x-0.5"}`}
+              />
+            </button>
+            <div className="flex items-center gap-2">
+              <span className={`text-sm font-semibold transition-colors ${billing === "anual" ? "text-foreground" : "text-foreground-muted"}`}>
+                Anual
+              </span>
+              <Badge className="bg-primary/15 text-primary border-primary/30 hover:bg-primary/15">−20%</Badge>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6 items-stretch">
+            {plans.map((plan, i) => {
+              const effective = billing === "anual" ? Math.round(plan.monthly * 0.8) : plan.monthly;
+              return (
+                <Card
+                  key={i}
+                  className={`p-7 backdrop-blur-sm transition-all relative flex flex-col ${
+                    plan.highlighted
+                      ? "bg-primary/5 border-primary/40 shadow-glow md:scale-[1.04]"
+                      : "bg-card/50 border-card-border/30"
+                  }`}
                 >
-                  <a href={APP_URL} target="_blank" rel="noopener noreferrer" onClick={() => handleCTA(`Pricing-${plan.name}`)}>
-                    {plan.cta}
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </a>
-                </Button>
-              </Card>
-            ))}
+                  {plan.highlighted && (
+                    <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground border-0">
+                      <Sparkles className="w-3 h-3 mr-1" /> Mais popular
+                    </Badge>
+                  )}
+                  <h3 className="text-xl font-bold text-foreground mb-1 text-center">{plan.name}</h3>
+                  <p className="text-xs text-foreground-muted mb-4 text-center min-h-[2.5rem]">
+                    {plan.description}
+                  </p>
+                  <div className="mb-6 text-center">
+                    <span className="text-4xl font-bold text-foreground">R$ {effective}</span>
+                    <span className="text-sm text-foreground-muted ml-1">/mês</span>
+                    {billing === "anual" && (
+                      <p className="text-[11px] text-primary mt-1">cobrado anualmente</p>
+                    )}
+                  </div>
+                  <ul className="space-y-2.5 mb-6 flex-1">
+                    {plan.features.map((f, j) => (
+                      <li key={j} className="flex items-start gap-2 text-sm text-foreground-muted">
+                        <CheckCircle className="h-4 w-4 text-primary shrink-0 mt-0.5" />
+                        <span>{f}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Button
+                    className={`w-full ${plan.highlighted ? "btn-hero animate-glow" : "btn-secondary"}`}
+                    asChild
+                  >
+                    <a
+                      href="https://app.focusinteligente.com.br/planos"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => handleCTA(`Pricing-${plan.name}-${billing}`)}
+                    >
+                      {plan.cta}
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </a>
+                  </Button>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
