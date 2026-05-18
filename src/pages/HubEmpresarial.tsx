@@ -277,7 +277,6 @@ const HubEmpresarial = () => {
     { q: "🔒 Meus dados estão seguros?", a: "Absolutamente. Utilizamos criptografia AES-256, backups automáticos diários e infraestrutura segura. Seus dados são seus — nunca compartilhamos com terceiros." },
     { q: "📱 Funciona no celular?", a: "Sim! A plataforma é totalmente responsiva e funciona perfeitamente em qualquer dispositivo — desktop, tablet ou celular." },
     { q: "❌ Posso cancelar a qualquer momento?", a: "Sim, sem multas e sem burocracia. Você pode cancelar seu plano a qualquer momento diretamente na plataforma e continua com acesso até o fim do período pago." },
-    { q: "❌ Posso cancelar a qualquer momento?", a: "Sim, sem multas e sem burocracia. Você pode cancelar seu plano a qualquer momento diretamente na plataforma e continua com acesso até o fim do período pago." },
   ];
 
   return (
