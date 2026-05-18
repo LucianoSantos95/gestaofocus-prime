@@ -553,7 +553,7 @@ const HubEmpresarial = () => {
                   className={`w-full ${plan.highlighted ? "btn-hero animate-glow" : "btn-secondary"}`}
                   asChild
                 >
-                  <a href="https://appfocus.lovable.app/auth" target="_blank" rel="noopener noreferrer" onClick={() => handleCTA(`Pricing-${plan.name}`)}>
+                  <a href={APP_URL} target="_blank" rel="noopener noreferrer" onClick={() => handleCTA(`Pricing-${plan.name}`)}>
                     {plan.cta}
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </a>
