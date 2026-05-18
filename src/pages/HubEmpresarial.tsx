@@ -232,6 +232,8 @@ const HubEmpresarial = () => {
       name: "Plus",
       description: "Para agências e consultorias que precisam de gestão completa",
       monthly: 69,
+      annual: 660,
+      annualMonthly: 55,
       features: [
         "Criar e editar dados em todos os módulos",
         "Até 5 usuários por conta",
@@ -246,6 +248,8 @@ const HubEmpresarial = () => {
       name: "Pro",
       description: "Para operações em crescimento com necessidades avançadas",
       monthly: 149,
+      annual: 1428,
+      annualMonthly: 119,
       features: [
         "Tudo do Plus",
         "Exportar relatórios (PDF/Excel)",
@@ -261,6 +265,8 @@ const HubEmpresarial = () => {
       name: "Enterprise",
       description: "Para agências com múltiplos times e clientes",
       monthly: 297,
+      annual: 2844,
+      annualMonthly: 237,
       features: [
         "Tudo do Pro",
         "Integração Google Workspace",
