@@ -527,7 +527,7 @@ const HubEmpresarial = () => {
             <p className="text-lg text-foreground-muted">Comece grátis. Planos completos a partir de R$ 69/mês.</p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {plans.map((plan, i) => (
               <Card key={i} className={`p-7 backdrop-blur-sm transition-all relative ${plan.highlighted ? "bg-primary/5 border-primary/30 shadow-glow scale-[1.03]" : "bg-card/50 border-card-border/30"}`}>
                 {plan.highlighted && (
