@@ -228,11 +228,25 @@ const HubEmpresarial = () => {
 
   const plans = [
     {
+      name: "Free",
+      description: "Para conhecer a plataforma sem compromisso",
+      price: "R$ 0",
+      period: "/sempre",
+      features: [
+        "Acesso aos módulos principais",
+        "Uso gratuito até o limite da aba",
+        "Ao atingir o limite, é necessário assinar um plano para continuar",
+        "Sem cartão de crédito",
+      ],
+      cta: "Começar Grátis",
+      highlighted: false,
+    },
+    {
       name: "Plus",
       description: "Para agências e consultorias que precisam de gestão completa",
       price: "R$ 69",
       period: "/mês",
-      features: ["Criar e editar dados em todos os módulos", "Até 5 usuários", "Suporte por email", "Guia de Uso Completo"],
+      features: ["Uso ilimitado em todos os módulos", "Até 5 usuários", "Suporte por email", "Guia de Uso Completo"],
       cta: "Assinar",
       highlighted: false,
     },
