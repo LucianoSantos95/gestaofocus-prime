@@ -568,7 +568,7 @@ const HubEmpresarial = () => {
 
           <div className="grid md:grid-cols-3 gap-6 items-stretch">
             {plans.map((plan, i) => {
-              const effective = billing === "anual" ? Math.round(plan.monthly * 0.8) : plan.monthly;
+              const isAnual = billing === "anual";
               return (
                 <Card
                   key={i}
@@ -588,12 +588,15 @@ const HubEmpresarial = () => {
                     {plan.description}
                   </p>
                   <div className="mb-6 text-center">
-                    <span className="text-4xl font-bold text-foreground">R$ {effective}</span>
-                    <span className="text-sm text-foreground-muted ml-1">/mês</span>
-                    {billing === "anual" && (
-                      <p className="text-[11px] text-primary mt-1">cobrado anualmente</p>
+                    <span className="text-4xl font-bold text-foreground">
+                      R$ {isAnual ? plan.annual.toLocaleString("pt-BR") : plan.monthly}
+                    </span>
+                    <span className="text-sm text-foreground-muted ml-1">{isAnual ? "/ano" : "/mês"}</span>
+                    {isAnual && (
+                      <p className="text-[11px] text-primary mt-1">equivale a R$ {plan.annualMonthly}/mês</p>
                     )}
                   </div>
+
                   <ul className="space-y-2.5 mb-6 flex-1">
                     {plan.features.map((f, j) => (
                       <li key={j} className="flex items-start gap-2 text-sm text-foreground-muted">
