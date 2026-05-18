@@ -68,6 +68,7 @@ const HubEmpresarial = () => {
   const heroRef = useRef<HTMLElement>(null);
   const mockupRef = useRef<HTMLElement>(null);
   const pricingRef = useRef<HTMLElement>(null);
+  const [billing, setBilling] = useState<"mensal" | "anual">("mensal");
 
   // Section visibility tracking
   useEffect(() => {
