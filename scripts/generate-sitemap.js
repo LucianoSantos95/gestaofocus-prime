@@ -7,7 +7,7 @@ const __dirname = path.dirname(__filename);
 
 // Configuração
 const DOMAIN = 'https://focusinteligente.com.br';
-const BLOG_DIR = path.join(__dirname, '../src/pages/blog');
+const APP_FILE = path.join(__dirname, '../src/App.tsx');
 const OUTPUT_FILE = path.join(__dirname, '../public/sitemap.xml');
 
 // Páginas estáticas principais
@@ -31,46 +31,19 @@ const staticPages = [
   { loc: '/cookies', priority: '0.3', changefreq: 'yearly' },
 ];
 
-// Função para converter nome de arquivo para slug
-function fileToSlug(filename) {
-  return filename
-    .replace('.tsx', '')
-    .replace(/([A-Z])/g, '-$1')
-    .toLowerCase()
-    .replace(/^-/, '');
-}
-
-// Função para obter a data de modificação do arquivo
-function getFileModifiedDate(filePath) {
-  try {
-    const stats = fs.statSync(filePath);
-    return stats.mtime.toISOString().split('T')[0];
-  } catch (error) {
-    return new Date().toISOString().split('T')[0];
-  }
-}
-
-// Ler todos os arquivos do blog
+// Obter rotas de blog reais a partir de App.tsx
 function getBlogPosts() {
   try {
-    const files = fs.readdirSync(BLOG_DIR);
-    
-    return files
-      .filter(file => file.endsWith('.tsx'))
-      .map(file => {
-        const filePath = path.join(BLOG_DIR, file);
-        const slug = fileToSlug(file);
-        const lastmod = getFileModifiedDate(filePath);
-        
-        return {
-          loc: `/blog/${slug}`,
-          lastmod,
-          changefreq: 'weekly',
-          priority: '0.7'
-        };
-      });
+    const content = fs.readFileSync(APP_FILE, 'utf8');
+    const matches = [...content.matchAll(/path="(\/blog\/[^"]+)"/g)];
+    const today = new Date().toISOString().split('T')[0];
+    const seen = new Set();
+    return matches
+      .map(m => m[1])
+      .filter(p => !seen.has(p) && seen.add(p))
+      .map(loc => ({ loc, lastmod: today, changefreq: 'weekly', priority: '0.7' }));
   } catch (error) {
-    console.error('Erro ao ler diretório de blog:', error);
+    console.error('Erro ao ler App.tsx:', error);
     return [];
   }
 }
