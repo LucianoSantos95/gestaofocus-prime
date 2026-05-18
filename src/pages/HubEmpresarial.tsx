@@ -342,16 +342,16 @@ const HubEmpresarial = () => {
           <p className="text-lg lg:text-xl text-foreground-muted max-w-2xl mx-auto mb-10 leading-relaxed">
             Tudo que sua agência ou consultoria precisa — Financeiro, CRM, Projetos, RH, Marketing, Tarefas e Processos — em um único sistema com IA.
             <br />
-            <span className="text-primary font-medium">Grátis para começar. Planos a partir de R$69/mês.</span>
+            <span className="text-primary font-medium">Comece grátis (uso limitado por aba). Planos completos a partir de R$ 69/mês.</span>
           </p>
 
           <Button className="btn-hero text-lg px-10 py-5 animate-glow" asChild>
-            <a href="https://appfocus.lovable.app/auth" target="_blank" rel="noopener noreferrer" onClick={() => handleCTA("Hero - Testar Grátis")}>
-              Testar Grátis por 30 dias
+            <a href={APP_URL} target="_blank" rel="noopener noreferrer" onClick={() => handleCTA("Hero")}>
+              Começar Grátis Agora
               <ArrowRight className="ml-2 h-5 w-5" />
             </a>
           </Button>
-          <p className="text-xs text-foreground-muted mt-3">Sem cartão de crédito • Cancele quando quiser</p>
+          <p className="text-xs text-foreground-muted mt-3">Sem cartão de crédito • Uso gratuito até o limite da aba</p>
           
           {/* Urgência sutil */}
           <div className="mt-6 inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-2">
