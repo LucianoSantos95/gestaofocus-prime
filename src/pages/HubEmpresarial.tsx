@@ -524,7 +524,7 @@ const HubEmpresarial = () => {
             <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
               Planos que Crescem com Você
             </h2>
-            <p className="text-lg text-foreground-muted">Planos a partir de R$69/mês</p>
+            <p className="text-lg text-foreground-muted">Comece grátis. Planos completos a partir de R$ 69/mês.</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
