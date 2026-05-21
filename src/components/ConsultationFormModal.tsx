@@ -567,10 +567,10 @@ const ConsultationFormModal = ({ open, onOpenChange }: ConsultationFormModalProp
               <CheckCircle className="w-10 h-10 text-green-500" />
             </div>
             <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
-              🎉 Formulário enviado com sucesso!
+              🎉 Você está na lista de espera!
             </h2>
             <p className="text-foreground-muted mb-8">
-              Entraremos em contato em breve com diagnóstico personalizado para sua operação.
+              As vagas para projetos sob medida estão esgotadas. Você será o primeiro a ser avisado quando abrirmos a próxima turma.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
