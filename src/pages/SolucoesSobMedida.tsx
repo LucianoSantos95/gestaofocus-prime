@@ -300,14 +300,13 @@ const SolucoesSobMedida = () => {
 
         <div className="container-focus relative z-10 text-center max-w-3xl mx-auto">
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-            Pronto para profissionalizar sua agência ou consultoria?
+            Vagas esgotadas — entre na lista de espera
           </h2>
           <p className="text-foreground-muted text-lg mb-8">
-            Devido à alta complexidade e dedicação exclusiva da nossa equipe, abrimos apenas{" "}
-            <strong className="text-foreground">3 vagas por mês</strong>. Garanta a sua agora.
+            No momento <strong className="text-foreground">não estamos aceitando novos projetos sob medida</strong>. Cadastre-se e seja o primeiro a saber quando abrirmos a próxima turma.
           </p>
           <Button onClick={() => setFormOpen(true)} className="btn-hero text-lg px-10 py-5 animate-glow">
-            PREENCHER APLICAÇÃO
+            ENTRAR NA LISTA DE ESPERA
             <ArrowRight className="w-5 h-5 ml-2" />
           </Button>
         </div>
