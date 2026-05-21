@@ -195,8 +195,8 @@ const Index = () => {
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {/* Focus Custom */}
             <Card className="service-card relative overflow-hidden">
-              <div className="absolute top-0 right-0 bg-primary/20 text-primary text-xs font-bold px-3 py-1 rounded-bl-xl">
-                VAGAS LIMITADAS
+              <div className="absolute top-0 right-0 bg-red-500/20 text-red-400 text-xs font-bold px-3 py-1 rounded-bl-xl">
+                VAGAS ESGOTADAS
               </div>
               <div className="mb-6">
                 <div className="w-14 h-14 rounded-xl bg-primary/15 flex items-center justify-center">
@@ -219,16 +219,16 @@ const Index = () => {
                 ))}
               </ul>
               <p className="text-foreground-muted text-sm mb-4">
-                Projeto sob medida com escopo personalizado. Solicite um diagnóstico gratuito.
+                Vagas esgotadas no momento. Entre na lista de espera e seja avisado quando abrirmos a próxima turma.
               </p>
               <Button
                 className="btn-hero w-full group"
                 onClick={() => {
-                  handleCTAClick("card_focus_custom", "/solucoes-sob-medida");
+                  handleCTAClick("card_focus_custom_waitlist", "/solucoes-sob-medida");
                   setIsApplicationOpen(true);
                 }}
               >
-                Aplicar para Consultoria
+                Entrar na Lista de Espera
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Card>
