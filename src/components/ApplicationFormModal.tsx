@@ -115,28 +115,35 @@ export default function ApplicationFormModal({ open, onOpenChange, source = "dir
 
     setLoading(true);
 
-    const { error } = await supabase.from("consultation_leads").insert({
+    const challengeSummary = [
+      `Empresa/Projeto: ${formData.company_name.trim()}`,
+      `WhatsApp: ${formData.phone.trim()}`,
+      `Investimento: ${finalInvestment}`,
+      `Desafio: ${formData.challenge.trim()}`,
+    ].join(" | ").slice(0, 500);
+
+    const { error } = await supabase.from("waitlist").insert({
       full_name: formData.full_name.trim(),
       email: formData.email.trim().toLowerCase(),
-      phone: formData.phone.trim(),
-      business_type: formData.company_name.trim(),
-      additional_details: formData.challenge.trim(),
-      investment_range: finalInvestment,
-      uses_notion: "a_definir",
-      main_objective: "software_sob_medida",
-      looking_for: source,
-      start_timeline: "a_definir",
+      main_challenge: challengeSummary,
+      source: `sob-medida-${source}`.slice(0, 100),
+      interest: "software_sob_medida",
+      wants_trial: false,
     });
 
     if (error) {
-      toast.error("Erro ao enviar. Tente novamente.");
+      if (error.code === "23505") {
+        toast.error("Este email já está na lista de espera!");
+      } else {
+        toast.error("Erro ao enviar. Tente novamente.");
+      }
       setLoading(false);
       return;
     }
 
     trackEvent("form_submit", {
       event_category: "conversion",
-      event_label: `application_form_${source}`,
+      event_label: `waitlist_sob_medida_${source}`,
     });
 
     setLoading(false);
