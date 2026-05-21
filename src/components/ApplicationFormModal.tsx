@@ -187,14 +187,14 @@ export default function ApplicationFormModal({ open, onOpenChange, source = "dir
                 </div>
                 
                 <h3 className="text-2xl font-bold text-foreground mb-2">
-                  Recebemos sua aplicação! 🎉
+                  Você está na lista de espera! 🎉
                 </h3>
                 <p className="text-foreground-muted mb-8 leading-relaxed">
-                  Nosso time vai analisar seu desafio e enviar o{" "}
+                  As vagas para projetos sob medida estão esgotadas, mas{" "}
                   <strong className="text-foreground bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
-                    protótipo visual em até 24h
+                    você será o primeiro a ser avisado
                   </strong>{" "}
-                  pelo WhatsApp e e-mail.
+                  quando abrirmos a próxima turma.
                 </p>
                 
                 <div className="flex flex-col gap-3">
