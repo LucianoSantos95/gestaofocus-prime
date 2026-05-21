@@ -71,7 +71,7 @@ const Index = () => {
       <div className="bg-primary/10 border-b border-primary/20 py-2.5 text-center pt-20">
         <p className="text-sm font-medium text-primary">
           <AlertTriangle className="w-4 h-4 inline mr-1.5 -mt-0.5" />
-          AGENDA MAIO/2026: Resta apenas <span className="font-bold">1 vaga</span> para Projetos Sob Medida.
+          VAGAS ESGOTADAS para Projetos Sob Medida. Entre na <span className="font-bold">lista de espera</span> para a próxima turma.
         </p>
       </div>
 
@@ -195,8 +195,8 @@ const Index = () => {
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {/* Focus Custom */}
             <Card className="service-card relative overflow-hidden">
-              <div className="absolute top-0 right-0 bg-primary/20 text-primary text-xs font-bold px-3 py-1 rounded-bl-xl">
-                VAGAS LIMITADAS
+              <div className="absolute top-0 right-0 bg-red-500/20 text-red-400 text-xs font-bold px-3 py-1 rounded-bl-xl">
+                VAGAS ESGOTADAS
               </div>
               <div className="mb-6">
                 <div className="w-14 h-14 rounded-xl bg-primary/15 flex items-center justify-center">
@@ -219,16 +219,16 @@ const Index = () => {
                 ))}
               </ul>
               <p className="text-foreground-muted text-sm mb-4">
-                Projeto sob medida com escopo personalizado. Solicite um diagnóstico gratuito.
+                Vagas esgotadas no momento. Entre na lista de espera e seja avisado quando abrirmos a próxima turma.
               </p>
               <Button
                 className="btn-hero w-full group"
                 onClick={() => {
-                  handleCTAClick("card_focus_custom", "/solucoes-sob-medida");
+                  handleCTAClick("card_focus_custom_waitlist", "/solucoes-sob-medida");
                   setIsApplicationOpen(true);
                 }}
               >
-                Aplicar para Consultoria
+                Entrar na Lista de Espera
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Card>
@@ -439,7 +439,7 @@ const Index = () => {
                 Pronto para profissionalizar sua empresa?
               </h2>
               <p className="text-foreground-muted text-lg mb-4">
-                Abrimos apenas <span className="text-primary font-semibold">3 vagas por mês</span> para projetos sob medida. Garanta a sua antes que feche.
+                As <span className="text-primary font-semibold">vagas para projetos sob medida estão esgotadas</span>. Entre na lista de espera e seja o primeiro a saber quando abrirmos novas vagas.
               </p>
               <p className="text-foreground-muted text-sm mb-8">
                 Ou comece agora com o Hub Empresarial — acesso imediato, sem fila.
@@ -448,13 +448,14 @@ const Index = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
                   className="btn-cta group text-base animate-pulse-cta"
-                  asChild
+                  onClick={() => {
+                    handleCTAClick("cta_final_waitlist", "waitlist");
+                    setIsApplicationOpen(true);
+                  }}
                 >
-                  <Link to="/solucoes-sob-medida" onClick={() => handleCTAClick("cta_final_solucoes", "/solucoes-sob-medida")}>
-                    <Sparkles className="w-5 h-5 mr-2" />
-                    Conhecer Soluções Sob Medida
-                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                  </Link>
+                  <Sparkles className="w-5 h-5 mr-2" />
+                  Entrar na Lista de Espera
+                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
                 <Button
                   className="btn-secondary group text-base"

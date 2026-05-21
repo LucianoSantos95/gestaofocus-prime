@@ -153,20 +153,34 @@ const ConsultationFormModal = ({ open, onOpenChange }: ConsultationFormModalProp
     setIsSubmitting(true);
 
     try {
-      const { error } = await supabase.from("consultation_leads").insert({
+      const challengeSummary = [
+        `Negócio: ${validatedData.businessType}`,
+        `WhatsApp: ${validatedData.phone}`,
+        `Notion: ${validatedData.usesNotion}`,
+        `Objetivo: ${validatedData.mainObjective}`,
+        `Busca: ${validatedData.lookingFor}`,
+        `Investimento: ${validatedData.investmentRange}`,
+        `Prazo: ${validatedData.startTimeline}`,
+        validatedData.additionalDetails ? `Detalhes: ${validatedData.additionalDetails}` : "",
+      ].filter(Boolean).join(" | ").slice(0, 500);
+
+      const { error } = await supabase.from("waitlist").insert({
         full_name: validatedData.fullName,
-        email: validatedData.email,
-        phone: validatedData.phone,
-        business_type: validatedData.businessType,
-        uses_notion: validatedData.usesNotion,
-        main_objective: validatedData.mainObjective,
-        looking_for: validatedData.lookingFor,
-        investment_range: validatedData.investmentRange,
-        start_timeline: validatedData.startTimeline,
-        additional_details: validatedData.additionalDetails || ""
+        email: validatedData.email.toLowerCase(),
+        main_challenge: challengeSummary,
+        source: "sob-medida-consultoria",
+        interest: "software_sob_medida",
+        wants_trial: false,
       });
 
-      if (error) throw error;
+      if (error) {
+        if (error.code === "23505") {
+          toast.error("Este email já está na lista de espera!");
+          setIsSubmitting(false);
+          return;
+        }
+        throw error;
+      }
 
       trackEvent("consultation_form_submit", {
         business_type: validatedData.businessType,
@@ -174,7 +188,7 @@ const ConsultationFormModal = ({ open, onOpenChange }: ConsultationFormModalProp
       });
 
       setFormSubmitted(true);
-      toast.success("Formulário enviado com sucesso!");
+      toast.success("Você está na lista de espera!");
     } catch (error) {
       console.error("Error submitting form:", error);
       toast.error("Erro ao enviar formulário. Tente novamente.");
@@ -553,10 +567,10 @@ const ConsultationFormModal = ({ open, onOpenChange }: ConsultationFormModalProp
               <CheckCircle className="w-10 h-10 text-green-500" />
             </div>
             <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
-              🎉 Formulário enviado com sucesso!
+              🎉 Você está na lista de espera!
             </h2>
             <p className="text-foreground-muted mb-8">
-              Entraremos em contato em breve com diagnóstico personalizado para sua operação.
+              As vagas para projetos sob medida estão esgotadas. Você será o primeiro a ser avisado quando abrirmos a próxima turma.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
