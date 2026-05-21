@@ -439,7 +439,7 @@ const Index = () => {
                 Pronto para profissionalizar sua empresa?
               </h2>
               <p className="text-foreground-muted text-lg mb-4">
-                Abrimos apenas <span className="text-primary font-semibold">3 vagas por mês</span> para projetos sob medida. Garanta a sua antes que feche.
+                As <span className="text-primary font-semibold">vagas para projetos sob medida estão esgotadas</span>. Entre na lista de espera e seja o primeiro a saber quando abrirmos novas vagas.
               </p>
               <p className="text-foreground-muted text-sm mb-8">
                 Ou comece agora com o Hub Empresarial — acesso imediato, sem fila.
@@ -448,13 +448,14 @@ const Index = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
                   className="btn-cta group text-base animate-pulse-cta"
-                  asChild
+                  onClick={() => {
+                    handleCTAClick("cta_final_waitlist", "waitlist");
+                    setIsApplicationOpen(true);
+                  }}
                 >
-                  <Link to="/solucoes-sob-medida" onClick={() => handleCTAClick("cta_final_solucoes", "/solucoes-sob-medida")}>
-                    <Sparkles className="w-5 h-5 mr-2" />
-                    Conhecer Soluções Sob Medida
-                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                  </Link>
+                  <Sparkles className="w-5 h-5 mr-2" />
+                  Entrar na Lista de Espera
+                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
                 <Button
                   className="btn-secondary group text-base"
