@@ -286,6 +286,37 @@ html, body {
     background: var(--bg3);
   }
 
+  /* Featured bento card — gradient glow accent */
+  .card-featured {
+    background:
+      radial-gradient(circle at 0% 0%, rgba(30,64,175,0.18), transparent 55%),
+      linear-gradient(160deg, rgba(30,64,175,0.10) 0%, var(--bg2) 60%);
+    border-color: rgba(59,130,246,0.28);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.04),
+      0 24px 60px -28px rgba(30,64,175,0.55);
+    position: relative;
+    overflow: hidden;
+  }
+  .card-featured::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(59,130,246,0.45), transparent 60%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events: none;
+  }
+  .card-featured:hover {
+    border-color: rgba(59,130,246,0.45);
+    background:
+      radial-gradient(circle at 0% 0%, rgba(30,64,175,0.24), transparent 55%),
+      linear-gradient(160deg, rgba(30,64,175,0.14) 0%, var(--bg2) 60%);
+  }
+
   .card-num {
     font-family: var(--font-mono);
     font-size: 10px;
