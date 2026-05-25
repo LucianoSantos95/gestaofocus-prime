@@ -1,150 +1,52 @@
+## Ajustes solicitados
 
-# Reconstrução Premium — Estilo Obscur (Híbrido com Cores Focus)
+### 1. Cor azul brilhante nas palavras grifadas (`<em>` / `<i>`)
+Em `src/index.css` o estilo atual de `em, i` está cinza translúcido (`rgba(235,235,235,0.55)`). Trocar por um azul brilhante (proposta: **#3B82F6** — o "blue-500" do tom Focus, mais vibrante que o `#1E40AF` do accent). Aplica-se globalmente, então todas as páginas (Home, Soluções, Hub, Sobre, etc.) recebem automaticamente.
 
-Reconstruir Homepage, Soluções Sob Medida, Hub Empresarial e Sobre no padrão visual do Obscur (obscur-tech.framer.website), mantendo a estrutura técnica/minimalista premium B2B mas trocando o accent azul Obscur (#4F7EFF) pelo **azul Focus #1E40AF** e preservando o **CTA vermelho #EF4444** para conversão.
-
-**Conteúdo, textos, rotas, lógica, Supabase, formulários, RLS, analytics e edge functions permanecem 100% intactos.** Apenas a camada visual e a composição das seções mudam.
-
-## Paleta híbrida final
-
-```text
---bg:    #060608    (fundo Obscur)
---bg2:   #0C0C10    (cards)
---bg3:   #111116    (elevado)
---line:  rgba(255,255,255,0.06)
---line2: rgba(255,255,255,0.10)
---text:  #EBEBEB
---text2: rgba(235,235,235,0.45)
---text3: rgba(235,235,235,0.25)
---accent:    #1E40AF   (azul Focus — substitui #4F7EFF do Obscur)
---accent-2:  rgba(30,64,175,0.12)
---accent-soft: #6D8FE8 (texto sobre tinted bg)
---cta:    #EF4444   (vermelho Focus — CTA de conversão preservado)
+```css
+em, i { color: #3B82F6; font-style: italic; font-weight: 400; }
 ```
 
-Atualizar:
-- `src/index.css` — trocar `--accent-hex`, `--accent2`, ajustar tokens shadcn `--primary` para HSL do #1E40AF (`220 71% 40%`) e `--ring`; manter `--destructive`/`--cta` no vermelho.
-- `tailwind.config.ts` — sem mudanças (tokens via HSL).
-- Substituir cor azul `#4F7EFF` → `#1E40AF` em todas as classes utilitárias (`.hero-badge`, `.tc-featured`, `.pc-featured`, `.pc-popular`, `.sb-b`, `.media-strip`, `.mr-item::after`, dot do logo na navbar/footer).
+### 2. "+50 empresas" no Hub
+- `src/pages/Index.tsx`: métrica `43+ → 50+` e texto `43+ empresas → 50+ empresas`.
+- `src/pages/HubEmpresarial.tsx`: badge `43 empresas → 50+ empresas` e métrica `43 → 50+`.
 
-## Etapas
+### 3. Animação de scroll global
+Criar hook utilitário simples baseado em `IntersectionObserver` + classe CSS `.reveal` que aplica fade + translateY quando a seção entra na viewport.
 
-### 1. Recalibrar tokens (paleta híbrida)
-- Substituir todas as ocorrências de `#4F7EFF` / `rgba(79,126,255,*)` em `src/index.css` por `#1E40AF` / `rgba(30,64,175,*)`.
-- Recalibrar `--primary` shadcn: `220 71% 40%` (#1E40AF).
-- Verificar `Navigation.tsx` e `Footer.tsx` (dot do logo usa `var(--accent-hex)`) — já cascateia.
-- Manter `--cta` / `--destructive` em vermelho intacto.
+- Adicionar em `src/index.css`:
+  ```css
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.in-view { opacity: 1; transform: translateY(0); }
+  ```
+- Criar `src/hooks/useScrollReveal.tsx` — instala um único `IntersectionObserver` que observa todos `[data-reveal]` ou `.reveal` no DOM e adiciona `.in-view` quando 15% visíveis (uma vez).
+- Inicializar o hook em `App.tsx` (dentro de `AppLayout`) para rodar em todo o site.
+- Aplicar `className="reveal"` nos principais blocos (`<section>`, cards de bento, cards de método, métricas) das páginas: `Index.tsx`, `SolucoesSobMedida.tsx`, `HubEmpresarial.tsx`, `AboutFocus.tsx`, `Contato.tsx`, `Blog.tsx`. Respeitar `prefers-reduced-motion`.
 
-### 2. Reconstruir Homepage (`src/pages/Index.tsx`)
-Manter todos os textos e CTAs existentes; reescrever a composição visual com seções no padrão Obscur:
+### 4. Footer duplicado no Blog
+`AppLayout` já injeta `<Footer />` globalmente, e `Blog.tsx` também renderiza `<Footer />` na linha 808. **Remover** a importação e o render do Footer em `Blog.tsx`.
 
-```text
-1. Hero       — grid decorativo + 4 corner marks + eyebrow mono
-                "FOCUS · SISTEMAS PARA AGÊNCIAS" + headline atual com
-                palavras-chave em <strong>/<em> + subtítulo + 2 CTAs
-                (.btn-main "Falar com especialista" + .btn-ghost "Ver demonstração")
-                + animações .anim-up sequenciais
-2. Media strip — "EM PARCERIA COM" + Notion Partner · Lovable L4 ·
-                 Lean Six Sigma · Stripe · Supabase (já existe StoryTrust)
-3. Métricas   — .metrics-row 4 colunas com dot accent
-4. Bento      — features principais em 12-col grid (5+4+3 / 4+4+4)
-                com .card-num "01" "02" "03"
-5. Mockup     — screenshot do produto em .mockup-outer + .browser-chrome
-                URL "app.focusinteligente.com.br"
-6. Comparativo — Sob Medida vs Hub Empresarial em 2 cards lado a lado
-7. Depoimentos — 1 .tc-featured + 2 .tc
-8. FAQ         — accordion existente reskinado com .card
-9. CTA final   — bloco centralizado com 2 botões
-```
+### 5. Logo na página Sobre (substituir o "L")
+- Copiar `user-uploads://image-89.png` para `src/assets/focus-logo-circle.png`.
+- Em `src/pages/AboutFocus.tsx` substituir o div circular com "L" por um `<img>` importado, mantendo o tamanho 120x120, borda e os anéis (`.sv-ring`).
 
-### 3. Reconstruir Soluções Sob Medida (`src/pages/SolucoesSobMedida.tsx`)
-Posicionamento **produto premium high-ticket**:
+### 6. Chat não abrir automaticamente
+Em `src/components/ChatWidget.tsx` remover o `useEffect` (linhas ~80-87) que faz `setIsOpen(true)` após 3s. O usuário só abre clicando no botão flutuante.
 
-```text
-1. Hero        — eyebrow "FOCUS CUSTOM · DESENVOLVIMENTO SOB MEDIDA"
-                 + headline em peso 300 com palavra "sob medida" em italic 45%
-                 + badge "VAGAS ESGOTADAS" em .hero-badge vermelho
-                 + CTA .btn-cta "Entrar na Lista de Espera"
-                 + .btn-ghost "Ver Hub Empresarial"
-                 + grid + corner marks
-2. Process     — 5 etapas em .card numerados 01-05 (linha vertical conectando)
-3. Bento de    — Cases / Stack / Garantias em grid 12-col
-   diferenciais
-4. Mockup      — exemplo de produto sob medida em .mockup-outer
-5. Pricing     — investimento a partir de X (.card destacado com .pc-featured)
-6. Depoimentos — 2 .tc lado a lado (high-ticket social proof)
-7. FAQ
-8. Lista de espera CTA final
-```
+### 7. Remover popup automático ("popup que aparece ao entrar")
+Trata-se do `ActionPlanPopup` montado em `App.tsx` (linhas 19, 237-243). Remover o import lazy e o render do `<ActionPlanPopup />` em `AppLayout`.
 
-### 4. Reconstruir Hub Empresarial (`src/pages/HubEmpresarial.tsx`)
-Posicionamento **SaaS B2B premium**:
+### Fora de escopo
+Nenhuma alteração em rotas, conteúdo de texto além do número de empresas, Supabase, edge functions, analytics ou formulários.
 
-```text
-1. Hero        — eyebrow "HUB EMPRESARIAL · SAAS" + headline + 2 CTAs
-                 (.btn-main "Começar agora" + .btn-ghost "Ver demonstração")
-                 + grid hero + corner marks
-2. Mockup      — screenshot do Hub em .mockup-outer com URL real
-                 app.focusinteligente.com.br
-3. Section     — "MÓDULOS" em .sec-label, bento 12-col com módulos
-                 atuais (Financeiro, Projetos, Clientes, Equipe, etc.)
-                 cada card com .card-num + ícone discreto + título + descrição
-4. Métricas    — .metrics-row (clientes ativos, módulos, integrações, uptime)
-5. Pricing     — 2 cards (mensal/anual) lado a lado, plano anual com
-                 .pc-featured + .pc-popular "RECOMENDADO", lista com ↳
-6. Depoimentos — 1 .tc-featured + 2 .tc
-7. Comparativo — "Hub vs WhatsApp+Planilhas" em tabela minimal
-8. FAQ
-9. CTA final   — bloco centralizado vermelho de conversão
-```
-
-### 5. Reconstruir Sobre (`src/pages/AboutFocus.tsx`)
-```text
-1. Hero        — eyebrow "QUEM ESTÁ POR TRÁS" + headline + subtítulo
-2. Bio grid    — 2 colunas: esquerda avatar central + 2 .sv-ring
-                 rotacionando; direita bio do Luciano + badges
-                 .sb-w "Notion Solutions Partner"
-                 .sb-b "Lovable L4 Platinum"
-                 .sb-y "Lean Six Sigma Yellow Belt"
-3. Manifesto   — 3 .card com pilares (mantém texto atual)
-4. CTA         — .btn-main "Fale com o Luciano" → /contato
-```
-
-### 6. Componentes auxiliares
-- `Navigation.tsx` e `Footer.tsx` já em padrão Obscur; dot do logo passa a usar `#1E40AF`.
-- `HeroSection.tsx`, `HubFocusHero.tsx` e demais subcomponentes legados das páginas que serão reescritas: aposentar/refatorar conforme necessário (apenas se ainda usados).
-- Componentes globais (modais, popups, formulários) **não tocar** — herdam os tokens shadcn novos automaticamente.
-
-## Detalhes técnicos
-
-- Cada página vira praticamente um arquivo único (composição linear de seções) reaproveitando as classes utilitárias `.hero-grid`, `.corner`, `.hero-eyebrow`, `.sec-label`, `.card`, `.card-num`, `.bento`, `.mockup-outer`, `.metrics-row`, `.tc-featured`, `.pc-featured`, `.media-strip`, `.sb-*`.
-- Textos: copiar fielmente do arquivo atual; só envolver com nova marcação.
-- CTAs de conversão (Sob Medida → waitlist; contato; lead) mantêm `.btn-cta` vermelho. CTAs neutros usam `.btn-main` (claro).
-- Imagens / screenshots: reaproveitar assets já em `/lovable-uploads/` (sem gerar novos).
-- SEO `<Helmet>` e `<Schema>` existentes preservados sem mudança.
-- Mobile: `bento` colapsa para 1 coluna, `.metrics-row` para 2 col, hero com padding reduzido (já no CSS).
-- Animações: aplicar `.anim-up`, `.anim-up-1/2/3` apenas no hero de cada página para evitar excesso.
-- Acessibilidade: manter `<h1>` único por página, `alt` em imagens, `aria-label` nos botões só de ícone.
-
-## Arquivos editados
-
-```text
-src/index.css                       (substituição #4F7EFF → #1E40AF)
-src/pages/Index.tsx                 (reconstrução)
-src/pages/SolucoesSobMedida.tsx     (reconstrução)
-src/pages/HubEmpresarial.tsx        (reconstrução)
-src/pages/AboutFocus.tsx            (reconstrução)
-```
-
-Possíveis ajustes leves (se ainda referenciados):
-```text
-src/components/HeroSection.tsx
-src/components/hub-focus/HubFocusHero.tsx
-src/components/HeroTestimonial.tsx
-```
-
-## Fora de escopo
-
-- Blog, FAQ standalone, Contato, ListaEspera, Cookies, Privacidade, TermosUso, Dashboard, AreaCliente, autenticação — herdam os tokens novos sem reestilização dedicada nesta passada.
-- Nenhuma mudança em rotas, edge functions, RLS, formulários de captura, integrações analytics.
-- Sem nova SSG/prerender (segue SPA atual).
+### Arquivos a alterar
+- `src/index.css` (cor `em`, classes `.reveal`)
+- `src/hooks/useScrollReveal.tsx` (novo)
+- `src/App.tsx` (usar hook, remover ActionPlanPopup)
+- `src/components/ChatWidget.tsx` (remover auto-open)
+- `src/pages/Index.tsx` (50+ empresas, classes reveal)
+- `src/pages/HubEmpresarial.tsx` (50+ empresas, classes reveal)
+- `src/pages/SolucoesSobMedida.tsx` (classes reveal)
+- `src/pages/AboutFocus.tsx` (logo + classes reveal)
+- `src/pages/Blog.tsx` (remover Footer duplicado, classes reveal)
+- `src/assets/focus-logo-circle.png` (novo asset copiado do upload)
