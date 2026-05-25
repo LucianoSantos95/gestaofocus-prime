@@ -54,19 +54,22 @@ const Navigation = () => {
                 key={item.name}
                 to={item.href}
                 onClick={() => trackNavigationClick(item.name)}
-                className={`py-2 px-4 rounded-lg transition-all duration-200 text-sm ${
+                className={`py-2 px-4 rounded-md transition-colors duration-150 text-[14px] font-medium ${
                   location.pathname === item.href
-                    ? "text-primary font-medium"
-                    : "text-foreground-muted hover:text-foreground hover:bg-accent"
+                    ? "text-white"
+                    : "text-white/55 hover:text-white/90"
                 }`}
               >
                 {item.name}
               </Link>
             ))}
 
-            <Button className="btn-secondary ml-4" asChild>
+            <Button
+              className="ml-4 bg-transparent border border-white/15 hover:bg-white/5 hover:border-white/30 text-white/90 rounded-lg px-4 py-[7px] text-[13px] font-medium h-auto"
+              asChild
+            >
               <Link to="/auth/login" onClick={() => trackNavigationClick("area_cliente")}>
-                <Lock className="w-4 h-4 mr-2" />
+                <Lock className="w-3.5 h-3.5 mr-2" />
                 Área do Cliente
               </Link>
             </Button>
