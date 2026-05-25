@@ -1,39 +1,22 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import SEOHead from "@/components/SEOHead";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
+import ApplicationFormModal from "@/components/ApplicationFormModal";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import ApplicationFormModal from "@/components/ApplicationFormModal";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
-import {
-  Search,
-  Ruler,
-  Hammer,
-  Rocket,
-  CheckCircle,
-  XCircle,
-  DollarSign,
-  Users,
-  ShieldCheck,
-  TrendingDown,
-  TrendingUp,
-  Zap,
-  Smartphone,
-  UserCheck,
-  ArrowRight,
-} from "lucide-react";
+import { ArrowRight, AlertTriangle } from "lucide-react";
 
 const SolucoesSobMedida = () => {
   const [formOpen, setFormOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen" style={{ background: "var(--bg)" }}>
       <SEOHead
         title="Software Sob Medida para Agências e Consultorias | Focus"
         description="Software exclusivo para agências, consultorias e prestadores de serviço. Do diagnóstico à entrega em 30 dias. Dashboards, CRM e portais do cliente."
@@ -43,282 +26,270 @@ const SolucoesSobMedida = () => {
 
       <Navigation />
 
-      {/* BARRA DE AVISO */}
-      <div className="fixed top-16 lg:top-20 left-0 right-0 z-40 bg-red-900/90 backdrop-blur-sm border-b border-red-800/50">
-        <div className="container-focus py-2 text-center">
-          <p className="text-sm font-medium text-red-100">
-            <span className="inline-block w-2 h-2 rounded-full bg-red-400 animate-pulse mr-2" />
-            VAGAS ESGOTADAS para Projetos Sob Medida. Entre na <strong>lista de espera</strong> para a próxima turma.
-          </p>
-        </div>
+      {/* Scarcity bar */}
+      <div
+        style={{
+          position: "fixed",
+          top: 60,
+          left: 0,
+          right: 0,
+          zIndex: 40,
+          background: "rgba(239,68,68,0.10)",
+          borderBottom: "1px solid rgba(239,68,68,0.20)",
+          padding: "8px 16px",
+          textAlign: "center",
+          fontFamily: "var(--font-mono)",
+          fontSize: 11,
+          letterSpacing: "0.08em",
+          textTransform: "uppercase",
+          color: "#FCA5A5",
+          backdropFilter: "blur(12px)",
+        }}
+      >
+        <AlertTriangle className="w-3 h-3 inline mr-1.5 -mt-0.5" />
+        Vagas Esgotadas · Lista de Espera Aberta para a Próxima Turma
       </div>
 
-      {/* SEÇÃO 1 — HERO */}
-      <section className="relative pt-40 lg:pt-48 pb-24 lg:pb-32 overflow-hidden">
-        {/* Glow background */}
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-primary/10 rounded-full blur-[150px]" />
-        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-primary-glow/5 rounded-full blur-[120px]" />
+      {/* HERO */}
+      <section className="relative overflow-hidden" style={{ minHeight: "92vh", padding: "160px 24px 100px" }}>
+        <div className="hero-grid" />
+        <span className="corner corner-tl" />
+        <span className="corner corner-tr" />
+        <span className="corner corner-bl" />
+        <span className="corner corner-br" />
 
-        <div className="container-focus relative z-10 text-center max-w-4xl mx-auto">
-          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-foreground leading-tight mb-6">
-            Software exclusivo para{" "}
-            <span className="bg-gradient-primary bg-clip-text text-transparent">
-              agências e consultorias — do diagnóstico à entrega em 30 dias.
-            </span>
-          </h1>
-          <p className="text-lg lg:text-xl text-foreground-muted max-w-3xl mx-auto mb-8 leading-relaxed">
-            Pare de adaptar sua agência a sistemas genéricos. Criamos{" "}
-            <strong className="text-foreground">soluções sob medida</strong> para prestadores de serviço.
-            Descreva seu desafio e receba um protótipo visual do seu sistema em até 24h, sem custo.
+        <div className="container-focus relative z-10 text-center">
+          <p className="hero-eyebrow anim-up" style={{ justifyContent: "center" }}>
+            Focus Custom · Desenvolvimento sob medida
           </p>
-          <Button onClick={() => setFormOpen(true)} className="btn-hero text-lg px-10 py-5 animate-glow">
-            QUERO MEU PROTÓTIPO GRATUITO
-            <ArrowRight className="w-5 h-5 ml-2" />
-          </Button>
-          <p className="text-foreground-muted text-sm mt-4">Sem compromisso</p>
-        </div>
-      </section>
 
-      {/* SEÇÃO 2 — PARA QUEM É */}
-      <section className="section-padding bg-background-secondary">
-        <div className="container-focus max-w-5xl">
-          <h2 className="text-3xl lg:text-4xl font-bold text-foreground text-center mb-12">
-            Para quem é a Focus Custom?
-          </h2>
+          <h1 className="hero-title anim-up-1 mx-auto" style={{ maxWidth: 1000 }}>
+            Software <em>exclusivo</em> para agências e consultorias —{" "}
+            <strong>do diagnóstico à entrega em 30 dias.</strong>
+          </h1>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* É para você */}
-            <div className="space-y-4">
-              {[
-                { title: "Agências Digitais", desc: "Que gerenciam 10+ projetos simultâneos no WhatsApp e precisam de um sistema profissional." },
-                { title: "Consultorias em Crescimento", desc: "Que precisam de portal do cliente, CRM e financeiro integrado para escalar." },
-                { title: "Prestadores de Serviço", desc: "Que querem profissionalizar a entrega, controlar comissões e ter dashboard com KPIs." },
-              ].map((item, i) => (
-                <Card key={i} className="p-5 bg-card/50 backdrop-blur-sm border-card-border/30 hover:border-primary/30 transition-all">
-                  <div className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-1">{item.title}</h3>
-                      <p className="text-foreground-muted text-sm">{item.desc}</p>
-                    </div>
-                  </div>
-                </Card>
-              ))}
-            </div>
+          <p className="hero-subtitle anim-up-2 mx-auto mt-8" style={{ maxWidth: 680 }}>
+            Pare de adaptar sua agência a sistemas genéricos. Criamos soluções sob medida para prestadores de serviço.
+            Descreva seu desafio e entre na lista de espera para receber um diagnóstico personalizado.
+          </p>
 
-            {/* Não é para você */}
-            <div className="space-y-4">
-              <p className="text-foreground-muted text-sm font-medium mb-2">Não é para você se...</p>
-              {[
-                "Você procura apenas uma planilha bonita no Excel/Notion.",
-                "Você quer pagar preço de estagiário e arriscar seus dados.",
-                "Sua empresa não tem nenhum processo definido (o caos é total).",
-              ].map((text, i) => (
-                <Card key={i} className="p-5 bg-card/50 backdrop-blur-sm border-card-border/30">
-                  <div className="flex items-start gap-3">
-                    <XCircle className="w-5 h-5 text-red-400 mt-0.5 flex-shrink-0" />
-                    <p className="text-foreground-muted text-sm">{text}</p>
-                  </div>
-                </Card>
-              ))}
-            </div>
+          <div className="anim-up-3 mt-10 flex flex-col sm:flex-row gap-3 justify-center items-center">
+            <button className="btn-cta" onClick={() => setFormOpen(true)}>
+              Entrar na lista de espera
+              <ArrowRight className="w-4 h-4 ml-2" />
+            </button>
+            <Link to="/hub-empresarial" className="btn-ghost">
+              Ver Hub Empresarial →
+            </Link>
           </div>
+          <p style={{ marginTop: 16, fontSize: 12, color: "var(--text3)", fontFamily: "var(--font-mono)", letterSpacing: "0.06em", textTransform: "uppercase" }}>
+            Sem compromisso · Análise gratuita de viabilidade
+          </p>
         </div>
       </section>
 
-      {/* SEÇÃO 3 — COMPARAÇÃO */}
-      <section className="section-padding bg-background">
-        <div className="container-focus max-w-5xl">
-          <h2 className="text-3xl lg:text-4xl font-bold text-foreground text-center mb-12">
-            Por que investir em um Software Próprio?
-          </h2>
+      {/* PARA QUEM É */}
+      <section className="container-focus section-padding">
+        <p className="sec-label">Para quem é</p>
+        <h2 style={{ maxWidth: 720, marginBottom: 40 }}>
+          Para quem é a <strong>Focus Custom</strong>?
+        </h2>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            {/* Caos */}
-            <Card className="p-6 bg-red-950/20 backdrop-blur-sm border-red-900/30">
-              <h3 className="text-lg font-bold text-foreground mb-4 flex items-center gap-2">
-                <TrendingDown className="w-5 h-5 text-red-400" />
-                O CAOS DAS PLANILHAS 📉
-              </h3>
-              <ul className="space-y-3">
-                {[
-                  "Dados descentralizados e inseguros no WhatsApp.",
-                  "Erros de fórmula invisíveis que custam dinheiro.",
-                  "Lento, trava com muitos dados.",
-                  "Depende de uma pessoa saber mexer.",
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-2 text-foreground-muted text-sm">
-                    <XCircle className="w-4 h-4 text-red-400 mt-0.5 flex-shrink-0" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </Card>
-
-            {/* Focus Custom */}
-            <Card className="p-6 bg-primary/5 backdrop-blur-sm border-primary/20 shadow-glow">
-              <h3 className="text-lg font-bold text-foreground mb-4 flex items-center gap-2">
-                <TrendingUp className="w-5 h-5 text-primary" />
-                O PADRÃO FOCUS CUSTOM 🚀
-              </h3>
-              <ul className="space-y-3">
-                {[
-                  "Banco de Dados Blindado e Backup Automático.",
-                  "Automação Inteligente (Cálculos infalíveis).",
-                  "Rápido, roda no Celular e Computador.",
-                  "Intuitivo, qualquer funcionário usa sem treinamento complexo.",
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-2 text-foreground-muted text-sm">
-                    <CheckCircle className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* SEÇÃO 4 — MÉTODO */}
-      <section className="section-padding bg-background-secondary">
-        <div className="container-focus max-w-4xl">
-          <h2 className="text-3xl lg:text-4xl font-bold text-foreground text-center mb-12">
-            Do Diagnóstico à Entrega em 4 Passos
-          </h2>
-
-          <div className="space-y-6">
+        <div className="grid md:grid-cols-2 gap-5">
+          <div className="space-y-4">
             {[
-              { icon: Search, title: "O Diagnóstico (Deep Dive)", desc: "Entendemos sua dor, desenhamos o fluxo atual e identificamos onde você está perdendo dinheiro.", color: "from-blue-500 to-cyan-500" },
-              { icon: Ruler, title: "O Arquiteto (Prototipagem)", desc: "Antes de escrever uma linha de código, desenhamos a solução. Você aprova o layout e as funcionalidades. Nada de surpresas.", color: "from-purple-500 to-pink-500" },
-              { icon: Hammer, title: "A Construção (Sprint Ágil)", desc: "Nossa equipe desenvolve seu sistema com tecnologia de ponta. O que demoraria 6 meses com desenvolvimento tradicional, entregamos em semanas.", color: "from-orange-500 to-amber-500" },
-              { icon: Rocket, title: "A Entrega & Treinamento", desc: "Você recebe o acesso, o código e o treinamento gravado para sua equipe operar o sistema.", color: "from-green-500 to-emerald-500" },
-            ].map((step, i) => (
-              <div key={i} className="flex items-start gap-5">
-                <div className="flex flex-col items-center">
-                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${step.color} flex items-center justify-center shadow-lg flex-shrink-0`}>
-                    <step.icon className="w-6 h-6 text-white" />
-                  </div>
-                  {i < 3 && <div className="w-px h-8 bg-card-border mt-2" />}
-                </div>
-                <div className="pb-2">
-                  <h3 className="font-bold text-foreground text-lg mb-1">
-                    <span className="text-foreground-muted mr-2">{i + 1}.</span>{step.title}
-                  </h3>
-                  <p className="text-foreground-muted text-sm">{step.desc}</p>
-                </div>
+              { t: "Agências Digitais", d: "Que gerenciam 10+ projetos simultâneos no WhatsApp e precisam de um sistema profissional." },
+              { t: "Consultorias em Crescimento", d: "Que precisam de portal do cliente, CRM e financeiro integrado para escalar." },
+              { t: "Prestadores de Serviço", d: "Que querem profissionalizar a entrega, controlar comissões e ter dashboards com KPIs." },
+            ].map((c, i) => (
+              <div key={c.t} className="card">
+                <p className="card-num">{String(i + 1).padStart(2, "0")} · É para você</p>
+                <h3>{c.t}</h3>
+                <p style={{ color: "var(--text2)", marginTop: 8, fontSize: 14 }}>{c.d}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="space-y-4">
+            <p className="sec-label">Não é para você se…</p>
+            {[
+              "Você procura apenas uma planilha bonita no Excel.",
+              "Você quer pagar preço de estagiário e arriscar seus dados.",
+              "Sua empresa não tem nenhum processo definido (o caos é total).",
+            ].map((d, i) => (
+              <div key={i} className="card" style={{ borderColor: "rgba(239,68,68,0.15)" }}>
+                <p className="card-num" style={{ color: "#FCA5A5" }}>✕ {String(i + 1).padStart(2, "0")}</p>
+                <p style={{ color: "var(--text2)", fontSize: 14 }}>{d}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* SEÇÃO 5 — EXEMPLOS */}
-      <section className="section-padding bg-background">
-        <div className="container-focus max-w-5xl">
-          <h2 className="text-3xl lg:text-4xl font-bold text-foreground text-center mb-12">
-            O que podemos construir para você?
-          </h2>
+      {/* COMPARAÇÃO */}
+      <section className="container-focus section-padding">
+        <p className="sec-label">Por que software próprio</p>
+        <h2 style={{ maxWidth: 720, marginBottom: 40 }}>
+          O fim do <strong>caos das planilhas</strong>.
+        </h2>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              { icon: ShieldCheck, title: "Financeiro para Agências", desc: "Fluxo de Caixa, DRE, Contas a Pagar/Receber e controle de comissões por projeto." },
-              { icon: Users, title: "CRM para Consultorias", desc: "Pipeline de vendas personalizado, propostas automáticas e gestão de carteira de clientes." },
-              { icon: UserCheck, title: "Portal do Cliente", desc: "Área exclusiva onde seu cliente acompanha projetos, aprova demandas e acessa relatórios." },
-            ].map((item, i) => (
-              <Card key={i} className="p-6 bg-card/50 backdrop-blur-sm border-card-border/30 hover:border-primary/30 hover:shadow-glow transition-all group">
-                <div className="w-12 h-12 rounded-xl bg-primary/15 flex items-center justify-center mb-4 group-hover:bg-primary/25 transition-colors">
-                  <item.icon className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="font-bold text-foreground text-lg mb-2">{item.title}</h3>
-                <p className="text-foreground-muted text-sm">{item.desc}</p>
-              </Card>
-            ))}
+        <div className="grid md:grid-cols-2 gap-5">
+          <div className="card" style={{ borderColor: "rgba(239,68,68,0.18)", background: "rgba(239,68,68,0.04)" }}>
+            <p className="card-num" style={{ color: "#FCA5A5" }}>Antes · Caos das planilhas</p>
+            <h3 style={{ marginBottom: 16 }}>📉 O custo invisível</h3>
+            <ul className="pc-list" style={{ paddingLeft: 0 }}>
+              {[
+                "Dados descentralizados e inseguros no WhatsApp",
+                "Erros de fórmula invisíveis que custam dinheiro",
+                "Lento, trava com muitos dados",
+                "Depende de uma pessoa saber mexer",
+              ].map((f) => (
+                <li key={f} style={{ color: "var(--text2)", fontSize: 14, marginBottom: 8 }}>{f}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="card pc-featured">
+            <p className="card-num" style={{ color: "#6D8FE8" }}>Depois · Padrão Focus Custom</p>
+            <h3 style={{ marginBottom: 16 }}>🚀 Operação profissional</h3>
+            <ul className="pc-list" style={{ paddingLeft: 0 }}>
+              {[
+                "Banco de dados blindado e backup automático",
+                "Automação inteligente (cálculos infalíveis)",
+                "Rápido, roda em celular e computador",
+                "Intuitivo, qualquer funcionário usa sem treinamento complexo",
+              ].map((f) => (
+                <li key={f} style={{ color: "var(--text2)", fontSize: 14, marginBottom: 8 }}>{f}</li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
 
-      {/* SEÇÃO 6 — ANCORAGEM DE PREÇO */}
-      <section className="section-padding bg-gradient-to-b from-background-secondary via-background to-background-secondary">
-        <div className="container-focus max-w-3xl text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-8">
-            Quanto custa ter paz mental na gestão?
-          </h2>
+      {/* MÉTODO */}
+      <section className="container-focus section-padding">
+        <p className="sec-label">Método</p>
+        <h2 style={{ maxWidth: 720, marginBottom: 40 }}>
+          Do diagnóstico à entrega em <strong>4 passos</strong>.
+        </h2>
 
-          <p className="text-foreground-muted text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
-            Cada projeto é único. O valor depende do escopo e da complexidade.
-            Preencha a aplicação para receber uma proposta personalizada.
-          </p>
-
-          <Button onClick={() => setFormOpen(true)} className="btn-hero text-lg px-10 py-5 animate-glow">
-            Solicitar Proposta
-            <ArrowRight className="w-5 h-5 ml-2" />
-          </Button>
+        <div className="space-y-4 max-w-3xl">
+          {[
+            { n: "01", t: "Diagnóstico (Deep Dive)", d: "Entendemos sua dor, desenhamos o fluxo atual e identificamos onde você está perdendo dinheiro." },
+            { n: "02", t: "Arquiteto (Prototipagem)", d: "Antes de escrever uma linha de código, desenhamos a solução. Você aprova o layout e as funcionalidades. Nada de surpresas." },
+            { n: "03", t: "Construção (Sprint Ágil)", d: "Nossa equipe desenvolve seu sistema com tecnologia de ponta. O que demoraria 6 meses, entregamos em semanas." },
+            { n: "04", t: "Entrega & Treinamento", d: "Você recebe o acesso, o código e o treinamento gravado para sua equipe operar o sistema." },
+          ].map((s) => (
+            <div key={s.n} className="card flex gap-6 items-start">
+              <p className="card-num" style={{ marginBottom: 0, minWidth: 32, fontSize: 14 }}>{s.n}</p>
+              <div>
+                <h3>{s.t}</h3>
+                <p style={{ color: "var(--text2)", marginTop: 6, fontSize: 14 }}>{s.d}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* SEÇÃO 7 — FAQ */}
-      <section className="section-padding bg-background">
-        <div className="container-focus max-w-3xl">
-          <h2 className="text-3xl lg:text-4xl font-bold text-foreground text-center mb-12">
-            Perguntas Frequentes
-          </h2>
-
-          <Accordion type="single" collapsible className="space-y-4">
-            <AccordionItem value="faq-1" className="border border-card-border/30 rounded-xl px-6 bg-card/50 backdrop-blur-sm">
-              <AccordionTrigger className="text-foreground hover:no-underline py-5">
-                Preciso pagar mensalidade?
-              </AccordionTrigger>
-              <AccordionContent className="text-foreground-muted pb-5">
-                Apenas a hospedagem do sistema (valor baixo, direto ao provedor). O desenvolvimento é pagamento único.
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="faq-2" className="border border-card-border/30 rounded-xl px-6 bg-card/50 backdrop-blur-sm">
-              <AccordionTrigger className="text-foreground hover:no-underline py-5">
-                E se eu precisar mudar algo depois?
-              </AccordionTrigger>
-              <AccordionContent className="text-foreground-muted pb-5">
-                O software é seu. Oferecemos pacotes de suporte ou horas avulsas para evoluir o sistema quando sua empresa crescer.
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="faq-3" className="border border-card-border/30 rounded-xl px-6 bg-card/50 backdrop-blur-sm">
-              <AccordionTrigger className="text-foreground hover:no-underline py-5">
-                Quanto tempo demora?
-              </AccordionTrigger>
-              <AccordionContent className="text-foreground-muted pb-5">
-                A média de entrega é de 15 a 30 dias úteis, dependendo da complexidade.
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
+      {/* EXEMPLOS — BENTO */}
+      <section className="container-focus section-padding">
+        <p className="sec-label">O que podemos construir</p>
+        <h2 style={{ maxWidth: 720, marginBottom: 8 }}>
+          Sistemas <strong>desenhados para o seu negócio</strong>.
+        </h2>
+        <div className="bento">
+          {[
+            { n: "01", t: "Financeiro para Agências", d: "Fluxo de caixa, DRE, contas a pagar/receber e controle de comissões por projeto.", col: 5, row: 2 },
+            { n: "02", t: "CRM para Consultorias", d: "Pipeline de vendas personalizado, propostas automáticas e gestão de carteira de clientes.", col: 4, row: 1 },
+            { n: "03", t: "Portal do Cliente", d: "Área exclusiva onde seu cliente acompanha projetos, aprova demandas e acessa relatórios.", col: 3, row: 1 },
+            { n: "04", t: "Dashboards executivos", d: "KPIs em tempo real, indicadores customizados e relatórios automáticos para a diretoria.", col: 7, row: 1 },
+          ].map((c) => (
+            <div key={c.n} className="card" style={{ gridColumn: `span ${c.col}`, gridRow: `span ${c.row}` }}>
+              <p className="card-num">{c.n}</p>
+              <h3>{c.t}</h3>
+              <p style={{ color: "var(--text2)", marginTop: 8, fontSize: 14 }}>{c.d}</p>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* SEÇÃO 8 — CTA FINAL */}
-      <section className="relative section-padding overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-primary/10 rounded-full blur-[150px]" />
-
-        <div className="container-focus relative z-10 text-center max-w-3xl mx-auto">
-          <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-            Vagas esgotadas — entre na lista de espera
-          </h2>
-          <p className="text-foreground-muted text-lg mb-8">
-            No momento <strong className="text-foreground">não estamos aceitando novos projetos sob medida</strong>. Cadastre-se e seja o primeiro a saber quando abrirmos a próxima turma.
+      {/* PRICING / ANCHORAGE */}
+      <section className="container-focus section-padding">
+        <div className="card text-center" style={{ padding: 60, maxWidth: 720, margin: "0 auto" }}>
+          <p className="sec-label" style={{ justifyContent: "center" }}>
+            <span style={{ flex: 0 }}>Investimento</span>
           </p>
-          <Button onClick={() => setFormOpen(true)} className="btn-hero text-lg px-10 py-5 animate-glow">
-            ENTRAR NA LISTA DE ESPERA
-            <ArrowRight className="w-5 h-5 ml-2" />
-          </Button>
+          <h2 style={{ marginBottom: 16 }}>
+            Quanto custa ter <strong>paz mental</strong>?
+          </h2>
+          <p style={{ color: "var(--text2)", maxWidth: 480, margin: "0 auto 32px", fontSize: 15 }}>
+            Cada projeto é único. O valor depende do escopo e da complexidade. Entre na lista de espera para receber
+            uma proposta personalizada quando a próxima turma abrir.
+          </p>
+          <button className="btn-cta" onClick={() => setFormOpen(true)}>
+            Solicitar diagnóstico
+            <ArrowRight className="w-4 h-4 ml-2" />
+          </button>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="container-focus section-padding">
+        <p className="sec-label">Perguntas frequentes</p>
+        <h2 style={{ marginBottom: 40 }}>FAQ</h2>
+
+        <Accordion type="single" collapsible className="space-y-3 max-w-3xl">
+          {[
+            { q: "Preciso pagar mensalidade?", a: "Apenas a hospedagem do sistema (valor baixo, direto ao provedor). O desenvolvimento é pagamento único." },
+            { q: "E se eu precisar mudar algo depois?", a: "O software é seu. Oferecemos pacotes de suporte ou horas avulsas para evoluir o sistema quando sua empresa crescer." },
+            { q: "Quanto tempo demora?", a: "A média de entrega é de 15 a 30 dias úteis, dependendo da complexidade." },
+          ].map((f, i) => (
+            <AccordionItem
+              key={i}
+              value={`faq-${i}`}
+              className="card"
+              style={{ padding: "4px 24px" }}
+            >
+              <AccordionTrigger className="hover:no-underline py-5 text-left" style={{ color: "var(--text)", fontSize: 15, fontWeight: 500 }}>
+                {f.q}
+              </AccordionTrigger>
+              <AccordionContent style={{ color: "var(--text2)", paddingBottom: 20, fontSize: 14, lineHeight: 1.75 }}>
+                {f.a}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </section>
+
+      {/* CTA FINAL */}
+      <section className="container-focus section-padding">
+        <div
+          className="card text-center"
+          style={{
+            padding: "60px 32px",
+            background: "linear-gradient(160deg, rgba(239,68,68,0.08) 0%, var(--bg2) 60%)",
+            borderColor: "rgba(239,68,68,0.25)",
+          }}
+        >
+          <p className="sec-label" style={{ justifyContent: "center" }}>
+            <span style={{ flex: 0, color: "#FCA5A5" }}>Vagas esgotadas</span>
+          </p>
+          <h2 style={{ maxWidth: 640, margin: "0 auto 16px" }}>
+            Entre na <strong>lista de espera</strong> para a próxima turma.
+          </h2>
+          <p style={{ color: "var(--text2)", maxWidth: 560, margin: "0 auto 32px", fontSize: 15 }}>
+            No momento <strong>não estamos aceitando novos projetos sob medida</strong>. Cadastre-se e seja o primeiro a saber quando abrirmos novas vagas.
+          </p>
+          <button className="btn-cta" onClick={() => setFormOpen(true)}>
+            Entrar na lista de espera
+            <ArrowRight className="w-4 h-4 ml-2" />
+          </button>
         </div>
       </section>
 
       <Footer />
 
-      <ApplicationFormModal
-        open={formOpen}
-        onOpenChange={setFormOpen}
-        source="solucoes_sob_medida"
-      />
+      <ApplicationFormModal open={formOpen} onOpenChange={setFormOpen} source="solucoes_sob_medida" />
     </div>
   );
 };

@@ -31,8 +31,8 @@ html, body {
     --text:  #EBEBEB;
     --text2: rgba(235, 235, 235, 0.45);
     --text3: rgba(235, 235, 235, 0.25);
-    --accent-hex:  #4F7EFF;
-    --accent2: rgba(79, 126, 255, 0.12);
+    --accent-hex:  #1E40AF;
+    --accent2: rgba(30, 64, 175, 0.12);
 
     /* Surfaces — mapped to shadcn HSL tokens */
     --background: 240 14% 4%;            /* #060608 */
@@ -42,7 +42,7 @@ html, body {
     --foreground-muted: 0 0% 45%;
 
     /* Brand — Obscur electric blue */
-    --primary: 224 100% 65%;             /* #4F7EFF */
+    --primary: 224 100% 65%;             /* #1E40AF */
     --primary-foreground: 240 14% 4%;
     --primary-glow: 224 100% 70%;
 
@@ -91,9 +91,9 @@ html, body {
 
     /* Shadows */
     --shadow-elegant: 0 20px 60px -10px rgba(0,0,0,0.7), 0 8px 20px -8px rgba(0,0,0,0.5);
-    --shadow-glow: 0 0 40px rgba(79,126,255,0.18);
+    --shadow-glow: 0 0 40px rgba(30,64,175,0.18);
     --shadow-cta: 0 0 40px hsl(0 84% 60% / 0.25);
-    --shadow-card-hover: 0 30px 60px -15px rgba(0,0,0,0.8), 0 0 30px rgba(79,126,255,0.10);
+    --shadow-card-hover: 0 30px 60px -15px rgba(0,0,0,0.8), 0 0 30px rgba(30,64,175,0.10);
 
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -252,9 +252,9 @@ html, body {
     gap: 6px;
     padding: 5px 14px;
     border-radius: 99px;
-    background: rgba(79,126,255,0.10);
-    border: 1px solid rgba(79,126,255,0.22);
-    color: #AABEFF;
+    background: rgba(30,64,175,0.10);
+    border: 1px solid rgba(30,64,175,0.22);
+    color: #6D8FE8;
     font-family: var(--font-mono);
     font-size: 11px;
     font-weight: 500;
@@ -481,8 +481,8 @@ html, body {
 
   /* === TESTIMONIAL CARDS === */
   .tc-featured {
-    background: rgba(79,126,255,0.04);
-    border: 1px solid rgba(79,126,255,0.18);
+    background: rgba(30,64,175,0.04);
+    border: 1px solid rgba(30,64,175,0.18);
     border-radius: 12px;
     padding: 32px;
   }
@@ -495,18 +495,18 @@ html, body {
 
   /* === PRICING === */
   .pc-featured {
-    border-color: rgba(79,126,255,0.30) !important;
-    background: linear-gradient(160deg, rgba(79,126,255,0.06) 0%, var(--bg2) 60%);
+    border-color: rgba(30,64,175,0.30) !important;
+    background: linear-gradient(160deg, rgba(30,64,175,0.06) 0%, var(--bg2) 60%);
   }
   .pc-popular {
     font-family: var(--font-mono);
     font-size: 10px;
     font-weight: 500;
-    color: #8AABFF;
+    color: #6D8FE8;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     background: var(--bg);
-    border: 1px solid rgba(79,126,255,0.25);
+    border: 1px solid rgba(30,64,175,0.25);
     border-radius: 4px;
     padding: 3px 10px;
     display: inline-block;
@@ -583,7 +583,7 @@ html, body {
     display: inline-block;
   }
   .sb-w { color: var(--text2); border-color: var(--line2); background: rgba(255,255,255,0.02); }
-  .sb-b { color: #8AABFF; border-color: rgba(79,126,255,0.25); background: rgba(79,126,255,0.06); }
+  .sb-b { color: #6D8FE8; border-color: rgba(30,64,175,0.25); background: rgba(30,64,175,0.06); }
   .sb-y { color: #FCD34D; border-color: rgba(252,211,77,0.25); background: rgba(252,211,77,0.06); }
 
   /* === HERO GLOW (legacy) === */
@@ -592,7 +592,7 @@ html, body {
     inset: 0;
     pointer-events: none;
     z-index: 0;
-    background: radial-gradient(ellipse 70% 50% at 50% -10%, rgba(79,126,255,0.13) 0%, transparent 70%);
+    background: radial-gradient(ellipse 70% 50% at 50% -10%, rgba(30,64,175,0.13) 0%, transparent 70%);
     height: 600px;
   }
 
@@ -615,8 +615,8 @@ html, body {
   to { opacity: 1; transform: translateY(0); }
 }
 @keyframes glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(79,126,255,0.2); }
-  50% { box-shadow: 0 0 40px rgba(79,126,255,0.4); }
+  0%, 100% { box-shadow: 0 0 20px rgba(30,64,175,0.2); }
+  50% { box-shadow: 0 0 40px rgba(30,64,175,0.4); }
 }
 @keyframes pulse-cta {
   0%, 100% { box-shadow: 0 0 15px hsl(0 84% 60% / 0.3); }
@@ -643,9 +643,9 @@ html, body {
 /* Cosmic background for Mapa de Ideias */
 .cosmic-canvas {
   background:
-    radial-gradient(ellipse at 20% 30%, rgba(79,126,255,0.18) 0%, transparent 55%),
+    radial-gradient(ellipse at 20% 30%, rgba(30,64,175,0.18) 0%, transparent 55%),
     radial-gradient(ellipse at 80% 70%, rgba(150,100,255,0.12) 0%, transparent 55%),
-    radial-gradient(ellipse at 50% 100%, rgba(79,126,255,0.10) 0%, transparent 60%),
+    radial-gradient(ellipse at 50% 100%, rgba(30,64,175,0.10) 0%, transparent 60%),
     linear-gradient(180deg, var(--bg) 0%, #030305 100%);
   position: relative;
 }
@@ -674,9 +674,9 @@ html, body {
 }
 .cosmic-canvas::after {
   background-image:
-    radial-gradient(1px 1px at 50px 100px, #AABEFF, transparent),
+    radial-gradient(1px 1px at 50px 100px, #6D8FE8, transparent),
     radial-gradient(1px 1px at 200px 30px, white, transparent),
-    radial-gradient(1.5px 1.5px at 320px 220px, #AABEFF, transparent),
+    radial-gradient(1.5px 1.5px at 320px 220px, #6D8FE8, transparent),
     radial-gradient(1px 1px at 380px 50px, white, transparent),
     radial-gradient(1px 1px at 130px 180px, white, transparent);
   background-size: 500px 300px;
