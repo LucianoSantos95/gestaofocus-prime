@@ -118,7 +118,7 @@ const HubEmpresarial = () => {
               <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#10B981", boxShadow: "0 0 8px #10B981" }} />
               AO VIVO
             </span>
-            Hub Empresarial · SaaS · 43 empresas
+            Hub Empresarial · SaaS · 50+ empresas
           </p>
 
           <h1 className="hero-title anim-up-1 mx-auto" style={{ maxWidth: 1000 }}>
@@ -169,7 +169,7 @@ const HubEmpresarial = () => {
         <p className="sec-label">Em produção</p>
         <div className="metrics-row">
           {[
-            { n: "43", l: "Empresas ativas" },
+            { n: "50+", l: "Empresas ativas" },
             { n: "7", l: "Módulos integrados" },
             { n: "99.8%", l: "Uptime garantido" },
             { n: "92ms", l: "Tempo de resposta" },

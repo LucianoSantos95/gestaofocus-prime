@@ -122,7 +122,7 @@ const Index = () => {
         <p className="sec-label">Resultados em números</p>
         <div className="metrics-row">
           {[
-            { n: "43+", l: "Empresas atendidas" },
+            { n: "50+", l: "Empresas atendidas" },
             { n: "150+", l: "Sistemas entregues" },
             { n: "98%", l: "Satisfação dos clientes" },
             { n: "30d", l: "Entrega média" },
