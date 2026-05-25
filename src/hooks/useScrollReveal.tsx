@@ -23,8 +23,22 @@ export function useScrollReveal() {
       { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
     );
 
+    // Auto-tag common content blocks so every page animates without manual classes
+    const autoTag = () => {
+      document
+        .querySelectorAll<HTMLElement>(
+          "main section, main .card, main .mr-item, main .bento > *"
+        )
+        .forEach((el) => {
+          if (!el.classList.contains("reveal") && !el.dataset.noReveal) {
+            el.classList.add("reveal");
+          }
+        });
+    };
+
     // Delay slightly so lazy-loaded pages have mounted
     const attach = () => {
+      autoTag();
       document.querySelectorAll<HTMLElement>(".reveal:not(.in-view)").forEach((el) => {
         observer.observe(el);
       });
