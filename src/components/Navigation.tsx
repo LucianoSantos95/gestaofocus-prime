@@ -25,11 +25,13 @@ const Navigation = () => {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-background-elevated/90 backdrop-blur-lg border-b border-card-border"
-          : "bg-transparent"
-      }`}
+      className="fixed top-0 w-full z-50 transition-all duration-300"
+      style={{
+        background: scrolled ? "rgba(8,8,12,0.85)" : "rgba(8,8,12,0.55)",
+        backdropFilter: "blur(20px)",
+        WebkitBackdropFilter: "blur(20px)",
+        borderBottom: "1px solid rgba(255,255,255,0.06)",
+      }}
     >
       <div className="container-focus">
         <div className="flex items-center justify-between h-16 lg:h-20">
@@ -52,19 +54,22 @@ const Navigation = () => {
                 key={item.name}
                 to={item.href}
                 onClick={() => trackNavigationClick(item.name)}
-                className={`py-2 px-4 rounded-lg transition-all duration-200 text-sm ${
+                className={`py-2 px-4 rounded-md transition-colors duration-150 text-[14px] font-medium ${
                   location.pathname === item.href
-                    ? "text-primary font-medium"
-                    : "text-foreground-muted hover:text-foreground hover:bg-accent"
+                    ? "text-white"
+                    : "text-white/55 hover:text-white/90"
                 }`}
               >
                 {item.name}
               </Link>
             ))}
 
-            <Button className="btn-secondary ml-4" asChild>
+            <Button
+              className="ml-4 bg-transparent border border-white/15 hover:bg-white/5 hover:border-white/30 text-white/90 rounded-lg px-4 py-[7px] text-[13px] font-medium h-auto"
+              asChild
+            >
               <Link to="/auth/login" onClick={() => trackNavigationClick("area_cliente")}>
-                <Lock className="w-4 h-4 mr-2" />
+                <Lock className="w-3.5 h-3.5 mr-2" />
                 Área do Cliente
               </Link>
             </Button>
