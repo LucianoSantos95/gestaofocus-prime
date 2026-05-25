@@ -5,6 +5,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import StickyMobileCTA from "@/components/hub/StickyMobileCTA";
 import NotionReferrerBanner from "@/components/hub/NotionReferrerBanner";
+import { CountUp } from "@/hooks/useCountUp";
 import {
   Accordion,
   AccordionContent,
@@ -175,7 +176,7 @@ const HubEmpresarial = () => {
             { n: "92ms", l: "Tempo de resposta" },
           ].map((m) => (
             <div key={m.l} className="mr-item">
-              <p className="mr-num">{m.n}</p>
+              <p className="mr-num"><CountUp value={m.n} /></p>
               <p className="mr-label">{m.l}</p>
             </div>
           ))}
