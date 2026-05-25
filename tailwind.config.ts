@@ -19,9 +19,10 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				inter: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
-				sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
-				jakarta: ['Plus Jakarta Sans', 'sans-serif'],
+				inter: ['DM Sans', 'sans-serif'],
+				sans: ['DM Sans', 'sans-serif'],
+				jakarta: ['DM Sans', 'sans-serif'],
+				mono: ['DM Mono', 'ui-monospace', 'monospace'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
