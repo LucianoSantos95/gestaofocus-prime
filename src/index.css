@@ -62,7 +62,7 @@ html, body {
     /* UI Elements */
     --card: 240 14% 6%;
     --card-foreground: 0 0% 92%;
-    --card-border: 0 0% 100%;
+    --card-border: 240 12% 12%;
 
     --popover: 240 14% 6%;
     --popover-foreground: 0 0% 92%;
