@@ -2,8 +2,9 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import SEOHead from "@/components/SEOHead";
 import ApplicationFormModal from "@/components/ApplicationFormModal";
-import { ArrowRight, AlertTriangle, Star } from "lucide-react";
+import { ArrowRight, Star } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
+import { CountUp } from "@/hooks/useCountUp";
 
 import hubEmpresarialPro from "@/assets/hub-empresarial-pro.webp";
 
@@ -24,27 +25,8 @@ const Index = () => {
         speakable={["[data-speakable]", "h1", ".hero-subtitle"]}
       />
 
-      {/* Scarcity strip */}
-      <div
-        style={{
-          background: "rgba(239,68,68,0.08)",
-          borderBottom: "1px solid rgba(239,68,68,0.18)",
-          paddingTop: 76,
-          paddingBottom: 10,
-          fontFamily: "var(--font-mono)",
-          fontSize: 11,
-          letterSpacing: "0.08em",
-          textTransform: "uppercase",
-          color: "#FCA5A5",
-          textAlign: "center",
-        }}
-      >
-        <AlertTriangle className="w-3 h-3 inline mr-1.5 -mt-0.5" />
-        Vagas Esgotadas para Projetos Sob Medida · Lista de Espera Aberta
-      </div>
-
       {/* ===== HERO ===== */}
-      <section className="relative overflow-hidden" style={{ minHeight: "92vh", padding: "120px 24px 100px" }}>
+      <section className="relative overflow-hidden" style={{ minHeight: "92vh", padding: "140px 24px 100px" }}>
         <div className="hero-grid" />
         <span className="corner corner-tl" />
         <span className="corner corner-tr" />
@@ -57,14 +39,12 @@ const Index = () => {
             Focus · Sistemas para agências e consultorias
           </p>
 
-          <h1 className="hero-title anim-up-1 mx-auto" style={{ maxWidth: 980 }}>
-            Sua agência ainda gerencia tudo no <em>WhatsApp</em> e <em>planilhas</em>?{" "}
-            <strong>Profissionalize a operação.</strong>
+          <h1 className="hero-title anim-up-1 mx-auto" style={{ maxWidth: 880 }}>
+            Operação <em>sem caos.</em><br />Em <strong>semanas</strong>, não meses.
           </h1>
 
-          <p className="hero-subtitle anim-up-2 mx-auto mt-8" style={{ maxWidth: 640 }}>
-            Criamos sistemas sob medida para agências, consultorias e prestadores de serviço —
-            ou acesse o Hub Empresarial, pronto para usar.
+          <p className="hero-subtitle anim-up-2 mx-auto mt-8" style={{ maxWidth: 580 }}>
+            Sistemas sob medida e plataforma SaaS para agências, consultorias e prestadores de serviço cansados do WhatsApp e das planilhas.
           </p>
 
           <div className="anim-up-3 mt-10 flex flex-col sm:flex-row gap-3 justify-center items-center">
@@ -128,7 +108,7 @@ const Index = () => {
             { n: "30d", l: "Entrega média" },
           ].map((m) => (
             <div key={m.l} className="mr-item">
-              <p className="mr-num">{m.n}</p>
+              <p className="mr-num"><CountUp value={m.n} /></p>
               <p className="mr-label">{m.l}</p>
             </div>
           ))}
@@ -144,12 +124,16 @@ const Index = () => {
 
         <div className="bento">
           {[
-            { n: "01", t: "Projetos atrasados", d: "Ninguém sabe o status real. Clientes cobram atualização por WhatsApp o tempo todo.", col: 5, row: 2 },
+            { n: "01", t: "Projetos atrasados", d: "Ninguém sabe o status real. Clientes cobram atualização por WhatsApp o tempo todo.", col: 5, row: 2, featured: true },
             { n: "02", t: "Financeiro no Excel", d: "Você descobre o prejuízo tarde demais. Sem fluxo de caixa confiável.", col: 4, row: 1 },
             { n: "03", t: "Sem padrão", d: "Cada colaborador usa um método diferente.", col: 3, row: 1 },
             { n: "04", t: "Crescimento travado", d: "A operação manual impede sua agência ou consultoria de escalar.", col: 7, row: 1 },
           ].map((c) => (
-            <div key={c.n} className="card" style={{ gridColumn: `span ${c.col}`, gridRow: `span ${c.row}` }}>
+            <div
+              key={c.n}
+              className={`card${c.featured ? " card-featured" : ""}`}
+              style={{ gridColumn: `span ${c.col}`, gridRow: `span ${c.row}` }}
+            >
               <p className="card-num">{c.n}</p>
               <h3>{c.t}</h3>
               <p style={{ color: "var(--text2)", marginTop: 8, fontSize: 14 }}>{c.d}</p>

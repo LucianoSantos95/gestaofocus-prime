@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
-import { Cookie } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { X } from "lucide-react";
 
 const CookieConsent = () => {
   const [showBanner, setShowBanner] = useState(false);
@@ -9,7 +8,9 @@ const CookieConsent = () => {
   useEffect(() => {
     const consent = localStorage.getItem("cookieConsent");
     if (!consent) {
-      setShowBanner(true);
+      // Slight delay so it doesn't fight with the hero entrance
+      const t = setTimeout(() => setShowBanner(true), 800);
+      return () => clearTimeout(t);
     }
   }, []);
 
@@ -26,36 +27,91 @@ const CookieConsent = () => {
   if (!showBanner) return null;
 
   return (
-    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-4xl animate-in slide-in-from-bottom-5">
-      <div className="bg-background border border-border rounded-lg shadow-lg p-6 flex flex-col sm:flex-row items-start sm:items-center gap-4">
-        <div className="flex items-start gap-3 flex-1">
-          <Cookie className="h-8 w-8 text-primary flex-shrink-0 mt-1" />
-          <div>
-            <h3 className="font-semibold text-foreground mb-1">Utilizamos cookies</h3>
-            <p className="text-sm text-muted-foreground">
-              Para garantir uma experiência online personalizada, ao navegar aqui você concorda com nossa{" "}
-              <Link to="/privacidade" className="text-primary hover:underline font-medium">
-                política de privacidade
-              </Link>
-              .
-            </p>
+    <div
+      role="dialog"
+      aria-label="Aviso de cookies"
+      className="fixed z-[60] animate-in slide-in-from-bottom-3 fade-in"
+      style={{
+        bottom: 16,
+        left: 16,
+        right: "auto",
+        maxWidth: 340,
+        background: "rgba(12,12,14,0.92)",
+        backdropFilter: "blur(20px)",
+        WebkitBackdropFilter: "blur(20px)",
+        border: "1px solid var(--line2)",
+        borderRadius: 10,
+        padding: "12px 14px",
+        boxShadow: "0 12px 32px rgba(0,0,0,0.5)",
+      }}
+    >
+      <div className="flex items-start gap-3">
+        <div className="flex-1 min-w-0">
+          <p
+            style={{
+              fontSize: 12,
+              lineHeight: 1.55,
+              color: "var(--text2)",
+              margin: 0,
+            }}
+          >
+            Usamos cookies para melhorar sua experiência. Saiba mais na{" "}
+            <Link to="/privacidade" style={{ color: "var(--accent-hex)", textDecoration: "underline" }}>
+              política de privacidade
+            </Link>
+            .
+          </p>
+          <div className="flex gap-3 mt-2">
+            <button
+              onClick={handleAccept}
+              style={{
+                fontFamily: "var(--font-mono)",
+                fontSize: 10,
+                letterSpacing: "0.08em",
+                textTransform: "uppercase",
+                color: "var(--text)",
+                background: "var(--accent-hex)",
+                border: "none",
+                borderRadius: 5,
+                padding: "5px 10px",
+                cursor: "pointer",
+              }}
+            >
+              Aceitar
+            </button>
+            <button
+              onClick={handleDecline}
+              style={{
+                fontFamily: "var(--font-mono)",
+                fontSize: 10,
+                letterSpacing: "0.08em",
+                textTransform: "uppercase",
+                color: "var(--text3)",
+                background: "transparent",
+                border: "none",
+                padding: "5px 4px",
+                cursor: "pointer",
+              }}
+            >
+              Recusar
+            </button>
           </div>
         </div>
-        <div className="flex gap-3 w-full sm:w-auto sm:flex-shrink-0">
-          <Button
-            variant="outline"
-            onClick={handleDecline}
-            className="flex-1 sm:flex-none"
-          >
-            Recusar
-          </Button>
-          <Button
-            onClick={handleAccept}
-            className="flex-1 sm:flex-none bg-primary hover:bg-primary/90"
-          >
-            Aceitar
-          </Button>
-        </div>
+        <button
+          onClick={handleDecline}
+          aria-label="Fechar"
+          style={{
+            background: "transparent",
+            border: "none",
+            color: "var(--text3)",
+            cursor: "pointer",
+            padding: 2,
+            marginLeft: -4,
+            marginTop: -2,
+          }}
+        >
+          <X className="w-3.5 h-3.5" />
+        </button>
       </div>
     </div>
   );

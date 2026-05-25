@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Lock } from "lucide-react";
 import { trackNavigationClick } from "@/lib/analytics";
+import focusLogo from "@/assets/focus-logo-circle.png";
 
 const navItems = [
   { name: "Soluções Sob Medida", href: "/solucoes-sob-medida" },
@@ -36,15 +37,17 @@ const Navigation = () => {
       <div className="h-full flex items-center justify-between px-6 lg:px-12">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 group">
-          <span
-            aria-hidden="true"
+          <img
+            src={focusLogo}
+            alt="Focus"
+            width={24}
+            height={24}
             style={{
-              width: 8,
-              height: 8,
+              width: 24,
+              height: 24,
               borderRadius: "50%",
-              background: "var(--accent-hex)",
-              boxShadow: "0 0 8px var(--accent-hex)",
               flexShrink: 0,
+              boxShadow: "0 0 0 1px var(--line2), 0 0 12px rgba(30,64,175,0.25)",
             }}
           />
           <span

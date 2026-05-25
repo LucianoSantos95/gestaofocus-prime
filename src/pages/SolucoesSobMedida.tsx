@@ -10,7 +10,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { ArrowRight, AlertTriangle } from "lucide-react";
+import { ArrowRight, AlertTriangle, TrendingDown, Rocket, X as XIcon } from "lucide-react";
 
 const SolucoesSobMedida = () => {
   const [formOpen, setFormOpen] = useState(false);
@@ -118,7 +118,7 @@ const SolucoesSobMedida = () => {
               "Sua empresa não tem nenhum processo definido (o caos é total).",
             ].map((d, i) => (
               <div key={i} className="card" style={{ borderColor: "rgba(239,68,68,0.15)" }}>
-                <p className="card-num" style={{ color: "#FCA5A5" }}>✕ {String(i + 1).padStart(2, "0")}</p>
+                <p className="card-num inline-flex items-center gap-1.5" style={{ color: "#FCA5A5" }}><XIcon className="w-3 h-3" /> {String(i + 1).padStart(2, "0")}</p>
                 <p style={{ color: "var(--text2)", fontSize: 14 }}>{d}</p>
               </div>
             ))}
@@ -136,7 +136,7 @@ const SolucoesSobMedida = () => {
         <div className="grid md:grid-cols-2 gap-5">
           <div className="card" style={{ borderColor: "rgba(239,68,68,0.18)", background: "rgba(239,68,68,0.04)" }}>
             <p className="card-num" style={{ color: "#FCA5A5" }}>Antes · Caos das planilhas</p>
-            <h3 style={{ marginBottom: 16 }}>📉 O custo invisível</h3>
+            <h3 className="inline-flex items-center gap-2" style={{ marginBottom: 16 }}><TrendingDown className="w-5 h-5" style={{ color: "#FCA5A5" }} /> O custo invisível</h3>
             <ul className="pc-list" style={{ paddingLeft: 0 }}>
               {[
                 "Dados descentralizados e inseguros no WhatsApp",
@@ -151,7 +151,7 @@ const SolucoesSobMedida = () => {
 
           <div className="card pc-featured">
             <p className="card-num" style={{ color: "#6D8FE8" }}>Depois · Padrão Focus Custom</p>
-            <h3 style={{ marginBottom: 16 }}>🚀 Operação profissional</h3>
+            <h3 className="inline-flex items-center gap-2" style={{ marginBottom: 16 }}><Rocket className="w-5 h-5" style={{ color: "#6D8FE8" }} /> Operação profissional</h3>
             <ul className="pc-list" style={{ paddingLeft: 0 }}>
               {[
                 "Banco de dados blindado e backup automático",
