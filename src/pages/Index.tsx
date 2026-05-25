@@ -108,7 +108,7 @@ const Index = () => {
             { n: "30d", l: "Entrega média" },
           ].map((m) => (
             <div key={m.l} className="mr-item">
-              <p className="mr-num">{m.n}</p>
+              <p className="mr-num"><CountUp value={m.n} /></p>
               <p className="mr-label">{m.l}</p>
             </div>
           ))}
@@ -124,12 +124,16 @@ const Index = () => {
 
         <div className="bento">
           {[
-            { n: "01", t: "Projetos atrasados", d: "Ninguém sabe o status real. Clientes cobram atualização por WhatsApp o tempo todo.", col: 5, row: 2 },
+            { n: "01", t: "Projetos atrasados", d: "Ninguém sabe o status real. Clientes cobram atualização por WhatsApp o tempo todo.", col: 5, row: 2, featured: true },
             { n: "02", t: "Financeiro no Excel", d: "Você descobre o prejuízo tarde demais. Sem fluxo de caixa confiável.", col: 4, row: 1 },
             { n: "03", t: "Sem padrão", d: "Cada colaborador usa um método diferente.", col: 3, row: 1 },
             { n: "04", t: "Crescimento travado", d: "A operação manual impede sua agência ou consultoria de escalar.", col: 7, row: 1 },
           ].map((c) => (
-            <div key={c.n} className="card" style={{ gridColumn: `span ${c.col}`, gridRow: `span ${c.row}` }}>
+            <div
+              key={c.n}
+              className={`card${c.featured ? " card-featured" : ""}`}
+              style={{ gridColumn: `span ${c.col}`, gridRow: `span ${c.row}` }}
+            >
               <p className="card-num">{c.n}</p>
               <h3>{c.t}</h3>
               <p style={{ color: "var(--text2)", marginTop: 8, fontSize: 14 }}>{c.d}</p>
