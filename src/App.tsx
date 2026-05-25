@@ -16,7 +16,7 @@ import OptionalFeatureBoundary from "./components/OptionalFeatureBoundary";
 const ChatWidget = lazy(() => import("./components/ChatWidget"));
 const DashboardChatButton = lazy(() => import("./components/dashboard/DashboardChatButton"));
 const CookieConsent = lazy(() => import("./components/CookieConsent"));
-const ActionPlanPopup = lazy(() => import("./components/ActionPlanPopup"));
+import { useScrollReveal } from "./hooks/useScrollReveal";
 
 // Lazy load pages
 const SolucoesSobMedida = lazy(() => import("./pages/SolucoesSobMedida"));
@@ -120,6 +120,7 @@ const PageLoader = () => (
 // Layout wrapper that hides Nav/Footer on dashboard routes
 function AppLayout() {
   const location = useLocation();
+  useScrollReveal();
   const isDashboard = location.pathname.startsWith("/dashboard");
   const isAuth = location.pathname.startsWith("/auth");
   const isSolucoes = location.pathname === "/solucoes-sob-medida" || location.pathname === "/hub-empresarial";
@@ -231,13 +232,6 @@ function AppLayout() {
         <OptionalFeatureBoundary featureName="chat widget">
           <Suspense fallback={null}>
             <ChatWidget />
-          </Suspense>
-        </OptionalFeatureBoundary>
-      )}
-      {!isDashboard && !isAuth && (
-        <OptionalFeatureBoundary featureName="action plan popup">
-          <Suspense fallback={null}>
-            <ActionPlanPopup />
           </Suspense>
         </OptionalFeatureBoundary>
       )}

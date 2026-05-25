@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import { useState, useMemo, useEffect } from "react";
 import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
+
 
 // Blog images imports
 import notionPoderImage from "@/assets/blog/notion-poder-empresas.jpg";
@@ -805,7 +805,7 @@ const Blog = () => {
 
       </div>
 
-      <Footer />
+      
     </>
   );
 };

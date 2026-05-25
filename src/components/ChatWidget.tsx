@@ -76,15 +76,7 @@ export default function ChatWidget() {
     }
   }, [isOpen, initialized]);
 
-  // Auto-open after 3s (once per session)
-  useEffect(() => {
-    if (sessionStorage.getItem("chat_opened")) return;
-    const timer = setTimeout(() => {
-      setIsOpen(true);
-      sessionStorage.setItem("chat_opened", "1");
-    }, 3000);
-    return () => clearTimeout(timer);
-  }, []);
+  // Chat opens only on user click (auto-open disabled)
 
   // Scroll to bottom
   useEffect(() => {

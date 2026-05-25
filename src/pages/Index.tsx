@@ -122,7 +122,7 @@ const Index = () => {
         <p className="sec-label">Resultados em números</p>
         <div className="metrics-row">
           {[
-            { n: "43+", l: "Empresas atendidas" },
+            { n: "50+", l: "Empresas atendidas" },
             { n: "150+", l: "Sistemas entregues" },
             { n: "98%", l: "Satisfação dos clientes" },
             { n: "30d", l: "Entrega média" },
@@ -289,7 +289,7 @@ const Index = () => {
           <p data-speakable="true" style={{ color: "var(--text2)", fontSize: 15, lineHeight: 1.85, maxWidth: 640, margin: "0 auto" }}>
             A Focus Gestão Inteligente é especialista em sistemas de gestão sob medida para agências de marketing,
             consultorias e prestadores de serviço no Brasil. Já entregamos mais de <strong>150 sistemas</strong> para
-            <strong> 43+ empresas</strong>, com 98% de satisfação. Atendimento 100% online em todo o Brasil, com entrega média de 30 dias.
+            <strong> 50+ empresas</strong>, com 98% de satisfação. Atendimento 100% online em todo o Brasil, com entrega média de 30 dias.
           </p>
           <div className="mt-8">
             <Link to="/sobre-focus" onClick={() => cta("sobre_saiba_mais")} className="btn-ghost">
