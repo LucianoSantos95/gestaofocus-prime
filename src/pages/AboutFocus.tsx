@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import SEOHead from "@/components/SEOHead";
 import { ArrowRight } from "lucide-react";
+import focusLogo from "@/assets/focus-logo-circle.png";
 
 const AboutFocus = () => {
   return (
@@ -40,25 +41,23 @@ const AboutFocus = () => {
           <div className="relative flex items-center justify-center" style={{ minHeight: 320 }}>
             <span className="sv-ring sv-ring-1" />
             <span className="sv-ring sv-ring-2" />
-            <div
+            <img
+              src={focusLogo}
+              alt="Focus Gestão Inteligente"
+              width={120}
+              height={120}
               style={{
                 width: 120,
                 height: 120,
                 borderRadius: "50%",
-                background: "linear-gradient(135deg, rgba(30,64,175,0.30), rgba(30,64,175,0.05))",
                 border: "1px solid rgba(30,64,175,0.25)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontFamily: "var(--font-mono)",
-                fontSize: 36,
-                color: "var(--text)",
+                boxShadow: "0 12px 40px rgba(30,64,175,0.20)",
                 position: "relative",
                 zIndex: 1,
+                objectFit: "cover",
+                background: "#0a0a0a",
               }}
-            >
-              L
-            </div>
+            />
           </div>
 
           {/* Bio */}
