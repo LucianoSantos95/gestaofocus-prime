@@ -25,11 +25,13 @@ const Navigation = () => {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-background-elevated/90 backdrop-blur-lg border-b border-card-border"
-          : "bg-transparent"
-      }`}
+      className="fixed top-0 w-full z-50 transition-all duration-300"
+      style={{
+        background: scrolled ? "rgba(8,8,12,0.85)" : "rgba(8,8,12,0.55)",
+        backdropFilter: "blur(20px)",
+        WebkitBackdropFilter: "blur(20px)",
+        borderBottom: "1px solid rgba(255,255,255,0.06)",
+      }}
     >
       <div className="container-focus">
         <div className="flex items-center justify-between h-16 lg:h-20">
