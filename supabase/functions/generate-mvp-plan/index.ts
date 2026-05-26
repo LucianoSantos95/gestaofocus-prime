@@ -58,13 +58,37 @@ Deno.serve(async (req) => {
       });
     }
 
+    // Server-side upper-bound validation (matches DB trigger validate_mvp_simulation)
+    const lenChecks: Array<[string, string | undefined | null, number]> = [
+      ["business_description", body.business_description, 2000],
+      ["niche", body.niche, 60],
+      ["time_in_market", body.time_in_market, 30],
+      ["revenue_range", body.revenue_range, 30],
+      ["business_name", body.business_name, 120],
+      ["utm_source", body.utm_source, 100],
+    ];
+    for (const [field, value, max] of lenChecks) {
+      if (typeof value === "string" && value.length > max) {
+        return new Response(
+          JSON.stringify({ error: `Campo ${field} excede ${max} caracteres` }),
+          { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+        );
+      }
+    }
+    if (!body.answers || typeof body.answers !== "object" || Object.keys(body.answers).length > 50) {
+      return new Response(JSON.stringify({ error: "Respostas inválidas" }), {
+        status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
     const score = Object.values(body.answers || {}).filter((v) => v === true).length;
     const profile = calcProfile(score, body.answers || {});
 
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY missing");
 
-    const userPrompt = JSON.stringify({
+    const userDataJson = JSON.stringify({
       descricao_negocio: body.business_description,
       nome_negocio: body.business_name || null,
       nicho: body.niche,
@@ -74,6 +98,7 @@ Deno.serve(async (req) => {
       pontuacao_total: score,
       perfil_calculado: profile,
     });
+    const userPrompt = `<user_data>\n${userDataJson}\n</user_data>`;
 
     const aiResp = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
