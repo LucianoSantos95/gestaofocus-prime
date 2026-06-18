@@ -184,6 +184,92 @@ const HubEmpresarial = () => {
         </div>
       </section>
 
+      {/* POR QUE O HUB — Comparison */}
+      <section className="container-focus section-padding">
+        <p className="sec-label">Por que o Hub</p>
+        <h2 style={{ maxWidth: 720, marginBottom: 40 }}>
+          Planilhas, ERP genérico ou <strong>Hub Empresarial</strong>?
+        </h2>
+
+        <div className="grid md:grid-cols-3 gap-5">
+          {/* Planilhas + WhatsApp */}
+          <div className="card" style={{ borderColor: "rgba(239,68,68,0.18)", background: "rgba(239,68,68,0.03)", padding: 28 }}>
+            <p className="card-num" style={{ color: "#FCA5A5" }}>Planilhas + WhatsApp</p>
+            <div className="grid grid-cols-2 gap-3 my-4">
+              <div>
+                <p style={{ fontSize: 28, fontWeight: 700, letterSpacing: "-0.04em", color: "#FCA5A5", lineHeight: 1 }}>3h+</p>
+                <p style={{ fontSize: 10, color: "var(--text3)", fontFamily: "var(--font-mono)", marginTop: 4 }}>perdidas por dia</p>
+              </div>
+              <div>
+                <p style={{ fontSize: 28, fontWeight: 700, letterSpacing: "-0.04em", color: "#FCA5A5", lineHeight: 1 }}>Alto</p>
+                <p style={{ fontSize: 10, color: "var(--text3)", fontFamily: "var(--font-mono)", marginTop: 4 }}>risco de erro</p>
+              </div>
+            </div>
+            <ul style={{ padding: 0, listStyle: "none" }}>
+              {["Dados espalhados", "Sem histórico de clientes", "Relatório feito à mão", "Sem visão em tempo real"].map((f) => (
+                <li key={f} style={{ color: "var(--text2)", fontSize: 13, marginBottom: 6, display: "flex", gap: 8 }}>
+                  <XIcon className="w-3.5 h-3.5 mt-1 flex-shrink-0" style={{ color: "#FCA5A5" }} />
+                  <span>{f}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* ERPs genéricos */}
+          <div className="card" style={{ borderColor: "rgba(239,68,68,0.18)", background: "rgba(239,68,68,0.03)", padding: 28 }}>
+            <p className="card-num" style={{ color: "#FCA5A5" }}>ERPs genéricos</p>
+            <div className="grid grid-cols-2 gap-3 my-4">
+              <div>
+                <p style={{ fontSize: 28, fontWeight: 700, letterSpacing: "-0.04em", color: "#FCA5A5", lineHeight: 1 }}>R$2k+</p>
+                <p style={{ fontSize: 10, color: "var(--text3)", fontFamily: "var(--font-mono)", marginTop: 4 }}>por mês</p>
+              </div>
+              <div>
+                <p style={{ fontSize: 28, fontWeight: 700, letterSpacing: "-0.04em", color: "#FCA5A5", lineHeight: 1 }}>Meses</p>
+                <p style={{ fontSize: 10, color: "var(--text3)", fontFamily: "var(--font-mono)", marginTop: 4 }}>de implantação</p>
+              </div>
+            </div>
+            <ul style={{ padding: 0, listStyle: "none" }}>
+              {["Não feito para agências", "Interface complexa", "Custo alto fixo", "Suporte impessoal"].map((f) => (
+                <li key={f} style={{ color: "var(--text2)", fontSize: 13, marginBottom: 6, display: "flex", gap: 8 }}>
+                  <XIcon className="w-3.5 h-3.5 mt-1 flex-shrink-0" style={{ color: "#FCA5A5" }} />
+                  <span>{f}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Hub Empresarial */}
+          <div
+            className="card"
+            style={{
+              border: "2px solid rgba(59,130,246,0.55)",
+              background: "linear-gradient(160deg, rgba(30,64,175,0.10) 0%, var(--bg2) 60%)",
+              padding: 28,
+            }}
+          >
+            <p className="card-num" style={{ color: "#6D8FE8" }}>Hub Empresarial ✓</p>
+            <div className="grid grid-cols-2 gap-3 my-4">
+              <div>
+                <p style={{ fontSize: 28, fontWeight: 700, letterSpacing: "-0.04em", color: "#6D8FE8", lineHeight: 1 }}>R$69</p>
+                <p style={{ fontSize: 10, color: "var(--text3)", fontFamily: "var(--font-mono)", marginTop: 4 }}>por mês para começar</p>
+              </div>
+              <div>
+                <p style={{ fontSize: 28, fontWeight: 700, letterSpacing: "-0.04em", color: "#6D8FE8", lineHeight: 1 }}>1 dia</p>
+                <p style={{ fontSize: 10, color: "var(--text3)", fontFamily: "var(--font-mono)", marginTop: 4 }}>para estar operacional</p>
+              </div>
+            </div>
+            <ul style={{ padding: 0, listStyle: "none" }}>
+              {["7 módulos prontos para agências", "IA integrada", "Relatórios automáticos", "Começa grátis, sem cartão"].map((f) => (
+                <li key={f} style={{ color: "var(--text2)", fontSize: 13, marginBottom: 6, display: "flex", gap: 8 }}>
+                  <Check className="w-3.5 h-3.5 mt-1 flex-shrink-0" style={{ color: "#6D8FE8" }} />
+                  <span>{f}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
       {/* MODULES — BENTO */}
       <section className="container-focus section-padding">
         <p className="sec-label">Módulos</p>
