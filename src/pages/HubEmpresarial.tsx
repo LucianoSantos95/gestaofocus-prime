@@ -12,7 +12,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { ArrowRight, Star } from "lucide-react";
+import { ArrowRight, Star, Check, X as XIcon } from "lucide-react";
+import TalkToLuciano, { WA_LINK } from "@/components/TalkToLuciano";
 import { trackCTAClick, trackEvent } from "@/lib/analytics";
 import hubDashboardMockup from "@/assets/hub-dashboard-mockup.png";
 import carlaPhoto from "@/assets/testimonials/carla.jpg";
