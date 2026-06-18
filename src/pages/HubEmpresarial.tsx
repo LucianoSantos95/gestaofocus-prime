@@ -513,18 +513,63 @@ const HubEmpresarial = () => {
         <p className="sec-label">Perguntas frequentes</p>
         <h2 style={{ marginBottom: 40 }}>FAQ</h2>
 
-        <Accordion type="single" collapsible className="space-y-3 max-w-3xl">
-          {faqs.map((f, i) => (
-            <AccordionItem key={i} value={`faq-${i}`} className="card" style={{ padding: "4px 24px" }}>
-              <AccordionTrigger className="hover:no-underline py-5 text-left" style={{ color: "var(--text)", fontSize: 15, fontWeight: 500 }}>
-                {f.q}
-              </AccordionTrigger>
-              <AccordionContent style={{ color: "var(--text2)", paddingBottom: 20, fontSize: 14, lineHeight: 1.75 }}>
-                {f.a}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
+        <div className="flex flex-col md:flex-row gap-8">
+          <div className="flex-1">
+            <Accordion type="single" collapsible className="space-y-3">
+              {faqs.map((f, i) => (
+                <AccordionItem key={i} value={`faq-${i}`} className="card" style={{ padding: "4px 24px" }}>
+                  <AccordionTrigger className="hover:no-underline py-5 text-left" style={{ color: "var(--text)", fontSize: 15, fontWeight: 500 }}>
+                    {f.q}
+                  </AccordionTrigger>
+                  <AccordionContent style={{ color: "var(--text2)", paddingBottom: 20, fontSize: 14, lineHeight: 1.75 }}>
+                    {f.a}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+
+          <aside className="md:w-72 flex-shrink-0">
+            <div className="md:sticky" style={{ top: 88 }}>
+              <div
+                className="card"
+                style={{
+                  padding: 24,
+                  background: "linear-gradient(160deg, rgba(30,64,175,0.10) 0%, var(--bg2) 60%)",
+                  borderColor: "rgba(59,130,246,0.30)",
+                }}
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <div
+                    style={{
+                      width: 56, height: 56, borderRadius: "50%",
+                      display: "inline-flex", alignItems: "center", justifyContent: "center",
+                      background: "rgba(30,64,175,0.18)",
+                      border: "1px solid rgba(59,130,246,0.30)",
+                      color: "#6D8FE8", fontSize: 16, fontWeight: 700,
+                    }}
+                  >
+                    LS
+                  </div>
+                  <div>
+                    <p style={{ color: "var(--text)", fontSize: 13, fontWeight: 600 }}>Luciano Santos</p>
+                    <p style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--text3)", letterSpacing: "0.04em" }}>Fundador · Notion Certified Partner</p>
+                  </div>
+                </div>
+                <p style={{ color: "var(--text2)", fontSize: 13, lineHeight: 1.6, marginBottom: 16 }}>
+                  Dúvidas sobre o Hub? Me manda uma mensagem — respondo pessoalmente em até 24h.
+                </p>
+                <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="btn-accent w-full" style={{ marginBottom: 8 }}>
+                  Falar no WhatsApp
+                  <ArrowRight className="w-4 h-4" />
+                </a>
+                <a href={APP_URL} target="_blank" rel="noopener noreferrer" className="btn-ghost w-full" style={{ display: "flex" }}>
+                  Testar grátis →
+                </a>
+              </div>
+            </div>
+          </aside>
+        </div>
       </section>
 
       {/* CTA FINAL */}
@@ -544,23 +589,37 @@ const HubEmpresarial = () => {
             Pronto para <strong>profissionalizar</strong> sua agência ou consultoria?
           </h2>
           <p style={{ color: "var(--text2)", maxWidth: 540, margin: "0 auto 32px", fontSize: 15 }}>
-            Junte-se às 43 agências e consultorias que já simplificaram sua gestão com o Hub Empresarial.
+            Comece grátis agora ou fale comigo se quiser entender se o Hub serve para o seu cenário.
           </p>
-          <a
-            href={APP_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => handleCTA("CTA-Final")}
-            className="btn-main"
-          >
-            Começar grátis agora
-            <ArrowRight className="w-4 h-4 ml-2" />
-          </a>
-          <p style={{ marginTop: 16, fontSize: 12, color: "var(--text3)", fontFamily: "var(--font-mono)", letterSpacing: "0.06em", textTransform: "uppercase" }}>
-            Sem cartão de crédito
-          </p>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
+            <a
+              href={APP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => handleCTA("CTA-Final")}
+              className="btn-main"
+            >
+              Começar grátis agora
+              <ArrowRight className="w-4 h-4 ml-2" />
+            </a>
+            <a
+              href={WA_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => handleCTA("CTA-Final-Wa")}
+              className="btn-ghost"
+            >
+              Falar com Luciano →
+            </a>
+          </div>
+          <div className="mt-6">
+            <a href="/solucoes-sob-medida" className="btn-ghost" style={{ border: "none" }}>
+              Ver Focus Custom →
+            </a>
+          </div>
         </div>
       </section>
+
 
       <Footer />
       <StickyMobileCTA />
