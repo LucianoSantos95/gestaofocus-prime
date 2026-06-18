@@ -288,6 +288,82 @@ const HubEmpresarial = () => {
         </div>
       </section>
 
+      {/* RESULTADOS REAIS */}
+      <section className="container-focus section-padding">
+        <p className="sec-label">Resultados reais</p>
+        <h2 style={{ maxWidth: 720, marginBottom: 40 }}>
+          Casos de uso <strong>em produção</strong>.
+        </h2>
+
+        <div className="grid md:grid-cols-2 gap-5">
+          {/* Card 1 */}
+          <div
+            className="card"
+            style={{
+              borderColor: "rgba(59,130,246,0.30)",
+              background: "linear-gradient(160deg, rgba(30,64,175,0.10) 0%, var(--bg2) 60%)",
+              padding: 36,
+            }}
+          >
+            <p className="card-num" style={{ color: "#6D8FE8" }}>Agência Digital · São Paulo</p>
+            <span
+              style={{
+                display: "inline-block",
+                fontFamily: "var(--font-mono)", fontSize: 10,
+                color: "#6D8FE8", background: "rgba(30,64,175,0.18)",
+                border: "1px solid rgba(59,130,246,0.30)", borderRadius: 4,
+                padding: "3px 8px", letterSpacing: "0.08em", textTransform: "uppercase",
+                marginBottom: 14,
+              }}
+            >
+              5 planilhas → 1 sistema
+            </span>
+            <h3 style={{ fontSize: 22 }}>Saímos do caos do Excel para um dashboard em tempo real</h3>
+            <div className="grid grid-cols-3 gap-4 pt-6 mt-6" style={{ borderTop: "1px solid var(--line)" }}>
+              {[
+                { n: "5×", l: "mais rápido no onboarding" },
+                { n: "12h", l: "economizadas por semana" },
+                { n: "0", l: "planilhas em uso" },
+              ].map((s) => (
+                <div key={s.l}>
+                  <p style={{ fontSize: 40, fontWeight: 700, letterSpacing: "-0.04em", color: "var(--text)", lineHeight: 1 }}>{s.n}</p>
+                  <p style={{ fontSize: 11, color: "var(--text3)", fontFamily: "var(--font-mono)", letterSpacing: "0.04em", marginTop: 8 }}>{s.l}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Card 2 */}
+          <div className="card" style={{ padding: 36 }}>
+            <p className="card-num">Consultoria de RH · Campinas</p>
+            <span
+              style={{
+                display: "inline-block",
+                fontFamily: "var(--font-mono)", fontSize: 10,
+                color: "var(--text3)", border: "1px solid var(--line2)",
+                borderRadius: 4, padding: "3px 8px",
+                letterSpacing: "0.08em", textTransform: "uppercase",
+                marginBottom: 14,
+              }}
+            >
+              WhatsApp → sistema
+            </span>
+            <h3 style={{ fontSize: 22 }}>CRM mudou a relação com clientes — zero oportunidade perdida</h3>
+            <div className="grid grid-cols-2 gap-4 pt-6 mt-6" style={{ borderTop: "1px solid var(--line)" }}>
+              {[
+                { n: "3×", l: "mais leads convertidos" },
+                { n: "100%", l: "dos clientes acompanhados" },
+              ].map((s) => (
+                <div key={s.l}>
+                  <p style={{ fontSize: 40, fontWeight: 700, letterSpacing: "-0.04em", color: "var(--text)", lineHeight: 1 }}>{s.n}</p>
+                  <p style={{ fontSize: 11, color: "var(--text3)", fontFamily: "var(--font-mono)", letterSpacing: "0.04em", marginTop: 8 }}>{s.l}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* PRICING */}
       <section ref={pricingRef} className="container-focus section-padding">
         <p className="sec-label">Planos</p>
