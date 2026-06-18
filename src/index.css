@@ -407,6 +407,66 @@ html, body {
     box-shadow: 0 0 30px hsl(160 84% 39% / 0.3);
   }
 
+  /* Accent button — blue, used for WhatsApp consultoria CTAs */
+  .btn-accent {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    color: #fff;
+    background: linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%);
+    padding: 11px 20px;
+    border-radius: 8px;
+    border: 1px solid rgba(59,130,246,0.35);
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.18s;
+    box-shadow: 0 0 0 1px rgba(59,130,246,0.12), 0 8px 24px -10px rgba(30,64,175,0.55);
+  }
+  .btn-accent:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.08);
+    box-shadow: 0 0 0 1px rgba(59,130,246,0.25), 0 12px 30px -10px rgba(30,64,175,0.70);
+  }
+
+  /* TalkToLuciano card — founder personal CTA, reused across pages */
+  .talk-card {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 14px 10px 10px;
+    background: var(--bg2);
+    border: 1px solid var(--line2);
+    border-radius: 14px;
+    box-shadow: 0 12px 40px -18px rgba(30,64,175,0.35);
+  }
+  .talk-card__avatar {
+    width: 40px; height: 40px; border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: rgba(30,64,175,0.18);
+    border: 1px solid rgba(59,130,246,0.30);
+    color: #6D8FE8;
+    font-size: 13px; font-weight: 700; letter-spacing: 0.04em;
+    flex-shrink: 0;
+  }
+  .talk-card__name { color: var(--text); font-size: 13px; font-weight: 600; line-height: 1.2; }
+  .talk-card__role {
+    font-family: var(--font-mono); font-size: 11px;
+    color: var(--text3); letter-spacing: 0.04em; margin-top: 3px;
+  }
+  .talk-card__sep {
+    width: 1px; height: 36px; background: var(--line2); flex-shrink: 0;
+  }
+  @media (max-width: 640px) {
+    .talk-card { flex-wrap: wrap; gap: 10px; padding: 12px; }
+    .talk-card__sep { display: none; }
+    .talk-card .btn-accent { width: 100%; }
+  }
+
   /* === SECTIONS === */
   .section-padding {
     padding-top: 80px;
