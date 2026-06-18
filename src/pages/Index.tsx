@@ -1,26 +1,23 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import SEOHead from "@/components/SEOHead";
-import ApplicationFormModal from "@/components/ApplicationFormModal";
-import { ArrowRight, Star } from "lucide-react";
+import TalkToLuciano from "@/components/TalkToLuciano";
+import { ArrowRight, Star, Check } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 import { CountUp } from "@/hooks/useCountUp";
 
 import hubEmpresarialPro from "@/assets/hub-empresarial-pro.webp";
 
 const Index = () => {
-  const [isApplicationOpen, setIsApplicationOpen] = useState(false);
-
   const cta = (label: string) =>
     trackEvent("cta_click", { event_category: "conversion", event_label: label });
 
   return (
     <div className="min-h-screen" style={{ background: "var(--bg)" }}>
       <SEOHead
-        title="Focus Gestão | Software para Agências e Consultorias"
-        description="Sistemas sob medida para agências, consultorias e prestadores de serviço. Pare de gerenciar no WhatsApp e planilhas. Entrega em até 30 dias."
+        title="Focus Gestão | Arquitetura de Operação com IA para PMEs e Agências"
+        description="Consultoria de operações com IA + Hub Empresarial SaaS. Para PMEs, agências e consultorias que querem sair do improviso e operar como empresa de verdade."
         canonical="/"
-        keywords="gestão para agências, sistema para consultoria, software para prestadores de serviço, gestão empresarial, CRM agência, dashboard consultoria"
+        keywords="consultoria notion, arquitetura de operação, IA para PMEs, hub empresarial, agentes de IA, mapeamento de processos"
         type="website"
         speakable={["[data-speakable]", "h1", ".hero-subtitle"]}
       />
@@ -36,31 +33,36 @@ const Index = () => {
         <div className="container-focus relative z-10 text-center">
           <p className="hero-eyebrow anim-up" style={{ justifyContent: "center" }}>
             <span style={{ color: "var(--accent-hex)" }}>●</span>
-            Focus · Sistemas para agências e consultorias
+            Focus · Arquitetura de Operação com IA
           </p>
 
-          <h1 className="hero-title anim-up-1 mx-auto" style={{ maxWidth: 880 }}>
-            Operação <em>sem caos.</em><br />Em <strong>semanas</strong>, não meses.
+          <h1 className="hero-title anim-up-1 mx-auto" style={{ maxWidth: 940 }}>
+            Arquitetura de <em>Operação com IA</em><br />para <strong>PMEs e agências.</strong>
           </h1>
 
-          <p className="hero-subtitle anim-up-2 mx-auto mt-8" style={{ maxWidth: 580 }}>
-            Sistemas sob medida e plataforma SaaS para agências, consultorias e prestadores de serviço cansados do WhatsApp e das planilhas.
+          <p className="hero-subtitle anim-up-2 mx-auto mt-8" style={{ maxWidth: 620 }}>
+            Mapeamento de processos, Notion como hub operacional e agentes de IA — para empresas que querem
+            parar de operar no improviso e ganhar previsibilidade.
           </p>
 
-          <div className="anim-up-3 mt-10 flex flex-col sm:flex-row gap-3 justify-center items-center">
-            <button
-              className="btn-cta"
-              onClick={() => {
-                cta("hero_waitlist");
-                setIsApplicationOpen(true);
-              }}
+          <div className="anim-up-3 mt-10 flex flex-col items-center gap-4">
+            <TalkToLuciano />
+            <Link
+              to="/auth/signup"
+              onClick={() => cta("hero_signup")}
+              className="btn-ghost"
             >
-              Entrar na lista de espera
-              <ArrowRight className="w-4 h-4 ml-2" />
-            </button>
-            <Link to="/hub-empresarial" onClick={() => cta("hero_hub")} className="btn-ghost">
-              Conhecer Hub Empresarial →
+              Começar grátis no Hub →
             </Link>
+          </div>
+
+          {/* Social proof inline */}
+          <div className="mt-10 flex flex-wrap justify-center items-center gap-x-6 gap-y-2" style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--text3)", letterSpacing: "0.06em", textTransform: "uppercase" }}>
+            <span>50+ empresas</span>
+            <span style={{ color: "var(--line2)" }}>·</span>
+            <span>150+ sistemas</span>
+            <span style={{ color: "var(--line2)" }}>·</span>
+            <span>Notion Certified Partner</span>
           </div>
 
           {/* Product mockup */}
@@ -82,20 +84,6 @@ const Index = () => {
           </div>
         </div>
       </section>
-
-      {/* ===== MEDIA STRIP ===== */}
-      <div className="container-focus">
-        <div className="media-strip flex-wrap md:flex-nowrap">
-          <span className="ms-label">Em parceria com</span>
-          <div className="ms-logos">
-            <span className="ms-logo">Notion Partner</span>
-            <span className="ms-logo">Lovable L4</span>
-            <span className="ms-logo">Lean Six Sigma</span>
-            <span className="ms-logo">Stripe</span>
-            <span className="ms-logo">Supabase</span>
-          </div>
-        </div>
-      </div>
 
       {/* ===== METRICS ===== */}
       <section className="container-focus" style={{ paddingTop: 80, paddingBottom: 0 }}>
@@ -119,7 +107,7 @@ const Index = () => {
       <section className="container-focus section-padding">
         <p className="sec-label">O dia a dia hoje</p>
         <h2 style={{ maxWidth: 720 }}>
-          Isso é a rotina da sua <strong>agência ou consultoria</strong>?
+          Isso é a rotina da sua <strong>PME ou agência</strong>?
         </h2>
 
         <div className="bento">
@@ -127,7 +115,7 @@ const Index = () => {
             { n: "01", t: "Projetos atrasados", d: "Ninguém sabe o status real. Clientes cobram atualização por WhatsApp o tempo todo.", col: 5, row: 2, featured: true },
             { n: "02", t: "Financeiro no Excel", d: "Você descobre o prejuízo tarde demais. Sem fluxo de caixa confiável.", col: 4, row: 1 },
             { n: "03", t: "Sem padrão", d: "Cada colaborador usa um método diferente.", col: 3, row: 1 },
-            { n: "04", t: "Crescimento travado", d: "A operação manual impede sua agência ou consultoria de escalar.", col: 7, row: 1 },
+            { n: "04", t: "Crescimento travado", d: "A operação manual impede sua empresa de escalar.", col: 7, row: 1 },
           ].map((c) => (
             <div
               key={c.n}
@@ -142,76 +130,173 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ===== SOLUTIONS COMPARISON ===== */}
+      {/* ===== RESULTADOS EM NÚMEROS — CASES ===== */}
       <section className="container-focus section-padding">
-        <p className="sec-label">Duas formas de profissionalizar</p>
+        <p className="sec-label">Resultados em números</p>
+        <h2 style={{ maxWidth: 720, marginBottom: 40 }}>
+          Empresas reais, <strong>números reais</strong>.
+        </h2>
+
+        <div className="grid md:grid-cols-2 gap-5">
+          {/* Card 1 — Consultoria Focus Custom */}
+          <div
+            className="card"
+            style={{
+              borderColor: "rgba(59,130,246,0.30)",
+              background: "linear-gradient(160deg, rgba(30,64,175,0.10) 0%, var(--bg2) 60%)",
+              padding: 36,
+            }}
+          >
+            <p className="card-num" style={{ color: "#6D8FE8" }}>CONSULTORIA · FOCUS CUSTOM</p>
+            <span
+              style={{
+                display: "inline-block",
+                fontFamily: "var(--font-mono)", fontSize: 10,
+                color: "#6D8FE8", background: "rgba(30,64,175,0.18)",
+                border: "1px solid rgba(59,130,246,0.30)", borderRadius: 4,
+                padding: "3px 8px", letterSpacing: "0.08em", textTransform: "uppercase",
+                marginBottom: 14,
+              }}
+            >
+              Espaço Natividade
+            </span>
+            <h3 style={{ fontSize: 22, lineHeight: 1.3 }}>
+              Processos na cabeça do dono → hub operacional no Notion
+            </h3>
+            <p style={{ color: "var(--text2)", marginTop: 12, marginBottom: 28, fontSize: 14 }}>
+              Reestruturação completa com mapeamento de processos, Notion e agentes de IA em 3 semanas.
+            </p>
+
+            <div className="grid grid-cols-3 gap-4 pt-6" style={{ borderTop: "1px solid var(--line)" }}>
+              {[
+                { n: "8+", l: "processos mapeados" },
+                { n: "3", l: "semanas de entrega" },
+                { n: "0", l: "dependência do dono" },
+              ].map((s) => (
+                <div key={s.l}>
+                  <p style={{ fontSize: 40, fontWeight: 700, letterSpacing: "-0.04em", color: "var(--text)", lineHeight: 1 }}>{s.n}</p>
+                  <p style={{ fontSize: 11, color: "var(--text3)", fontFamily: "var(--font-mono)", letterSpacing: "0.04em", marginTop: 8 }}>{s.l}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Card 2 — SaaS Hub */}
+          <div className="card" style={{ padding: 36 }}>
+            <p className="card-num">SAAS · HUB EMPRESARIAL</p>
+            <span
+              style={{
+                display: "inline-block",
+                fontFamily: "var(--font-mono)", fontSize: 10,
+                color: "var(--text3)", border: "1px solid var(--line2)",
+                borderRadius: 4, padding: "3px 8px",
+                letterSpacing: "0.08em", textTransform: "uppercase",
+                marginBottom: 14,
+              }}
+            >
+              Agência Digital
+            </span>
+            <h3 style={{ fontSize: 22, lineHeight: 1.3 }}>
+              5 planilhas desconexas → sistema único com IA
+            </h3>
+            <p style={{ color: "var(--text2)", marginTop: 12, marginBottom: 28, fontSize: 14 }}>
+              CRM, financeiro e projetos centralizados. Onboarding de clientes de 3 semanas para 4 dias.
+            </p>
+
+            <div className="grid grid-cols-2 gap-4 pt-6" style={{ borderTop: "1px solid var(--line)" }}>
+              {[
+                { n: "5×", l: "mais rápido no onboarding" },
+                { n: "12h", l: "economizadas por semana" },
+              ].map((s) => (
+                <div key={s.l}>
+                  <p style={{ fontSize: 40, fontWeight: 700, letterSpacing: "-0.04em", color: "var(--text)", lineHeight: 1 }}>{s.n}</p>
+                  <p style={{ fontSize: 11, color: "var(--text3)", fontFamily: "var(--font-mono)", letterSpacing: "0.04em", marginTop: 8 }}>{s.l}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== CONSULTORIA OU SAAS ===== */}
+      <section className="container-focus section-padding" id="planos">
+        <p className="sec-label">Dois caminhos</p>
         <h2 style={{ maxWidth: 720 }}>
-          Escolha o caminho ideal para o <strong>momento da sua empresa</strong>.
+          Consultoria ou <strong>SaaS</strong>?
         </h2>
 
         <div className="grid md:grid-cols-2 gap-5 mt-12">
           {/* Focus Custom */}
-          <div className="card relative" style={{ padding: 36 }}>
+          <div
+            className="card relative"
+            style={{
+              padding: 36,
+              border: "2px solid rgba(59,130,246,0.45)",
+              background: "linear-gradient(160deg, rgba(30,64,175,0.10) 0%, var(--bg2) 60%)",
+            }}
+          >
             <span
               style={{
-                position: "absolute",
-                top: 20,
-                right: 20,
-                fontFamily: "var(--font-mono)",
-                fontSize: 10,
-                color: "#FCA5A5",
-                background: "rgba(239,68,68,0.10)",
-                border: "1px solid rgba(239,68,68,0.25)",
-                borderRadius: 4,
-                padding: "3px 8px",
-                letterSpacing: "0.08em",
-                textTransform: "uppercase",
+                position: "absolute", top: 20, right: 20,
+                fontFamily: "var(--font-mono)", fontSize: 10,
+                color: "#6D8FE8", background: "rgba(30,64,175,0.18)",
+                border: "1px solid rgba(59,130,246,0.30)", borderRadius: 4,
+                padding: "3px 8px", letterSpacing: "0.08em", textTransform: "uppercase",
               }}
             >
-              Vagas esgotadas
+              Vagas Abertas
             </span>
-            <p className="card-num">01 · Focus Custom</p>
-            <h3 style={{ fontSize: 22 }}>Software sob medida</h3>
+            <p className="card-num" style={{ color: "#6D8FE8" }}>01 · Focus Custom</p>
+            <h3 style={{ fontSize: 22 }}>Consultoria de Operações com IA</h3>
             <p style={{ color: "var(--text2)", fontSize: 14, marginTop: 8, marginBottom: 20 }}>
-              Para operações complexas. CRM personalizado, dashboards exclusivos, portal do cliente.
+              Para empresas que precisam reestruturar a operação do zero.
             </p>
-            <ul className="pc-list" style={{ paddingLeft: 0, marginBottom: 28 }}>
-              {["Dashboard exclusivo com seus KPIs", "CRM personalizado para seu processo", "Portal do cliente com sua marca", "Suporte dedicado pós-entrega"].map((f) => (
-                <li key={f} style={{ color: "var(--text2)", fontSize: 14, marginBottom: 8 }}>{f}</li>
+            <ul style={{ marginBottom: 28, padding: 0, listStyle: "none" }}>
+              {["Diagnóstico e mapeamento de processos", "Notion como hub operacional", "POPs e playbooks", "Agentes de IA personalizados", "Onboarding + suporte 2 semanas"].map((f) => (
+                <li key={f} style={{ color: "var(--text2)", fontSize: 14, marginBottom: 10, display: "flex", gap: 10, alignItems: "flex-start" }}>
+                  <Check className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: "#6D8FE8" }} />
+                  <span>{f}</span>
+                </li>
               ))}
             </ul>
-            <button
-              className="btn-cta w-full"
-              onClick={() => {
-                cta("card_custom_waitlist");
-                setIsApplicationOpen(true);
-              }}
-            >
-              Entrar na lista de espera
-              <ArrowRight className="w-4 h-4 ml-2" />
-            </button>
+            <p style={{ color: "var(--text2)", fontSize: 13, marginBottom: 16 }}>
+              A partir de <strong style={{ color: "var(--text)", fontSize: 18 }}>R$ 3.800</strong>
+              <span style={{ color: "var(--text3)" }}> · R$ 180/h</span>
+            </p>
+            <TalkToLuciano className="!flex w-full" label="Agendar diagnóstico" />
           </div>
 
           {/* Hub Empresarial */}
-          <div className="card pc-featured" style={{ padding: 36 }}>
-            <span className="pc-popular" style={{ position: "absolute", top: 20, right: 20 }}>
-              Acesso imediato
+          <div className="card relative" style={{ padding: 36 }}>
+            <span
+              style={{
+                position: "absolute", top: 20, right: 20,
+                fontFamily: "var(--font-mono)", fontSize: 10,
+                color: "var(--text3)", border: "1px solid var(--line2)",
+                borderRadius: 4, padding: "3px 8px",
+                letterSpacing: "0.08em", textTransform: "uppercase",
+              }}
+            >
+              Acesso Imediato
             </span>
             <p className="card-num">02 · Hub Empresarial</p>
             <h3 style={{ fontSize: 22 }}>Plataforma SaaS pronta para usar</h3>
             <p style={{ color: "var(--text2)", fontSize: 14, marginTop: 8, marginBottom: 20 }}>
-              Comece em minutos. CRM, Financeiro, Projetos, RH e Dashboards em um único sistema.
+              Para começar agora, sem espera. CRM, financeiro, projetos e mais.
             </p>
-            <ul className="pc-list" style={{ paddingLeft: 0, marginBottom: 28 }}>
-              {["Financeiro completo", "Gestão de Projetos", "CRM Inteligente", "Recursos Humanos", "Dashboards em tempo real"].map((f) => (
-                <li key={f} style={{ color: "var(--text2)", fontSize: 14, marginBottom: 8 }}>{f}</li>
+            <ul style={{ marginBottom: 28, padding: 0, listStyle: "none" }}>
+              {["Financeiro completo", "Gestão de Projetos", "CRM Inteligente", "Recursos Humanos", "Dashboards e IA Assistant"].map((f) => (
+                <li key={f} style={{ color: "var(--text2)", fontSize: 14, marginBottom: 10, display: "flex", gap: 10, alignItems: "flex-start" }}>
+                  <Check className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: "var(--text3)" }} />
+                  <span>{f}</span>
+                </li>
               ))}
             </ul>
             <p style={{ color: "var(--text2)", fontSize: 13, marginBottom: 16 }}>
-              A partir de <strong style={{ color: "var(--text)", fontSize: 18 }}>R$ 69</strong>
+              A partir de <strong style={{ color: "var(--text)", fontSize: 18 }}>R$ 97</strong>
               <span style={{ color: "var(--text3)" }}> /mês</span>
             </p>
-            <Link to="/hub-empresarial" onClick={() => cta("card_hub")} className="btn-main w-full" style={{ display: "flex" }}>
+            <Link to="/hub-empresarial" onClick={() => cta("card_hub")} className="btn-ghost w-full" style={{ display: "flex" }}>
               Conhecer Hub Empresarial
               <ArrowRight className="w-4 h-4 ml-2" />
             </Link>
@@ -261,28 +346,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ===== ABOUT (GEO/IA) ===== */}
-      <section className="container-focus section-padding" id="sobre-nos">
-        <div className="max-w-3xl mx-auto text-center">
-          <p className="sec-label" style={{ justifyContent: "center" }}>
-            <span style={{ flex: 0 }}>Sobre a Focus</span>
-          </p>
-          <h2 style={{ marginBottom: 24 }}>
-            <strong>Eliminamos o caos</strong> operacional de quem ainda gerencia tudo por WhatsApp e planilhas.
-          </h2>
-          <p data-speakable="true" style={{ color: "var(--text2)", fontSize: 15, lineHeight: 1.85, maxWidth: 640, margin: "0 auto" }}>
-            A Focus Gestão Inteligente é especialista em sistemas de gestão sob medida para agências de marketing,
-            consultorias e prestadores de serviço no Brasil. Já entregamos mais de <strong>150 sistemas</strong> para
-            <strong> 50+ empresas</strong>, com 98% de satisfação. Atendimento 100% online em todo o Brasil, com entrega média de 30 dias.
-          </p>
-          <div className="mt-8">
-            <Link to="/sobre-focus" onClick={() => cta("sobre_saiba_mais")} className="btn-ghost">
-              Saiba mais sobre a Focus →
-            </Link>
-          </div>
-        </div>
-      </section>
-
       {/* ===== FINAL CTA ===== */}
       <section className="container-focus section-padding">
         <div
@@ -297,31 +360,32 @@ const Index = () => {
             <span style={{ flex: 0 }}>Próximo passo</span>
           </p>
           <h2 style={{ maxWidth: 640, margin: "0 auto 16px" }}>
-            Pronto para <strong>profissionalizar</strong> sua empresa?
+            Vamos conversar sobre a sua <strong>operação</strong>?
           </h2>
           <p style={{ color: "var(--text2)", maxWidth: 540, margin: "0 auto 32px", fontSize: 15 }}>
-            As vagas para projetos sob medida estão esgotadas. Entre na lista de espera ou comece agora com o Hub
-            Empresarial — sem fila.
+            Diagnóstico gratuito de 30 minutos. Sem pitch comercial — só análise honesta do seu cenário.
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
-            <button
-              className="btn-cta"
-              onClick={() => {
-                cta("cta_final_waitlist");
-                setIsApplicationOpen(true);
-              }}
-            >
-              Entrar na lista de espera
-              <ArrowRight className="w-4 h-4 ml-2" />
-            </button>
+
+          <div className="flex justify-center">
+            <TalkToLuciano />
+          </div>
+
+          <div
+            className="mt-10 pt-8 flex flex-col sm:flex-row gap-4 justify-center items-center"
+            style={{ borderTop: "1px solid var(--line)" }}
+          >
+            <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--text3)", letterSpacing: "0.06em", textTransform: "uppercase" }}>
+              Prefere começar com o software?
+            </span>
             <Link to="/hub-empresarial" onClick={() => cta("cta_final_hub")} className="btn-ghost">
               Conhecer Hub Empresarial →
+            </Link>
+            <Link to="/auth/signup" onClick={() => cta("cta_final_signup")} className="btn-ghost">
+              Começar grátis →
             </Link>
           </div>
         </div>
       </section>
-
-      <ApplicationFormModal open={isApplicationOpen} onOpenChange={setIsApplicationOpen} source="homepage" />
     </div>
   );
 };

@@ -30,8 +30,7 @@ const Footer = () => {
               </span>
             </Link>
             <p style={{ color: "var(--text2)", fontSize: 13, lineHeight: 1.7 }}>
-              Gestão inteligente para agências, consultorias e prestadores de serviço.
-              Sistemas sob medida ou plataforma pronta para usar.
+              Consultoria de operações com IA + Hub Empresarial SaaS para agências e PMEs.
             </p>
           </div>
 

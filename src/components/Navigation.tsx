@@ -5,11 +5,10 @@ import { trackNavigationClick } from "@/lib/analytics";
 import focusLogo from "@/assets/focus-logo-circle.png";
 
 const navItems = [
-  { name: "Soluções Sob Medida", href: "/solucoes-sob-medida" },
+  { name: "Consultoria", href: "/solucoes-sob-medida" },
   { name: "Hub Empresarial", href: "/hub-empresarial" },
+  { name: "Planos", href: "/#planos" },
   { name: "Blog", href: "/blog" },
-  { name: "Sobre", href: "/sobre-focus" },
-  { name: "Contato", href: "/contato" },
 ];
 
 const Navigation = () => {
