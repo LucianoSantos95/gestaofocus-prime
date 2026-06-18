@@ -12,7 +12,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { ArrowRight, Star } from "lucide-react";
+import { ArrowRight, Star, Check, X as XIcon } from "lucide-react";
+import TalkToLuciano, { WA_LINK } from "@/components/TalkToLuciano";
 import { trackCTAClick, trackEvent } from "@/lib/analytics";
 import hubDashboardMockup from "@/assets/hub-dashboard-mockup.png";
 import carlaPhoto from "@/assets/testimonials/carla.jpg";
@@ -183,6 +184,92 @@ const HubEmpresarial = () => {
         </div>
       </section>
 
+      {/* POR QUE O HUB — Comparison */}
+      <section className="container-focus section-padding">
+        <p className="sec-label">Por que o Hub</p>
+        <h2 style={{ maxWidth: 720, marginBottom: 40 }}>
+          Planilhas, ERP genérico ou <strong>Hub Empresarial</strong>?
+        </h2>
+
+        <div className="grid md:grid-cols-3 gap-5">
+          {/* Planilhas + WhatsApp */}
+          <div className="card" style={{ borderColor: "rgba(239,68,68,0.18)", background: "rgba(239,68,68,0.03)", padding: 28 }}>
+            <p className="card-num" style={{ color: "#FCA5A5" }}>Planilhas + WhatsApp</p>
+            <div className="grid grid-cols-2 gap-3 my-4">
+              <div>
+                <p style={{ fontSize: 28, fontWeight: 700, letterSpacing: "-0.04em", color: "#FCA5A5", lineHeight: 1 }}>3h+</p>
+                <p style={{ fontSize: 10, color: "var(--text3)", fontFamily: "var(--font-mono)", marginTop: 4 }}>perdidas por dia</p>
+              </div>
+              <div>
+                <p style={{ fontSize: 28, fontWeight: 700, letterSpacing: "-0.04em", color: "#FCA5A5", lineHeight: 1 }}>Alto</p>
+                <p style={{ fontSize: 10, color: "var(--text3)", fontFamily: "var(--font-mono)", marginTop: 4 }}>risco de erro</p>
+              </div>
+            </div>
+            <ul style={{ padding: 0, listStyle: "none" }}>
+              {["Dados espalhados", "Sem histórico de clientes", "Relatório feito à mão", "Sem visão em tempo real"].map((f) => (
+                <li key={f} style={{ color: "var(--text2)", fontSize: 13, marginBottom: 6, display: "flex", gap: 8 }}>
+                  <XIcon className="w-3.5 h-3.5 mt-1 flex-shrink-0" style={{ color: "#FCA5A5" }} />
+                  <span>{f}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* ERPs genéricos */}
+          <div className="card" style={{ borderColor: "rgba(239,68,68,0.18)", background: "rgba(239,68,68,0.03)", padding: 28 }}>
+            <p className="card-num" style={{ color: "#FCA5A5" }}>ERPs genéricos</p>
+            <div className="grid grid-cols-2 gap-3 my-4">
+              <div>
+                <p style={{ fontSize: 28, fontWeight: 700, letterSpacing: "-0.04em", color: "#FCA5A5", lineHeight: 1 }}>R$2k+</p>
+                <p style={{ fontSize: 10, color: "var(--text3)", fontFamily: "var(--font-mono)", marginTop: 4 }}>por mês</p>
+              </div>
+              <div>
+                <p style={{ fontSize: 28, fontWeight: 700, letterSpacing: "-0.04em", color: "#FCA5A5", lineHeight: 1 }}>Meses</p>
+                <p style={{ fontSize: 10, color: "var(--text3)", fontFamily: "var(--font-mono)", marginTop: 4 }}>de implantação</p>
+              </div>
+            </div>
+            <ul style={{ padding: 0, listStyle: "none" }}>
+              {["Não feito para agências", "Interface complexa", "Custo alto fixo", "Suporte impessoal"].map((f) => (
+                <li key={f} style={{ color: "var(--text2)", fontSize: 13, marginBottom: 6, display: "flex", gap: 8 }}>
+                  <XIcon className="w-3.5 h-3.5 mt-1 flex-shrink-0" style={{ color: "#FCA5A5" }} />
+                  <span>{f}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Hub Empresarial */}
+          <div
+            className="card"
+            style={{
+              border: "2px solid rgba(59,130,246,0.55)",
+              background: "linear-gradient(160deg, rgba(30,64,175,0.10) 0%, var(--bg2) 60%)",
+              padding: 28,
+            }}
+          >
+            <p className="card-num" style={{ color: "#6D8FE8" }}>Hub Empresarial ✓</p>
+            <div className="grid grid-cols-2 gap-3 my-4">
+              <div>
+                <p style={{ fontSize: 28, fontWeight: 700, letterSpacing: "-0.04em", color: "#6D8FE8", lineHeight: 1 }}>R$69</p>
+                <p style={{ fontSize: 10, color: "var(--text3)", fontFamily: "var(--font-mono)", marginTop: 4 }}>por mês para começar</p>
+              </div>
+              <div>
+                <p style={{ fontSize: 28, fontWeight: 700, letterSpacing: "-0.04em", color: "#6D8FE8", lineHeight: 1 }}>1 dia</p>
+                <p style={{ fontSize: 10, color: "var(--text3)", fontFamily: "var(--font-mono)", marginTop: 4 }}>para estar operacional</p>
+              </div>
+            </div>
+            <ul style={{ padding: 0, listStyle: "none" }}>
+              {["7 módulos prontos para agências", "IA integrada", "Relatórios automáticos", "Começa grátis, sem cartão"].map((f) => (
+                <li key={f} style={{ color: "var(--text2)", fontSize: 13, marginBottom: 6, display: "flex", gap: 8 }}>
+                  <Check className="w-3.5 h-3.5 mt-1 flex-shrink-0" style={{ color: "#6D8FE8" }} />
+                  <span>{f}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
       {/* MODULES — BENTO */}
       <section className="container-focus section-padding">
         <p className="sec-label">Módulos</p>
@@ -198,6 +285,82 @@ const HubEmpresarial = () => {
               <p style={{ color: "var(--text2)", marginTop: 8, fontSize: 14 }}>{m.d}</p>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* RESULTADOS REAIS */}
+      <section className="container-focus section-padding">
+        <p className="sec-label">Resultados reais</p>
+        <h2 style={{ maxWidth: 720, marginBottom: 40 }}>
+          Casos de uso <strong>em produção</strong>.
+        </h2>
+
+        <div className="grid md:grid-cols-2 gap-5">
+          {/* Card 1 */}
+          <div
+            className="card"
+            style={{
+              borderColor: "rgba(59,130,246,0.30)",
+              background: "linear-gradient(160deg, rgba(30,64,175,0.10) 0%, var(--bg2) 60%)",
+              padding: 36,
+            }}
+          >
+            <p className="card-num" style={{ color: "#6D8FE8" }}>Agência Digital · São Paulo</p>
+            <span
+              style={{
+                display: "inline-block",
+                fontFamily: "var(--font-mono)", fontSize: 10,
+                color: "#6D8FE8", background: "rgba(30,64,175,0.18)",
+                border: "1px solid rgba(59,130,246,0.30)", borderRadius: 4,
+                padding: "3px 8px", letterSpacing: "0.08em", textTransform: "uppercase",
+                marginBottom: 14,
+              }}
+            >
+              5 planilhas → 1 sistema
+            </span>
+            <h3 style={{ fontSize: 22 }}>Saímos do caos do Excel para um dashboard em tempo real</h3>
+            <div className="grid grid-cols-3 gap-4 pt-6 mt-6" style={{ borderTop: "1px solid var(--line)" }}>
+              {[
+                { n: "5×", l: "mais rápido no onboarding" },
+                { n: "12h", l: "economizadas por semana" },
+                { n: "0", l: "planilhas em uso" },
+              ].map((s) => (
+                <div key={s.l}>
+                  <p style={{ fontSize: 40, fontWeight: 700, letterSpacing: "-0.04em", color: "var(--text)", lineHeight: 1 }}>{s.n}</p>
+                  <p style={{ fontSize: 11, color: "var(--text3)", fontFamily: "var(--font-mono)", letterSpacing: "0.04em", marginTop: 8 }}>{s.l}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Card 2 */}
+          <div className="card" style={{ padding: 36 }}>
+            <p className="card-num">Consultoria de RH · Campinas</p>
+            <span
+              style={{
+                display: "inline-block",
+                fontFamily: "var(--font-mono)", fontSize: 10,
+                color: "var(--text3)", border: "1px solid var(--line2)",
+                borderRadius: 4, padding: "3px 8px",
+                letterSpacing: "0.08em", textTransform: "uppercase",
+                marginBottom: 14,
+              }}
+            >
+              WhatsApp → sistema
+            </span>
+            <h3 style={{ fontSize: 22 }}>CRM mudou a relação com clientes — zero oportunidade perdida</h3>
+            <div className="grid grid-cols-2 gap-4 pt-6 mt-6" style={{ borderTop: "1px solid var(--line)" }}>
+              {[
+                { n: "3×", l: "mais leads convertidos" },
+                { n: "100%", l: "dos clientes acompanhados" },
+              ].map((s) => (
+                <div key={s.l}>
+                  <p style={{ fontSize: 40, fontWeight: 700, letterSpacing: "-0.04em", color: "var(--text)", lineHeight: 1 }}>{s.n}</p>
+                  <p style={{ fontSize: 11, color: "var(--text3)", fontFamily: "var(--font-mono)", letterSpacing: "0.04em", marginTop: 8 }}>{s.l}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
@@ -350,18 +513,63 @@ const HubEmpresarial = () => {
         <p className="sec-label">Perguntas frequentes</p>
         <h2 style={{ marginBottom: 40 }}>FAQ</h2>
 
-        <Accordion type="single" collapsible className="space-y-3 max-w-3xl">
-          {faqs.map((f, i) => (
-            <AccordionItem key={i} value={`faq-${i}`} className="card" style={{ padding: "4px 24px" }}>
-              <AccordionTrigger className="hover:no-underline py-5 text-left" style={{ color: "var(--text)", fontSize: 15, fontWeight: 500 }}>
-                {f.q}
-              </AccordionTrigger>
-              <AccordionContent style={{ color: "var(--text2)", paddingBottom: 20, fontSize: 14, lineHeight: 1.75 }}>
-                {f.a}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
+        <div className="flex flex-col md:flex-row gap-8">
+          <div className="flex-1">
+            <Accordion type="single" collapsible className="space-y-3">
+              {faqs.map((f, i) => (
+                <AccordionItem key={i} value={`faq-${i}`} className="card" style={{ padding: "4px 24px" }}>
+                  <AccordionTrigger className="hover:no-underline py-5 text-left" style={{ color: "var(--text)", fontSize: 15, fontWeight: 500 }}>
+                    {f.q}
+                  </AccordionTrigger>
+                  <AccordionContent style={{ color: "var(--text2)", paddingBottom: 20, fontSize: 14, lineHeight: 1.75 }}>
+                    {f.a}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+
+          <aside className="md:w-72 flex-shrink-0">
+            <div className="md:sticky" style={{ top: 88 }}>
+              <div
+                className="card"
+                style={{
+                  padding: 24,
+                  background: "linear-gradient(160deg, rgba(30,64,175,0.10) 0%, var(--bg2) 60%)",
+                  borderColor: "rgba(59,130,246,0.30)",
+                }}
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <div
+                    style={{
+                      width: 56, height: 56, borderRadius: "50%",
+                      display: "inline-flex", alignItems: "center", justifyContent: "center",
+                      background: "rgba(30,64,175,0.18)",
+                      border: "1px solid rgba(59,130,246,0.30)",
+                      color: "#6D8FE8", fontSize: 16, fontWeight: 700,
+                    }}
+                  >
+                    LS
+                  </div>
+                  <div>
+                    <p style={{ color: "var(--text)", fontSize: 13, fontWeight: 600 }}>Luciano Santos</p>
+                    <p style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--text3)", letterSpacing: "0.04em" }}>Fundador · Notion Certified Partner</p>
+                  </div>
+                </div>
+                <p style={{ color: "var(--text2)", fontSize: 13, lineHeight: 1.6, marginBottom: 16 }}>
+                  Dúvidas sobre o Hub? Me manda uma mensagem — respondo pessoalmente em até 24h.
+                </p>
+                <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="btn-accent w-full" style={{ marginBottom: 8 }}>
+                  Falar no WhatsApp
+                  <ArrowRight className="w-4 h-4" />
+                </a>
+                <a href={APP_URL} target="_blank" rel="noopener noreferrer" className="btn-ghost w-full" style={{ display: "flex" }}>
+                  Testar grátis →
+                </a>
+              </div>
+            </div>
+          </aside>
+        </div>
       </section>
 
       {/* CTA FINAL */}
@@ -381,23 +589,37 @@ const HubEmpresarial = () => {
             Pronto para <strong>profissionalizar</strong> sua agência ou consultoria?
           </h2>
           <p style={{ color: "var(--text2)", maxWidth: 540, margin: "0 auto 32px", fontSize: 15 }}>
-            Junte-se às 43 agências e consultorias que já simplificaram sua gestão com o Hub Empresarial.
+            Comece grátis agora ou fale comigo se quiser entender se o Hub serve para o seu cenário.
           </p>
-          <a
-            href={APP_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => handleCTA("CTA-Final")}
-            className="btn-main"
-          >
-            Começar grátis agora
-            <ArrowRight className="w-4 h-4 ml-2" />
-          </a>
-          <p style={{ marginTop: 16, fontSize: 12, color: "var(--text3)", fontFamily: "var(--font-mono)", letterSpacing: "0.06em", textTransform: "uppercase" }}>
-            Sem cartão de crédito
-          </p>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
+            <a
+              href={APP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => handleCTA("CTA-Final")}
+              className="btn-main"
+            >
+              Começar grátis agora
+              <ArrowRight className="w-4 h-4 ml-2" />
+            </a>
+            <a
+              href={WA_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => handleCTA("CTA-Final-Wa")}
+              className="btn-ghost"
+            >
+              Falar com Luciano →
+            </a>
+          </div>
+          <div className="mt-6">
+            <a href="/solucoes-sob-medida" className="btn-ghost" style={{ border: "none" }}>
+              Ver Focus Custom →
+            </a>
+          </div>
         </div>
       </section>
+
 
       <Footer />
       <StickyMobileCTA />
