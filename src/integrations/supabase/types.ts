@@ -218,6 +218,21 @@ export type Database = {
         }
         Relationships: []
       }
+      keep_alive_log: {
+        Row: {
+          id: number
+          pinged_at: string
+        }
+        Insert: {
+          id?: number
+          pinged_at?: string
+        }
+        Update: {
+          id?: number
+          pinged_at?: string
+        }
+        Relationships: []
+      }
       mind_map_edges: {
         Row: {
           created_at: string
@@ -891,6 +906,7 @@ export type Database = {
         }
         Returns: boolean
       }
+      run_keep_alive: { Args: never; Returns: undefined }
     }
     Enums: {
       app_role: "free" | "pro" | "admin"
