@@ -1,14 +1,17 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Lock } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { trackNavigationClick } from "@/lib/analytics";
 import focusLogo from "@/assets/focus-logo-circle.png";
+
+const WA_LINK =
+  "https://wa.me/5511916742443?text=Ol%C3%A1+Luciano%2C+quero+agendar+um+diagn%C3%B3stico+gratuito+para+minha+empresa";
 
 const navItems = [
   { name: "Consultoria", href: "/solucoes-sob-medida" },
   { name: "Hub Empresarial", href: "/hub-empresarial" },
-  { name: "Planos", href: "/#planos" },
   { name: "Blog", href: "/blog" },
+  { name: "Sobre", href: "/sobre" },
 ];
 
 const Navigation = () => {
@@ -101,24 +104,25 @@ const Navigation = () => {
             São Paulo · BR
           </span>
 
-          <Link
-            to="/auth/login"
-            onClick={() => trackNavigationClick("area_cliente")}
+          <a
+            href={WA_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackNavigationClick("get_consultation")}
             className="ml-2 inline-flex items-center"
             style={{
-              background: "var(--bg3)",
-              border: "1px solid var(--line2)",
-              borderRadius: 7,
-              padding: "7px 16px",
+              background: "var(--text)",
+              border: "1px solid var(--text)",
+              borderRadius: 999,
+              padding: "8px 18px",
               fontSize: 12,
               fontWeight: 600,
-              color: "var(--text)",
+              color: "var(--bg)",
               textDecoration: "none",
             }}
           >
-            <Lock className="w-3 h-3 mr-2" />
-            Área do Cliente
-          </Link>
+            Diagnóstico gratuito
+          </a>
         </div>
 
         {/* Mobile Menu Button */}
@@ -162,17 +166,19 @@ const Navigation = () => {
             ))}
 
             <div className="pt-4 mt-2" style={{ borderTop: "1px solid var(--line)" }}>
-              <Link
-                to="/auth/login"
+              <a
+                href={WA_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => {
-                  trackNavigationClick("area_cliente_mobile");
+                  trackNavigationClick("get_consultation_mobile");
                   setIsOpen(false);
                 }}
-                className="btn-main w-full"
+                className="btn-main w-full inline-flex items-center justify-center"
+                style={{ background: "var(--text)", color: "var(--bg)", borderRadius: 999, padding: "10px 18px", fontWeight: 600 }}
               >
-                <Lock className="w-3.5 h-3.5 mr-2" />
-                Área do Cliente
-              </Link>
+                Diagnóstico gratuito
+              </a>
             </div>
           </div>
         </div>
