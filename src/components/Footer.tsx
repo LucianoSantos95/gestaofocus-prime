@@ -51,6 +51,8 @@ const Footer = () => {
             <ul className="space-y-2">
               {[
                 { label: "Home", href: "/" },
+                { label: "Consultoria Focus Custom", href: "/solucoes-sob-medida" },
+                { label: "Hub Empresarial", href: "/hub-empresarial" },
                 { label: "Blog de Gestão", href: "/blog" },
                 { label: "FAQ", href: "/faq" },
                 { label: "Termos de Uso", href: "/termos-uso" },

@@ -10,36 +10,36 @@ import PageBreadcrumb from "@/components/PageBreadcrumb";
 
 const faqCategories = [
   {
-    category: "Soluções Sob Medida",
+    category: "Consultoria de Operações (Focus Custom)",
     items: [
-      { question: "O que são as Soluções Sob Medida da Focus?", answer: "São sistemas de gestão desenvolvidos exclusivamente para a sua empresa — dashboards, CRMs, portais do cliente e automações personalizadas para agências, consultorias e prestadores de serviço." },
-      { question: "Quanto tempo leva para entregar um projeto sob medida?", answer: "O prazo médio é de 15 a 30 dias, dependendo da complexidade. Projetos mais simples podem ser entregues em 1-2 semanas." },
-      { question: "Preciso saber programar para usar os sistemas?", answer: "Não. Nossos sistemas são intuitivos e visuais. Fornecemos treinamento completo e documentação para toda a equipe." },
-      { question: "Vocês oferecem suporte após a entrega?", answer: "Sim! Oferecemos suporte contínuo, incluindo ajustes, dúvidas sobre uso e atualizações. Também temos planos de manutenção mensal." },
+      { question: "O que é a consultoria de operações da Focus?", answer: "É um serviço de consultoria presencial e remoto para PMEs, agências e consultorias que operam no caos — onde tudo depende da memória do dono e não existe processo documentado. Entregamos mapeamento de processos, implementação do Notion como hub operacional e integração de agentes de IA onde fizer sentido." },
+      { question: "Quais são os entregáveis da consultoria?", answer: "São três entregáveis complementares: (1) Mapeamento e documentação de todos os processos da empresa — vendas, financeiro, atendimento, operação; (2) Implementação do Notion como hub central com POPs, playbooks e checklists; (3) Integração de agentes de IA nos pontos que economizam tempo real, como resumo de reuniões, geração de propostas e qualificação de leads." },
+      { question: "Quanto tempo dura a consultoria?", answer: "O processo tem quatro etapas: diagnóstico gratuito (45-60 min), proposta personalizada (entregue em 24-48h), implementação (1 a 3 semanas conforme escopo) e suporte pós-entrega (2 semanas incluídas). O prazo total depende do tamanho da operação." },
+      { question: "Para quem é indicada a consultoria?", answer: "Para donos de PME, agências, consultorias e espaços de serviço que têm processos só na cabeça, já têm equipe mas não conseguem delegar com segurança, ou sentem que a empresa não funciona sem eles presentes." },
     ],
   },
   {
     category: "Hub Empresarial",
     items: [
-      { question: "O que é o Hub Empresarial?", answer: "É uma plataforma de gestão completa no Notion com módulos de Financeiro, RH, Marketing, Projetos e Dashboards — pronta para usar imediatamente." },
-      { question: "Qual a diferença entre o Hub e uma Solução Sob Medida?", answer: "O Hub é um produto pronto e acessível para quem precisa de organização imediata. A Solução Sob Medida é desenvolvida exclusivamente para sua empresa com funcionalidades específicas." },
-      { question: "Posso personalizar o Hub Empresarial?", answer: "Sim, o Hub é totalmente editável no Notion. Você pode adaptar campos, criar visualizações e ajustar os módulos conforme sua necessidade." },
+      { question: "O que é o Hub Empresarial?", answer: "É uma plataforma SaaS de gestão completa para PMEs, com módulos de CRM, Financeiro, Projetos, Dashboards e mais. Acesso imediato após a contratação, sem necessidade de desenvolvimento." },
+      { question: "Qual a diferença entre o Hub e a Consultoria?", answer: "O Hub Empresarial é um produto SaaS pronto — você acessa e começa a usar imediatamente com os módulos pré-configurados. A Consultoria é um serviço personalizado para mapear a sua operação específica e construir um sistema sob medida no Notion com agentes de IA integrados." },
+      { question: "Posso usar o Hub Empresarial junto com a consultoria?", answer: "Sim. São produtos complementares. A consultoria estrutura os seus processos e o Hub oferece uma plataforma de gestão para acompanhar o resultado. Muitos clientes usam os dois." },
     ],
   },
   {
     category: "Preços e Pagamento",
     items: [
-      { question: "Quanto custa um projeto sob medida?", answer: "O valor varia conforme o escopo. Oferecemos um diagnóstico gratuito onde avaliamos sua necessidade e apresentamos um orçamento personalizado." },
-      { question: "Qual o preço do Hub Empresarial?", answer: "O Hub Empresarial está disponível a partir de R$ 69/mês com acesso a todos os módulos." },
-      { question: "Quais formas de pagamento vocês aceitam?", answer: "Aceitamos PIX, cartão de crédito e boleto bancário. Para projetos sob medida, oferecemos parcelamento." },
+      { question: "Quanto custa a consultoria de operações?", answer: "O investimento é baseado em horas — R$ 180/hora. Você paga apenas pelas horas utilizadas, sem pacote inflado ou retainer obrigatório. O diagnóstico inicial é gratuito e a proposta apresenta o escopo e as horas estimadas antes de qualquer comprometimento." },
+      { question: "Qual o preço do Hub Empresarial?", answer: "O Hub Empresarial tem o Plano Plus a partir de R$ 119/mês (CRM, financeiro, projetos e dashboards) e o Plano Pro a R$ 249/mês (tudo do Plus mais RH, marketing e automações avançadas). Garantia de 7 dias." },
+      { question: "Quais formas de pagamento vocês aceitam?", answer: "Aceitamos PIX, cartão de crédito e boleto bancário. Para a consultoria, o pagamento é parcelado: 50% na assinatura do contrato e 50% na entrega." },
     ],
   },
   {
     category: "Suporte e Garantia",
     items: [
-      { question: "Como funciona o suporte?", answer: "Oferecemos suporte via WhatsApp e e-mail em horário comercial. Clientes de projetos sob medida têm atendimento prioritário." },
-      { question: "Posso solicitar alterações após a entrega?", answer: "Sim. Pequenas alterações estão incluídas no suporte pós-entrega. Alterações maiores podem ser orçadas separadamente." },
-      { question: "Vocês trabalham com empresas de todos os portes?", answer: "Sim! Atendemos desde profissionais autônomos até médias empresas. Cada solução é adaptada ao tamanho e às necessidades do cliente." },
+      { question: "Como funciona o suporte após a consultoria?", answer: "Dois semanas de suporte pós-entrega estão incluídas em todos os projetos de consultoria, para acompanhar a adoção pela equipe e ajustar o que for necessário. Além disso, suporte via WhatsApp e e-mail em horário comercial." },
+      { question: "O diagnóstico inicial é realmente gratuito?", answer: "Sim. A reunião de diagnóstico tem 45 a 60 minutos e não gera nenhum custo. Nela entendemos a operação atual, identificamos os maiores gargalos e verificamos se faz sentido avançar para uma proposta." },
+      { question: "Vocês atendem empresas de que porte?", answer: "O foco é em PMEs com operação real rodando — especialmente agências, consultorias, espaços de serviço e prestadores B2B que já têm equipe mas ainda dependem do dono para tudo funcionar. Atendemos 100% de forma remota, em todo o Brasil." },
     ],
   },
 ];

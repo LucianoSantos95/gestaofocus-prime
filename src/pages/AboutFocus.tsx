@@ -47,7 +47,7 @@ const AboutFocus = () => {
     <div className="min-h-screen" style={{ background: "var(--bg)" }}>
       <SEOHead
         title="Sobre · Focus — A consultoria por trás de operações que rodam sem o dono"
-        description="Focus é a consultoria de operações com IA de Luciano. 150+ projetos entregues para agências, consultorias e PMEs de serviço."
+        description="Focus é a consultoria de operações com IA de Luciano Santos. 50+ projetos entregues para agências, consultorias e PMEs de serviço."
         canonical="/sobre"
         keywords="sobre focus, luciano focus, consultoria operações IA, notion partner brasil"
       />

@@ -25,24 +25,26 @@ const organizationSchema = {
   alternateName: 'Focus',
   url: DOMAIN,
   logo: `${DOMAIN}/lovable-uploads/focus-logo.png`,
-  description: 'Empresa brasileira de tecnologia que ajuda PMEs a saírem do caos operacional com software sob medida (entrega em 30 dias) e plataforma SaaS de gestão (Hub Empresarial).',
-  foundingDate: '2023',
+  description: 'Consultoria de operações com IA para PMEs brasileiras. Mapeamento de processos, implementação do Notion como hub operacional e integração de agentes de IA para agências, consultorias e prestadores de serviço.',
+  foundingDate: '2018',
   email: 'contato@focusinteligente.com.br',
-  telephone: '+55-11-99492-1881',
-  sameAs: [],
+  telephone: '+55-11-91674-2443',
+  sameAs: [
+    'https://www.instagram.com/focus.notionsystems/',
+  ],
   areaServed: { '@type': 'Country', name: 'Brasil' },
   knowsAbout: [
-    'Gestão empresarial para PMEs',
-    'Desenvolvimento de software sob medida',
-    'CRM personalizado',
-    'Automação de processos',
-    'Plataformas SaaS de gestão',
-    'Dashboards executivos',
+    'Consultoria de operações para PMEs',
+    'Mapeamento e documentação de processos',
+    'Notion como hub operacional',
+    'Agentes de IA para automação',
+    'Plataforma SaaS de gestão',
+    'Onboarding de equipes',
   ],
   contactPoint: {
     '@type': 'ContactPoint',
     email: 'contato@focusinteligente.com.br',
-    telephone: '+55-11-99492-1881',
+    telephone: '+55-11-91674-2443',
     contactType: 'customer service',
     availableLanguage: ['Portuguese', 'pt-BR'],
     areaServed: 'BR',
@@ -75,6 +77,25 @@ const organizationSchema = {
   },
 };
 
+const lucianoPersonSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Luciano Santos',
+  jobTitle: 'Fundador e Consultor de Operações',
+  url: `${DOMAIN}/sobre`,
+  worksFor: { '@type': 'Organization', name: 'Focus Gestão Inteligente', url: DOMAIN },
+  knowsAbout: [
+    'Consultoria de operações para PMEs',
+    'Mapeamento e documentação de processos',
+    'Notion como hub operacional',
+    'Agentes de IA para automação',
+    'Gestão de agências e consultorias',
+  ],
+  sameAs: [
+    'https://www.instagram.com/focus.notionsystems/',
+  ],
+};
+
 const SEOHead = ({
   title,
   description,
@@ -100,7 +121,7 @@ const SEOHead = ({
     headline: title,
     description,
     image,
-    author: { '@type': 'Organization', name: author },
+    author: { '@type': 'Person', name: 'Luciano Santos', url: `${DOMAIN}/sobre` },
     publisher: {
       '@type': 'Organization',
       name: 'Focus Gestão Inteligente',
@@ -197,6 +218,9 @@ const SEOHead = ({
       
       <script type="application/ld+json">
         {JSON.stringify(organizationSchema)}
+      </script>
+      <script type="application/ld+json">
+        {JSON.stringify(lucianoPersonSchema)}
       </script>
       <script type="application/ld+json">
         {JSON.stringify(pageSchema)}

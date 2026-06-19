@@ -7,24 +7,24 @@ import {
 
 const faqs = [
   {
-    question: "É gratuito mesmo?",
-    answer: "Sim! Durante o período Beta, o acesso a todos os módulos é 100% gratuito. Você pode usar sem limites e sem precisar de cartão de crédito.",
+    question: "Quanto custa o Hub Empresarial?",
+    answer: "O Plano Plus custa R$ 119/mês e inclui CRM, financeiro, projetos e dashboards. O Plano Pro custa R$ 249/mês e adiciona RH, marketing e automações avançadas. Todos os planos têm garantia de 7 dias.",
   },
   {
     question: "Preciso saber programar?",
-    answer: "Não! O Hub Focus foi feito para empreendedores e gestores. A interface é visual e intuitiva — basta preencher, clicar e organizar.",
+    answer: "Não. O Hub Empresarial foi feito para empreendedores e gestores. A interface é visual e intuitiva — basta preencher, clicar e organizar.",
   },
   {
     question: "Funciona no celular?",
-    answer: "Sim! A plataforma é totalmente responsiva e funciona em qualquer dispositivo — computador, tablet ou celular.",
+    answer: "Sim. A plataforma é totalmente responsiva e funciona em qualquer dispositivo — computador, tablet ou celular.",
   },
   {
     question: "Posso usar com minha equipe?",
-    answer: "Sim! Você pode convidar membros da sua equipe para colaborar nos módulos, cada um com seu acesso e permissões.",
+    answer: "Sim. Você pode convidar membros da equipe para colaborar nos módulos, cada um com seu acesso e permissões configurados.",
   },
   {
     question: "Meus dados estão seguros?",
-    answer: "Totalmente. Utilizamos infraestrutura de nível empresarial com criptografia, backups automáticos e políticas de segurança rigorosas.",
+    answer: "Sim. Utilizamos infraestrutura de nível empresarial com criptografia ponta a ponta, backups automáticos e políticas de segurança rigorosas.",
   },
 ];
 
