@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { trackNavigationClick } from "@/lib/analytics";
-import focusLogo from "@/assets/focus-logo-circle.png";
+import focusLogo from "@/assets/focus-wordmark.png.asset.json";
 
 const WA_LINK =
   "https://wa.me/5511916742443?text=Ol%C3%A1+Luciano%2C+quero+agendar+um+diagn%C3%B3stico+gratuito+para+minha+empresa";
@@ -38,30 +38,14 @@ const Navigation = () => {
     >
       <div className="h-full flex items-center justify-between px-6 lg:px-12">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 group">
+        <Link to="/" className="flex items-center group" aria-label="Focus — Página inicial">
           <img
-            src={focusLogo}
+            src={focusLogo.url}
             alt="Focus"
-            width={24}
-            height={24}
-            style={{
-              width: 24,
-              height: 24,
-              borderRadius: "50%",
-              flexShrink: 0,
-              boxShadow: "0 0 0 1px var(--line2), 0 0 12px rgba(30,64,175,0.25)",
-            }}
+            width={86}
+            height={26}
+            style={{ height: 26, width: "auto", display: "block" }}
           />
-          <span
-            style={{
-              color: "var(--text)",
-              fontSize: 15,
-              fontWeight: 700,
-              letterSpacing: "-0.02em",
-            }}
-          >
-            Focus
-          </span>
         </Link>
 
         {/* Desktop Menu */}
