@@ -16,6 +16,7 @@ type Project = {
   title: string;
   description: string;
   image: string;
+  imageFit?: "cover" | "contain";
   metrics: { value: string; label: string }[];
 };
 
