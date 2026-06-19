@@ -14,7 +14,7 @@ const Index = () => {
   return (
     <div style={{ background: "var(--bg)", color: "var(--text)" }}>
       <SEOHead
-        title="Focus Gestão | Arquitetura de Operação com IA para PMEs e Agências"
+        title="Focus Gestão | Operação com IA para PMEs e Agências"
         description="Consultoria de operações com IA + Hub Empresarial SaaS. Para PMEs, agências e consultorias que querem sair do improviso e operar como empresa de verdade."
         canonical="/"
         keywords="consultoria notion, arquitetura de operação, IA para PMEs, hub empresarial, agentes de IA, mapeamento de processos"
