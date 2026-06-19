@@ -158,10 +158,28 @@ html, body {
   em, i { font-style: italic; font-weight: 400; color: #3B82F6; }
 
   /* Scroll reveal */
-  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; will-change: opacity, transform; }
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); will-change: opacity, transform; }
   .reveal.in-view { opacity: 1; transform: translateY(0); }
+
+  /* Stagger siblings inside a grid/flex container */
+  .reveal:nth-child(2) { transition-delay: .08s; }
+  .reveal:nth-child(3) { transition-delay: .16s; }
+  .reveal:nth-child(4) { transition-delay: .24s; }
+  .reveal:nth-child(5) { transition-delay: .32s; }
+  .reveal:nth-child(6) { transition-delay: .40s; }
+
+  /* Card hover lift */
+  .snj-project-card, .snj-price-card, .snj-step {
+    transition: transform .35s cubic-bezier(.2,.7,.2,1), border-color .25s ease, box-shadow .35s ease;
+  }
+  .snj-project-card:hover, .snj-price-card:hover, .snj-step:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 24px 48px -24px rgba(0,0,0,.6);
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .reveal { opacity: 1; transform: none; transition: none; }
+    .snj-project-card:hover, .snj-price-card:hover, .snj-step:hover { transform: none; }
   }
 }
 
