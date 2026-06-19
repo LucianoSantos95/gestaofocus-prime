@@ -137,13 +137,90 @@ const Index = () => {
 
         <div className="grid md:grid-cols-3 gap-5">
           {[
-            { n: "01", t: "Entender seu fluxo", d: "Mapeamos seus processos, ferramentas e gargalos reais." },
-            { n: "02", t: "Projetar e construir", d: "Implementamos automações sob medida no Notion + IA." },
-            { n: "03", t: "Otimizar e escalar", d: "Refinamos e expandimos junto com o crescimento da operação." },
+            {
+              n: "01",
+              t: "Entender seu fluxo",
+              d: "Mapeamos seus processos, ferramentas e gargalos reais.",
+              tags: ["Diagnóstico", "Mapeamento", "Entrevistas", "Auditoria"],
+              accent: "#6D8FE8",
+            },
+            {
+              n: "02",
+              t: "Projetar e construir",
+              d: "Implementamos automações sob medida no Notion + IA.",
+              tags: ["Arquitetura", "Notion Hub", "Agentes IA", "Integrações"],
+              accent: "#9DE89D",
+            },
+            {
+              n: "03",
+              t: "Otimizar e escalar",
+              d: "Refinamos e expandimos junto com o crescimento da operação.",
+              tags: ["Dashboards", "POPs", "Treinamento", "Iteração"],
+              accent: "#E8C56D",
+            },
           ].map((s) => (
             <div key={s.n} className="snj-step">
-              <div className="snj-step__img" />
-              <span className="snj-step__num">/ {s.n}</span>
+              <div
+                style={{
+                  aspectRatio: "4 / 3",
+                  borderRadius: 12,
+                  border: "1px solid var(--line)",
+                  background: `radial-gradient(circle at 30% 25%, ${s.accent}22, transparent 55%), linear-gradient(160deg, #0a0a14, #14141f)`,
+                  position: "relative",
+                  overflow: "hidden",
+                  padding: 20,
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                }}
+              >
+                <div
+                  style={{
+                    fontFamily: "var(--font-mono)",
+                    fontSize: 84,
+                    fontWeight: 600,
+                    lineHeight: 1,
+                    letterSpacing: "-0.04em",
+                    color: "transparent",
+                    WebkitTextStroke: `1.5px ${s.accent}`,
+                    opacity: 0.85,
+                  }}
+                >
+                  {s.n}
+                </div>
+                <div className="flex flex-wrap gap-1.5">
+                  {s.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      style={{
+                        fontFamily: "var(--font-mono)",
+                        fontSize: 10,
+                        color: "var(--text2)",
+                        background: "rgba(255,255,255,0.04)",
+                        border: "1px solid var(--line)",
+                        padding: "4px 9px",
+                        borderRadius: 999,
+                        letterSpacing: "0.04em",
+                      }}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <div
+                  style={{
+                    position: "absolute",
+                    top: 16,
+                    right: 16,
+                    width: 8,
+                    height: 8,
+                    borderRadius: "50%",
+                    background: s.accent,
+                    boxShadow: `0 0 16px ${s.accent}`,
+                  }}
+                />
+              </div>
+              <span className="snj-step__num" style={{ color: s.accent }}>/ ETAPA {s.n}</span>
               <h3 style={{ fontSize: 22, fontWeight: 500, color: "var(--text)", letterSpacing: "-0.02em" }}>
                 {s.t}
               </h3>

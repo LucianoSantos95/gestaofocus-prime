@@ -29,7 +29,7 @@ const Navigation = () => {
     <nav
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
       style={{
-        height: "84px",
+        height: "96px",
         background: scrolled ? "rgba(6,6,8,0.85)" : "transparent",
         backdropFilter: scrolled ? "blur(20px)" : "none",
         WebkitBackdropFilter: scrolled ? "blur(20px)" : "none",
@@ -42,10 +42,11 @@ const Navigation = () => {
           <img
             src={focusLogo.url}
             alt="Focus"
-            width={132}
-            height={40}
-            style={{ height: 40, width: "auto", display: "block" }}
+            width={208}
+            height={64}
+            style={{ height: 64, width: "auto", display: "block" }}
           />
+
         </Link>
 
         {/* Desktop Menu — centered */}

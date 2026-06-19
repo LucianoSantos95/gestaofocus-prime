@@ -21,7 +21,7 @@ const TalkToLuciano = ({
       </div>
       <div>
         <p className="talk-card__name">Luciano Santos</p>
-        <p className="talk-card__role">Fundador · Notion Certified Partner</p>
+        <p className="talk-card__role">Fundador · Certificação Notion</p>
       </div>
       <span className="talk-card__sep" aria-hidden="true" />
       <a

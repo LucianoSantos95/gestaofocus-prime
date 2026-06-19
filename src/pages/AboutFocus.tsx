@@ -7,7 +7,7 @@ import founderHero from "@/assets/about-founder-hero.jpg";
 
 const AboutFocus = () => {
   const numbers = [
-    { v: "150+", l: "PROJETOS ENTREGUES" },
+    { v: "50+", l: "PROJETOS ENTREGUES" },
     { v: "8 anos", l: "DE OPERAÇÕES B2B" },
     { v: "1", l: "FUNDADOR · 1 PROMESSA" },
     { v: "R$180", l: "/HORA · TRANSPARENTE" },
@@ -38,7 +38,7 @@ const AboutFocus = () => {
 
   const timeline = [
     { y: "2018", t: "Início em consultoria de processos para PMEs de serviço." },
-    { y: "2021", t: "Certificação Notion Partner e foco em hubs operacionais." },
+    { y: "2021", t: "Certificação Notion e foco em hubs operacionais." },
     { y: "2024", t: "Integração de agentes de IA em fluxos de PMEs e agências." },
     { y: "2026", t: "Lançamento do Hub Empresarial (SaaS) e estrutura Focus Custom." },
   ];
