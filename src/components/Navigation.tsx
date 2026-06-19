@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { trackNavigationClick } from "@/lib/analytics";
 import focusLogo from "@/assets/Focus.png.asset.json";
 
@@ -17,6 +18,7 @@ const navItems = [
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [hoveredNav, setHoveredNav] = useState<string | null>(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -50,28 +52,54 @@ const Navigation = () => {
         </Link>
 
         {/* Desktop Menu — centered */}
-        <div className="hidden lg:flex items-center gap-10 justify-self-center">
-          {navItems.map((item) => (
-            <Link
-              key={item.name}
-              to={item.href}
-              onClick={() => trackNavigationClick(item.name)}
-              className="transition-colors duration-150"
-              style={{
-                fontSize: 15,
-                fontWeight: 400,
-                letterSpacing: "-0.005em",
-                color: location.pathname === item.href ? "var(--text)" : "var(--text2)",
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--text)")}
-              onMouseLeave={(e) =>
-                (e.currentTarget.style.color =
-                  location.pathname === item.href ? "var(--text)" : "var(--text2)")
-              }
-            >
-              {item.name}
-            </Link>
-          ))}
+        <div
+          className="hidden lg:flex items-center gap-10 justify-self-center"
+          onMouseLeave={() => setHoveredNav(null)}
+        >
+          {navItems.map((item) => {
+            const isActive = location.pathname === item.href;
+            const isHovered = hoveredNav === item.name;
+            return (
+              <div
+                key={item.name}
+                style={{ position: "relative", paddingBottom: 3 }}
+                onMouseEnter={() => setHoveredNav(item.name)}
+              >
+                <Link
+                  to={item.href}
+                  onClick={() => trackNavigationClick(item.name)}
+                  style={{
+                    fontSize: 15,
+                    fontWeight: 400,
+                    letterSpacing: "-0.005em",
+                    color: isActive || isHovered ? "var(--text)" : "var(--text2)",
+                    transition: "color 0.18s ease",
+                    textDecoration: "none",
+                    display: "block",
+                  }}
+                >
+                  {item.name}
+                </Link>
+
+                {/* Sliding underline — layoutId makes it "travel" between links */}
+                {(isHovered || (isActive && hoveredNav === null)) && (
+                  <motion.span
+                    layoutId="nav-underline"
+                    style={{
+                      position: "absolute",
+                      bottom: 0,
+                      left: 0,
+                      right: 0,
+                      height: 1,
+                      background: "var(--text)",
+                      borderRadius: 1,
+                    }}
+                    transition={{ type: "spring", stiffness: 500, damping: 35 }}
+                  />
+                )}
+              </div>
+            );
+          })}
         </div>
 
         {/* CTA — right */}

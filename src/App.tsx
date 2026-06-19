@@ -1,4 +1,5 @@
 import { lazy, Suspense } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -134,6 +135,14 @@ function AppLayout() {
     <div className="min-h-screen bg-background flex flex-col">
       {showNav && <Navigation />}
       <main className="flex-1">
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.div
+            key={location.pathname}
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
+          >
         <Suspense fallback={<PageLoader />}>
           <Routes>
             <Route path="/" element={<Index />} />
@@ -226,6 +235,8 @@ function AppLayout() {
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
+          </motion.div>
+        </AnimatePresence>
       </main>
       {showFooter && <Footer />}
       {!isDashboard && (

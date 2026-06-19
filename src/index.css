@@ -157,24 +157,40 @@ html, body {
   strong, b { font-weight: 700; }
   em, i { font-style: italic; font-weight: 400; color: #3B82F6; }
 
-  /* Scroll reveal */
-  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); will-change: opacity, transform; }
+  /* Scroll reveal — spring easing, Sanjaya-style */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity  0.65s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
   .reveal.in-view { opacity: 1; transform: translateY(0); }
 
   /* Stagger siblings inside a grid/flex container */
-  .reveal:nth-child(2) { transition-delay: .08s; }
-  .reveal:nth-child(3) { transition-delay: .16s; }
-  .reveal:nth-child(4) { transition-delay: .24s; }
-  .reveal:nth-child(5) { transition-delay: .32s; }
-  .reveal:nth-child(6) { transition-delay: .40s; }
+  .reveal:nth-child(2) { transition-delay: 0.07s; }
+  .reveal:nth-child(3) { transition-delay: 0.14s; }
+  .reveal:nth-child(4) { transition-delay: 0.21s; }
+  .reveal:nth-child(5) { transition-delay: 0.28s; }
+  .reveal:nth-child(6) { transition-delay: 0.35s; }
 
-  /* Card hover lift */
+  /* Card hover lift — spring feel */
   .snj-project-card, .snj-price-card, .snj-step {
-    transition: transform .35s cubic-bezier(.2,.7,.2,1), border-color .25s ease, box-shadow .35s ease;
+    transition:
+      transform  0.4s cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 0.25s ease,
+      box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   }
   .snj-project-card:hover, .snj-price-card:hover, .snj-step:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 24px 48px -24px rgba(0,0,0,.6);
+    transform: translateY(-5px);
+    box-shadow: 0 28px 56px -24px rgba(0,0,0,.65);
+  }
+
+  /* Section hover — faint accent glow on border */
+  .snj-section > .max-w-6xl,
+  .snj-section > div {
+    transition: none;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -717,18 +733,22 @@ html, body {
   }
 }
 
-/* === ANIMATIONS === */
+/* === ANIMATIONS — Sanjaya spring easing === */
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(24px); }
+  from { opacity: 0; transform: translateY(22px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 @keyframes fade-in {
-  from { opacity: 0; transform: translateY(20px); }
+  from { opacity: 0; transform: translateY(18px); }
   to { opacity: 1; transform: translateY(0); }
 }
 @keyframes slide-up {
-  from { opacity: 0; transform: translateY(40px); }
+  from { opacity: 0; transform: translateY(36px); }
   to { opacity: 1; transform: translateY(0); }
+}
+@keyframes snj-enter {
+  from { opacity: 0; transform: translateY(20px) scale(0.99); }
+  to   { opacity: 1; transform: translateY(0)    scale(1); }
 }
 @keyframes glow {
   0%, 100% { box-shadow: 0 0 20px rgba(30,64,175,0.2); }
@@ -743,12 +763,13 @@ html, body {
   100% { background-position: 200% 0; }
 }
 
-.anim-up   { animation: fadeUp 0.7s ease both; }
-.anim-up-1 { animation: fadeUp 0.7s 0.1s ease both; }
-.anim-up-2 { animation: fadeUp 0.7s 0.2s ease both; }
-.anim-up-3 { animation: fadeUp 0.7s 0.3s ease both; }
-.animate-fade-in { animation: fade-in 0.6s ease-out; }
-.animate-slide-up { animation: slide-up 0.8s ease-out; }
+.anim-up   { animation: snj-enter 0.55s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.anim-up-1 { animation: snj-enter 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.09s  both; }
+.anim-up-2 { animation: snj-enter 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.18s  both; }
+.anim-up-3 { animation: snj-enter 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.27s  both; }
+.anim-up-4 { animation: snj-enter 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.36s  both; }
+.animate-fade-in  { animation: fade-in  0.5s cubic-bezier(0.22, 1, 0.36, 1); }
+.animate-slide-up { animation: slide-up 0.65s cubic-bezier(0.22, 1, 0.36, 1); }
 .animate-glow { animation: glow 3s ease-in-out infinite; }
 .animate-pulse-cta { animation: pulse-cta 2s ease-in-out infinite; }
 .animate-shimmer {
