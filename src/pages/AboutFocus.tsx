@@ -65,11 +65,15 @@ const AboutFocus = () => {
           alt="Luciano · Fundador da Focus"
           style={{
             position: "absolute",
-            inset: 0,
-            width: "100%",
+            top: 0,
+            bottom: 0,
+            left: "50%",
+            transform: "translateX(-50%)",
+            width: "auto",
+            maxWidth: "75%",
             height: "100%",
-            objectFit: "cover",
-            objectPosition: "center 20%",
+            objectFit: "contain",
+            objectPosition: "center top",
           }}
         />
         <div
