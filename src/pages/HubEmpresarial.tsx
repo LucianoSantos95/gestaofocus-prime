@@ -13,10 +13,15 @@ import {
 } from "@/components/ui/accordion";
 import { ArrowRight, Check } from "lucide-react";
 import { trackCTAClick, trackEvent } from "@/lib/analytics";
-import hubDashboardMockup from "@/assets/hub-dashboard-mockup.png";
-import caseCrm from "@/assets/case-crm-dashboard.png";
-import caseFin from "@/assets/case-financeiro-dashboard.png";
-import casePortal from "@/assets/case-portal-dashboard.png";
+import hubCrmAsset from "@/assets/hub-crm-clientes.png.asset.json";
+import hubFinAsset from "@/assets/hub-financas.png.asset.json";
+import hubProjAsset from "@/assets/hub-projetos.png.asset.json";
+import hubPainelAsset from "@/assets/hub-painel.png.asset.json";
+
+const caseCrm = hubCrmAsset.url;
+const caseFin = hubFinAsset.url;
+const casePortal = hubProjAsset.url;
+const hubDashboardMockup = hubPainelAsset.url;
 
 const APP_URL = "https://app.focusinteligente.com.br";
 

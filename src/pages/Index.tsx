@@ -429,7 +429,7 @@ const Index = () => {
             <span className="snj-step__num">/ Hub Empresarial</span>
             <p style={{ color: "var(--text2)", fontSize: 14 }}>Para começar agora — SaaS pronto.</p>
             <div>
-              <span className="snj-price-amount">R$ 97</span>
+              <span className="snj-price-amount">R$ 119</span>
               <span style={{ color: "var(--text3)", fontSize: 14, marginLeft: 6 }}>/mês</span>
             </div>
             <Link to="/hub-empresarial" onClick={() => cta("price_hub")} className="snj-btn-outline" style={{ justifyContent: "center" }}>
