@@ -27,12 +27,13 @@ export function useScrollReveal() {
     const autoTag = () => {
       document
         .querySelectorAll<HTMLElement>(
-          "main section, main .card, main .mr-item, main .bento > *"
+          "section, .card, .mr-item, .bento > *, .snj-step, .snj-project-card, .snj-price-card, [data-reveal]"
         )
         .forEach((el) => {
           if (el.classList.contains("reveal") || el.classList.contains("in-view") || el.dataset.noReveal) return;
+          // Skip nav/footer/hero internals
+          if (el.closest("nav") || el.closest("footer")) return;
           const rect = el.getBoundingClientRect();
-          // Skip elements already above/within the initial viewport — they should show immediately
           if (rect.top < window.innerHeight * 0.9) {
             el.classList.add("reveal", "in-view");
             return;
