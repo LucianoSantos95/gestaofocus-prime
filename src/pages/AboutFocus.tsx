@@ -3,7 +3,8 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import TalkToLuciano, { WA_LINK } from "@/components/TalkToLuciano";
 import { ArrowRight } from "lucide-react";
-import founderHero from "@/assets/about-founder-hero.jpg";
+import founderHeroAsset from "@/assets/about-founder-luciano.jpg.asset.json";
+const founderHero = founderHeroAsset.url;
 
 const AboutFocus = () => {
   const numbers = [
@@ -68,7 +69,7 @@ const AboutFocus = () => {
             width: "100%",
             height: "100%",
             objectFit: "cover",
-            objectPosition: "center 30%",
+            objectPosition: "center 20%",
           }}
         />
         <div
