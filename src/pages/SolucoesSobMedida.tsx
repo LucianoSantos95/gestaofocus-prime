@@ -4,8 +4,6 @@ import Footer from "@/components/Footer";
 import { WA_LINK } from "@/components/TalkToLuciano";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import caseFin from "@/assets/case-financeiro-dashboard.png";
-import notionLogoAsset from "@/assets/notion-logo.png.asset.json";
-const caseNotion = notionLogoAsset.url;
 import caseOnboarding from "@/assets/case-onboarding-flow.jpg";
 import caseCrmPipeline from "@/assets/case-crm-pipeline.jpg";
 
@@ -15,8 +13,8 @@ type Project = {
   brand: string;
   title: string;
   description: string;
-  image: string;
-  imageFit?: "cover" | "contain";
+  image?: string;
+  textOverlay?: string;
   metrics: { value: string; label: string }[];
 };
 
@@ -28,8 +26,7 @@ const projects: Project[] = [
     title: "Reestruturação completa da operação com IA e Notion",
     description:
       "Mapeamento de processos, hub no Notion e agentes de IA para tirar o dono da operação do dia a dia, mantendo o padrão de atendimento.",
-    image: caseNotion,
-    imageFit: "contain",
+    textOverlay: "Notion",
     metrics: [
       { value: "8+", label: "PROCESSOS MAPEADOS" },
       { value: "3 sem.", label: "ATÉ O GO-LIVE" },
@@ -435,21 +432,34 @@ const SolucoesSobMedida = () => {
                   justifyContent: "center",
                 }}
               >
-                <img
-                  src={p.image}
-                  alt={p.brand}
-                  loading="lazy"
-                  style={{
-                    width: p.imageFit === "contain" ? "auto" : "100%",
-                    height: p.imageFit === "contain" ? "auto" : "100%",
-                    maxWidth: p.imageFit === "contain" ? "60%" : undefined,
-                    maxHeight: p.imageFit === "contain" ? "60%" : undefined,
-                    objectFit: p.imageFit || "cover",
-                    display: "block",
-                    transition: "transform 0.6s ease",
-                  }}
-                  className="group-hover:scale-[1.03]"
-                />
+                {p.textOverlay ? (
+                  <span
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: 42,
+                      fontWeight: 600,
+                      color: "#1E40AF",
+                      letterSpacing: "0.06em",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    {p.textOverlay}
+                  </span>
+                ) : (
+                  <img
+                    src={p.image}
+                    alt={p.brand}
+                    loading="lazy"
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      display: "block",
+                      transition: "transform 0.6s ease",
+                    }}
+                    className="group-hover:scale-[1.03]"
+                  />
+                )}
               </div>
 
               {/* Content */}
