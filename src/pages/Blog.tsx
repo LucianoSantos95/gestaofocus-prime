@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
-import { Calendar, Clock, ArrowRight, BookOpen, Search, X, Building2, Zap, Layout, TrendingUp } from "lucide-react";
+import { Calendar, Clock, ArrowRight, BookOpen, Search, X } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
-import { Card, CardContent } from "@/components/ui/card";
 import { useState, useMemo, useEffect } from "react";
 import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
+
 
 
 // Blog images imports
@@ -510,44 +510,36 @@ const Blog = () => {
     }
   ];
 
-  // Main categories for filtering
+  // Main categories for filtering (chips Sanjaya-style)
   const mainCategories = [
-    { name: "Gestão para Agências", icon: Building2, color: "from-blue-500 to-blue-600" },
-    { name: "Produtividade Operacional", icon: Zap, color: "from-yellow-500 to-orange-500" },
-    { name: "Sistemas e Processos", icon: Layout, color: "from-primary to-accent" },
-    { name: "Crescimento e Escala", icon: TrendingUp, color: "from-purple-500 to-pink-500" }
+    "Gestão para Agências",
+    "Produtividade Operacional",
+    "Sistemas e Processos",
+    "Crescimento e Escala",
   ];
-
-  // Featured articles - most relevant for the niche
-  const featuredSlugs = [
-    "parar-apagar-incendios-empresa",
-    "150-sistemas-notion-licoes-praticas",
-    "organizar-projetos-caoticos"
-  ];
-  const featuredPosts = blogPosts.filter(post => featuredSlugs.includes(post.slug));
 
   // Filter posts based on search and category
   const filteredPosts = useMemo(() => {
-    return blogPosts.filter(post => {
-      const matchesSearch = 
+    return blogPosts.filter((post) => {
+      const matchesSearch =
         debouncedSearchTerm === "" ||
         post.title.toLowerCase().includes(debouncedSearchTerm.toLowerCase()) ||
         post.excerpt.toLowerCase().includes(debouncedSearchTerm.toLowerCase());
-      
-      const matchesCategory = 
-        !selectedCategory || 
-        post.category === selectedCategory;
-      
+
+      const matchesCategory = !selectedCategory || post.category === selectedCategory;
+
       return matchesSearch && matchesCategory;
     });
   }, [debouncedSearchTerm, selectedCategory, blogPosts]);
 
-  const getCategoryCount = (category: string) => {
-    return blogPosts.filter(post => post.category === category).length;
-  };
+  const getCategoryCount = (category: string) =>
+    blogPosts.filter((post) => post.category === category).length;
+
+  const isFiltering = !!selectedCategory || !!debouncedSearchTerm;
+  const postsToShow = isFiltering ? filteredPosts : filteredPosts.slice(0, visibleArticles);
 
   return (
-    <>
+    <div className="min-h-screen" style={{ background: "var(--bg)" }}>
       <SEOHead
         title="Blog Focus | Gestão para Agências, Consultorias e Prestadores de Serviço"
         description="Artigos práticos sobre gestão de projetos, financeiro, CRM e produtividade para agências, consultorias e prestadores de serviço."
@@ -558,255 +550,312 @@ const Blog = () => {
 
       <Navigation />
 
-      <div className="min-h-screen pt-24 pb-16">
-        {/* Breadcrumbs */}
-        <div className="container-focus mb-8">
-          <nav className="flex items-center space-x-2 text-sm text-foreground-muted">
-            <Link to="/" className="hover:text-primary transition-colors">Início</Link>
-            <span>/</span>
-            <span className="text-foreground">Blog</span>
-          </nav>
+      {/* HERO — Sanjaya /blog */}
+      <section
+        className="relative overflow-hidden"
+        style={{ padding: "180px 24px 60px", borderBottom: "1px solid var(--line)" }}
+      >
+        <div className="container-focus relative z-10 text-center">
+          <span
+            className="anim-up inline-block mb-8"
+            style={{
+              fontFamily: "var(--font-mono)",
+              fontSize: 11,
+              color: "#9DE89D",
+              border: "1px solid rgba(157,232,157,0.30)",
+              borderRadius: 4,
+              padding: "5px 12px",
+              letterSpacing: "0.10em",
+            }}
+          >
+            &lt;:BLOG&gt;
+          </span>
+
+          <h1
+            className="hero-title anim-up-1 mx-auto"
+            style={{ maxWidth: 1000, fontSize: "clamp(36px, 5.5vw, 68px)" }}
+          >
+            Conteúdo para quem <strong>opera no improviso</strong> e quer sair dele.
+          </h1>
+
+          <p className="hero-subtitle anim-up-2 mx-auto mt-8" style={{ maxWidth: 680 }}>
+            Ideias, métodos e guias práticos para agências, consultorias e PMEs de serviço
+            organizarem operação, processos e produtividade.
+          </p>
         </div>
+      </section>
 
-        {/* Hero Section */}
-        <section className="container-focus mb-16">
-          <div className="max-w-4xl">
-            <div className="inline-flex items-center px-4 py-2 rounded-full border border-card-border bg-card/50 backdrop-blur-sm mb-6">
-              <BookOpen className="w-4 h-4 text-primary mr-2" />
-              <span className="text-sm text-foreground-muted">Central de Conteúdo Focus</span>
-            </div>
-            
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              Blog Focus — Gestão para Agências, Consultorias e Prestadores de Serviço
-            </h1>
-            
-            <p className="text-xl text-foreground-muted leading-relaxed">
-              Artigos práticos sobre gestão de projetos, produtividade operacional e sistemas para escalar sua agência ou consultoria.
-            </p>
-          </div>
-        </section>
-
-        {/* Search Section */}
-        <section className="container-focus mb-16">
-          <div className="max-w-2xl mx-auto">
-            <div className="relative group">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground group-focus-within:text-primary transition-colors" />
-              <Input
-                type="text"
-                placeholder="Buscar artigos..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-12 pr-12 h-14 text-base border-2 border-card-border bg-card/50 backdrop-blur-sm rounded-xl focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all shadow-sm"
-              />
-              {searchTerm && (
-                <button
-                  onClick={() => setSearchTerm("")}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 p-1 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all"
-                  aria-label="Limpar busca"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-              )}
-            </div>
-          </div>
-        </section>
-
-        {/* Categories Section */}
-        <section className="container-focus mb-20">
-          <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Encontre artigos por categoria</h2>
-          
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {mainCategories.map((category) => {
-              const Icon = category.icon;
-              const isSelected = selectedCategory === category.name;
-              return (
-                <button
-                  key={category.name}
-                  onClick={() => setSelectedCategory(isSelected ? null : category.name)}
-                  className={`group relative overflow-hidden rounded-xl p-6 border transition-all duration-300 ${
-                    isSelected 
-                      ? "border-primary bg-primary/10 shadow-lg shadow-primary/20" 
-                      : "border-card-border bg-card hover:border-primary/50 hover:shadow-lg"
-                  }`}
-                >
-                  <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-0 group-hover:opacity-5 transition-opacity`} />
-                  <div className="relative z-10 flex flex-col items-center text-center gap-3">
-                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br ${category.color}`}>
-                      <Icon className="w-6 h-6 text-white" />
-                    </div>
-                    <span className="font-semibold text-sm md:text-base">{category.name}</span>
-                    <Badge variant="outline" className="text-xs">
-                      {getCategoryCount(category.name)} artigos
-                    </Badge>
-                  </div>
-                </button>
-              );
-            })}
+      {/* FILTERS — Sanjaya chip row + search */}
+      <section className="container-focus" style={{ padding: "48px 24px 24px" }}>
+        <div className="max-w-6xl mx-auto flex flex-col gap-6">
+          <div className="flex flex-wrap items-center justify-center gap-2">
+            <button
+              onClick={() => setSelectedCategory(null)}
+              className="snj-chip"
+              data-active={selectedCategory === null}
+            >
+              Todos · {blogPosts.length}
+            </button>
+            {mainCategories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setSelectedCategory(selectedCategory === cat ? null : cat)}
+                className="snj-chip"
+                data-active={selectedCategory === cat}
+              >
+                {cat} · {getCategoryCount(cat)}
+              </button>
+            ))}
           </div>
 
-          {selectedCategory && (
-            <div className="flex justify-center mt-6">
-              <Button
-                variant="outline"
-                onClick={() => setSelectedCategory(null)}
-                className="gap-2"
+          <div className="relative mx-auto w-full max-w-xl">
+            <Search
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4"
+              style={{ color: "var(--text3)" }}
+            />
+            <Input
+              type="text"
+              placeholder="Buscar por título ou tema..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="pl-11 pr-11 h-12 rounded-full border-0"
+              style={{
+                background: "var(--bg2)",
+                border: "1px solid var(--line)",
+                color: "var(--text)",
+                fontSize: 14,
+              }}
+            />
+            {searchTerm && (
+              <button
+                onClick={() => setSearchTerm("")}
+                className="absolute right-4 top-1/2 -translate-y-1/2"
+                style={{ color: "var(--text3)" }}
+                aria-label="Limpar busca"
               >
                 <X className="w-4 h-4" />
-                Limpar filtro
-              </Button>
-            </div>
-          )}
-        </section>
-
-        {/* Featured Articles Section */}
-        {!selectedCategory && !debouncedSearchTerm && (
-          <section className="container-focus mb-20">
-            <h2 className="text-2xl md:text-3xl font-bold mb-8">Destaques da Focus</h2>
-            
-            <div className="grid md:grid-cols-3 gap-6">
-              {featuredPosts.map((post, index) => (
-                <article 
-                  key={post.id}
-                  className={`group relative overflow-hidden rounded-2xl border border-card-border bg-card ${
-                    index === 0 ? "md:col-span-2 md:row-span-2" : ""
-                  }`}
-                >
-                  <Link to={`/blog/${post.slug}`} className="block">
-                    <div className={`aspect-video ${index === 0 ? "md:aspect-[16/10]" : ""} overflow-hidden`}>
-                      <img 
-                        src={post.image} 
-                        alt={`Artigo sobre ${post.title.toLowerCase()} para agências e consultorias`}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        loading="lazy"
-                      />
-                    </div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/50 to-transparent" />
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <Badge className="mb-3 bg-primary/90">{post.category}</Badge>
-                      <h3 className={`font-bold mb-2 group-hover:text-primary transition-colors ${
-                        index === 0 ? "text-xl md:text-2xl" : "text-lg"
-                      }`}>
-                        {post.title}
-                      </h3>
-                      <div className="flex items-center gap-4 text-sm text-foreground-muted">
-                        <span className="flex items-center gap-1">
-                          <Calendar className="w-4 h-4" />
-                          {new Date(post.date).toLocaleDateString('pt-BR')}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <Clock className="w-4 h-4" />
-                          {post.readTime}
-                        </span>
-                      </div>
-                    </div>
-                  </Link>
-                </article>
-              ))}
-            </div>
-          </section>
-        )}
-
-        {/* All Articles Section */}
-        <section className="container-focus mb-20">
-          <div className="flex items-center justify-between mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold">
-              {selectedCategory || debouncedSearchTerm ? "Resultados" : "Últimos artigos publicados"}
-            </h2>
-            <span className="text-sm text-foreground-muted">
-              {filteredPosts.length} artigos
-            </span>
+              </button>
+            )}
           </div>
-          
+        </div>
+      </section>
+
+      {/* ARTICLES GRID */}
+      <section className="container-focus" style={{ padding: "24px 24px 80px" }}>
+        <div className="max-w-6xl mx-auto">
+          <div
+            className="flex items-center justify-between mb-8"
+            style={{
+              paddingBottom: 16,
+              borderBottom: "1px solid var(--line)",
+            }}
+          >
+            <p
+              style={{
+                fontFamily: "var(--font-mono)",
+                fontSize: 11,
+                color: "var(--text3)",
+                letterSpacing: "0.10em",
+                textTransform: "uppercase",
+              }}
+            >
+              {isFiltering ? "Resultados" : "Últimos artigos"} ·{" "}
+              {filteredPosts.length} {filteredPosts.length === 1 ? "artigo" : "artigos"}
+            </p>
+          </div>
+
           {filteredPosts.length > 0 ? (
             <>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {(selectedCategory || debouncedSearchTerm ? filteredPosts : filteredPosts.slice(0, visibleArticles)).map((post) => (
-                  <article 
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                {postsToShow.map((post) => (
+                  <article
                     key={`${post.id}-${post.slug}`}
-                    className="group bg-card border border-card-border rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                    className="group snj-article"
+                    style={{
+                      background: "var(--bg2)",
+                      border: "1px solid var(--line)",
+                      borderRadius: 16,
+                      overflow: "hidden",
+                      transition: "border-color 0.3s ease, transform 0.3s ease",
+                      display: "flex",
+                      flexDirection: "column",
+                    }}
                   >
-                    <Link to={`/blog/${post.slug}`} className="block aspect-video overflow-hidden">
-                      <img 
-                        src={post.image} 
-                        alt={`Artigo sobre ${post.title.toLowerCase()} para agências e consultorias`}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    <Link
+                      to={`/blog/${post.slug}`}
+                      className="block overflow-hidden"
+                      style={{ aspectRatio: "16 / 10", background: "#0b0b0e" }}
+                    >
+                      <img
+                        src={post.image}
+                        alt={`Artigo sobre ${post.title.toLowerCase()}`}
                         loading="lazy"
+                        className="group-hover:scale-[1.04]"
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "cover",
+                          transition: "transform 0.6s ease",
+                        }}
                       />
                     </Link>
-                    <div className="p-6">
-                      <Badge variant="outline" className="mb-3 text-primary border-primary/30">
-                        {post.category}
-                      </Badge>
-                      
-                      <h3 className="text-lg font-bold mb-3 group-hover:text-primary transition-colors line-clamp-2">
+                    <div
+                      style={{
+                        padding: "22px 22px 24px",
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: 12,
+                        flex: 1,
+                      }}
+                    >
+                      <div
+                        className="flex items-center gap-3"
+                        style={{
+                          fontFamily: "var(--font-mono)",
+                          fontSize: 10,
+                          color: "var(--text3)",
+                          letterSpacing: "0.10em",
+                          textTransform: "uppercase",
+                        }}
+                      >
+                        <span>{new Date(post.date).toLocaleDateString("pt-BR")}</span>
+                        <span style={{ opacity: 0.4 }}>•</span>
+                        <span>{post.category}</span>
+                      </div>
+
+                      <h3
+                        style={{
+                          fontSize: 18,
+                          fontWeight: 600,
+                          lineHeight: 1.3,
+                          letterSpacing: "-0.01em",
+                          color: "var(--text)",
+                        }}
+                        className="line-clamp-3"
+                      >
                         <Link to={`/blog/${post.slug}`}>{post.title}</Link>
                       </h3>
-                      
-                      <p className="text-foreground-muted mb-4 line-clamp-2 text-sm">
+
+                      <p
+                        className="line-clamp-2"
+                        style={{
+                          color: "var(--text2)",
+                          fontSize: 13,
+                          lineHeight: 1.6,
+                        }}
+                      >
                         {post.excerpt}
                       </p>
-                      
-                      <div className="flex items-center justify-between text-sm text-foreground-muted mb-4">
-                        <span className="flex items-center gap-1">
-                          <Calendar className="w-4 h-4" />
-                          {new Date(post.date).toLocaleDateString('pt-BR')}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <Clock className="w-4 h-4" />
+
+                      <div
+                        className="flex items-center justify-between mt-auto pt-4"
+                        style={{ borderTop: "1px solid var(--line)" }}
+                      >
+                        <span
+                          className="inline-flex items-center gap-1.5"
+                          style={{
+                            fontFamily: "var(--font-mono)",
+                            fontSize: 10,
+                            color: "var(--text3)",
+                            letterSpacing: "0.08em",
+                          }}
+                        >
+                          <Clock className="w-3 h-3" />
                           {post.readTime}
                         </span>
+                        <Link
+                          to={`/blog/${post.slug}`}
+                          className="inline-flex items-center gap-1.5"
+                          style={{ fontSize: 12, color: "var(--text)", fontWeight: 500 }}
+                        >
+                          Ler artigo <ArrowRight className="w-3.5 h-3.5" />
+                        </Link>
                       </div>
-                      
-                      <Link 
-                        to={`/blog/${post.slug}`}
-                        className="inline-flex items-center text-primary font-medium hover:gap-2 transition-all"
-                      >
-                        Ler artigo
-                        <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                      </Link>
                     </div>
                   </article>
                 ))}
               </div>
-              
-              {/* Ver mais button - only show when not filtering and there are more articles */}
-              {!selectedCategory && !debouncedSearchTerm && visibleArticles < filteredPosts.length && (
+
+              {!isFiltering && visibleArticles < filteredPosts.length && (
                 <div className="flex justify-center mt-12">
-                  <Button 
-                    onClick={() => setVisibleArticles(prev => prev + 4)}
-                    variant="outline"
-                    size="lg"
-                    className="gap-2 px-8"
+                  <button
+                    onClick={() => setVisibleArticles((prev) => prev + 6)}
+                    className="inline-flex items-center gap-2"
+                    style={{
+                      border: "1px solid var(--line2)",
+                      background: "rgba(255,255,255,0.04)",
+                      color: "var(--text)",
+                      padding: "12px 24px",
+                      borderRadius: 999,
+                      fontSize: 13,
+                      fontWeight: 500,
+                    }}
                   >
-                    Ver mais
-                    <ArrowRight className="w-4 h-4" />
-                  </Button>
+                    Carregar mais artigos <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
                 </div>
               )}
             </>
           ) : (
-            <div className="text-center py-16 bg-card/30 border border-card-border rounded-xl">
-              <BookOpen className="w-16 h-16 mx-auto mb-4 text-muted-foreground" />
-              <h3 className="text-xl font-bold mb-2">Nenhum artigo encontrado</h3>
-              <p className="text-muted-foreground mb-6">
-                {searchTerm 
-                  ? `Não encontramos resultados para "${searchTerm}"`
-                  : "Não há artigos nesta categoria"
-                }
+            <div
+              className="text-center"
+              style={{
+                padding: "60px 24px",
+                background: "var(--bg2)",
+                border: "1px solid var(--line)",
+                borderRadius: 16,
+              }}
+            >
+              <BookOpen
+                className="w-12 h-12 mx-auto mb-4"
+                style={{ color: "var(--text3)" }}
+              />
+              <h3 style={{ fontSize: 18, fontWeight: 600, marginBottom: 8 }}>
+                Nenhum artigo encontrado
+              </h3>
+              <p style={{ color: "var(--text2)", fontSize: 14, marginBottom: 20 }}>
+                {searchTerm
+                  ? `Sem resultados para "${searchTerm}".`
+                  : "Não há artigos nesta categoria."}
               </p>
-              <Button onClick={() => { setSearchTerm(""); setSelectedCategory(null); }}>
-                Limpar Filtros
+              <Button
+                onClick={() => {
+                  setSearchTerm("");
+                  setSelectedCategory(null);
+                }}
+              >
+                Limpar filtros
               </Button>
             </div>
           )}
-        </section>
+        </div>
+      </section>
 
+      <Footer />
 
-
-      </div>
-
-      
-    </>
+      <style>{`
+        .snj-chip {
+          font-family: var(--font-mono);
+          font-size: 11px;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          padding: 8px 16px;
+          border-radius: 999px;
+          border: 1px solid var(--line);
+          background: var(--bg2);
+          color: var(--text2);
+          transition: all 0.2s ease;
+          cursor: pointer;
+        }
+        .snj-chip:hover { border-color: var(--line2); color: var(--text); }
+        .snj-chip[data-active="true"] {
+          background: var(--text);
+          color: var(--bg);
+          border-color: var(--text);
+        }
+        .snj-article:hover { border-color: var(--line2) !important; transform: translateY(-2px); }
+      `}</style>
+    </div>
   );
 };
 
