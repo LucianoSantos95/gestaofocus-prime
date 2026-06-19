@@ -248,15 +248,16 @@ const HubEmpresarial = () => {
                 transition: "border-color 0.3s ease",
               }}
             >
-              <div style={{ background: "#0b0b0e", minHeight: 360, overflow: "hidden" }}>
+              <div style={{ background: "#0b0b0e", minHeight: 360, overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center", padding: 24 }}>
                 <img
                   src={m.image}
                   alt={m.brand}
                   loading="lazy"
                   className="group-hover:scale-[1.03]"
                   style={{
-                    width: "100%", height: "100%", objectFit: "cover", display: "block",
+                    width: "100%", height: "100%", objectFit: "contain", display: "block",
                     transition: "transform 0.6s ease",
+                    maxHeight: 320,
                   }}
                 />
               </div>
