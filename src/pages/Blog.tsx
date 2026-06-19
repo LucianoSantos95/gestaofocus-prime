@@ -650,18 +650,20 @@ const Blog = () => {
               borderBottom: "1px solid var(--line)",
             }}
           >
-            <p
+            <h2
               style={{
                 fontFamily: "var(--font-mono)",
                 fontSize: 11,
                 color: "var(--text3)",
                 letterSpacing: "0.10em",
                 textTransform: "uppercase",
+                fontWeight: 400,
+                margin: 0,
               }}
             >
               {isFiltering ? "Resultados" : "Últimos artigos"} ·{" "}
               {filteredPosts.length} {filteredPosts.length === 1 ? "artigo" : "artigos"}
-            </p>
+            </h2>
           </div>
 
           {filteredPosts.length > 0 ? (

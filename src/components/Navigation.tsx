@@ -43,7 +43,7 @@ const Navigation = () => {
         <Link to="/" className="flex items-center" aria-label="Focus — Página inicial">
           <img
             src={focusLogo.url}
-            alt="Focus"
+            alt="Focus — Arquitetura de Operação"
             width={390}
             height={120}
             style={{ height: 120, width: "auto", display: "block" }}
