@@ -4,8 +4,6 @@ import Footer from "@/components/Footer";
 import { WA_LINK } from "@/components/TalkToLuciano";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import caseFin from "@/assets/case-financeiro-dashboard.png";
-import notionLogoAsset from "@/assets/notion-logo.png.asset.json";
-const caseNotion = notionLogoAsset.url;
 import caseOnboarding from "@/assets/case-onboarding-flow.jpg";
 import caseCrmPipeline from "@/assets/case-crm-pipeline.jpg";
 
