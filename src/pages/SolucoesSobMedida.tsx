@@ -29,6 +29,7 @@ const projects: Project[] = [
     description:
       "Mapeamento de processos, hub no Notion e agentes de IA para tirar o dono da operação do dia a dia, mantendo o padrão de atendimento.",
     image: caseNotion,
+    imageFit: "contain",
     metrics: [
       { value: "8+", label: "PROCESSOS MAPEADOS" },
       { value: "3 sem.", label: "ATÉ O GO-LIVE" },
