@@ -268,7 +268,7 @@ const SolucoesSobMedida = () => {
                   gap: 14,
                 }}
               >
-                <div style={{ display: "flex", items: "center", justifyContent: "space-between", gap: 12 }}>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12 }}>
                   <span
                     style={{
                       fontFamily: "var(--font-mono)",
