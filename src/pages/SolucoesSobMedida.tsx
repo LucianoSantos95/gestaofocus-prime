@@ -150,6 +150,258 @@ const SolucoesSobMedida = () => {
         </div>
       </section>
 
+      {/* O QUE É — explicação do serviço */}
+      <section className="snj-section container-focus" style={{ borderBottom: "1px solid var(--line)" }}>
+        <div className="grid md:grid-cols-2 gap-16 items-start max-w-6xl mx-auto">
+          <div>
+            <span className="snj-tag" style={{ marginBottom: 24, display: "block" }}>/ O que é</span>
+            <h2 className="snj-h2" style={{ marginBottom: 24 }}>
+              Consultoria de processos e{" "}
+              <em>implementação de sistemas</em> para empresas que operam no caos.
+            </h2>
+            <p style={{ color: "var(--text2)", fontSize: 16, lineHeight: 1.75, marginBottom: 20 }}>
+              Onde tudo depende da memória do dono e não existe nenhum processo documentado.
+            </p>
+            <p style={{ color: "var(--text2)", fontSize: 15, lineHeight: 1.75 }}>
+              O serviço entrega três coisas juntas, não separadas.
+            </p>
+          </div>
+
+          <div style={{ display: "flex", flexDirection: "column", gap: 1 }}>
+            {[
+              {
+                n: "01",
+                t: "Mapeamento e documentação de processos",
+                d: "Diagnóstico completo dos fluxos operacionais: vendas, financeiro, atendimento, operação, compras. Tudo que hoje só existe na cabeça do dono vira documento escrito, com passo a passo, exceções e checklist.",
+              },
+              {
+                n: "02",
+                t: "Implementação do Notion como hub central",
+                d: "O Notion entra como o sistema operacional da empresa: POPs, playbooks, onboarding de equipe, controle de contatos, base de fornecedores, checklists por tipo de evento — tudo centralizado, com permissão de acesso por área.",
+              },
+              {
+                n: "03",
+                t: "Integração de agentes de IA nos processos",
+                d: "Onde fizer sentido, agentes de IA entram para automatizar tarefas repetitivas: resumo de reuniões, geração de propostas, qualificação de leads, follow-up. Não é IA por modismo — é IA aplicada ao processo já mapeado.",
+              },
+            ].map((item, i) => (
+              <div
+                key={item.n}
+                style={{
+                  padding: "28px 0",
+                  borderTop: i === 0 ? "1px solid var(--line)" : "none",
+                  borderBottom: "1px solid var(--line)",
+                  display: "grid",
+                  gridTemplateColumns: "48px 1fr",
+                  gap: 20,
+                }}
+              >
+                <span
+                  style={{
+                    fontFamily: "var(--font-mono)",
+                    fontSize: 11,
+                    color: "var(--text3)",
+                    letterSpacing: "0.08em",
+                    paddingTop: 4,
+                  }}
+                >
+                  {item.n}
+                </span>
+                <div>
+                  <p style={{ color: "var(--text)", fontSize: 15, fontWeight: 600, marginBottom: 10, letterSpacing: "-0.01em" }}>
+                    {item.t}
+                  </p>
+                  <p style={{ color: "var(--text2)", fontSize: 14, lineHeight: 1.7 }}>
+                    {item.d}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* COMO FUNCIONA — 4 etapas */}
+      <section className="snj-section container-focus" style={{ borderBottom: "1px solid var(--line)" }}>
+        <div className="max-w-6xl mx-auto">
+          <div className="snj-section__head">
+            <span className="snj-tag">/ Como funciona</span>
+            <h2 className="snj-h2">Do diagnóstico à <em>operação rodando.</em></h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-5">
+            {[
+              {
+                n: "Etapa 01",
+                t: "Reunião de diagnóstico",
+                time: "Gratuita · 45–60 min",
+                d: "Conversa para entender a operação atual, identificar as maiores dores e mapear o que já existe (ou não existe) de processo.",
+              },
+              {
+                n: "Etapa 02",
+                t: "Proposta personalizada",
+                time: "24–48h após o diagnóstico",
+                d: "Orçamento baseado no escopo real, com horas estimadas e entregáveis claros. Pagamento 50% na assinatura, 50% na entrega.",
+              },
+              {
+                n: "Etapa 03",
+                t: "Implementação",
+                time: "1–3 semanas",
+                d: "Mapeamento de fluxos, criação de POPs e playbooks, construção do Notion, integração de agentes de IA, treinamento da equipe.",
+              },
+              {
+                n: "Etapa 04",
+                t: "Suporte pós-entrega",
+                time: "2 semanas incluídas",
+                d: "Acompanhamento para garantir que a equipe está usando o sistema corretamente e ajustar o que for necessário.",
+              },
+            ].map((step) => (
+              <div
+                key={step.n}
+                style={{
+                  background: "var(--bg2)",
+                  border: "1px solid var(--line)",
+                  borderRadius: 16,
+                  padding: "32px",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 14,
+                }}
+              >
+                <div style={{ display: "flex", items: "center", justifyContent: "space-between", gap: 12 }}>
+                  <span
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: 10,
+                      color: "var(--text3)",
+                      letterSpacing: "0.10em",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    {step.n}
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: 10,
+                      color: "#9DE89D",
+                      border: "1px solid rgba(157,232,157,0.25)",
+                      borderRadius: 4,
+                      padding: "3px 8px",
+                      letterSpacing: "0.06em",
+                    }}
+                  >
+                    {step.time}
+                  </span>
+                </div>
+                <h3 style={{ fontSize: 20, fontWeight: 600, color: "var(--text)", letterSpacing: "-0.02em" }}>
+                  {step.t}
+                </h3>
+                <p style={{ color: "var(--text2)", fontSize: 14, lineHeight: 1.7 }}>{step.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PARA QUEM É + DIFERENCIAL */}
+      <section className="snj-section container-focus" style={{ borderBottom: "1px solid var(--line)" }}>
+        <div className="grid md:grid-cols-2 gap-16 max-w-6xl mx-auto">
+          {/* Para quem é */}
+          <div>
+            <span className="snj-tag" style={{ marginBottom: 24, display: "block" }}>/ Para quem é</span>
+            <h2 className="snj-h2" style={{ marginBottom: 32 }}>
+              Donos de PME, agências, consultorias e{" "}
+              <em>espaços de serviço</em> que:
+            </h2>
+            <ul style={{ display: "flex", flexDirection: "column", gap: 0 }}>
+              {[
+                "Têm processos só na cabeça, sem documentação",
+                "Já têm equipe mas não conseguem delegar com segurança",
+                "Sentem que a empresa não funciona sem eles presentes",
+                "Têm operação real rodando, mas crescendo de forma desorganizada",
+              ].map((item, i) => (
+                <li
+                  key={i}
+                  style={{
+                    display: "flex",
+                    alignItems: "flex-start",
+                    gap: 16,
+                    padding: "18px 0",
+                    borderBottom: "1px solid var(--line)",
+                    color: "var(--text2)",
+                    fontSize: 15,
+                    lineHeight: 1.6,
+                  }}
+                >
+                  <span
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: 10,
+                      color: "var(--text3)",
+                      letterSpacing: "0.06em",
+                      paddingTop: 4,
+                      flexShrink: 0,
+                    }}
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Diferencial */}
+          <div>
+            <span className="snj-tag" style={{ marginBottom: 24, display: "block" }}>/ Diferencial</span>
+            <h2 className="snj-h2" style={{ marginBottom: 32 }}>
+              A arquitetura proposta não é{" "}
+              <em>teórica</em>.
+            </h2>
+            <p style={{ color: "var(--text2)", fontSize: 15, lineHeight: 1.75, marginBottom: 28 }}>
+              Quem entrega essa consultoria é o mesmo founder que construiu o Hub Empresarial —
+              um SaaS de gestão usado por mais de 100 empresas.
+            </p>
+            <p style={{ color: "var(--text2)", fontSize: 15, lineHeight: 1.75, marginBottom: 36 }}>
+              Isso significa que cada recomendação é testada na prática, todos os dias, no
+              próprio produto. Não é consultoria de quadro branco.
+            </p>
+            <div
+              style={{
+                background: "var(--bg2)",
+                border: "1px solid var(--line)",
+                borderRadius: 12,
+                padding: "24px 28px",
+                display: "flex",
+                flexDirection: "column",
+                gap: 8,
+              }}
+            >
+              <span
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: 10,
+                  color: "#9DE89D",
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
+                }}
+              >
+                Caso em andamento · Jun 2026
+              </span>
+              <p style={{ color: "var(--text)", fontSize: 15, fontWeight: 600 }}>
+                Espaço Natividade
+              </p>
+              <p style={{ color: "var(--text2)", fontSize: 14, lineHeight: 1.7 }}>
+                Espaço de bem-estar e eventos. Diagnóstico realizado, proposta de reestruturação
+                de processos + Notion em fase de aprovação. Inclui fluxo de eventos, parcerias,
+                financeiro e onboarding de equipe.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* PROJECTS LIST */}
       <section className="container-focus" style={{ padding: "80px 24px 60px" }}>
         <div className="flex flex-col gap-6 max-w-6xl mx-auto">
