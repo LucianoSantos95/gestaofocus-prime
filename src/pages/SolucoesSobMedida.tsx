@@ -1,12 +1,12 @@
 import SEOHead from "@/components/SEOHead";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import TalkToLuciano, { WA_LINK } from "@/components/TalkToLuciano";
-import { ArrowRight } from "lucide-react";
-import caseCrm from "@/assets/case-crm-dashboard.png";
+import { WA_LINK } from "@/components/TalkToLuciano";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import caseFin from "@/assets/case-financeiro-dashboard.png";
-import casePortal from "@/assets/case-portal-dashboard.png";
-import hubMock from "@/assets/hub-dashboard-mockup.png";
+import caseNotion from "@/assets/case-notion-logo.jpg";
+import caseOnboarding from "@/assets/case-onboarding-flow.jpg";
+import caseCrmPipeline from "@/assets/case-crm-pipeline.jpg";
 
 type Project = {
   year: string;
@@ -26,7 +26,7 @@ const projects: Project[] = [
     title: "Reestruturação completa da operação com IA e Notion",
     description:
       "Mapeamento de processos, hub no Notion e agentes de IA para tirar o dono da operação do dia a dia, mantendo o padrão de atendimento.",
-    image: caseCrm,
+    image: caseNotion,
     metrics: [
       { value: "8+", label: "PROCESSOS MAPEADOS" },
       { value: "3 sem.", label: "ATÉ O GO-LIVE" },
@@ -39,7 +39,7 @@ const projects: Project[] = [
     title: "Centralização de clientes e onboarding 5× mais rápido",
     description:
       "Reescrita do fluxo de onboarding de clientes que levava 3 semanas. Hoje a agência entrega o setup completo em 4 dias úteis.",
-    image: casePortal,
+    image: caseOnboarding,
     metrics: [
       { value: "5×", label: "MAIS RÁPIDO NO ONBOARDING" },
       { value: "12h", label: "ECONOMIZADAS POR SEMANA" },
@@ -61,11 +61,11 @@ const projects: Project[] = [
   {
     year: "2025",
     category: "PME · Serviços",
-    brand: "Hub Operacional",
-    title: "Workspace único: CRM, projetos e conhecimento conectados",
+    brand: "CRM Inteligente",
+    title: "Pipeline comercial unificado com automações de IA",
     description:
-      "Implementação de hub no Notion conectando CRM, gestão de projetos e base de conhecimento. POPs em vídeo + texto para a equipe inteira.",
-    image: hubMock,
+      "Implementação de CRM no Notion com pipeline visual, scoring automático de leads e agentes de IA cuidando do follow-up.",
+    image: caseCrmPipeline,
     metrics: [
       { value: "1", label: "ÚNICA FONTE DA VERDADE" },
       { value: "100%", label: "ADOÇÃO DA EQUIPE" },
@@ -103,7 +103,7 @@ const SolucoesSobMedida = () => {
               letterSpacing: "0.10em",
             }}
           >
-            &lt;:OJECTS&gt;
+            &lt;:CONSULTORIA&gt;
           </span>
 
           <h1
@@ -118,8 +118,24 @@ const SolucoesSobMedida = () => {
             e PMEs que decidiram parar de operar no improviso.
           </p>
 
-          <div className="anim-up-3 mt-10 flex flex-col items-center gap-3">
-            <TalkToLuciano />
+          <div className="anim-up-3 mt-10 flex flex-col items-center gap-4">
+            <a
+              href={WA_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2"
+              style={{
+                background: "var(--text)",
+                color: "var(--bg)",
+                padding: "14px 28px",
+                borderRadius: 999,
+                fontSize: 15,
+                fontWeight: 600,
+                textDecoration: "none",
+              }}
+            >
+              Agendar diagnóstico gratuito <ArrowUpRight className="w-4 h-4" />
+            </a>
             <p
               style={{
                 fontFamily: "var(--font-mono)",
@@ -324,7 +340,23 @@ const SolucoesSobMedida = () => {
             comercial.
           </p>
           <div className="flex justify-center">
-            <TalkToLuciano />
+            <a
+              href={WA_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2"
+              style={{
+                background: "var(--text)",
+                color: "var(--bg)",
+                padding: "14px 28px",
+                borderRadius: 999,
+                fontSize: 15,
+                fontWeight: 600,
+                textDecoration: "none",
+              }}
+            >
+              Agendar diagnóstico gratuito <ArrowUpRight className="w-4 h-4" />
+            </a>
           </div>
         </div>
       </section>
