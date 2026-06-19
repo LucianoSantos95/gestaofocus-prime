@@ -29,37 +29,37 @@ const Navigation = () => {
     <nav
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
       style={{
-        height: "60px",
-        background: scrolled ? "rgba(6,6,8,0.92)" : "rgba(6,6,8,0.78)",
-        backdropFilter: "blur(24px)",
-        WebkitBackdropFilter: "blur(24px)",
-        borderBottom: "1px solid var(--line)",
+        height: "84px",
+        background: scrolled ? "rgba(6,6,8,0.85)" : "transparent",
+        backdropFilter: scrolled ? "blur(20px)" : "none",
+        WebkitBackdropFilter: scrolled ? "blur(20px)" : "none",
+        borderBottom: scrolled ? "1px solid var(--line)" : "1px solid transparent",
       }}
     >
-      <div className="h-full flex items-center justify-between px-6 lg:px-12">
-        {/* Logo */}
-        <Link to="/" className="flex items-center group" aria-label="Focus — Página inicial">
+      <div className="h-full grid grid-cols-[1fr_auto_1fr] items-center px-8 lg:px-14">
+        {/* Logo — left */}
+        <Link to="/" className="flex items-center" aria-label="Focus — Página inicial">
           <img
             src={focusLogo.url}
             alt="Focus"
-            width={86}
-            height={26}
-            style={{ height: 26, width: "auto", display: "block" }}
+            width={132}
+            height={40}
+            style={{ height: 40, width: "auto", display: "block" }}
           />
         </Link>
 
-        {/* Desktop Menu */}
-        <div className="hidden lg:flex items-center gap-1">
+        {/* Desktop Menu — centered */}
+        <div className="hidden lg:flex items-center gap-10 justify-self-center">
           {navItems.map((item) => (
             <Link
               key={item.name}
               to={item.href}
               onClick={() => trackNavigationClick(item.name)}
-              className="py-2 px-3 transition-colors duration-150"
+              className="transition-colors duration-150"
               style={{
-                fontSize: 13,
+                fontSize: 15,
                 fontWeight: 400,
-                letterSpacing: "0.01em",
+                letterSpacing: "-0.005em",
                 color: location.pathname === item.href ? "var(--text)" : "var(--text2)",
               }}
               onMouseEnter={(e) => (e.currentTarget.style.color = "var(--text)")}
@@ -71,38 +71,33 @@ const Navigation = () => {
               {item.name}
             </Link>
           ))}
+        </div>
 
-          {/* Location tag */}
-          <span
-            className="ml-3"
-            style={{
-              fontFamily: "var(--font-mono)",
-              fontSize: 10,
-              color: "var(--text3)",
-              border: "1px solid var(--line)",
-              borderRadius: 4,
-              padding: "3px 8px",
-              letterSpacing: "0.05em",
-            }}
-          >
-            São Paulo · BR
-          </span>
-
+        {/* CTA — right */}
+        <div className="hidden lg:flex justify-self-end">
           <a
             href={WA_LINK}
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => trackNavigationClick("get_consultation")}
-            className="ml-2 inline-flex items-center"
+            className="inline-flex items-center transition-colors"
             style={{
-              background: "var(--text)",
-              border: "1px solid var(--text)",
+              background: "transparent",
+              border: "1px solid var(--line2)",
               borderRadius: 999,
-              padding: "8px 18px",
-              fontSize: 12,
-              fontWeight: 600,
-              color: "var(--bg)",
+              padding: "11px 22px",
+              fontSize: 14,
+              fontWeight: 500,
+              color: "var(--text)",
               textDecoration: "none",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = "var(--text)";
+              e.currentTarget.style.color = "var(--bg)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = "transparent";
+              e.currentTarget.style.color = "var(--text)";
             }}
           >
             Diagnóstico gratuito
@@ -112,11 +107,11 @@ const Navigation = () => {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="lg:hidden p-2 rounded-md"
+          className="lg:hidden p-2 rounded-md justify-self-end col-start-3"
           style={{ color: "var(--text)" }}
           aria-label="Menu"
         >
-          {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </div>
 
