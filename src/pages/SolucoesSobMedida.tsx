@@ -432,21 +432,34 @@ const SolucoesSobMedida = () => {
                   justifyContent: "center",
                 }}
               >
-                <img
-                  src={p.image}
-                  alt={p.brand}
-                  loading="lazy"
-                  style={{
-                    width: p.imageFit === "contain" ? "auto" : "100%",
-                    height: p.imageFit === "contain" ? "auto" : "100%",
-                    maxWidth: p.imageFit === "contain" ? "60%" : undefined,
-                    maxHeight: p.imageFit === "contain" ? "60%" : undefined,
-                    objectFit: p.imageFit || "cover",
-                    display: "block",
-                    transition: "transform 0.6s ease",
-                  }}
-                  className="group-hover:scale-[1.03]"
-                />
+                {p.textOverlay ? (
+                  <span
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: 42,
+                      fontWeight: 600,
+                      color: "#1E40AF",
+                      letterSpacing: "0.06em",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    {p.textOverlay}
+                  </span>
+                ) : (
+                  <img
+                    src={p.image}
+                    alt={p.brand}
+                    loading="lazy"
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      display: "block",
+                      transition: "transform 0.6s ease",
+                    }}
+                    className="group-hover:scale-[1.03]"
+                  />
+                )}
               </div>
 
               {/* Content */}
