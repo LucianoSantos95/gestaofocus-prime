@@ -5,22 +5,30 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import StickyMobileCTA from "@/components/hub/StickyMobileCTA";
 import NotionReferrerBanner from "@/components/hub/NotionReferrerBanner";
-import { CountUp } from "@/hooks/useCountUp";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { ArrowRight, Star, Check, X as XIcon } from "lucide-react";
-import TalkToLuciano, { WA_LINK } from "@/components/TalkToLuciano";
+import { ArrowRight, Check } from "lucide-react";
 import { trackCTAClick, trackEvent } from "@/lib/analytics";
 import hubDashboardMockup from "@/assets/hub-dashboard-mockup.png";
-import carlaPhoto from "@/assets/testimonials/carla.jpg";
-import rafaelPhoto from "@/assets/testimonials/rafael.jpg";
-import amandaPhoto from "@/assets/testimonials/amanda.jpg";
+import caseCrm from "@/assets/case-crm-dashboard.png";
+import caseFin from "@/assets/case-financeiro-dashboard.png";
+import casePortal from "@/assets/case-portal-dashboard.png";
 
 const APP_URL = "https://app.focusinteligente.com.br";
+
+type Module = {
+  code: string;
+  category: string;
+  brand: string;
+  title: string;
+  description: string;
+  image: string;
+  metrics: { value: string; label: string }[];
+};
 
 const HubEmpresarial = () => {
   const heroRef = useRef<HTMLElement>(null);
@@ -56,48 +64,96 @@ const HubEmpresarial = () => {
     trackEvent("hub_signup_intent", { event_category: "conversion", event_label: `hub_empresarial_${label}` });
   };
 
-  const modules = [
-    { n: "01", t: "CRM Inteligente", d: "Pipeline visual, leads automatizados e funil de vendas para consultorias e agências.", col: 5, row: 2 },
-    { n: "02", t: "Financeiro Completo", d: "Fluxo de caixa, DRE, contas a pagar e receber com gráficos em tempo real.", col: 4, row: 1 },
-    { n: "03", t: "Gestão de Projetos", d: "Kanban, responsáveis, cronograma e marcos. Entregas no prazo.", col: 3, row: 1 },
-    { n: "04", t: "RH & Pessoas", d: "Onboarding, vagas, avaliações de desempenho e documentos.", col: 4, row: 1 },
-    { n: "05", t: "Dashboards em Tempo Real", d: "Métricas, gráficos e a saúde completa do negócio em segundos.", col: 4, row: 1 },
-    { n: "06", t: "Automações", d: "Processos repetitivos no piloto automático. Notificações e fluxos inteligentes.", col: 4, row: 1 },
-    { n: "07", t: "Marketing & Atividades", d: "Campanhas, tarefas e acompanhamento de performance — tudo no mesmo lugar.", col: 4, row: 1 },
+  const modules: Module[] = [
+    {
+      code: "01",
+      category: "Vendas & Receita",
+      brand: "CRM Inteligente",
+      title: "Pipeline visual com leads automatizados e funil sob controle",
+      description:
+        "Captura, qualifica e movimenta leads automaticamente no funil. Visão clara do que está em negociação e do que precisa de ação hoje.",
+      image: caseCrm,
+      metrics: [
+        { value: "100%", label: "DOS LEADS RASTREADOS" },
+        { value: "0", label: "OPORTUNIDADES PERDIDAS" },
+      ],
+    },
+    {
+      code: "02",
+      category: "Financeiro",
+      brand: "Financeiro Completo",
+      title: "Fluxo de caixa, DRE e contas em tempo real",
+      description:
+        "Contas a pagar e receber, conciliação e gráficos vivos. Pare de descobrir o resultado do mês 20 dias depois do mês acabar.",
+      image: caseFin,
+      metrics: [
+        { value: "Tempo real", label: "VISÃO DO CAIXA" },
+        { value: "1", label: "PAINEL ÚNICO" },
+      ],
+    },
+    {
+      code: "03",
+      category: "Operação",
+      brand: "Gestão de Projetos",
+      title: "Kanban, cronograma e entregas no prazo",
+      description:
+        "Cada projeto com responsáveis, marcos e status visíveis. A equipe sabe o que fazer hoje sem precisar perguntar.",
+      image: casePortal,
+      metrics: [
+        { value: "Kanban", label: "+ CRONOGRAMA" },
+        { value: "On-time", label: "POR PADRÃO" },
+      ],
+    },
+    {
+      code: "04",
+      category: "Inteligência",
+      brand: "Dashboards & IA",
+      title: "Métricas do negócio em segundos, com análise de IA",
+      description:
+        "Receita, margem, ticket, recorrência e produtividade num só painel. IA integrada para responder perguntas sobre seus próprios dados.",
+      image: hubDashboardMockup,
+      metrics: [
+        { value: "1 clique", label: "PARA TODOS OS KPIs" },
+        { value: "IA", label: "PRONTA PARA USO" },
+      ],
+    },
   ];
 
   const plans = [
-    { name: "Plus", description: "Para agências e consultorias que precisam de gestão completa.", monthly: 69, annual: 660, annualMonthly: 55,
+    {
+      name: "Plus", description: "Para agências e consultorias que precisam de gestão completa.",
+      monthly: 69, annual: 660, annualMonthly: 55,
       features: ["Criar e editar dados em todos os módulos", "Até 5 usuários por conta", "Importação de planilhas (Excel/CSV/OFX)", "Guia de Uso completo", "Suporte por email"],
-      highlighted: false },
-    { name: "Pro", description: "Para operações em crescimento com necessidades avançadas.", monthly: 149, annual: 1428, annualMonthly: 119,
+      highlighted: false,
+    },
+    {
+      name: "Pro", description: "Para operações em crescimento com necessidades avançadas.",
+      monthly: 149, annual: 1428, annualMonthly: 119,
       features: ["Tudo do Plus", "Exportar relatórios (PDF/Excel)", "Análise de IA para Clientes", "Assistente de IA integrado", "Até 10 usuários", "Suporte prioritário"],
-      highlighted: true },
-    { name: "Enterprise", description: "Para agências com múltiplos times e clientes.", monthly: 297, annual: 2844, annualMonthly: 237,
+      highlighted: true,
+    },
+    {
+      name: "Enterprise", description: "Para agências com múltiplos times e clientes.",
+      monthly: 297, annual: 2844, annualMonthly: 237,
       features: ["Tudo do Pro", "Integração Google Workspace", "Automação WhatsApp (lembretes)", "Usuários ilimitados", "Suporte dedicado + onboarding"],
-      highlighted: false },
-  ];
-
-  const testimonials = [
-    { name: "Carla Mendonça", role: "CEO · Agência Órbita Digital", photo: carlaPhoto, content: "Finalmente tenho visão real do financeiro da agência. Descobri gastos que nem sabia que tinha!" },
-    { name: "Rafael Souza", role: "Sócio · Consultoria Estratégica", photo: rafaelPhoto, content: "Saí do caos das planilhas para um sistema que realmente funciona. Projetos nunca mais atrasaram." },
-    { name: "Amanda Lopes", role: "Diretora · Vértice Consultoria", photo: amandaPhoto, content: "O CRM mudou minha forma de lidar com clientes. Não perco mais nenhuma oportunidade." },
+      highlighted: false,
+    },
   ];
 
   const faqs = [
     { q: "O que é o Hub Empresarial?", a: "Plataforma SaaS completa de gestão para agências, consultorias e prestadores de serviço. Centraliza CRM, financeiro, projetos, RH e dashboards em um único lugar — sem planilhas, sem caos." },
-    { q: "Quanto custa?", a: "Comece grátis com uso limitado por aba. Plus R$ 69/mês (5 usuários). Pro R$ 149/mês (10 usuários + IA). Enterprise R$ 297/mês (usuários ilimitados + suporte dedicado)." },
+    { q: "Quanto custa?", a: "Plus R$ 69/mês (5 usuários). Pro R$ 149/mês (10 usuários + IA). Enterprise R$ 297/mês (usuários ilimitados + suporte dedicado). No anual sai mais barato." },
     { q: "Posso testar grátis?", a: "Sim. Você usa gratuitamente até atingir o limite de cada aba. Para continuar, assine um plano. Sem cartão de crédito para começar." },
-    { q: "Meus dados estão seguros?", a: "Sim. Utilizamos criptografia AES-256, backups automáticos diários e infraestrutura segura. Seus dados são seus — nunca compartilhamos com terceiros." },
-    { q: "Funciona no celular?", a: "Sim. A plataforma é totalmente responsiva e funciona em qualquer dispositivo — desktop, tablet ou celular." },
-    { q: "Posso cancelar a qualquer momento?", a: "Sim, sem multas e sem burocracia. Você pode cancelar diretamente na plataforma e continua com acesso até o fim do período pago." },
+    { q: "Meus dados estão seguros?", a: "Sim. Criptografia AES-256, backups automáticos diários e infraestrutura segura. Seus dados são seus — nunca compartilhamos com terceiros." },
+    { q: "Funciona no celular?", a: "Sim. Totalmente responsivo: desktop, tablet ou celular." },
+    { q: "Posso cancelar a qualquer momento?", a: "Sim, sem multas e sem burocracia. Cancela direto na plataforma e mantém acesso até o fim do período pago." },
   ];
 
   return (
     <div className="min-h-screen" style={{ background: "var(--bg)" }}>
       <SEOHead
         title="Hub Empresarial — Gestão para Agências e Consultorias | Focus"
-        description="Plataforma de gestão completa para agências, consultorias e prestadores de serviço. CRM, Financeiro, Projetos e RH em um só lugar."
+        description="Plataforma de gestão para agências, consultorias e prestadores. CRM, Financeiro, Projetos e Dashboards com IA — tudo em um único hub."
         canonical="/hub-empresarial"
         image="https://focusinteligente.com.br/lovable-uploads/hub-empresarial-og.jpg"
         type="product"
@@ -106,523 +162,343 @@ const HubEmpresarial = () => {
       <NotionReferrerBanner />
       <Navigation />
 
-      {/* HERO */}
-      <section ref={heroRef} className="relative overflow-hidden" style={{ minHeight: "92vh", padding: "140px 24px 80px" }}>
-        <div className="hero-grid" />
-        <span className="corner corner-tl" />
-        <span className="corner corner-tr" />
-        <span className="corner corner-bl" />
-        <span className="corner corner-br" />
-
+      {/* HERO — Sanjaya /projects */}
+      <section
+        ref={heroRef}
+        className="relative overflow-hidden"
+        style={{ padding: "180px 24px 80px", borderBottom: "1px solid var(--line)" }}
+      >
         <div className="container-focus relative z-10 text-center">
-          <p className="hero-eyebrow anim-up" style={{ justifyContent: "center" }}>
-            <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
-              <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#10B981", boxShadow: "0 0 8px #10B981" }} />
-              AO VIVO
-            </span>
-            Hub Empresarial · SaaS · 50+ empresas
-          </p>
+          <span
+            className="anim-up inline-block mb-8"
+            style={{
+              fontFamily: "var(--font-mono)", fontSize: 11, color: "#9DE89D",
+              border: "1px solid rgba(157,232,157,0.30)", borderRadius: 4,
+              padding: "5px 12px", letterSpacing: "0.10em",
+            }}
+          >
+            &lt;:HUB EMPRESARIAL&gt;
+          </span>
 
-          <h1 className="hero-title anim-up-1 mx-auto" style={{ maxWidth: 1000 }}>
-            O sistema de gestão feito para <em>agências e consultorias</em> que querem{" "}
-            <strong>escalar.</strong>
+          <h1
+            className="hero-title anim-up-1 mx-auto"
+            style={{ maxWidth: 1000, fontSize: "clamp(40px, 6vw, 76px)" }}
+          >
+            O SaaS que <strong>centraliza a gestão</strong> de agências e consultorias.
           </h1>
 
           <p className="hero-subtitle anim-up-2 mx-auto mt-8" style={{ maxWidth: 680 }}>
-            Tudo que sua operação precisa — Financeiro, CRM, Projetos, RH, Marketing, Tarefas e Processos — em um
-            único sistema com IA. Comece grátis. Planos completos a partir de <strong style={{ color: "var(--text)" }}>R$ 69/mês</strong>.
+            CRM, financeiro, projetos e dashboards com IA num único hub. Sem planilhas paralelas,
+            sem sistemas desconectados — uma fonte de verdade para o negócio inteiro.
           </p>
 
-          <div className="anim-up-3 mt-10 flex flex-col sm:flex-row gap-3 justify-center items-center">
-            <a href={APP_URL} target="_blank" rel="noopener noreferrer" onClick={() => handleCTA("Hero")} className="btn-main">
-              Começar Grátis
-              <ArrowRight className="w-4 h-4 ml-2" />
+          <div className="anim-up-3 mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
+            <a
+              href={`${APP_URL}/auth?mode=signup`}
+              onClick={() => handleCTA("hero_signup")}
+              className="inline-flex items-center gap-2"
+              style={{
+                background: "var(--text)", color: "var(--bg)",
+                padding: "12px 22px", borderRadius: 8, fontSize: 14, fontWeight: 600,
+              }}
+            >
+              Começar grátis <ArrowRight className="w-4 h-4" />
             </a>
-            <a href="#mockup" className="btn-ghost">Ver demonstração →</a>
+            <a
+              href="#planos"
+              onClick={() => handleCTA("hero_pricing")}
+              style={{
+                border: "1px solid var(--line2)", color: "var(--text)",
+                padding: "12px 22px", borderRadius: 8, fontSize: 14, fontWeight: 500,
+              }}
+            >
+              Ver planos
+            </a>
           </div>
-          <p style={{ marginTop: 16, fontSize: 12, color: "var(--text3)", fontFamily: "var(--font-mono)", letterSpacing: "0.06em", textTransform: "uppercase" }}>
-            Sem cartão de crédito · Uso gratuito até o limite da aba
+
+          <p
+            style={{
+              fontFamily: "var(--font-mono)", fontSize: 11,
+              color: "var(--text3)", letterSpacing: "0.08em", marginTop: 18,
+            }}
+          >
+            SEM CARTÃO · CANCELE QUANDO QUISER
           </p>
         </div>
       </section>
 
-      {/* MOCKUP */}
-      <section ref={mockupRef} id="mockup" style={{ padding: "0 24px 80px" }}>
-        <div className="mockup-outer">
-          <div className="browser-chrome">
-            <span className="product-frame__dot" style={{ background: "#FF5F57" }} />
-            <span className="product-frame__dot" style={{ background: "#FEBC2E" }} />
-            <span className="product-frame__dot" style={{ background: "#28C840" }} />
-            <span className="product-frame__url">app.focusinteligente.com.br</span>
-          </div>
-          <img
-            src={hubDashboardMockup}
-            alt="Dashboard do Hub Empresarial — gestão completa para agências e consultorias"
-            className="product-frame__img"
-            loading="eager"
-            width={960}
-            height={540}
-          />
-        </div>
-      </section>
-
-      {/* METRICS */}
-      <section className="container-focus">
-        <p className="sec-label">Em produção</p>
-        <div className="metrics-row">
-          {[
-            { n: "50+", l: "Empresas ativas" },
-            { n: "7", l: "Módulos integrados" },
-            { n: "99.8%", l: "Uptime garantido" },
-            { n: "92ms", l: "Tempo de resposta" },
-          ].map((m) => (
-            <div key={m.l} className="mr-item">
-              <p className="mr-num"><CountUp value={m.n} /></p>
-              <p className="mr-label">{m.l}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* POR QUE O HUB — Comparison */}
-      <section className="container-focus section-padding">
-        <p className="sec-label">Por que o Hub</p>
-        <h2 style={{ maxWidth: 720, marginBottom: 40 }}>
-          Planilhas, ERP genérico ou <strong>Hub Empresarial</strong>?
-        </h2>
-
-        <div className="grid md:grid-cols-3 gap-5">
-          {/* Planilhas + WhatsApp */}
-          <div className="card" style={{ borderColor: "rgba(239,68,68,0.18)", background: "rgba(239,68,68,0.03)", padding: 28 }}>
-            <p className="card-num" style={{ color: "#FCA5A5" }}>Planilhas + WhatsApp</p>
-            <div className="grid grid-cols-2 gap-3 my-4">
-              <div>
-                <p style={{ fontSize: 28, fontWeight: 700, letterSpacing: "-0.04em", color: "#FCA5A5", lineHeight: 1 }}>3h+</p>
-                <p style={{ fontSize: 10, color: "var(--text3)", fontFamily: "var(--font-mono)", marginTop: 4 }}>perdidas por dia</p>
-              </div>
-              <div>
-                <p style={{ fontSize: 28, fontWeight: 700, letterSpacing: "-0.04em", color: "#FCA5A5", lineHeight: 1 }}>Alto</p>
-                <p style={{ fontSize: 10, color: "var(--text3)", fontFamily: "var(--font-mono)", marginTop: 4 }}>risco de erro</p>
-              </div>
-            </div>
-            <ul style={{ padding: 0, listStyle: "none" }}>
-              {["Dados espalhados", "Sem histórico de clientes", "Relatório feito à mão", "Sem visão em tempo real"].map((f) => (
-                <li key={f} style={{ color: "var(--text2)", fontSize: 13, marginBottom: 6, display: "flex", gap: 8 }}>
-                  <XIcon className="w-3.5 h-3.5 mt-1 flex-shrink-0" style={{ color: "#FCA5A5" }} />
-                  <span>{f}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* ERPs genéricos */}
-          <div className="card" style={{ borderColor: "rgba(239,68,68,0.18)", background: "rgba(239,68,68,0.03)", padding: 28 }}>
-            <p className="card-num" style={{ color: "#FCA5A5" }}>ERPs genéricos</p>
-            <div className="grid grid-cols-2 gap-3 my-4">
-              <div>
-                <p style={{ fontSize: 28, fontWeight: 700, letterSpacing: "-0.04em", color: "#FCA5A5", lineHeight: 1 }}>R$2k+</p>
-                <p style={{ fontSize: 10, color: "var(--text3)", fontFamily: "var(--font-mono)", marginTop: 4 }}>por mês</p>
-              </div>
-              <div>
-                <p style={{ fontSize: 28, fontWeight: 700, letterSpacing: "-0.04em", color: "#FCA5A5", lineHeight: 1 }}>Meses</p>
-                <p style={{ fontSize: 10, color: "var(--text3)", fontFamily: "var(--font-mono)", marginTop: 4 }}>de implantação</p>
-              </div>
-            </div>
-            <ul style={{ padding: 0, listStyle: "none" }}>
-              {["Não feito para agências", "Interface complexa", "Custo alto fixo", "Suporte impessoal"].map((f) => (
-                <li key={f} style={{ color: "var(--text2)", fontSize: 13, marginBottom: 6, display: "flex", gap: 8 }}>
-                  <XIcon className="w-3.5 h-3.5 mt-1 flex-shrink-0" style={{ color: "#FCA5A5" }} />
-                  <span>{f}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Hub Empresarial */}
-          <div
-            className="card"
-            style={{
-              border: "2px solid rgba(59,130,246,0.55)",
-              background: "linear-gradient(160deg, rgba(30,64,175,0.10) 0%, var(--bg2) 60%)",
-              padding: 28,
-            }}
-          >
-            <p className="card-num" style={{ color: "#6D8FE8" }}>Hub Empresarial ✓</p>
-            <div className="grid grid-cols-2 gap-3 my-4">
-              <div>
-                <p style={{ fontSize: 28, fontWeight: 700, letterSpacing: "-0.04em", color: "#6D8FE8", lineHeight: 1 }}>R$69</p>
-                <p style={{ fontSize: 10, color: "var(--text3)", fontFamily: "var(--font-mono)", marginTop: 4 }}>por mês para começar</p>
-              </div>
-              <div>
-                <p style={{ fontSize: 28, fontWeight: 700, letterSpacing: "-0.04em", color: "#6D8FE8", lineHeight: 1 }}>1 dia</p>
-                <p style={{ fontSize: 10, color: "var(--text3)", fontFamily: "var(--font-mono)", marginTop: 4 }}>para estar operacional</p>
-              </div>
-            </div>
-            <ul style={{ padding: 0, listStyle: "none" }}>
-              {["7 módulos prontos para agências", "IA integrada", "Relatórios automáticos", "Começa grátis, sem cartão"].map((f) => (
-                <li key={f} style={{ color: "var(--text2)", fontSize: 13, marginBottom: 6, display: "flex", gap: 8 }}>
-                  <Check className="w-3.5 h-3.5 mt-1 flex-shrink-0" style={{ color: "#6D8FE8" }} />
-                  <span>{f}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* MODULES — BENTO */}
-      <section className="container-focus section-padding">
-        <p className="sec-label">Módulos</p>
-        <h2 style={{ maxWidth: 760 }}>
-          Tudo que sua operação precisa, <strong>em um único lugar</strong>.
-        </h2>
-
-        <div className="bento">
+      {/* MODULES — Sanjaya project cards */}
+      <section ref={mockupRef} className="container-focus" style={{ padding: "80px 24px 60px" }}>
+        <div className="flex flex-col gap-6 max-w-6xl mx-auto">
           {modules.map((m) => (
-            <div key={m.n} className="card" style={{ gridColumn: `span ${m.col}`, gridRow: `span ${m.row}` }}>
-              <p className="card-num">{m.n}</p>
-              <h3>{m.t}</h3>
-              <p style={{ color: "var(--text2)", marginTop: 8, fontSize: 14 }}>{m.d}</p>
-            </div>
+            <article
+              key={m.code}
+              className="snj-project-card group"
+              style={{
+                display: "grid",
+                gridTemplateColumns: "minmax(0,1.05fr) minmax(0,1fr)",
+                background: "var(--bg2)",
+                border: "1px solid var(--line)",
+                borderRadius: 16, overflow: "hidden",
+                transition: "border-color 0.3s ease",
+              }}
+            >
+              <div style={{ background: "#0b0b0e", minHeight: 360, overflow: "hidden" }}>
+                <img
+                  src={m.image}
+                  alt={m.brand}
+                  loading="lazy"
+                  className="group-hover:scale-[1.03]"
+                  style={{
+                    width: "100%", height: "100%", objectFit: "cover", display: "block",
+                    transition: "transform 0.6s ease",
+                  }}
+                />
+              </div>
+
+              <div style={{ padding: "32px 36px", display: "flex", flexDirection: "column", gap: 18 }}>
+                <div
+                  className="flex items-center gap-3"
+                  style={{
+                    paddingBottom: 16, borderBottom: "1px solid var(--line)",
+                    fontFamily: "var(--font-mono)", fontSize: 11,
+                    color: "var(--text3)", letterSpacing: "0.10em",
+                  }}
+                >
+                  <span>MÓDULO {m.code}</span>
+                  <span style={{ opacity: 0.4 }}>•</span>
+                  <span style={{ textTransform: "uppercase" }}>{m.category}</span>
+                </div>
+
+                <p
+                  style={{
+                    fontFamily: "var(--font-display, var(--font-sans))",
+                    fontSize: 22, fontWeight: 500, letterSpacing: "-0.01em",
+                    color: "var(--text2)",
+                  }}
+                >
+                  {m.brand}
+                </p>
+
+                <h2
+                  style={{
+                    fontSize: "clamp(22px, 2.4vw, 30px)", lineHeight: 1.15,
+                    fontWeight: 600, letterSpacing: "-0.02em", color: "var(--text)",
+                  }}
+                >
+                  {m.title}
+                </h2>
+
+                <p style={{ color: "var(--text2)", fontSize: 14, lineHeight: 1.6 }}>
+                  {m.description}
+                </p>
+
+                <a
+                  href={`${APP_URL}/auth?mode=signup`}
+                  onClick={() => handleCTA(`module_${m.code}`)}
+                  className="inline-flex items-center gap-2 self-start"
+                  style={{
+                    background: "rgba(255,255,255,0.06)", border: "1px solid var(--line2)",
+                    color: "var(--text)", padding: "10px 18px", borderRadius: 8,
+                    fontSize: 13, fontWeight: 500,
+                  }}
+                >
+                  Experimentar este módulo <ArrowRight className="w-3.5 h-3.5" />
+                </a>
+
+                <div
+                  className="grid grid-cols-2 gap-6 mt-auto pt-6"
+                  style={{ borderTop: "1px solid var(--line)" }}
+                >
+                  {m.metrics.map((x) => (
+                    <div key={x.label}>
+                      <p style={{ fontSize: 36, fontWeight: 600, letterSpacing: "-0.04em", color: "var(--text)", lineHeight: 1 }}>
+                        {x.value}
+                      </p>
+                      <p style={{ fontSize: 10, color: "var(--text3)", fontFamily: "var(--font-mono)", letterSpacing: "0.10em", marginTop: 10 }}>
+                        {x.label}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </article>
           ))}
-        </div>
-      </section>
-
-      {/* RESULTADOS REAIS */}
-      <section className="container-focus section-padding">
-        <p className="sec-label">Resultados reais</p>
-        <h2 style={{ maxWidth: 720, marginBottom: 40 }}>
-          Casos de uso <strong>em produção</strong>.
-        </h2>
-
-        <div className="grid md:grid-cols-2 gap-5">
-          {/* Card 1 */}
-          <div
-            className="card"
-            style={{
-              borderColor: "rgba(59,130,246,0.30)",
-              background: "linear-gradient(160deg, rgba(30,64,175,0.10) 0%, var(--bg2) 60%)",
-              padding: 36,
-            }}
-          >
-            <p className="card-num" style={{ color: "#6D8FE8" }}>Agência Digital · São Paulo</p>
-            <span
-              style={{
-                display: "inline-block",
-                fontFamily: "var(--font-mono)", fontSize: 10,
-                color: "#6D8FE8", background: "rgba(30,64,175,0.18)",
-                border: "1px solid rgba(59,130,246,0.30)", borderRadius: 4,
-                padding: "3px 8px", letterSpacing: "0.08em", textTransform: "uppercase",
-                marginBottom: 14,
-              }}
-            >
-              5 planilhas → 1 sistema
-            </span>
-            <h3 style={{ fontSize: 22 }}>Saímos do caos do Excel para um dashboard em tempo real</h3>
-            <div className="grid grid-cols-3 gap-4 pt-6 mt-6" style={{ borderTop: "1px solid var(--line)" }}>
-              {[
-                { n: "5×", l: "mais rápido no onboarding" },
-                { n: "12h", l: "economizadas por semana" },
-                { n: "0", l: "planilhas em uso" },
-              ].map((s) => (
-                <div key={s.l}>
-                  <p style={{ fontSize: 40, fontWeight: 700, letterSpacing: "-0.04em", color: "var(--text)", lineHeight: 1 }}>{s.n}</p>
-                  <p style={{ fontSize: 11, color: "var(--text3)", fontFamily: "var(--font-mono)", letterSpacing: "0.04em", marginTop: 8 }}>{s.l}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Card 2 */}
-          <div className="card" style={{ padding: 36 }}>
-            <p className="card-num">Consultoria de RH · Campinas</p>
-            <span
-              style={{
-                display: "inline-block",
-                fontFamily: "var(--font-mono)", fontSize: 10,
-                color: "var(--text3)", border: "1px solid var(--line2)",
-                borderRadius: 4, padding: "3px 8px",
-                letterSpacing: "0.08em", textTransform: "uppercase",
-                marginBottom: 14,
-              }}
-            >
-              WhatsApp → sistema
-            </span>
-            <h3 style={{ fontSize: 22 }}>CRM mudou a relação com clientes — zero oportunidade perdida</h3>
-            <div className="grid grid-cols-2 gap-4 pt-6 mt-6" style={{ borderTop: "1px solid var(--line)" }}>
-              {[
-                { n: "3×", l: "mais leads convertidos" },
-                { n: "100%", l: "dos clientes acompanhados" },
-              ].map((s) => (
-                <div key={s.l}>
-                  <p style={{ fontSize: 40, fontWeight: 700, letterSpacing: "-0.04em", color: "var(--text)", lineHeight: 1 }}>{s.n}</p>
-                  <p style={{ fontSize: 11, color: "var(--text3)", fontFamily: "var(--font-mono)", letterSpacing: "0.04em", marginTop: 8 }}>{s.l}</p>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </section>
 
       {/* PRICING */}
-      <section ref={pricingRef} className="container-focus section-padding">
-        <p className="sec-label">Planos</p>
-        <h2 style={{ marginBottom: 32 }}>
-          Escolha o plano <strong>ideal para o seu time</strong>.
-        </h2>
-
-        {/* Billing toggle */}
-        <div className="flex items-center justify-center gap-3 mb-12" style={{ fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: "0.08em", textTransform: "uppercase" }}>
-          <button
-            type="button"
-            onClick={() => setBilling("mensal")}
-            style={{ color: billing === "mensal" ? "var(--text)" : "var(--text3)" }}
-          >
-            Mensal
-          </button>
-          <button
-            type="button"
-            role="switch"
-            aria-checked={billing === "anual"}
-            onClick={() => setBilling((b) => (b === "mensal" ? "anual" : "mensal"))}
+      <section
+        ref={pricingRef}
+        id="planos"
+        className="container-focus"
+        style={{ padding: "80px 24px" }}
+      >
+        <div className="text-center mb-12">
+          <span
             style={{
-              position: "relative",
-              display: "inline-flex",
-              height: 22,
-              width: 40,
-              alignItems: "center",
-              borderRadius: 99,
-              background: billing === "anual" ? "var(--accent-hex)" : "var(--bg3)",
-              border: "1px solid var(--line2)",
-              transition: "background .2s",
+              fontFamily: "var(--font-mono)", fontSize: 11, color: "#9DE89D",
+              border: "1px solid rgba(157,232,157,0.30)", borderRadius: 4,
+              padding: "5px 12px", letterSpacing: "0.10em",
             }}
           >
-            <span
-              style={{
-                display: "inline-block",
-                width: 16,
-                height: 16,
-                borderRadius: "50%",
-                background: "var(--text)",
-                transition: "transform .2s",
-                transform: billing === "anual" ? "translateX(20px)" : "translateX(2px)",
-              }}
-            />
-          </button>
-          <span style={{ color: billing === "anual" ? "var(--text)" : "var(--text3)" }}>
-            Anual <span style={{ color: "var(--accent-hex)", marginLeft: 4 }}>−20%</span>
+            &lt;:PLANOS&gt;
           </span>
+          <h2
+            style={{
+              fontSize: "clamp(32px, 4.5vw, 56px)", lineHeight: 1.1,
+              fontWeight: 600, letterSpacing: "-0.02em", marginTop: 20,
+            }}
+          >
+            Investimento que cabe <strong>na sua operação</strong>.
+          </h2>
+          <div className="inline-flex items-center gap-2 mt-8 p-1 rounded-full" style={{ border: "1px solid var(--line2)" }}>
+            {(["mensal", "anual"] as const).map((b) => (
+              <button
+                key={b}
+                onClick={() => setBilling(b)}
+                style={{
+                  padding: "8px 18px", borderRadius: 999, fontSize: 13,
+                  fontWeight: 500, fontFamily: "var(--font-mono)", letterSpacing: "0.06em",
+                  background: billing === b ? "var(--text)" : "transparent",
+                  color: billing === b ? "var(--bg)" : "var(--text2)",
+                  textTransform: "uppercase", transition: "all 0.2s ease",
+                }}
+              >
+                {b}{b === "anual" && " · -20%"}
+              </button>
+            ))}
+          </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-5 items-stretch">
-          {plans.map((plan) => {
-            const isAnual = billing === "anual";
+        <div className="grid md:grid-cols-3 gap-5 max-w-6xl mx-auto">
+          {plans.map((p) => {
+            const price = billing === "anual" ? p.annualMonthly : p.monthly;
             return (
               <div
-                key={plan.name}
-                className={`card relative flex flex-col ${plan.highlighted ? "pc-featured" : ""}`}
-                style={{ padding: 32 }}
+                key={p.name}
+                style={{
+                  background: "var(--bg2)",
+                  border: p.highlighted ? "1px solid rgba(157,232,157,0.45)" : "1px solid var(--line)",
+                  borderRadius: 16, padding: 32,
+                  display: "flex", flexDirection: "column", gap: 16,
+                  position: "relative",
+                }}
               >
-                {plan.highlighted && (
-                  <span className="pc-popular" style={{ position: "absolute", top: -12, left: "50%", transform: "translateX(-50%)" }}>
-                    Mais popular
+                {p.highlighted && (
+                  <span
+                    style={{
+                      position: "absolute", top: -10, left: 32,
+                      fontFamily: "var(--font-mono)", fontSize: 10,
+                      background: "#9DE89D", color: "#0a0a0a",
+                      padding: "4px 10px", borderRadius: 4, letterSpacing: "0.10em", fontWeight: 700,
+                    }}
+                  >
+                    MAIS POPULAR
                   </span>
                 )}
-                <p className="card-num">{plan.name}</p>
-                <h3 style={{ fontSize: 20 }}>{plan.name}</h3>
-                <p style={{ color: "var(--text2)", fontSize: 13, marginTop: 6, marginBottom: 24, minHeight: 40 }}>
-                  {plan.description}
-                </p>
-                <div style={{ marginBottom: 28 }}>
-                  <span style={{ fontSize: 44, fontWeight: 700, letterSpacing: "-0.03em", color: "var(--text)" }}>
-                    R$ {isAnual ? plan.annual.toLocaleString("pt-BR") : plan.monthly}
-                  </span>
-                  <span style={{ color: "var(--text3)", marginLeft: 4, fontSize: 14 }}>
-                    {isAnual ? "/ano" : "/mês"}
-                  </span>
-                  {isAnual && (
-                    <p style={{ color: "var(--accent-hex)", fontSize: 12, marginTop: 4, fontFamily: "var(--font-mono)" }}>
-                      equivale a R$ {plan.annualMonthly}/mês
-                    </p>
-                  )}
-                </div>
+                <p style={{ fontSize: 20, fontWeight: 600, color: "var(--text)" }}>{p.name}</p>
+                <p style={{ color: "var(--text2)", fontSize: 13, lineHeight: 1.5 }}>{p.description}</p>
 
-                <ul className="pc-list" style={{ paddingLeft: 0, marginBottom: 28, flex: 1 }}>
-                  {plan.features.map((f) => (
-                    <li key={f} style={{ color: "var(--text2)", fontSize: 14, marginBottom: 10 }}>{f}</li>
-                  ))}
-                </ul>
+                <div className="flex items-baseline gap-2 pt-2">
+                  <span style={{ fontSize: 48, fontWeight: 600, letterSpacing: "-0.04em", color: "var(--text)", lineHeight: 1 }}>
+                    R${price}
+                  </span>
+                  <span style={{ color: "var(--text3)", fontSize: 13, fontFamily: "var(--font-mono)" }}>/mês</span>
+                </div>
+                {billing === "anual" && (
+                  <p style={{ color: "var(--text3)", fontSize: 11, fontFamily: "var(--font-mono)", letterSpacing: "0.06em", marginTop: -8 }}>
+                    R${p.annual} COBRADOS ANUALMENTE
+                  </p>
+                )}
 
                 <a
-                  href="https://app.focusinteligente.com.br/planos"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => handleCTA(`Pricing-${plan.name}-${billing}`)}
-                  className={plan.highlighted ? "btn-cta" : "btn-main"}
-                  style={{ width: "100%", display: "flex" }}
+                  href={`${APP_URL}/auth?mode=signup&plan=${p.name.toLowerCase()}`}
+                  onClick={() => handleCTA(`plan_${p.name.toLowerCase()}`)}
+                  className="inline-flex items-center justify-center gap-2"
+                  style={{
+                    background: p.highlighted ? "var(--text)" : "rgba(255,255,255,0.06)",
+                    color: p.highlighted ? "var(--bg)" : "var(--text)",
+                    border: p.highlighted ? "none" : "1px solid var(--line2)",
+                    padding: "12px 18px", borderRadius: 8, fontSize: 13,
+                    fontWeight: 600, marginTop: 8,
+                  }}
                 >
-                  Assinar
-                  <ArrowRight className="w-4 h-4 ml-2" />
+                  Começar com {p.name} <ArrowRight className="w-3.5 h-3.5" />
                 </a>
+
+                <ul className="pt-4 space-y-2" style={{ borderTop: "1px solid var(--line)", listStyle: "none", padding: 0 }}>
+                  {p.features.map((f) => (
+                    <li key={f} style={{ display: "flex", gap: 10, fontSize: 13, color: "var(--text2)", marginTop: 10 }}>
+                      <Check className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: "#9DE89D" }} />
+                      <span>{f}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             );
           })}
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
-      <section className="container-focus section-padding">
-        <p className="sec-label">Quem usa</p>
-        <h2 style={{ maxWidth: 720 }}>
-          43 agências e consultorias <strong>já profissionalizaram</strong> a gestão.
-        </h2>
-
-        <div className="grid md:grid-cols-3 gap-5 mt-12">
-          <div className="tc-featured md:col-span-1">
-            <div style={{ color: "#FBBF24", fontSize: 13, letterSpacing: 2, marginBottom: 16 }}>★★★★★</div>
-            <p style={{ fontSize: 18, color: "rgba(235,235,235,0.85)", lineHeight: 1.6, fontWeight: 300 }}>
-              "{testimonials[0].content}"
-            </p>
-            <div className="flex items-center gap-3 mt-6">
-              <img src={testimonials[0].photo} alt={testimonials[0].name} width={36} height={36} loading="lazy" style={{ width: 36, height: 36, borderRadius: "50%", objectFit: "cover", border: "1px solid var(--line2)" }} />
-              <div>
-                <p style={{ color: "var(--text)", fontSize: 13, fontWeight: 600 }}>{testimonials[0].name}</p>
-                <p style={{ color: "var(--text3)", fontSize: 12 }}>{testimonials[0].role}</p>
-              </div>
-            </div>
-          </div>
-
-          {testimonials.slice(1).map((t) => (
-            <div key={t.name} className="tc">
-              <div style={{ color: "#FBBF24", fontSize: 13, letterSpacing: 2, marginBottom: 16 }}>★★★★★</div>
-              <p style={{ fontSize: 15, color: "rgba(235,235,235,0.75)", lineHeight: 1.65, fontWeight: 300 }}>"{t.content}"</p>
-              <div className="flex items-center gap-3 mt-6">
-                <img src={t.photo} alt={t.name} width={36} height={36} loading="lazy" style={{ width: 36, height: 36, borderRadius: "50%", objectFit: "cover", border: "1px solid var(--line2)" }} />
-                <div>
-                  <p style={{ color: "var(--text)", fontSize: 13, fontWeight: 600 }}>{t.name}</p>
-                  <p style={{ color: "var(--text3)", fontSize: 12 }}>{t.role}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* FAQ */}
-      <section className="container-focus section-padding">
-        <p className="sec-label">Perguntas frequentes</p>
-        <h2 style={{ marginBottom: 40 }}>FAQ</h2>
-
-        <div className="flex flex-col md:flex-row gap-8">
-          <div className="flex-1">
-            <Accordion type="single" collapsible className="space-y-3">
-              {faqs.map((f, i) => (
-                <AccordionItem key={i} value={`faq-${i}`} className="card" style={{ padding: "4px 24px" }}>
-                  <AccordionTrigger className="hover:no-underline py-5 text-left" style={{ color: "var(--text)", fontSize: 15, fontWeight: 500 }}>
-                    {f.q}
-                  </AccordionTrigger>
-                  <AccordionContent style={{ color: "var(--text2)", paddingBottom: 20, fontSize: 14, lineHeight: 1.75 }}>
-                    {f.a}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
+      <section className="container-focus" style={{ padding: "60px 24px 100px" }}>
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-10">
+            <span
+              style={{
+                fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--text3)",
+                border: "1px solid var(--line2)", borderRadius: 4,
+                padding: "5px 12px", letterSpacing: "0.10em",
+              }}
+            >
+              &lt;:FAQ&gt;
+            </span>
+            <h2 style={{
+              fontSize: "clamp(28px, 4vw, 44px)", lineHeight: 1.1,
+              fontWeight: 600, letterSpacing: "-0.02em", marginTop: 20,
+            }}>
+              Perguntas <strong>frequentes</strong>
+            </h2>
           </div>
 
-          <aside className="md:w-72 flex-shrink-0">
-            <div className="md:sticky" style={{ top: 88 }}>
-              <div
-                className="card"
-                style={{
-                  padding: 24,
-                  background: "linear-gradient(160deg, rgba(30,64,175,0.10) 0%, var(--bg2) 60%)",
-                  borderColor: "rgba(59,130,246,0.30)",
-                }}
+          <Accordion type="single" collapsible className="space-y-3">
+            {faqs.map((f, i) => (
+              <AccordionItem
+                key={i}
+                value={`faq-${i}`}
+                className="border rounded-lg px-5"
+                style={{ borderColor: "var(--line)", background: "var(--bg2)" }}
               >
-                <div className="flex items-center gap-3 mb-4">
-                  <div
-                    style={{
-                      width: 56, height: 56, borderRadius: "50%",
-                      display: "inline-flex", alignItems: "center", justifyContent: "center",
-                      background: "rgba(30,64,175,0.18)",
-                      border: "1px solid rgba(59,130,246,0.30)",
-                      color: "#6D8FE8", fontSize: 16, fontWeight: 700,
-                    }}
-                  >
-                    LS
-                  </div>
-                  <div>
-                    <p style={{ color: "var(--text)", fontSize: 13, fontWeight: 600 }}>Luciano Santos</p>
-                    <p style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--text3)", letterSpacing: "0.04em" }}>Fundador · Notion Certified Partner</p>
-                  </div>
-                </div>
-                <p style={{ color: "var(--text2)", fontSize: 13, lineHeight: 1.6, marginBottom: 16 }}>
-                  Dúvidas sobre o Hub? Me manda uma mensagem — respondo pessoalmente em até 24h.
-                </p>
-                <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="btn-accent w-full" style={{ marginBottom: 8 }}>
-                  Falar no WhatsApp
-                  <ArrowRight className="w-4 h-4" />
-                </a>
-                <a href={APP_URL} target="_blank" rel="noopener noreferrer" className="btn-ghost w-full" style={{ display: "flex" }}>
-                  Testar grátis →
-                </a>
-              </div>
-            </div>
-          </aside>
+                <AccordionTrigger
+                  className="text-left hover:no-underline"
+                  style={{ color: "var(--text)", fontSize: 15, fontWeight: 500 }}
+                >
+                  {f.q}
+                </AccordionTrigger>
+                <AccordionContent style={{ color: "var(--text2)", fontSize: 14, lineHeight: 1.6 }}>
+                  {f.a}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
       </section>
-
-      {/* CTA FINAL */}
-      <section className="container-focus section-padding">
-        <div
-          className="card text-center"
-          style={{
-            padding: "60px 32px",
-            background: "linear-gradient(160deg, rgba(30,64,175,0.10) 0%, var(--bg2) 60%)",
-            borderColor: "rgba(30,64,175,0.30)",
-          }}
-        >
-          <p className="sec-label" style={{ justifyContent: "center" }}>
-            <span style={{ flex: 0 }}>Próximo passo</span>
-          </p>
-          <h2 style={{ maxWidth: 640, margin: "0 auto 16px" }}>
-            Pronto para <strong>profissionalizar</strong> sua agência ou consultoria?
-          </h2>
-          <p style={{ color: "var(--text2)", maxWidth: 540, margin: "0 auto 32px", fontSize: 15 }}>
-            Comece grátis agora ou fale comigo se quiser entender se o Hub serve para o seu cenário.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
-            <a
-              href={APP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => handleCTA("CTA-Final")}
-              className="btn-main"
-            >
-              Começar grátis agora
-              <ArrowRight className="w-4 h-4 ml-2" />
-            </a>
-            <a
-              href={WA_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => handleCTA("CTA-Final-Wa")}
-              className="btn-ghost"
-            >
-              Falar com Luciano →
-            </a>
-          </div>
-          <div className="mt-6">
-            <a href="/solucoes-sob-medida" className="btn-ghost" style={{ border: "none" }}>
-              Ver Focus Custom →
-            </a>
-          </div>
-        </div>
-      </section>
-
 
       <Footer />
       <StickyMobileCTA />
+
+      <style>{`
+        .snj-project-card:hover { border-color: var(--line2) !important; }
+        @media (max-width: 860px) {
+          .snj-project-card {
+            grid-template-columns: 1fr !important;
+          }
+          .snj-project-card > div:first-child {
+            min-height: 240px !important;
+          }
+        }
+      `}</style>
     </div>
   );
 };
