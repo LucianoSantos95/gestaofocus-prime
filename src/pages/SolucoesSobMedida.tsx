@@ -16,6 +16,7 @@ type Project = {
   title: string;
   description: string;
   image: string;
+  imageFit?: "cover" | "contain";
   metrics: { value: string; label: string }[];
 };
 
@@ -28,6 +29,7 @@ const projects: Project[] = [
     description:
       "Mapeamento de processos, hub no Notion e agentes de IA para tirar o dono da operação do dia a dia, mantendo o padrão de atendimento.",
     image: caseNotion,
+    imageFit: "contain",
     metrics: [
       { value: "8+", label: "PROCESSOS MAPEADOS" },
       { value: "3 sem.", label: "ATÉ O GO-LIVE" },
@@ -428,6 +430,9 @@ const SolucoesSobMedida = () => {
                   minHeight: 360,
                   overflow: "hidden",
                   position: "relative",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
                 }}
               >
                 <img
@@ -435,9 +440,11 @@ const SolucoesSobMedida = () => {
                   alt={p.brand}
                   loading="lazy"
                   style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
+                    width: p.imageFit === "contain" ? "auto" : "100%",
+                    height: p.imageFit === "contain" ? "auto" : "100%",
+                    maxWidth: p.imageFit === "contain" ? "60%" : undefined,
+                    maxHeight: p.imageFit === "contain" ? "60%" : undefined,
+                    objectFit: p.imageFit || "cover",
                     display: "block",
                     transition: "transform 0.6s ease",
                   }}
