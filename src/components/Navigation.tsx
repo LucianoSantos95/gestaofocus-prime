@@ -42,9 +42,9 @@ const Navigation = () => {
           <img
             src={focusLogo.url}
             alt="Focus"
-            width={260}
-            height={80}
-            style={{ height: 80, width: "auto", display: "block" }}
+            width={325}
+            height={100}
+            style={{ height: 100, width: "auto", display: "block" }}
           />
 
         </Link>
