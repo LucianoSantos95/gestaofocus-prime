@@ -346,7 +346,7 @@ const Index = () => {
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-5">
+        <div className="grid md:grid-cols-2 gap-5">
           {/* Hub */}
           <div className="snj-price-card">
             <span className="snj-step__num">/ Hub Empresarial</span>
@@ -420,33 +420,6 @@ const Index = () => {
             </ul>
           </div>
 
-          {/* Enterprise */}
-          <div className="snj-price-card">
-            <span className="snj-step__num">/ Enterprise</span>
-            <p style={{ color: "var(--text2)", fontSize: 14 }}>Operação multi-equipe sob medida.</p>
-            <div>
-              <span className="snj-price-amount">Sob</span>
-              <span style={{ color: "var(--text3)", fontSize: 14, marginLeft: 6 }}>consulta</span>
-            </div>
-            <a
-              href={WA_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => cta("price_enterprise")}
-              className="snj-btn-outline"
-              style={{ justifyContent: "center" }}
-            >
-              Conversar <ArrowUpRight className="w-4 h-4" />
-            </a>
-            <ul style={{ listStyle: "none", padding: 0, display: "flex", flexDirection: "column", gap: 10, marginTop: 8 }}>
-              {["Auditoria completa", "Arquitetura ponta-a-ponta", "Agentes de IA dedicados", "Documentação interna", "Roadmap contínuo"].map((f) => (
-                <li key={f} style={{ display: "flex", gap: 10, fontSize: 13, color: "var(--text2)" }}>
-                  <Check className="w-3.5 h-3.5 mt-0.5" style={{ color: "var(--text3)" }} />
-                  {f}
-                </li>
-              ))}
-            </ul>
-          </div>
         </div>
       </section>
 
