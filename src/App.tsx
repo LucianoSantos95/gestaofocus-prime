@@ -113,8 +113,12 @@ const AnalyticsProvider = () => {
 };
 
 const PageLoader = () => (
-  <div className="min-h-[50vh] flex items-center justify-center">
-    <div className="animate-pulse text-foreground-muted">Carregando...</div>
+  <div className="min-h-screen flex flex-col items-center justify-center bg-background">
+    <div className="relative">
+      <div className="w-12 h-12 rounded-full border-2 border-surface-border border-t-primary animate-spin" />
+      <div className="absolute inset-0 w-12 h-12 rounded-full border-2 border-transparent border-t-primary/30 animate-spin" style={{ animationDuration: '1.5s', animationDirection: 'reverse' }} />
+    </div>
+    <p className="mt-6 text-foreground-muted text-sm font-medium tracking-wide animate-pulse">Carregando...</p>
   </div>
 );
 
