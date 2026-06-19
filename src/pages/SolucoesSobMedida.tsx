@@ -13,8 +13,8 @@ type Project = {
   brand: string;
   title: string;
   description: string;
-  image: string;
-  imageFit?: "cover" | "contain";
+  image?: string;
+  textOverlay?: string;
   metrics: { value: string; label: string }[];
 };
 
@@ -26,8 +26,7 @@ const projects: Project[] = [
     title: "Reestruturação completa da operação com IA e Notion",
     description:
       "Mapeamento de processos, hub no Notion e agentes de IA para tirar o dono da operação do dia a dia, mantendo o padrão de atendimento.",
-    image: caseNotion,
-    imageFit: "contain",
+    textOverlay: "Notion",
     metrics: [
       { value: "8+", label: "PROCESSOS MAPEADOS" },
       { value: "3 sem.", label: "ATÉ O GO-LIVE" },
