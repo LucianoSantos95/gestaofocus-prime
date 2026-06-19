@@ -368,7 +368,7 @@ const Index = () => {
             </ul>
           </div>
 
-          {/* Focus Custom (popular) */}
+          {/* Consultoria — R$ 180/h (popular) */}
           <div className="snj-price-card snj-price-card--popular">
             <span
               style={{
@@ -388,24 +388,30 @@ const Index = () => {
             >
               Popular
             </span>
-            <span className="snj-step__num" style={{ color: "#6D8FE8" }}>/ Focus Custom</span>
-            <p style={{ color: "var(--text2)", fontSize: 14 }}>Consultoria de operação completa.</p>
+            <span className="snj-step__num" style={{ color: "#6D8FE8" }}>/ Consultoria</span>
+            <p style={{ color: "var(--text2)", fontSize: 14 }}>
+              Diagnóstico e arquitetura da sua operação, hora a hora.
+            </p>
             <div>
-              <span className="snj-price-amount">R$ 3.800</span>
-              <span style={{ color: "var(--text3)", fontSize: 14, marginLeft: 6 }}>a partir</span>
+              <span className="snj-price-amount">R$ 180</span>
+              <span style={{ color: "var(--text3)", fontSize: 14, marginLeft: 6 }}>/hora</span>
             </div>
-            <a
-              href={WA_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => cta("price_custom")}
+            <Link
+              to="/solucoes-sob-medida"
+              onClick={() => cta("price_consultoria")}
               className="snj-btn-primary"
               style={{ justifyContent: "center" }}
             >
-              Agendar diagnóstico <ArrowUpRight className="w-4 h-4" />
-            </a>
+              Conhecer Consultoria <ArrowRight className="w-4 h-4" />
+            </Link>
             <ul style={{ listStyle: "none", padding: 0, display: "flex", flexDirection: "column", gap: 10, marginTop: 8 }}>
-              {["Mapeamento de processos", "Notion como hub", "POPs + playbooks", "Agentes de IA", "Onboarding + suporte"].map((f) => (
+              {[
+                "Diagnóstico de processos",
+                "Mapeamento de fluxos",
+                "Arquitetura no Notion",
+                "Agentes de IA sob medida",
+                "Pague apenas pelas horas usadas",
+              ].map((f) => (
                 <li key={f} style={{ display: "flex", gap: 10, fontSize: 13, color: "var(--text)" }}>
                   <Check className="w-3.5 h-3.5 mt-0.5" style={{ color: "#6D8FE8" }} />
                   {f}
