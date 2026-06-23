@@ -9,8 +9,6 @@ verify_jwt = false
 [functions.send-welcome-email]
 verify_jwt = false
 
-[functions.pagespeed]
-verify_jwt = false
 
 [functions.prospect-search]
 verify_jwt = false
@@ -33,8 +31,3 @@ verify_jwt = false
 [functions.prospect-resend-webhook]
 verify_jwt = false
 
-[functions.generate-mvp-plan]
-verify_jwt = false
-
-[functions.claim-simulation]
-verify_jwt = false

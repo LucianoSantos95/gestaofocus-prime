@@ -24,7 +24,7 @@ const getPageTitle = (pathname: string): string => {
     '/hub-empresarial': 'Hub Empresarial - Focus',
     '/focus-club': 'Focus Club - Focus',
     '/blog': 'Blog - Focus',
-    '/sistemas-gratuitos': 'Sistemas Gratuitos - Focus',
+    
   };
 
   return titles[pathname] || 'Focus - Gestão Empresarial e Produtividade';

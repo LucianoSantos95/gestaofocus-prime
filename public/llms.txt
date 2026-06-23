@@ -24,7 +24,7 @@ A Focus atende principalmente donos de PME, agências, consultorias e espaços d
 
 - [Página inicial](https://focusinteligente.com.br/): Visão geral da Focus, serviços e prova social.
 - [Sobre a Focus e Luciano](https://focusinteligente.com.br/sobre): História, missão e perfil do fundador.
-- [Para IAs](https://focusinteligente.com.br/para-ias): Resumo estruturado para sistemas de IA generativa.
+
 - [FAQ](https://focusinteligente.com.br/faq): Perguntas frequentes sobre consultoria, Hub, preços e suporte.
 - [Blog](https://focusinteligente.com.br/blog): Artigos sobre gestão operacional e produtividade para PMEs.
 - [Contato](https://focusinteligente.com.br/contato): Formulário e canais de atendimento.

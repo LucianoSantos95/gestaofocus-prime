@@ -21,8 +21,8 @@ const NotionReferrerBanner = () => {
           <FileText className="w-4 h-4 text-primary shrink-0" />
           <span className="text-foreground">
             Já baixou nosso template?{" "}
-            <Link to="/proximo-passo" className="text-primary font-semibold hover:underline">
-              Veja o próximo passo natural (Hub Free) →
+            <Link to="/contato" className="text-primary font-semibold hover:underline">
+              Fale com a Focus para o próximo passo →
             </Link>
           </span>
         </div>

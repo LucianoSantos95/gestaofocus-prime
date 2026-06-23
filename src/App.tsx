@@ -15,14 +15,12 @@ import OptionalFeatureBoundary from "./components/OptionalFeatureBoundary";
 
 // Defer non-critical UI to keep the initial bundle (and TBT) small
 const ChatWidget = lazy(() => import("./components/ChatWidget"));
-const DashboardChatButton = lazy(() => import("./components/dashboard/DashboardChatButton"));
 const CookieConsent = lazy(() => import("./components/CookieConsent"));
 import { useScrollReveal } from "./hooks/useScrollReveal";
 
 // Lazy load pages
 const SolucoesSobMedida = lazy(() => import("./pages/SolucoesSobMedida"));
 const HubEmpresarial = lazy(() => import("./pages/HubEmpresarial"));
-const ProximoPasso = lazy(() => import("./pages/ProximoPasso"));
 
 const Blog = lazy(() => import("./pages/Blog"));
 const AboutFocus = lazy(() => import("./pages/AboutFocus"));
@@ -30,29 +28,10 @@ const Privacidade = lazy(() => import("./pages/Privacidade"));
 const TermosUso = lazy(() => import("./pages/TermosUso"));
 const Cookies = lazy(() => import("./pages/Cookies"));
 const CentralAjuda = lazy(() => import("./pages/CentralAjuda"));
-const Documentacao = lazy(() => import("./pages/Documentacao"));
 const StatusPlataforma = lazy(() => import("./pages/StatusPlataforma"));
 const Contato = lazy(() => import("./pages/Contato"));
 const FAQ = lazy(() => import("./pages/FAQ"));
-const SistemasGratuitos = lazy(() => import("./pages/SistemasGratuitos"));
 const NotFound = lazy(() => import("./pages/NotFound"));
-const ParaIAs = lazy(() => import("./pages/ParaIAs"));
-
-// Auth
-const SignUp = lazy(() => import("./pages/auth/SignUp"));
-const Login = lazy(() => import("./pages/auth/Login"));
-const ForgotPassword = lazy(() => import("./pages/auth/ForgotPassword"));
-
-// Dashboard
-const Dashboard = lazy(() => import("./pages/dashboard/Dashboard"));
-const Projects = lazy(() => import("./pages/dashboard/Projects"));
-const Analytics = lazy(() => import("./pages/dashboard/Analytics"));
-const Support = lazy(() => import("./pages/dashboard/Support"));
-const SettingsPage = lazy(() => import("./pages/dashboard/Settings"));
-const LighthousePage = lazy(() => import("./pages/dashboard/Lighthouse"));
-
-const ProtectedRoute = lazy(() => import("./components/ProtectedRoute").then(m => ({ default: m.ProtectedRoute })));
-const AdminRoute = lazy(() => import("./components/AdminRoute").then(m => ({ default: m.AdminRoute })));
 
 // Blog posts
 const PoderNotionEmpresas = lazy(() => import("./pages/blog/PoderNotionEmpresas"));
@@ -122,18 +101,15 @@ const PageLoader = () => (
   </div>
 );
 
-// Layout wrapper that hides Nav/Footer on dashboard routes
+// Layout wrapper that hides Nav/Footer on the embedded-layout routes
 function AppLayout() {
   const location = useLocation();
   useScrollReveal();
-  const isDashboard = location.pathname.startsWith("/dashboard");
-  const isAuth = location.pathname.startsWith("/auth");
   const isSolucoes = location.pathname === "/solucoes-sob-medida" || location.pathname === "/hub-empresarial";
-  const isHomepage = location.pathname === "/";
 
   // SolucoesSobMedida has its own Nav/Footer embedded
-  const showNav = !isDashboard && !isAuth && !isSolucoes;
-  const showFooter = !isDashboard && !isAuth && !isSolucoes;
+  const showNav = !isSolucoes;
+  const showFooter = !isSolucoes;
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
@@ -212,29 +188,9 @@ function AppLayout() {
             <Route path="/termos-uso" element={<TermosUso />} />
             <Route path="/cookies" element={<Cookies />} />
             <Route path="/ajuda" element={<CentralAjuda />} />
-            <Route path="/docs" element={<Documentacao />} />
             <Route path="/status" element={<StatusPlataforma />} />
             <Route path="/contato" element={<Contato />} />
             <Route path="/faq" element={<FAQ />} />
-            <Route path="/sistemas-gratuitos" element={<SistemasGratuitos />} />
-            <Route path="/proximo-passo" element={<ProximoPasso />} />
-            
-            <Route path="/para-ias" element={<ParaIAs />} />
-            <Route path="/llms" element={<ParaIAs />} />
-
-            {/* Auth Routes */}
-            <Route path="/auth/signup" element={<SignUp />} />
-            <Route path="/auth/login" element={<Login />} />
-            <Route path="/auth/forgot-password" element={<ForgotPassword />} />
-
-            {/* Protected Dashboard Routes */}
-            <Route path="/dashboard" element={<Suspense fallback={<PageLoader />}><ProtectedRoute><Dashboard /></ProtectedRoute></Suspense>} />
-            <Route path="/dashboard/projetos" element={<Suspense fallback={<PageLoader />}><ProtectedRoute><Projects /></ProtectedRoute></Suspense>} />
-            <Route path="/dashboard/analytics" element={<Suspense fallback={<PageLoader />}><ProtectedRoute><Analytics /></ProtectedRoute></Suspense>} />
-            <Route path="/dashboard/suporte" element={<Suspense fallback={<PageLoader />}><ProtectedRoute><Support /></ProtectedRoute></Suspense>} />
-            <Route path="/dashboard/configuracoes" element={<Suspense fallback={<PageLoader />}><ProtectedRoute><SettingsPage /></ProtectedRoute></Suspense>} />
-            <Route path="/dashboard/lighthouse" element={<Suspense fallback={<PageLoader />}><AdminRoute><LighthousePage /></AdminRoute></Suspense>} />
-            
 
             <Route path="*" element={<NotFound />} />
           </Routes>
@@ -243,13 +199,11 @@ function AppLayout() {
         </AnimatePresence>
       </main>
       {showFooter && <Footer />}
-      {!isDashboard && (
-        <OptionalFeatureBoundary featureName="chat widget">
-          <Suspense fallback={null}>
-            <ChatWidget />
-          </Suspense>
-        </OptionalFeatureBoundary>
-      )}
+      <OptionalFeatureBoundary featureName="chat widget">
+        <Suspense fallback={null}>
+          <ChatWidget />
+        </Suspense>
+      </OptionalFeatureBoundary>
     </div>
   );
 }

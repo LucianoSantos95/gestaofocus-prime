@@ -112,7 +112,5 @@ Allow: /
 # --- Default ---
 User-agent: *
 Allow: /
-Disallow: /dashboard/
-Disallow: /auth/
 
 Sitemap: https://focusinteligente.com.br/sitemap.xml

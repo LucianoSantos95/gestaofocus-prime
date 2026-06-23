@@ -330,7 +330,7 @@ const OrganizarTarefasDiaDia = () => {
                   Nossos templates no Notion já vêm estruturados para você aplicar tudo que aprendeu aqui — sem precisar criar do zero.
                 </p>
                 <Link 
-                  to="/sistemas-gratuitos"
+                  to="/contato"
                   className="inline-flex items-center bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors"
                 >
                   Conheça nossos sistemas no Notion →

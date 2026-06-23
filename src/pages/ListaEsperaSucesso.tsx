@@ -157,10 +157,10 @@ const ListaEsperaSucesso = () => {
                   Ler o Blog
                 </Button>
                 <Button
-                  onClick={() => navigate('/sistemas-gratuitos')}
+                  onClick={() => navigate('/contato')}
                   className="group"
                 >
-                  Ver Sistemas Gratuitos
+                  Falar com a Focus
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </div>

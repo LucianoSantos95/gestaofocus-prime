@@ -1,52 +1,39 @@
-## Ajustes solicitados
+## Páginas a remover
 
-### 1. Cor azul brilhante nas palavras grifadas (`<em>` / `<i>`)
-Em `src/index.css` o estilo atual de `em, i` está cinza translúcido (`rgba(235,235,235,0.55)`). Trocar por um azul brilhante (proposta: **#3B82F6** — o "blue-500" do tom Focus, mais vibrante que o `#1E40AF` do accent). Aplica-se globalmente, então todas as páginas (Home, Soluções, Hub, Sobre, etc.) recebem automaticamente.
+**Auth (login e tudo dentro):**
 
-```css
-em, i { color: #3B82F6; font-style: italic; font-weight: 400; }
-```
+- `src/pages/auth/Login.tsx`
+- `src/pages/auth/SignUp.tsx`
+- `src/pages/auth/ForgotPassword.tsx`
+- `src/components/auth/GoogleSignInButton.tsx`
 
-### 2. "+50 empresas" no Hub
-- `src/pages/Index.tsx`: métrica `43+ → 50+` e texto `43+ empresas → 50+ empresas`.
-- `src/pages/HubEmpresarial.tsx`: badge `43 empresas → 50+ empresas` e métrica `43 → 50+`.
+**Dashboard (área logada, depende de auth):**
 
-### 3. Animação de scroll global
-Criar hook utilitário simples baseado em `IntersectionObserver` + classe CSS `.reveal` que aplica fade + translateY quando a seção entra na viewport.
+- `src/pages/dashboard/Dashboard.tsx`, `Projects.tsx`, `Analytics.tsx`, `Support.tsx`, `Settings.tsx`, `Lighthouse.tsx`
+- `src/pages/AreaCliente.tsx`
+- `src/components/ProtectedRoute.tsx`, `src/components/AdminRoute.tsx`
+- `src/components/dashboard/*` (DashboardLayout, Sidebar, HeroBanner, MVPSimulatorPanel, ProjectCard, ResourceCarousel, TemplateCard, TalkToProBubble, DashboardChatButton, MvpResultStructured)
+- `src/hooks/useUserRole.tsx`
 
-- Adicionar em `src/index.css`:
-  ```css
-  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
-  .reveal.in-view { opacity: 1; transform: translateY(0); }
-  ```
-- Criar `src/hooks/useScrollReveal.tsx` — instala um único `IntersectionObserver` que observa todos `[data-reveal]` ou `.reveal` no DOM e adiciona `.in-view` quando 15% visíveis (uma vez).
-- Inicializar o hook em `App.tsx` (dentro de `AppLayout`) para rodar em todo o site.
-- Aplicar `className="reveal"` nos principais blocos (`<section>`, cards de bento, cards de método, métricas) das páginas: `Index.tsx`, `SolucoesSobMedida.tsx`, `HubEmpresarial.tsx`, `AboutFocus.tsx`, `Contato.tsx`, `Blog.tsx`. Respeitar `prefers-reduced-motion`.
+**Outras páginas:**
 
-### 4. Footer duplicado no Blog
-`AppLayout` já injeta `<Footer />` globalmente, e `Blog.tsx` também renderiza `<Footer />` na linha 808. **Remover** a importação e o render do Footer em `Blog.tsx`.
+- `src/pages/Documentacao.tsx` (`/docs`)
+- `src/pages/ParaIAs.tsx` (`/llms` e `/para-ias`)
+- `src/pages/ProximoPasso.tsx` (`/proximo-passo`)
+- `src/pages/SistemasGratuitos.tsx` (`/sistemas-gratuitos`)
 
-### 5. Logo na página Sobre (substituir o "L")
-- Copiar `user-uploads://image-89.png` para `src/assets/focus-logo-circle.png`.
-- Em `src/pages/AboutFocus.tsx` substituir o div circular com "L" por um `<img>` importado, mantendo o tamanho 120x120, borda e os anéis (`.sv-ring`).
+## Ajustes no código
 
-### 6. Chat não abrir automaticamente
-Em `src/components/ChatWidget.tsx` remover o `useEffect` (linhas ~80-87) que faz `setIsOpen(true)` após 3s. O usuário só abre clicando no botão flutuante.
+1. `**src/App.tsx**` — remover todos os imports lazy e `<Route>` correspondentes (auth, dashboard, docs, llms, para-ias, proximo-passo, sistemas-gratuitos); remover `DashboardChatButton` lazy import e flags `isDashboard`/`isAuth` (simplificar `AppLayout`).
+2. `**src/components/Navigation.tsx**` — remover links/botões "Entrar", "Cadastrar", "Dashboard", "Próximo passo", "Sistemas gratuitos", "Docs", "Para IAs" se existirem.
+3. `**src/components/Footer.tsx**` — idem (limpar links para rotas removidas).
+4. Buscar e remover referências restantes (`rg`) em outros componentes (ex.: CTAs apontando para `/proximo-passo`, `/sistemas-gratuitos`, `/auth/*`, `/dashboard`) — substituir por `/contato` ou remover o botão conforme contexto.
+5. `**scripts/generate-sitemap.js**` + `**public/sitemap.xml**` — remover `/sobre-focus` já não está; remover `/llms`, `/auth/login`, `/auth/signup`, e quaisquer entradas das páginas removidas; regenerar sitemap.
+6. `**public/robots.txt**` / `**public/llms.txt**` / `**public/llms-full.txt**` — remover menções a `/llms`, `/para-ias`, `/docs`, `/proximo-passo`, `/sistemas-gratuitos`.
+7. **NotFound** continua tratando rotas inválidas — qualquer link antigo cai em 404 limpo.
 
-### 7. Remover popup automático ("popup que aparece ao entrar")
-Trata-se do `ActionPlanPopup` montado em `App.tsx` (linhas 19, 237-243). Remover o import lazy e o render do `<ActionPlanPopup />` em `AppLayout`.
+## Itens a confirmar
 
-### Fora de escopo
-Nenhuma alteração em rotas, conteúdo de texto além do número de empresas, Supabase, edge functions, analytics ou formulários.
-
-### Arquivos a alterar
-- `src/index.css` (cor `em`, classes `.reveal`)
-- `src/hooks/useScrollReveal.tsx` (novo)
-- `src/App.tsx` (usar hook, remover ActionPlanPopup)
-- `src/components/ChatWidget.tsx` (remover auto-open)
-- `src/pages/Index.tsx` (50+ empresas, classes reveal)
-- `src/pages/HubEmpresarial.tsx` (50+ empresas, classes reveal)
-- `src/pages/SolucoesSobMedida.tsx` (classes reveal)
-- `src/pages/AboutFocus.tsx` (logo + classes reveal)
-- `src/pages/Blog.tsx` (remover Footer duplicado, classes reveal)
-- `src/assets/focus-logo-circle.png` (novo asset copiado do upload)
+- **Edge functions** ligadas só ao dashboard (`generate-mvp-plan`, `claim-simulation`, `pagespeed`) ficam no projeto sem uso. Manter ou também deletar? - pode deletar
+- **ChatWidget** e popups (HubFocusPopup, ActionPlanPopup, etc.) que abrem rotas removidas — devo redirecionar CTAs para `/contato`? - Sim
+- Confirma que **não quer manter nenhuma forma de login** (remoção total de auth do site)? - Confirmado
