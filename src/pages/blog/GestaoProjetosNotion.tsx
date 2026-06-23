@@ -92,31 +92,31 @@ const GestaoProjetosNotion = () => {
             <ul className="space-y-2 text-foreground-muted">
               <li className="flex items-center gap-2 hover:text-primary transition-colors cursor-pointer">
                 <ChevronRight className="w-4 h-4" />
-                <a href="#por-que">Por que o Notion é perfeito para gestão de projetos</a>
+                <a href="#por-que">Por que o Notion é perfeito para gestão de projetos</Link>
               </li>
               <li className="flex items-center gap-2 hover:text-primary transition-colors cursor-pointer">
                 <ChevronRight className="w-4 h-4" />
-                <a href="#passo1">Passo 1: Estruture sua base de projetos</a>
+                <a href="#passo1">Passo 1: Estruture sua base de projetos</Link>
               </li>
               <li className="flex items-center gap-2 hover:text-primary transition-colors cursor-pointer">
                 <ChevronRight className="w-4 h-4" />
-                <a href="#passo2">Passo 2: Crie o sistema de tarefas</a>
+                <a href="#passo2">Passo 2: Crie o sistema de tarefas</Link>
               </li>
               <li className="flex items-center gap-2 hover:text-primary transition-colors cursor-pointer">
                 <ChevronRight className="w-4 h-4" />
-                <a href="#passo3">Passo 3: Defina visualizações (kanban, sprint, roadmap)</a>
+                <a href="#passo3">Passo 3: Defina visualizações (kanban, sprint, roadmap)</Link>
               </li>
               <li className="flex items-center gap-2 hover:text-primary transition-colors cursor-pointer">
                 <ChevronRight className="w-4 h-4" />
-                <a href="#passo4">Passo 4: Implemente rituais de acompanhamento</a>
+                <a href="#passo4">Passo 4: Implemente rituais de acompanhamento</Link>
               </li>
               <li className="flex items-center gap-2 hover:text-primary transition-colors cursor-pointer">
                 <ChevronRight className="w-4 h-4" />
-                <a href="#passo5">Passo 5: Adicione automações e integrações</a>
+                <a href="#passo5">Passo 5: Adicione automações e integrações</Link>
               </li>
               <li className="flex items-center gap-2 hover:text-primary transition-colors cursor-pointer">
                 <ChevronRight className="w-4 h-4" />
-                <a href="#faq">Perguntas frequentes sobre gestão de projetos no Notion</a>
+                <a href="#faq">Perguntas frequentes sobre gestão de projetos no Notion</Link>
               </li>
             </ul>
           </nav>
@@ -140,7 +140,7 @@ const GestaoProjetosNotion = () => {
             </p>
 
             <p className="text-foreground-muted leading-relaxed mb-6">
-              Segundo pesquisa do <a href="https://www.pmi.org/learning/library/implementing-project-management-system-6110" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Project Management Institute (PMI)</a>, empresas com <strong>sistemas de gestão de projetos</strong> adequados desperdiçam 28x menos recursos. O <strong>Notion</strong> oferece esse sistema por fração do custo de ferramentas como Monday, Asana ou Jira, tornando o <strong>gerenciamento de projetos</strong> acessível.
+              Segundo pesquisa do <a href="https://www.pmi.org/learning/library/implementing-project-management-system-6110" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Project Management Institute (PMI)</Link>, empresas com <strong>sistemas de gestão de projetos</strong> adequados desperdiçam 28x menos recursos. O <strong>Notion</strong> oferece esse sistema por fração do custo de ferramentas como Monday, Asana ou Jira, tornando o <strong>gerenciamento de projetos</strong> acessível.
             </p>
 
             <div className="bg-card border border-card-border rounded-lg p-6 my-8">
@@ -192,7 +192,7 @@ const GestaoProjetosNotion = () => {
             </ul>
 
             <p className="text-foreground-muted leading-relaxed mb-6">
-              Com as tarefas vinculadas aos <strong>projetos</strong>, você consegue ver automaticamente todas as tarefas de um <strong>projeto</strong> específico. Isso é o poder dos banco de dados relacionais do <strong>Notion para gestão de projetos</strong>. Compare com <Link to="/poder-do-notion-empresas-produtivas" className="text-primary hover:underline">outros benefícios do Notion para empresas</a>.
+              Com as tarefas vinculadas aos <strong>projetos</strong>, você consegue ver automaticamente todas as tarefas de um <strong>projeto</strong> específico. Isso é o poder dos banco de dados relacionais do <strong>Notion para gestão de projetos</strong>. Compare com <Link to="/poder-do-notion-empresas-produtivas" className="text-primary hover:underline">outros benefícios do Notion para empresas</Link>.
             </p>
 
             {/* CTA Intermediário */}
@@ -207,7 +207,7 @@ const GestaoProjetosNotion = () => {
                 <Button size="lg" className="bg-white text-primary hover:bg-white/90 font-semibold">
                   Baixar Templates Gratuitos
                 </Button>
-              </a>
+              </Link>
             </div>
 
             <h2 id="passo3" className="text-3xl font-bold mt-12 mb-6">Passo 3: Defina visualizações estratégicas (kanban, roadmap, sprint)</h2>
@@ -238,7 +238,7 @@ const GestaoProjetosNotion = () => {
 
             <h3 className="text-2xl font-semibold mt-8 mb-4">Visualização de Sprint (para Agile)</h3>
             <p className="text-foreground-muted leading-relaxed mb-6">
-              Se usa metodologia Agile, crie visualização filtrada por <strong>Sprint</strong> atual mostrando apenas tarefas do <strong>sprint</strong> ativo em formato <strong>kanban</strong>. Adicione property "Story Points" para tracking de velocity. Combine com <Link to="/5-erros-produtividade" className="text-primary hover:underline">técnicas de produtividade</a> para maximizar eficiência.
+              Se usa metodologia Agile, crie visualização filtrada por <strong>Sprint</strong> atual mostrando apenas tarefas do <strong>sprint</strong> ativo em formato <strong>kanban</strong>. Adicione property "Story Points" para tracking de velocity. Combine com <Link to="/5-erros-produtividade" className="text-primary hover:underline">técnicas de produtividade</Link> para maximizar eficiência.
             </p>
 
             <h2 id="passo4" className="text-3xl font-bold mt-12 mb-6">Passo 4: Implemente rituais de acompanhamento</h2>
@@ -307,7 +307,7 @@ const GestaoProjetosNotion = () => {
             </ul>
 
             <p className="text-foreground-muted leading-relaxed mb-6">
-              Segundo o <a href="https://www.standishgroup.com/sample_research_files/CHAOSReport2015-Final.pdf" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">CHAOS Report do Standish Group</a>, apenas 29% dos <strong>projetos</strong> são bem-sucedidos quando falta sistema adequado de <strong>gestão de projetos</strong>. Com ferramentas certas como <strong>Notion</strong>, esse número sobe para 71%.
+              Segundo o <a href="https://www.standishgroup.com/sample_research_files/CHAOSReport2015-Final.pdf" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">CHAOS Report do Standish Group</Link>, apenas 29% dos <strong>projetos</strong> são bem-sucedidos quando falta sistema adequado de <strong>gestão de projetos</strong>. Com ferramentas certas como <strong>Notion</strong>, esse número sobe para 71%.
             </p>
 
             <h2 className="text-3xl font-bold mt-12 mb-6">Comece hoje mesmo sua gestão de projetos no Notion</h2>
@@ -321,7 +321,7 @@ const GestaoProjetosNotion = () => {
             </p>
 
             <p className="text-foreground-muted leading-relaxed mb-6">
-              Para resultados ainda melhores, combine com <Link to="/sistema-completo-notion-automacao" className="text-primary hover:underline">sistema completo de gestão empresarial no Notion</a> que integra <strong>projetos</strong>, CRM, financeiro e equipe.
+              Para resultados ainda melhores, combine com <Link to="/sistema-completo-notion-automacao" className="text-primary hover:underline">sistema completo de gestão empresarial no Notion</Link> que integra <strong>projetos</strong>, CRM, financeiro e equipe.
             </p>
 
             {/* FAQ Section */}
@@ -381,7 +381,7 @@ const GestaoProjetosNotion = () => {
               <Button size="lg" className="bg-white text-primary hover:bg-white/90 font-semibold">
                 Ver Sistemas de Gestão no Notion
               </Button>
-            </a>
+            </Link>
           </div>
 
           <div className="mt-16">
@@ -396,7 +396,7 @@ const GestaoProjetosNotion = () => {
                   <h4 className="font-semibold group-hover:text-primary transition-colors">
                     {post.title}
                   </h4>
-                </a>
+                </Link>
               ))}
             </div>
           </div>
@@ -408,7 +408,7 @@ const GestaoProjetosNotion = () => {
             >
               <ArrowLeft className="w-4 h-4 mr-1" />
               Voltar para o Blog
-            </a>
+            </Link>
           </div>
         </div>
       </article>
