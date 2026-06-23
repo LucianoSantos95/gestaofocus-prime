@@ -334,7 +334,7 @@ const OrganizarTarefasDiaDia = () => {
                   className="inline-flex items-center bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors"
                 >
                   Conheça nossos sistemas no Notion →
-                </Link>
+                </a>
               </div>
 
               {/* Artigos Relacionados */}
