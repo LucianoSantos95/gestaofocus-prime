@@ -15,7 +15,7 @@ const CentralAjuda = () => {
     { icon: Book, title: "Sistemas Notion", description: "Dúvidas sobre implementação e uso dos sistemas", link: "/sistemas-notion" },
     { icon: Users, title: "Consultoria", description: "Informações sobre nossos serviços de consultoria", link: "/sobre" },
     { icon: Settings, title: "Suporte Técnico", description: "Problemas técnicos e configurações", link: "#" },
-    { icon: FileText, title: "Documentação", description: "Guias e tutoriais completos", link: "/docs" },
+    { icon: FileText, title: "Fale com a Focus", description: "Atendimento direto pelo nosso time", link: "/contato" },
   ];
 
   const faqItems = [
