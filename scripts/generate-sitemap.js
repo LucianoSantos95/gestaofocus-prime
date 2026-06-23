@@ -17,7 +17,7 @@ const staticPages = [
   { loc: '/hub-empresarial', priority: '0.9', changefreq: 'weekly' },
   { loc: '/blog', priority: '0.9', changefreq: 'weekly' },
   { loc: '/sobre', priority: '0.7', changefreq: 'monthly' },
-  { loc: '/contato', priority: '0.7', changefreq: 'monthly' },
+  
   { loc: '/faq', priority: '0.7', changefreq: 'monthly' },
   { loc: '/ajuda', priority: '0.5', changefreq: 'monthly' },
   { loc: '/status', priority: '0.4', changefreq: 'weekly' },

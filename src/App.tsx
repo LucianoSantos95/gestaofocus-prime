@@ -29,7 +29,7 @@ const TermosUso = lazy(() => import("./pages/TermosUso"));
 const Cookies = lazy(() => import("./pages/Cookies"));
 const CentralAjuda = lazy(() => import("./pages/CentralAjuda"));
 const StatusPlataforma = lazy(() => import("./pages/StatusPlataforma"));
-const Contato = lazy(() => import("./pages/Contato"));
+
 const FAQ = lazy(() => import("./pages/FAQ"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
@@ -189,7 +189,7 @@ function AppLayout() {
             <Route path="/cookies" element={<Cookies />} />
             <Route path="/ajuda" element={<CentralAjuda />} />
             <Route path="/status" element={<StatusPlataforma />} />
-            <Route path="/contato" element={<Contato />} />
+            
             <Route path="/faq" element={<FAQ />} />
 
             <Route path="*" element={<NotFound />} />

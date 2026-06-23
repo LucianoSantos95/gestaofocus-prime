@@ -57,7 +57,6 @@ const Footer = () => {
                 { label: "FAQ", href: "/faq" },
                 { label: "Termos de Uso", href: "/termos-uso" },
                 { label: "Política de Privacidade", href: "/privacidade" },
-                { label: "Contato", href: "/contato" },
               ].map((link) => (
                 <li key={link.href}>
                   <Link

@@ -444,12 +444,12 @@ const MatrizEisenhower = () => {
                 <p className="mb-6 text-muted-foreground">
                   Conheça nossos sistemas no Notion — templates prontos com a matriz integrada à sua gestão de tarefas.
                 </p>
-                <Link 
-                  to="/contato"
+                <a 
+                  href="https://wa.me/5511916742443" target="_blank" rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:opacity-90 transition-opacity"
                 >
                   Conhecer Sistemas Focus
-                </Link>
+                </a>
               </div>
 
               {/* Artigos Relacionados */}
