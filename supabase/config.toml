@@ -9,8 +9,6 @@ verify_jwt = false
 [functions.send-welcome-email]
 verify_jwt = false
 
-[functions.pagespeed]
-verify_jwt = false
 
 [functions.prospect-search]
 verify_jwt = false
