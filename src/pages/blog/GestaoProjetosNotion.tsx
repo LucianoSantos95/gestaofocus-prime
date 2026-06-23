@@ -192,7 +192,7 @@ const GestaoProjetosNotion = () => {
             </ul>
 
             <p className="text-foreground-muted leading-relaxed mb-6">
-              Com as tarefas vinculadas aos <strong>projetos</strong>, você consegue ver automaticamente todas as tarefas de um <strong>projeto</strong> específico. Isso é o poder dos banco de dados relacionais do <strong>Notion para gestão de projetos</strong>. Compare com <Link to="/poder-do-notion-empresas-produtivas" className="text-primary hover:underline">outros benefícios do Notion para empresas</Link>.
+              Com as tarefas vinculadas aos <strong>projetos</strong>, você consegue ver automaticamente todas as tarefas de um <strong>projeto</strong> específico. Isso é o poder dos banco de dados relacionais do <strong>Notion para gestão de projetos</strong>. Compare com <Link to="/poder-do-notion-empresas-produtivas" className="text-primary hover:underline">outros benefícios do Notion para empresas</a>.
             </p>
 
             {/* CTA Intermediário */}
@@ -203,11 +203,11 @@ const GestaoProjetosNotion = () => {
               <p className="text-white/90 mb-6 max-w-2xl mx-auto">
                 Acesse nossos <strong>templates Notion gratuitos</strong> de <strong>gestão de projetos</strong> com <strong>kanban</strong>, <strong>sprint</strong> e <strong>roadmap</strong> já configurados.
               </p>
-              <Link to="/contato">
+              <a href="https://wa.me/5511916742443" target="_blank" rel="noopener noreferrer">
                 <Button size="lg" className="bg-white text-primary hover:bg-white/90 font-semibold">
                   Baixar Templates Gratuitos
                 </Button>
-              </Link>
+              </a>
             </div>
 
             <h2 id="passo3" className="text-3xl font-bold mt-12 mb-6">Passo 3: Defina visualizações estratégicas (kanban, roadmap, sprint)</h2>
@@ -238,7 +238,7 @@ const GestaoProjetosNotion = () => {
 
             <h3 className="text-2xl font-semibold mt-8 mb-4">Visualização de Sprint (para Agile)</h3>
             <p className="text-foreground-muted leading-relaxed mb-6">
-              Se usa metodologia Agile, crie visualização filtrada por <strong>Sprint</strong> atual mostrando apenas tarefas do <strong>sprint</strong> ativo em formato <strong>kanban</strong>. Adicione property "Story Points" para tracking de velocity. Combine com <Link to="/5-erros-produtividade" className="text-primary hover:underline">técnicas de produtividade</Link> para maximizar eficiência.
+              Se usa metodologia Agile, crie visualização filtrada por <strong>Sprint</strong> atual mostrando apenas tarefas do <strong>sprint</strong> ativo em formato <strong>kanban</strong>. Adicione property "Story Points" para tracking de velocity. Combine com <Link to="/5-erros-produtividade" className="text-primary hover:underline">técnicas de produtividade</a> para maximizar eficiência.
             </p>
 
             <h2 id="passo4" className="text-3xl font-bold mt-12 mb-6">Passo 4: Implemente rituais de acompanhamento</h2>
@@ -321,7 +321,7 @@ const GestaoProjetosNotion = () => {
             </p>
 
             <p className="text-foreground-muted leading-relaxed mb-6">
-              Para resultados ainda melhores, combine com <Link to="/sistema-completo-notion-automacao" className="text-primary hover:underline">sistema completo de gestão empresarial no Notion</Link> que integra <strong>projetos</strong>, CRM, financeiro e equipe.
+              Para resultados ainda melhores, combine com <Link to="/sistema-completo-notion-automacao" className="text-primary hover:underline">sistema completo de gestão empresarial no Notion</a> que integra <strong>projetos</strong>, CRM, financeiro e equipe.
             </p>
 
             {/* FAQ Section */}
@@ -381,7 +381,7 @@ const GestaoProjetosNotion = () => {
               <Button size="lg" className="bg-white text-primary hover:bg-white/90 font-semibold">
                 Ver Sistemas de Gestão no Notion
               </Button>
-            </Link>
+            </a>
           </div>
 
           <div className="mt-16">
@@ -396,7 +396,7 @@ const GestaoProjetosNotion = () => {
                   <h4 className="font-semibold group-hover:text-primary transition-colors">
                     {post.title}
                   </h4>
-                </Link>
+                </a>
               ))}
             </div>
           </div>
@@ -408,7 +408,7 @@ const GestaoProjetosNotion = () => {
             >
               <ArrowLeft className="w-4 h-4 mr-1" />
               Voltar para o Blog
-            </Link>
+            </a>
           </div>
         </div>
       </article>

@@ -329,8 +329,8 @@ const OrganizarTarefasDiaDia = () => {
                 <p className="text-muted-foreground mb-4">
                   Nossos templates no Notion já vêm estruturados para você aplicar tudo que aprendeu aqui — sem precisar criar do zero.
                 </p>
-                <Link 
-                  to="/contato"
+                <a 
+                  href="https://wa.me/5511916742443" target="_blank" rel="noopener noreferrer"
                   className="inline-flex items-center bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors"
                 >
                   Conheça nossos sistemas no Notion →
