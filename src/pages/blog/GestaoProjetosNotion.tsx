@@ -203,7 +203,7 @@ const GestaoProjetosNotion = () => {
               <p className="text-white/90 mb-6 max-w-2xl mx-auto">
                 Acesse nossos <strong>templates Notion gratuitos</strong> de <strong>gestão de projetos</strong> com <strong>kanban</strong>, <strong>sprint</strong> e <strong>roadmap</strong> já configurados.
               </p>
-              <Link to="/sistemas-gratuitos">
+              <Link to="/contato">
                 <Button size="lg" className="bg-white text-primary hover:bg-white/90 font-semibold">
                   Baixar Templates Gratuitos
                 </Button>

@@ -464,7 +464,7 @@ const ReunioesProdutivas = () => {
                   Conheça nossos sistemas no Notion — templates prontos para gestão de reuniões, projetos, tarefas e muito mais.
                 </p>
                 <Link 
-                  to="/sistemas-gratuitos"
+                  to="/contato"
                   className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:opacity-90 transition-opacity"
                 >
                   Conhecer Sistemas Focus
