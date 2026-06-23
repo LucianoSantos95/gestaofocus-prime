@@ -57,7 +57,14 @@ const Footer = () => {
                 { label: "FAQ", href: "/faq" },
                 { label: "Termos de Uso", href: "/termos-uso" },
                 { label: "Política de Privacidade", href: "/privacidade" },
-                { label: "Contato", href: "/contato" },
+              </ul>
+            </div>
+            <a
+              href="https://wa.me/5511916742443?text=Ol%C3%A1+Luciano%2C+quero+falar+com+a+Focus"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: "var(--text3)", fontSize: 12, display: "none" }}
+            >Contato</a>{/*placeholder*/}
               ].map((link) => (
                 <li key={link.href}>
                   <Link
