@@ -189,7 +189,7 @@ function AppLayout() {
             <Route path="/cookies" element={<Cookies />} />
             <Route path="/ajuda" element={<CentralAjuda />} />
             <Route path="/status" element={<StatusPlataforma />} />
-            <Route path="/contato" element={<Contato />} />
+            
             <Route path="/faq" element={<FAQ />} />
 
             <Route path="*" element={<NotFound />} />
