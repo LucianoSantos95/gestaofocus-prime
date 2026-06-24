@@ -126,11 +126,51 @@ const Privacidade = () => {
               <section>
                 <h2 className="text-2xl font-semibold text-foreground mb-4">7. Cookies e Tecnologias Similares</h2>
                 <p className="leading-relaxed mb-4">
-                  Utilizamos cookies e tecnologias similares para melhorar sua experiência, analisar o uso do site e 
+                  Utilizamos cookies e tecnologias similares para melhorar sua experiência, analisar o uso do site e
                   personalizar conteúdo. Você pode gerenciar suas preferências de cookies nas configurações do seu navegador.
                 </p>
-                <p className="leading-relaxed">
+                <p className="leading-relaxed mb-6">
                   Para mais informações, consulte nossa <a href="/cookies" className="text-primary hover:underline">Política de Cookies</a>.
+                </p>
+
+                <h3 className="text-xl font-semibold text-foreground mb-3">7.1 Publicidade de Terceiros (Google AdSense)</h3>
+                <p className="leading-relaxed mb-4">
+                  Este site utiliza o Google AdSense, um serviço de veiculação de anúncios do Google LLC. O Google
+                  utiliza cookies, incluindo o cookie DoubleClick (DART), para exibir anúncios com base nas visitas
+                  anteriores do usuário a este site e a outros sites na Internet.
+                </p>
+                <p className="leading-relaxed mb-4">
+                  Fornecedores terceiros, incluindo o Google, usam cookies para veicular anúncios com base nas visitas
+                  anteriores do usuário ao nosso site. Os usuários podem optar por não receber anúncios personalizados
+                  visitando a Política de Privacidade da Rede de Display do Google em:{" "}
+                  <a
+                    href="https://policies.google.com/technologies/ads"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:underline"
+                  >
+                    policies.google.com/technologies/ads
+                  </a>.
+                </p>
+                <p className="leading-relaxed">
+                  Você também pode desativar o uso de cookies para publicidade personalizada acessando as{" "}
+                  <a
+                    href="https://www.google.com/settings/ads"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:underline"
+                  >
+                    Configurações de Anúncios do Google
+                  </a>{" "}
+                  ou através do{" "}
+                  <a
+                    href="https://optout.aboutads.info/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:underline"
+                  >
+                    Digital Advertising Alliance opt-out
+                  </a>.
                 </p>
               </section>
 
