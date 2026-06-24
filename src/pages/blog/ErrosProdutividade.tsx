@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import SEOHead from "@/components/SEOHead";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 import BlogBreadcrumb from "@/components/BlogBreadcrumb";
 import { Calendar, Clock, ArrowLeft, Tag, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -38,6 +40,8 @@ const ErrosProdutividade = () => {
         modifiedTime={modifiedDate}
         keywords="erros produtividade agência, gestão tempo consultoria, produtividade prestadores de serviço, eficiência operacional"
       />
+
+      <Navigation />
 
       <article className="min-h-screen pt-24 pb-16">
         <div className="container-focus mb-8">
@@ -358,6 +362,7 @@ const ErrosProdutividade = () => {
           </div>
         </div>
       </article>
+      <Footer />
     </>
   );
 };

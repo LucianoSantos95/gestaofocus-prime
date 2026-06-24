@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { ArrowLeft, Clock, Calendar, CheckCircle2 } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 import organizarProjetosImage from "@/assets/blog/organizar-projetos-caoticos.jpg";
 
 const OrganizarProjetosCaoticos = () => {
@@ -24,6 +26,8 @@ const OrganizarProjetosCaoticos = () => {
         modifiedTime="2025-01-20"
         keywords="organizar projetos agência, gestão projetos consultoria, projetos caóticos prestadores serviço, eficiência equipe agência"
       />
+
+      <Navigation />
 
       <article className="min-h-screen bg-background py-20">
         <div className="container-focus max-w-4xl mx-auto px-4">
@@ -349,6 +353,7 @@ const OrganizarProjetosCaoticos = () => {
           </div>
         </div>
       </article>
+      <Footer />
     </>
   );
 };

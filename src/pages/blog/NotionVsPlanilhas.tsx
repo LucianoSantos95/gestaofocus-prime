@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { ArrowLeft, Clock } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 import notionVsPlanilhasImage from "@/assets/blog/notion-vs-planilhas.jpg";
 
 const NotionVsPlanilhas = () => {
@@ -24,6 +26,8 @@ const NotionVsPlanilhas = () => {
         modifiedTime="2025-01-20"
         keywords="notion vs planilhas agência, notion vs excel consultoria, gestão agência, ferramentas prestadores serviço, notion para agências"
       />
+
+      <Navigation />
 
       <article className="min-h-screen bg-background py-20">
         <div className="container-focus max-w-4xl mx-auto px-4">
@@ -427,6 +431,7 @@ const NotionVsPlanilhas = () => {
           </div>
         </div>
       </article>
+      <Footer />
     </>
   );
 };

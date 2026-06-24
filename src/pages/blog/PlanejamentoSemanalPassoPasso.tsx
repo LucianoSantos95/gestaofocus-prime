@@ -3,6 +3,8 @@ import { Calendar, Clock, CheckCircle, Target, AlertTriangle, ArrowRight } from 
 import BlogCTA from "@/components/BlogCTA";
 import RelatedArticles from "@/components/RelatedArticles";
 import SEOHead from "@/components/SEOHead";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 import articleImage from "@/assets/blog/planejamento-semanal-passo-passo.jpg";
 
 // Articles data for RelatedArticles component
@@ -53,6 +55,8 @@ const PlanejamentoSemanalPassoPasso = () => {
         modifiedTime={publishDate}
       />
       
+      <Navigation />
+
       <div className="min-h-screen bg-background">
         <main className="pt-24 pb-16">
           <article className="container mx-auto px-4 max-w-4xl">
@@ -400,6 +404,7 @@ const PlanejamentoSemanalPassoPasso = () => {
           </article>
         </main>
       </div>
+      <Footer />
     </>
   );
 };

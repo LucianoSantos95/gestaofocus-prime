@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { Calendar, Clock, ArrowLeft, User, Briefcase, Target, CheckCircle2, Scale } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 import BlogCTA from "@/components/BlogCTA";
 import RelatedArticles from "@/components/RelatedArticles";
 import articleImage from "@/assets/blog/organizacao-pessoal-profissional.jpg";
@@ -34,7 +36,9 @@ const OrganizacaoPessoalProfissional = () => {
   ];
 
   return (
-    <article className="min-h-screen bg-background">
+    <>
+      <Navigation />
+      <article className="min-h-screen bg-background">
       <SEOHead
         title="Organização para Donos de Agência: Equilibre Operação e Vida"
         description="Como donos de agência e consultoria organizam rotina pessoal e profissional. Estratégias para equilibrar operação, clientes e qualidade de vida."
@@ -395,6 +399,8 @@ const OrganizacaoPessoalProfissional = () => {
         </div>
       </div>
     </article>
+    <Footer />
+  </>
   );
 };
 

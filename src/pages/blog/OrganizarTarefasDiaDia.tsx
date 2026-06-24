@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import SEOHead from "@/components/SEOHead";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 import BlogCTA from "@/components/BlogCTA";
 import articleImage from "@/assets/blog/organizar-tarefas-dia-dia.jpg";
 
@@ -19,6 +21,8 @@ const OrganizarTarefasDiaDia = () => {
         modifiedTime="2026-01-06"
         keywords="organizar tarefas agência, gestão demandas consultoria, sobrecarga operacional, produtividade equipe serviços"
       />
+
+      <Navigation />
 
       <div className="min-h-screen bg-background">
         <article className="pt-32 pb-20">
@@ -379,6 +383,7 @@ const OrganizarTarefasDiaDia = () => {
           </div>
         </article>
       </div>
+      <Footer />
     </>
   );
 };

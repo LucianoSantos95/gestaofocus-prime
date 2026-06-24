@@ -2,6 +2,8 @@ import { useNavigate } from "react-router-dom";
 import { ArrowLeft, Calendar, Clock, User, Lightbulb, Target, Compass, Puzzle, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SEOHead from "@/components/SEOHead";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 import BlogBreadcrumb from "@/components/BlogBreadcrumb";
 import BlogCTA from "@/components/BlogCTA";
 import RelatedArticles from "@/components/RelatedArticles";
@@ -53,6 +55,8 @@ const MetodoPessoalProdutividade = () => {
         modifiedTime="2026-01-06"
         keywords="método de produtividade, produtividade pessoal, sistema personalizado, perfil de produtividade, organização pessoal"
       />
+
+      <Navigation />
 
       <article className="min-h-screen bg-background">
         {/* Hero Section */}
@@ -470,6 +474,7 @@ const MetodoPessoalProdutividade = () => {
           />
         </section>
       </article>
+      <Footer />
     </>
   );
 };

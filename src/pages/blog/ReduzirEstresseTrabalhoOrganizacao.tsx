@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { ArrowLeft, Calendar, Clock, User, Share2, Linkedin, Twitter, Facebook, CheckCircle2, Heart, AlertTriangle, Target, Brain, Lightbulb } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import BlogCTA from "@/components/BlogCTA";
@@ -61,6 +63,8 @@ const ReduzirEstresseTrabalhoOrganizacao = () => {
         keywords="estresse gestor agência, burnout consultoria, organização operacional, bem-estar prestador serviços, processos anti-estresse"
       />
       
+      <Navigation />
+
       <article className="min-h-screen bg-background">
         {/* Hero Section */}
         <header className="relative bg-gradient-to-br from-primary/5 via-background to-secondary/5 pt-24 pb-16">
@@ -551,6 +555,7 @@ const ReduzirEstresseTrabalhoOrganizacao = () => {
           </div>
         </div>
       </article>
+      <Footer />
     </>
   );
 };

@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { Calendar, Clock, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SEOHead from "@/components/SEOHead";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 import BlogBreadcrumb from "@/components/BlogBreadcrumb";
 import articleImage from "@/assets/blog/confiar-em-sistemas.jpg";
 
@@ -35,6 +37,8 @@ const ConfiarSistemasProducao = () => {
         modifiedTime="2025-02-02"
         keywords="sistemas gestão agência, organização consultoria, segundo cérebro prestadores serviço, produtividade agências, notion gestão"
       />
+
+      <Navigation />
 
       <article className="min-h-screen pt-24 pb-16">
         <div className="container-focus mb-8">
@@ -297,6 +301,7 @@ const ConfiarSistemasProducao = () => {
           </div>
         </div>
       </article>
+      <Footer />
     </>
   );
 };

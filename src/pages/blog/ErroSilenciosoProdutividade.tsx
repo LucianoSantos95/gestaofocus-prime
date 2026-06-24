@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import SEOHead from "@/components/SEOHead";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 import BlogBreadcrumb from "@/components/BlogBreadcrumb";
 import { ArrowLeft, Clock, Calendar, Share2, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -123,6 +125,8 @@ const ErroSilenciosoProdutividade = () => {
         modifiedTime={publishDate}
         keywords="produtividade agência, erro produtividade consultoria, gestão equipes serviço, sistema centralizado agência"
       />
+
+      <Navigation />
 
       <article className="min-h-screen pt-24 pb-16">
         {/* Breadcrumbs */}
@@ -520,6 +524,7 @@ const ErroSilenciosoProdutividade = () => {
           </div>
         </section>
       </article>
+      <Footer />
     </>
   );
 };

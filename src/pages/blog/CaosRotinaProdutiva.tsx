@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import SEOHead from "@/components/SEOHead";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 import BlogBreadcrumb from "@/components/BlogBreadcrumb";
 import { ArrowLeft, Clock, Calendar, Share2, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -124,6 +126,8 @@ const CaosRotinaProdutiva = () => {
         modifiedTime={publishDate}
         keywords="rotina produtiva agência, organizar dia consultoria, caos prestadores serviço, notion rotina, gestão operacional"
       />
+
+      <Navigation />
 
       <article className="min-h-screen pt-24 pb-16">
         <div className="container-focus mb-8">
@@ -587,6 +591,7 @@ const CaosRotinaProdutiva = () => {
           </div>
         </section>
       </article>
+      <Footer />
     </>
   );
 };

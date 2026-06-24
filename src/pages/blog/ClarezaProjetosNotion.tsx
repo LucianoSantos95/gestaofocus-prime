@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { Calendar, Clock, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SEOHead from "@/components/SEOHead";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 import BlogBreadcrumb from "@/components/BlogBreadcrumb";
 import articleImage from "@/assets/blog/clareza-projetos-notion.jpg";
 
@@ -35,6 +37,8 @@ const ClarezaProjetosNotion = () => {
         modifiedTime="2025-02-05"
         keywords="clareza projetos clientes, notion agências, dashboard projetos consultoria, gestão entregas, produtividade prestadores serviço"
       />
+
+      <Navigation />
 
       <article className="min-h-screen pt-24 pb-16">
         <div className="container-focus mb-8">
@@ -366,6 +370,7 @@ const ClarezaProjetosNotion = () => {
           </div>
         </div>
       </article>
+      <Footer />
     </>
   );
 };
