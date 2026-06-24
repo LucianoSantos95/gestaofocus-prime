@@ -266,7 +266,7 @@ const GestaoProjetosNotion = () => {
             <h2 id="passo5" className="text-3xl font-bold mt-12 mb-6">Passo 5: Adicione automações e integrações</h2>
 
             <p className="text-foreground-muted leading-relaxed mb-6">
-              Para levar seu sistema de <strong>gestão de projetos no Notion</strong> ao próximo nível no <strong>gerenciamento de projetos</strong>, adicione:
+              Para levar seu sistema ao próximo nível, adicione automações e integrações ao <strong>Notion</strong>:
             </p>
 
             <h3 className="text-2xl font-semibold mt-8 mb-4">Integrações nativas</h3>
@@ -321,7 +321,7 @@ const GestaoProjetosNotion = () => {
             </p>
 
             <p className="text-foreground-muted leading-relaxed mb-6">
-              O importante é começar a <strong>gestão de projetos no Notion</strong>. Um sistema simples que é usado é infinitamente melhor que um sistema perfeito que ninguém adota. Comece hoje, use <strong>templates Notion</strong> prontos se quiser acelerar, e vá evoluindo seu <strong>gerenciamento de projetos</strong>.
+              O importante é começar. Um sistema simples que é usado é infinitamente melhor que um sistema perfeito que ninguém adota. Comece hoje, use <strong>templates Notion</strong> prontos se quiser acelerar, e vá refinando conforme a equipe cria o hábito.
             </p>
 
             <p className="text-foreground-muted leading-relaxed mb-6">
@@ -349,14 +349,14 @@ const GestaoProjetosNotion = () => {
               <div className="border border-card-border rounded-lg p-6">
                 <h3 className="text-xl font-semibold mb-3">Notion ou Trello: qual é melhor para gestão de projetos?</h3>
                 <p className="text-foreground-muted">
-                  <strong>Notion</strong> é melhor para <strong>gestão de projetos</strong> complexa porque oferece: documentação integrada, múltiplas visualizações (<strong>kanban</strong>, calendário, timeline/<strong>roadmap</strong>), banco de dados relacionais, <strong>templates</strong> customizáveis e centralização de toda informação. Trello é mais simples e adequado para <strong>projetos</strong> básicos com apenas <strong>kanban</strong>. Se você precisa de sistema robusto de <strong>gerenciamento de projetos</strong> com <strong>sprints</strong>, <strong>roadmap</strong>, <strong>backlog</strong> e documentação, o <strong>Notion</strong> é superior para <strong>gestão de projetos</strong>.
+                  <strong>Notion</strong> é melhor para projetos complexos porque oferece: documentação integrada, múltiplas visualizações (<strong>kanban</strong>, calendário, timeline/<strong>roadmap</strong>), banco de dados relacionais, <strong>templates</strong> customizáveis e centralização de toda informação. Trello é mais simples, adequado para equipes pequenas que só precisam do <strong>kanban</strong>. Se você precisa de <strong>sprints</strong>, <strong>roadmap</strong>, <strong>backlog</strong> e documentação no mesmo lugar, o <strong>Notion</strong> é a escolha superior.
                 </p>
               </div>
 
               <div className="border border-card-border rounded-lg p-6">
                 <h3 className="text-xl font-semibold mb-3">Posso usar Notion para metodologia Agile/Scrum?</h3>
                 <p className="text-foreground-muted">
-                  Sim, o <strong>Notion</strong> é perfeito para Agile/Scrum na <strong>gestão de projetos</strong>. Você pode criar: <strong>backlog</strong> de produto, <strong>sprints</strong> com datas, <strong>kanban</strong> para tarefas do <strong>sprint</strong>, <strong>roadmap</strong> no formato timeline, retrospectivas documentadas, e dashboards para velocity. Muitas equipes ágeis usam <strong>templates Notion</strong> específicos para <strong>gestão de projetos</strong> Scrum, incluindo planning poker, <strong>sprint</strong> review e daily standups documentados. O <strong>Notion</strong> permite flexibilidade total para adaptar metodologia Agile ao seu <strong>gerenciamento de projetos</strong>.
+                  Sim, o <strong>Notion</strong> é perfeito para Agile/Scrum. Você pode criar: <strong>backlog</strong> de produto, <strong>sprints</strong> com datas, <strong>kanban</strong> para tarefas do <strong>sprint</strong>, <strong>roadmap</strong> em timeline, retrospectivas documentadas e dashboards de velocity. Muitas equipes ágeis usam <strong>templates Notion</strong> específicos para Scrum — planning poker, <strong>sprint</strong> review e daily standups documentados. A flexibilidade total permite adaptar qualquer metodologia sem comprometer a visibilidade do time.
                 </p>
               </div>
             </div>

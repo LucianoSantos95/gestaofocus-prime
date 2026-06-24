@@ -138,7 +138,7 @@ const MapeamentoProcessos = () => {
             </p>
 
             <p className="text-foreground-muted leading-relaxed mb-6">
-              O motivo? Seus processos não estão mapeados. E quando você não sabe exatamente como as coisas funcionam na sua empresa através de <strong>gestão de processos</strong> estruturada, é impossível melhorá-las. Segundo pesquisa da <a href="https://www.mckinsey.com/capabilities/operations/our-insights" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">McKinsey</a>, empresas sem <strong>mapeamento de processos</strong> perdem em média 20-30% de eficiência operacional.
+              O motivo? Seus processos não estão documentados. Sem uma <strong>gestão de processos</strong> estruturada, é impossível melhorar o que você não consegue enxergar. Segundo a <a href="https://www.mckinsey.com/capabilities/operations/our-insights" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">McKinsey</a>, empresas que operam no improviso perdem em média 20-30% de eficiência operacional — simplesmente por não saber onde está o gargalo.
             </p>
 
             <p className="text-foreground-muted leading-relaxed mb-6">
@@ -154,12 +154,12 @@ const MapeamentoProcessos = () => {
             <div className="bg-card border border-card-border rounded-lg p-6 my-8">
               <h3 className="text-xl font-bold mb-3">📊 Dados que comprovam</h3>
               <p className="text-foreground-muted mb-0">
-                De acordo com a <a href="https://www.abpmp.org/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">ABPMP (Association of Business Process Management Professionals)</a>, empresas que implementam <strong>gestão de processos</strong> formal reduzem custos operacionais em 15-25% e aumentam satisfação do cliente em 20-35%. O <strong>mapeamento de processos</strong> é o primeiro passo essencial.
+                De acordo com a <a href="https://www.abpmp.org/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">ABPMP (Association of Business Process Management Professionals)</a>, empresas que adotam <strong>gestão de processos</strong> formal reduzem custos operacionais em 15-25% e aumentam satisfação do cliente em 20-35%. Documentar como o trabalho acontece é o primeiro passo — e o mais subestimado.
               </p>
             </div>
 
             <p className="text-foreground-muted leading-relaxed mb-6">
-              Quando você faz o <strong>mapeamento de processos</strong>, três coisas acontecem imediatamente na sua <strong>gestão de processos</strong>:
+              Quando você documenta seus fluxos operacionais, três mudanças acontecem imediatamente:
             </p>
 
             <h3 className="text-2xl font-semibold mt-8 mb-4">1. Você identifica os gargalos no workflow</h3>
@@ -167,7 +167,7 @@ const MapeamentoProcessos = () => {
               Aquela etapa que sempre atrasa tudo se torna óbvia no <strong>fluxograma</strong>. Pode ser uma aprovação demorada, uma falta de comunicação entre setores, ou um processo manual que deveria ser automatizado. Com o <strong>mapeamento de processos</strong> visual, os gargalos saltam aos olhos.
             </p>
             <p className="text-foreground-muted leading-relaxed mb-6">
-              Metodologias como <strong>Lean</strong> e <strong>Kaizen</strong> usam <strong>mapeamento de processos</strong> para identificar desperdícios (muda em japonês) e criar <strong>workflow</strong> otimizado. A Toyota, pioneira do <strong>Lean</strong>, atribui muito de seu sucesso ao constante <strong>mapeamento</strong> e melhoria de processos.
+              Metodologias como <strong>Lean</strong> e <strong>Kaizen</strong> foram construídas sobre esse princípio — tornar os desperdícios (muda em japonês) visíveis para eliminá-los. A Toyota atribui grande parte do seu sucesso à análise constante de como cada etapa da operação funciona.
             </p>
 
             <h3 className="text-2xl font-semibold mt-8 mb-4">2. Você elimina o retrabalho através da gestão de processos</h3>
@@ -175,12 +175,12 @@ const MapeamentoProcessos = () => {
               Quantas vezes sua equipe refaz o mesmo trabalho? Informações que se perdem, tarefas duplicadas, ou decisões que precisam ser refeitas porque faltou alguma etapa no <strong>processo</strong>. O <strong>mapeamento de processos</strong> com <strong>BPMN</strong> ou <strong>fluxograma</strong> elimina ambiguidades.
             </p>
             <p className="text-foreground-muted leading-relaxed mb-6">
-              Um estudo da <a href="https://www.gartner.com/en" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Gartner</a> mostra que empresas com processos mal documentados gastam 35% mais tempo em retrabalho. A <strong>gestão de processos</strong> estruturada reduz drasticamente esse desperdício.
+              Um estudo do <a href="https://www.gartner.com/en" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Gartner</a> mostra que empresas com operação mal documentada gastam 35% mais tempo em retrabalho. Uma estrutura clara elimina esse desperdício.
             </p>
 
             <h3 className="text-2xl font-semibold mt-8 mb-4">3. Você cria previsibilidade com workflow documentado</h3>
             <p className="text-foreground-muted leading-relaxed mb-6">
-              Com <strong>processos mapeados</strong> em <strong>workflow</strong> claro, você sabe exatamente quanto tempo cada coisa leva, quantos recursos precisa, e pode prever problemas antes que aconteçam. A <strong>gestão de processos</strong> se torna científica, não mais baseada em achismos.
+              Com os fluxos documentados e visíveis, você sabe exatamente quanto tempo cada etapa leva, quantos recursos precisa, e consegue prever gargalos antes que virem incêndio. A operação deixa de depender de memória e achismo.
             </p>
 
             {/* CTA Intermediário */}
@@ -201,7 +201,7 @@ const MapeamentoProcessos = () => {
             <h2 id="como-fazer" className="text-3xl font-bold mt-12 mb-6">Como fazer o mapeamento de processos na prática</h2>
 
             <p className="text-foreground-muted leading-relaxed mb-6">
-              O <strong>mapeamento de processos</strong> não precisa ser complicado. Comece pelos processos mais críticos do seu negócio - aqueles que impactam diretamente o cliente ou a receita. Use metodologias comprovadas de <strong>gestão de processos</strong>.
+              Começar não precisa ser complicado. Escolha os processos mais críticos — aqueles que impactam diretamente o cliente ou a receita — e mapeie um de cada vez. Itere.
             </p>
 
             <h3 className="text-2xl font-semibold mt-8 mb-4">Passo 1: Escolha o processo para mapear</h3>
@@ -211,7 +211,7 @@ const MapeamentoProcessos = () => {
 
             <h3 className="text-2xl font-semibold mt-8 mb-4">Passo 2: Documente cada etapa no fluxograma</h3>
             <p className="text-foreground-muted leading-relaxed mb-6">
-              Liste todas as etapas do <strong>processo</strong> do início ao fim. Use a notação <strong>BPMN</strong> se quiser padrão internacional, ou simplesmente crie <strong>fluxograma</strong> claro. Não tente fazer perfeito na primeira tentativa - o importante é começar o <strong>mapeamento de processos</strong>.
+              Liste todas as etapas do início ao fim. Use a notação <strong>BPMN</strong> se quiser padrão internacional, ou simplesmente crie um <strong>fluxograma</strong> claro. Não tente fazer perfeito na primeira tentativa — o importante é começar.
             </p>
             <p className="text-foreground-muted leading-relaxed mb-6">
               Para cada etapa no <strong>workflow</strong>, documente: O que acontece? Quem faz? Quais inputs são necessários? Qual output é gerado? Quanto tempo leva? Existem pontos de decisão?
@@ -229,7 +229,7 @@ const MapeamentoProcessos = () => {
 
             <h3 className="text-2xl font-semibold mt-8 mb-4">Passo 5: Implemente melhorias e monitore</h3>
             <p className="text-foreground-muted leading-relaxed mb-6">
-              <strong>Mapeamento de processos</strong> não é exercício estático. Implemente as melhorias identificadas, monitore resultados usando KPIs no <strong>workflow</strong>, e refine continuamente. O ciclo PDCA (Plan-Do-Check-Act) do <strong>Kaizen</strong> funciona perfeitamente com <strong>gestão de processos</strong>.
+              Isso não é um exercício estático. Implemente as melhorias, monitore resultados com KPIs e refine continuamente. O ciclo PDCA (Plan-Do-Check-Act) é a base de qualquer operação que melhora ao longo do tempo.
             </p>
 
             <h2 id="ferramentas" className="text-3xl font-bold mt-12 mb-6">Ferramentas e técnicas: BPMN, Lean, Kaizen</h2>
@@ -239,7 +239,7 @@ const MapeamentoProcessos = () => {
               <strong>BPMN</strong> é o padrão internacional para <strong>mapeamento de processos</strong>. Usa símbolos padronizados para representar eventos, atividades, gateways (pontos de decisão) e fluxos no <strong>workflow</strong>. Ferramentas como Bizagi, Lucidchart e Draw.io suportam <strong>BPMN</strong>.
             </p>
             <p className="text-foreground-muted leading-relaxed mb-6">
-              Vantagem do <strong>BPMN</strong>: qualquer profissional de <strong>gestão de processos</strong> no mundo entende a notação. Desvantagem: pode ser complexo para iniciantes. Para empresas pequenas, um <strong>fluxograma</strong> simples pode ser suficiente inicialmente.
+              Vantagem do <strong>BPMN</strong>: qualquer especialista no mundo reconhece os símbolos. Desvantagem: pode ser complexo para iniciantes. Para empresas pequenas, um <strong>fluxograma</strong> simples é suficiente para começar.
             </p>
 
             <h3 className="text-2xl font-semibold mt-8 mb-4">Lean Manufacturing e eliminação de desperdícios</h3>
@@ -249,21 +249,21 @@ const MapeamentoProcessos = () => {
 
             <h3 className="text-2xl font-semibold mt-8 mb-4">Kaizen e melhoria contínua de processos</h3>
             <p className="text-foreground-muted leading-relaxed mb-6">
-              <strong>Kaizen</strong> (melhoria contínua) é filosofia japonesa aplicada à <strong>gestão de processos</strong>. Após <strong>mapear processos</strong>, você implementa pequenas melhorias incrementais constantemente. Eventos <strong>Kaizen</strong> são workshops focados onde equipes analisam <strong>processos mapeados</strong> e propõem melhorias no <strong>workflow</strong>.
+              <strong>Kaizen</strong> (melhoria contínua) é a filosofia japonesa que mais se encaixa com o mapeamento. Após documentar seus fluxos, você implementa pequenas melhorias incrementais de forma constante. Os eventos Kaizen são workshops onde a equipe analisa o que foi mapeado e propõe mudanças práticas no operacional.
             </p>
 
             <h2 id="impacto" className="text-3xl font-bold mt-12 mb-6">O impacto real do mapeamento de processos</h2>
 
             <p className="text-foreground-muted leading-relaxed mb-6">
-              Empresas que fazem <strong>mapeamento de processos</strong> estruturado conseguem reduzir em até 40% o tempo gasto em tarefas operacionais através de <strong>workflow</strong> otimizado. Isso significa mais tempo para crescer, mais margem de lucro, e uma equipe menos estressada com <strong>gestão de processos</strong> clara.
+              Empresas com operações documentadas reduzem em até 40% o tempo em tarefas repetitivas. Isso significa mais espaço para crescer, margens mais saudáveis e uma equipe que sabe o que fazer sem precisar perguntar.
             </p>
 
             <p className="text-foreground-muted leading-relaxed mb-6">
-              Além disso, <strong>processos mapeados</strong> facilitam a contratação e treinamento de novos funcionários, porque tudo está documentado no <strong>fluxograma</strong>. E quando você decidir escalar, já tem a base de <strong>gestão de processos</strong> para crescer sem caos.
+              Além disso, uma operação documentada transforma o onboarding — novos funcionários aprendem com o que está registrado, não com a memória de alguém. E quando chegar a hora de escalar, a estrutura já existe.
             </p>
 
             <p className="text-foreground-muted leading-relaxed mb-6">
-              Casos reais de impacto do <strong>mapeamento de processos</strong>:
+              Casos reais de impacto:
             </p>
 
             <ul className="list-disc pl-6 mb-6 text-foreground-muted space-y-2">
@@ -289,28 +289,28 @@ const MapeamentoProcessos = () => {
               <div className="border border-card-border rounded-lg p-6">
                 <h3 className="text-xl font-semibold mb-3">O que é mapeamento de processos?</h3>
                 <p className="text-foreground-muted">
-                  <strong>Mapeamento de processos</strong> é a documentação visual e detalhada de como o trabalho acontece na empresa, desde o início até o fim. Utilizando técnicas como <strong>BPMN</strong>, <strong>fluxograma</strong> e <strong>workflow</strong>, você registra cada etapa, responsáveis, prazos e pontos de decisão de um <strong>processo</strong>, criando uma <strong>gestão de processos</strong> eficiente que permite identificar gargalos e oportunidades de otimização usando metodologias como <strong>Lean</strong> e <strong>Kaizen</strong>.
+                  <strong>Mapeamento de processos</strong> é a documentação visual de como o trabalho acontece na empresa, do início ao fim. Você registra cada etapa, responsável, prazo e ponto de decisão — usando um <strong>fluxograma</strong>, <strong>BPMN</strong> ou até o Notion. O resultado é uma visão clara da operação que revela gargalos, etapas redundantes e oportunidades de automação.
                 </p>
               </div>
 
               <div className="border border-card-border rounded-lg p-6">
                 <h3 className="text-xl font-semibold mb-3">Quanto tempo leva para mapear processos em uma empresa?</h3>
                 <p className="text-foreground-muted">
-                  O tempo de <strong>mapeamento de processos</strong> varia conforme a complexidade do <strong>workflow</strong>. Um <strong>processo</strong> simples pode ser mapeado em <strong>fluxograma</strong> em 2-4 horas, enquanto <strong>processos</strong> complexos usando <strong>BPMN</strong> podem levar 1-2 semanas. Para <strong>mapear</strong> os processos principais de uma empresa pequena com <strong>gestão de processos</strong> completa, conte com 2-4 semanas. O uso de metodologias como <strong>Lean</strong> e ferramentas adequadas acelera o <strong>mapeamento de processos</strong>.
+                  Depende da complexidade. Um processo simples pode ser documentado em 2-4 horas; fluxos complexos usando <strong>BPMN</strong> podem levar 1-2 semanas. Para cobrir os processos principais de uma empresa pequena, conte com 2-4 semanas de trabalho. Ferramentas visuais como Lucidchart e Notion aceleram muito esse trabalho.
                 </p>
               </div>
 
               <div className="border border-card-border rounded-lg p-6">
                 <h3 className="text-xl font-semibold mb-3">Qual ferramenta usar para mapeamento de processos?</h3>
                 <p className="text-foreground-muted">
-                  Para <strong>mapeamento de processos</strong>, você pode usar desde ferramentas simples como Miro, Lucidchart e Draw.io para <strong>fluxograma</strong> até plataformas mais robustas como Bizagi (<strong>BPMN</strong>) ou <Link to="/poder-do-notion-empresas-produtivas" className="text-primary hover:underline">Notion para gestão de processos</Link>. O importante é escolher uma ferramenta que facilite a criação de <strong>fluxogramas</strong>, <strong>workflow</strong> e diagramas, e que seja acessível para toda a equipe visualizar e atualizar a <strong>gestão de processos</strong>.
+                  Para fluxogramas simples: Miro, Lucidchart ou Draw.io. Para padrão internacional: Bizagi (<strong>BPMN</strong>). Para documentar e gerenciar tudo em um lugar: <Link to="/poder-do-notion-empresas-produtivas" className="text-primary hover:underline">Notion</Link>. O critério principal é que a ferramenta seja acessível para toda a equipe — um diagrama que só o gestor acessa não gera mudança.
                 </p>
               </div>
 
               <div className="border border-card-border rounded-lg p-6">
                 <h3 className="text-xl font-semibold mb-3">Como identificar gargalos em processos?</h3>
                 <p className="text-foreground-muted">
-                  No <strong>mapeamento de processos</strong> com <strong>fluxograma</strong> ou <strong>BPMN</strong>, gargalos aparecem como etapas do <strong>workflow</strong> onde o trabalho acumula, prazos são constantemente perdidos, ou uma única pessoa/departamento concentra muitas aprovações. Use métricas como tempo de ciclo, taxa de retrabalho e capacidade de throughput na <strong>gestão de processos</strong>. Metodologias <strong>Lean</strong> e <strong>Kaizen</strong> ajudam a identificar e eliminar gargalos no <strong>workflow mapeado</strong>.
+                  Gargalos aparecem como etapas onde o trabalho acumula: prazos constantemente perdidos, uma pessoa que concentra todas as aprovações, ou uma tarefa que sempre reinicia do zero. Meça tempo de ciclo, taxa de retrabalho e throughput. As metodologias <strong>Lean</strong> e <strong>Kaizen</strong> têm frameworks prontos para essa análise depois que o fluxo está documentado.
                 </p>
               </div>
             </div>
