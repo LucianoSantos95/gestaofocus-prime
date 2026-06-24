@@ -82,6 +82,9 @@ const PlanejamentoSemanalPassoPasso = lazy(() => import("./pages/blog/Planejamen
 const MetodoPessoalProdutividade = lazy(() => import("./pages/blog/MetodoPessoalProdutividade"));
 const OrganizacaoPessoalProfissional = lazy(() => import("./pages/blog/OrganizacaoPessoalProfissional"));
 const ReduzirEstresseTrabalhoOrganizacao = lazy(() => import("./pages/blog/ReduzirEstresseTrabalhoOrganizacao"));
+const NotionAgenciasGuia2026 = lazy(() => import("./pages/blog/NotionAgenciasGuia2026"));
+const IAPMEsAutomatizarProcessos = lazy(() => import("./pages/blog/IAPMEsAutomatizarProcessos"));
+const MapeamentoProcessosAgencias = lazy(() => import("./pages/blog/MapeamentoProcessosAgencias"));
 
 const queryClient = new QueryClient();
 
@@ -179,6 +182,11 @@ function AppLayout() {
             <Route path="/blog/metodo-pessoal-produtividade" element={<MetodoPessoalProdutividade />} />
             <Route path="/blog/organizacao-pessoal-profissional" element={<OrganizacaoPessoalProfissional />} />
             <Route path="/blog/reduzir-estresse-trabalho-organizacao" element={<ReduzirEstresseTrabalhoOrganizacao />} />
+
+            {/* Pillar Articles */}
+            <Route path="/blog/notion-para-agencias-guia-completo-2026" element={<NotionAgenciasGuia2026 />} />
+            <Route path="/blog/ia-para-pmes-automatizar-processos" element={<IAPMEsAutomatizarProcessos />} />
+            <Route path="/blog/mapeamento-processos-agencias" element={<MapeamentoProcessosAgencias />} />
 
             {/* Info Pages */}
             <Route path="/sobre" element={<AboutFocus />} />

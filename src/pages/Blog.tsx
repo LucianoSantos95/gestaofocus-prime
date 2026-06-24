@@ -69,6 +69,36 @@ const Blog = () => {
 
   const blogPosts = [
     {
+      id: -10,
+      title: "Notion para Agências em 2026: Guia Completo do Workspace que Substitui 5 Ferramentas",
+      excerpt: "Como montar um workspace no Notion que centraliza CRM, projetos, equipe e processos da sua agência — com roteiro de implementação em 8 semanas.",
+      date: "2026-06-01",
+      readTime: "18 min",
+      category: "Gestão para Agências",
+      slug: "notion-para-agencias-guia-completo-2026",
+      image: gestaoProjetosImage
+    },
+    {
+      id: -9,
+      title: "IA para PMEs: Como Automatizar Processos sem Precisar de Equipe de TI",
+      excerpt: "Guia prático para agências, consultorias e pequenas empresas usarem IA para recuperar 10-15 horas semanais — sem código e sem contratar desenvolvedores.",
+      date: "2026-06-05",
+      readTime: "16 min",
+      category: "Sistemas e Processos",
+      slug: "ia-para-pmes-automatizar-processos",
+      image: processosInteligentesImage
+    },
+    {
+      id: -8,
+      title: "Mapeamento de Processos para Agências: Da Teoria à Prática",
+      excerpt: "Como documentar os processos operacionais da sua agência com exemplos reais de onboarding e entrega de projetos que a equipe realmente vai seguir.",
+      date: "2026-06-10",
+      readTime: "15 min",
+      category: "Sistemas e Processos",
+      slug: "mapeamento-processos-agencias",
+      image: mapeamentoImage
+    },
+    {
       id: -7,
       title: "Como Reduzir o Estresse Operacional na Sua Agência com Organização",
       excerpt: "Técnicas práticas de organização e planejamento para reduzir o estresse da equipe em agências, consultorias e prestadores de serviço.",
