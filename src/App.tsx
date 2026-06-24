@@ -54,28 +54,12 @@ const ConfiarSistemasProducao = lazy(() => import("./pages/blog/ConfiarSistemasP
 const TarefasSoltasEmResultados = lazy(() => import("./pages/blog/TarefasSoltasEmResultados"));
 const ChecklistDiarioProdutividade = lazy(() => import("./pages/blog/ChecklistDiarioProdutividade"));
 const OrganizarRotinaSemanal = lazy(() => import("./pages/blog/OrganizarRotinaSemanal"));
-const ProdutividadeAutonomosFreelancers = lazy(() => import("./pages/blog/ProdutividadeAutonomosFreelancers"));
-const PararProcrastinarSistemasVisuais = lazy(() => import("./pages/blog/PararProcrastinarSistemasVisuais"));
 const PlanejamentoMensalSistema = lazy(() => import("./pages/blog/PlanejamentoMensalSistema"));
-const OrganizacaoPessoalTecnologia = lazy(() => import("./pages/blog/OrganizacaoPessoalTecnologia"));
-const MetasInteligentesSmart = lazy(() => import("./pages/blog/MetasInteligentesSmart"));
-const GuiaFocoEvitarDistracoes = lazy(() => import("./pages/blog/GuiaFocoEvitarDistracoes"));
-const MetodosProdutividade2025 = lazy(() => import("./pages/blog/MetodosProdutividade2025"));
 const OrganizarDocumentosEmpresa = lazy(() => import("./pages/blog/OrganizarDocumentosEmpresa"));
 const PararApagarIncendiosEmpresa = lazy(() => import("./pages/blog/PararApagarIncendiosEmpresa"));
 const ClarezaProjetosNotion = lazy(() => import("./pages/blog/ClarezaProjetosNotion"));
-const OrganizarVidaDigital = lazy(() => import("./pages/blog/OrganizarVidaDigital"));
-const TecnicaPomodoroGuia = lazy(() => import("./pages/blog/TecnicaPomodoroGuia"));
-const PlanejamentoAnualZero = lazy(() => import("./pages/blog/PlanejamentoAnualZero"));
-const CriarHabitosDuram = lazy(() => import("./pages/blog/CriarHabitosDuram"));
-const RotinaMatinalPoderosa = lazy(() => import("./pages/blog/RotinaMatinalPoderosa"));
-const OrganizacaoFinanceiraPessoal = lazy(() => import("./pages/blog/OrganizacaoFinanceiraPessoal"));
-const MelhorarConcentracaoDistracoes = lazy(() => import("./pages/blog/MelhorarConcentracaoDistracoes"));
-const MapasMentaisOrganizarIdeias = lazy(() => import("./pages/blog/MapasMentaisOrganizarIdeias"));
 const GestaoTempoQuemViveOcupado = lazy(() => import("./pages/blog/GestaoTempoQuemViveOcupado"));
-const SistemaEstudosEficiente = lazy(() => import("./pages/blog/SistemaEstudosEficiente"));
 const ReunioesProdutivas = lazy(() => import("./pages/blog/ReunioesProdutivas"));
-const MetodoGTDGuia = lazy(() => import("./pages/blog/MetodoGTDGuia"));
 const MatrizEisenhower = lazy(() => import("./pages/blog/MatrizEisenhower"));
 const OrganizarTarefasDiaDia = lazy(() => import("./pages/blog/OrganizarTarefasDiaDia"));
 const PlanejamentoSemanalPassoPasso = lazy(() => import("./pages/blog/PlanejamentoSemanalPassoPasso"));
@@ -154,28 +138,28 @@ function AppLayout() {
             <Route path="/blog/tarefas-soltas-em-resultados" element={<TarefasSoltasEmResultados />} />
             <Route path="/blog/checklist-diario-produtividade" element={<ChecklistDiarioProdutividade />} />
             <Route path="/blog/organizar-rotina-semanal" element={<OrganizarRotinaSemanal />} />
-            <Route path="/blog/produtividade-autonomos-freelancers" element={<ProdutividadeAutonomosFreelancers />} />
-            <Route path="/blog/parar-procrastinar-sistemas-visuais" element={<PararProcrastinarSistemasVisuais />} />
+            <Route path="/blog/produtividade-autonomos-freelancers" element={<Navigate to="/blog/sistemas-notion-pequenas-empresas" replace />} />
+            <Route path="/blog/parar-procrastinar-sistemas-visuais" element={<Navigate to="/blog/gerenciando-tarefas-ou-apagando-incendios" replace />} />
             <Route path="/blog/planejamento-mensal-sistema" element={<PlanejamentoMensalSistema />} />
-            <Route path="/blog/organizacao-pessoal-tecnologia" element={<OrganizacaoPessoalTecnologia />} />
-            <Route path="/blog/metas-inteligentes-smart" element={<MetasInteligentesSmart />} />
-            <Route path="/blog/guia-foco-evitar-distracoes" element={<GuiaFocoEvitarDistracoes />} />
-            <Route path="/blog/metodos-produtividade-2025" element={<MetodosProdutividade2025 />} />
+            <Route path="/blog/organizacao-pessoal-tecnologia" element={<Navigate to="/blog/sistemas-notion-pequenas-empresas" replace />} />
+            <Route path="/blog/metas-inteligentes-smart" element={<Navigate to="/blog/mapeamento-processos-crescimento" replace />} />
+            <Route path="/blog/guia-foco-evitar-distracoes" element={<Navigate to="/blog/gerenciando-tarefas-ou-apagando-incendios" replace />} />
+            <Route path="/blog/metodos-produtividade-2025" element={<Navigate to="/blog/criar-sistema-produtividade-funciona" replace />} />
             <Route path="/blog/organizar-documentos-empresa" element={<OrganizarDocumentosEmpresa />} />
             <Route path="/blog/parar-apagar-incendios-empresa" element={<PararApagarIncendiosEmpresa />} />
             <Route path="/blog/clareza-projetos-notion" element={<ClarezaProjetosNotion />} />
-            <Route path="/blog/organizar-vida-digital" element={<OrganizarVidaDigital />} />
-            <Route path="/blog/tecnica-pomodoro-guia-definitivo" element={<TecnicaPomodoroGuia />} />
-            <Route path="/blog/planejamento-anual-do-zero" element={<PlanejamentoAnualZero />} />
-            <Route path="/blog/criar-habitos-que-duram" element={<CriarHabitosDuram />} />
-            <Route path="/blog/rotina-matinal-poderosa-15-minutos" element={<RotinaMatinalPoderosa />} />
-            <Route path="/blog/organizacao-financeira-pessoal-sistema-simples" element={<OrganizacaoFinanceiraPessoal />} />
-            <Route path="/blog/melhorar-concentracao-mundo-distracoes" element={<MelhorarConcentracaoDistracoes />} />
-            <Route path="/blog/mapas-mentais-organizar-ideias-produtividade" element={<MapasMentaisOrganizarIdeias />} />
+            <Route path="/blog/organizar-vida-digital" element={<Navigate to="/blog/sistema-completo-notion-automacao" replace />} />
+            <Route path="/blog/tecnica-pomodoro-guia-definitivo" element={<Navigate to="/blog/criar-sistema-produtividade-funciona" replace />} />
+            <Route path="/blog/planejamento-anual-do-zero" element={<Navigate to="/blog/planejamento-mensal-sistema" replace />} />
+            <Route path="/blog/criar-habitos-que-duram" element={<Navigate to="/blog/criar-sistema-produtividade-funciona" replace />} />
+            <Route path="/blog/rotina-matinal-poderosa-15-minutos" element={<Navigate to="/blog/criar-sistema-produtividade-funciona" replace />} />
+            <Route path="/blog/organizacao-financeira-pessoal-sistema-simples" element={<Navigate to="/blog" replace />} />
+            <Route path="/blog/melhorar-concentracao-mundo-distracoes" element={<Navigate to="/blog/gerenciando-tarefas-ou-apagando-incendios" replace />} />
+            <Route path="/blog/mapas-mentais-organizar-ideias-produtividade" element={<Navigate to="/blog/mapeamento-processos-crescimento" replace />} />
             <Route path="/blog/gestao-tempo-ocupado-estrategias-funcionam" element={<GestaoTempoQuemViveOcupado />} />
-            <Route path="/blog/sistema-estudos-eficiente-tecnicas-modernas" element={<SistemaEstudosEficiente />} />
+            <Route path="/blog/sistema-estudos-eficiente-tecnicas-modernas" element={<Navigate to="/blog/mapeamento-processos-agencias" replace />} />
             <Route path="/blog/reunioes-produtivas-parar-perder-tempo" element={<ReunioesProdutivas />} />
-            <Route path="/blog/metodo-gtd-guia-completo" element={<MetodoGTDGuia />} />
+            <Route path="/blog/metodo-gtd-guia-completo" element={<Navigate to="/blog/criar-sistema-produtividade-funciona" replace />} />
             <Route path="/blog/matriz-eisenhower-prioridades" element={<MatrizEisenhower />} />
             <Route path="/blog/organizar-tarefas-dia-dia" element={<OrganizarTarefasDiaDia />} />
             <Route path="/blog/planejamento-semanal-passo-passo" element={<PlanejamentoSemanalPassoPasso />} />

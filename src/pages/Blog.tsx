@@ -32,22 +32,10 @@ import pararIncendiosImage from "@/assets/blog/parar-apagar-incendios.jpg";
 import clarezaNotionImage from "@/assets/blog/clareza-projetos-notion.jpg";
 import checklistDiarioImage from "@/assets/blog/checklist-diario-produtividade.jpg";
 import organizarRotinaImage from "@/assets/blog/organizar-rotina-semanal.jpg";
-import produtividadeAutonomosImage from "@/assets/blog/produtividade-autonomos-freelancers.jpg";
-import pararProcrastinarImage from "@/assets/blog/parar-procrastinar-sistemas-visuais.jpg";
 import planejamentoMensalImage from "@/assets/blog/planejamento-mensal-sistema.jpg";
-import organizacaoPessoalImage from "@/assets/blog/organizacao-pessoal-tecnologia.jpg";
-import metasSmartImage from "@/assets/blog/metas-inteligentes-smart.jpg";
-import guiaFocoImage from "@/assets/blog/guia-foco-evitar-distracoes.jpg";
-import metodosProdutividadeImage from "@/assets/blog/metodos-produtividade-2025.jpg";
 import organizarDocumentosImage from "@/assets/blog/organizar-documentos-empresa.jpg";
-import rotinaMatinalImage from "@/assets/blog/rotina-matinal-poderosa.jpg";
-import organizacaoFinanceiraImage from "@/assets/blog/organizacao-financeira-pessoal.jpg";
-import concentracaoImage from "@/assets/blog/melhorar-concentracao-distracoes.jpg";
-import mapasMentaisImage from "@/assets/blog/mapas-mentais-organizar-ideias.jpg";
 import gestaoTempoImage from "@/assets/blog/gestao-tempo-quem-vive-ocupado.jpg";
-import sistemaEstudosImage from "@/assets/blog/sistema-estudos-eficiente.jpg";
 import reunioesProdutavasImage from "@/assets/blog/reunioes-produtivas.jpg";
-import metodoGtdImage from "@/assets/blog/metodo-gtd-guia.jpg";
 import matrizEisenhowerImage from "@/assets/blog/matriz-eisenhower-prioridades.jpg";
 import organizarTarefasImage from "@/assets/blog/organizar-tarefas-dia-dia.jpg";
 import planejamentoSemanalImage from "@/assets/blog/planejamento-semanal-passo-passo.jpg";
@@ -159,16 +147,6 @@ const Blog = () => {
       image: matrizEisenhowerImage
     },
     {
-      id: -1,
-      title: "Método GTD Para Gestores: Organize Projetos e Entregas de Clientes",
-      excerpt: "Aplique o método GTD (Getting Things Done) na gestão da sua agência ou consultoria. Guia completo com exemplos para equipes de serviço.",
-      date: "2025-12-22",
-      readTime: "14 min",
-      category: "Sistemas e Processos",
-      slug: "metodo-gtd-guia-completo",
-      image: metodoGtdImage
-    },
-    {
       id: 0,
       title: "Reuniões Produtivas: O Guia Para Agências Que Perdem Tempo em Alinhamentos",
       excerpt: "Transforme reuniões improdutivas em alinhamentos rápidos e eficientes. Passo a passo para agências e consultorias que precisam de agilidade.",
@@ -179,46 +157,6 @@ const Blog = () => {
       image: reunioesProdutavasImage
     },
     {
-      id: 1,
-      title: "Rotina Matinal Para Gestores: 15 Minutos Que Transformam Seu Dia",
-      excerpt: "O método simples que gestores de agências e consultorias usam para começar o dia com clareza e foco nas prioridades certas.",
-      date: "2025-02-20",
-      readTime: "8 min",
-      category: "Produtividade Operacional",
-      slug: "rotina-matinal-poderosa-15-minutos",
-      image: rotinaMatinalImage
-    },
-    {
-      id: 2,
-      title: "Gestão Financeira Para Agências: Controle Receitas e Custos Por Projeto",
-      excerpt: "Sistema prático para agências e consultorias controlarem receitas, custos por cliente e fluxo de caixa sem planilhas complexas.",
-      date: "2025-02-20",
-      readTime: "10 min",
-      category: "Gestão para Agências",
-      slug: "organizacao-financeira-pessoal-sistema-simples",
-      image: organizacaoFinanceiraImage
-    },
-    {
-      id: 3,
-      title: "Como Manter o Foco da Equipe em Um Ambiente de Agência Cheio de Distrações",
-      excerpt: "7 técnicas comprovadas para equipes de agências e consultorias alcançarem foco profundo mesmo com múltiplos projetos simultâneos.",
-      date: "2025-02-20",
-      readTime: "12 min",
-      category: "Produtividade Operacional",
-      slug: "melhorar-concentracao-mundo-distracoes",
-      image: concentracaoImage
-    },
-    {
-      id: 4,
-      title: "Mapas Mentais Para Planejamento de Projetos em Agências",
-      excerpt: "Use mapas mentais para planejar campanhas, escopos de projetos e brainstorms com sua equipe de forma visual e organizada.",
-      date: "2025-02-20",
-      readTime: "8 min",
-      category: "Sistemas e Processos",
-      slug: "mapas-mentais-organizar-ideias-produtividade",
-      image: mapasMentaisImage
-    },
-    {
       id: 5,
       title: "Gestão do Tempo Para Gestores de Agências Que Vivem Apagando Incêndios",
       excerpt: "Recupere o controle da sua agenda com técnicas práticas para gestores de agências e consultorias sobrecarregados.",
@@ -227,16 +165,6 @@ const Blog = () => {
       category: "Produtividade Operacional",
       slug: "gestao-tempo-ocupado-estrategias-funcionam",
       image: gestaoTempoImage
-    },
-    {
-      id: 6,
-      title: "Como Estruturar Treinamentos Internos na Sua Agência ou Consultoria",
-      excerpt: "Monte um sistema de capacitação para sua equipe usando técnicas modernas de aprendizagem e onboarding eficiente.",
-      date: "2025-02-20",
-      readTime: "10 min",
-      category: "Crescimento e Escala",
-      slug: "sistema-estudos-eficiente-tecnicas-modernas",
-      image: sistemaEstudosImage
     },
     {
       id: 7,
@@ -259,26 +187,6 @@ const Blog = () => {
       image: organizarRotinaImage
     },
     {
-      id: 9,
-      title: "Produtividade Para Consultores Independentes e Freelancers",
-      excerpt: "Estrutura completa para consultores e freelancers criarem sistemas de produtividade profissional sem depender de equipe.",
-      date: "2025-02-13",
-      readTime: "10 min",
-      category: "Produtividade Operacional",
-      slug: "produtividade-autonomos-freelancers",
-      image: produtividadeAutonomosImage
-    },
-    {
-      id: 10,
-      title: "Sistemas Visuais Para Agências: Elimine a Procrastinação da Equipe",
-      excerpt: "O método baseado em dashboards visuais que elimina procrastinação em equipes de agências sem depender de cobranças.",
-      date: "2025-02-12",
-      readTime: "7 min",
-      category: "Sistemas e Processos",
-      slug: "parar-procrastinar-sistemas-visuais",
-      image: pararProcrastinarImage
-    },
-    {
       id: 11,
       title: "Planejamento Mensal Para Agências: Framework de 4 Pilares",
       excerpt: "Framework prático para planejar o mês da sua agência de forma estratégica, com metas claras para cada projeto e cliente.",
@@ -287,46 +195,6 @@ const Blog = () => {
       category: "Gestão para Agências",
       slug: "planejamento-mensal-sistema",
       image: planejamentoMensalImage
-    },
-    {
-      id: 12,
-      title: "Second Brain Para Agências: Centralize Conhecimento e Processos",
-      excerpt: "Como construir um repositório digital centralizado para sua agência, eliminando informações perdidas em chats e e-mails.",
-      date: "2025-02-10",
-      readTime: "8 min",
-      category: "Sistemas e Processos",
-      slug: "organizacao-pessoal-tecnologia",
-      image: organizacaoPessoalImage
-    },
-    {
-      id: 13,
-      title: "Metas SMART Para Agências: Defina Objetivos Claros Por Projeto e Cliente",
-      excerpt: "Aprenda a transformar metas vagas em objetivos SMART acionáveis para cada projeto, cliente e trimestre da sua agência.",
-      date: "2025-02-09",
-      readTime: "7 min",
-      category: "Crescimento e Escala",
-      slug: "metas-inteligentes-smart",
-      image: metasSmartImage
-    },
-    {
-      id: 14,
-      title: "Como Evitar Distrações em Ambientes de Agência e Consultoria",
-      excerpt: "Técnicas práticas para equipes de serviço eliminarem distrações digitais e criarem ambientes de foco profundo.",
-      date: "2025-02-08",
-      readTime: "10 min",
-      category: "Produtividade Operacional",
-      slug: "guia-foco-evitar-distracoes",
-      image: guiaFocoImage
-    },
-    {
-      id: 15,
-      title: "Métodos de Produtividade Que Funcionam Para Agências em 2025",
-      excerpt: "Análise dos métodos de produtividade mais eficazes para equipes de agências e consultorias. Quais adotar e quais evitar.",
-      date: "2025-02-07",
-      readTime: "11 min",
-      category: "Produtividade Operacional",
-      slug: "metodos-produtividade-2025",
-      image: metodosProdutividadeImage
     },
     {
       id: 16,
