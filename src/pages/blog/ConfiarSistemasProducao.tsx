@@ -167,38 +167,38 @@ const ConfiarSistemasProducao = () => {
             <h2 className="text-3xl font-bold mt-12 mb-6">Como o Notion se torna seu sistema confiável</h2>
 
             <p className="text-foreground-muted leading-relaxed mb-6">
-              O Notion é perfeito para ser seu segundo cérebro porque oferece <strong>flexibilidade total</strong> para criar exatamente o sistema que sua mente precisa.
+              O Notion funciona como segundo cérebro porque combina as funcionalidades de captura, organização, referência e ação em um único lugar — sem precisar alternar entre 5 aplicativos. Para agências e consultorias, isso é especialmente valioso: clientes, projetos, processos, decisões e ideias podem coexistir em um único workspace estruturado.
             </p>
 
             <div className="bg-card border border-card-border rounded-lg p-6 my-6">
               <h3 className="text-xl font-bold mb-4">Os 4 pilares de um sistema confiável no Notion:</h3>
-              
+
               <div className="space-y-4">
                 <div className="border-l-4 border-primary pl-4">
                   <h4 className="font-bold mb-2">1. Captura rápida e universal</h4>
                   <p className="text-foreground-muted text-sm">
-                    Qualquer ideia, em qualquer lugar, vai direto para seu sistema. Inbox centralizado para processar depois.
+                    Qualquer ideia, em qualquer lugar, vai direto para uma inbox no Notion — pelo app mobile, pelo web clipper do browser ou pela integração com Siri/Google Assistant. O segredo é não tentar organizar no momento da captura: capturar primeiro, processar depois. O simples fato de saber que a ideia está registrada elimina a ansiedade de esquecer.
                   </p>
                 </div>
 
                 <div className="border-l-4 border-primary pl-4">
                   <h4 className="font-bold mb-2">2. Organização intuitiva</h4>
                   <p className="text-foreground-muted text-sm">
-                    Encontre qualquer informação em segundos. Tags, filtros e relações criam uma rede de conhecimento conectado.
+                    Com databases relacionais, tags e filtros, qualquer informação é encontrada em segundos. A busca nativa do Notion é suficientemente poderosa para não precisar memorizar onde cada coisa está — você sabe que está no Notion, e a busca encontra. Tags conectam informações por tema; relações conectam pelo contexto (cliente, projeto, pessoa).
                   </p>
                 </div>
 
                 <div className="border-l-4 border-primary pl-4">
                   <h4 className="font-bold mb-2">3. Transformação em ação</h4>
                   <p className="text-foreground-muted text-sm">
-                    Ideias se tornam projetos, projetos se tornam tarefas, tarefas se tornam resultados.
+                    Uma ideia capturada que não vira ação é apenas burocracia. O Notion permite ir de nota para tarefa, de tarefa para projeto, de projeto para cliente — com rastreabilidade. Você consegue ver o caminho de uma ideia inicial até o resultado entregue para o cliente, tudo no mesmo sistema.
                   </p>
                 </div>
 
                 <div className="border-l-4 border-primary pl-4">
                   <h4 className="font-bold mb-2">4. Revisão e evolução</h4>
                   <p className="text-foreground-muted text-sm">
-                    Sistemas vivos que crescem com você. Dashboards que mostram o que precisa de atenção.
+                    Um segundo cérebro precisa de revisão periódica — pelo menos semanal. O que foi capturado precisa ser processado. O que está em andamento precisa ser atualizado. O que foi concluído precisa ser arquivado. Um dashboard de revisão semanal no próprio Notion, com views filtradas por "precisa de atenção esta semana", torna essa revisão rápida e confiável.
                   </p>
                 </div>
               </div>
@@ -207,16 +207,16 @@ const ConfiarSistemasProducao = () => {
             <h2 className="text-3xl font-bold mt-12 mb-6">A transformação real que acontece</h2>
 
             <p className="text-foreground-muted leading-relaxed mb-6">
-              Quando você para de confiar na memória e começa a confiar em sistemas, algo mágico acontece:
+              A mudança não é apenas operacional — é cognitiva. Quando você para de usar a mente como arquivo e começa a usar um sistema externo confiável, a qualidade do seu pensamento muda. Você consegue pensar sobre os problemas em vez de pensar <em>nos</em> problemas. A diferença entre reter informações na cabeça e processá-las em um sistema bem estruturado é a diferença entre sobreviver ao dia e executar com intenção.
             </p>
 
             <div className="space-y-6 my-8">
               <div className="bg-primary/5 p-6 rounded-lg">
                 <p className="text-foreground-muted mb-2">
-                  <strong>Antes:</strong> "Preciso lembrar de falar com João sobre aquele projeto... ah, e revisar aquele documento... e responder aquele email importante... e..."
+                  <strong>Antes:</strong> "Preciso lembrar de falar com João sobre aquele projeto... ah, e revisar aquele documento... e responder aquele email importante... e não esquecer da reunião de quinta..."
                 </p>
                 <p className="text-primary font-medium">
-                  → Resultado: Ansiedade constante, nada realmente bem feito
+                  → Resultado: Ansiedade constante, foco fragmentado, nada realmente bem feito
                 </p>
               </div>
 
@@ -225,7 +225,7 @@ const ConfiarSistemasProducao = () => {
                   <strong>Depois:</strong> "Tudo está capturado no sistema. Agora posso focar 100% nesta tarefa. Quando terminar, meu dashboard me mostra o que vem a seguir."
                 </p>
                 <p className="text-primary font-medium">
-                  → Resultado: Paz mental, foco profundo, execução impecável
+                  → Resultado: Paz mental, foco profundo, execução consistente
                 </p>
               </div>
             </div>
@@ -233,7 +233,7 @@ const ConfiarSistemasProducao = () => {
             <h2 className="text-3xl font-bold mt-12 mb-6">Por onde começar?</h2>
 
             <p className="text-foreground-muted leading-relaxed mb-6">
-              Construir seu segundo cérebro não precisa ser complicado. O primeiro passo é simples:
+              Construir seu segundo cérebro não precisa começar com um sistema perfeito. Começa com um hábito: capturar tudo que está ocupando espaço mental e colocar em um lugar confiável. O sistema se sofistica com o uso.
             </p>
 
             <div className="space-y-4 my-6 bg-card p-6 rounded-lg">
@@ -242,25 +242,53 @@ const ConfiarSistemasProducao = () => {
                 Reserve 30 minutos hoje. Abra uma página em branco no Notion e escreva TUDO que está ocupando espaço na sua cabeça:
               </p>
               <ul className="space-y-2 text-foreground-muted pl-6">
-                <li>• Tarefas que precisa fazer</li>
-                <li>• Ideias que não quer esquecer</li>
-                <li>• Projetos que quer iniciar</li>
-                <li>• Compromissos futuros</li>
-                <li>• Preocupações não resolvidas</li>
+                <li>• Tarefas que precisa fazer — de qualquer projeto, qualquer cliente</li>
+                <li>• Ideias que não quer esquecer — produto, processo, conteúdo</li>
+                <li>• Projetos que quer iniciar — mesmo os "um dia talvez"</li>
+                <li>• Compromissos futuros — reuniões, prazos, entregas</li>
+                <li>• Preocupações não resolvidas — qualquer coisa que está "em aberto" na sua cabeça</li>
               </ul>
-              <p className="text-foreground-muted">
-                Depois, você vai sentir um alívio imediato. Sua mente finalmente pode relaxar — porque agora tem um sistema confiável.
+              <p className="text-foreground-muted mt-4">
+                Depois desse exercício, você vai sentir um alívio imediato. A mente pode relaxar — porque agora tem um sistema que guarda o que ela não precisa mais segurar.
               </p>
+            </div>
+
+            <p className="text-foreground-muted leading-relaxed mb-6">
+              A próxima etapa é estruturar esse material: o que é tarefa, o que é projeto, o que é referência, o que é ideia. O método PARA (Projects, Areas, Resources, Archives) do Tiago Forte é um bom ponto de partida para organizar o Notion como segundo cérebro. Mas mesmo sem metodologia formal, ter um inbox onde tudo entra e uma revisão semanal para processar já é suficiente para transformar como você opera.
+            </p>
+
+            <h2 className="text-3xl font-bold mt-12 mb-6">Perguntas frequentes sobre segundo cérebro no Notion</h2>
+
+            <div className="space-y-6 mb-8">
+              <div className="border border-card-border rounded-lg p-6">
+                <h3 className="text-xl font-semibold mb-3">O segundo cérebro substitui a agenda ou o gerenciador de tarefas?</h3>
+                <p className="text-foreground-muted">Não substitui — complementa. O segundo cérebro é o repositório de tudo: ideias, referências, projetos, decisões. A agenda é o comprometimento de tempo específico. Um gerenciador de tarefas (que pode ser o próprio Notion) é a lista do que fazer. Os três trabalham juntos: o segundo cérebro alimenta o gerenciador de tarefas, que alimenta a agenda.</p>
+              </div>
+
+              <div className="border border-card-border rounded-lg p-6">
+                <h3 className="text-xl font-semibold mb-3">Quanto tempo por dia preciso dedicar ao sistema?</h3>
+                <p className="text-foreground-muted">A manutenção diária é mínima: 5-10 minutos no fim do dia para processar a inbox, atualizar status de tarefas e capturar o que surgiu. A revisão semanal mais completa leva 20-30 minutos. O investimento de tempo compensa porque você elimina o tempo gasto procurando informação espalhada, relembrando o que ficou pendente ou explicando contexto para a equipe.</p>
+              </div>
+
+              <div className="border border-card-border rounded-lg p-6">
+                <h3 className="text-xl font-semibold mb-3">E se eu já usar outras ferramentas como Trello, Asana ou Todoist?</h3>
+                <p className="text-foreground-muted">O segundo cérebro no Notion não precisa substituir essas ferramentas imediatamente. Você pode manter o Asana para gestão de projetos com a equipe e usar o Notion como segundo cérebro pessoal — para suas ideias, referências e contexto. Com o tempo, muitos migram tudo para o Notion por conveniência, mas não é obrigatório.</p>
+              </div>
+
+              <div className="border border-card-border rounded-lg p-6">
+                <h3 className="text-xl font-semibold mb-3">Como garantir que a equipe também use o sistema?</h3>
+                <p className="text-foreground-muted">O segundo cérebro pessoal é individual — você não pode forçar. Mas pode criar um workspace compartilhado no Notion onde a inteligência coletiva da equipe também fica registrada: decisões de projeto, processos documentados, base de conhecimento. O impacto vem quando o Notion substitui o "quem sabe isso é o fulano" por "está aqui no sistema".</p>
+              </div>
             </div>
 
             <h2 className="text-3xl font-bold mt-12 mb-6">Conclusão: Confie no sistema, libere sua mente</h2>
 
             <p className="text-foreground-muted leading-relaxed mb-6">
-              Sua memória é preciosa — use-a para lembrar momentos especiais, não para tentar gerenciar sua vida profissional. <strong>Para isso, você precisa de um sistema</strong>.
+              Sua memória é preciosa — use-a para criar, conectar ideias e resolver problemas complexos. Não para lembrar o prazo de entrega de um cliente ou o número de telefone de um fornecedor. <strong>Para isso, você precisa de um sistema</strong>.
             </p>
 
             <p className="text-foreground-muted leading-relaxed mb-6">
-              O Notion pode ser esse sistema. Mas não basta ter a ferramenta — você precisa de uma <strong>metodologia inteligente</strong> para transformá-lo em seu segundo cérebro confiável.
+              O Notion pode ser esse sistema. Mas não basta ter a ferramenta — você precisa do hábito de capturar tudo, da disciplina de revisar semanalmente, e da clareza de transformar o que foi capturado em ação. Quando os três estão funcionando, você para de operar no modo "não esquecer" e começa a operar no modo "o que é mais importante agora?" — e essa é uma diferença que muda completamente a qualidade do trabalho.
             </p>
           </div>
 

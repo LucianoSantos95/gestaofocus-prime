@@ -154,10 +154,32 @@ const TarefasVsIncendios = () => {
                   <Target className="h-8 w-8 text-primary" />
                   Como Fazer a Transição
                 </h2>
+
+                <p className="text-muted-foreground leading-relaxed mb-6">
+                  A transição do modo reativo para o proativo não acontece da noite para o dia — e tentar fazer tudo ao mesmo tempo costuma falhar. O que funciona é uma mudança gradual, onde cada semana você adiciona um layer de prevenção até que o planejamento vire o modo padrão de operar.
+                </p>
+
                 <div className="space-y-4 mb-6">
-                  <div className="bg-primary/5 border-l-4 border-primary p-6 rounded-r-lg"><h3 className="text-xl font-semibold mb-2">1. Separe urgente de importante</h3><p className="text-muted-foreground">Use a Matriz de Eisenhower para classificar tarefas.</p></div>
-                  <div className="bg-primary/5 border-l-4 border-primary p-6 rounded-r-lg"><h3 className="text-xl font-semibold mb-2">2. Bloqueie tempo para prevenção</h3><p className="text-muted-foreground">Reserve pelo menos 2 horas por semana para trabalho estratégico e preventivo.</p></div>
-                  <div className="bg-primary/5 border-l-4 border-primary p-6 rounded-r-lg"><h3 className="text-xl font-semibold mb-2">3. Documente processos</h3><p className="text-muted-foreground">Se um problema se repete, crie um processo para preveni-lo.</p></div>
+                  <div className="bg-primary/5 border-l-4 border-primary p-6 rounded-r-lg">
+                    <h3 className="text-xl font-semibold mb-2">1. Separe urgente de importante</h3>
+                    <p className="text-muted-foreground mb-3">A Matriz de Eisenhower divide tarefas em quatro quadrantes: urgente + importante (faça agora), importante + não urgente (agende), urgente + não importante (delegue), não urgente + não importante (elimine).</p>
+                    <p className="text-muted-foreground">O insight crucial: a maioria dos incêndios mora no quadrante "urgente + não importante" — barulhosos, mas sem impacto real. Quando você começa a classificar antes de agir, percebe que muitas "urgências" podiam esperar ou ser delegadas.</p>
+                  </div>
+                  <div className="bg-primary/5 border-l-4 border-primary p-6 rounded-r-lg">
+                    <h3 className="text-xl font-semibold mb-2">2. Bloqueie tempo para prevenção</h3>
+                    <p className="text-muted-foreground mb-3">Reserve pelo menos 2 horas por semana — em horário fixo, no calendário, marcado como indisponível — para trabalho estratégico e preventivo. Segunda de manhã ou sexta à tarde costumam funcionar bem.</p>
+                    <p className="text-muted-foreground">Nesse tempo: revise o que está vindo na próxima semana, identifique o que pode virar problema se ninguém agir agora, e tome uma ação preventiva concreta. Isso quebra o ciclo antes que o incêndio apareça.</p>
+                  </div>
+                  <div className="bg-primary/5 border-l-4 border-primary p-6 rounded-r-lg">
+                    <h3 className="text-xl font-semibold mb-2">3. Documente processos que se repetem</h3>
+                    <p className="text-muted-foreground mb-3">Cada vez que você apaga o mesmo incêndio pela segunda vez, é um sinal: esse problema precisa de um processo, não de mais uma solução ad hoc.</p>
+                    <p className="text-muted-foreground">Crie um processo simples para os 3 problemas mais recorrentes. Não precisa ser perfeito — uma página no Notion com 5 passos numerados já é infinitamente melhor que depender da memória. Com o processo documentado, qualquer membro da equipe pode lidar sem precisar de você.</p>
+                  </div>
+                  <div className="bg-primary/5 border-l-4 border-primary p-6 rounded-r-lg">
+                    <h3 className="text-xl font-semibold mb-2">4. Estabeleça reuniões de planejamento curtas e consistentes</h3>
+                    <p className="text-muted-foreground mb-3">Uma reunião semanal de 30 minutos com a equipe para revisar o que está em andamento, o que vence nos próximos 7 dias e onde estão os bloqueios — isso vale mais que horas de alinhamento reativo ao longo da semana.</p>
+                    <p className="text-muted-foreground">A consistência é mais importante que a duração. Um standup de 15 minutos toda segunda, sem falhas, transforma a cultura de reativa para proativa em 4-6 semanas.</p>
+                  </div>
                 </div>
               </section>
 
@@ -167,16 +189,44 @@ const TarefasVsIncendios = () => {
                   Construindo um Sistema Preventivo
                 </h2>
                 <p className="text-muted-foreground leading-relaxed mb-6">
-                  O antídoto para o modo reativo é ter um sistema de gestão que antecipa problemas, organiza prioridades e mantém tudo documentado.
+                  O antídoto para o modo reativo é um sistema de gestão que antecipa problemas, organiza prioridades e mantém tudo documentado em um lugar acessível a toda a equipe. A palavra-chave é <strong>sistema</strong> — não ferramenta, não processo isolado, mas a combinação dos três.
                 </p>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                  <div className="bg-muted p-5 rounded-lg">
+                    <h4 className="font-bold mb-3">📋 Visibilidade</h4>
+                    <p className="text-muted-foreground text-sm">Um lugar onde todos podem ver o status de cada projeto, quem é responsável e o que vence quando. Sem precisar perguntar.</p>
+                  </div>
+                  <div className="bg-muted p-5 rounded-lg">
+                    <h4 className="font-bold mb-3">📌 Prioridade clara</h4>
+                    <p className="text-muted-foreground text-sm">Uma forma consensual de definir o que é realmente importante versus o que é apenas barulhento. A Matriz de Eisenhower é um bom começo.</p>
+                  </div>
+                  <div className="bg-muted p-5 rounded-lg">
+                    <h4 className="font-bold mb-3">📖 Processos documentados</h4>
+                    <p className="text-muted-foreground text-sm">Para as situações recorrentes, um passo a passo escrito que qualquer pessoa da equipe pode seguir sem precisar perguntar.</p>
+                  </div>
+                </div>
+
                 <p className="text-muted-foreground leading-relaxed mb-6">
-                  Com um sistema bem estruturado, você para de reagir e começa a liderar. Sua equipe sabe o que fazer, os processos são claros, e os incêndios se tornam exceção — não regra.
+                  O Notion funciona muito bem como hub central para esse sistema: projetos e tarefas com responsáveis e prazos visíveis para todos, base de conhecimento com processos documentados, e um dashboard que mostra o que precisa de atenção esta semana. Não porque o Notion seja mágico — mas porque centralizar em um lugar elimina o tempo gasto procurando informação espalhada em 5 ferramentas.
                 </p>
+
+                <p className="text-muted-foreground leading-relaxed mb-6">
+                  Com esse sistema em operação, a dinâmica muda gradualmente: a equipe começa a checar o sistema antes de perguntar, os incêndios se tornam exceção porque os problemas foram resolvidos antes de virar crise, e você começa a ter espaço para pensar estrategicamente — não apenas reagir.
+                </p>
+
+                <div className="bg-primary/5 border-l-4 border-primary p-6 rounded-r-lg">
+                  <p className="font-semibold mb-2">⚡ Por onde começar</p>
+                  <p className="text-muted-foreground">Esta semana: mapeie os 3 incêndios mais recorrentes da sua agência e crie um processo simples para prevenir cada um. Não precisa ser perfeito. Só precisa existir e ser acessível para a equipe.</p>
+                </div>
               </section>
 
               <h2 className="text-3xl font-bold mt-12 mb-6">Conclusão</h2>
+              <p className="text-lg leading-relaxed mb-6">
+                Se você se identificou com os sinais acima, a mudança é possível — mas exige uma decisão consciente de parar de apenas reagir. O primeiro passo é reconhecer que estar sempre ocupado não é o mesmo que ser produtivo. O segundo passo é criar um sistema que trabalhe a seu favor: visibilidade, prioridade clara e processos documentados.
+              </p>
               <p className="text-lg leading-relaxed mb-8">
-                Se você se identificou com os sinais acima, não se preocupe — a mudança é possível. O primeiro passo é reconhecer que existe uma diferença entre estar ocupado e ser produtivo. O segundo passo é construir um sistema que trabalhe a seu favor, não contra você.
+                Gestão proativa não é para quando você tiver mais tempo. É o que cria mais tempo. Comece essa semana, com um processo simples, e vá expandindo. Cada incêndio prevenido é uma hora devolvida para o trabalho que realmente importa.
               </p>
             </div>
 

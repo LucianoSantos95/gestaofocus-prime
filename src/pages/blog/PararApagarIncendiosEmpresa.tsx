@@ -253,18 +253,47 @@ const PararApagarIncendiosEmpresa = () => {
                 </ul>
               </div>
 
+              <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">Perguntas frequentes sobre sair do modo bombeiro</h2>
+
+              <div className="space-y-6 mb-12">
+                <div className="border border-card-border rounded-lg p-6">
+                  <h3 className="text-xl font-semibold mb-3">Quanto tempo leva para sair do modo bombeiro?</h3>
+                  <p className="text-muted-foreground">Com o método dos 4 passos descrito acima, a maioria das agências e consultorias percebe redução significativa em urgências entre 30 e 60 dias. A transformação completa — onde o modo proativo vira o padrão — leva de 3 a 6 meses. O ritmo depende principalmente de consistência no planejamento semanal e de quantos processos críticos são documentados no primeiro mês.</p>
+                </div>
+
+                <div className="border border-card-border rounded-lg p-6">
+                  <h3 className="text-xl font-semibold mb-3">Por que processos documentados reduzem urgências?</h3>
+                  <p className="text-muted-foreground">Porque a maioria das urgências é, na verdade, uma pergunta sem resposta acessível: "como resolvemos isso antes?", "quem é responsável por X?", "qual é o passo seguinte?". Com processos documentados e acessíveis, a equipe encontra a resposta sozinha em 30 segundos — sem precisar interromper ninguém, sem criar uma "urgência" para tirar uma dúvida. A redução de 65% em urgências observada no case deste artigo vem quase inteiramente disso.</p>
+                </div>
+
+                <div className="border border-card-border rounded-lg p-6">
+                  <h3 className="text-xl font-semibold mb-3">Qual ferramenta usar para centralizar a comunicação e documentação?</h3>
+                  <p className="text-muted-foreground">A ferramenta importa menos do que o comprometimento de todos em usá-la. Dito isso, o Notion funciona particularmente bem para agências e consultorias por combinar gestão de projetos, CRM de clientes e base de conhecimento em um único workspace. O importante é escolher uma ferramenta, usá-la consistentemente por 30 dias antes de mudar, e garantir que toda a equipe acesse e atualize — não apenas a liderança.</p>
+                </div>
+
+                <div className="border border-card-border rounded-lg p-6">
+                  <h3 className="text-xl font-semibold mb-3">E se a equipe resistir à mudança de processos?</h3>
+                  <p className="text-muted-foreground">Resistência a mudanças geralmente tem uma de duas causas: o novo processo é mais trabalhoso que o antigo (em geral, de curto prazo), ou a equipe não entende por que a mudança é necessária. Para a primeira causa, comece pelos processos que tornam o trabalho mais fácil para quem executa — não apenas para o gestor. Para a segunda, mostre dados: quantas horas foram desperdiçadas no último mês com o problema que o novo processo resolve. Pessoas aderem quando entendem o benefício concreto.</p>
+                </div>
+
+                <div className="border border-card-border rounded-lg p-6">
+                  <h3 className="text-xl font-semibold mb-3">Como proteger o tempo estratégico quando há clientes exigindo atenção?</h3>
+                  <p className="text-muted-foreground">Comece estabelecendo SLAs internos claros: qual é o tempo de resposta padrão para cada tipo de solicitação de cliente? Um cliente que envia mensagem às 22h não precisa de resposta às 22h — mas precisa saber que receberá resposta até o fim do próximo dia útil. Quando os SLAs são comunicados e cumpridos, os clientes param de criar urgências artificiais. E o gestor recupera o controle do próprio calendário.</p>
+                </div>
+              </div>
+
               <h2 id="conclusao" className="text-3xl font-bold mt-12 mb-6 text-foreground">Conclusão: Empresas de verdade não vivem apagando incêndios</h2>
 
               <p className="text-lg leading-relaxed mb-6">
-                Se sua empresa está sempre no modo bombeiro, <strong>isso não é normal</strong>. Não é "parte de empreender". É sintoma de falta de sistemas.
+                Se sua empresa está sempre no modo bombeiro, <strong>isso não é normal</strong>. Não é "parte de empreender". É sintoma de falta de sistemas — e sistemas são construíveis.
               </p>
 
               <p className="text-lg leading-relaxed mb-6">
-                Empresas que crescem de forma sustentável têm uma coisa em comum: <strong>processos claros, planejamento real e comunicação centralizada</strong>.
+                Empresas que crescem de forma sustentável têm uma coisa em comum: <strong>processos claros, planejamento real e comunicação centralizada</strong>. Nenhuma dessas três coisas exige tecnologia cara ou equipe grande. Exige decisão, consistência, e as primeiras 4 semanas de implementação.
               </p>
 
               <p className="text-lg leading-relaxed mb-6">
-                A boa notícia? Você pode ter tudo isso. Só precisa das ferramentas e metodologia certas.
+                A boa notícia? Você pode ter tudo isso. Comece pelo Passo 1 esta semana: mapeie os 3-5 processos que mais geram confusão. Documente com clareza visual. Compartilhe com a equipe. O resto segue naturalmente.
               </p>
 
               <div className="my-12">
