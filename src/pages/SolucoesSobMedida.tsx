@@ -6,6 +6,8 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 import caseFin from "@/assets/case-financeiro-dashboard.png";
 import caseOnboarding from "@/assets/case-onboarding-flow.jpg";
 import caseCrmPipeline from "@/assets/case-crm-pipeline.jpg";
+import lovableLogoAsset from "@/assets/lovable-logo.png.asset.json";
+
 
 type Project = {
   year: string;
@@ -14,7 +16,9 @@ type Project = {
   title: string;
   description: string;
   image?: string;
+  imageContain?: boolean;
   textOverlay?: string;
+
   metrics: { value: string; label: string }[];
 };
 
@@ -26,7 +30,10 @@ const projects: Project[] = [
     title: "Reestruturação completa da operação com IA e Lovable",
     description:
       "Mapeamento de processos, sistema próprio construído na Lovable e agentes de IA para tirar o dono da operação do dia a dia, mantendo o padrão de atendimento.",
-    textOverlay: "Lovable",
+    image: lovableLogoAsset.url,
+    imageContain: true,
+
+
     metrics: [
       { value: "8+", label: "PROCESSOS MAPEADOS" },
       { value: "3 sem.", label: "ATÉ O GO-LIVE" },
@@ -451,9 +458,10 @@ const SolucoesSobMedida = () => {
                     alt={p.brand}
                     loading="lazy"
                     style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
+                      width: p.imageContain ? "55%" : "100%",
+                      height: p.imageContain ? "auto" : "100%",
+                      maxHeight: p.imageContain ? "60%" : undefined,
+                      objectFit: p.imageContain ? "contain" : "cover",
                       display: "block",
                       transition: "transform 0.6s ease",
                     }}
