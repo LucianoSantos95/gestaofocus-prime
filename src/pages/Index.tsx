@@ -17,7 +17,7 @@ const Index = () => {
         title="Focus Gestão | Operação com IA para PMEs e Agências"
         description="Consultoria de operações com IA + Hub Empresarial SaaS. Para PMEs, agências e consultorias que querem sair do improviso e operar como empresa de verdade."
         canonical="/"
-        keywords="consultoria notion, arquitetura de operação, IA para PMEs, hub empresarial, agentes de IA, mapeamento de processos"
+        keywords="consultoria lovable, lovable partner, desenvolvimento sob medida, arquitetura de operação, IA para PMEs, hub empresarial, agentes de IA, mapeamento de processos"
         type="website"
         speakable={["[data-speakable]", "h1", ".snj-display"]}
       />
@@ -28,8 +28,9 @@ const Index = () => {
         <div className="snj-hero__top container-focus" style={{ paddingTop: 8 }}>
           <div className="snj-hero__labels">
             <span className="snj-label-mono">/ Arquitetura de Operação</span>
-            <span className="snj-label-mono">/ Notion como Hub Empresarial</span>
+            <span className="snj-label-mono">/ Lovable como Hub Central</span>
             <span className="snj-label-mono">/ Agentes de IA Customizados</span>
+            <span className="snj-label-mono" style={{ color: "#6D8FE8" }}>/ Lovable Partner Oficial</span>
           </div>
           <p className="snj-hero__desc">
             Desenhamos operações que trazem clareza, precisão e eficiência ao
@@ -147,8 +148,8 @@ const Index = () => {
             {
               n: "02",
               t: "Projetar e construir",
-              d: "Implementamos automações sob medida no Notion + IA.",
-              tags: ["Arquitetura", "Notion Hub", "Agentes IA", "Integrações"],
+              d: "Construímos soluções sob medida na Lovable + IA, com entrega rápida e código próprio.",
+              tags: ["Arquitetura", "Lovable Partner", "Agentes IA", "Integrações"],
               accent: "#9DE89D",
             },
             {
@@ -467,11 +468,10 @@ const Index = () => {
             </span>
             <span className="snj-step__num" style={{ color: "#6D8FE8" }}>/ Consultoria</span>
             <p style={{ color: "var(--text2)", fontSize: 14 }}>
-              Diagnóstico e arquitetura da sua operação, hora a hora.
+              Diagnóstico, arquitetura e construção da sua operação — entrega por projeto fechado.
             </p>
             <div>
-              <span className="snj-price-amount">R$ 180</span>
-              <span style={{ color: "var(--text3)", fontSize: 14, marginLeft: 6 }}>/hora</span>
+              <span className="snj-price-amount" style={{ fontSize: 32 }}>Valor sob consulta</span>
             </div>
             <Link
               to="/solucoes-sob-medida"
@@ -485,9 +485,10 @@ const Index = () => {
               {[
                 "Diagnóstico de processos",
                 "Mapeamento de fluxos",
-                "Arquitetura no Notion",
+                "Arquitetura e desenvolvimento na Lovable (Partner oficial)",
                 "Agentes de IA sob medida",
-                "Pague apenas pelas horas usadas",
+                "Escopo e preço fechados antes de começar",
+                "Entrega acelerada (semanas, não meses)",
               ].map((f) => (
                 <li key={f} style={{ display: "flex", gap: 10, fontSize: 13, color: "var(--text)" }}>
                   <Check className="w-3.5 h-3.5 mt-0.5" style={{ color: "#6D8FE8" }} />
