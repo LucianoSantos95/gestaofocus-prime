@@ -23,10 +23,10 @@ const projects: Project[] = [
     year: "2026",
     category: "Espaço de Serviços",
     brand: "Espaço Natividade",
-    title: "Reestruturação completa da operação com IA e Notion",
+    title: "Reestruturação completa da operação com IA e Lovable",
     description:
-      "Mapeamento de processos, hub no Notion e agentes de IA para tirar o dono da operação do dia a dia, mantendo o padrão de atendimento.",
-    textOverlay: "Notion",
+      "Mapeamento de processos, sistema próprio construído na Lovable e agentes de IA para tirar o dono da operação do dia a dia, mantendo o padrão de atendimento.",
+    textOverlay: "Lovable",
     metrics: [
       { value: "8+", label: "PROCESSOS MAPEADOS" },
       { value: "3 sem.", label: "ATÉ O GO-LIVE" },
@@ -64,7 +64,7 @@ const projects: Project[] = [
     brand: "CRM Inteligente",
     title: "Pipeline comercial unificado com automações de IA",
     description:
-      "Implementação de CRM no Notion com pipeline visual, scoring automático de leads e agentes de IA cuidando do follow-up.",
+      "Sistema de CRM sob medida construído na Lovable, com pipeline visual, scoring automático de leads e agentes de IA cuidando do follow-up.",
     image: caseCrmPipeline,
     metrics: [
       { value: "1", label: "ÚNICA FONTE DA VERDADE" },
@@ -78,9 +78,9 @@ const SolucoesSobMedida = () => {
     <div className="min-h-screen" style={{ background: "var(--bg)" }}>
       <SEOHead
         title="Focus Custom — Consultoria de Operações com IA | Focus"
-        description="Cases reais de consultoria de operações com IA, Notion e agentes para PMEs, agências e consultorias. R$ 180/hora, pague apenas pelas horas usadas."
+        description="Cases reais de consultoria de operações com IA e Lovable Partner para PMEs, agências e consultorias. Projetos fechados, escopo e preço definidos antes de começar."
         canonical="/solucoes-sob-medida"
-        keywords="consultoria de operações, notion partner, agentes de IA, mapeamento de processos, POPs, playbooks"
+        keywords="consultoria de operações, lovable partner, desenvolvimento sob medida, agentes de IA, mapeamento de processos, POPs, playbooks"
       />
 
       <Navigation />
@@ -144,7 +144,7 @@ const SolucoesSobMedida = () => {
                 letterSpacing: "0.08em",
               }}
             >
-              R$ 180/HORA · PAGUE APENAS PELAS HORAS USADAS
+              VALOR SOB CONSULTA · ESCOPO E PREÇO FECHADOS ANTES DE COMEÇAR
             </p>
           </div>
         </div>
@@ -176,8 +176,8 @@ const SolucoesSobMedida = () => {
               },
               {
                 n: "02",
-                t: "Implementação do Notion como hub central",
-                d: "O Notion entra como o sistema operacional da empresa: POPs, playbooks, onboarding de equipe, controle de contatos, base de fornecedores, checklists por tipo de evento — tudo centralizado, com permissão de acesso por área.",
+                t: "Construção da solução na Lovable",
+                d: "Como Lovable Partner Oficial, desenvolvemos um sistema sob medida para a sua operação — código próprio, hospedado, integrado e pronto para escalar. Cada módulo é desenhado em cima do processo já mapeado, não o contrário.",
               },
               {
                 n: "03",
@@ -241,13 +241,13 @@ const SolucoesSobMedida = () => {
                 n: "Etapa 02",
                 t: "Proposta personalizada",
                 time: "24–48h após o diagnóstico",
-                d: "Orçamento baseado no escopo real, com horas estimadas e entregáveis claros. Pagamento 50% na assinatura, 50% na entrega.",
+                d: "Orçamento por projeto fechado, com escopo, entregáveis e prazo definidos antes de começar. Pagamento 50% na assinatura, 50% na entrega.",
               },
               {
                 n: "Etapa 03",
                 t: "Implementação",
                 time: "1–3 semanas",
-                d: "Mapeamento de fluxos, criação de POPs e playbooks, construção do Notion, integração de agentes de IA, treinamento da equipe.",
+                d: "Mapeamento de fluxos, criação de POPs e playbooks, construção da solução na Lovable, integração de agentes de IA, treinamento da equipe.",
               },
               {
                 n: "Etapa 04",
@@ -394,8 +394,8 @@ const SolucoesSobMedida = () => {
               </p>
               <p style={{ color: "var(--text2)", fontSize: 14, lineHeight: 1.7 }}>
                 Espaço de bem-estar e eventos. Diagnóstico realizado, proposta de reestruturação
-                de processos + Notion em fase de aprovação. Inclui fluxo de eventos, parcerias,
-                financeiro e onboarding de equipe.
+                de processos + sistema sob medida na Lovable em fase de aprovação. Inclui fluxo de
+                eventos, parcerias, financeiro e onboarding de equipe.
               </p>
             </div>
           </div>
