@@ -190,13 +190,13 @@ const AboutFocus = () => {
             <strong>não tem problema de software.</strong> Tem problema de operação."
           </h2>
           <p style={{ color: "var(--text2)", fontSize: 16, lineHeight: 1.7, marginTop: 28 }}>
-            Trabalho com um único princípio: processo claro primeiro, ferramenta depois. Cada hora
-            cobrada é uma hora aplicada — sem deck comercial, sem proposta de 30 páginas, sem
-            kickoff de uma semana só para começar a entregar.
+            Trabalho com um único princípio: processo claro primeiro, ferramenta depois. Escopo e preço fechados antes de começar — sem deck comercial, sem proposta de 30 páginas, sem kickoff de uma semana só para começar a entregar.
           </p>
           <p style={{ color: "var(--text2)", fontSize: 16, lineHeight: 1.7, marginTop: 18 }}>
-            O resultado é uma operação que para de depender do dono — e um time que finalmente sabe
-            o que fazer hoje sem precisar perguntar.
+            Como <strong>Lovable Partner Oficial</strong>, construo a solução diretamente na Lovable: o cliente recebe uma aplicação própria, em produção, em uma fração do tempo de um desenvolvimento tradicional — e segue dono do código.
+          </p>
+          <p style={{ color: "var(--text2)", fontSize: 16, lineHeight: 1.7, marginTop: 18 }}>
+            O resultado é uma operação que para de depender do dono — e um time que finalmente sabe o que fazer hoje sem precisar perguntar.
           </p>
         </div>
       </section>
