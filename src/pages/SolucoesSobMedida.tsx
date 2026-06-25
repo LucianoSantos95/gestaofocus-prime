@@ -16,7 +16,9 @@ type Project = {
   title: string;
   description: string;
   image?: string;
+  imageContain?: boolean;
   textOverlay?: string;
+
   metrics: { value: string; label: string }[];
 };
 
@@ -29,6 +31,8 @@ const projects: Project[] = [
     description:
       "Mapeamento de processos, sistema próprio construído na Lovable e agentes de IA para tirar o dono da operação do dia a dia, mantendo o padrão de atendimento.",
     image: lovableLogoAsset.url,
+    imageContain: true,
+
 
     metrics: [
       { value: "8+", label: "PROCESSOS MAPEADOS" },
