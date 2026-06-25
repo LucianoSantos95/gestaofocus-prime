@@ -6,6 +6,8 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 import caseFin from "@/assets/case-financeiro-dashboard.png";
 import caseOnboarding from "@/assets/case-onboarding-flow.jpg";
 import caseCrmPipeline from "@/assets/case-crm-pipeline.jpg";
+import lovableLogoAsset from "@/assets/lovable-logo.png.asset.json";
+
 
 type Project = {
   year: string;
@@ -26,7 +28,8 @@ const projects: Project[] = [
     title: "Reestruturação completa da operação com IA e Lovable",
     description:
       "Mapeamento de processos, sistema próprio construído na Lovable e agentes de IA para tirar o dono da operação do dia a dia, mantendo o padrão de atendimento.",
-    textOverlay: "Lovable",
+    image: lovableLogoAsset.url,
+
     metrics: [
       { value: "8+", label: "PROCESSOS MAPEADOS" },
       { value: "3 sem.", label: "ATÉ O GO-LIVE" },
