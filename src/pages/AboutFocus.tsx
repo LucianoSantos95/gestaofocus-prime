@@ -116,8 +116,7 @@ const AboutFocus = () => {
             className="hero-subtitle anim-up-2 mx-auto mt-8"
             style={{ maxWidth: 640, color: "rgba(230,230,232,0.85)" }}
           >
-            Focus é uma consultoria de um só fundador. Mapeio processos, construo hubs no Notion e
-            implanto agentes de IA para agências, consultorias e PMEs de serviço.
+            Focus é uma consultoria de um só fundador e <strong>Lovable Partner Oficial</strong>. Mapeio processos, construo aplicações sob medida na Lovable e implanto agentes de IA para agências, consultorias e PMEs de serviço.
           </p>
         </div>
       </section>
