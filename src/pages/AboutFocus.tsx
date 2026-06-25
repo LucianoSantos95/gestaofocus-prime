@@ -10,8 +10,8 @@ const AboutFocus = () => {
   const numbers = [
     { v: "50+", l: "PROJETOS ENTREGUES" },
     { v: "8 anos", l: "DE OPERAÇÕES B2B" },
-    { v: "1", l: "FUNDADOR · 1 PROMESSA" },
-    { v: "R$180", l: "/HORA · TRANSPARENTE" },
+    { v: "Lovable", l: "PARTNER OFICIAL" },
+    { v: "Sob consulta", l: "ESCOPO FECHADO POR PROJETO" },
   ];
 
   const principles = [
@@ -22,8 +22,8 @@ const AboutFocus = () => {
     },
     {
       n: "02",
-      t: "Documentação como ativo",
-      d: "POPs, playbooks e fluxos viram patrimônio da empresa. Se um funcionário-chave sai, o conhecimento fica.",
+      t: "Lovable como base de construção",
+      d: "Como Lovable Partner Oficial, construo aplicações sob medida diretamente na plataforma — entrega mais rápida, código próprio do cliente e iteração em dias, não meses.",
     },
     {
       n: "03",
@@ -32,25 +32,25 @@ const AboutFocus = () => {
     },
     {
       n: "04",
-      t: "Cobrança por hora, sem teatro",
-      d: "Você paga apenas pelas horas usadas. Sem pacote inflado, sem retainer obrigatório, sem fee por entregar deck.",
+      t: "Projeto fechado, sem surpresa",
+      d: "Escopo e preço definidos antes de começar. Sem retainer obrigatório, sem hora aberta, sem fee por entregar deck.",
     },
   ];
 
   const timeline = [
     { y: "2018", t: "Início em consultoria de processos para PMEs de serviço." },
-    { y: "2021", t: "Certificação Notion e foco em hubs operacionais." },
+    { y: "2021", t: "Foco em hubs operacionais e documentação como ativo." },
     { y: "2024", t: "Integração de agentes de IA em fluxos de PMEs e agências." },
-    { y: "2026", t: "Lançamento do Hub Empresarial (SaaS) e estrutura Focus Custom." },
+    { y: "2026", t: "Lovable Partner Oficial · Focus Custom passa a ser entregue sobre a Lovable." },
   ];
 
   return (
     <div className="min-h-screen" style={{ background: "var(--bg)" }}>
       <SEOHead
-        title="Sobre · Focus — Consultoria de Operações com IA"
-        description="Focus é a consultoria de operações com IA de Luciano Santos. 50+ projetos entregues para agências, consultorias e PMEs de serviço."
+        title="Sobre · Focus — Lovable Partner Oficial"
+        description="Focus é a consultoria de operações com IA de Luciano Santos. Lovable Partner Oficial. 50+ projetos entregues para agências, consultorias e PMEs de serviço."
         canonical="/sobre"
-        keywords="sobre focus, luciano focus, consultoria operações IA, notion partner brasil"
+        keywords="sobre focus, luciano focus, lovable partner brasil, consultoria operações IA"
       />
 
       <Navigation />
@@ -116,8 +116,7 @@ const AboutFocus = () => {
             className="hero-subtitle anim-up-2 mx-auto mt-8"
             style={{ maxWidth: 640, color: "rgba(230,230,232,0.85)" }}
           >
-            Focus é uma consultoria de um só fundador. Mapeio processos, construo hubs no Notion e
-            implanto agentes de IA para agências, consultorias e PMEs de serviço.
+            Focus é uma consultoria de um só fundador e <strong>Lovable Partner Oficial</strong>. Mapeio processos, construo aplicações sob medida na Lovable e implanto agentes de IA para agências, consultorias e PMEs de serviço.
           </p>
         </div>
       </section>
@@ -191,13 +190,13 @@ const AboutFocus = () => {
             <strong>não tem problema de software.</strong> Tem problema de operação."
           </h2>
           <p style={{ color: "var(--text2)", fontSize: 16, lineHeight: 1.7, marginTop: 28 }}>
-            Trabalho com um único princípio: processo claro primeiro, ferramenta depois. Cada hora
-            cobrada é uma hora aplicada — sem deck comercial, sem proposta de 30 páginas, sem
-            kickoff de uma semana só para começar a entregar.
+            Trabalho com um único princípio: processo claro primeiro, ferramenta depois. Escopo e preço fechados antes de começar — sem deck comercial, sem proposta de 30 páginas, sem kickoff de uma semana só para começar a entregar.
           </p>
           <p style={{ color: "var(--text2)", fontSize: 16, lineHeight: 1.7, marginTop: 18 }}>
-            O resultado é uma operação que para de depender do dono — e um time que finalmente sabe
-            o que fazer hoje sem precisar perguntar.
+            Como <strong>Lovable Partner Oficial</strong>, construo a solução diretamente na Lovable: o cliente recebe uma aplicação própria, em produção, em uma fração do tempo de um desenvolvimento tradicional — e segue dono do código.
+          </p>
+          <p style={{ color: "var(--text2)", fontSize: 16, lineHeight: 1.7, marginTop: 18 }}>
+            O resultado é uma operação que para de depender do dono — e um time que finalmente sabe o que fazer hoje sem precisar perguntar.
           </p>
         </div>
       </section>
