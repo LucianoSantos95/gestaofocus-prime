@@ -10,8 +10,8 @@ const AboutFocus = () => {
   const numbers = [
     { v: "50+", l: "PROJETOS ENTREGUES" },
     { v: "8 anos", l: "DE OPERAÇÕES B2B" },
-    { v: "1", l: "FUNDADOR · 1 PROMESSA" },
-    { v: "R$180", l: "/HORA · TRANSPARENTE" },
+    { v: "Lovable", l: "PARTNER OFICIAL" },
+    { v: "Sob consulta", l: "ESCOPO FECHADO POR PROJETO" },
   ];
 
   const principles = [
@@ -22,8 +22,8 @@ const AboutFocus = () => {
     },
     {
       n: "02",
-      t: "Documentação como ativo",
-      d: "POPs, playbooks e fluxos viram patrimônio da empresa. Se um funcionário-chave sai, o conhecimento fica.",
+      t: "Lovable como base de construção",
+      d: "Como Lovable Partner Oficial, construo aplicações sob medida diretamente na plataforma — entrega mais rápida, código próprio do cliente e iteração em dias, não meses.",
     },
     {
       n: "03",
@@ -32,16 +32,16 @@ const AboutFocus = () => {
     },
     {
       n: "04",
-      t: "Cobrança por hora, sem teatro",
-      d: "Você paga apenas pelas horas usadas. Sem pacote inflado, sem retainer obrigatório, sem fee por entregar deck.",
+      t: "Projeto fechado, sem surpresa",
+      d: "Escopo e preço definidos antes de começar. Sem retainer obrigatório, sem hora aberta, sem fee por entregar deck.",
     },
   ];
 
   const timeline = [
     { y: "2018", t: "Início em consultoria de processos para PMEs de serviço." },
-    { y: "2021", t: "Certificação Notion e foco em hubs operacionais." },
+    { y: "2021", t: "Foco em hubs operacionais e documentação como ativo." },
     { y: "2024", t: "Integração de agentes de IA em fluxos de PMEs e agências." },
-    { y: "2026", t: "Lançamento do Hub Empresarial (SaaS) e estrutura Focus Custom." },
+    { y: "2026", t: "Lovable Partner Oficial · Focus Custom passa a ser entregue sobre a Lovable." },
   ];
 
   return (
