@@ -32,6 +32,7 @@ const StatusPlataforma = lazy(() => import("./pages/StatusPlataforma"));
 
 const FAQ = lazy(() => import("./pages/FAQ"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+const DiagnosticoAgenteIA = lazy(() => import("./pages/DiagnosticoAgenteIA"));
 
 // Blog posts
 const PoderNotionEmpresas = lazy(() => import("./pages/blog/PoderNotionEmpresas"));
@@ -181,7 +182,8 @@ function AppLayout() {
             <Route path="/cookies" element={<Cookies />} />
             <Route path="/ajuda" element={<CentralAjuda />} />
             <Route path="/status" element={<StatusPlataforma />} />
-            
+            <Route path="/diagnostico-agente-ia" element={<DiagnosticoAgenteIA />} />
+
             <Route path="/faq" element={<FAQ />} />
 
             <Route path="*" element={<NotFound />} />
