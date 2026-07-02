@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async';
+﻿import { Helmet } from 'react-helmet-async';
 
 interface SEOHeadProps {
   title: string;
@@ -191,13 +191,15 @@ const SEOHead = ({
       <link rel="alternate" hrefLang="pt-BR" href={fullCanonical} />
       <link rel="alternate" hrefLang="x-default" href={fullCanonical} />
       
-      {noindex && <meta name="robots" content="noindex, nofollow" />}
+      <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1"} />
       
       <meta property="og:type" content={type} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:url" content={fullCanonical} />
       <meta property="og:image" content={image} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
       <meta property="og:locale" content="pt_BR" />
       <meta property="og:site_name" content="Focus Gestão Inteligente" />
       

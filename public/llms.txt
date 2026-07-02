@@ -1,4 +1,4 @@
-# Focus Gestão Inteligente
+﻿# Focus Gestão Inteligente
 
 > Consultoria de operações com IA para PMEs brasileiras. Mapeamento de processos, implementação do Notion como hub operacional e integração de agentes de IA — para agências, consultorias e prestadores de serviço que precisam parar de depender da memória do dono.
 
@@ -37,6 +37,16 @@ A Focus atende principalmente donos de PME, agências, consultorias e espaços d
 - O mesmo fundador que construiu o Hub Empresarial (SaaS usado por 100+ empresas) entrega a consultoria — arquitetura testada na prática.
 - Suporte pós-entrega de 2 semanas incluído em todos os projetos.
 
+## Perguntas frequentess
+
+- **O que é a Focus Gestão Inteligente?** Consultoria de operações com IA para PMEs brasileiras. Mapeamos seus processos, implementamos o Notion como hub operacional e integramos agentes de IA para que sua empresa funcione sem depender da memória do dono.
+- **Quanto custa a consultoria?** R$ 180/hora, pague apenas pelas horas usadas. Diagnóstico gratuito de 45 a 60 minutos antes de qualquer comprometimento.
+- **O que é o Hub Empresarial?** Plataforma SaaS com CRM, financeiro, projetos e dashboards. Plano Plus R$ 119/mês; Plano Pro R$ 249/mês. Garantia de 7 dias.
+- **Em quanto tempo a consultoria é entregue?** O mapeamento completo + implementação Notion leva de 2 a 4 semanas, dependendo da complexidade da operação.
+- **A Focus atende fora de São Paulo?** Sim. Atendimento 100% remoto para todo o Brasil.
+- **Noção de Notion é necessária?** Não. A Focus cuida de toda a configuração e treinamento da equipe. O cliente recebe um sistema pronto para usar.
+- **Qual a diferença entre Focus Custom e Hub Empresarial?** Focus Custom é consultoria personalizada com entrega única (mapeamento + Notion + IA). Hub Empresarial é assinatura mensal de plataforma SaaS de gestão.
+- **Como funciona o pós-entrega?** Suporte de 2 semanas incluído em todos os projetos. Ajustes, dúvidas e refinamentos cobertos sem custo adicional.
 ## Como engajar
 
 - Diagnóstico gratuito: https://wa.me/5511916742443?text=Ol%C3%A1+Luciano%2C+quero+agendar+um+diagn%C3%B3stico+gratuito
