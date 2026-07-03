@@ -1,7 +1,7 @@
 {
   "version": 1,
   "sdk_version": "0.20.0",
-  "path": "/mcp",
+  "path": "/functions/v1/mcp",
   "auth": {
     "type": "none"
   },
@@ -41,7 +41,7 @@
       {
         "name": "search_blog",
         "title": "Search Focus blog",
-        "description": "Search Focus Gestão's blog articles by keyword in the URL slug. Returns matching post titles and absolute URLs.",
+        "description": "Search Focus Gestão's blog by keyword against titles, slugs and tags. Returns matching posts with absolute URLs.",
         "annotations": {
           "readOnlyHint": true,
           "idempotentHint": true,
@@ -53,7 +53,7 @@
             "query": {
               "type": "string",
               "minLength": 1,
-              "description": "Keyword to match against the article slug."
+              "description": "Keyword (e.g. 'notion', 'produtividade', 'gtd')."
             },
             "limit": {
               "type": "integer",
