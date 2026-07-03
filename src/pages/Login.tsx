@@ -84,7 +84,7 @@ export default function Login() {
       <SEOHead
         title="Entrar · Focus Gestão"
         description="Acesse sua conta Focus Gestão."
-        canonicalUrl="https://focusinteligente.com.br/login"
+        canonical="https://focusinteligente.com.br/login"
         noindex
       />
       <main className="min-h-[calc(100vh-4rem)] flex items-center justify-center px-4 py-16">

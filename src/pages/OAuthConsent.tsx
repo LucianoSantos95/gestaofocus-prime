@@ -84,7 +84,7 @@ export default function OAuthConsent() {
       <SEOHead
         title="Autorizar acesso · Focus Gestão"
         description="Autorizar aplicativo a acessar sua conta Focus."
-        canonicalUrl="https://focusinteligente.com.br/.lovable/oauth/consent"
+        canonical="https://focusinteligente.com.br/.lovable/oauth/consent"
         noindex
       />
       <main className="min-h-[calc(100vh-4rem)] flex items-center justify-center px-4 py-16">
