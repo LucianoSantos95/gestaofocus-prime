@@ -3,7 +3,7 @@
 // supabase function: mcp
 // Bundled from src/lib/mcp/index.ts by @lovable.dev/mcp-js.
 // src/lib/mcp/index.ts
-import { defineMcp } from "npm:@lovable.dev/mcp-js@0.20.0";
+import { auth, defineMcp } from "npm:@lovable.dev/mcp-js@0.20.0";
 
 // src/lib/mcp/tools/list-services.ts
 import { defineTool } from "npm:@lovable.dev/mcp-js@0.20.0";
@@ -128,11 +128,16 @@ var get_contact_default = defineTool3({
 });
 
 // src/lib/mcp/index.ts
+var projectRef = "pqhpxqccsrgbdmsknppj";
 var mcp_default = defineMcp({
   name: "focus-gestao-mcp",
   title: "Focus Gest\xE3o MCP",
   version: "0.1.0",
-  instructions: "Tools to explore Focus Gest\xE3o (Lovable Partner Oficial): list services (Focus Custom sob medida e Hub Empresarial SaaS), search blog articles, and retrieve official contact URLs.",
+  instructions: "Tools to explore Focus Gest\xE3o (Lovable Partner Oficial): list services (Focus Custom sob medida e Hub Empresarial SaaS), search blog articles, and retrieve official contact URLs. Requires OAuth sign-in.",
+  auth: auth.oauth.issuer({
+    issuer: `https://${projectRef}.supabase.co/auth/v1`,
+    acceptedAudiences: "authenticated"
+  }),
   tools: [list_services_default, search_blog_default, get_contact_default]
 });
 
