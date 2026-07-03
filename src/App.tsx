@@ -31,6 +31,8 @@ const CentralAjuda = lazy(() => import("./pages/CentralAjuda"));
 const StatusPlataforma = lazy(() => import("./pages/StatusPlataforma"));
 
 const FAQ = lazy(() => import("./pages/FAQ"));
+const Login = lazy(() => import("./pages/Login"));
+const OAuthConsent = lazy(() => import("./pages/OAuthConsent"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 // Blog posts
 const PoderNotionEmpresas = lazy(() => import("./pages/blog/PoderNotionEmpresas"));
@@ -181,6 +183,8 @@ function AppLayout() {
             <Route path="/ajuda" element={<CentralAjuda />} />
             <Route path="/status" element={<StatusPlataforma />} />
             <Route path="/faq" element={<FAQ />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/.lovable/oauth/consent" element={<OAuthConsent />} />
 
             <Route path="*" element={<NotFound />} />
           </Routes>
