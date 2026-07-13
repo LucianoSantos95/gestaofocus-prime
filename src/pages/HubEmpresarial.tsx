@@ -232,6 +232,34 @@ const HubEmpresarial = () => {
         </div>
       </section>
 
+      {/* SEO: O que é Hub Empresarial */}
+      <section className="container-focus" style={{ padding: "60px 24px 20px" }}>
+        <div className="max-w-3xl mx-auto">
+          <h2 style={{ fontSize: "clamp(28px, 3.5vw, 40px)", fontWeight: 700, marginBottom: 20, color: "var(--text)" }}>
+            O que é um Hub Empresarial?
+          </h2>
+          <p style={{ fontSize: 17, lineHeight: 1.7, color: "var(--text2)", marginBottom: 16 }}>
+            Um <strong>hub empresarial</strong> é uma plataforma única que reúne, num só lugar, os sistemas
+            que normalmente vivem espalhados numa PME de serviço: CRM de clientes, controle financeiro,
+            gestão de projetos, dashboards de indicadores e automações com IA. Em vez de assinar cinco
+            ferramentas e integrar tudo na mão, você opera o negócio inteiro dentro de um mesmo painel.
+          </p>
+          <p style={{ fontSize: 17, lineHeight: 1.7, color: "var(--text2)", marginBottom: 16 }}>
+            O <strong>Hub Empresarial da Focus</strong> foi desenhado para agências, consultorias e
+            prestadores de serviço que já sentiram o custo de manter WhatsApp, planilhas, Trello e um
+            financeiro em paralelo — perda de dados, retrabalho e nenhuma visão real de rentabilidade.
+            Com o hub, o funil de vendas, o cronograma dos projetos, o fluxo de caixa e os KPIs do negócio
+            ficam conectados por padrão.
+          </p>
+          <p style={{ fontSize: 17, lineHeight: 1.7, color: "var(--text2)" }}>
+            É uma solução SaaS pronta para usar — sem implantação demorada, sem consultoria obrigatória,
+            com atualizações contínuas. Ideal para quem quer sair do caos operacional sem construir um
+            software do zero.
+          </p>
+        </div>
+      </section>
+
+
       {/* MODULES — Sanjaya project cards */}
       <section ref={mockupRef} className="container-focus" style={{ padding: "80px 24px 60px" }}>
         <div className="flex flex-col gap-6 max-w-6xl mx-auto">
