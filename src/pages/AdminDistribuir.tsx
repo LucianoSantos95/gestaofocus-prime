@@ -50,7 +50,7 @@ export default function AdminDistribuir() {
       setAuthorized(true);
 
       const [routesRes, logsRes] = await Promise.all([
-        fetch("/scripts/blog-routes.json").catch(() => null),
+        fetch("/blog-routes.json").catch(() => null),
         supabase.from("linkedin_posts").select("blog_slug, posted_at, status").order("posted_at", { ascending: false }),
       ]);
       if (routesRes && routesRes.ok) {
