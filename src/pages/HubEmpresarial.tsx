@@ -157,12 +157,12 @@ const HubEmpresarial = () => {
   return (
     <div className="min-h-screen" style={{ background: "var(--bg)" }}>
       <SEOHead
-        title="Hub Empresarial — Gestão para Agências e Consultorias | Focus"
-        description="Plataforma de gestão para agências, consultorias e prestadores. CRM, Financeiro, Projetos e Dashboards com IA — tudo em um único hub."
+        title="O que é Hub Empresarial? Plataforma de Gestão para Agências | Focus"
+        description="Hub Empresarial é a plataforma que centraliza CRM, financeiro, projetos e dashboards com IA num único sistema. Para agências, consultorias e PMEs de serviço."
         canonical="/hub-empresarial"
         image="https://focusinteligente.com.br/lovable-uploads/hub-empresarial-og.jpg"
         type="product"
-        keywords="plataforma gestão agências, sistema para consultoria, software gestão PME serviços, CRM agência, financeiro consultoria"
+        keywords="hub empresarial, o que é hub empresarial, plataforma gestão agências, sistema para consultoria, software gestão PME serviços, CRM agência"
       />
       <NotionReferrerBanner />
       <Navigation />
@@ -189,11 +189,11 @@ const HubEmpresarial = () => {
             className="hero-title anim-up-1 mx-auto"
             style={{ maxWidth: 1000, fontSize: "clamp(40px, 6vw, 76px)" }}
           >
-            O SaaS que <strong>centraliza a gestão</strong> de agências e consultorias.
+            <strong>Hub Empresarial</strong>: a plataforma que centraliza a gestão de agências e consultorias.
           </h1>
 
-          <p className="hero-subtitle anim-up-2 mx-auto mt-8" style={{ maxWidth: 680 }}>
-            CRM, financeiro, projetos e dashboards com IA num único hub. Sem planilhas paralelas,
+          <p className="hero-subtitle anim-up-2 mx-auto mt-8" style={{ maxWidth: 720 }}>
+            CRM, financeiro, projetos e dashboards com IA num único hub empresarial. Sem planilhas paralelas,
             sem sistemas desconectados — uma fonte de verdade para o negócio inteiro.
           </p>
 
