@@ -34,8 +34,6 @@ const FAQ = lazy(() => import("./pages/FAQ"));
 const Login = lazy(() => import("./pages/Login"));
 const OAuthConsent = lazy(() => import("./pages/OAuthConsent"));
 const NotFound = lazy(() => import("./pages/NotFound"));
-const AdminSeo = lazy(() => import("./pages/AdminSeo"));
-const AdminDistribuir = lazy(() => import("./pages/AdminDistribuir"));
 // Blog posts
 const PoderNotionEmpresas = lazy(() => import("./pages/blog/PoderNotionEmpresas"));
 const MapeamentoProcessos = lazy(() => import("./pages/blog/MapeamentoProcessos"));
@@ -187,8 +185,6 @@ function AppLayout() {
             <Route path="/faq" element={<FAQ />} />
             <Route path="/login" element={<Login />} />
             <Route path="/.lovable/oauth/consent" element={<OAuthConsent />} />
-            <Route path="/admin/seo" element={<AdminSeo />} />
-            <Route path="/admin/distribuir" element={<AdminDistribuir />} />
 
             <Route path="*" element={<NotFound />} />
           </Routes>

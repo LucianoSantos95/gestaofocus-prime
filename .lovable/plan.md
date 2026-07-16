@@ -1,73 +1,55 @@
 
-# Plano: aumentar fluxo do site Focus Gestão
+## Contexto
+Você foi aprovado como Lovable Partner e passará a entregar soluções construídas na Lovable (não mais Notion como hub central). Além disso, o modelo comercial da consultoria muda de hora/hora (R$ 180/h) para **projeto fechado com "Valor sob consulta"**, já que Lovable + Claude Code aceleram a entrega.
 
-## Diagnóstico honesto (Semrush, base BR)
+Escopo: apenas a **página inicial** (`/`). Blog, páginas internas (`/hub-empresarial`, `/solucoes-sob-medida`, FAQ, etc.) e textos antigos sobre Notion ficam intocados nesta entrega — podem ser tratados em rodadas futuras se você quiser.
 
-O site hoje tem **8 keywords indexadas no Brasil**, tráfego orgânico estimado em **~0/mês**, e nenhuma posição no top 10. Isso muda a estratégia: não é "otimizar tráfego existente" — é **construir tráfego do zero**. SEO real leva 3-6 meses para render. A parte social/distribuição pode gerar tráfego em semanas.
+## Mudanças propostas em `src/pages/Index.tsx`
 
-Melhores posições atuais:
-- `hub empresarial` — posição 19 (90 buscas/mês) ← alvo #1, quase página 1
-- `metodo focus tree` — posição 20 (210 buscas/mês) ← blog post ranqueando
-- `focus business` — posição 52 (170/mês)
+### 1. Hero — labels superiores (linha 29-33)
+Trocar a label do meio:
+- Antes: `/ Notion como Hub Empresarial`
+- Depois: `/ Lovable como Hub Central` (adicionando o badge de Partner em outro ponto, ver item 4)
 
-## O que vamos fazer
+### 2. Seção "Como funciona" — passo 02 (linhas 147-153)
+- Descrição antes: *"Implementamos automações sob medida no Notion + IA."*
+- Descrição depois: *"Construímos soluções sob medida na Lovable + IA, com entrega rápida e código próprio."*
+- Tags antes: `["Arquitetura", "Notion Hub", "Agentes IA", "Integrações"]`
+- Tags depois: `["Arquitetura", "Lovable Partner", "Agentes IA", "Integrações"]`
 
-### 1. Conectar Google Search Console (conector Lovable)
-Motivo: precisamos ver as **queries reais que geram impressão** no Google Search (Semrush só mostra top-100 ranqueados; Search Console mostra o que já aparece em busca mesmo sem clique). Isso vira base para otimização de títulos e novos posts.
+### 3. Seção "Planos" — card Consultoria (linhas 448-498)
+- Subtítulo antes: *"Diagnóstico e arquitetura da sua operação, hora a hora."*
+- Subtítulo depois: *"Diagnóstico, arquitetura e construção da sua operação — entrega por projeto fechado."*
+- Bloco de preço antes: `R$ 180 /hora`
+- Bloco de preço depois: `Valor sob consulta` (texto único, sem sufixo `/hora`, mantendo a tipografia `snj-price-amount` mas em tamanho compatível)
+- Lista de features antes:
+  - Diagnóstico de processos
+  - Mapeamento de fluxos
+  - **Arquitetura no Notion**
+  - Agentes de IA sob medida
+  - **Pague apenas pelas horas usadas**
+- Lista de features depois:
+  - Diagnóstico de processos
+  - Mapeamento de fluxos
+  - **Arquitetura e desenvolvimento na Lovable** (Partner oficial)
+  - Agentes de IA sob medida
+  - **Escopo e preço fechados antes de começar**
+  - Entrega acelerada (semanas, não meses)
 
-Ação: acionar `standard_connectors--connect` com `google_search_console`. Após conectado:
-- Criar dashboard admin em `/admin/seo` (restrito ao owner oluciano, seguindo memória de admin restriction)
-- Listar top 20 queries por impressão, CTR, posição média
-- Listar top páginas com impressão sem clique (oportunidade de reescrever título)
-- Rodar via edge function (server-side, headers gateway)
+### 4. SEO + badge Partner
+- `keywords` (linha 20): trocar `consultoria notion` por `consultoria lovable, lovable partner, desenvolvimento sob medida`
+- Adicionar uma label discreta `/ Lovable Partner Oficial` ao bloco do hero (junto às outras três labels mono) para sinalizar a credencial — pode virar 4 labels ou substituir uma das menos estratégicas.
 
-### 2. Conectar LinkedIn para auto-distribuir blog posts
-Motivo: você tem 50+ posts de blog parados sem distribuição. LinkedIn é onde estão agências, consultorias e prestadores de serviço (seu ICP).
+### 5. Memory (`mem://`)
+Atualizar duas memórias para refletir a nova posição:
+- Core: trocar restrição "NEVER mention Notion … proprietary software developer" por "Position as **Lovable Partner**: solutions built on Lovable. Avoid recommending Notion as core architecture; mention Notion only in legacy blog content."
+- Atualizar `mem://strategy/v3-business-model-pivot` e `mem://ai/infrastructure` para refletir Lovable como hub e cobrança por projeto fechado.
 
-Ação: acionar `standard_connectors--connect` com `linkedin`. Após conectado:
-- Criar página admin `/admin/distribuir` com lista dos posts do blog
-- Botão "Publicar no LinkedIn" que dispara edge function `publish-linkedin` chamando `POST v2/ugcPosts` via gateway
-- Template: título do post + primeiro parágrafo + link canônico + hashtags fixas (#gestao #pme #consultoria)
-- Log em nova tabela `linkedin_posts` (id, blog_slug, posted_at, linkedin_urn)
+## Fora de escopo (sugestão para próximas rodadas)
+- Reescrever `/solucoes-sob-medida` com o novo modelo (projeto fechado, Lovable Partner).
+- Reescrever `/hub-empresarial` se quiser amarrar com a nova narrativa.
+- Atualizar ROI Calculator (que ainda assume custo/hora) — não está renderizado na home atual, mas existe em `src/components/ROICalculator.tsx`.
+- Limpeza geral de menções a Notion em páginas institucionais (FAQ, AboutFocus, CentralAjuda, FocusPro, ControleFinanceiroPro).
+- Posts de blog: manter como estão (são conteúdo SEO sobre o tema Notion/produtividade e seguem trazendo tráfego).
 
-Nota: LinkedIn App User Connector requer scope `w_member_social`. Publicações saem da conta que você conectar.
-
-### 3. Otimizações SEO imediatas (sem conector novo, usando Semrush)
-Enquanto conectores acima são setados, atacar quick wins:
-
-**a) Empurrar `/hub-empresarial` da posição 19 → top 10**
-- Rodar `page_analysis` na URL para ver keyword cluster completo
-- Reescrever `<title>` e meta description usando "hub empresarial" como termo principal (hoje o title provavelmente não bate)
-- Adicionar seção H2 respondendo "o que é hub empresarial" (SEO on-page para o termo exato)
-
-**b) Empurrar `/blog/metodo-pessoal-produtividade` da posição 20 → top 10**
-- Mesma abordagem: analisar keywords secundárias, reforçar "método focus tree" no title/H1
-
-**c) Rodar `competitive_analysis` para achar keyword gaps**
-- Identificar 10-15 termos que concorrentes ranqueiam e você não → gerar pauta de novos posts
-
-### 4. Newsletter recorrente (Resend, já integrado — opcional fase 2)
-Você mencionou 3 prioridades e não escolheu newsletter. Deixando fora deste plano. Se quiser depois, só pedir.
-
-## Ordem de execução
-
-1. Trigger `connect` para Google Search Console → você aprova
-2. Trigger `connect` para LinkedIn → você aprova
-3. Criar edge functions + página admin `/admin/seo` (Search Console dashboard)
-4. Criar edge function + página admin `/admin/distribuir` (LinkedIn posting)
-5. Rodar Semrush `page_analysis` nas 2 páginas prioritárias e reescrever títulos/H1s
-6. Rodar Semrush `competitive_analysis` e entregar lista de pautas
-
-## Detalhes técnicos
-
-- **Search Console**: chamadas via `https://connector-gateway.lovable.dev/google_search_console/webmasters/v3/searchanalytics/query`, filtrando por siteUrl retornado de `/sites`. Property precisa estar verificada na conta Google que conectar.
-- **LinkedIn**: chamadas via `https://connector-gateway.lovable.dev/linkedin/v2/ugcPosts`. Precisa do URN do author (`GET /v2/userinfo`).
-- **Admin gating**: reusar padrão `has_role(auth.uid(), 'admin')` já existente na base para as duas páginas admin.
-- **Tabela nova**: `public.linkedin_posts` com RLS admin-only + GRANT authenticated/service_role conforme padrão do projeto.
-- **Escopo LinkedIn**: reconfirmar `w_member_social` no client do connector (workspace admin faz isso).
-
-## Fora de escopo (não vamos mexer)
-- Google Ads / paid media (você não pediu, e memória `paid-ads-viability` diz só depois de reduzir bounce)
-- Trocar stack de conteúdo (blog fica como está)
-- Newsletter Resend (fase 2)
-- Alterar copy dos serviços principais
+Pode aprovar para eu implementar só a home agora, ou me diz se quer já incluir alguma das páginas extras nesta mesma rodada.

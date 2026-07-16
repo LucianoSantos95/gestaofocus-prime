@@ -56,39 +56,6 @@ export type Database = {
         }
         Relationships: []
       }
-      linkedin_posts: {
-        Row: {
-          blog_slug: string
-          blog_title: string
-          error_message: string | null
-          id: string
-          linkedin_urn: string | null
-          posted_at: string
-          posted_by: string | null
-          status: string
-        }
-        Insert: {
-          blog_slug: string
-          blog_title: string
-          error_message?: string | null
-          id?: string
-          linkedin_urn?: string | null
-          posted_at?: string
-          posted_by?: string | null
-          status?: string
-        }
-        Update: {
-          blog_slug?: string
-          blog_title?: string
-          error_message?: string | null
-          id?: string
-          linkedin_urn?: string | null
-          posted_at?: string
-          posted_by?: string | null
-          status?: string
-        }
-        Relationships: []
-      }
       profiles: {
         Row: {
           avatar_url: string | null

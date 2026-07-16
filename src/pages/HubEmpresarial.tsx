@@ -157,12 +157,12 @@ const HubEmpresarial = () => {
   return (
     <div className="min-h-screen" style={{ background: "var(--bg)" }}>
       <SEOHead
-        title="O que é Hub Empresarial? Plataforma de Gestão para Agências | Focus"
-        description="Hub Empresarial é a plataforma que centraliza CRM, financeiro, projetos e dashboards com IA num único sistema. Para agências, consultorias e PMEs de serviço."
+        title="Hub Empresarial — Gestão para Agências e Consultorias | Focus"
+        description="Plataforma de gestão para agências, consultorias e prestadores. CRM, Financeiro, Projetos e Dashboards com IA — tudo em um único hub."
         canonical="/hub-empresarial"
         image="https://focusinteligente.com.br/lovable-uploads/hub-empresarial-og.jpg"
         type="product"
-        keywords="hub empresarial, o que é hub empresarial, plataforma gestão agências, sistema para consultoria, software gestão PME serviços, CRM agência"
+        keywords="plataforma gestão agências, sistema para consultoria, software gestão PME serviços, CRM agência, financeiro consultoria"
       />
       <NotionReferrerBanner />
       <Navigation />
@@ -189,11 +189,11 @@ const HubEmpresarial = () => {
             className="hero-title anim-up-1 mx-auto"
             style={{ maxWidth: 1000, fontSize: "clamp(40px, 6vw, 76px)" }}
           >
-            <strong>Hub Empresarial</strong>: a plataforma que centraliza a gestão de agências e consultorias.
+            O SaaS que <strong>centraliza a gestão</strong> de agências e consultorias.
           </h1>
 
-          <p className="hero-subtitle anim-up-2 mx-auto mt-8" style={{ maxWidth: 720 }}>
-            CRM, financeiro, projetos e dashboards com IA num único hub empresarial. Sem planilhas paralelas,
+          <p className="hero-subtitle anim-up-2 mx-auto mt-8" style={{ maxWidth: 680 }}>
+            CRM, financeiro, projetos e dashboards com IA num único hub. Sem planilhas paralelas,
             sem sistemas desconectados — uma fonte de verdade para o negócio inteiro.
           </p>
 
@@ -231,34 +231,6 @@ const HubEmpresarial = () => {
           </p>
         </div>
       </section>
-
-      {/* SEO: O que é Hub Empresarial */}
-      <section className="container-focus" style={{ padding: "60px 24px 20px" }}>
-        <div className="max-w-3xl mx-auto">
-          <h2 style={{ fontSize: "clamp(28px, 3.5vw, 40px)", fontWeight: 700, marginBottom: 20, color: "var(--text)" }}>
-            O que é um Hub Empresarial?
-          </h2>
-          <p style={{ fontSize: 17, lineHeight: 1.7, color: "var(--text2)", marginBottom: 16 }}>
-            Um <strong>hub empresarial</strong> é uma plataforma única que reúne, num só lugar, os sistemas
-            que normalmente vivem espalhados numa PME de serviço: CRM de clientes, controle financeiro,
-            gestão de projetos, dashboards de indicadores e automações com IA. Em vez de assinar cinco
-            ferramentas e integrar tudo na mão, você opera o negócio inteiro dentro de um mesmo painel.
-          </p>
-          <p style={{ fontSize: 17, lineHeight: 1.7, color: "var(--text2)", marginBottom: 16 }}>
-            O <strong>Hub Empresarial da Focus</strong> foi desenhado para agências, consultorias e
-            prestadores de serviço que já sentiram o custo de manter WhatsApp, planilhas, Trello e um
-            financeiro em paralelo — perda de dados, retrabalho e nenhuma visão real de rentabilidade.
-            Com o hub, o funil de vendas, o cronograma dos projetos, o fluxo de caixa e os KPIs do negócio
-            ficam conectados por padrão.
-          </p>
-          <p style={{ fontSize: 17, lineHeight: 1.7, color: "var(--text2)" }}>
-            É uma solução SaaS pronta para usar — sem implantação demorada, sem consultoria obrigatória,
-            com atualizações contínuas. Ideal para quem quer sair do caos operacional sem construir um
-            software do zero.
-          </p>
-        </div>
-      </section>
-
 
       {/* MODULES — Sanjaya project cards */}
       <section ref={mockupRef} className="container-focus" style={{ padding: "80px 24px 60px" }}>
