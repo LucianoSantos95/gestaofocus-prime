@@ -172,7 +172,7 @@ const HubEmpresarial = () => {
             className="hero-title anim-up-1 mx-auto"
             style={{ maxWidth: 1000, fontSize: "clamp(40px, 6vw, 76px)" }}
           >
-            O SaaS que <strong>centraliza a gestão</strong> de agências e consultorias.
+            O Hub que <strong>centraliza a gestão</strong> de agências e consultorias.
           </h1>
 
           <p className="hero-subtitle anim-up-2 mx-auto mt-8" style={{ maxWidth: 680 }}>
