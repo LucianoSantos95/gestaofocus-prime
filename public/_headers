@@ -4,6 +4,17 @@
 /robots.txt
   Content-Type: text/plain
 
+# llms.txt / llms-full.txt existem para crawlers de IA (GEO) lerem sob demanda.
+# noindex tira eles dos resultados de busca sem bloquear a leitura por GPTBot,
+# ClaudeBot, PerplexityBot etc. — NÃO usar Disallow no robots.txt aqui.
+/llms.txt
+  Content-Type: text/plain
+  X-Robots-Tag: noindex
+
+/llms-full.txt
+  Content-Type: text/plain
+  X-Robots-Tag: noindex
+
 # Security headers
 /*
   X-Content-Type-Options: nosniff

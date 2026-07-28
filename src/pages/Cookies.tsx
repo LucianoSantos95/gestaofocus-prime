@@ -1,10 +1,17 @@
 import { Link } from "react-router-dom";
 import { Cookie, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import SEOHead from "@/components/SEOHead";
 
 const Cookies = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="Política de Cookies — Focus Gestão Inteligente"
+        description="Como a Focus Gestão Inteligente utiliza cookies e tecnologias similares em seus sites e plataformas."
+        canonical="/cookies"
+        noindex
+      />
       {/* Header */}
       <div className="bg-background-elevated border-b border-card-border">
         <div className="container-focus py-12">

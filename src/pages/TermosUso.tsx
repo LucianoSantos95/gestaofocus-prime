@@ -1,10 +1,17 @@
 import { Link } from "react-router-dom";
 import { FileText, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import SEOHead from "@/components/SEOHead";
 
 const TermosUso = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="Termos de Uso — Focus Gestão Inteligente"
+        description="Termos e condições de uso dos serviços e plataformas da Focus Gestão Inteligente."
+        canonical="/termos"
+        noindex
+      />
       {/* Header */}
       <div className="bg-background-elevated border-b border-card-border">
         <div className="container-focus py-12">

@@ -189,8 +189,16 @@ function AppLayout() {
             <Route path="/focus-pro" element={<Navigate to="/hub-empresarial" replace />} />
             <Route path="/focus-club" element={<Navigate to="/hub-empresarial" replace />} />
             <Route path="/sistemas-gratuitos" element={<Navigate to="/hub-empresarial" replace />} />
+            {/* /sistemas-notion: rota removida, mas ainda referenciada por 20+ CTAs no blog.
+                O Hub é o produto sucessor dos sistemas Notion. */}
+            <Route path="/sistemas-notion" element={<Navigate to="/hub-empresarial" replace />} />
             {/* Seção de cases → Soluções sob medida */}
             <Route path="/cases" element={<Navigate to="/solucoes-sob-medida" replace />} />
+            {/* Rotas antigas sem página correspondente */}
+            <Route path="/metodofocus" element={<Navigate to="/solucoes-sob-medida" replace />} />
+            <Route path="/para-ias" element={<Navigate to="/" replace />} />
+            <Route path="/docs" element={<Navigate to="/ajuda" replace />} />
+            <Route path="/auth/login" element={<Navigate to="/login" replace />} />
 
             {/* Info Pages */}
             <Route path="/sobre" element={<AboutFocus />} />

@@ -1,6 +1,14 @@
+import SEOHead from "@/components/SEOHead";
+
 const Privacidade = () => {
   return (
     <div className="min-h-screen">
+      <SEOHead
+        title="Política de Privacidade — Focus Gestão Inteligente"
+        description="Como a Focus Gestão Inteligente coleta, usa e protege os dados pessoais dos seus usuários e clientes."
+        canonical="/privacidade"
+        noindex
+      />
       <section className="section-padding bg-gradient-to-br from-background via-background to-primary/5">
         <div className="container-focus max-w-4xl">
           <div className="animate-fade-in">

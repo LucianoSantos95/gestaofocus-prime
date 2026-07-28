@@ -1,57 +1,25 @@
-import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
+import SEOHead from "@/components/SEOHead";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import BlogCTA from "@/components/BlogCTA";
 import articleImage from "@/assets/blog/reunioes-produtivas.jpg";
 
 const ReunioesProdutivas = () => {
-  const articleUrl = "https://focusinteligente.com.br/blog/reunioes-produtivas-parar-perder-tempo";
   const imageUrl = "https://focusinteligente.com.br" + articleImage;
 
   return (
     <>
-      <Helmet>
-        <title>Reuniões Produtivas Para Agências e Consultorias | Focus</title>
-        <meta name="description" content="Transforme reuniões improdutivas em alinhamentos rápidos na sua agência. Passo a passo para agências e consultorias que precisam de agilidade." />
-        <meta name="keywords" content="reuniões produtivas agência, reuniões eficientes consultoria, gestão reuniões prestadores serviço, alinhamento equipe agência" />
-        <link rel="canonical" href={articleUrl} />
-        
-        <meta property="og:title" content="Como Fazer Reuniões Produtivas e Parar de Perder Tempo no Trabalho" />
-        <meta property="og:description" content="Aprenda a transformar reuniões improdutivas em encontros eficientes que geram resultados." />
-        <meta property="og:image" content={imageUrl} />
-        <meta property="og:url" content={articleUrl} />
-        <meta property="og:type" content="article" />
-        
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Como Fazer Reuniões Produtivas e Parar de Perder Tempo" />
-        <meta name="twitter:description" content="Aprenda a transformar reuniões improdutivas em encontros eficientes que geram resultados." />
-        <meta name="twitter:image" content={imageUrl} />
-
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            "headline": "Como Fazer Reuniões Produtivas e Parar de Perder Tempo no Trabalho",
-            "image": imageUrl,
-            "datePublished": "2025-12-22",
-            "dateModified": "2025-12-22",
-            "author": {
-              "@type": "Organization",
-              "name": "Focus Inteligente"
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "Focus Inteligente",
-              "logo": {
-                "@type": "ImageObject",
-                "url": "https://focusinteligente.com.br/lovable-uploads/focus-logo.png"
-              }
-            },
-            "description": "Aprenda a transformar reuniões improdutivas em encontros eficientes. Passo a passo para planejar, conduzir e documentar reuniões que geram resultados."
-          })}
-        </script>
-      </Helmet>
+      <SEOHead
+        title="Reuniões Produtivas Para Agências e Consultorias | Focus"
+        description="Transforme reuniões improdutivas em alinhamentos rápidos na sua agência. Passo a passo para agências e consultorias que precisam de agilidade."
+        canonical="/blog/reunioes-produtivas-parar-perder-tempo"
+        image={imageUrl}
+        type="article"
+        publishedTime="2025-12-22"
+        modifiedTime="2025-12-22"
+        keywords="reuniões produtivas agência, reuniões eficientes consultoria, gestão reuniões prestadores serviço, alinhamento equipe agência"
+      />
 
       <div className="min-h-screen bg-background">
         <Navigation />
