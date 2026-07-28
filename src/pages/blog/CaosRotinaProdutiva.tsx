@@ -119,7 +119,7 @@ const CaosRotinaProdutiva = () => {
       <SEOHead
         title="Do Caos à Rotina Produtiva em Agências e Consultorias | Focus"
         description="Método prático para agências e consultorias saírem do caos diário e criarem rotinas produtivas com Notion. Pare de apagar incêndios."
-        canonical="/blog/caos-rotina-produtiva"
+        canonical="/blog/transformar-caos-rotina-produtiva-notion"
         image={`https://focusinteligente.com${coverImage}`}
         type="article"
         publishedTime={publishDate}

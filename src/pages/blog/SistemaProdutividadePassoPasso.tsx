@@ -39,7 +39,7 @@ const SistemaProdutividadePassoPasso = () => {
       <SEOHead
         title="Sistema de Produtividade para Agências e Consultorias | Focus"
         description="Monte um sistema de produtividade para sua agência ou consultoria em 4 passos. Guia prático para prestadores de serviço organizarem a operação."
-        canonical="/blog/sistema-produtividade-passo-passo"
+        canonical="/blog/criar-sistema-produtividade-funciona"
         image={imageUrl}
         type="article"
         publishedTime="2025-01-29"

@@ -48,7 +48,7 @@ const GestaoTempoQuemViveOcupado = () => {
       <SEOHead
         title="Gestão do Tempo para Gestores de Agência Sobrecarregados"
         description="Estratégias de gestão do tempo para donos de agência e consultoria. Priorize demandas, elimine desperdiçadores e recupere o controle da sua operação."
-        canonical="/blog/gestao-tempo-quem-vive-ocupado"
+        canonical="/blog/gestao-tempo-ocupado-estrategias-funcionam"
         image={imageUrl}
         type="article"
         publishedTime="2025-02-20"

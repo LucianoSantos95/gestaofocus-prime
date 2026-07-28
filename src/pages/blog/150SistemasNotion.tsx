@@ -40,7 +40,7 @@ const OneFiftySystemsNotion = () => {
       <SEOHead
         title="150 Sistemas Notion para Agências: Lições Reais | Focus"
         description="Lições de quem organizou 150+ workspaces Notion para agências e consultorias. Armadilhas, erros comuns e o que realmente funciona."
-        canonical="/blog/150-sistemas-notion"
+        canonical="/blog/150-sistemas-notion-licoes-praticas"
         image={imageUrl}
         type="article"
         publishedTime="2025-01-30"

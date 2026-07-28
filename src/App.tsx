@@ -182,7 +182,7 @@ function AppLayout() {
             <Route path="/sobre-focus" element={<Navigate to="/sobre" replace />} />
             <Route path="/privacidade" element={<Privacidade />} />
             <Route path="/termos" element={<TermosUso />} />
-            <Route path="/termos-uso" element={<TermosUso />} />
+            <Route path="/termos-uso" element={<Navigate to="/termos" replace />} />
             <Route path="/cookies" element={<Cookies />} />
             <Route path="/ajuda" element={<CentralAjuda />} />
             <Route path="/status" element={<StatusPlataforma />} />

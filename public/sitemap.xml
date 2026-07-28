@@ -1,32 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- ===== PÁGINAS PRINCIPAIS ===== -->
   <url>
     <loc>https://focusinteligente.com.br/</loc>
-    <lastmod>2026-06-23</lastmod>
+    <lastmod>2026-07-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://focusinteligente.com.br/solucoes-sob-medida</loc>
-    <lastmod>2026-06-23</lastmod>
+    <lastmod>2026-07-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://focusinteligente.com.br/hub-empresarial</loc>
-    <lastmod>2026-06-23</lastmod>
+    <lastmod>2026-07-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://focusinteligente.com.br/blog</loc>
-    <lastmod>2026-06-23</lastmod>
+    <lastmod>2026-07-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://focusinteligente.com.br/sobre</loc>
-    <lastmod>2026-06-23</lastmod>
+    <lastmod>2026-07-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -54,14 +56,9 @@
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
+  <!-- /termos é o canonical; /termos-uso redireciona para ele -->
   <url>
     <loc>https://focusinteligente.com.br/termos</loc>
-    <lastmod>2026-06-23</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://focusinteligente.com.br/termos-uso</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
@@ -73,7 +70,7 @@
     <priority>0.3</priority>
   </url>
 
-  <!-- Artigos pillar — máxima prioridade -->
+  <!-- ===== ARTIGOS PILLAR — máxima prioridade ===== -->
   <url>
     <loc>https://focusinteligente.com.br/blog/notion-para-agencias-guia-completo-2026</loc>
     <lastmod>2026-06-23</lastmod>
@@ -93,197 +90,198 @@
     <priority>0.9</priority>
   </url>
 
-  <!-- Artigos do blog B2B -->
+  <!-- ===== ARTIGOS DO BLOG B2B ===== -->
   <url>
     <loc>https://focusinteligente.com.br/blog/poder-do-notion-empresas-produtivas</loc>
     <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://focusinteligente.com.br/blog/mapeamento-processos-crescimento</loc>
     <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://focusinteligente.com.br/blog/5-erros-produtividade</loc>
     <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://focusinteligente.com.br/blog/gestao-projetos-notion</loc>
     <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://focusinteligente.com.br/blog/sistema-completo-notion-automacao</loc>
     <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://focusinteligente.com.br/blog/perda-tempo-profissionais</loc>
     <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://focusinteligente.com.br/blog/notion-vs-planilhas</loc>
     <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://focusinteligente.com.br/blog/organizar-projetos-caoticos</loc>
     <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://focusinteligente.com.br/blog/processos-inteligentes-autonomos</loc>
     <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://focusinteligente.com.br/blog/sistemas-notion-pequenas-empresas</loc>
     <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://focusinteligente.com.br/blog/erro-silencioso-produtividade-equipe</loc>
     <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://focusinteligente.com.br/blog/transformar-caos-rotina-produtiva-notion</loc>
     <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://focusinteligente.com.br/blog/gerenciando-tarefas-ou-apagando-incendios</loc>
     <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://focusinteligente.com.br/blog/criar-sistema-produtividade-funciona</loc>
     <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://focusinteligente.com.br/blog/150-sistemas-notion-licoes-praticas</loc>
     <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://focusinteligente.com.br/blog/produtividade-fazer-o-que-importa</loc>
     <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://focusinteligente.com.br/blog/confiar-sistemas-producao</loc>
     <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://focusinteligente.com.br/blog/tarefas-soltas-em-resultados</loc>
     <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://focusinteligente.com.br/blog/checklist-diario-produtividade</loc>
     <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://focusinteligente.com.br/blog/organizar-rotina-semanal</loc>
     <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://focusinteligente.com.br/blog/planejamento-mensal-sistema</loc>
     <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://focusinteligente.com.br/blog/organizar-documentos-empresa</loc>
     <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://focusinteligente.com.br/blog/parar-apagar-incendios-empresa</loc>
     <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://focusinteligente.com.br/blog/clareza-projetos-notion</loc>
     <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://focusinteligente.com.br/blog/gestao-tempo-ocupado-estrategias-funcionam</loc>
     <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://focusinteligente.com.br/blog/reunioes-produtivas-parar-perder-tempo</loc>
     <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://focusinteligente.com.br/blog/matriz-eisenhower-prioridades</loc>
     <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://focusinteligente.com.br/blog/organizar-tarefas-dia-dia</loc>
     <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://focusinteligente.com.br/blog/planejamento-semanal-passo-passo</loc>
     <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://focusinteligente.com.br/blog/metodo-pessoal-produtividade</loc>
     <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://focusinteligente.com.br/blog/organizacao-pessoal-profissional</loc>
     <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://focusinteligente.com.br/blog/reduzir-estresse-trabalho-organizacao</loc>
     <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+
 </urlset>
