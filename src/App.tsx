@@ -17,6 +17,8 @@ import OptionalFeatureBoundary from "./components/OptionalFeatureBoundary";
 const ChatWidget = lazy(() => import("./components/ChatWidget"));
 const CookieConsent = lazy(() => import("./components/CookieConsent"));
 import { useScrollReveal } from "./hooks/useScrollReveal";
+import { useMagneticButtons, useSpotlightCards } from "./hooks/useInteractiveEffects";
+import LeadFormModal from "./components/LeadFormModal";
 
 // Lazy load pages
 const SolucoesSobMedida = lazy(() => import("./pages/SolucoesSobMedida"));
@@ -93,6 +95,8 @@ const PageLoader = () => (
 function AppLayout() {
   const location = useLocation();
   useScrollReveal();
+  useMagneticButtons(location.pathname);
+  useSpotlightCards(location.pathname);
   const isSolucoes = location.pathname === "/solucoes-sob-medida" || location.pathname === "/hub-empresarial";
 
   // SolucoesSobMedida has its own Nav/Footer embedded
@@ -193,6 +197,7 @@ function AppLayout() {
         </AnimatePresence>
       </main>
       {showFooter && <Footer />}
+      <LeadFormModal />
       <OptionalFeatureBoundary featureName="chat widget">
         <Suspense fallback={null}>
           <ChatWidget />

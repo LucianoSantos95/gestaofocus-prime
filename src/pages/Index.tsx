@@ -3,6 +3,7 @@ import SEOHead from "@/components/SEOHead";
 import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 import { CountUp } from "@/hooks/useCountUp";
+import { openLeadModal } from "@/lib/leadModal";
 import hubVideo from "@/assets/case-hub-empresarial.mp4.asset.json";
 import diagVideo from "@/assets/case-agente-diagnostico.mp4.asset.json";
 
@@ -50,10 +51,13 @@ const Index = () => {
 
         {/* BOTTOM — display title + talk card */}
         <div className="snj-hero__bottom container-focus" style={{ paddingBottom: 24 }}>
-          <h1 className="snj-display" data-speakable>
-            Clareza.<br />
-            Precisão.<br />
-            Operação.
+          <h1 className="snj-display focus-word-reveal" data-speakable>
+            {["Clareza.", "Precisão.", "Operação."].map((w, i) => (
+              <span key={w} style={{ animationDelay: `${0.08 + i * 0.14}s` }}>
+                {w}
+                {i < 2 && <br />}
+              </span>
+            ))}
           </h1>
 
           <aside className="snj-talk">
@@ -64,17 +68,42 @@ const Index = () => {
                 <div className="snj-talk__role">Fundador da Focus</div>
               </div>
             </div>
-            <a
-              href={WA_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => cta("hero_talk_card")}
-              className="snj-btn-primary"
+            <button
+              type="button"
+              onClick={() => {
+                cta("hero_talk_card");
+                openLeadModal("hero_talk_card");
+              }}
+              className="snj-btn-primary focus-magnetic"
+              style={{ border: "none", cursor: "pointer" }}
             >
               <span>Diagnóstico gratuito (30min)</span>
               <ArrowUpRight className="w-4 h-4" />
-            </a>
+            </button>
           </aside>
+        </div>
+      </section>
+
+      {/* ===================== MARQUEE ===================== */}
+      <section aria-hidden="true" className="focus-marquee">
+        <div className="focus-marquee__track">
+          {Array.from({ length: 2 }).flatMap((_, dupIdx) =>
+            [
+              "Lovable Partner Oficial",
+              "Consultoria de Operação",
+              "Hub Empresarial",
+              "Agentes de IA",
+              "Mapeamento de Processos",
+              "Sistemas sob medida",
+              "Diagnóstico gratuito",
+              "Entrega em semanas",
+            ].map((item, i) => (
+              <span key={`${dupIdx}-${i}`} className="focus-marquee__item">
+                <span className="focus-marquee__dot" />
+                {item}
+              </span>
+            )),
+          )}
         </div>
       </section>
 
@@ -391,16 +420,17 @@ const Index = () => {
                 Já ouviu falar da Lovable? A gente mapeia sua operação e constrói exatamente
                 o sistema que você precisa — sem freelancer, sem agência de software tradicional.
               </p>
-              <a
-                href={WA_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => cta("lovable_section")}
-                className="snj-btn-primary"
-                style={{ marginTop: 28, display: "inline-flex" }}
+              <button
+                type="button"
+                onClick={() => {
+                  cta("lovable_section");
+                  openLeadModal("lovable_section");
+                }}
+                className="snj-btn-primary focus-magnetic"
+                style={{ marginTop: 28, display: "inline-flex", border: "none", cursor: "pointer" }}
               >
                 Quero um sistema Lovable <ArrowUpRight className="w-4 h-4" />
-              </a>
+              </button>
             </div>
             <div style={{ padding: "48px 40px", display: "flex", flexDirection: "column", gap: 16 }}>
               {[
@@ -736,15 +766,17 @@ const Index = () => {
             automatizado e onde dá para ganhar eficiência.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
-            <a
-              href={WA_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => cta("final_wa")}
-              className="snj-btn-primary"
+            <button
+              type="button"
+              onClick={() => {
+                cta("final_wa");
+                openLeadModal("final_cta");
+              }}
+              className="snj-btn-primary focus-magnetic"
+              style={{ border: "none", cursor: "pointer" }}
             >
               Diagnóstico gratuito <ArrowUpRight className="w-4 h-4" />
-            </a>
+            </button>
             <a
               href="https://app.focusinteligente.com.br"
               target="_blank"

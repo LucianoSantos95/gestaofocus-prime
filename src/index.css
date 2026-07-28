@@ -100,53 +100,61 @@ html, body {
     --radius: 0.75rem; /* 12px */
   }
 
-  @media (prefers-color-scheme: light) {
-    :root {
-      --bg:    #FAFAFA;
-      --bg2:   #F3F3F7;
-      --bg3:   #E8E8F0;
-      --line:  rgba(0, 0, 0, 0.07);
-      --line2: rgba(0, 0, 0, 0.11);
-      --text:  #0C0C10;
-      --text2: rgba(12, 12, 16, 0.55);
-      --text3: rgba(12, 12, 16, 0.35);
-      --accent-hex:  #1E40AF;
-      --accent2: rgba(30, 64, 175, 0.10);
-
-      --background: 240 5% 98%;
-      --background-secondary: 240 7% 95%;
-      --background-elevated: 240 8% 91%;
-      --foreground: 240 14% 4%;
-      --foreground-muted: 240 5% 40%;
-
-      --primary: 224 80% 40%;
-      --primary-foreground: 0 0% 100%;
-
-      --card: 240 7% 95%;
-      --card-foreground: 240 14% 4%;
-      --card-border: 240 8% 87%;
-
-      --popover: 240 7% 95%;
-      --popover-foreground: 240 14% 4%;
-
-      --muted: 240 8% 91%;
-      --muted-foreground: 240 5% 45%;
-
-      --border: 240 8% 87%;
-      --input: 240 7% 95%;
-
-      --secondary: 240 8% 91%;
-      --secondary-foreground: 240 14% 4%;
-
-      --accent: 240 8% 91%;
-      --accent-foreground: 240 14% 4%;
-
-      --shadow-elegant: 0 20px 60px -10px rgba(0,0,0,0.12), 0 8px 20px -8px rgba(0,0,0,0.08);
-      --shadow-glow: 0 0 40px rgba(30,64,175,0.12);
-      --gradient-dark: linear-gradient(180deg, hsl(240 5% 98%) 0%, hsl(240 7% 95%) 100%);
-      --gradient-card: linear-gradient(145deg, hsl(240 7% 96%) 0%, hsl(240 5% 98%) 100%);
-    }
+  :root {
+    /* nav scrim vars — overridden per theme below */
+    --nav-scrim: rgba(6,6,8,0.82);
+    --nav-scrim-mobile: rgba(6,6,8,0.96);
   }
+
+  html.light {
+    --bg:    #FAFAFA;
+    --bg2:   #F3F3F7;
+    --bg3:   #E8E8F0;
+    --line:  rgba(0, 0, 0, 0.07);
+    --line2: rgba(0, 0, 0, 0.11);
+    --text:  #0C0C10;
+    --text2: rgba(12, 12, 16, 0.55);
+    --text3: rgba(12, 12, 16, 0.35);
+    --accent-hex:  #1E40AF;
+    --accent2: rgba(30, 64, 175, 0.10);
+    --nav-scrim: rgba(250,250,250,0.85);
+    --nav-scrim-mobile: rgba(250,250,250,0.96);
+
+    --background: 240 5% 98%;
+    --background-secondary: 240 7% 95%;
+    --background-elevated: 240 8% 91%;
+    --foreground: 240 14% 4%;
+    --foreground-muted: 240 5% 40%;
+
+    --primary: 224 80% 40%;
+    --primary-foreground: 0 0% 100%;
+
+    --card: 240 7% 95%;
+    --card-foreground: 240 14% 4%;
+    --card-border: 240 8% 87%;
+
+    --popover: 240 7% 95%;
+    --popover-foreground: 240 14% 4%;
+
+    --muted: 240 8% 91%;
+    --muted-foreground: 240 5% 45%;
+
+    --border: 240 8% 87%;
+    --input: 240 7% 95%;
+
+    --secondary: 240 8% 91%;
+    --secondary-foreground: 240 14% 4%;
+
+    --accent: 240 8% 91%;
+    --accent-foreground: 240 14% 4%;
+
+    --shadow-elegant: 0 20px 60px -10px rgba(0,0,0,0.12), 0 8px 20px -8px rgba(0,0,0,0.08);
+    --shadow-glow: 0 0 40px rgba(30,64,175,0.12);
+    --gradient-dark: linear-gradient(180deg, hsl(240 5% 98%) 0%, hsl(240 7% 95%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(240 7% 96%) 0%, hsl(240 5% 98%) 100%);
+  }
+
+  html.light body::before { opacity: 0.015; filter: invert(1); }
 }
 
 @layer base {
@@ -1085,4 +1093,119 @@ html, body {
 .snj-price-amount {
   font-size: 52px; font-weight: 600; letter-spacing: -0.035em; color: var(--text);
   line-height: 1;
+}
+
+/* ================================================================
+   Landing.love / Mobbin inspired animation utilities
+   ================================================================ */
+
+/* Marquee — horizontal infinite scroller */
+@keyframes focus-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.focus-marquee {
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.focus-marquee__track {
+  display: inline-flex;
+  gap: 56px;
+  white-space: nowrap;
+  animation: focus-marquee 42s linear infinite;
+  will-change: transform;
+}
+.focus-marquee:hover .focus-marquee__track { animation-play-state: paused; }
+.focus-marquee__item {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text2);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.focus-marquee__dot {
+  width: 5px; height: 5px; border-radius: 999px;
+  background: #9DE89D; box-shadow: 0 0 10px #9DE89D;
+  flex-shrink: 0;
+}
+
+/* Word reveal — cascading fade-up for headings */
+@keyframes focus-word-in {
+  from { opacity: 0; transform: translateY(24px); filter: blur(4px); }
+  to   { opacity: 1; transform: translateY(0);    filter: blur(0);   }
+}
+.focus-word-reveal > span {
+  display: inline-block;
+  opacity: 0;
+  animation: focus-word-in 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Magnetic button — smooth transform transition */
+.focus-magnetic {
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+/* Cursor spotlight on cards — set --mx/--my via JS */
+.focus-spotlight { position: relative; overflow: hidden; }
+.focus-spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    360px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(157,232,157,0.10),
+    transparent 55%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+.focus-spotlight:hover::before { opacity: 1; }
+.focus-spotlight > * { position: relative; z-index: 1; }
+
+/* Icon tile — mint square used on Hub module cards */
+.focus-icon-tile {
+  width: 44px; height: 44px; border-radius: 12px;
+  background: rgba(157,232,157,0.10);
+  border: 1px solid rgba(157,232,157,0.22);
+  display: inline-flex; align-items: center; justify-content: center;
+  color: #9DE89D;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              background 0.35s ease;
+}
+.focus-module-card:hover .focus-icon-tile {
+  transform: rotate(-6deg) scale(1.05);
+  background: rgba(157,232,157,0.16);
+}
+
+.focus-module-card {
+  border: 1px solid var(--line);
+  background: var(--bg2);
+  border-radius: 16px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: border-color 0.3s ease, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.35s ease;
+}
+.focus-module-card:hover {
+  border-color: var(--line2);
+  transform: translateY(-3px);
+  box-shadow: 0 20px 40px -20px rgba(0,0,0,0.5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .focus-marquee__track { animation: none; }
+  .focus-word-reveal > span { opacity: 1; animation: none; }
+  .focus-magnetic { transition: none; }
 }
