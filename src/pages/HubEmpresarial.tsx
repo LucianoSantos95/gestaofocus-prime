@@ -11,17 +11,17 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { ArrowRight, Check } from "lucide-react";
+import {
+  ArrowRight,
+  Check,
+  DollarSign,
+  UserCheck,
+  FolderKanban,
+  BarChart3,
+} from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import { trackCTAClick, trackEvent } from "@/lib/analytics";
-import hubCrmAsset from "@/assets/hub-crm-clientes.png.asset.json";
-import hubFinAsset from "@/assets/hub-financas.png.asset.json";
-import hubProjAsset from "@/assets/hub-projetos.png.asset.json";
-import hubPainelAsset from "@/assets/hub-painel.png.asset.json";
-
-const caseCrm = hubCrmAsset.url;
-const caseFin = hubFinAsset.url;
-const casePortal = hubProjAsset.url;
-const hubDashboardMockup = hubPainelAsset.url;
+import { openLeadModal } from "@/lib/leadModal";
 
 const APP_URL = "https://app.focusinteligente.com.br";
 
@@ -31,8 +31,7 @@ type Module = {
   brand: string;
   title: string;
   description: string;
-  image: string;
-  metrics: { value: string; label: string }[];
+  icon: LucideIcon;
 };
 
 const HubEmpresarial = () => {
@@ -77,11 +76,7 @@ const HubEmpresarial = () => {
       title: "Pipeline visual com leads automatizados e funil sob controle",
       description:
         "Captura, qualifica e movimenta leads automaticamente no funil. Visão clara do que está em negociação e do que precisa de ação hoje.",
-      image: caseCrm,
-      metrics: [
-        { value: "100%", label: "DOS LEADS RASTREADOS" },
-        { value: "0", label: "OPORTUNIDADES PERDIDAS" },
-      ],
+      icon: UserCheck,
     },
     {
       code: "02",
@@ -90,11 +85,7 @@ const HubEmpresarial = () => {
       title: "Fluxo de caixa, DRE e contas em tempo real",
       description:
         "Contas a pagar e receber, conciliação e gráficos vivos. Pare de descobrir o resultado do mês 20 dias depois do mês acabar.",
-      image: caseFin,
-      metrics: [
-        { value: "Tempo real", label: "VISÃO DO CAIXA" },
-        { value: "1", label: "PAINEL ÚNICO" },
-      ],
+      icon: DollarSign,
     },
     {
       code: "03",
@@ -103,11 +94,7 @@ const HubEmpresarial = () => {
       title: "Kanban, cronograma e entregas no prazo",
       description:
         "Cada projeto com responsáveis, marcos e status visíveis. A equipe sabe o que fazer hoje sem precisar perguntar.",
-      image: casePortal,
-      metrics: [
-        { value: "Kanban", label: "+ CRONOGRAMA" },
-        { value: "On-time", label: "POR PADRÃO" },
-      ],
+      icon: FolderKanban,
     },
     {
       code: "04",
@@ -116,11 +103,7 @@ const HubEmpresarial = () => {
       title: "Métricas do negócio em segundos, com análise de IA",
       description:
         "Receita, margem, ticket, recorrência e produtividade num só painel. IA integrada para responder perguntas sobre seus próprios dados.",
-      image: hubDashboardMockup,
-      metrics: [
-        { value: "1 clique", label: "PARA TODOS OS KPIs" },
-        { value: "IA", label: "PRONTA PARA USO" },
-      ],
+      icon: BarChart3,
     },
   ];
 
