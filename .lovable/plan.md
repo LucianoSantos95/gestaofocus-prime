@@ -1,17 +1,32 @@
-# Adicionar nova tag Google Analytics
+## Objetivo
 
-O `index.html` já carrega o GA4 via `gtag.js` (deferido após interação/idle), mas usa o ID antigo `G-LS53J0LYDX`. Vou trocar pelo novo ID informado.
+Trocar as imagens dos dois blocos ("Hub Empresarial" e "Agente de Diagnóstico") por vídeos que rodam em **loop automático, sem som e sem controles**, nas páginas:
 
-## Alteração
+- **Página inicial** (`src/pages/Index.tsx`) — seção de cases com os dois cards lado a lado (linhas ~443–546).
+- **Soluções sob medida** (`src/pages/SolucoesSobMedida.tsx`) — cards de projetos renderizados no `projects.map` (linha ~386).
 
-**Arquivo:** `index.html`
+## Passos
 
-Substituir as duas ocorrências de `G-LS53J0LYDX` por `G-TQQZJ25R4X`:
-- URL do script: `https://www.googletagmanager.com/gtag/js?id=G-TQQZJ25R4X`
-- Chamada `gtag('config', 'G-TQQZJ25R4X')`
+1. **Upload dos vídeos como assets de CDN** (via `lovable-assets`), gerando dois pointers:
+   - `src/assets/case-hub-empresarial.mp4.asset.json` ← `Gravando_2026-07-28_131843.mp4`
+   - `src/assets/case-agente-diagnostico.mp4.asset.json` ← `Gravando_2026-07-28_132029.mp4`
 
-O carregamento continua deferido (após primeira interação ou idle) para preservar performance/LCP, mantendo o padrão atual do projeto. Nenhum outro arquivo precisa mudar — `src/lib/analytics.ts` usa `window.gtag` dinamicamente e continuará funcionando com o novo ID.
+2. **`src/pages/Index.tsx`** — nos dois cards da seção de cases, substituir a `<img src="/case-hub.png">` e `<img src="/case-indica.png">` por:
+   ```tsx
+   <video
+     src={hubVideo.url}
+     autoPlay muted loop playsInline preload="metadata"
+     poster="/case-hub.png"
+     style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }}
+   />
+   ```
+   Mesmo tratamento para o card do Agente de Diagnóstico (usando `/case-indica.png` como poster de fallback).
 
-## Observação
+3. **`src/pages/SolucoesSobMedida.tsx`** — estender o tipo `Project` com `video?: string` opcional; no `projects.map` (~linha 427), renderizar `<video>` quando `p.video` existir, caindo para `<img>` no restante. Preencher `video` nos dois projetos existentes com as URLs dos assets.
 
-Se preferir carregar a tag exatamente como o Google fornece (sem defer), me avise — mas isso pioraria as métricas de performance do site.
+4. **Atributos do vídeo** em ambos os arquivos: `autoPlay`, `muted`, `loop`, `playsInline`, `preload="metadata"` — garante autoplay em desktop e mobile (iOS exige `muted` + `playsInline`) e reinício automático.
+
+## Fora do escopo
+
+- Não altero layout, aspect ratio (16/9), copy dos cards, CTAs ou métricas.
+- Não mexo em outras páginas ou blocos.
