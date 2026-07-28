@@ -177,6 +177,21 @@ function AppLayout() {
             <Route path="/blog/ia-para-pmes-automatizar-processos" element={<IAPMEsAutomatizarProcessos />} />
             <Route path="/blog/mapeamento-processos-agencias" element={<MapeamentoProcessosAgencias />} />
 
+            {/* ===== REDIRECTS 301 — soft 404 fixes ===== */}
+            {/* Blog: slugs antigos ou sem prefixo /blog/ */}
+            <Route path="/blog/metodo-g-t-d-guia" element={<Navigate to="/blog/criar-sistema-produtividade-funciona" replace />} />
+            <Route path="/poder-do-notion-empresas-produtivas" element={<Navigate to="/blog/poder-do-notion-empresas-produtivas" replace />} />
+            <Route path="/blog/erro-produtividade-equipe" element={<Navigate to="/blog/erro-silencioso-produtividade-equipe" replace />} />
+            <Route path="/blog/caos-rotina-produtiva" element={<Navigate to="/blog/transformar-caos-rotina-produtiva-notion" replace />} />
+            <Route path="/blog/reunioes-produtivas" element={<Navigate to="/blog/reunioes-produtivas-parar-perder-tempo" replace />} />
+            {/* Produtos antigos → Hub */}
+            <Route path="/controle-financeiro-pro" element={<Navigate to="/hub-empresarial" replace />} />
+            <Route path="/focus-pro" element={<Navigate to="/hub-empresarial" replace />} />
+            <Route path="/focus-club" element={<Navigate to="/hub-empresarial" replace />} />
+            <Route path="/sistemas-gratuitos" element={<Navigate to="/hub-empresarial" replace />} />
+            {/* Seção de cases → Soluções sob medida */}
+            <Route path="/cases" element={<Navigate to="/solucoes-sob-medida" replace />} />
+
             {/* Info Pages */}
             <Route path="/sobre" element={<AboutFocus />} />
             <Route path="/sobre-focus" element={<Navigate to="/sobre" replace />} />
