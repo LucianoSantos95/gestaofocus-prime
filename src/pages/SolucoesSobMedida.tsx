@@ -391,10 +391,11 @@ const SolucoesSobMedida = () => {
 
       {/* PROJECTS LIST */}
       <section className="container-focus" style={{ padding: "80px 24px 60px" }}>
-        <div className="grid md:grid-cols-2 gap-5 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-6xl mx-auto">
           {projects.map((p, idx) => (
             <article
               key={idx}
+              className="snj-project-card-v"
               style={{
                 border: "1px solid var(--line2)",
                 borderRadius: 22,
@@ -420,7 +421,7 @@ const SolucoesSobMedida = () => {
                   <span
                     style={{
                       fontFamily: "var(--font-mono)",
-                      fontSize: 42,
+                      fontSize: "clamp(28px, 6vw, 42px)",
                       fontWeight: 600,
                       color: "#1E40AF",
                       letterSpacing: "0.06em",
@@ -465,8 +466,8 @@ const SolucoesSobMedida = () => {
 
               {/* Content */}
               <div
+                className="snj-project-card-v__content"
                 style={{
-                  padding: "28px 32px 32px",
                   display: "flex",
                   flexDirection: "column",
                   gap: 12,
@@ -476,7 +477,7 @@ const SolucoesSobMedida = () => {
                 <span className="snj-step__num">/ {p.brand}</span>
                 <h3
                   style={{
-                    fontSize: 22,
+                    fontSize: "clamp(18px, 4vw, 22px)",
                     fontWeight: 500,
                     color: "var(--text)",
                     letterSpacing: "-0.02em",
@@ -504,6 +505,7 @@ const SolucoesSobMedida = () => {
           ))}
         </div>
       </section>
+
 
 
       {/* CTA FINAL */}
