@@ -3,6 +3,8 @@ import SEOHead from "@/components/SEOHead";
 import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 import { CountUp } from "@/hooks/useCountUp";
+import hubVideo from "@/assets/case-hub-empresarial.mp4.asset.json";
+import diagVideo from "@/assets/case-agente-diagnostico.mp4.asset.json";
 
 const WA_LINK =
   "https://wa.me/5511916742443?text=Ol%C3%A1+Luciano%2C+quero+agendar+um+diagn%C3%B3stico+gratuito+para+minha+empresa";
@@ -459,9 +461,15 @@ const Index = () => {
                 overflow: "hidden",
               }}
             >
-              <img
-                src="/case-hub.png"
-                alt="Hub Empresarial — painel de gestão com fluxo de caixa e IA"
+              <video
+                src={hubVideo.url}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                poster="/case-hub.png"
+                aria-label="Hub Empresarial — painel de gestão com fluxo de caixa e IA"
                 style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }}
               />
             </div>
@@ -514,9 +522,15 @@ const Index = () => {
                 overflow: "hidden",
               }}
             >
-              <img
-                src="/case-indica.png"
-                alt="Focus Indica — agente de IA que mapeia qual automação sua empresa precisa"
+              <video
+                src={diagVideo.url}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                poster="/case-indica.png"
+                aria-label="Focus Indica — agente de IA que mapeia qual automação sua empresa precisa"
                 style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }}
               />
             </div>

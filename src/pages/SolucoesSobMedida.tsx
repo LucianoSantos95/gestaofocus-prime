@@ -3,6 +3,8 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { WA_LINK } from "@/components/TalkToLuciano";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
+import hubVideo from "@/assets/case-hub-empresarial.mp4.asset.json";
+import diagVideo from "@/assets/case-agente-diagnostico.mp4.asset.json";
 
 
 type Project = {
@@ -13,6 +15,9 @@ type Project = {
   description: string;
   image?: string;
   imageContain?: boolean;
+  video?: string;
+  videoPoster?: string;
+  textOverlay?: string;
   ctaLabel: string;
   ctaUrl: string;
   metrics: { value: string; label: string }[];
@@ -27,6 +32,8 @@ const projects: Project[] = [
     description:
       "Finanças, clientes, projetos e relatórios num lugar só — conectado ao seu Google, WhatsApp e ao ChatGPT. Construído na Lovable com plano gratuito para começar.",
     image: "/case-hub.png",
+    video: hubVideo.url,
+    videoPoster: "/case-hub.png",
     ctaLabel: "Testar grátis",
     ctaUrl: "https://app.focusinteligente.com.br",
     metrics: [
@@ -42,6 +49,8 @@ const projects: Project[] = [
     description:
       "6 perguntas. Diagnóstico técnico gratuito. O agente mapeia seus gargalos e indica a automação ideal para Atendimento, Vendas, Operação ou Financeiro — sem cadastro.",
     image: "/case-indica.png",
+    video: diagVideo.url,
+    videoPoster: "/case-indica.png",
     ctaLabel: "Iniciar diagnóstico",
     ctaUrl: WA_LINK,
     metrics: [
@@ -423,6 +432,23 @@ const SolucoesSobMedida = () => {
                   >
                     {p.textOverlay}
                   </span>
+                ) : p.video ? (
+                  <video
+                    src={p.video}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    poster={p.videoPoster}
+                    aria-label={p.brand}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      display: "block",
+                    }}
+                  />
                 ) : (
                   <img
                     src={p.image}
