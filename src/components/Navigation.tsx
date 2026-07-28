@@ -31,7 +31,7 @@ const Navigation = () => {
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
       style={{
         height: "96px",
-        background: scrolled ? "rgba(6,6,8,0.85)" : "transparent",
+        background: scrolled ? "var(--nav-scrim)" : "transparent",
         backdropFilter: scrolled ? "blur(20px)" : "none",
         WebkitBackdropFilter: scrolled ? "blur(20px)" : "none",
         borderBottom: scrolled ? "1px solid var(--line)" : "1px solid transparent",
@@ -102,13 +102,14 @@ const Navigation = () => {
         </div>
 
         {/* CTA — right */}
-        <div className="hidden lg:flex justify-self-end">
-          <a
-            href={WA_LINK}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => trackNavigationClick("get_consultation")}
-            className="inline-flex items-center transition-colors"
+        <div className="hidden lg:flex items-center gap-3 justify-self-end">
+          <button
+            type="button"
+            onClick={() => {
+              trackNavigationClick("get_consultation");
+              openLeadModal("nav_desktop");
+            }}
+            className="inline-flex items-center transition-colors focus-magnetic"
             style={{
               background: "transparent",
               border: "1px solid var(--line2)",
@@ -117,7 +118,7 @@ const Navigation = () => {
               fontSize: 14,
               fontWeight: 500,
               color: "var(--text)",
-              textDecoration: "none",
+              cursor: "pointer",
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.background = "var(--text)";
@@ -129,7 +130,8 @@ const Navigation = () => {
             }}
           >
             Diagnóstico gratuito
-          </a>
+          </button>
+          <ThemeToggle />
         </div>
 
         {/* Mobile Menu Button */}
@@ -148,7 +150,7 @@ const Navigation = () => {
         <div
           className="lg:hidden absolute top-full left-0 w-full"
           style={{
-            background: "rgba(6,6,8,0.96)",
+            background: "var(--nav-scrim-mobile)",
             backdropFilter: "blur(24px)",
             borderBottom: "1px solid var(--line)",
           }}
@@ -172,20 +174,20 @@ const Navigation = () => {
               </Link>
             ))}
 
-            <div className="pt-4 mt-2" style={{ borderTop: "1px solid var(--line)" }}>
-              <a
-                href={WA_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
+            <div className="pt-4 mt-2 flex items-center gap-3" style={{ borderTop: "1px solid var(--line)" }}>
+              <button
+                type="button"
                 onClick={() => {
                   trackNavigationClick("get_consultation_mobile");
                   setIsOpen(false);
+                  openLeadModal("nav_mobile");
                 }}
-                className="btn-main w-full inline-flex items-center justify-center"
-                style={{ background: "var(--text)", color: "var(--bg)", borderRadius: 999, padding: "10px 18px", fontWeight: 600 }}
+                className="flex-1 inline-flex items-center justify-center"
+                style={{ background: "var(--text)", color: "var(--bg)", borderRadius: 999, padding: "10px 18px", fontWeight: 600, border: "none", cursor: "pointer" }}
               >
                 Diagnóstico gratuito
-              </a>
+              </button>
+              <ThemeToggle />
             </div>
           </div>
         </div>
