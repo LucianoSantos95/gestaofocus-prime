@@ -432,6 +432,23 @@ const SolucoesSobMedida = () => {
                   >
                     {p.textOverlay}
                   </span>
+                ) : p.video ? (
+                  <video
+                    src={p.video}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    poster={p.videoPoster}
+                    aria-label={p.brand}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      display: "block",
+                    }}
+                  />
                 ) : (
                   <img
                     src={p.image}
