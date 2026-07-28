@@ -731,6 +731,83 @@ const Blog = () => {
         </div>
       </section>
 
+      {/* ===================== NEWSLETTER ===================== */}
+      <section style={{ padding: "0 24px 80px" }}>
+        <div
+          style={{
+            maxWidth: 900,
+            margin: "0 auto",
+            border: "1px solid rgba(157,232,157,0.18)",
+            borderRadius: 28,
+            padding: "40px 40px",
+            background: "linear-gradient(135deg, rgba(157,232,157,0.05) 0%, transparent 55%), var(--bg2)",
+          }}
+        >
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr auto",
+              gap: 32,
+              alignItems: "center",
+            }}
+            className="flex-newsletter"
+          >
+            <div>
+              <p
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: 11,
+                  color: "var(--text2)",
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase",
+                  marginBottom: 12,
+                }}
+              >
+                Newsletter semanal · Gratuita
+              </p>
+              <h3
+                style={{
+                  fontSize: "clamp(18px, 3vw, 24px)",
+                  fontWeight: 600,
+                  color: "var(--text)",
+                  letterSpacing: "-0.03em",
+                  lineHeight: 1.3,
+                  marginBottom: 12,
+                }}
+              >
+                Quantas assinaturas você paga e <em style={{ color: "#9DE89D", fontStyle: "normal" }}>não usa nem 30%?</em>
+              </h3>
+              <p style={{ color: "var(--text2)", fontSize: 14, lineHeight: 1.65, maxWidth: 500 }}>
+                Toda semana: o que cortar, o que vale manter, e como fazer mais com menos ferramenta.
+              </p>
+            </div>
+            <a
+              href="https://gestaofocus.notion.site/39dbe653a5aa80faa03ed0546b257556?pvs=105"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 8,
+                padding: "13px 24px",
+                background: "rgba(157,232,157,0.10)",
+                border: "1px solid rgba(157,232,157,0.28)",
+                borderRadius: 12,
+                color: "#9DE89D",
+                fontSize: 14,
+                fontWeight: 600,
+                fontFamily: "var(--font-sans)",
+                textDecoration: "none",
+                whiteSpace: "nowrap",
+                flexShrink: 0,
+              }}
+            >
+              ✉ Quero receber
+            </a>
+          </div>
+        </div>
+      </section>
+
       <Footer />
 
       <style>{`

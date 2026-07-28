@@ -363,6 +363,73 @@ const Index = () => {
         </div>
       </section>
 
+      {/* ===================== FOCUS × LOVABLE ===================== */}
+      <section className="snj-section container-focus">
+        <div
+          style={{
+            border: "1px solid var(--line2)",
+            borderRadius: 28,
+            overflow: "hidden",
+          }}
+        >
+          <div className="grid md:grid-cols-2" style={{ background: "var(--bg2)" }}>
+            <div style={{ padding: "48px 40px", borderRight: "1px solid var(--line)" }}>
+              <span className="snj-tag" style={{ display: "block", marginBottom: 20 }}>
+                Focus × Lovable
+              </span>
+              <h2 className="snj-h2">
+                Parceira certificada <em>Lovable no Brasil</em>
+              </h2>
+              <p style={{ color: "var(--text2)", marginTop: 20, fontSize: 15, lineHeight: 1.7 }}>
+                A Focus é uma das poucas consultorias com parceria oficial Lovable no Brasil.
+                Construímos sistemas funcionais em semanas — com código real e infraestrutura
+                escalável, não templates genéricos.
+              </p>
+              <p style={{ color: "var(--text2)", marginTop: 12, fontSize: 15, lineHeight: 1.7 }}>
+                Já ouviu falar da Lovable? A gente mapeia sua operação e constrói exatamente
+                o sistema que você precisa — sem freelancer, sem agência de software tradicional.
+              </p>
+              <a
+                href={WA_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => cta("lovable_section")}
+                className="snj-btn-primary"
+                style={{ marginTop: 28, display: "inline-flex" }}
+              >
+                Quero um sistema Lovable <ArrowUpRight className="w-4 h-4" />
+              </a>
+            </div>
+            <div style={{ padding: "48px 40px", display: "flex", flexDirection: "column", gap: 16 }}>
+              {[
+                { icon: "⚡", t: "Entrega em semanas", d: "Sistemas prontos para uso sem espera de meses de desenvolvimento tradicional." },
+                { icon: "🔒", t: "Você é dono do código", d: "Acesso total ao repositório. Sem lock-in. Migração e versionamento incluídos." },
+                { icon: "🤖", t: "IA embarcada", d: "Agentes customizados integrados direto na operação que construímos para você." },
+                { icon: "🔄", t: "Parceria contínua", d: "Ajustes e expansão após a entrega enquanto seu negócio cresce." },
+              ].map((item) => (
+                <div
+                  key={item.t}
+                  style={{
+                    display: "flex",
+                    gap: 16,
+                    padding: "16px 20px",
+                    border: "1px solid var(--line)",
+                    borderRadius: 14,
+                    background: "rgba(255,255,255,0.02)",
+                  }}
+                >
+                  <span style={{ fontSize: 18, flexShrink: 0, marginTop: 2 }}>{item.icon}</span>
+                  <div>
+                    <p style={{ fontSize: 14, fontWeight: 600, color: "var(--text)", marginBottom: 4 }}>{item.t}</p>
+                    <p style={{ fontSize: 13, color: "var(--text2)", lineHeight: 1.5 }}>{item.d}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ===================== TESTIMONIALS ===================== */}
       <section className="snj-section container-focus">
         <div className="snj-section__head">
@@ -415,6 +482,66 @@ const Index = () => {
         </div>
       </section>
 
+      {/* ===================== NEWSLETTER ===================== */}
+      <section className="snj-section container-focus">
+        <div
+          style={{
+            border: "1px solid rgba(157,232,157,0.18)",
+            borderRadius: 28,
+            padding: "48px 40px",
+            background: "linear-gradient(135deg, rgba(157,232,157,0.05) 0%, transparent 55%), var(--bg2)",
+          }}
+        >
+          <div className="grid md:grid-cols-[1fr_auto] gap-8 items-center">
+            <div>
+              <span className="snj-tag" style={{ display: "block", marginBottom: 16 }}>
+                Newsletter semanal · Gratuita
+              </span>
+              <h2
+                style={{
+                  fontSize: "clamp(22px, 4vw, 30px)",
+                  fontWeight: 600,
+                  color: "var(--text)",
+                  letterSpacing: "-0.03em",
+                  lineHeight: 1.25,
+                  marginBottom: 16,
+                }}
+              >
+                Quantas assinaturas você paga e <em>não usa nem 30%?</em>
+              </h2>
+              <p style={{ color: "var(--text2)", fontSize: 15, lineHeight: 1.7, maxWidth: 540 }}>
+                Eu mando toda semana o que aprendo ajudando empresas a saírem da bagunça de
+                ferramenta — o que dá pra cortar, o que vale manter, e como fazer mais com menos.
+              </p>
+            </div>
+            <a
+              href="https://gestaofocus.notion.site/39dbe653a5aa80faa03ed0546b257556?pvs=105"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => cta("newsletter")}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 8,
+                padding: "14px 28px",
+                background: "rgba(157,232,157,0.10)",
+                border: "1px solid rgba(157,232,157,0.28)",
+                borderRadius: 12,
+                color: "#9DE89D",
+                fontSize: 15,
+                fontWeight: 600,
+                fontFamily: "var(--font-sans)",
+                cursor: "pointer",
+                textDecoration: "none",
+                whiteSpace: "nowrap",
+              }}
+            >
+              ✉ Quero receber
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* ===================== PRICING ===================== */}
       <section className="snj-section container-focus" id="planos">
         <div className="snj-section__head">
@@ -430,12 +557,19 @@ const Index = () => {
             <span className="snj-step__num">/ Hub Empresarial</span>
             <p style={{ color: "var(--text2)", fontSize: 14 }}>Para começar agora — SaaS pronto.</p>
             <div>
-              <span className="snj-price-amount">R$ 119</span>
+              <span className="snj-price-amount" style={{ fontSize: 28 }}>a partir de R$ 55</span>
               <span style={{ color: "var(--text3)", fontSize: 14, marginLeft: 6 }}>/mês</span>
             </div>
-            <Link to="/hub-empresarial" onClick={() => cta("price_hub")} className="snj-btn-outline" style={{ justifyContent: "center" }}>
-              Conhecer Hub <ArrowRight className="w-4 h-4" />
-            </Link>
+            <a
+              href="https://app.focusinteligente.com.br"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => cta("price_hub")}
+              className="snj-btn-outline"
+              style={{ justifyContent: "center", textDecoration: "none" }}
+            >
+              Testar grátis <ArrowUpRight className="w-4 h-4" />
+            </a>
             <ul style={{ listStyle: "none", padding: 0, display: "flex", flexDirection: "column", gap: 10, marginTop: 8 }}>
               {["CRM + Financeiro + Projetos", "IA Assistant", "Dashboards prontos", "Suporte por WhatsApp"].map((f) => (
                 <li key={f} style={{ display: "flex", gap: 10, fontSize: 13, color: "var(--text2)" }}>
@@ -533,9 +667,16 @@ const Index = () => {
             >
               Diagnóstico gratuito <ArrowUpRight className="w-4 h-4" />
             </a>
-            <Link to="/hub-empresarial" onClick={() => cta("final_hub")} className="snj-btn-outline">
-              Conhecer Hub Empresarial <ArrowRight className="w-4 h-4" />
-            </Link>
+            <a
+              href="https://app.focusinteligente.com.br"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => cta("final_hub")}
+              className="snj-btn-outline"
+              style={{ textDecoration: "none" }}
+            >
+              Testar Hub grátis <ArrowUpRight className="w-4 h-4" />
+            </a>
           </div>
         </div>
       </section>

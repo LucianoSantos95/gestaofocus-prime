@@ -99,6 +99,54 @@ html, body {
 
     --radius: 0.75rem; /* 12px */
   }
+
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg:    #FAFAFA;
+      --bg2:   #F3F3F7;
+      --bg3:   #E8E8F0;
+      --line:  rgba(0, 0, 0, 0.07);
+      --line2: rgba(0, 0, 0, 0.11);
+      --text:  #0C0C10;
+      --text2: rgba(12, 12, 16, 0.55);
+      --text3: rgba(12, 12, 16, 0.35);
+      --accent-hex:  #1E40AF;
+      --accent2: rgba(30, 64, 175, 0.10);
+
+      --background: 240 5% 98%;
+      --background-secondary: 240 7% 95%;
+      --background-elevated: 240 8% 91%;
+      --foreground: 240 14% 4%;
+      --foreground-muted: 240 5% 40%;
+
+      --primary: 224 80% 40%;
+      --primary-foreground: 0 0% 100%;
+
+      --card: 240 7% 95%;
+      --card-foreground: 240 14% 4%;
+      --card-border: 240 8% 87%;
+
+      --popover: 240 7% 95%;
+      --popover-foreground: 240 14% 4%;
+
+      --muted: 240 8% 91%;
+      --muted-foreground: 240 5% 45%;
+
+      --border: 240 8% 87%;
+      --input: 240 7% 95%;
+
+      --secondary: 240 8% 91%;
+      --secondary-foreground: 240 14% 4%;
+
+      --accent: 240 8% 91%;
+      --accent-foreground: 240 14% 4%;
+
+      --shadow-elegant: 0 20px 60px -10px rgba(0,0,0,0.12), 0 8px 20px -8px rgba(0,0,0,0.08);
+      --shadow-glow: 0 0 40px rgba(30,64,175,0.12);
+      --gradient-dark: linear-gradient(180deg, hsl(240 5% 98%) 0%, hsl(240 7% 95%) 100%);
+      --gradient-card: linear-gradient(145deg, hsl(240 7% 96%) 0%, hsl(240 5% 98%) 100%);
+    }
+  }
 }
 
 @layer base {
