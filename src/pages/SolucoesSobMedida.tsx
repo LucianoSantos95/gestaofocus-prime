@@ -571,14 +571,9 @@ const SolucoesSobMedida = () => {
       <Footer />
 
       <style>{`
-        .snj-project-card:hover { border-color: var(--line2) !important; }
-        @media (max-width: 860px) {
-          .snj-project-card {
-            grid-template-columns: 1fr !important;
-          }
-          .snj-project-card > div:first-child {
-            min-height: 240px !important;
-          }
+        .snj-project-card-v__content { padding: 28px 32px 32px; }
+        @media (max-width: 640px) {
+          .snj-project-card-v__content { padding: 20px 20px 24px; }
         }
       `}</style>
     </div>
