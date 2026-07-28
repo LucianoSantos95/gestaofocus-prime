@@ -3,6 +3,8 @@ import SEOHead from "@/components/SEOHead";
 import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 import { CountUp } from "@/hooks/useCountUp";
+import hubVideo from "@/assets/case-hub-empresarial.mp4.asset.json";
+import diagVideo from "@/assets/case-agente-diagnostico.mp4.asset.json";
 
 const WA_LINK =
   "https://wa.me/5511916742443?text=Ol%C3%A1+Luciano%2C+quero+agendar+um+diagn%C3%B3stico+gratuito+para+minha+empresa";
