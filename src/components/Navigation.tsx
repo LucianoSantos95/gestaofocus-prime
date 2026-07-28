@@ -187,7 +187,7 @@ const Navigation = () => {
               >
                 Diagnóstico gratuito
               </button>
-              <ThemeToggle />
+              {/* <ThemeToggle /> temporariamente desativado */}
             </div>
           </div>
         </div>
