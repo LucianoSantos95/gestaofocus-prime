@@ -444,8 +444,9 @@ const SolucoesSobMedida = () => {
                     aria-label={p.brand}
                     style={{
                       width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
+                      height: "auto",
+                      maxHeight: "100%",
+                      objectFit: "contain",
                       display: "block",
                     }}
                   />
