@@ -459,9 +459,15 @@ const Index = () => {
                 overflow: "hidden",
               }}
             >
-              <img
-                src="/case-hub.png"
-                alt="Hub Empresarial — painel de gestão com fluxo de caixa e IA"
+              <video
+                src={hubVideo.url}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                poster="/case-hub.png"
+                aria-label="Hub Empresarial — painel de gestão com fluxo de caixa e IA"
                 style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }}
               />
             </div>
@@ -514,9 +520,15 @@ const Index = () => {
                 overflow: "hidden",
               }}
             >
-              <img
-                src="/case-indica.png"
-                alt="Focus Indica — agente de IA que mapeia qual automação sua empresa precisa"
+              <video
+                src={diagVideo.url}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                poster="/case-indica.png"
+                aria-label="Focus Indica — agente de IA que mapeia qual automação sua empresa precisa"
                 style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }}
               />
             </div>
