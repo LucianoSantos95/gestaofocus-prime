@@ -391,29 +391,26 @@ const SolucoesSobMedida = () => {
 
       {/* PROJECTS LIST */}
       <section className="container-focus" style={{ padding: "80px 24px 60px" }}>
-        <div className="flex flex-col gap-6 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-5 max-w-6xl mx-auto">
           {projects.map((p, idx) => (
             <article
               key={idx}
-              className="snj-project-card group"
               style={{
-                display: "grid",
-                gridTemplateColumns: "minmax(0,1.05fr) minmax(0,1fr)",
-                gap: 0,
-                background: "var(--bg2)",
-                border: "1px solid var(--line)",
-                borderRadius: 16,
+                border: "1px solid var(--line2)",
+                borderRadius: 22,
                 overflow: "hidden",
-                transition: "border-color 0.3s ease, transform 0.3s ease",
+                background: "var(--bg2)",
+                display: "flex",
+                flexDirection: "column",
               }}
             >
-              {/* Image */}
+              {/* Media */}
               <div
                 style={{
-                  background: "#0b0b0e",
-                  minHeight: 360,
+                  width: "100%",
+                  aspectRatio: "16 / 9",
+                  background: "var(--bg3)",
                   overflow: "hidden",
-                  position: "relative",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
@@ -444,9 +441,9 @@ const SolucoesSobMedida = () => {
                     aria-label={p.brand}
                     style={{
                       width: "100%",
-                      height: "auto",
-                      maxHeight: "100%",
-                      objectFit: "contain",
+                      height: "100%",
+                      objectFit: "cover",
+                      objectPosition: "top",
                       display: "block",
                     }}
                   />
@@ -456,14 +453,12 @@ const SolucoesSobMedida = () => {
                     alt={p.brand}
                     loading="lazy"
                     style={{
-                      width: p.imageContain ? "55%" : "100%",
-                      height: p.imageContain ? "auto" : "100%",
-                      maxHeight: p.imageContain ? "60%" : undefined,
-                      objectFit: p.imageContain ? "contain" : "cover",
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      objectPosition: "top",
                       display: "block",
-                      transition: "transform 0.6s ease",
                     }}
-                    className="group-hover:scale-[1.03]"
                   />
                 )}
               </div>
@@ -471,112 +466,45 @@ const SolucoesSobMedida = () => {
               {/* Content */}
               <div
                 style={{
-                  padding: "32px 36px",
+                  padding: "28px 32px 32px",
                   display: "flex",
                   flexDirection: "column",
-                  gap: 18,
+                  gap: 12,
+                  flexGrow: 1,
                 }}
               >
-                <div
-                  className="flex items-center gap-3"
+                <span className="snj-step__num">/ {p.brand}</span>
+                <h3
                   style={{
-                    paddingBottom: 16,
-                    borderBottom: "1px solid var(--line)",
-                    fontFamily: "var(--font-mono)",
-                    fontSize: 11,
-                    color: "var(--text3)",
-                    letterSpacing: "0.10em",
-                  }}
-                >
-                  <span>{p.year}</span>
-                  <span style={{ opacity: 0.4 }}>•</span>
-                  <span style={{ textTransform: "uppercase" }}>{p.category}</span>
-                </div>
-
-                <p
-                  style={{
-                    fontFamily: "var(--font-display, var(--font-sans))",
                     fontSize: 22,
                     fontWeight: 500,
-                    letterSpacing: "-0.01em",
-                    color: "var(--text2)",
-                  }}
-                >
-                  {p.brand}
-                </p>
-
-                <h2
-                  style={{
-                    fontSize: "clamp(22px, 2.4vw, 30px)",
-                    lineHeight: 1.15,
-                    fontWeight: 600,
-                    letterSpacing: "-0.02em",
                     color: "var(--text)",
+                    letterSpacing: "-0.02em",
+                    lineHeight: 1.3,
                   }}
                 >
                   {p.title}
-                </h2>
-
-                <p style={{ color: "var(--text2)", fontSize: 14, lineHeight: 1.6 }}>
+                </h3>
+                <p style={{ color: "var(--text2)", fontSize: 14, lineHeight: 1.65 }}>
                   {p.description}
                 </p>
-
-                <a
-                  href={p.ctaUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 self-start"
-                  style={{
-                    background: "rgba(255,255,255,0.06)",
-                    border: "1px solid var(--line2)",
-                    color: "var(--text)",
-                    padding: "10px 18px",
-                    borderRadius: 8,
-                    fontSize: 13,
-                    fontWeight: 500,
-                    transition: "background 0.2s ease",
-                    textDecoration: "none",
-                  }}
-                >
-                  {p.ctaLabel} <ArrowUpRight className="w-3.5 h-3.5" />
-                </a>
-
-                <div
-                  className="grid grid-cols-2 gap-6 mt-auto pt-6"
-                  style={{ borderTop: "1px solid var(--line)" }}
-                >
-                  {p.metrics.map((m) => (
-                    <div key={m.label}>
-                      <p
-                        style={{
-                          fontSize: 40,
-                          fontWeight: 600,
-                          letterSpacing: "-0.04em",
-                          color: "var(--text)",
-                          lineHeight: 1,
-                        }}
-                      >
-                        {m.value}
-                      </p>
-                      <p
-                        style={{
-                          fontSize: 10,
-                          color: "var(--text3)",
-                          fontFamily: "var(--font-mono)",
-                          letterSpacing: "0.10em",
-                          marginTop: 10,
-                        }}
-                      >
-                        {m.label}
-                      </p>
-                    </div>
-                  ))}
+                <div style={{ marginTop: "auto", paddingTop: 16 }}>
+                  <a
+                    href={p.ctaUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="snj-btn-primary"
+                    style={{ fontSize: 13 }}
+                  >
+                    {p.ctaLabel} <ArrowUpRight className="w-3.5 h-3.5" />
+                  </a>
                 </div>
               </div>
             </article>
           ))}
         </div>
       </section>
+
 
       {/* CTA FINAL */}
       <section className="container-focus" style={{ padding: "60px 24px 120px" }}>
