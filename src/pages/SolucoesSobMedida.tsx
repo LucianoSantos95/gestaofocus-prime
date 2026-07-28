@@ -3,10 +3,6 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { WA_LINK } from "@/components/TalkToLuciano";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import caseFin from "@/assets/case-financeiro-dashboard.png";
-import caseOnboarding from "@/assets/case-onboarding-flow.jpg";
-import caseCrmPipeline from "@/assets/case-crm-pipeline.jpg";
-import lovableLogoAsset from "@/assets/lovable-logo.png.asset.json";
 
 
 type Project = {
@@ -17,65 +13,40 @@ type Project = {
   description: string;
   image?: string;
   imageContain?: boolean;
-  textOverlay?: string;
-
+  ctaLabel: string;
+  ctaUrl: string;
   metrics: { value: string; label: string }[];
 };
 
 const projects: Project[] = [
   {
     year: "2026",
-    category: "Espaço de Serviços",
-    brand: "Espaço Natividade",
-    title: "Reestruturação completa da operação com IA e Lovable",
+    category: "Produto · SaaS",
+    brand: "Hub Empresarial",
+    title: "Um hub pra substituir suas 6 ferramentas de gestão",
     description:
-      "Mapeamento de processos, sistema próprio construído na Lovable e agentes de IA para tirar o dono da operação do dia a dia, mantendo o padrão de atendimento.",
-    image: lovableLogoAsset.url,
-    imageContain: true,
-
-
+      "Finanças, clientes, projetos e relatórios num lugar só — conectado ao seu Google, WhatsApp e ao ChatGPT. Construído na Lovable com plano gratuito para começar.",
+    image: "/case-hub.png",
+    ctaLabel: "Testar grátis",
+    ctaUrl: "https://app.focusinteligente.com.br",
     metrics: [
-      { value: "8+", label: "PROCESSOS MAPEADOS" },
-      { value: "3 sem.", label: "ATÉ O GO-LIVE" },
+      { value: "100+", label: "OPERAÇÕES RODANDO" },
+      { value: "R$ 55", label: "A PARTIR DE /MÊS" },
     ],
   },
   {
-    year: "2025",
-    category: "Agência Digital",
-    brand: "Onboarding 5×",
-    title: "Centralização de clientes e onboarding 5× mais rápido",
+    year: "2026",
+    category: "Produto · IA",
+    brand: "Agente de Diagnóstico",
+    title: "Descubra qual Agente de IA sua empresa precisa em 2 minutos",
     description:
-      "Reescrita do fluxo de onboarding de clientes que levava 3 semanas. Hoje a agência entrega o setup completo em 4 dias úteis.",
-    image: caseOnboarding,
+      "6 perguntas. Diagnóstico técnico gratuito. O agente mapeia seus gargalos e indica a automação ideal para Atendimento, Vendas, Operação ou Financeiro — sem cadastro.",
+    image: "/case-indica.png",
+    ctaLabel: "Iniciar diagnóstico",
+    ctaUrl: WA_LINK,
     metrics: [
-      { value: "5×", label: "MAIS RÁPIDO NO ONBOARDING" },
-      { value: "12h", label: "ECONOMIZADAS POR SEMANA" },
-    ],
-  },
-  {
-    year: "2025",
-    category: "Consultoria B2B",
-    brand: "Financeiro sob Controle",
-    title: "Painel financeiro unificado e previsibilidade de caixa",
-    description:
-      "Substituição de planilhas dispersas por um painel único de receitas, despesas e projeções, com agentes de IA para conciliação.",
-    image: caseFin,
-    metrics: [
-      { value: "100%", label: "CONCILIAÇÃO AUTOMÁTICA" },
-      { value: "0", label: "PLANILHAS PARALELAS" },
-    ],
-  },
-  {
-    year: "2025",
-    category: "PME · Serviços",
-    brand: "CRM Inteligente",
-    title: "Pipeline comercial unificado com automações de IA",
-    description:
-      "Sistema de CRM sob medida construído na Lovable, com pipeline visual, scoring automático de leads e agentes de IA cuidando do follow-up.",
-    image: caseCrmPipeline,
-    metrics: [
-      { value: "1", label: "ÚNICA FONTE DA VERDADE" },
-      { value: "100%", label: "ADOÇÃO DA EQUIPE" },
+      { value: "2 min", label: "TEMPO ESTIMADO" },
+      { value: "4", label: "ÁREAS DIAGNOSTICADAS" },
     ],
   },
 ];
@@ -524,7 +495,7 @@ const SolucoesSobMedida = () => {
                 </p>
 
                 <a
-                  href={WA_LINK}
+                  href={p.ctaUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 self-start"
@@ -537,9 +508,10 @@ const SolucoesSobMedida = () => {
                     fontSize: 13,
                     fontWeight: 500,
                     transition: "background 0.2s ease",
+                    textDecoration: "none",
                   }}
                 >
-                  Falar sobre um case parecido <ArrowRight className="w-3.5 h-3.5" />
+                  {p.ctaLabel} <ArrowUpRight className="w-3.5 h-3.5" />
                 </a>
 
                 <div
