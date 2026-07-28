@@ -51,13 +51,9 @@
   <body>
     <script>
       (function(){
-        try {
-          var t = localStorage.getItem('focus-theme');
-          if (t !== 'light' && t !== 'dark') t = 'dark';
-          document.documentElement.classList.add(t);
-        } catch (e) {
-          document.documentElement.classList.add('dark');
-        }
+        // Lâmpada temporariamente desativada — força tema dark oficial
+        document.documentElement.classList.remove('light');
+        document.documentElement.classList.add('dark');
       })();
     </script>
     <div id="root"></div>
