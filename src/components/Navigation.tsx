@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { trackNavigationClick } from "@/lib/analytics";
 import focusLogo from "@/assets/Focus.png.asset.json";
-
-const WA_LINK =
-  "https://wa.me/5511916742443?text=Ol%C3%A1+Luciano%2C+quero+agendar+um+diagn%C3%B3stico+gratuito+para+minha+empresa";
+import ThemeToggle from "@/components/ThemeToggle";
+import { openLeadModal } from "@/lib/leadModal";
 
 const navItems = [
   { name: "Consultoria", href: "/solucoes-sob-medida" },
