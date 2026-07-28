@@ -663,7 +663,7 @@ const Index = () => {
           {/* Hub */}
           <div className="snj-price-card">
             <span className="snj-step__num">/ Hub Empresarial</span>
-            <p style={{ color: "var(--text2)", fontSize: 14 }}>Para começar agora — SaaS pronto.</p>
+            <p style={{ color: "var(--text2)", fontSize: 14 }}>Para começar agora — Hub Central.</p>
             <div>
               <span className="snj-price-amount" style={{ fontSize: 28 }}>a partir de R$ 55</span>
               <span style={{ color: "var(--text3)", fontSize: 14, marginLeft: 6 }}>/mês</span>
