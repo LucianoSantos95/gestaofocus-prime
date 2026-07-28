@@ -420,16 +420,17 @@ const Index = () => {
                 Já ouviu falar da Lovable? A gente mapeia sua operação e constrói exatamente
                 o sistema que você precisa — sem freelancer, sem agência de software tradicional.
               </p>
-              <a
-                href={WA_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => cta("lovable_section")}
-                className="snj-btn-primary"
-                style={{ marginTop: 28, display: "inline-flex" }}
+              <button
+                type="button"
+                onClick={() => {
+                  cta("lovable_section");
+                  openLeadModal("lovable_section");
+                }}
+                className="snj-btn-primary focus-magnetic"
+                style={{ marginTop: 28, display: "inline-flex", border: "none", cursor: "pointer" }}
               >
                 Quero um sistema Lovable <ArrowUpRight className="w-4 h-4" />
-              </a>
+              </button>
             </div>
             <div style={{ padding: "48px 40px", display: "flex", flexDirection: "column", gap: 16 }}>
               {[
@@ -765,15 +766,17 @@ const Index = () => {
             automatizado e onde dá para ganhar eficiência.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
-            <a
-              href={WA_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => cta("final_wa")}
-              className="snj-btn-primary"
+            <button
+              type="button"
+              onClick={() => {
+                cta("final_wa");
+                openLeadModal("final_cta");
+              }}
+              className="snj-btn-primary focus-magnetic"
+              style={{ border: "none", cursor: "pointer" }}
             >
               Diagnóstico gratuito <ArrowUpRight className="w-4 h-4" />
-            </a>
+            </button>
             <a
               href="https://app.focusinteligente.com.br"
               target="_blank"

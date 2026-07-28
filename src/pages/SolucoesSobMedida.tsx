@@ -2,6 +2,7 @@ import SEOHead from "@/components/SEOHead";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { WA_LINK } from "@/components/TalkToLuciano";
+import { openLeadModal } from "@/lib/leadModal";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import hubVideo from "@/assets/case-hub-empresarial.mp4.asset.json";
 import diagVideo from "@/assets/case-agente-diagnostico.mp4.asset.json";
@@ -106,11 +107,10 @@ const SolucoesSobMedida = () => {
           </p>
 
           <div className="anim-up-3 mt-10 flex flex-col items-center gap-4">
-            <a
-              href={WA_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2"
+            <button
+              type="button"
+              onClick={() => openLeadModal("consultoria_hero")}
+              className="inline-flex items-center gap-2 focus-magnetic"
               style={{
                 background: "var(--text)",
                 color: "var(--bg)",
@@ -118,11 +118,12 @@ const SolucoesSobMedida = () => {
                 borderRadius: 999,
                 fontSize: 15,
                 fontWeight: 600,
-                textDecoration: "none",
+                border: "none",
+                cursor: "pointer",
               }}
             >
               Agendar diagnóstico gratuito <ArrowUpRight className="w-4 h-4" />
-            </a>
+            </button>
             <p
               style={{
                 fontFamily: "var(--font-mono)",
@@ -547,11 +548,10 @@ const SolucoesSobMedida = () => {
             comercial.
           </p>
           <div className="flex justify-center">
-            <a
-              href={WA_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2"
+            <button
+              type="button"
+              onClick={() => openLeadModal("consultoria_final")}
+              className="inline-flex items-center gap-2 focus-magnetic"
               style={{
                 background: "var(--text)",
                 color: "var(--bg)",
@@ -559,11 +559,12 @@ const SolucoesSobMedida = () => {
                 borderRadius: 999,
                 fontSize: 15,
                 fontWeight: 600,
-                textDecoration: "none",
+                border: "none",
+                cursor: "pointer",
               }}
             >
               Agendar diagnóstico gratuito <ArrowUpRight className="w-4 h-4" />
-            </a>
+            </button>
           </div>
         </div>
       </section>
