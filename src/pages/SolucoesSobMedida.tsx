@@ -32,6 +32,8 @@ const projects: Project[] = [
     description:
       "Finanças, clientes, projetos e relatórios num lugar só — conectado ao seu Google, WhatsApp e ao ChatGPT. Construído na Lovable com plano gratuito para começar.",
     image: "/case-hub.png",
+    video: hubVideo.url,
+    videoPoster: "/case-hub.png",
     ctaLabel: "Testar grátis",
     ctaUrl: "https://app.focusinteligente.com.br",
     metrics: [
@@ -47,6 +49,8 @@ const projects: Project[] = [
     description:
       "6 perguntas. Diagnóstico técnico gratuito. O agente mapeia seus gargalos e indica a automação ideal para Atendimento, Vendas, Operação ou Financeiro — sem cadastro.",
     image: "/case-indica.png",
+    video: diagVideo.url,
+    videoPoster: "/case-indica.png",
     ctaLabel: "Iniciar diagnóstico",
     ctaUrl: WA_LINK,
     metrics: [
