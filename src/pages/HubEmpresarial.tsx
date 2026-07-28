@@ -215,104 +215,80 @@ const HubEmpresarial = () => {
         </div>
       </section>
 
-      {/* MODULES — Sanjaya project cards */}
+      {/* MODULES — icon grid (landing.love style) */}
       <section ref={mockupRef} className="container-focus" style={{ padding: "80px 24px 60px" }}>
-        <div className="flex flex-col gap-6 max-w-6xl mx-auto">
-          {modules.map((m) => (
-            <article
-              key={m.code}
-              className="snj-project-card group"
+        <div className="max-w-6xl mx-auto">
+          <div style={{ marginBottom: 40, maxWidth: 640 }}>
+            <span
               style={{
-                display: "grid",
-                gridTemplateColumns: "minmax(0,1.05fr) minmax(0,1fr)",
-                background: "var(--bg2)",
-                border: "1px solid var(--line)",
-                borderRadius: 16, overflow: "hidden",
-                transition: "border-color 0.3s ease",
+                fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--text3)",
+                letterSpacing: "0.10em",
               }}
             >
-              <div style={{ background: "#0b0b0e", minHeight: 360, overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center", padding: 24 }}>
-                <img
-                  src={m.image}
-                  alt={m.brand}
-                  loading="lazy"
-                  className="group-hover:scale-[1.03]"
-                  style={{
-                    width: "100%", height: "100%", objectFit: "contain", display: "block",
-                    transition: "transform 0.6s ease",
-                    maxHeight: 320,
-                  }}
-                />
-              </div>
+              / MÓDULOS
+            </span>
+            <h2
+              style={{
+                fontSize: "clamp(28px, 4vw, 44px)", lineHeight: 1.1,
+                fontWeight: 600, letterSpacing: "-0.02em", marginTop: 16,
+                color: "var(--text)",
+              }}
+            >
+              Quatro módulos, <em>uma operação inteira</em>.
+            </h2>
+          </div>
 
-              <div style={{ padding: "32px 36px", display: "flex", flexDirection: "column", gap: 18 }}>
-                <div
-                  className="flex items-center gap-3"
-                  style={{
-                    paddingBottom: 16, borderBottom: "1px solid var(--line)",
-                    fontFamily: "var(--font-mono)", fontSize: 11,
-                    color: "var(--text3)", letterSpacing: "0.10em",
-                  }}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {modules.map((m) => {
+              const Icon = m.icon;
+              return (
+                <article
+                  key={m.code}
+                  className="focus-module-card focus-spotlight"
                 >
-                  <span>MÓDULO {m.code}</span>
-                  <span style={{ opacity: 0.4 }}>•</span>
-                  <span style={{ textTransform: "uppercase" }}>{m.category}</span>
-                </div>
-
-                <p
-                  style={{
-                    fontFamily: "var(--font-display, var(--font-sans))",
-                    fontSize: 22, fontWeight: 500, letterSpacing: "-0.01em",
-                    color: "var(--text2)",
-                  }}
-                >
-                  {m.brand}
-                </p>
-
-                <h2
-                  style={{
-                    fontSize: "clamp(22px, 2.4vw, 30px)", lineHeight: 1.15,
-                    fontWeight: 600, letterSpacing: "-0.02em", color: "var(--text)",
-                  }}
-                >
-                  {m.title}
-                </h2>
-
-                <p style={{ color: "var(--text2)", fontSize: 14, lineHeight: 1.6 }}>
-                  {m.description}
-                </p>
-
-                <a
-                  href={`${APP_URL}/auth?mode=signup`}
-                  onClick={() => handleCTA(`module_${m.code}`)}
-                  className="inline-flex items-center gap-2 self-start"
-                  style={{
-                    background: "rgba(255,255,255,0.06)", border: "1px solid var(--line2)",
-                    color: "var(--text)", padding: "10px 18px", borderRadius: 8,
-                    fontSize: 13, fontWeight: 500,
-                  }}
-                >
-                  Experimentar este módulo <ArrowRight className="w-3.5 h-3.5" />
-                </a>
-
-                <div
-                  className="grid grid-cols-2 gap-6 mt-auto pt-6"
-                  style={{ borderTop: "1px solid var(--line)" }}
-                >
-                  {m.metrics.map((x) => (
-                    <div key={x.label}>
-                      <p style={{ fontSize: 36, fontWeight: 600, letterSpacing: "-0.04em", color: "var(--text)", lineHeight: 1 }}>
-                        {x.value}
-                      </p>
-                      <p style={{ fontSize: 10, color: "var(--text3)", fontFamily: "var(--font-mono)", letterSpacing: "0.10em", marginTop: 10 }}>
-                        {x.label}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </article>
-          ))}
+                  <span className="focus-icon-tile">
+                    <Icon className="w-5 h-5" />
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: 11,
+                      color: "#9DE89D",
+                      letterSpacing: "0.12em",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    {m.category}
+                  </span>
+                  <h3
+                    style={{
+                      fontSize: 20, fontWeight: 600, letterSpacing: "-0.02em",
+                      color: "var(--text)", lineHeight: 1.3,
+                    }}
+                  >
+                    {m.title}
+                  </h3>
+                  <p style={{ color: "var(--text2)", fontSize: 14, lineHeight: 1.65 }}>
+                    {m.description}
+                  </p>
+                  <a
+                    href={`${APP_URL}/auth?mode=signup`}
+                    onClick={() => handleCTA(`module_${m.code}`)}
+                    className="inline-flex items-center gap-2 self-start"
+                    style={{
+                      marginTop: 8,
+                      fontSize: 13, fontWeight: 500, color: "var(--text)",
+                      textDecoration: "none",
+                      borderBottom: "1px solid var(--line2)",
+                      paddingBottom: 2,
+                    }}
+                  >
+                    Experimentar módulo <ArrowRight className="w-3.5 h-3.5" />
+                  </a>
+                </article>
+              );
+            })}
+          </div>
         </div>
       </section>
 
