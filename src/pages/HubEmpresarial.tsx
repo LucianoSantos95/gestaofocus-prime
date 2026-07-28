@@ -140,12 +140,12 @@ const HubEmpresarial = () => {
   return (
     <div className="min-h-screen" style={{ background: "var(--bg)" }}>
       <SEOHead
-        title="Hub Empresarial — Gestão para Agências e Consultorias | Focus"
-        description="Plataforma de gestão para agências, consultorias e prestadores. CRM, Financeiro, Projetos e Dashboards com IA — tudo em um único hub."
+        title="Hub Empresarial para Agências | CRM, Projetos e IA — Focus"
+        description="Chega de gerenciar em planilhas e WhatsApp. O Hub reúne CRM, Financeiro, Projetos e IA em uma plataforma para agências e consultorias. A partir de R$ 55/mês."
         canonical="/hub-empresarial"
         image="https://focusinteligente.com.br/lovable-uploads/hub-empresarial-og.jpg"
         type="product"
-        keywords="plataforma gestão agências, sistema para consultoria, software gestão PME serviços, CRM agência, financeiro consultoria"
+        keywords="hub empresarial, plataforma gestão agências, sistema para consultoria, software gestão PME, CRM agência, financeiro consultoria, gestão com IA"
       />
       <NotionReferrerBanner />
       <Navigation />
