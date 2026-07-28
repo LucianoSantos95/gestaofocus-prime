@@ -3,6 +3,8 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { WA_LINK } from "@/components/TalkToLuciano";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
+import hubVideo from "@/assets/case-hub-empresarial.mp4.asset.json";
+import diagVideo from "@/assets/case-agente-diagnostico.mp4.asset.json";
 
 
 type Project = {
@@ -13,6 +15,9 @@ type Project = {
   description: string;
   image?: string;
   imageContain?: boolean;
+  video?: string;
+  videoPoster?: string;
+  textOverlay?: string;
   ctaLabel: string;
   ctaUrl: string;
   metrics: { value: string; label: string }[];
