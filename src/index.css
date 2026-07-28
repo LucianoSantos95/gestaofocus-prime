@@ -1094,3 +1094,118 @@ html, body {
   font-size: 52px; font-weight: 600; letter-spacing: -0.035em; color: var(--text);
   line-height: 1;
 }
+
+/* ================================================================
+   Landing.love / Mobbin inspired animation utilities
+   ================================================================ */
+
+/* Marquee — horizontal infinite scroller */
+@keyframes focus-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.focus-marquee {
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.focus-marquee__track {
+  display: inline-flex;
+  gap: 56px;
+  white-space: nowrap;
+  animation: focus-marquee 42s linear infinite;
+  will-change: transform;
+}
+.focus-marquee:hover .focus-marquee__track { animation-play-state: paused; }
+.focus-marquee__item {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text2);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.focus-marquee__dot {
+  width: 5px; height: 5px; border-radius: 999px;
+  background: #9DE89D; box-shadow: 0 0 10px #9DE89D;
+  flex-shrink: 0;
+}
+
+/* Word reveal — cascading fade-up for headings */
+@keyframes focus-word-in {
+  from { opacity: 0; transform: translateY(24px); filter: blur(4px); }
+  to   { opacity: 1; transform: translateY(0);    filter: blur(0);   }
+}
+.focus-word-reveal > span {
+  display: inline-block;
+  opacity: 0;
+  animation: focus-word-in 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Magnetic button — smooth transform transition */
+.focus-magnetic {
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+/* Cursor spotlight on cards — set --mx/--my via JS */
+.focus-spotlight { position: relative; overflow: hidden; }
+.focus-spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    360px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(157,232,157,0.10),
+    transparent 55%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+.focus-spotlight:hover::before { opacity: 1; }
+.focus-spotlight > * { position: relative; z-index: 1; }
+
+/* Icon tile — mint square used on Hub module cards */
+.focus-icon-tile {
+  width: 44px; height: 44px; border-radius: 12px;
+  background: rgba(157,232,157,0.10);
+  border: 1px solid rgba(157,232,157,0.22);
+  display: inline-flex; align-items: center; justify-content: center;
+  color: #9DE89D;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              background 0.35s ease;
+}
+.focus-module-card:hover .focus-icon-tile {
+  transform: rotate(-6deg) scale(1.05);
+  background: rgba(157,232,157,0.16);
+}
+
+.focus-module-card {
+  border: 1px solid var(--line);
+  background: var(--bg2);
+  border-radius: 16px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: border-color 0.3s ease, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.35s ease;
+}
+.focus-module-card:hover {
+  border-color: var(--line2);
+  transform: translateY(-3px);
+  box-shadow: 0 20px 40px -20px rgba(0,0,0,0.5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .focus-marquee__track { animation: none; }
+  .focus-word-reveal > span { opacity: 1; animation: none; }
+  .focus-magnetic { transition: none; }
+}
