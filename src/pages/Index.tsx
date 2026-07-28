@@ -262,7 +262,7 @@ const Index = () => {
             },
             {
               n: "04",
-              t: "Hub Empresarial (SaaS)",
+              t: "Hub Empresarial",
               d: "Plataforma pronta para usar — CRM, financeiro, projetos e IA.",
               i: ["Financeiro completo", "Gestão de projetos", "CRM inteligente", "IA Assistant integrado"],
             },
@@ -430,55 +430,119 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ===================== TESTIMONIALS ===================== */}
+      {/* ===================== CASES ===================== */}
       <section className="snj-section container-focus">
         <div className="snj-section__head">
-          <span className="snj-tag">Depoimentos</span>
+          <span className="snj-tag">Produtos Focus</span>
           <h2 className="snj-h2">
-            O que dizem nossos <em>clientes</em>
+            Construídos com <em>Lovable, usados de verdade</em>
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-5">
-          {[
-            {
-              q: "Saímos de 5 planilhas para um sistema único. A equipe agora tem clareza total do que precisa fazer.",
-              n: "Rafael M.",
-              r: "CEO · Agência Digital",
-            },
-            {
-              q: "O controle financeiro mudou completamente. Hoje sei o fluxo de caixa e posso planejar com segurança.",
-              n: "Camila S.",
-              r: "Sócia · Consultoria de RH",
-            },
-            {
-              q: "Em 3 semanas, tínhamos um portal do cliente funcionando. Profissionalizou nossa entrega.",
-              n: "Lucas A.",
-              r: "Diretor · Escritório Contábil",
-            },
-          ].map((t) => (
+        <div className="grid md:grid-cols-2 gap-5">
+          {/* Case 1 — Hub Empresarial */}
+          <div
+            style={{
+              border: "1px solid var(--line2)",
+              borderRadius: 22,
+              overflow: "hidden",
+              background: "var(--bg2)",
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
             <div
-              key={t.n}
               style={{
-                border: "1px solid var(--line)",
-                borderRadius: 22,
-                padding: 32,
-                background: "var(--bg2)",
-                display: "flex",
-                flexDirection: "column",
-                gap: 24,
-                minHeight: 280,
+                width: "100%",
+                aspectRatio: "16 / 9",
+                background: "var(--bg3)",
+                overflow: "hidden",
               }}
             >
-              <p style={{ fontSize: 18, color: "var(--text)", lineHeight: 1.5, fontWeight: 300, letterSpacing: "-0.01em" }}>
-                "{t.q}"
+              <img
+                src="/case-hub.png"
+                alt="Hub Empresarial — painel de gestão com fluxo de caixa e IA"
+                style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }}
+              />
+            </div>
+            <div style={{ padding: "28px 32px 32px", display: "flex", flexDirection: "column", gap: 12, flexGrow: 1 }}>
+              <span className="snj-step__num">/ Hub Empresarial</span>
+              <h3 style={{ fontSize: 22, fontWeight: 500, color: "var(--text)", letterSpacing: "-0.02em", lineHeight: 1.3 }}>
+                Um hub pra substituir suas 6 ferramentas de gestão
+              </h3>
+              <p style={{ color: "var(--text2)", fontSize: 14, lineHeight: 1.65 }}>
+                Finanças, clientes, projetos e relatórios num lugar só — conectado ao seu Google,
+                WhatsApp e ao ChatGPT. Construído na Lovable, com plano gratuito para começar.
               </p>
-              <div style={{ marginTop: "auto" }}>
-                <p style={{ color: "var(--text)", fontSize: 14, fontWeight: 600 }}>{t.n}</p>
-                <p className="snj-tag" style={{ marginTop: 4 }}>{t.r}</p>
+              <div style={{ marginTop: "auto", paddingTop: 16, display: "flex", gap: 12, alignItems: "center" }}>
+                <a
+                  href="https://app.focusinteligente.com.br"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => cta("case_hub")}
+                  className="snj-btn-primary"
+                  style={{ fontSize: 13 }}
+                >
+                  Testar grátis <ArrowUpRight className="w-3.5 h-3.5" />
+                </a>
+                <Link
+                  to="/hub-empresarial"
+                  style={{ fontSize: 13, color: "var(--text2)", textDecoration: "underline" }}
+                >
+                  Saiba mais
+                </Link>
               </div>
             </div>
-          ))}
+          </div>
+
+          {/* Case 2 — Agente de Diagnóstico */}
+          <div
+            style={{
+              border: "1px solid var(--line2)",
+              borderRadius: 22,
+              overflow: "hidden",
+              background: "var(--bg2)",
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
+            <div
+              style={{
+                width: "100%",
+                aspectRatio: "16 / 9",
+                background: "var(--bg3)",
+                overflow: "hidden",
+              }}
+            >
+              <img
+                src="/case-indica.png"
+                alt="Focus Indica — agente de IA que mapeia qual automação sua empresa precisa"
+                style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }}
+              />
+            </div>
+            <div style={{ padding: "28px 32px 32px", display: "flex", flexDirection: "column", gap: 12, flexGrow: 1 }}>
+              <span className="snj-step__num">/ Agente de Diagnóstico</span>
+              <h3 style={{ fontSize: 22, fontWeight: 500, color: "var(--text)", letterSpacing: "-0.02em", lineHeight: 1.3 }}>
+                Descubra qual Agente de IA sua empresa precisa em 2 minutos
+              </h3>
+              <p style={{ color: "var(--text2)", fontSize: 14, lineHeight: 1.65 }}>
+                6 perguntas. Diagnóstico técnico gratuito. O agente mapeia seus gargalos e indica
+                a automação certa para Atendimento, Vendas, Operação ou Financeiro.
+              </p>
+              <div style={{ marginTop: "auto", paddingTop: 16 }}>
+                <a
+                  href={WA_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => cta("case_indica")}
+                  className="snj-btn-primary"
+                  style={{ fontSize: 13 }}
+                >
+                  Iniciar diagnóstico <ArrowUpRight className="w-3.5 h-3.5" />
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
