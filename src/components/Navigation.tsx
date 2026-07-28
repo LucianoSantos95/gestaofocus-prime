@@ -131,7 +131,7 @@ const Navigation = () => {
           >
             Diagnóstico gratuito
           </button>
-          <ThemeToggle />
+          {/* <ThemeToggle /> temporariamente desativado — tema dark oficial */}
         </div>
 
         {/* Mobile Menu Button */}
@@ -187,7 +187,7 @@ const Navigation = () => {
               >
                 Diagnóstico gratuito
               </button>
-              <ThemeToggle />
+              {/* <ThemeToggle /> temporariamente desativado */}
             </div>
           </div>
         </div>
