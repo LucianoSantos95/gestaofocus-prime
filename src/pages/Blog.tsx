@@ -584,7 +584,7 @@ const Blog = () => {
                     <Link
                       to={`/blog/${post.slug}`}
                       className="block overflow-hidden"
-                      style={{ aspectRatio: "16 / 10", background: "#0b0b0e" }}
+                      style={{ aspectRatio: "16 / 10", background: "var(--bg3)" }}
                     >
                       <img
                         src={post.image}

@@ -1,50 +1,50 @@
-## 1. Toggle de tema (lâmpada ao lado do "Diagnóstico gratuito")
+## Problemas identificados
 
-- Adicionar um `ThemeProvider` leve (classe `light` no `<html>`, persistência em `localStorage`).
-- Criar `src/components/ThemeToggle.tsx` — ícone `Lightbulb` (lucide-react), 36×36, ao lado do botão "Diagnóstico gratuito" no `Navigation.tsx` (desktop + mobile).
-- Em `src/index.css`, definir variáveis para tema claro dentro de `html.light { --bg, --bg2, --bg3, --text, --text2, --text3, --line, --line2 }`, invertendo a paleta atual (fundos off-white `#F7F7F5`/`#EFEFEC`, texto `#0C0C10`, mantendo azul `#1E40AF` e verde `#9DE89D` como accents). Todos os componentes já usam essas variáveis, então herdam automaticamente.
-- Ajustes pontuais onde há cores hardcoded (ex.: `text-white` no logo/nav) — trocar por `var(--text)` quando necessário para não quebrar o modo claro.
+1. **Hero muito espaçado** — `.snj-hero` tem `min-height: 100vh` + `.snj-hero__center { padding: 80px 0 }` + `.snj-display` com `font-size: clamp(56px, 9vw, 128px)` e `line-height: 0.95`. No desktop 1450px isso gera ~123px por linha do título (Clareza / Precisão / Operação) + folga central grande, resultando no vazio da print.
 
-## 2. Formulário no lugar dos CTAs "Diagnóstico gratuito" / "Quero um sistema Lovable"
+2. **Botão da lâmpada não muda o tema** — O toggle está setando `html.light` corretamente e o `index.css` tem tokens de tema claro (`--bg`, `--text`, etc.), mas várias seções ignoram os tokens e usam cores dark hardcoded, então tudo continua escuro:
+   - `.snj-hero` → `linear-gradient(180deg, #050507 → #0a0a0e → #050507)` fixo
+   - `.snj-hero::before` → linhas de grade `rgba(255,255,255,0.02)` (invisíveis no claro)
+   - `.snj-talk` → `rgba(15,15,20,0.85)` fixo
+   - `.snj-pill` → `rgba(0,0,0,0.4)` fixo
+   - `.snj-btn-primary` (herdando `var(--text)` como fundo) — no light `--text: #0C0C10`, então o botão continua preto com texto claro (isso está OK; verificar contraste)
+   - `.focus-marquee` provavelmente com fundo escuro fixo
+   - Cards de módulos e outras seções que usam `#0b0b0e` diretamente (ex.: bloco de imagem do Hub antigo)
 
-- Criar `src/components/LeadFormModal.tsx` — modal glassmorphism com 3 campos obrigatórios (validação Zod):
-  - Nome (2–80 chars)
-  - E-mail (formato válido)
-  - "Qual é o maior gargalo da sua operação hoje?" (textarea, 10–500 chars)
-- Ao submeter: validação client-side → tela de sucesso dentro do modal com botão **"Abrir WhatsApp"** que abre `wa.me/5511916742443` com mensagem prefixada:
-  > "Olá, sou {nome}. Meu maior gargalo hoje é: {resposta}"
-- Sem persistência em banco (o usuário não pediu). Apenas `trackEvent("lead_form_submit", …)` para GA/Clarity mensurarem leads quentes.
-- Substituir todos os `<a href={WA_LINK}>` dos CTAs "Diagnóstico gratuito" / "Quero um sistema Lovable" por `<button onClick={() => setOpen(true)}>` nas páginas: `Index.tsx`, `SolucoesSobMedida.tsx`, `HubEmpresarial.tsx`, `AboutFocus.tsx`. O botão flutuante do WhatsApp e links do rodapé continuam diretos.
+## Alterações (só CSS + pequeno ajuste no hero da home)
 
-## 3. Refazer os 4 blocos com imagens em `/hub-empresarial` (grid de ícones)
+### 1. `src/index.css` — hero compacto
+- `.snj-hero`: remover `min-height: 100vh`, trocar padding para `120px 32px 40px`.
+- `.snj-hero__center`: reduzir padding de `80px 0` para `40px 0`.
+- `.snj-display`: reduzir escala de `clamp(56px, 9vw, 128px)` para `clamp(48px, 7vw, 104px)` e manter `line-height: 0.95`.
+- `.snj-hero__bottom`: `gap: 24px`.
 
-Baseado na imagem anexada — cards limpos com ícone circular em mint, categoria em caps, título e descrição. Manter **exatamente** o texto atual dos blocos.
+### 2. `src/index.css` — cores do hero passam a usar tokens
+- `.snj-hero` background → usar `var(--bg)` como base + gradientes com `var(--accent2)` em vez de `rgba(30,64,175,...)` cru em cima de preto; no light o fundo fica claro naturalmente.
+- `.snj-hero::before` linhas → `var(--line)` (já reage ao tema).
+- `.snj-talk` → `background: var(--bg2)` + `border: 1px solid var(--line2)`.
+- `.snj-pill` → `background: var(--bg2)`.
+- `.focus-marquee` (checar) → fundo `var(--bg2)`, texto `var(--text2)`.
 
-- Em `HubFocusModules.tsx` (ou equivalente que renderiza os 4 cards com screenshots), remover imagens e trocar por grid de cards:
-  - Ícone (lucide) em um quadrado arredondado com fundo `rgba(157,232,157,0.10)` e ícone `#9DE89D`
-  - Label da categoria em mono uppercase mint (`FINANÇAS`, `CLIENTES`, `PROJETOS`, `TAREFAS`, etc.)
-  - Título bold
-  - Descrição em `var(--text2)`
-- Layout: grid 3 colunas desktop / 2 tablet / 1 mobile. Borda `var(--line)`, raio 16px, padding 32px, hover sutil (translateY -2px + border mais clara).
-- Mapeamento de ícones: `DollarSign` (Finanças), `Users` (Clientes), `FolderKanban` (Projetos), `CheckSquare` (Tarefas). Se hoje existem apenas 4 blocos, mantenho 4 — não vou inventar novos.
+### 3. `src/index.css` — bloco `html.light` reforça overrides de seções críticas
+Adicionar dentro do bloco `html.light` os ajustes que não podem sair só dos tokens:
+- `.snj-hero { background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(30,64,175,0.08), transparent 60%), var(--bg); }` (versão clara sem o degradê preto).
+- `.snj-talk__avatar` mantém azul (ok em ambos os temas).
+- Qualquer cor `#050507`, `#0a0a0e`, `#0b0b0e`, `rgba(15,15,20,...)` restante substituída por token.
 
-## 4. Animações inspiradas em Mobbin / landing.love
+### 4. Sweep rápido de hardcodes em `src/pages` e `src/components`
+Buscar `#0b0b0e`, `#050507`, `#0a0a0e`, `rgba(15,15,20`, `rgba(11,11,14` e trocar por `var(--bg2)` / `var(--bg3)` para que reajam ao tema. Sem alterar layout — só cor.
 
-Adições focadas, sem exagero, respeitando o dark B2B:
-
-- **Scroll-reveal com stagger** — expandir `useScrollReveal` para aceitar `delay` por item; aplicar nos cards das seções "Como funciona" e "Módulos".
-- **Magnetic hover nos CTAs principais** — leve deslocamento do botão em direção ao cursor (implementação em ~30 linhas, sem libs).
-- **Text reveal por palavra no `<h1>` do hero** — palavras sobem em cascata (fade + translateY) no primeiro paint, easing `cubic-bezier(0.22, 1, 0.36, 1)`.
-- **Marquee infinito** na faixa "Lovable Partner Oficial · Consultoria · Hub Empresarial · …" abaixo do hero (padrão landing.love).
-- **Cursor spotlight sutil** nos cards de módulo — radial gradient seguindo o mouse (efeito Aceternity-style, muito usado em landing.love).
-- **Number count-up** nos indicadores da seção Sobre (já existe `useCountUp`, ativar com IntersectionObserver onde ainda não está).
-- **Page transition fade** — envelope `<AnimatePresence>` no `App.tsx` para suavizar troca de rotas (150ms fade), em complemento ao `PageLoader`.
-
-Tudo em CSS/Framer Motion (já instalado indiretamente? senão, animações puras em CSS + `requestAnimationFrame` para magnetic/spotlight — sem adicionar dependência).
+### Fora de escopo
+- Não mexer em auth, Supabase, Stripe, Resend, edge functions.
+- Não redesenhar seções — só ajustar tokens/cores hardcoded e compactar o hero.
+- Não trocar tipografia nem estrutura das páginas.
 
 ## Detalhes técnicos
 
-- Nada muda em auth, Supabase, Stripe, Resend, edge functions ou MCP.
-- Zod já é dependência do projeto.
-- Nenhuma nova tabela nem edge function.
-- Se `framer-motion` não estiver instalado, uso CSS puro para não introduzir dependência (posso confirmar durante o build).
+O toggle da lâmpada em `src/components/ThemeToggle.tsx` já:
+- Lê `localStorage.focus-theme`
+- Aplica/remove `html.light` e `html.dark`
+- Persiste
+
+O `index.html` já injeta o script inicial anti-flash. Ou seja, o mecanismo está OK — o problema é **CSS ignorando as variáveis**. Fixando os hardcodes, a lâmpada passa a alternar o site inteiro.
