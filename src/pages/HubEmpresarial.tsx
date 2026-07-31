@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import SEOHead from "@/components/SEOHead";
 import Navigation from "@/components/Navigation";
@@ -38,7 +38,6 @@ const HubEmpresarial = () => {
   const heroRef = useRef<HTMLElement>(null);
   const mockupRef = useRef<HTMLElement>(null);
   const pricingRef = useRef<HTMLElement>(null);
-  const [billing, setBilling] = useState<"mensal" | "anual">("anual");
 
   useEffect(() => {
     const sections = [
@@ -107,41 +106,31 @@ const HubEmpresarial = () => {
     },
   ];
 
-  const plans = [
-    {
-      name: "Plus", description: "Para agências e consultorias que precisam de gestão completa.",
-      monthly: 69, annual: 660, annualMonthly: 55,
-      features: ["Criar e editar dados em todos os módulos", "Até 5 usuários por conta", "Importação de planilhas (Excel/CSV/OFX)", "Guia de Uso completo", "Suporte por email"],
-      highlighted: false,
-    },
-    {
-      name: "Pro", description: "Para operações em crescimento com necessidades avançadas.",
-      monthly: 149, annual: 1428, annualMonthly: 119,
-      features: ["Tudo do Plus", "Exportar relatórios (PDF/Excel)", "Análise de IA para Clientes", "Assistente de IA integrado", "Até 10 usuários", "Suporte prioritário"],
-      highlighted: true,
-    },
-    {
-      name: "Enterprise", description: "Para agências com múltiplos times e clientes.",
-      monthly: 297, annual: 2844, annualMonthly: 237,
-      features: ["Tudo do Pro", "Integração Google Workspace", "Automação WhatsApp (lembretes)", "Usuários ilimitados", "Suporte dedicado + onboarding"],
-      highlighted: false,
-    },
+  const freeFeatures = [
+    "Registros ilimitados em todos os módulos",
+    "Finanças, CRM, Projetos, Atividades, RH, Marketing e Processos",
+    "Relatórios, exportações e dashboards de BI",
+    "Análises e assistente de IA",
+    "Integrações com Google, WhatsApp e Slack",
+    "Servidor MCP — use o Hub no ChatGPT e Claude",
+    "Usuários da sua equipe",
+    "Atualizações e suporte",
   ];
 
   const faqs = [
     { q: "O que é o Hub Empresarial?", a: "Plataforma SaaS completa de gestão para agências, consultorias e prestadores de serviço. Centraliza CRM, financeiro, projetos, RH e dashboards em um único lugar — sem planilhas, sem caos." },
-    { q: "Quanto custa?", a: "Plus R$ 69/mês (5 usuários). Pro R$ 149/mês (10 usuários + IA). Enterprise R$ 297/mês (usuários ilimitados + suporte dedicado). No anual sai mais barato." },
-    { q: "Posso testar grátis?", a: "Sim. Você usa gratuitamente até atingir o limite de cada aba. Para continuar, assine um plano. Sem cartão de crédito para começar." },
+    { q: "Quanto custa?", a: "Nada. O Hub Empresarial é gratuito e não tem versão paga. Todos os módulos, a IA, as integrações e os relatórios estão liberados desde o primeiro dia, sem limite de registros e sem pedir cartão de crédito." },
+    { q: "Tem pegadinha? Como vocês se sustentam?", a: "Não tem pegadinha. O Hub é gratuito de verdade e continua assim. A Focus se sustenta com os projetos de software sob medida — quem precisa de algo que nenhum sistema pronto resolve contrata a consultoria. O Hub é a porta de entrada, não uma isca." },
     { q: "Meus dados estão seguros?", a: "Sim. Criptografia AES-256, backups automáticos diários e infraestrutura segura. Seus dados são seus — nunca compartilhamos com terceiros." },
     { q: "Funciona no celular?", a: "Sim. Totalmente responsivo: desktop, tablet ou celular." },
-    { q: "Posso cancelar a qualquer momento?", a: "Sim, sem multas e sem burocracia. Cancela direto na plataforma e mantém acesso até o fim do período pago." },
+    { q: "Posso exportar meus dados e sair quando quiser?", a: "Sim. Seus dados são seus: exporta em PDF ou Excel a qualquer momento, sem precisar falar com ninguém. Não existe fidelidade nem período mínimo — não há cobrança envolvida." },
   ];
 
   return (
     <div className="min-h-screen" style={{ background: "var(--bg)" }}>
       <SEOHead
         title="Hub Empresarial para Agências | CRM, Projetos e IA — Focus"
-        description="Chega de gerenciar em planilhas e WhatsApp. O Hub reúne CRM, Financeiro, Projetos e IA em uma plataforma para agências e consultorias. A partir de R$ 55/mês."
+        description="Chega de gerenciar em planilhas e WhatsApp. CRM, Financeiro, Projetos e IA em uma só plataforma para agências e consultorias. Gratuito, sem versão paga e sem cartão."
         canonical="/hub-empresarial"
         image="https://focusinteligente.com.br/lovable-uploads/hub-empresarial-og.jpg"
         type="product"
@@ -193,14 +182,14 @@ const HubEmpresarial = () => {
               Começar grátis <ArrowRight className="w-4 h-4" />
             </a>
             <a
-              href="#planos"
+              href="#gratuito"
               onClick={() => handleCTA("hero_pricing")}
               style={{
                 border: "1px solid var(--line2)", color: "var(--text)",
                 padding: "12px 22px", borderRadius: 8, fontSize: 14, fontWeight: 500,
               }}
             >
-              Ver planos
+              O que está incluso
             </a>
           </div>
 
@@ -210,7 +199,7 @@ const HubEmpresarial = () => {
               color: "var(--text3)", letterSpacing: "0.08em", marginTop: 18,
             }}
           >
-            SEM CARTÃO · CANCELE QUANDO QUISER
+SEM CARTÃO · SEM VERSÃO PAGA · GRÁTIS PARA SEMPRE
           </p>
         </div>
       </section>
@@ -292,10 +281,10 @@ const HubEmpresarial = () => {
         </div>
       </section>
 
-      {/* PRICING */}
+      {/* GRATUITO */}
       <section
         ref={pricingRef}
-        id="planos"
+        id="gratuito"
         className="container-focus"
         style={{ padding: "80px 24px" }}
       >
@@ -307,7 +296,7 @@ const HubEmpresarial = () => {
               padding: "5px 12px", letterSpacing: "0.10em",
             }}
           >
-            &lt;:PLANOS&gt;
+            &lt;:GRATUITO&gt;
           </span>
           <h2
             style={{
@@ -315,94 +304,66 @@ const HubEmpresarial = () => {
               fontWeight: 600, letterSpacing: "-0.02em", marginTop: 20,
             }}
           >
-            Investimento que cabe <strong>na sua operação</strong>.
+            O Hub inteiro é <em style={{ color: "#9DE89D", fontStyle: "italic" }}>gratuito</em>.
           </h2>
-          <div className="inline-flex items-center gap-2 mt-8 p-1 rounded-full" style={{ border: "1px solid var(--line2)" }}>
-            {(["mensal", "anual"] as const).map((b) => (
-              <button
-                key={b}
-                onClick={() => setBilling(b)}
-                style={{
-                  padding: "8px 18px", borderRadius: 999, fontSize: 13,
-                  fontWeight: 500, fontFamily: "var(--font-mono)", letterSpacing: "0.06em",
-                  background: billing === b ? "var(--text)" : "transparent",
-                  color: billing === b ? "var(--bg)" : "var(--text2)",
-                  textTransform: "uppercase", transition: "all 0.2s ease",
-                }}
-              >
-                {b}{b === "anual" && " · -20%"}
-              </button>
-            ))}
-          </div>
+          <p
+            style={{
+              color: "var(--text2)", fontSize: 16, lineHeight: 1.6,
+              maxWidth: 560, margin: "20px auto 0",
+            }}
+          >
+            Não existe versão paga nem recurso bloqueado. Tudo o que você vê aqui
+            está liberado desde o primeiro dia.
+          </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-5 max-w-6xl mx-auto">
-          {plans.map((p) => {
-            const price = billing === "anual" ? p.annualMonthly : p.monthly;
-            return (
-              <div
-                key={p.name}
-                style={{
-                  background: "var(--bg2)",
-                  border: p.highlighted ? "1px solid rgba(157,232,157,0.45)" : "1px solid var(--line)",
-                  borderRadius: 16, padding: 32,
-                  display: "flex", flexDirection: "column", gap: 16,
-                  position: "relative",
-                }}
-              >
-                {p.highlighted && (
-                  <span
-                    style={{
-                      position: "absolute", top: -10, left: 32,
-                      fontFamily: "var(--font-mono)", fontSize: 10,
-                      background: "#9DE89D", color: "#0a0a0a",
-                      padding: "4px 10px", borderRadius: 4, letterSpacing: "0.10em", fontWeight: 700,
-                    }}
-                  >
-                    MAIS POPULAR
-                  </span>
-                )}
-                <p style={{ fontSize: 20, fontWeight: 600, color: "var(--text)" }}>{p.name}</p>
-                <p style={{ color: "var(--text2)", fontSize: 13, lineHeight: 1.5 }}>{p.description}</p>
+        <div
+          className="max-w-3xl mx-auto"
+          style={{
+            background: "var(--bg2)",
+            border: "1px solid rgba(157,232,157,0.45)",
+            borderRadius: 16, padding: 40,
+          }}
+        >
+          <div className="flex items-baseline gap-3">
+            <span style={{ fontSize: 56, fontWeight: 600, letterSpacing: "-0.04em", color: "var(--text)", lineHeight: 1 }}>
+              R$ 0
+            </span>
+            <span style={{ color: "var(--text2)", fontSize: 15 }}>para sempre</span>
+          </div>
 
-                <div className="flex items-baseline gap-2 pt-2">
-                  <span style={{ fontSize: 48, fontWeight: 600, letterSpacing: "-0.04em", color: "var(--text)", lineHeight: 1 }}>
-                    R${price}
-                  </span>
-                  <span style={{ color: "var(--text3)", fontSize: 13, fontFamily: "var(--font-mono)" }}>/mês</span>
-                </div>
-                {billing === "anual" && (
-                  <p style={{ color: "var(--text3)", fontSize: 11, fontFamily: "var(--font-mono)", letterSpacing: "0.06em", marginTop: -8 }}>
-                    R${p.annual} COBRADOS ANUALMENTE
-                  </p>
-                )}
+          <ul
+            className="grid sm:grid-cols-2 gap-x-8 gap-y-3 mt-8"
+            style={{ listStyle: "none", padding: 0 }}
+          >
+            {freeFeatures.map((f) => (
+              <li key={f} style={{ display: "flex", gap: 10, fontSize: 14, color: "var(--text2)", lineHeight: 1.5 }}>
+                <Check className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: "#9DE89D" }} />
+                <span>{f}</span>
+              </li>
+            ))}
+          </ul>
 
-                <a
-                  href={`${APP_URL}/auth?mode=signup&plan=${p.name.toLowerCase()}`}
-                  onClick={() => handleCTA(`plan_${p.name.toLowerCase()}`)}
-                  className="inline-flex items-center justify-center gap-2"
-                  style={{
-                    background: p.highlighted ? "var(--text)" : "rgba(255,255,255,0.06)",
-                    color: p.highlighted ? "var(--bg)" : "var(--text)",
-                    border: p.highlighted ? "none" : "1px solid var(--line2)",
-                    padding: "12px 18px", borderRadius: 8, fontSize: 13,
-                    fontWeight: 600, marginTop: 8,
-                  }}
-                >
-                  Começar com {p.name} <ArrowRight className="w-3.5 h-3.5" />
-                </a>
+          <a
+            href={`${APP_URL}/auth?mode=signup`}
+            onClick={() => handleCTA("free_signup")}
+            className="inline-flex items-center justify-center gap-2 mt-10"
+            style={{
+              background: "#9DE89D", color: "#0a0a0a",
+              padding: "13px 26px", borderRadius: 8, fontSize: 14, fontWeight: 600,
+            }}
+          >
+            Começar grátis <ArrowRight className="w-4 h-4" />
+          </a>
 
-                <ul className="pt-4 space-y-2" style={{ borderTop: "1px solid var(--line)", listStyle: "none", padding: 0 }}>
-                  {p.features.map((f) => (
-                    <li key={f} style={{ display: "flex", gap: 10, fontSize: 13, color: "var(--text2)", marginTop: 10 }}>
-                      <Check className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: "#9DE89D" }} />
-                      <span>{f}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            );
-          })}
+          <p
+            style={{
+              fontFamily: "var(--font-mono)", fontSize: 11,
+              color: "var(--text3)", letterSpacing: "0.08em", marginTop: 16,
+            }}
+          >
+            SEM CARTÃO · SEM LIMITE DE REGISTROS
+          </p>
         </div>
       </section>
 

@@ -68,10 +68,11 @@ const organizationSchema = {
         itemOffered: {
           '@type': 'Service',
           name: 'Hub Empresarial',
-          description: 'Plataforma SaaS de gestão completa: CRM, financeiro, projetos, dashboards.',
+          description: 'Plataforma de gestão completa e gratuita: CRM, financeiro, projetos, RH, marketing e dashboards com IA.',
           url: `${DOMAIN}/hub-empresarial`,
         },
-        priceSpecification: { '@type': 'PriceSpecification', price: '119', priceCurrency: 'BRL', minPrice: '119' },
+        price: '0',
+        priceCurrency: 'BRL',
       },
     ],
   },

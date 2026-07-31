@@ -41,7 +41,7 @@ const StickyMobileCTA = () => {
         </a>
       </Button>
       <p className="text-[10px] text-foreground-muted text-center mt-1">
-        Grátis até o limite da aba • Sem cartão
+        Gratuito para sempre • Sem cartão
       </p>
     </div>
   );
