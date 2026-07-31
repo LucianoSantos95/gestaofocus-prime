@@ -35,11 +35,11 @@ const projects: Project[] = [
     image: "/case-hub.png",
     video: hubVideo.url,
     videoPoster: "/case-hub.png",
-    ctaLabel: "Testar grátis",
+    ctaLabel: "Começar grátis",
     ctaUrl: "https://app.focusinteligente.com.br",
     metrics: [
       { value: "100+", label: "OPERAÇÕES RODANDO" },
-      { value: "R$ 55", label: "A PARTIR DE /MÊS" },
+      { value: "R$ 0", label: "GRATUITO PARA SEMPRE" },
     ],
   },
   {

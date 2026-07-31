@@ -15,11 +15,11 @@ const SERVICES = [
   },
   {
     id: "hub-empresarial",
-    name: "Hub Empresarial — Plataforma SaaS",
+    name: "Hub Empresarial — Plataforma de gestão gratuita",
     url: "https://focusinteligente.com.br/hub-empresarial",
-    pricing: "Plus R$ 119/mês · Pro R$ 249/mês",
+    pricing: "Gratuito. Não existe versão paga nem recurso bloqueado.",
     description:
-      "Plataforma pronta com CRM, financeiro, projetos, dashboards, RH e automações. Acesso imediato.",
+      "Plataforma pronta com CRM, financeiro, projetos, dashboards, RH e automações. Acesso imediato, registros ilimitados, IA e integrações inclusas — sem cartão de crédito.",
     idealFor: "PMEs que precisam sair de planilhas e WhatsApp com solução completa e imediata.",
   },
 ];

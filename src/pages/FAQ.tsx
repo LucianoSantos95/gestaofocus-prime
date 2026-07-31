@@ -30,7 +30,7 @@ const faqCategories = [
     category: "Preços e Pagamento",
     items: [
       { question: "Quanto custa a consultoria de operações?", answer: "O investimento é baseado em horas — R$ 180/hora. Você paga apenas pelas horas utilizadas, sem pacote inflado ou retainer obrigatório. O diagnóstico inicial é gratuito e a proposta apresenta o escopo e as horas estimadas antes de qualquer comprometimento." },
-      { question: "Qual o preço do Hub Empresarial?", answer: "O Hub Empresarial tem o Plano Plus a partir de R$ 119/mês (CRM, financeiro, projetos e dashboards) e o Plano Pro a R$ 249/mês (tudo do Plus mais RH, marketing e automações avançadas). Garantia de 7 dias." },
+      { question: "Qual o preço do Hub Empresarial?", answer: "O Hub Empresarial é gratuito. Não existe versão paga nem recurso bloqueado: CRM, financeiro, projetos, RH, marketing, dashboards de BI, assistente de IA e integrações estão liberados desde o primeiro dia, com registros ilimitados e sem cartão de crédito." },
       { question: "Quais formas de pagamento vocês aceitam?", answer: "Aceitamos PIX, cartão de crédito e boleto bancário. Para a consultoria, o pagamento é parcelado: 50% na assinatura do contrato e 50% na entrega." },
     ],
   },

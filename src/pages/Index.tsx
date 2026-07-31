@@ -665,8 +665,8 @@ const Index = () => {
             <span className="snj-step__num">/ Hub Empresarial</span>
             <p style={{ color: "var(--text2)", fontSize: 14 }}>Para começar agora — Hub Central.</p>
             <div>
-              <span className="snj-price-amount" style={{ fontSize: 28 }}>a partir de R$ 55</span>
-              <span style={{ color: "var(--text3)", fontSize: 14, marginLeft: 6 }}>/mês</span>
+              <span className="snj-price-amount" style={{ fontSize: 28 }}>R$ 0</span>
+              <span style={{ color: "var(--text3)", fontSize: 14, marginLeft: 6 }}>para sempre</span>
             </div>
             <a
               href="https://app.focusinteligente.com.br"
@@ -676,10 +676,10 @@ const Index = () => {
               className="snj-btn-outline"
               style={{ justifyContent: "center", textDecoration: "none" }}
             >
-              Testar grátis <ArrowUpRight className="w-4 h-4" />
+              Começar grátis <ArrowUpRight className="w-4 h-4" />
             </a>
             <ul style={{ listStyle: "none", padding: 0, display: "flex", flexDirection: "column", gap: 10, marginTop: 8 }}>
-              {["CRM + Financeiro + Projetos", "IA Assistant", "Dashboards prontos", "Suporte por WhatsApp"].map((f) => (
+              {["Todos os módulos liberados", "Registros ilimitados", "IA e dashboards inclusos", "Sem versão paga"].map((f) => (
                 <li key={f} style={{ display: "flex", gap: 10, fontSize: 13, color: "var(--text2)" }}>
                   <Check className="w-3.5 h-3.5 mt-0.5" style={{ color: "var(--text3)" }} />
                   {f}
