@@ -377,7 +377,7 @@ const NotionVsPlanilhas = () => {
                 <div>
                   <h3 className="text-lg font-semibold mb-2">Quanto custa migrar de planilhas para Notion?</h3>
                   <p className="text-muted-foreground">
-                    O Notion oferece plano gratuito robusto. Planos pagos começam em $8/usuário/mês (Plus) e $15/usuário/mês (Business). O investimento em templates profissionais acelera drasticamente a implementação, custando de R$ 297 a R$ 997 dependendo da complexidade.
+                    O Notion oferece plano gratuito robusto. Planos pagos começam em $8/usuário/mês (Plus) e $15/usuário/mês (Business). O investimento em templates profissionais acelera drasticamente a implementação, custando de R$ 297 a R$ 997 dependendo da complexidade. Se a ideia é sair da planilha sem montar nada, o <Link to="/hub-empresarial" className="text-primary hover:underline">Hub Empresarial</Link> é gratuito e já vem com CRM, financeiro e projetos prontos — sem template para comprar nem estrutura para desenhar.
                   </p>
                 </div>
 

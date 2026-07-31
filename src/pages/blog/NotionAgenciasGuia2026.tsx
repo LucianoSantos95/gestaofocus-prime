@@ -143,12 +143,27 @@ const NotionAgenciasGuia2026 = () => {
                       <td className="border border-card-border p-3"><strong>~R$ 400/mês</strong></td>
                       <td className="border border-card-border p-3">Tudo integrado</td>
                     </tr>
+                    <tr className="bg-primary/5">
+                      <td className="border border-card-border p-3"><strong>Hub Empresarial (Focus)</strong></td>
+                      <td className="border border-card-border p-3"><strong>R$ 0</strong></td>
+                      <td className="border border-card-border p-3">Tudo integrado, pronto para usar</td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
 
               <p className="text-muted-foreground leading-relaxed mb-6">
                 Além do custo, o Notion tem uma vantagem estrutural que as ferramentas especializadas não têm: seus dados são <strong>relacionais por design</strong>. Um projeto referencia automaticamente o cliente, a equipe e os processos relevantes. Não é possível ter essa visão unificada pagando R$ 1.600/mês em ferramentas separadas — porque elas não conversam entre si.
+              </p>
+
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                A última linha da tabela merece um esclarecimento, já que somos nós: o{" "}
+                <Link to="/hub-empresarial" className="text-primary hover:underline">Hub Empresarial</Link>{" "}
+                é a plataforma gratuita da Focus, com CRM, financeiro, projetos e dashboards já
+                montados. A diferença em relação ao Notion não é preço, é ponto de partida — no Hub
+                a estrutura já existe e você preenche; no Notion você desenha do zero e ganha
+                liberdade total de formato. Este guia é sobre o segundo caminho, e ele continua
+                sendo a escolha certa para quem tem processos que fogem do padrão.
               </p>
 
               <h2 id="pilares" className="text-3xl font-bold mt-12 mb-6">Os 5 pilares de um workspace de agência no Notion</h2>

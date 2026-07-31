@@ -157,6 +157,15 @@ const GestaoProjetosNotion = () => {
               </ul>
             </div>
 
+            <p className="text-foreground-muted leading-relaxed mb-6">
+              Existe ainda uma alternativa que não entra nessa conta: o{" "}
+              <Link to="/hub-empresarial" className="text-primary hover:underline">Hub Empresarial</Link>{" "}
+              é gratuito e já vem com projetos, CRM e financeiro conectados de fábrica. Se você
+              prefere a estrutura pronta a montar a sua do zero, ele resolve sem custo nenhum. O
+              restante deste guia continua valendo para quem quer construir o próprio sistema no
+              Notion — que é o caminho de quem precisa de controle total sobre o formato.
+            </p>
+
             <h2 id="passo1" className="text-3xl font-bold mt-12 mb-6">Passo 1: Estruture sua base de projetos no Notion</h2>
 
             <p className="text-foreground-muted leading-relaxed mb-6">
