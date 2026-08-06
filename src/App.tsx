@@ -98,11 +98,14 @@ function AppLayout() {
   useScrollReveal();
   useMagneticButtons(location.pathname);
   useSpotlightCards(location.pathname);
-  const isSolucoes = location.pathname === "/solucoes-sob-medida" || location.pathname === "/hub-empresarial";
+  // Páginas que já trazem Nav/Footer embutidos no próprio componente
+  const hasOwnChrome =
+    location.pathname === "/solucoes-sob-medida" ||
+    location.pathname === "/hub-empresarial" ||
+    location.pathname === "/advisor";
 
-  // SolucoesSobMedida has its own Nav/Footer embedded
-  const showNav = !isSolucoes;
-  const showFooter = !isSolucoes;
+  const showNav = !hasOwnChrome;
+  const showFooter = !hasOwnChrome;
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
