@@ -1,5 +1,5 @@
 import { lazy, Suspense } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -95,6 +95,7 @@ const PageLoader = () => (
 // Layout wrapper that hides Nav/Footer on the embedded-layout routes
 function AppLayout() {
   const location = useLocation();
+  const prefersReducedMotion = useReducedMotion();
   useScrollReveal();
   useMagneticButtons(location.pathname);
   useSpotlightCards(location.pathname);
@@ -112,12 +113,18 @@ function AppLayout() {
       {showNav && <Navigation />}
       <main className="flex-1">
         <AnimatePresence mode="wait" initial={false}>
+          {/* Troca de rota é interação de dezenas de vezes por dia: tem que ser
+              quase imperceptível. Antes eram 380ms de saída + 380ms de entrada
+              = 760ms de espera em CADA navegação, com deslocamento vertical.
+              Agora é só crossfade de 180ms (360ms no total com mode="wait").
+              Sem translateY: mover a página inteira a cada clique é o que
+              fazia a navegação parecer pesada. */}
           <motion.div
             key={location.pathname}
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: prefersReducedMotion ? 0 : 0.18, ease: [0.22, 1, 0.36, 1] }}
           >
         <Suspense fallback={<PageLoader />}>
           <Routes>

@@ -97,6 +97,12 @@ html, body {
 
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
+    /* Easing — curvas únicas do sistema. Não criar variantes paralelas:
+       toda animação nova usa um destes tokens.
+       --ease-out (easeOutQuint) já era a curva usada à mão no projeto inteiro. */
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+
     --radius: 0.75rem; /* 12px */
   }
 
@@ -218,8 +224,8 @@ html, body {
     opacity: 0;
     transform: translateY(28px);
     transition:
-      opacity  0.65s cubic-bezier(0.22, 1, 0.36, 1),
-      transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+      opacity  0.65s var(--ease-out),
+      transform 0.65s var(--ease-out);
     will-change: opacity, transform;
   }
   .reveal.in-view { opacity: 1; transform: translateY(0); }
@@ -231,16 +237,23 @@ html, body {
   .reveal:nth-child(5) { transition-delay: 0.28s; }
   .reveal:nth-child(6) { transition-delay: 0.35s; }
 
-  /* Card hover lift — spring feel */
+  /* Card hover lift.
+     Hover é interação de dezenas de vezes por dia: precisa ser rápida e sutil.
+     220ms em vez de 400ms — acima disso o card parece arrastar atrás do cursor. */
   .snj-project-card, .snj-price-card, .snj-step {
     transition:
-      transform  0.4s cubic-bezier(0.22, 1, 0.36, 1),
-      border-color 0.25s ease,
-      box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+      transform 0.22s var(--ease-out),
+      border-color 0.22s ease,
+      box-shadow 0.22s var(--ease-out);
   }
-  .snj-project-card:hover, .snj-price-card:hover, .snj-step:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 28px 56px -24px rgba(0,0,0,.65);
+
+  /* Gate de ponteiro: em touch o toque dispara :hover e o card fica "preso"
+     no estado levantado depois do tap. */
+  @media (hover: hover) and (pointer: fine) {
+    .snj-project-card:hover, .snj-price-card:hover, .snj-step:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 28px 56px -24px rgba(0,0,0,.65);
+    }
   }
 
   /* Section hover — faint accent glow on border */
@@ -249,9 +262,29 @@ html, body {
     transition: none;
   }
 
+  /* Movimento reduzido: menos e mais suave, não zero.
+     Opacidade e cor continuam (ajudam a compreensão); deslocamento,
+     escala e qualquer animação infinita saem. */
   @media (prefers-reduced-motion: reduce) {
-    .reveal { opacity: 1; transform: none; transition: none; }
-    .snj-project-card:hover, .snj-price-card:hover, .snj-step:hover { transform: none; }
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: opacity 0.2s ease;
+    }
+    .snj-project-card, .snj-price-card, .snj-step { transition: border-color 0.22s ease; }
+    .snj-project-card:hover, .snj-price-card:hover, .snj-step:hover {
+      transform: none;
+      box-shadow: none;
+    }
+
+    /* Entradas: mantém o fade, remove a subida */
+    .anim-up, .anim-up-1, .anim-up-2, .anim-up-3, .anim-up-4,
+    .animate-fade-in, .animate-slide-up {
+      animation: snj-fade-only 0.3s ease both;
+    }
+
+    /* Animações infinitas são as piores para quem tem sensibilidade vestibular */
+    .animate-glow, .animate-pulse-cta, .animate-shimmer { animation: none; }
   }
 }
 
@@ -806,6 +839,11 @@ html, body {
   from { opacity: 0; transform: translateY(20px) scale(0.99); }
   to   { opacity: 1; transform: translateY(0)    scale(1); }
 }
+/* Variante sem deslocamento, usada sob prefers-reduced-motion */
+@keyframes snj-fade-only {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
 @keyframes glow {
   0%, 100% { box-shadow: 0 0 20px rgba(30,64,175,0.2); }
   50% { box-shadow: 0 0 40px rgba(30,64,175,0.4); }
@@ -819,13 +857,13 @@ html, body {
   100% { background-position: 200% 0; }
 }
 
-.anim-up   { animation: snj-enter 0.55s cubic-bezier(0.22, 1, 0.36, 1) both; }
-.anim-up-1 { animation: snj-enter 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.09s  both; }
-.anim-up-2 { animation: snj-enter 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.18s  both; }
-.anim-up-3 { animation: snj-enter 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.27s  both; }
-.anim-up-4 { animation: snj-enter 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.36s  both; }
-.animate-fade-in  { animation: fade-in  0.5s cubic-bezier(0.22, 1, 0.36, 1); }
-.animate-slide-up { animation: slide-up 0.65s cubic-bezier(0.22, 1, 0.36, 1); }
+.anim-up   { animation: snj-enter 0.55s var(--ease-out) both; }
+.anim-up-1 { animation: snj-enter 0.55s var(--ease-out) 0.09s  both; }
+.anim-up-2 { animation: snj-enter 0.55s var(--ease-out) 0.18s  both; }
+.anim-up-3 { animation: snj-enter 0.55s var(--ease-out) 0.27s  both; }
+.anim-up-4 { animation: snj-enter 0.55s var(--ease-out) 0.36s  both; }
+.animate-fade-in  { animation: fade-in  0.5s var(--ease-out); }
+.animate-slide-up { animation: slide-up 0.65s var(--ease-out); }
 .animate-glow { animation: glow 3s ease-in-out infinite; }
 .animate-pulse-cta { animation: pulse-cta 2s ease-in-out infinite; }
 .animate-shimmer {
@@ -1143,12 +1181,12 @@ html, body {
 .focus-word-reveal > span {
   display: inline-block;
   opacity: 0;
-  animation: focus-word-in 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: focus-word-in 0.75s var(--ease-out) forwards;
 }
 
 /* Magnetic button — smooth transform transition */
 .focus-magnetic {
-  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 0.28s var(--ease-out);
   will-change: transform;
 }
 
@@ -1178,7 +1216,7 @@ html, body {
   border: 1px solid rgba(157,232,157,0.22);
   display: inline-flex; align-items: center; justify-content: center;
   color: #9DE89D;
-  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+  transition: transform 0.35s var(--ease-out),
               background 0.35s ease;
 }
 .focus-module-card:hover .focus-icon-tile {
@@ -1194,7 +1232,7 @@ html, body {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  transition: border-color 0.3s ease, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+  transition: border-color 0.3s ease, transform 0.35s var(--ease-out),
               box-shadow 0.35s ease;
 }
 .focus-module-card:hover {

@@ -8,6 +8,9 @@ export function useMagneticButtons(pathname: string) {
   useEffect(() => {
     if (typeof window === "undefined") return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    // Efeito é guiado por cursor: sem mouse de verdade não faz sentido — e evita
+    // registrar listeners de mousemove em todo botão no mobile.
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
 
     const strength = 0.28;
     const cleanups: Array<() => void> = [];
@@ -53,6 +56,8 @@ export function useMagneticButtons(pathname: string) {
 export function useSpotlightCards(pathname: string) {
   useEffect(() => {
     if (typeof window === "undefined") return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
 
     const cleanups: Array<() => void> = [];
 
