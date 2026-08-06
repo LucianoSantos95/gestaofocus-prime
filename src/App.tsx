@@ -23,6 +23,7 @@ import LeadFormModal from "./components/LeadFormModal";
 // Lazy load pages
 const SolucoesSobMedida = lazy(() => import("./pages/SolucoesSobMedida"));
 const HubEmpresarial = lazy(() => import("./pages/HubEmpresarial"));
+const Advisor = lazy(() => import("./pages/Advisor"));
 
 const Blog = lazy(() => import("./pages/Blog"));
 const AboutFocus = lazy(() => import("./pages/AboutFocus"));
@@ -120,6 +121,7 @@ function AppLayout() {
             <Route path="/" element={<Index />} />
             <Route path="/solucoes-sob-medida" element={<SolucoesSobMedida />} />
             <Route path="/hub-empresarial" element={<HubEmpresarial />} />
+            <Route path="/advisor" element={<Advisor />} />
             <Route path="/blog" element={<Blog />} />
 
             {/* Blog Routes */}
