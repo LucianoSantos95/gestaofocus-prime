@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import SEOHead from "@/components/SEOHead";
 import Navigation from "@/components/Navigation";
@@ -12,8 +12,54 @@ import {
 } from "@/components/ui/accordion";
 import { ArrowUpRight } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
+import founderAsset from "@/assets/about-founder-luciano.jpg.asset.json";
 
+const founderPhoto = founderAsset.url;
 const CTA_LABEL = "Quero minha sessão — R$497";
+
+/** Barra fixa no mobile — a página tem ~9 telas e o CTA do topo some rápido. */
+const StickyCTA = ({ onClick }: { onClick: () => void }) => {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setVisible(window.scrollY > window.innerHeight * 0.9);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  if (!visible) return null;
+
+  return (
+    <div
+      className="fixed bottom-0 left-0 right-0 z-50 md:hidden"
+      style={{
+        padding: "12px 16px calc(12px + env(safe-area-inset-bottom))",
+        background: "color-mix(in srgb, var(--bg) 92%, transparent)",
+        backdropFilter: "blur(12px)",
+        borderTop: "1px solid var(--line)",
+      }}
+    >
+      <button
+        type="button"
+        onClick={onClick}
+        className="inline-flex items-center justify-center gap-2 w-full"
+        style={{
+          background: "#9DE89D",
+          color: "#0a0a0a",
+          padding: "14px 20px",
+          borderRadius: 999,
+          fontSize: 15,
+          fontWeight: 600,
+          border: "none",
+          cursor: "pointer",
+        }}
+      >
+        {CTA_LABEL} <ArrowUpRight className="w-4 h-4" />
+      </button>
+    </div>
+  );
+};
 
 const Advisor = () => {
   useEffect(() => {
@@ -29,17 +75,17 @@ const Advisor = () => {
     {
       n: "01",
       t: "Call de 1 hora, gravada",
-      d: "Uma conversa focada no seu problema específico — não uma aula genérica. A gravação fica com você para rever quando quiser.",
+      d: "Você fala do seu caso o tempo todo. Eu pergunto, você responde, a gente cava até achar onde trava. A gravação fica com você.",
     },
     {
       n: "02",
       t: "Documento em PDF",
-      d: "O resumo do que a gente conversou, organizado por escrito. Você não depende de lembrar o que foi dito na call.",
+      d: "O resumo do que a gente conversou, organizado por escrito. Chega no seu e-mail junto com o playbook.",
     },
     {
       n: "03",
       t: "Playbook com os próximos passos",
-      d: "O caminho escrito, na ordem certa, para você executar sozinho depois. É o que separa uma boa conversa de uma coisa que realmente sai do papel.",
+      d: "O caminho escrito, na ordem certa. Sem ele, uma semana depois você lembra que a conversa foi boa e não lembra o que fazer na segunda de manhã.",
     },
   ];
 
@@ -80,38 +126,42 @@ const Advisor = () => {
   const naoEhPraVoce = [
     {
       t: "Você já sabe exatamente o que quer construir",
-      d: "Se o escopo já está claro na sua cabeça, pular direto para a Consultoria economiza seu tempo e seu dinheiro.",
+      d: "Com o escopo claro na cabeça, essa hora vira redundante. Pular direto para a Consultoria economiza seu tempo e seu dinheiro.",
     },
     {
       t: "Você quer que alguém execute por você",
-      d: "Aqui você sai com o caminho. Quem percorre é você. Execução feita por mim é o outro serviço.",
+      d: "Você sai com o caminho e percorre sozinho. Se a ideia é que eu construa, o serviço é a Consultoria.",
     },
     {
       t: "Você procura acompanhamento contínuo",
-      d: "É uma sessão única, com hora marcada e fim definido. Não é mentoria mensal nem retainer.",
+      d: "Uma hora, com hora marcada e fim definido. Acabou ali — sem mensalidade, sem próxima sessão obrigatória.",
     },
   ];
 
   const faqs = [
     {
       q: "Isso é uma consultoria completa?",
-      a: "Não. É uma sessão única de uma hora, com entrega escrita no fim. A consultoria completa envolve mapear seus processos, construir o sistema e acompanhar a implementação — é outro serviço, com outro preço e outro prazo.",
+      a: "Não. São 60 minutos de conversa com entrega escrita depois. A consultoria completa envolve mapear seus processos, construir o sistema e acompanhar a implementação — leva semanas e tem outro preço.",
     },
     {
       q: "Preciso usar alguma ferramenta específica?",
-      a: "Não. A sessão é sobre as ferramentas que você já usa hoje, sejam elas quais forem — Notion, planilha, Trello, ClickUp, WhatsApp ou uma mistura de tudo isso. Não tem pré-requisito e você não precisa migrar para nada.",
+      a: "Nenhuma. A sessão trata do que você já usa hoje, seja Notion, planilha, Trello, ClickUp, WhatsApp ou uma mistura de tudo isso. Você não precisa migrar para nada.",
     },
     {
       q: "E se eu não souber explicar direito o que eu preciso?",
-      a: "Normal, e é justamente por isso que a sessão existe. A maioria chega sentindo que algo trava, sem saber onde. Colocar nome no problema já é metade do trabalho — essa parte é comigo.",
+      a: "Essa é a situação mais comum de todas. A maioria chega sentindo que algo trava sem saber onde. Colocar nome no problema é justamente a parte que fica comigo.",
+    },
+    {
+      q: "E se a call não valer o que eu paguei?",
+      a: "Nos primeiros 15 minutos você já percebe se vai levar algo dali. Se achar que não, a gente encerra na hora e eu devolvo o valor integral. Sem formulário, sem justificativa.",
     },
     {
       q: "Isso vira um projeto depois?",
-      a: "Só se fizer sentido para você. Não existe obrigação nenhuma de contratar mais nada. Muita gente sai da call e executa sozinha com o playbook, e está tudo certo — o material é seu.",
+      a: "Só se fizer sentido para você. Muita gente sai da call e executa sozinha com o playbook, e está tudo certo — o material é seu de qualquer forma.",
     },
     {
       q: "Como funciona o pagamento?",
-      a: "Pagamento único de R$497, sem recorrência e sem cobrança depois. Você não paga no formulário: eu te mando o link junto com os horários, e a call só é marcada depois da confirmação.",
+      a: "Pagamento único de R$497, sem recorrência. Você não paga no formulário: eu te mando o link junto com os horários, e a call só entra na agenda depois da confirmação.",
     },
   ];
 
@@ -119,7 +169,7 @@ const Advisor = () => {
     <div className="min-h-screen" style={{ background: "var(--bg)" }}>
       <SEOHead
         title="Advisor — Sessão de diagnóstico de 1 hora | Focus"
-        description="Sessão única de diagnóstico para quem sente a operação bagunçada mas não sabe o que falta. Call de 1h gravada, PDF e playbook escrito. R$497, pagamento único."
+        description="Sessão única de diagnóstico para quem sente a operação bagunçada mas não sabe o que falta. Call de 1h gravada, PDF e playbook escrito. R$497, com garantia de 15 minutos."
         canonical="/advisor"
         type="product"
         keywords="sessão de diagnóstico, consultoria pontual, diagnóstico operacional, mentoria para pequeno negócio, consultoria avulsa"
@@ -188,7 +238,7 @@ const Advisor = () => {
                 letterSpacing: "0.08em",
               }}
             >
-              SESSÃO ÚNICA · PAGAMENTO ÚNICO · SEM RECORRÊNCIA
+              15 MIN PARA DESISTIR COM DEVOLUÇÃO INTEGRAL
             </p>
           </div>
         </div>
@@ -205,16 +255,16 @@ const Advisor = () => {
               / O que é
             </span>
             <h2 className="snj-h2" style={{ marginBottom: 24 }}>
-              Uma sessão única de <em>diagnóstico</em> — não um projeto, não uma mensalidade.
+              Uma hora com alguém <em>de fora</em> olhando a sua operação.
             </h2>
             <p style={{ color: "var(--text2)", fontSize: 16, lineHeight: 1.75, marginBottom: 20 }}>
-              É para quem sente que a operação está bagunçada mas não sabe exatamente o que falta.
-              Aquele momento antes de decidir se contrata alguém, se troca de ferramenta ou se
-              constrói algo do zero.
+              Você sente que a operação está bagunçada mas não consegue apontar onde. É aquele
+              momento antes de decidir se contrata alguém, se troca de ferramenta ou se constrói
+              algo do zero — e a decisão errada aí custa meses.
             </p>
             <p style={{ color: "var(--text2)", fontSize: 15, lineHeight: 1.75 }}>
-              Na maioria das vezes o que falta não é ferramenta nova. É alguém de fora enxergando o
-              que você não consegue ver de dentro. Você sai com três coisas na mão.
+              Quase sempre o que falta não é ferramenta nova. É alguém enxergando de fora o que
+              você não consegue ver de dentro. Você sai com três coisas na mão.
             </p>
           </div>
 
@@ -335,6 +385,114 @@ const Advisor = () => {
                 <p style={{ color: "var(--text2)", fontSize: 14, lineHeight: 1.7 }}>{step.d}</p>
               </div>
             ))}
+          </div>
+
+          <div className="mt-10 flex flex-col items-center gap-3">
+            <button
+              type="button"
+              onClick={() => cta("como_funciona")}
+              className="inline-flex items-center gap-2 focus-magnetic"
+              style={{
+                background: "#9DE89D",
+                color: "#0a0a0a",
+                padding: "14px 28px",
+                borderRadius: 999,
+                fontSize: 15,
+                fontWeight: 600,
+                border: "none",
+                cursor: "pointer",
+              }}
+            >
+              {CTA_LABEL} <ArrowUpRight className="w-4 h-4" />
+            </button>
+            <p
+              style={{
+                fontFamily: "var(--font-mono)",
+                fontSize: 11,
+                color: "var(--text3)",
+                letterSpacing: "0.08em",
+              }}
+            >
+              O FORMULÁRIO NÃO COBRA NADA
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* QUEM VAI TE ATENDER */}
+      <section
+        className="snj-section container-focus"
+        style={{ borderBottom: "1px solid var(--line)" }}
+      >
+        <div
+          className="max-w-4xl mx-auto"
+          style={{
+            background: "var(--bg2)",
+            border: "1px solid var(--line)",
+            borderRadius: 16,
+            padding: "clamp(24px, 4vw, 40px)",
+            display: "grid",
+            gap: "clamp(20px, 4vw, 36px)",
+            gridTemplateColumns: "minmax(0, 1fr)",
+            alignItems: "start",
+          }}
+        >
+          <div className="flex items-center gap-5">
+            <img
+              src={founderPhoto}
+              alt="Luciano Santos, fundador da Focus"
+              loading="lazy"
+              width={88}
+              height={88}
+              style={{
+                width: 88,
+                height: 88,
+                borderRadius: 999,
+                objectFit: "cover",
+                objectPosition: "center 20%",
+                border: "1px solid var(--line2)",
+                flexShrink: 0,
+              }}
+            />
+            <div>
+              <span className="snj-tag" style={{ marginBottom: 8, display: "block" }}>
+                / Quem vai te atender
+              </span>
+              <p
+                style={{
+                  color: "var(--text)",
+                  fontSize: "clamp(20px, 3vw, 26px)",
+                  fontWeight: 600,
+                  letterSpacing: "-0.02em",
+                  lineHeight: 1.2,
+                }}
+              >
+                Luciano Santos
+              </p>
+              <p style={{ color: "var(--text2)", fontSize: 14, marginTop: 4 }}>
+                Fundador da Focus · Lovable Partner Oficial
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <p style={{ color: "var(--text2)", fontSize: 15, lineHeight: 1.75, marginBottom: 16 }}>
+              Sou eu na call, sempre. Não tem equipe júnior, não tem script pronto rodando por
+              baixo. Passei os últimos anos montando operação de agência, consultoria e prestador
+              de serviço — foram mais de 50 projetos entregues, e a maioria começou exatamente com
+              alguém que sentia o gargalo e não sabia nomear.
+            </p>
+            <p style={{ color: "var(--text2)", fontSize: 15, lineHeight: 1.75 }}>
+              Como atendo pessoalmente, a agenda é curta. Se a semana lotar, eu te ofereço o
+              horário da seguinte — não coloco mais gente na mesma hora.
+            </p>
+            <Link
+              to="/sobre"
+              className="inline-flex items-center gap-2 mt-5"
+              style={{ color: "#9DE89D", fontSize: 14, textDecoration: "underline", textUnderlineOffset: 3 }}
+            >
+              Conhecer a Focus <ArrowUpRight className="w-3.5 h-3.5" />
+            </Link>
           </div>
         </div>
       </section>
@@ -474,15 +632,33 @@ const Advisor = () => {
             SEM RECORRÊNCIA · SEM COBRANÇA DEPOIS
           </p>
 
+          <div
+            style={{
+              background: "rgba(157,232,157,0.07)",
+              border: "1px solid rgba(157,232,157,0.25)",
+              borderRadius: 12,
+              padding: "18px 20px",
+              marginBottom: 24,
+            }}
+          >
+            <p style={{ color: "var(--text)", fontSize: 15, fontWeight: 600, marginBottom: 6 }}>
+              Os primeiros 15 minutos decidem
+            </p>
+            <p style={{ color: "var(--text2)", fontSize: 14, lineHeight: 1.7 }}>
+              Se nesse tempo você achar que não vai levar nada de valor, a gente encerra e eu
+              devolvo o valor integral. Sem formulário, sem justificativa.
+            </p>
+          </div>
+
           <p style={{ color: "var(--text2)", fontSize: 15, lineHeight: 1.75, marginBottom: 28 }}>
-            É o degrau anterior à{" "}
+            Descobrir o que precisa custa R$497. Construir é a{" "}
             <Link
               to="/solucoes-sob-medida"
               style={{ color: "#9DE89D", textDecoration: "underline", textUnderlineOffset: 3 }}
             >
               Consultoria
             </Link>
-            , não uma versão reduzida dela. Aqui você descobre o que precisa. Lá, a gente constrói.
+            , com outro escopo e outro preço.
           </p>
 
           <button
@@ -612,6 +788,7 @@ const Advisor = () => {
         </div>
       </section>
 
+      <StickyCTA onClick={() => cta("sticky_mobile")} />
       <Footer />
     </div>
   );
