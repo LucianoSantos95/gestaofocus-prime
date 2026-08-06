@@ -659,7 +659,7 @@ const Index = () => {
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-5">
+        <div className="grid md:grid-cols-3 gap-5">
           {/* Hub */}
           <div className="snj-price-card">
             <span className="snj-step__num">/ Hub Empresarial</span>
@@ -688,7 +688,40 @@ const Index = () => {
             </ul>
           </div>
 
-          {/* Consultoria — R$ 180/h (popular) */}
+          {/* Advisor — degrau intermediário entre o Hub gratuito e a Consultoria */}
+          <div className="snj-price-card">
+            <span className="snj-step__num" style={{ color: "#9DE89D" }}>/ Advisor</span>
+            <p style={{ color: "var(--text2)", fontSize: 14 }}>
+              Uma sessão para descobrir o que falta na sua operação.
+            </p>
+            <div>
+              <span className="snj-price-amount" style={{ fontSize: 28 }}>R$ 497</span>
+              <span style={{ color: "var(--text3)", fontSize: 14, marginLeft: 6 }}>sessão única</span>
+            </div>
+            <Link
+              to="/advisor"
+              onClick={() => cta("price_advisor")}
+              className="snj-btn-outline"
+              style={{ justifyContent: "center", textDecoration: "none" }}
+            >
+              Conhecer o Advisor <ArrowRight className="w-4 h-4" />
+            </Link>
+            <ul style={{ listStyle: "none", padding: 0, display: "flex", flexDirection: "column", gap: 10, marginTop: 8 }}>
+              {[
+                "Call de 1 hora, gravada",
+                "Documento em PDF com o resumo",
+                "Playbook com os próximos passos",
+                "Pagamento único, sem recorrência",
+              ].map((f) => (
+                <li key={f} style={{ display: "flex", gap: 10, fontSize: 13, color: "var(--text2)" }}>
+                  <Check className="w-3.5 h-3.5 mt-0.5" style={{ color: "#9DE89D" }} />
+                  {f}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Consultoria — valor sob consulta (popular) */}
           <div className="snj-price-card snj-price-card--popular">
             <span
               style={{
