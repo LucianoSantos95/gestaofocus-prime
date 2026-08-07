@@ -5,6 +5,10 @@ interface SEOHeadProps {
   description: string;
   canonical: string;
   image?: string;
+  /** Dimensões reais da `image`. Só informe se souber — declarar 1200x630 para
+   *  uma imagem que não tem esse tamanho faz o crawler esticar e cortar. */
+  imageWidth?: number;
+  imageHeight?: number;
   type?: 'website' | 'article' | 'product';
   publishedTime?: string;
   modifiedTime?: string;
@@ -138,11 +142,17 @@ const setLink = (rel: string, href: string, hreflang?: string) => {
   el.setAttribute('href', href);
 };
 
+/** Sem imagem própria a página cai no logo, que é 220x59 — uma tira estreita.
+ *  Declarar 1200x630 para ele fazia o crawler esticar e cortar a marca. */
+const LOGO_FALLBACK = `${DOMAIN}/lovable-uploads/focus-logo.png`;
+
 const SEOHead = ({
   title,
   description,
   canonical,
-  image = `${DOMAIN}/lovable-uploads/focus-logo.png`,
+  image = LOGO_FALLBACK,
+  imageWidth,
+  imageHeight,
   type = 'website',
   publishedTime,
   modifiedTime,
@@ -181,9 +191,15 @@ const SEOHead = ({
     setMeta('property', 'og:title', title);
     setMeta('property', 'og:description', description);
     setMeta('property', 'og:url', fullCanonical);
+    // Só anuncia 1200x630 quando a página traz imagem própria (a convenção dos
+    // assets *-og.jpg do projeto). No fallback, informa o tamanho real do logo.
+    const usandoFallback = image === LOGO_FALLBACK;
+    const ogW = imageWidth ?? (usandoFallback ? 220 : 1200);
+    const ogH = imageHeight ?? (usandoFallback ? 59 : 630);
+
     setMeta('property', 'og:image', image);
-    setMeta('property', 'og:image:width', '1200');
-    setMeta('property', 'og:image:height', '630');
+    setMeta('property', 'og:image:width', String(ogW));
+    setMeta('property', 'og:image:height', String(ogH));
     setMeta('property', 'og:locale', 'pt_BR');
     setMeta('property', 'og:site_name', 'Focus Gestão Inteligente');
 
@@ -298,6 +314,8 @@ const SEOHead = ({
     description,
     canonical,
     image,
+    imageWidth,
+    imageHeight,
     type,
     publishedTime,
     modifiedTime,
