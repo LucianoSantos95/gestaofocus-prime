@@ -5,7 +5,6 @@ import PageBreadcrumb from "@/components/PageBreadcrumb";
 const StatusPlataforma = () => {
   const servicos = [
     { name: "Website", status: "operational", uptime: "99.99%", lastIncident: "Nenhum incidente nos últimos 90 dias" },
-    { name: "Sistemas Notion", status: "operational", uptime: "99.95%", lastIncident: "Nenhum incidente nos últimos 90 dias" },
     { name: "Suporte por E-mail", status: "operational", uptime: "100%", lastIncident: "Nenhum incidente nos últimos 90 dias" },
     { name: "Suporte por WhatsApp", status: "operational", uptime: "100%", lastIncident: "Nenhum incidente nos últimos 90 dias" },
     { name: "API e Integrações", status: "operational", uptime: "99.97%", lastIncident: "Nenhum incidente nos últimos 90 dias" },

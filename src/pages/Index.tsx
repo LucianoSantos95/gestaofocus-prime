@@ -4,10 +4,6 @@ import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 import { CountUp } from "@/hooks/useCountUp";
 import { openLeadModal } from "@/lib/leadModal";
-import diagVideo from "@/assets/case-agente-diagnostico.mp4.asset.json";
-
-const WA_LINK =
-  "https://wa.me/5511916742443?text=Ol%C3%A1+Luciano%2C+quero+agendar+um+diagn%C3%B3stico+gratuito+para+minha+empresa";
 
 const Index = () => {
   const cta = (label: string) =>
@@ -269,7 +265,7 @@ const Index = () => {
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-5">
+        <div className="grid md:grid-cols-3 gap-5">
           {[
             {
               n: "01",
@@ -477,73 +473,6 @@ const Index = () => {
                   </div>
                 </div>
               ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ===================== CASES ===================== */}
-      <section className="snj-section container-focus">
-        <div className="snj-section__head">
-          <span className="snj-tag">Produtos Focus</span>
-          <h2 className="snj-h2">
-            Construídos com <em>Lovable, usados de verdade</em>
-          </h2>
-        </div>
-
-        <div className="grid gap-5" style={{ maxWidth: 480, margin: "0 auto" }}>
-          {/* Case — Agente de Diagnóstico */}
-          <div
-            style={{
-              border: "1px solid var(--line2)",
-              borderRadius: 22,
-              overflow: "hidden",
-              background: "var(--bg2)",
-              display: "flex",
-              flexDirection: "column",
-            }}
-          >
-            <div
-              style={{
-                width: "100%",
-                aspectRatio: "16 / 9",
-                background: "var(--bg3)",
-                overflow: "hidden",
-              }}
-            >
-              <video
-                src={diagVideo.url}
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                poster="/case-indica.png"
-                aria-label="Focus Indica — agente de IA que mapeia qual automação sua empresa precisa"
-                style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }}
-              />
-            </div>
-            <div style={{ padding: "28px 32px 32px", display: "flex", flexDirection: "column", gap: 12, flexGrow: 1 }}>
-              <span className="snj-step__num">/ Agente de Diagnóstico</span>
-              <h3 style={{ fontSize: 22, fontWeight: 500, color: "var(--text)", letterSpacing: "-0.02em", lineHeight: 1.3 }}>
-                Descubra qual Agente de IA sua empresa precisa em 2 minutos
-              </h3>
-              <p style={{ color: "var(--text2)", fontSize: 14, lineHeight: 1.65 }}>
-                6 perguntas. Diagnóstico técnico gratuito. O agente mapeia seus gargalos e indica
-                a automação certa para Atendimento, Vendas, Operação ou Financeiro.
-              </p>
-              <div style={{ marginTop: "auto", paddingTop: 16 }}>
-                <a
-                  href={WA_LINK}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => cta("case_indica")}
-                  className="snj-btn-primary"
-                  style={{ fontSize: 13 }}
-                >
-                  Iniciar diagnóstico <ArrowUpRight className="w-3.5 h-3.5" />
-                </a>
-              </div>
             </div>
           </div>
         </div>

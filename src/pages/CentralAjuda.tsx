@@ -12,28 +12,28 @@ import PageBreadcrumb from "@/components/PageBreadcrumb";
 
 const CentralAjuda = () => {
   const categorias = [
-    { icon: Book, title: "Sistemas Notion", description: "Dúvidas sobre implementação e uso dos sistemas", link: "/sistemas-notion" },
+    { icon: Book, title: "Como funciona a consultoria", description: "Diagnóstico, escopo e entrega", link: "/solucoes-sob-medida" },
     { icon: Users, title: "Consultoria", description: "Informações sobre nossos serviços de consultoria", link: "/sobre" },
     { icon: Settings, title: "Suporte Técnico", description: "Problemas técnicos e configurações", link: "#" },
     { icon: FileText, title: "Fale com a Focus", description: "Atendimento direto pelo WhatsApp", link: "https://wa.me/5511916742443" },
   ];
 
   const faqItems = [
-    { question: "Como funciona a implementação dos Sistemas Notion?", answer: "A implementação é feita de forma personalizada para cada cliente. Primeiro, fazemos uma análise das necessidades da sua empresa, depois criamos o sistema customizado no Notion e, por fim, realizamos o treinamento da equipe para garantir o uso eficiente." },
-    { question: "Qual o prazo de entrega dos sistemas?", answer: "O prazo varia de acordo com a complexidade do projeto. Sistemas mais simples podem ser entregues em 1-2 semanas, enquanto sistemas mais complexos podem levar de 3-4 semanas. Definimos um cronograma detalhado na fase de planejamento." },
-    { question: "Vocês oferecem suporte após a entrega?", answer: "Sim! Oferecemos suporte contínuo para todos os nossos clientes. Isso inclui ajustes, dúvidas sobre o uso do sistema e atualizações quando necessário. Também oferecemos planos de manutenção mensal." },
-    { question: "É necessário ter conhecimento técnico para usar os sistemas?", answer: "Não! Nossos sistemas são desenvolvidos para serem intuitivos e fáceis de usar. Além disso, fornecemos treinamento completo para sua equipe e documentação detalhada para consulta sempre que necessário." },
-    { question: "Posso solicitar alterações no sistema após a entrega?", answer: "Sim, oferecemos suporte para ajustes e melhorias contínuas. Pequenas alterações geralmente estão incluídas no suporte pós-entrega, e alterações maiores podem ser orçadas separadamente." },
-    { question: "Vocês trabalham com empresas de todos os portes?", answer: "Sim! Atendemos desde pequenas empresas e profissionais autônomos até médias e grandes corporações. Cada solução é adaptada ao tamanho e às necessidades específicas do cliente." },
+    { question: "O que é a consultoria de operações da Focus?", answer: "É um serviço de consultoria presencial e remoto para PMEs, agências e consultorias que operam no caos — onde tudo depende da memória do dono e não existe processo documentado. Entregamos mapeamento de processos, construção de um sistema sob medida na Lovable e integração de agentes de IA onde fizer sentido." },
+    { question: "Quais são os entregáveis da consultoria?", answer: "São três entregáveis complementares: (1) Mapeamento e documentação de todos os processos da empresa; (2) Construção do sistema sob medida na Lovable (Partner oficial), cobrindo os fluxos mapeados; (3) Integração de agentes de IA nos pontos que economizam tempo real." },
+    { question: "Quanto tempo dura a consultoria?", answer: "O processo tem quatro etapas: diagnóstico gratuito (45-60 min), proposta personalizada (entregue em 24-48h), implementação (1 a 3 semanas conforme escopo) e suporte pós-entrega (2 semanas incluídas). O prazo total depende do tamanho da operação." },
+    { question: "Quanto custa a consultoria de operações?", answer: "O valor é sob consulta — cada projeto é orçado por escopo fechado, não por hora. O diagnóstico inicial é gratuito e a proposta apresenta escopo, entregáveis e preço definidos antes de qualquer comprometimento." },
+    { question: "Como funciona o suporte após a entrega?", answer: "Duas semanas de suporte pós-entrega estão incluídas em todos os projetos de consultoria, para acompanhar a adoção pela equipe e ajustar o que for necessário. Além disso, suporte via WhatsApp e e-mail em horário comercial." },
+    { question: "Vocês atendem empresas de que porte?", answer: "O foco é em PMEs com operação real rodando — especialmente agências, consultorias, espaços de serviço e prestadores B2B que já têm equipe mas ainda dependem do dono para tudo funcionar. Atendemos 100% de forma remota, em todo o Brasil." },
   ];
 
   return (
     <>
       <SEOHead
         title="Central de Ajuda — Focus Gestão Inteligente"
-        description="Encontre respostas para suas dúvidas sobre sistemas Notion, consultoria empresarial e suporte técnico da Focus Gestão Inteligente."
+        description="Encontre respostas para suas dúvidas sobre a consultoria de operações, sistemas sob medida na Lovable e suporte técnico da Focus Gestão Inteligente."
         canonical="/ajuda"
-        keywords="ajuda Focus, suporte sistemas Notion, FAQ gestão empresarial"
+        keywords="ajuda Focus, suporte consultoria Lovable, FAQ gestão empresarial"
         faqItems={faqItems}
       />
       <PageBreadcrumb items={[{ label: "Central de Ajuda" }]} />

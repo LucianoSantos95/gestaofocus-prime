@@ -1,47 +1,8 @@
 import SEOHead from "@/components/SEOHead";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { WA_LINK } from "@/components/TalkToLuciano";
 import { openLeadModal } from "@/lib/leadModal";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import diagVideo from "@/assets/case-agente-diagnostico.mp4.asset.json";
-
-
-type Project = {
-  year: string;
-  category: string;
-  brand: string;
-  title: string;
-  description: string;
-  image?: string;
-  imageContain?: boolean;
-  video?: string;
-  videoPoster?: string;
-  textOverlay?: string;
-  ctaLabel: string;
-  ctaUrl: string;
-  metrics: { value: string; label: string }[];
-};
-
-const projects: Project[] = [
-  {
-    year: "2026",
-    category: "Produto · IA",
-    brand: "Agente de Diagnóstico",
-    title: "Descubra qual Agente de IA sua empresa precisa em 2 minutos",
-    description:
-      "6 perguntas. Diagnóstico técnico gratuito. O agente mapeia seus gargalos e indica a automação ideal para Atendimento, Vendas, Operação ou Financeiro — sem cadastro.",
-    image: "/case-indica.png",
-    video: diagVideo.url,
-    videoPoster: "/case-indica.png",
-    ctaLabel: "Iniciar diagnóstico",
-    ctaUrl: WA_LINK,
-    metrics: [
-      { value: "2 min", label: "TEMPO ESTIMADO" },
-      { value: "4", label: "ÁREAS DIAGNOSTICADAS" },
-    ],
-  },
-];
 
 const SolucoesSobMedida = () => {
   return (
@@ -372,125 +333,6 @@ const SolucoesSobMedida = () => {
         </div>
       </section>
 
-      {/* PROJECTS LIST */}
-      <section className="container-focus" style={{ padding: "80px 24px 60px" }}>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-6xl mx-auto">
-          {projects.map((p, idx) => (
-            <article
-              key={idx}
-              className="snj-project-card-v"
-              style={{
-                border: "1px solid var(--line2)",
-                borderRadius: 22,
-                overflow: "hidden",
-                background: "var(--bg2)",
-                display: "flex",
-                flexDirection: "column",
-              }}
-            >
-              {/* Media */}
-              <div
-                style={{
-                  width: "100%",
-                  aspectRatio: "16 / 9",
-                  background: "var(--bg3)",
-                  overflow: "hidden",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                {p.textOverlay ? (
-                  <span
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: "clamp(28px, 6vw, 42px)",
-                      fontWeight: 600,
-                      color: "#1E40AF",
-                      letterSpacing: "0.06em",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    {p.textOverlay}
-                  </span>
-                ) : p.video ? (
-                  <video
-                    src={p.video}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    preload="metadata"
-                    poster={p.videoPoster}
-                    aria-label={p.brand}
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                      objectPosition: "top",
-                      display: "block",
-                    }}
-                  />
-                ) : (
-                  <img
-                    src={p.image}
-                    alt={p.brand}
-                    loading="lazy"
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                      objectPosition: "top",
-                      display: "block",
-                    }}
-                  />
-                )}
-              </div>
-
-              {/* Content */}
-              <div
-                className="snj-project-card-v__content"
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: 12,
-                  flexGrow: 1,
-                }}
-              >
-                <span className="snj-step__num">/ {p.brand}</span>
-                <h3
-                  style={{
-                    fontSize: "clamp(18px, 4vw, 22px)",
-                    fontWeight: 500,
-                    color: "var(--text)",
-                    letterSpacing: "-0.02em",
-                    lineHeight: 1.3,
-                  }}
-                >
-                  {p.title}
-                </h3>
-                <p style={{ color: "var(--text2)", fontSize: 14, lineHeight: 1.65 }}>
-                  {p.description}
-                </p>
-                <div style={{ marginTop: "auto", paddingTop: 16 }}>
-                  <a
-                    href={p.ctaUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="snj-btn-primary"
-                    style={{ fontSize: 13 }}
-                  >
-                    {p.ctaLabel} <ArrowUpRight className="w-3.5 h-3.5" />
-                  </a>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-
-
       {/* CTA FINAL */}
       <section className="container-focus" style={{ padding: "60px 24px 120px" }}>
         <div
@@ -523,7 +365,7 @@ const SolucoesSobMedida = () => {
               marginBottom: 16,
             }}
           >
-            Quer o seu próximo case aqui?
+            Pronto para tirar sua operação do improviso?
           </h2>
           <p style={{ color: "var(--text2)", fontSize: 15, marginBottom: 32 }}>
             Conversa de ~30 min por WhatsApp para entender seu cenário. Sem compromisso, sem deck
