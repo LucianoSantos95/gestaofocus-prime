@@ -17,22 +17,14 @@ var SERVICES = [
     pricing: "Valor sob consulta (projeto fechado, 50% assinatura + 50% entrega)",
     description: "Desenvolvimento de sistemas exclusivos (dashboards, CRMs, portais, ERPs, agentes de IA, playbooks) constru\xEDdos sobre a Lovable, adaptados 100% \xE0 opera\xE7\xE3o do cliente.",
     idealFor: "Ag\xEAncias, consultorias e prestadores de servi\xE7o com processos \xFAnicos que nenhum SaaS gen\xE9rico atende."
-  },
-  {
-    id: "hub-empresarial",
-    name: "Hub Empresarial \u2014 Plataforma SaaS",
-    url: "https://focusinteligente.com.br/hub-empresarial",
-    pricing: "Plus R$ 119/m\xEAs \xB7 Pro R$ 249/m\xEAs",
-    description: "Plataforma pronta com CRM, financeiro, projetos, dashboards, RH e automa\xE7\xF5es. Acesso imediato.",
-    idealFor: "PMEs que precisam sair de planilhas e WhatsApp com solu\xE7\xE3o completa e imediata."
   }
 ];
 var list_services_default = defineTool({
   name: "list_services",
   title: "List Focus services",
-  description: "List Focus Gest\xE3o's services (Focus Custom sob medida e Hub Empresarial SaaS) with positioning, pricing and target audience.",
+  description: "List Focus Gest\xE3o's services (Focus Custom sob medida) with positioning, pricing and target audience.",
   inputSchema: {
-    id: z.enum(["focus-custom", "hub-empresarial"]).optional().describe("Optional service id to return only one service.")
+    id: z.enum(["focus-custom"]).optional().describe("Optional service id to return only one service.")
   },
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: ({ id }) => {
@@ -40,61 +32,6 @@ var list_services_default = defineTool({
     return {
       content: [{ type: "text", text: JSON.stringify(items, null, 2) }],
       structuredContent: { services: items }
-    };
-  }
-});
-
-// src/lib/mcp/tools/search-blog.ts
-import { defineTool as defineTool2 } from "npm:@lovable.dev/mcp-js@0.20.1";
-import { z as z2 } from "npm:zod@^3.25.76";
-var SITE = "https://focusinteligente.com.br";
-var POSTS = [
-  { slug: "poder-do-notion-empresas-produtivas", title: "O poder do Notion em empresas produtivas", tags: ["notion", "produtividade", "empresas"] },
-  { slug: "mapeamento-processos-crescimento", title: "Mapeamento de processos para crescimento", tags: ["processos", "gestao"] },
-  { slug: "5-erros-produtividade", title: "5 erros de produtividade", tags: ["produtividade", "erros"] },
-  { slug: "gestao-projetos-notion", title: "Gest\xE3o de projetos", tags: ["projetos", "gestao"] },
-  { slug: "sistema-completo-notion-automacao", title: "Sistema completo com automa\xE7\xE3o", tags: ["sistema", "automacao"] },
-  { slug: "matriz-eisenhower", title: "Matriz de Eisenhower", tags: ["priorizacao", "metodos"] },
-  { slug: "metodo-gtd-guia", title: "M\xE9todo GTD \u2014 Guia completo", tags: ["gtd", "metodos", "produtividade"] },
-  { slug: "tecnica-pomodoro-guia", title: "T\xE9cnica Pomodoro \u2014 Guia", tags: ["pomodoro", "foco"] },
-  { slug: "planejamento-semanal-passo-a-passo", title: "Planejamento semanal passo a passo", tags: ["planejamento", "semanal"] },
-  { slug: "planejamento-mensal-sistema", title: "Sistema de planejamento mensal", tags: ["planejamento", "mensal"] },
-  { slug: "planejamento-anual-do-zero", title: "Planejamento anual do zero", tags: ["planejamento", "anual"] },
-  { slug: "reunioes-produtivas", title: "Reuni\xF5es produtivas", tags: ["reunioes", "gestao"] },
-  { slug: "ia-pmes-automatizar-processos", title: "IA para PMEs automatizarem processos", tags: ["ia", "pmes", "automacao"] },
-  { slug: "mapeamento-processos-agencias", title: "Mapeamento de processos para ag\xEAncias", tags: ["agencias", "processos"] },
-  { slug: "notion-agencias-guia-2026", title: "Notion para ag\xEAncias \u2014 Guia 2026", tags: ["notion", "agencias"] },
-  { slug: "150-sistemas-notion", title: "150 sistemas em Notion", tags: ["notion", "sistemas"] },
-  { slug: "notion-vs-planilhas", title: "Notion vs Planilhas", tags: ["notion", "planilhas"] },
-  { slug: "rotina-matinal-poderosa", title: "Rotina matinal poderosa", tags: ["rotina", "habitos"] },
-  { slug: "metas-inteligentes-smart", title: "Metas inteligentes SMART", tags: ["metas", "smart"] },
-  { slug: "organizar-tarefas-dia-a-dia", title: "Organizar tarefas do dia a dia", tags: ["tarefas", "organizacao"] },
-  { slug: "gestao-tempo-quem-vive-ocupado", title: "Gest\xE3o de tempo para quem vive ocupado", tags: ["tempo", "gestao"] },
-  { slug: "checklist-diario-produtividade", title: "Checklist di\xE1rio de produtividade", tags: ["checklist", "produtividade"] }
-];
-var search_blog_default = defineTool2({
-  name: "search_blog",
-  title: "Search Focus blog",
-  description: "Search Focus Gest\xE3o's blog by keyword against titles, slugs and tags. Returns matching posts with absolute URLs.",
-  inputSchema: {
-    query: z2.string().trim().min(1).describe("Keyword (e.g. 'notion', 'produtividade', 'gtd')."),
-    limit: z2.number().int().min(1).max(25).optional().describe("Max results (default 10).")
-  },
-  annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
-  handler: ({ query, limit }) => {
-    const q = query.toLowerCase();
-    const max = limit ?? 10;
-    const results = POSTS.filter(
-      (p) => p.slug.includes(q) || p.title.toLowerCase().includes(q) || p.tags.some((t) => t.includes(q))
-    ).slice(0, max).map((p) => ({ title: p.title, url: `${SITE}/blog/${p.slug}`, tags: p.tags }));
-    return {
-      content: [
-        {
-          type: "text",
-          text: results.length === 0 ? `Nenhum artigo encontrado para "${query}".` : JSON.stringify(results, null, 2)
-        }
-      ],
-      structuredContent: { results, count: results.length }
     };
   }
 });
@@ -115,8 +52,7 @@ var get_contact_default = defineTool3({
       about: "https://focusinteligente.com.br/sobre",
       helpCenter: "https://focusinteligente.com.br/central-ajuda",
       services: {
-        focusCustom: "https://focusinteligente.com.br/solucoes-sob-medida",
-        hubEmpresarial: "https://focusinteligente.com.br/hub-empresarial"
+        focusCustom: "https://focusinteligente.com.br/solucoes-sob-medida"
       },
       billing: "Consultoria por projeto fechado (valor sob consulta)."
     };
@@ -133,12 +69,12 @@ var mcp_default = defineMcp({
   name: "focus-gestao-mcp",
   title: "Focus Gest\xE3o MCP",
   version: "0.1.0",
-  instructions: "Tools to explore Focus Gest\xE3o (Lovable Partner Oficial): list services (Focus Custom sob medida e Hub Empresarial SaaS), search blog articles, and retrieve official contact URLs. Requires OAuth sign-in.",
+  instructions: "Tools to explore Focus Gest\xE3o (Lovable Partner Oficial): list services (Focus Custom sob medida) and retrieve official contact URLs. Requires OAuth sign-in.",
   auth: auth.oauth.issuer({
     issuer: `https://${projectRef}.supabase.co/auth/v1`,
     acceptedAudiences: "authenticated"
   }),
-  tools: [list_services_default, search_blog_default, get_contact_default]
+  tools: [list_services_default, get_contact_default]
 });
 
 // lovable-mcp-supabase-entry.ts

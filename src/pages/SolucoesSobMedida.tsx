@@ -4,7 +4,6 @@ import Footer from "@/components/Footer";
 import { WA_LINK } from "@/components/TalkToLuciano";
 import { openLeadModal } from "@/lib/leadModal";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import hubVideo from "@/assets/case-hub-empresarial.mp4.asset.json";
 import diagVideo from "@/assets/case-agente-diagnostico.mp4.asset.json";
 
 
@@ -25,23 +24,6 @@ type Project = {
 };
 
 const projects: Project[] = [
-  {
-    year: "2026",
-    category: "Produto · SaaS",
-    brand: "Hub Empresarial",
-    title: "Um hub pra substituir suas 6 ferramentas de gestão",
-    description:
-      "Finanças, clientes, projetos e relatórios num lugar só — conectado ao seu Google, WhatsApp e ao ChatGPT. Construído na Lovable com plano gratuito para começar.",
-    image: "/case-hub.png",
-    video: hubVideo.url,
-    videoPoster: "/case-hub.png",
-    ctaLabel: "Começar grátis",
-    ctaUrl: "https://app.focusinteligente.com.br",
-    metrics: [
-      { value: "100+", label: "OPERAÇÕES RODANDO" },
-      { value: "R$ 0", label: "GRATUITO PARA SEMPRE" },
-    ],
-  },
   {
     year: "2026",
     category: "Produto · IA",
@@ -348,7 +330,7 @@ const SolucoesSobMedida = () => {
               <em>teórica</em>.
             </h2>
             <p style={{ color: "var(--text2)", fontSize: 15, lineHeight: 1.75, marginBottom: 28 }}>
-              Quem entrega essa consultoria é o mesmo founder que construiu o Hub Empresarial —
+              Quem entrega essa consultoria é o mesmo founder que já construiu e operou
               um SaaS de gestão usado por mais de 100 empresas.
             </p>
             <p style={{ color: "var(--text2)", fontSize: 15, lineHeight: 1.75, marginBottom: 36 }}>

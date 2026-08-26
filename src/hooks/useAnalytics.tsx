@@ -19,12 +19,6 @@ export const useAnalytics = () => {
 const getPageTitle = (pathname: string): string => {
   const titles: Record<string, string> = {
     '/': 'Início - Focus',
-    '/sistemas-notion': 'Sistemas Notion - Focus',
-    '/sprint-produtividade': 'Sprint Produtividade - Focus',
-    '/hub-empresarial': 'Hub Empresarial - Focus',
-    '/focus-club': 'Focus Club - Focus',
-    '/blog': 'Blog - Focus',
-    
   };
 
   return titles[pathname] || 'Focus - Gestão Empresarial e Produtividade';

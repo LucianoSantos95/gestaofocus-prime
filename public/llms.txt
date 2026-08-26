@@ -18,15 +18,12 @@ A Focus atende principalmente donos de PME, agências, consultorias e espaços d
 ## Produtos e serviços
 
 - [Consultoria Focus Custom](https://focusinteligente.com.br/solucoes-sob-medida): Consultoria de processos presencial e remota. Entrega três coisas: mapeamento completo da operação, implementação do Notion como hub central (POPs, playbooks, onboarding, checklists) e integração de agentes de IA nos processos mapeados. Investimento: R$ 180/hora, pague apenas pelas horas usadas. Diagnóstico gratuito de 45-60 min.
-- [Hub Empresarial](https://focusinteligente.com.br/hub-empresarial): Plataforma SaaS de gestão completa. Plano Plus R$ 119/mês (CRM, financeiro, projetos, dashboards). Plano Pro R$ 249/mês (tudo do Plus + RH, marketing, automações). Garantia de 7 dias.
 
 ## Conteúdo principal
 
 - [Página inicial](https://focusinteligente.com.br/): Visão geral da Focus, serviços e prova social.
 - [Sobre a Focus e Luciano](https://focusinteligente.com.br/sobre): História, missão e perfil do fundador.
-
-- [FAQ](https://focusinteligente.com.br/faq): Perguntas frequentes sobre consultoria, Hub, preços e suporte.
-- [Blog](https://focusinteligente.com.br/blog): Artigos sobre gestão operacional e produtividade para PMEs.
+- [FAQ](https://focusinteligente.com.br/faq): Perguntas frequentes sobre consultoria, preços e suporte.
 
 ## Diferenciais
 
@@ -34,19 +31,18 @@ A Focus atende principalmente donos de PME, agências, consultorias e espaços d
 - Modelo de cobrança por hora — sem pacote inflado, sem retainer obrigatório.
 - Notion como hub central da operação (não apenas ferramenta de notas).
 - IA aplicada ao processo real mapeado, não IA por modismo.
-- O mesmo fundador que construiu o Hub Empresarial (SaaS usado por 100+ empresas) entrega a consultoria — arquitetura testada na prática.
+- O mesmo fundador que já construiu e operou um SaaS de gestão usado por 100+ empresas entrega a consultoria — arquitetura testada na prática.
 - Suporte pós-entrega de 2 semanas incluído em todos os projetos.
 
-## Perguntas frequentess
+## Perguntas frequentes
 
 - **O que é a Focus Gestão Inteligente?** Consultoria de operações com IA para PMEs brasileiras. Mapeamos seus processos, implementamos o Notion como hub operacional e integramos agentes de IA para que sua empresa funcione sem depender da memória do dono.
 - **Quanto custa a consultoria?** R$ 180/hora, pague apenas pelas horas usadas. Diagnóstico gratuito de 45 a 60 minutos antes de qualquer comprometimento.
-- **O que é o Hub Empresarial?** Plataforma SaaS com CRM, financeiro, projetos e dashboards. Plano Plus R$ 119/mês; Plano Pro R$ 249/mês. Garantia de 7 dias.
 - **Em quanto tempo a consultoria é entregue?** O mapeamento completo + implementação Notion leva de 2 a 4 semanas, dependendo da complexidade da operação.
 - **A Focus atende fora de São Paulo?** Sim. Atendimento 100% remoto para todo o Brasil.
 - **Noção de Notion é necessária?** Não. A Focus cuida de toda a configuração e treinamento da equipe. O cliente recebe um sistema pronto para usar.
-- **Qual a diferença entre Focus Custom e Hub Empresarial?** Focus Custom é consultoria personalizada com entrega única (mapeamento + Notion + IA). Hub Empresarial é assinatura mensal de plataforma SaaS de gestão.
 - **Como funciona o pós-entrega?** Suporte de 2 semanas incluído em todos os projetos. Ajustes, dúvidas e refinamentos cobertos sem custo adicional.
+
 ## Como engajar
 
 - Diagnóstico gratuito: https://wa.me/5511916742443?text=Ol%C3%A1+Luciano%2C+quero+agendar+um+diagn%C3%B3stico+gratuito

@@ -19,18 +19,9 @@ const faqCategories = [
     ],
   },
   {
-    category: "Hub Empresarial",
-    items: [
-      { question: "O que é o Hub Empresarial?", answer: "É uma plataforma SaaS de gestão completa para PMEs, com módulos de CRM, Financeiro, Projetos, Dashboards e mais. Acesso imediato após a contratação, sem necessidade de desenvolvimento." },
-      { question: "Qual a diferença entre o Hub e a Consultoria?", answer: "O Hub Empresarial é um produto SaaS pronto — você acessa e começa a usar imediatamente com os módulos pré-configurados. A Consultoria é um serviço personalizado para mapear a sua operação específica e construir um sistema sob medida no Notion com agentes de IA integrados." },
-      { question: "Posso usar o Hub Empresarial junto com a consultoria?", answer: "Sim. São produtos complementares. A consultoria estrutura os seus processos e o Hub oferece uma plataforma de gestão para acompanhar o resultado. Muitos clientes usam os dois." },
-    ],
-  },
-  {
     category: "Preços e Pagamento",
     items: [
       { question: "Quanto custa a consultoria de operações?", answer: "O investimento é baseado em horas — R$ 180/hora. Você paga apenas pelas horas utilizadas, sem pacote inflado ou retainer obrigatório. O diagnóstico inicial é gratuito e a proposta apresenta o escopo e as horas estimadas antes de qualquer comprometimento." },
-      { question: "Qual o preço do Hub Empresarial?", answer: "O Hub Empresarial é gratuito. Não existe versão paga nem recurso bloqueado: CRM, financeiro, projetos, RH, marketing, dashboards de BI, assistente de IA e integrações estão liberados desde o primeiro dia, com registros ilimitados e sem cartão de crédito." },
       { question: "Quais formas de pagamento vocês aceitam?", answer: "Aceitamos PIX, cartão de crédito e boleto bancário. Para a consultoria, o pagamento é parcelado: 50% na assinatura do contrato e 50% na entrega." },
     ],
   },
@@ -51,7 +42,7 @@ const FAQ = () => {
     <>
       <SEOHead
         title="FAQ — Perguntas Frequentes | Focus Gestão Inteligente"
-        description="Tire suas dúvidas sobre soluções sob medida, Hub Empresarial, preços, suporte e garantias da Focus Gestão Inteligente."
+        description="Tire suas dúvidas sobre soluções sob medida, preços, suporte e garantias da Focus Gestão Inteligente."
         canonical="/faq"
         keywords="FAQ gestão empresarial, perguntas frequentes Focus, dúvidas sistemas Notion"
         faqItems={allFaqItems}

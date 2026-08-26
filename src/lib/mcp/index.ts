@@ -1,6 +1,5 @@
 import { auth, defineMcp } from "@lovable.dev/mcp-js";
 import listServicesTool from "./tools/list-services";
-import searchBlogTool from "./tools/search-blog";
 import getContactTool from "./tools/get-contact";
 
 // Issuer must be the direct supabase.co host, built from the project ref so it
@@ -13,10 +12,10 @@ export default defineMcp({
   title: "Focus Gestão MCP",
   version: "0.1.0",
   instructions:
-    "Tools to explore Focus Gestão (Lovable Partner Oficial): list services (Focus Custom sob medida e Hub Empresarial SaaS), search blog articles, and retrieve official contact URLs. Requires OAuth sign-in.",
+    "Tools to explore Focus Gestão (Lovable Partner Oficial): list services (Focus Custom sob medida) and retrieve official contact URLs. Requires OAuth sign-in.",
   auth: auth.oauth.issuer({
     issuer: `https://${projectRef}.supabase.co/auth/v1`,
     acceptedAudiences: "authenticated",
   }),
-  tools: [listServicesTool, searchBlogTool, getContactTool],
+  tools: [listServicesTool, getContactTool],
 });

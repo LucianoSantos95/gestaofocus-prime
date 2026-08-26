@@ -22,10 +22,6 @@ import LeadFormModal from "./components/LeadFormModal";
 
 // Lazy load pages
 const SolucoesSobMedida = lazy(() => import("./pages/SolucoesSobMedida"));
-const HubEmpresarial = lazy(() => import("./pages/HubEmpresarial"));
-const Advisor = lazy(() => import("./pages/Advisor"));
-
-const Blog = lazy(() => import("./pages/Blog"));
 const AboutFocus = lazy(() => import("./pages/AboutFocus"));
 const Privacidade = lazy(() => import("./pages/Privacidade"));
 const TermosUso = lazy(() => import("./pages/TermosUso"));
@@ -37,42 +33,6 @@ const FAQ = lazy(() => import("./pages/FAQ"));
 const Login = lazy(() => import("./pages/Login"));
 const OAuthConsent = lazy(() => import("./pages/OAuthConsent"));
 const NotFound = lazy(() => import("./pages/NotFound"));
-// Blog posts
-const PoderNotionEmpresas = lazy(() => import("./pages/blog/PoderNotionEmpresas"));
-const MapeamentoProcessos = lazy(() => import("./pages/blog/MapeamentoProcessos"));
-const ErrosProdutividade = lazy(() => import("./pages/blog/ErrosProdutividade"));
-const GestaoProjetosNotion = lazy(() => import("./pages/blog/GestaoProjetosNotion"));
-const SistemaCompletoNotion = lazy(() => import("./pages/blog/SistemaCompletoNotion"));
-const PerdaTempoProfissionais = lazy(() => import("./pages/blog/PerdaTempoProfissionais"));
-const NotionVsPlanilhas = lazy(() => import("./pages/blog/NotionVsPlanilhas"));
-const OrganizarProjetosCaoticos = lazy(() => import("./pages/blog/OrganizarProjetosCaoticos"));
-const ProcessosInteligentesAutonomos = lazy(() => import("./pages/blog/ProcessosInteligentesAutonomos"));
-const SistemasNotionPequenasEmpresas = lazy(() => import("./pages/blog/SistemasNotionPequenasEmpresas"));
-const ErroSilenciosoProdutividade = lazy(() => import("./pages/blog/ErroSilenciosoProdutividade"));
-const CaosRotinaProdutiva = lazy(() => import("./pages/blog/CaosRotinaProdutiva"));
-const TarefasVsIncendios = lazy(() => import("./pages/blog/TarefasVsIncendios"));
-const SistemaProdutividadePassoPasso = lazy(() => import("./pages/blog/SistemaProdutividadePassoPasso"));
-const SistemasNotion150 = lazy(() => import("./pages/blog/150SistemasNotion"));
-const ProdutividadeFazerOqueImporta = lazy(() => import("./pages/blog/ProdutividadeFazerOqueImporta"));
-const ConfiarSistemasProducao = lazy(() => import("./pages/blog/ConfiarSistemasProducao"));
-const TarefasSoltasEmResultados = lazy(() => import("./pages/blog/TarefasSoltasEmResultados"));
-const ChecklistDiarioProdutividade = lazy(() => import("./pages/blog/ChecklistDiarioProdutividade"));
-const OrganizarRotinaSemanal = lazy(() => import("./pages/blog/OrganizarRotinaSemanal"));
-const PlanejamentoMensalSistema = lazy(() => import("./pages/blog/PlanejamentoMensalSistema"));
-const OrganizarDocumentosEmpresa = lazy(() => import("./pages/blog/OrganizarDocumentosEmpresa"));
-const PararApagarIncendiosEmpresa = lazy(() => import("./pages/blog/PararApagarIncendiosEmpresa"));
-const ClarezaProjetosNotion = lazy(() => import("./pages/blog/ClarezaProjetosNotion"));
-const GestaoTempoQuemViveOcupado = lazy(() => import("./pages/blog/GestaoTempoQuemViveOcupado"));
-const ReunioesProdutivas = lazy(() => import("./pages/blog/ReunioesProdutivas"));
-const MatrizEisenhower = lazy(() => import("./pages/blog/MatrizEisenhower"));
-const OrganizarTarefasDiaDia = lazy(() => import("./pages/blog/OrganizarTarefasDiaDia"));
-const PlanejamentoSemanalPassoPasso = lazy(() => import("./pages/blog/PlanejamentoSemanalPassoPasso"));
-const MetodoPessoalProdutividade = lazy(() => import("./pages/blog/MetodoPessoalProdutividade"));
-const OrganizacaoPessoalProfissional = lazy(() => import("./pages/blog/OrganizacaoPessoalProfissional"));
-const ReduzirEstresseTrabalhoOrganizacao = lazy(() => import("./pages/blog/ReduzirEstresseTrabalhoOrganizacao"));
-const NotionAgenciasGuia2026 = lazy(() => import("./pages/blog/NotionAgenciasGuia2026"));
-const IAPMEsAutomatizarProcessos = lazy(() => import("./pages/blog/IAPMEsAutomatizarProcessos"));
-const MapeamentoProcessosAgencias = lazy(() => import("./pages/blog/MapeamentoProcessosAgencias"));
 
 const queryClient = new QueryClient();
 
@@ -100,10 +60,7 @@ function AppLayout() {
   useMagneticButtons(location.pathname);
   useSpotlightCards(location.pathname);
   // Páginas que já trazem Nav/Footer embutidos no próprio componente
-  const hasOwnChrome =
-    location.pathname === "/solucoes-sob-medida" ||
-    location.pathname === "/hub-empresarial" ||
-    location.pathname === "/advisor";
+  const hasOwnChrome = location.pathname === "/solucoes-sob-medida";
 
   const showNav = !hasOwnChrome;
   const showFooter = !hasOwnChrome;
@@ -130,80 +87,18 @@ function AppLayout() {
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/solucoes-sob-medida" element={<SolucoesSobMedida />} />
-            <Route path="/hub-empresarial" element={<HubEmpresarial />} />
-            <Route path="/advisor" element={<Advisor />} />
-            <Route path="/blog" element={<Blog />} />
-
-            {/* Blog Routes */}
-            <Route path="/blog/poder-do-notion-empresas-produtivas" element={<PoderNotionEmpresas />} />
-            <Route path="/blog/mapeamento-processos-crescimento" element={<MapeamentoProcessos />} />
-            <Route path="/blog/5-erros-produtividade" element={<ErrosProdutividade />} />
-            <Route path="/blog/gestao-projetos-notion" element={<GestaoProjetosNotion />} />
-            <Route path="/blog/sistema-completo-notion-automacao" element={<SistemaCompletoNotion />} />
-            <Route path="/blog/perda-tempo-profissionais" element={<PerdaTempoProfissionais />} />
-            <Route path="/blog/notion-vs-planilhas" element={<NotionVsPlanilhas />} />
-            <Route path="/blog/organizar-projetos-caoticos" element={<OrganizarProjetosCaoticos />} />
-            <Route path="/blog/processos-inteligentes-autonomos" element={<ProcessosInteligentesAutonomos />} />
-            <Route path="/blog/sistemas-notion-pequenas-empresas" element={<SistemasNotionPequenasEmpresas />} />
-            <Route path="/blog/erro-silencioso-produtividade-equipe" element={<ErroSilenciosoProdutividade />} />
-            <Route path="/blog/transformar-caos-rotina-produtiva-notion" element={<CaosRotinaProdutiva />} />
-            <Route path="/blog/gerenciando-tarefas-ou-apagando-incendios" element={<TarefasVsIncendios />} />
-            <Route path="/blog/criar-sistema-produtividade-funciona" element={<SistemaProdutividadePassoPasso />} />
-            <Route path="/blog/150-sistemas-notion-licoes-praticas" element={<SistemasNotion150 />} />
-            <Route path="/blog/produtividade-fazer-o-que-importa" element={<ProdutividadeFazerOqueImporta />} />
-            <Route path="/blog/confiar-sistemas-producao" element={<ConfiarSistemasProducao />} />
-            <Route path="/blog/tarefas-soltas-em-resultados" element={<TarefasSoltasEmResultados />} />
-            <Route path="/blog/checklist-diario-produtividade" element={<ChecklistDiarioProdutividade />} />
-            <Route path="/blog/organizar-rotina-semanal" element={<OrganizarRotinaSemanal />} />
-            <Route path="/blog/produtividade-autonomos-freelancers" element={<Navigate to="/blog/sistemas-notion-pequenas-empresas" replace />} />
-            <Route path="/blog/parar-procrastinar-sistemas-visuais" element={<Navigate to="/blog/gerenciando-tarefas-ou-apagando-incendios" replace />} />
-            <Route path="/blog/planejamento-mensal-sistema" element={<PlanejamentoMensalSistema />} />
-            <Route path="/blog/organizacao-pessoal-tecnologia" element={<Navigate to="/blog/sistemas-notion-pequenas-empresas" replace />} />
-            <Route path="/blog/metas-inteligentes-smart" element={<Navigate to="/blog/mapeamento-processos-crescimento" replace />} />
-            <Route path="/blog/guia-foco-evitar-distracoes" element={<Navigate to="/blog/gerenciando-tarefas-ou-apagando-incendios" replace />} />
-            <Route path="/blog/metodos-produtividade-2025" element={<Navigate to="/blog/criar-sistema-produtividade-funciona" replace />} />
-            <Route path="/blog/organizar-documentos-empresa" element={<OrganizarDocumentosEmpresa />} />
-            <Route path="/blog/parar-apagar-incendios-empresa" element={<PararApagarIncendiosEmpresa />} />
-            <Route path="/blog/clareza-projetos-notion" element={<ClarezaProjetosNotion />} />
-            <Route path="/blog/organizar-vida-digital" element={<Navigate to="/blog/sistema-completo-notion-automacao" replace />} />
-            <Route path="/blog/tecnica-pomodoro-guia-definitivo" element={<Navigate to="/blog/criar-sistema-produtividade-funciona" replace />} />
-            <Route path="/blog/planejamento-anual-do-zero" element={<Navigate to="/blog/planejamento-mensal-sistema" replace />} />
-            <Route path="/blog/criar-habitos-que-duram" element={<Navigate to="/blog/criar-sistema-produtividade-funciona" replace />} />
-            <Route path="/blog/rotina-matinal-poderosa-15-minutos" element={<Navigate to="/blog/criar-sistema-produtividade-funciona" replace />} />
-            <Route path="/blog/organizacao-financeira-pessoal-sistema-simples" element={<Navigate to="/blog" replace />} />
-            <Route path="/blog/melhorar-concentracao-mundo-distracoes" element={<Navigate to="/blog/gerenciando-tarefas-ou-apagando-incendios" replace />} />
-            <Route path="/blog/mapas-mentais-organizar-ideias-produtividade" element={<Navigate to="/blog/mapeamento-processos-crescimento" replace />} />
-            <Route path="/blog/gestao-tempo-ocupado-estrategias-funcionam" element={<GestaoTempoQuemViveOcupado />} />
-            <Route path="/blog/sistema-estudos-eficiente-tecnicas-modernas" element={<Navigate to="/blog/mapeamento-processos-agencias" replace />} />
-            <Route path="/blog/reunioes-produtivas-parar-perder-tempo" element={<ReunioesProdutivas />} />
-            <Route path="/blog/metodo-gtd-guia-completo" element={<Navigate to="/blog/criar-sistema-produtividade-funciona" replace />} />
-            <Route path="/blog/matriz-eisenhower-prioridades" element={<MatrizEisenhower />} />
-            <Route path="/blog/organizar-tarefas-dia-dia" element={<OrganizarTarefasDiaDia />} />
-            <Route path="/blog/planejamento-semanal-passo-passo" element={<PlanejamentoSemanalPassoPasso />} />
-            <Route path="/blog/metodo-pessoal-produtividade" element={<MetodoPessoalProdutividade />} />
-            <Route path="/blog/organizacao-pessoal-profissional" element={<OrganizacaoPessoalProfissional />} />
-            <Route path="/blog/reduzir-estresse-trabalho-organizacao" element={<ReduzirEstresseTrabalhoOrganizacao />} />
-
-            {/* Pillar Articles */}
-            <Route path="/blog/notion-para-agencias-guia-completo-2026" element={<NotionAgenciasGuia2026 />} />
-            <Route path="/blog/ia-para-pmes-automatizar-processos" element={<IAPMEsAutomatizarProcessos />} />
-            <Route path="/blog/mapeamento-processos-agencias" element={<MapeamentoProcessosAgencias />} />
 
             {/* ===== REDIRECTS 301 — soft 404 fixes ===== */}
-            {/* Blog: slugs antigos ou sem prefixo /blog/ */}
-            <Route path="/blog/metodo-g-t-d-guia" element={<Navigate to="/blog/criar-sistema-produtividade-funciona" replace />} />
-            <Route path="/poder-do-notion-empresas-produtivas" element={<Navigate to="/blog/poder-do-notion-empresas-produtivas" replace />} />
-            <Route path="/blog/erro-produtividade-equipe" element={<Navigate to="/blog/erro-silencioso-produtividade-equipe" replace />} />
-            <Route path="/blog/caos-rotina-produtiva" element={<Navigate to="/blog/transformar-caos-rotina-produtiva-notion" replace />} />
-            <Route path="/blog/reunioes-produtivas" element={<Navigate to="/blog/reunioes-produtivas-parar-perder-tempo" replace />} />
-            {/* Produtos antigos → Hub */}
-            <Route path="/controle-financeiro-pro" element={<Navigate to="/hub-empresarial" replace />} />
-            <Route path="/focus-pro" element={<Navigate to="/hub-empresarial" replace />} />
-            <Route path="/focus-club" element={<Navigate to="/hub-empresarial" replace />} />
-            <Route path="/sistemas-gratuitos" element={<Navigate to="/hub-empresarial" replace />} />
-            {/* /sistemas-notion: rota removida, mas ainda referenciada por 20+ CTAs no blog.
-                O Hub é o produto sucessor dos sistemas Notion. */}
-            <Route path="/sistemas-notion" element={<Navigate to="/hub-empresarial" replace />} />
+            {/* Blog e páginas removidas → home/consultoria */}
+            <Route path="/blog/*" element={<Navigate to="/" replace />} />
+            {/* Produtos antigos e Hub Empresarial (removido) → Consultoria */}
+            <Route path="/controle-financeiro-pro" element={<Navigate to="/solucoes-sob-medida" replace />} />
+            <Route path="/focus-pro" element={<Navigate to="/solucoes-sob-medida" replace />} />
+            <Route path="/focus-club" element={<Navigate to="/solucoes-sob-medida" replace />} />
+            <Route path="/sistemas-gratuitos" element={<Navigate to="/solucoes-sob-medida" replace />} />
+            <Route path="/sistemas-notion" element={<Navigate to="/solucoes-sob-medida" replace />} />
+            <Route path="/hub-empresarial" element={<Navigate to="/solucoes-sob-medida" replace />} />
+            <Route path="/advisor" element={<Navigate to="/" replace />} />
             {/* Seção de cases → Soluções sob medida */}
             <Route path="/cases" element={<Navigate to="/solucoes-sob-medida" replace />} />
             {/* Rotas antigas sem página correspondente */}

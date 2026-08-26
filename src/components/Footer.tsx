@@ -30,7 +30,7 @@ const Footer = () => {
               </span>
             </Link>
             <p style={{ color: "var(--text2)", fontSize: 13, lineHeight: 1.7 }}>
-              Consultoria de operações com IA + Hub Empresarial SaaS para agências e PMEs.
+              Consultoria de operações com IA para agências e PMEs.
             </p>
           </div>
 
@@ -52,8 +52,6 @@ const Footer = () => {
               {[
                 { label: "Home", href: "/" },
                 { label: "Consultoria Focus Custom", href: "/solucoes-sob-medida" },
-                { label: "Hub Empresarial", href: "/hub-empresarial" },
-                { label: "Blog de Gestão", href: "/blog" },
                 { label: "FAQ", href: "/faq" },
                 { label: "Termos de Uso", href: "/termos-uso" },
                 { label: "Política de Privacidade", href: "/privacidade" },

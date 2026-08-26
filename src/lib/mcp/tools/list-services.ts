@@ -13,25 +13,16 @@ const SERVICES = [
     idealFor:
       "Agências, consultorias e prestadores de serviço com processos únicos que nenhum SaaS genérico atende.",
   },
-  {
-    id: "hub-empresarial",
-    name: "Hub Empresarial — Plataforma de gestão gratuita",
-    url: "https://focusinteligente.com.br/hub-empresarial",
-    pricing: "Gratuito. Não existe versão paga nem recurso bloqueado.",
-    description:
-      "Plataforma pronta com CRM, financeiro, projetos, dashboards, RH e automações. Acesso imediato, registros ilimitados, IA e integrações inclusas — sem cartão de crédito.",
-    idealFor: "PMEs que precisam sair de planilhas e WhatsApp com solução completa e imediata.",
-  },
 ];
 
 export default defineTool({
   name: "list_services",
   title: "List Focus services",
   description:
-    "List Focus Gestão's services (Focus Custom sob medida e Hub Empresarial SaaS) with positioning, pricing and target audience.",
+    "List Focus Gestão's services (Focus Custom sob medida) with positioning, pricing and target audience.",
   inputSchema: {
     id: z
-      .enum(["focus-custom", "hub-empresarial"])
+      .enum(["focus-custom"])
       .optional()
       .describe("Optional service id to return only one service."),
   },

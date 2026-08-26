@@ -14,8 +14,6 @@ const OUTPUT_FILE = path.join(__dirname, '../public/sitemap.xml');
 const staticPages = [
   { loc: '/', priority: '1.0', changefreq: 'weekly' },
   { loc: '/solucoes-sob-medida', priority: '0.9', changefreq: 'weekly' },
-  { loc: '/hub-empresarial', priority: '0.9', changefreq: 'weekly' },
-  { loc: '/blog', priority: '0.9', changefreq: 'weekly' },
   { loc: '/sobre', priority: '0.7', changefreq: 'monthly' },
   
   { loc: '/faq', priority: '0.7', changefreq: 'monthly' },
@@ -31,7 +29,7 @@ const staticPages = [
 function getBlogPosts() {
   try {
     const content = fs.readFileSync(APP_FILE, 'utf8');
-    const matches = [...content.matchAll(/path="(\/blog\/[^"]+)"/g)];
+    const matches = [...content.matchAll(/path="(\/blog\/[^"*]+)"/g)];
     const today = new Date().toISOString().split('T')[0];
     const seen = new Set();
     return matches

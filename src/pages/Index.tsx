@@ -4,7 +4,6 @@ import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 import { CountUp } from "@/hooks/useCountUp";
 import { openLeadModal } from "@/lib/leadModal";
-import hubVideo from "@/assets/case-hub-empresarial.mp4.asset.json";
 import diagVideo from "@/assets/case-agente-diagnostico.mp4.asset.json";
 
 const WA_LINK =
@@ -18,9 +17,9 @@ const Index = () => {
     <div style={{ background: "var(--bg)", color: "var(--text)" }}>
       <SEOHead
         title="Focus Gestão | Operação com IA para PMEs e Agências"
-        description="Consultoria de operações com IA + Hub Empresarial SaaS. Para PMEs, agências e consultorias que querem sair do improviso e operar como empresa de verdade."
+        description="Consultoria de operações com IA para PMEs, agências e consultorias que querem sair do improviso e operar como empresa de verdade."
         canonical="/"
-        keywords="consultoria lovable, lovable partner, desenvolvimento sob medida, arquitetura de operação, IA para PMEs, hub empresarial, agentes de IA, mapeamento de processos"
+        keywords="consultoria lovable, lovable partner, desenvolvimento sob medida, arquitetura de operação, IA para PMEs, agentes de IA, mapeamento de processos"
         type="website"
         speakable={["[data-speakable]", "h1", ".snj-display"]}
       />
@@ -91,7 +90,6 @@ const Index = () => {
             [
               "Lovable Partner Oficial",
               "Consultoria de Operação",
-              "Hub Empresarial",
               "Agentes de IA",
               "Mapeamento de Processos",
               "Sistemas sob medida",
@@ -291,12 +289,6 @@ const Index = () => {
               d: "Infraestrutura previsível e escalável de receita.",
               i: ["Captura e distribuição de leads", "CRM automatizado", "Sequências de follow-up", "Dashboards de performance"],
             },
-            {
-              n: "04",
-              t: "Hub Empresarial",
-              d: "Plataforma pronta para usar — CRM, financeiro, projetos e IA.",
-              i: ["Financeiro completo", "Gestão de projetos", "CRM inteligente", "IA Assistant integrado"],
-            },
           ].map((s) => (
             <div
               key={s.n}
@@ -374,6 +366,34 @@ const Index = () => {
               ))}
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* ===================== ADVISOR TEASER ===================== */}
+      <section className="snj-section container-focus">
+        <div
+          style={{
+            border: "1px solid var(--line)",
+            borderRadius: 22,
+            padding: "40px 36px",
+            background: "var(--bg2)",
+            display: "flex",
+            flexWrap: "wrap",
+            alignItems: "center",
+            gap: 24,
+            justifyContent: "space-between",
+          }}
+        >
+          <div style={{ maxWidth: 560 }}>
+            <span className="snj-tag" style={{ marginBottom: 12, display: "block" }}>/ Advisor</span>
+            <h3 style={{ fontSize: 22, fontWeight: 500, color: "var(--text)", letterSpacing: "-0.02em", marginBottom: 10 }}>
+              Depois da consultoria, sua operação continua acompanhada.
+            </h3>
+            <p style={{ color: "var(--text2)", fontSize: 14, lineHeight: 1.6 }}>
+              Clientes têm acesso ao Advisor dentro do Hub Central — um assistente de IA que olha os
+              dados reais da operação e sugere o próximo passo, sem você precisar caçar relatório.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -471,69 +491,8 @@ const Index = () => {
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-5">
-          {/* Case 1 — Hub Empresarial */}
-          <div
-            style={{
-              border: "1px solid var(--line2)",
-              borderRadius: 22,
-              overflow: "hidden",
-              background: "var(--bg2)",
-              display: "flex",
-              flexDirection: "column",
-            }}
-          >
-            <div
-              style={{
-                width: "100%",
-                aspectRatio: "16 / 9",
-                background: "var(--bg3)",
-                overflow: "hidden",
-              }}
-            >
-              <video
-                src={hubVideo.url}
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                poster="/case-hub.png"
-                aria-label="Hub Empresarial — painel de gestão com fluxo de caixa e IA"
-                style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }}
-              />
-            </div>
-            <div style={{ padding: "28px 32px 32px", display: "flex", flexDirection: "column", gap: 12, flexGrow: 1 }}>
-              <span className="snj-step__num">/ Hub Empresarial</span>
-              <h3 style={{ fontSize: 22, fontWeight: 500, color: "var(--text)", letterSpacing: "-0.02em", lineHeight: 1.3 }}>
-                Um hub pra substituir suas 6 ferramentas de gestão
-              </h3>
-              <p style={{ color: "var(--text2)", fontSize: 14, lineHeight: 1.65 }}>
-                Finanças, clientes, projetos e relatórios num lugar só — conectado ao seu Google,
-                WhatsApp e ao ChatGPT. Construído na Lovable, com plano gratuito para começar.
-              </p>
-              <div style={{ marginTop: "auto", paddingTop: 16, display: "flex", gap: 12, alignItems: "center" }}>
-                <a
-                  href="https://app.focusinteligente.com.br"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => cta("case_hub")}
-                  className="snj-btn-primary"
-                  style={{ fontSize: 13 }}
-                >
-                  Testar grátis <ArrowUpRight className="w-3.5 h-3.5" />
-                </a>
-                <Link
-                  to="/hub-empresarial"
-                  style={{ fontSize: 13, color: "var(--text2)", textDecoration: "underline" }}
-                >
-                  Saiba mais
-                </Link>
-              </div>
-            </div>
-          </div>
-
-          {/* Case 2 — Agente de Diagnóstico */}
+        <div className="grid gap-5" style={{ maxWidth: 480, margin: "0 auto" }}>
+          {/* Case — Agente de Diagnóstico */}
           <div
             style={{
               border: "1px solid var(--line2)",
@@ -659,68 +618,7 @@ const Index = () => {
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-5">
-          {/* Hub */}
-          <div className="snj-price-card">
-            <span className="snj-step__num">/ Hub Empresarial</span>
-            <p style={{ color: "var(--text2)", fontSize: 14 }}>Para começar agora — Hub Central.</p>
-            <div>
-              <span className="snj-price-amount" style={{ fontSize: 28 }}>R$ 0</span>
-              <span style={{ color: "var(--text3)", fontSize: 14, marginLeft: 6 }}>para sempre</span>
-            </div>
-            <a
-              href="https://app.focusinteligente.com.br"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => cta("price_hub")}
-              className="snj-btn-outline"
-              style={{ justifyContent: "center", textDecoration: "none" }}
-            >
-              Começar grátis <ArrowUpRight className="w-4 h-4" />
-            </a>
-            <ul style={{ listStyle: "none", padding: 0, display: "flex", flexDirection: "column", gap: 10, marginTop: 8 }}>
-              {["Todos os módulos liberados", "Registros ilimitados", "IA e dashboards inclusos", "Sem versão paga"].map((f) => (
-                <li key={f} style={{ display: "flex", gap: 10, fontSize: 13, color: "var(--text2)" }}>
-                  <Check className="w-3.5 h-3.5 mt-0.5" style={{ color: "var(--text3)" }} />
-                  {f}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Advisor — degrau intermediário entre o Hub gratuito e a Consultoria */}
-          <div className="snj-price-card">
-            <span className="snj-step__num" style={{ color: "#9DE89D" }}>/ Advisor</span>
-            <p style={{ color: "var(--text2)", fontSize: 14 }}>
-              Uma sessão para descobrir o que falta na sua operação.
-            </p>
-            <div>
-              <span className="snj-price-amount" style={{ fontSize: 28 }}>R$ 497</span>
-              <span style={{ color: "var(--text3)", fontSize: 14, marginLeft: 6 }}>sessão única</span>
-            </div>
-            <Link
-              to="/advisor"
-              onClick={() => cta("price_advisor")}
-              className="snj-btn-outline"
-              style={{ justifyContent: "center", textDecoration: "none" }}
-            >
-              Conhecer o Advisor <ArrowRight className="w-4 h-4" />
-            </Link>
-            <ul style={{ listStyle: "none", padding: 0, display: "flex", flexDirection: "column", gap: 10, marginTop: 8 }}>
-              {[
-                "Call de 1 hora, gravada",
-                "Documento em PDF com o resumo",
-                "Playbook com os próximos passos",
-                "Pagamento único, sem recorrência",
-              ].map((f) => (
-                <li key={f} style={{ display: "flex", gap: 10, fontSize: 13, color: "var(--text2)" }}>
-                  <Check className="w-3.5 h-3.5 mt-0.5" style={{ color: "#9DE89D" }} />
-                  {f}
-                </li>
-              ))}
-            </ul>
-          </div>
-
+        <div className="grid gap-5" style={{ maxWidth: 480, margin: "0 auto" }}>
           {/* Consultoria — valor sob consulta (popular) */}
           <div className="snj-price-card snj-price-card--popular">
             <span
@@ -810,16 +708,14 @@ const Index = () => {
             >
               Diagnóstico gratuito <ArrowUpRight className="w-4 h-4" />
             </button>
-            <a
-              href="https://app.focusinteligente.com.br"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => cta("final_hub")}
+            <Link
+              to="/solucoes-sob-medida"
+              onClick={() => cta("final_consultoria")}
               className="snj-btn-outline"
               style={{ textDecoration: "none" }}
             >
-              Testar Hub grátis <ArrowUpRight className="w-4 h-4" />
-            </a>
+              Conhecer Consultoria <ArrowUpRight className="w-4 h-4" />
+            </Link>
           </div>
         </div>
       </section>

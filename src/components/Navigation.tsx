@@ -9,9 +9,6 @@ import { openLeadModal } from "@/lib/leadModal";
 
 const navItems = [
   { name: "Consultoria", href: "/solucoes-sob-medida" },
-  { name: "Advisor", href: "/advisor" },
-  { name: "Hub Empresarial", href: "/hub-empresarial" },
-  { name: "Blog", href: "/blog" },
   { name: "Sobre", href: "/sobre" },
 ];
 

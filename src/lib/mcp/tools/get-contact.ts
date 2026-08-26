@@ -15,7 +15,6 @@ export default defineTool({
       helpCenter: "https://focusinteligente.com.br/central-ajuda",
       services: {
         focusCustom: "https://focusinteligente.com.br/solucoes-sob-medida",
-        hubEmpresarial: "https://focusinteligente.com.br/hub-empresarial",
       },
       billing: "Consultoria por projeto fechado (valor sob consulta).",
     };

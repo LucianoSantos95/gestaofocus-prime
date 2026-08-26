@@ -27,14 +27,14 @@ const detectSource = (): string => {
 const getGreeting = (source: string): Message => {
   const greetings: Record<string, string> = {
     notion: `Ei! Vi que você veio do Notion 👀 Se você já usa e sente que ele não dá conta da gestão do seu negócio, imagina ter um software próprio, feito sob medida pra sua operação — com CRM, financeiro, dashboards, tudo do seu jeito. A gente cria isso pra você em tempo recorde. Quer saber como?`,
-    facebook: `Ei! Parou no anúncio certo 🔥 Sua empresa ainda roda em planilhas ou sistemas que não encaixam? A Focus cria softwares sob medida e tem uma plataforma de gestão completa pra PMEs. Me conta: qual problema te tira o sono na gestão?`,
-    instagram: `Ei! Que bom que veio do Insta! 🚀 Se você tá aqui, aposto que tá cansado(a) de improvisar a gestão do negócio. A gente resolve isso com software próprio ou acesso imediato a uma plataforma de gestão completa. Qual é o maior caos aí hoje?`,
-    google: `Achei que você ia chegar 🔍 Se pesquisou e veio parar aqui, é porque tá precisando de uma solução real. Criamos softwares exclusivos pra PMEs e temos uma plataforma de gestão pronta pra usar. Me conta o que tá buscando — te mostro o caminho mais rápido.`,
-    linkedin: `Fala, profissional! 💼 Aqui na Focus, a gente tira PMEs do caos operacional de duas formas: com software sob medida ou com o Hub Empresarial, nossa plataforma completa de gestão. Qual é o gargalo que tá travando sua empresa?`,
+    facebook: `Ei! Parou no anúncio certo 🔥 Sua empresa ainda roda em planilhas ou sistemas que não encaixam? A Focus cria softwares sob medida pra PMEs. Me conta: qual problema te tira o sono na gestão?`,
+    instagram: `Ei! Que bom que veio do Insta! 🚀 Se você tá aqui, aposto que tá cansado(a) de improvisar a gestão do negócio. A gente resolve isso com software próprio, sob medida pra sua operação. Qual é o maior caos aí hoje?`,
+    google: `Achei que você ia chegar 🔍 Se pesquisou e veio parar aqui, é porque tá precisando de uma solução real. Criamos softwares exclusivos pra PMEs. Me conta o que tá buscando — te mostro o caminho mais rápido.`,
+    linkedin: `Fala, profissional! 💼 Aqui na Focus, a gente tira PMEs do caos operacional com software sob medida. Qual é o gargalo que tá travando sua empresa?`,
     tiktok: `Opa! Saiu do scroll e veio pro lugar certo 🎯 Aqui a gente não faz só conteúdo — cria softwares de verdade pra empresas que querem sair do caos. Me conta: o que tá travando seu negócio hoje?`,
-    twitter: `Ei! Veio do X — gosto de gente objetiva 🐦 Aqui na Focus criamos softwares sob medida e temos uma plataforma de gestão pronta. Qual problema você quer resolver?`,
-    direct: `Ei! 👋 Que bom que chegou aqui. A Focus cria softwares exclusivos pra empresas que estão cansadas de planilhas e sistemas genéricos. Também temos o Hub Empresarial, uma plataforma completa de gestão. Me conta: o que te trouxe aqui?`,
-    other: `Ei! 👋 Bem-vindo à Focus! Criamos softwares sob medida e temos uma plataforma de gestão completa pra PMEs. Se sua empresa ainda vive no improviso, eu posso te mostrar o caminho pra sair disso. Qual é o maior desafio da sua gestão hoje?`,
+    twitter: `Ei! Veio do X — gosto de gente objetiva 🐦 Aqui na Focus criamos softwares sob medida pra PMEs. Qual problema você quer resolver?`,
+    direct: `Ei! 👋 Que bom que chegou aqui. A Focus cria softwares exclusivos pra empresas que estão cansadas de planilhas e sistemas genéricos. Me conta: o que te trouxe aqui?`,
+    other: `Ei! 👋 Bem-vindo à Focus! Criamos softwares sob medida pra PMEs. Se sua empresa ainda vive no improviso, eu posso te mostrar o caminho pra sair disso. Qual é o maior desafio da sua gestão hoje?`,
   };
 
   return {
@@ -47,7 +47,6 @@ const FOLLOW_UP: Message = {
   role: "assistant",
   content: "Pra te ajudar melhor, escolhe o que mais combina com você 👇",
   buttons: [
-    { label: "🏢 Quero um sistema completo de gestão", href: "/hub-empresarial" },
     { label: "🛠️ Preciso de um software sob medida", href: "/solucoes-sob-medida" },
     { label: "💬 Quero conversar e entender melhor", href: "" },
   ],
