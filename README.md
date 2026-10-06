@@ -1,73 +1,93 @@
-# Welcome to your Lovable project
+# Site Focus
 
-## Project info
+Site institucional da [Focus Inteligente](https://focusinteligente.com.br):
+consultoria de operações com IA para agências, consultorias e prestadores de
+serviço. A home apresenta a oferta de **sistemas sob medida** e leva ao pedido
+de diagnóstico gratuito.
 
-**URL**: https://lovable.dev/projects/27be74bf-0661-40ca-91d7-cf342d9ca51c
+## Páginas
 
-## How can I edit this code?
+| Rota | Conteúdo |
+|---|---|
+| `/` | home e captura de contato |
+| `/solucoes-sob-medida` | a oferta de consultoria |
+| `/sobre` | quem está por trás |
+| `/faq`, `/ajuda`, `/status` | perguntas frequentes, central de ajuda e status |
+| `/privacidade`, `/termos`, `/cookies` | páginas legais |
+| `/login` | entrar ou criar conta (e-mail e senha ou Google) |
 
-There are several ways of editing your application.
+As páginas de produtos e o blog foram retirados do ar em agosto de 2026
+(`/blog/*`, `/hub-empresarial`, `/cases` e outras): essas rotas redirecionam para
+a home ou para a oferta atual, para aproveitar o tráfego já indexado. A lista
+completa está em `src/App.tsx`.
 
-**Use Lovable**
+## Stack
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/27be74bf-0661-40ca-91d7-cf342d9ca51c) and start prompting.
+React 18, TypeScript, Vite 5, React Router 6, Tailwind CSS 3 com shadcn/ui,
+TanStack Query e Framer Motion. Backend em Supabase (autenticação e Edge
+Functions). Construído com a plataforma Lovable.
 
-Changes made via Lovable will be committed automatically to this repo.
+## SEO e visibilidade em IAs
 
-**Use your preferred IDE**
+- `public/sitemap.xml`, gerado por `scripts/generate-sitemap.js`
+  (`node scripts/generate-sitemap.js`).
+- `public/robots.txt`.
+- `public/llms.txt` e `public/llms-full.txt`: descrição do site e da oferta em
+  texto simples, para assistentes de IA.
+- Metadados por página e rastreamento de eventos em `src/lib/analytics.ts`.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Estrutura
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```
+src/
+  pages/         páginas (home, oferta, sobre, FAQ, ajuda, status, legais)
+  components/    seções, navegação, rodapé e ui (shadcn)
+  lib/           analytics, modal de contato e ferramentas MCP
+  integrations/  clientes do Supabase e da Lovable
+supabase/
+  functions/     Edge Functions
+  migrations/    esquema do banco
+scripts/         geração do sitemap
+docs/            guias técnicos (analytics, performance, imagens)
+  historico/     registros das fases de implementação anteriores
 ```
 
-**Edit a file directly in GitHub**
+Parte das Edge Functions (`generate-mvp-plan`, `generate-action-plan`,
+`claim-simulation`, `chat`) é herança de funcionalidades já retiradas da home
+e não é usada pelas páginas atuais.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Rodando localmente
 
-**Use GitHub Codespaces**
+Pré-requisitos: Node 20+ (ou Bun).
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```bash
+bun install        # ou: npm install
+bun run dev        # ou: npm run dev
+```
 
-## What technologies are used for this project?
+O `.env` versionado contém apenas chaves **públicas** do Supabase (URL, chave
+publishable e ID do projeto). Segredos entram em `.env.local`, que o Git
+ignora, ou no painel do Lovable/Supabase, e nunca no repositório.
 
-This project is built with:
+## Scripts
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+| Comando | O que faz |
+|---|---|
+| `bun run dev` | servidor de desenvolvimento |
+| `bun run build` | build de produção |
+| `bun run preview` | serve o build localmente |
+| `bun run lint` | ESLint |
 
-## How can I deploy this project?
+## Qualidade
 
-Simply open [Lovable](https://lovable.dev/projects/27be74bf-0661-40ca-91d7-cf342d9ca51c) and click on Share -> Publish.
+O site é de conteúdo e não tem regra de negócio própria, então a verificação é o
+build de produção e a checagem de tipos (`tsc -p tsconfig.app.json --noEmit`).
 
-## Can I connect a custom domain to my Lovable project?
+## Documentação
 
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+- [`docs/ANALYTICS_SETUP.md`](docs/ANALYTICS_SETUP.md): configuração de analytics.
+- [`docs/PERFORMANCE_OPTIMIZATIONS.md`](docs/PERFORMANCE_OPTIMIZATIONS.md):
+  otimizações de performance aplicadas.
+- [`docs/WEBP_CONVERSION_GUIDE.md`](docs/WEBP_CONVERSION_GUIDE.md): conversão de
+  imagens para WebP.
+- [`docs/historico/`](docs/historico): registros das fases 1 e 3.
