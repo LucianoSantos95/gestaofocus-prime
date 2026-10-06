@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Env: o .env versionado contém só chaves públicas (VITE_* / publishable do Supabase).
+# Qualquer segredo vai em .env.local (já ignorado por *.local) ou no painel do Lovable/Supabase.
+.env.secret
+.env.production
+.env.*.secret
